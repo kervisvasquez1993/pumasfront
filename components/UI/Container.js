@@ -1,34 +1,42 @@
+import React from "react";
 
-const Container = ({
-    fullWill = false,
-    children,
-    alignment = "left",
-    direction = "row",
-    className,
-}) => {
-    // Determinar las clases CSS a aplicar
-    let classes = "container";
-    if (fullWill) {
-        classes += " full-will";
-    } else {
-        classes += " with-padding";
-    }
+const Container = ({ fullWidth, center, left, right, direction, className, children }) => {
+  let containerClasses = "container";
+  
+  // Configurar clases de ancho
+  if (fullWidth) {
+    containerClasses += " w-full";
+  } else {
+    containerClasses += " mx-auto";
+  }
 
-    if (alignment === "center") {
-        classes += " center-align";
-    } else if (alignment === "right") {
-        classes += " right-align";
-    }
+  // Configurar clases de alineación
+  if (center) {
+    containerClasses += " flex justify-center";
+  } else if (left) {
+    containerClasses += " flex justify-start";
+  } else if (right) {
+    containerClasses += " flex justify-end";
+  }
 
-    if (direction === "column") {
-        classes += " flex-column";
-    }
+  // Configurar clases de dirección de elementos hijos
+  if (direction === "row") {
+    containerClasses += " flex-row";
+  } else {
+    containerClasses += " flex-col";
+  }
 
-    if (className) {
-        classes += ` ${className}`;
-    }
+  // Configurar clases de alineación vertical si es necesario
+  if (center || left || right) {
+    containerClasses += " items-center";
+  }
 
-    return <div className={classes}>{children}</div>;
+  // Agregar clases personalizadas
+  if (className) {
+    containerClasses += " " + className;
+  }
+
+  return <div className={containerClasses}>{children}</div>;
 };
 
 export default Container;
