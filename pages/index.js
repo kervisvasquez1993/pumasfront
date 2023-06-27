@@ -5,5 +5,4 @@ const index = ({children}) => {
     <div>{children}</div>
   )
 }
-
 export default index
