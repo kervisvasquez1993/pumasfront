@@ -7,15 +7,14 @@ const Main = ({ children }) => {
         { name: "Santuario", url: "/es/santuario" },
         { name: "Programas", url: "/es/programas" },
         { name: "Blog", url: "/es/blog" },
+        { name: "Apoyanos", url: "/es/apoyanos" },
     ];
     return (
         <>
             <header>
                 <Menu items={dataMenu} />
             </header>
-
             <main>{children}</main>
-
             <Footer items={""} />
         </>
     );

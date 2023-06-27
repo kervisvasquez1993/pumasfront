@@ -14,6 +14,35 @@ a {
 * {
   box-sizing: border-box;
 }
+colorPrimary {
+  color: #E86641;
+}
+colorSecondary {
+  color: #50B496;
+}
+colorBeiga{
+  color: #FFFDF6;
+}
+colorGris{
+  color: #BFBFBF ;
+}
+
+
+backgroundPrimary {
+  background-color: #E86641;
+}
+backgroundSecondary {
+  background-color: #50B496;
+}
+backgroundBeiga{
+  background-color: #FFFDF6;
+}
+backgroundGris{
+  background-color: #BFBFBF ;
+}
+backgroundBlack{
+  background-color: #000000;
+}
 
 @media (prefers-color-scheme: dark) {
   html {

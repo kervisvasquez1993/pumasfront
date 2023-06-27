@@ -7,3 +7,11 @@ const LangPage = () => {
 }
 
 export default LangPage
+
+const getLang = () => {
+  
+}
+
+export const getStaticProps = (context) => {
+
+}
