@@ -1,0 +1,60 @@
+.hero {
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+
+}
+
+/* style.module.css */
+
+.container {
+    width: 100vw;
+    /* Ancho del 100% del viewport */
+    text-align: left;
+    /* Alineación del texto a la izquierda */
+}
+
+@media (min-width: 640px) {
+
+    /* Estilos para pantallas con un ancho mínimo de 640px (tabletas) */
+    .container {
+        width: 60vw;
+        /* Ancho del 60% del viewport */
+    }
+}
+
+@media (min-width: 768px) {
+
+    /* Estilos para pantallas con un ancho mínimo de 768px (escritorios) */
+    .container {
+        width: 45vw;
+        /* Ancho del 45% del viewport */
+    }
+}
+
+@media (min-width: 1024px) {
+
+    /* Estilos para pantallas con un ancho mínimo de 1024px (escritorios) */
+    .container {
+        width: 1512px;
+        /* Ancho del 30% del viewport */
+    }
+}
+
+.fontTitleBannerTitle {
+    color: #FFF;
+    font-size: 62px;
+    font-weight: 800;
+}
+
+.fontTitleSubTitle {
+    color: #CECECE;
+    font-size: 24px;
+    font-weight: 300;
+}

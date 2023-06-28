@@ -1,12 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Roboto:wght@100&display=swap');
+
+
+
+
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.manropeFont {
+  font-family: 'Manrope', sans-serif;
 }
 
 a {
@@ -17,33 +27,41 @@ a {
 * {
   box-sizing: border-box;
 }
+
 .colorPrimary {
   color: #E86641;
 }
+
 .colorSecondary {
   color: #50B496;
 }
-.colorBeiga{
+
+.colorBeiga {
   color: #FFFDF6;
 }
-.colorGris{
-  color: #BFBFBF ;
+
+.colorGris {
+  color: #BFBFBF;
 }
 
 
 .backgroundPrimary {
   background-color: #E86641;
 }
+
 .backgroundSecondary {
   background-color: #50B496;
 }
-.backgroundBeiga{
+
+.backgroundBeiga {
   background-color: #FFFDF6;
 }
-.backgroundGris{
-  background-color: #BFBFBF ;
+
+.backgroundGris {
+  background-color: #BFBFBF;
 }
-.backgroundBlack{
+
+.backgroundBlack {
   background-color: #000000;
 }
 
@@ -51,6 +69,7 @@ a {
   html {
     color-scheme: dark;
   }
+
   body {
     color: white;
     background: black;

@@ -1,15 +1,14 @@
-import logo from "../../public/image/LogoBlanco.png";
+// import logo from "../../public/image/LogoBlanco.png";
 import ItemMenu from "../../views/ItemMenu";
+import styles from "./style.module.css"
 
 const Menu = ({ items }) => {
     return (
-        <div className="flex  backgroundSecondary justify-between items-center ">
+        <div className={`flex  justify-between items-center ${styles.menuContainer}`}>
             <div className="px-5">
-                {/* Código para el logo */}
-                <img src={logo} alt="Logo" />
+                <img src="/images/LogoBlanco.png" alt="Logo" />
             </div>
             <div className="">
-                {/* Código para mostrar el horario */}
                 <p className="p-10">Hasta las 4:00 PM</p>
             </div>
             <div>

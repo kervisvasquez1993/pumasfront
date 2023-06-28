@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import Main from "../../Layout/Main/Main";
+import BannerComponents from "../../components/UI/Banner/BannerComponents";
 // import { api } from "../helpers/apiBackend";
 
 const LangPage = ({ lang }) => {
     console.log(lang.code, "lang");
 
-    return <Main>hola</Main>;
+    return (
+        <Main>
+            <BannerComponents />
+        </Main>
+    );
 };
 
 export default LangPage;

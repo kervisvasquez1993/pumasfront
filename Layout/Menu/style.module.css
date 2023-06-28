@@ -1,6 +1,11 @@
-.menuContainer{
+.menuContainer {
     display: flex;
     min-width: 100vw;
     display: flex;
     justify-content: space-between;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
