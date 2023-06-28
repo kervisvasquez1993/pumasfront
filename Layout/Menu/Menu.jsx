@@ -1,5 +1,3 @@
-import React from "react";
-import logo from "ruta/al/logo.png";
 import styles from "./Menu.module.css";
 import logo from "../../public/image/LogoBlanco.png";
 
