@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import Main from "../../Layout/Main/Main";
 // import { api } from "../helpers/apiBackend";
 
 const LangPage = ({ lang }) => {
     console.log(lang.code, "lang");
-    return <div>LangPage</div>;
+
+    return <Main>hola</Main>;
 };
 
 export default LangPage;
@@ -44,7 +46,7 @@ export const getStaticPaths = async () => {
     const langs = getLangs();
     const code = langs.map((lang) => lang.code);
     const paths = code.map((path) => ({ params: { lang: path } }));
-    console.log(langs, "langs");
+    // console.log(langs, "langs");
     return {
         paths,
         // fallback: "blocking ,

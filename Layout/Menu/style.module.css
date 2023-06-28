@@ -1,0 +1,6 @@
+.menuContainer{
+    display: flex;
+    min-width: 100vw;
+    display: flex;
+    justify-content: space-between;
+}
