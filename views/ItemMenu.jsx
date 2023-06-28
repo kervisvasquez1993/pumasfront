@@ -6,14 +6,34 @@ const ItemMenu = ({ items }) => {
     return (
         <>
             {items ? (
-                <ul className={`${style.menuList} d-flex bg-red gap-4`}>
-                    {items.map((item) => (
-                        <li key={item.name}>
-                            <Link className={style.menuItem} href={item.url}>
-                                {item.name}
-                            </Link>
-                        </li>
-                    ))}
+                <ul className={`${style.menuList} flex`}>
+                    {items.map((item) => {
+                        if (item.name === "Apoyanos") {
+                            return (
+                                <li
+                                    key={item.name}
+                                    className="mr-4 backgroundPrimary text-white font-bold py-2 px-4 rounded"
+                                >
+                                    <Link
+                                        className={style.menuItem}
+                                        href={item.url}
+                                    >
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            );
+                        }
+                        return (
+                            <li key={item.name} className="mr-4 py-2 px-4 rounded">
+                                <Link
+                                    className={style.menuItem}
+                                    href={item.url}
+                                >
+                                    {item.name}
+                                </Link>
+                            </li>
+                        );
+                    })}
                 </ul>
             ) : (
                 <p>vacio</p>

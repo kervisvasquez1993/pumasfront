@@ -1,19 +1,18 @@
-import styles from "./style.module.css";
 import logo from "../../public/image/LogoBlanco.png";
 import ItemMenu from "../../views/ItemMenu";
 
 const Menu = ({ items }) => {
     return (
-        <div className={`${styles.menuContainer} d-flex`}>
-            <div className={styles.logoSection}>
+        <div className="flex  backgroundSecondary justify-between items-center ">
+            <div className="px-5">
                 {/* Código para el logo */}
                 <img src={logo} alt="Logo" />
             </div>
-            <div className={styles.scheduleSection}>
+            <div className="">
                 {/* Código para mostrar el horario */}
-                <p>Hasta las 4:00 PM</p>
+                <p className="p-10">Hasta las 4:00 PM</p>
             </div>
-            <div className={styles.navigationSection}>
+            <div>
                 <ItemMenu items={items} />
             </div>
         </div>
