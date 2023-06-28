@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "./style.module.css";
+import Link from "next/link";
+import ButtonView from "../../../views/ButtonView";
 const BannerComponents = () => {
     const backgroundImageUrl = "/images/pumas.png";
 
     return (
         <div
-            className={`${styles.hero} bg-cover bg-center bg-blue-500 text-white flex items-center justify-center`}
+            className={`${styles.hero} bg-cover bg-center text-white flex items-center justify-center`}
             style={{ backgroundImage: `url(${backgroundImageUrl})` }}
         >
             <div
@@ -21,6 +23,14 @@ const BannerComponents = () => {
                 <p className={`${styles.fontTitleSubTitle} manropeFont`}>
                     motivado el respeto y aprecio hacia estos animales.
                 </p>
+                <section className="mt-10">
+                    <ButtonView className={" backgroundSecondary manropeFont"} link={""}>
+                        Visitanos
+                    </ButtonView>
+                    <ButtonView className={"backgroundPrimary mx-5 manropeFont"}>
+                        Apoyanos
+                    </ButtonView>
+                </section>
             </div>
         </div>
     );

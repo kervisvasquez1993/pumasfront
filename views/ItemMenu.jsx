@@ -12,7 +12,8 @@ const ItemMenu = ({ items }) => {
                             return (
                                 <li
                                     key={item.name}
-                                    className="mr-4 backgroundPrimary text-white font-bold py-2 px-10 rounded"
+                                    href={item.url}
+                                    className="mr-4 backgroundPrimary  fontMenu btnPrimary  font-bold py-2 px-10 rounded"
                                 >
                                     <Link
                                         className={style.menuItem}
@@ -26,7 +27,7 @@ const ItemMenu = ({ items }) => {
                         return (
                             <li
                                 key={item.name}
-                                className="mr-4 py-2 px-4 rounded"
+                                className="mr-4 py-2 px-4 rounded fontMenu "
                             >
                                 <Link
                                     className={style.menuItem}

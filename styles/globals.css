@@ -44,9 +44,28 @@ a {
   color: #BFBFBF;
 }
 
+.fontMenu {
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
 
 .backgroundPrimary {
   background-color: #E86641;
+}
+
+.btnPrimary {
+  width: 207px;
+  height: 40px;
+  text-align: center;
+  color: #FFFDF5;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  border-radius: 2px;
+  line-height: normal;
 }
 
 .backgroundSecondary {
