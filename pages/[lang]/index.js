@@ -3,6 +3,7 @@ import Main from "../../Layout/Main/Main";
 import BannerComponents from "../../components/UI/Banner/BannerComponents";
 import GeneralComponents from "../../components/UI/GeneralComponet/GeneralComponents";
 import HeaderComponets from "../../components/UI/HeaderComponents/HeaderComponets";
+import Slider from "../../components/UI/Slider/SliderComponts";
 // import fondo from ""
 const LangPage = ({ lang }) => {
     console.log(lang.code, "lang");
@@ -73,6 +74,7 @@ const LangPage = ({ lang }) => {
             >
                 NOTICIAS Y BLOG
             </HeaderComponets>
+            <Slider />
         </Main>
     );
 };

@@ -1,0 +1,26 @@
+/* Card.css */
+
+.card {
+    background-size: cover;
+    background-position: center;
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .cardContent {
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+  }
+  
+  .cardTitle {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  .cardDescription {
+    font-size: 16px;
+  }
+  
