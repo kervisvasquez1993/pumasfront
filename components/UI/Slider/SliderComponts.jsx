@@ -11,16 +11,18 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation } from "swiper";
+import CardComponent from "../Card/CardComponents";
 
-export default function App() {
+export default function Slider({srcBackgroundColor = ""}) {
     const [swiperRef, setSwiperRef] = useState(null);
-
-    
+    const backgroundImageStyle = {
+        backgroundImage: `url(${srcBackgroundColor})`,
+    };
     return (
-        <>
+        <section style={backgroundImageStyle}>
             <Swiper
                 onSwiper={setSwiperRef}
-                slidesPerView={4}
+                slidesPerView={3.6}
                 centeredSlides={false}
                 spaceBetween={60}
                 // pagination={{
@@ -29,20 +31,72 @@ export default function App() {
                 navigation={true}
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
+                // style={{ backgroundColor: "red" }}
             >
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
-                <SwiperSlide>Slide 7</SwiperSlide>
-                <SwiperSlide>Slide 8</SwiperSlide>
-                <SwiperSlide>Slide 9</SwiperSlide>
-                <SwiperSlide>Slide 10</SwiperSlide>
-                <SwiperSlide>Slide 11</SwiperSlide>
-                <SwiperSlide>Slide 12</SwiperSlide>
+                <SwiperSlide>
+                    <CardComponent
+                        description={
+                            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
+                        }
+                        title={"test"}
+                        imageUrl={"/images/nigre.png"}
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <CardComponent
+                        description={
+                            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
+                        }
+                        title={"test"}
+                        imageUrl={"/images/nigre.png"}
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <CardComponent
+                        description={
+                            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
+                        }
+                        title={"test"}
+                        imageUrl={"/images/nigre.png"}
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <CardComponent
+                        description={
+                            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
+                        }
+                        title={"test"}
+                        imageUrl={"/images/nigre.png"}
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <CardComponent
+                        description={
+                            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
+                        }
+                        title={"test"}
+                        imageUrl={"/images/nigre.png"}
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <CardComponent
+                        description={
+                            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
+                        }
+                        title={"test"}
+                        imageUrl={"/images/nigre.png"}
+                    />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <CardComponent
+                        description={
+                            "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
+                        }
+                        title={"test"}
+                        imageUrl={"/images/nigre.png"}
+                    />
+                </SwiperSlide>
             </Swiper>
-        </>
+        </section>
     );
 }

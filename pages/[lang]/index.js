@@ -74,7 +74,7 @@ const LangPage = ({ lang }) => {
             >
                 NOTICIAS Y BLOG
             </HeaderComponets>
-            <Slider />
+            <Slider srcBackgroundColor={"/images/fondo1.png"}/>
         </Main>
     );
 };
