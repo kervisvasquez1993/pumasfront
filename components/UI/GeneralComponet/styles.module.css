@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 110px;
+}
+.reverse{
+    flex-direction: row-reverse;
+}
+
+.children {
+    width: 35%;
+}
+
+.paragraph {
+    color: black;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    padding-left: 60px;
+    padding-right: 60px;
+    width: 500px;
+    flex-shrink: 0;
+}
+
+.paragraph {
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

@@ -15,7 +15,7 @@ const Main = ({ children }) => {
             <header>
                 <Menu items={dataMenu} />
             </header>
-            <main>{children}</main>
+            <main className="maxWidthBody">{children}</main>
             <Footer items={""} />
         </>
     );

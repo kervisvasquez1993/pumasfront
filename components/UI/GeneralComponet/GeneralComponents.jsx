@@ -1,9 +1,49 @@
-import React from 'react'
+import React from "react";
+import style from "./styles.module.css";
+import ImageCardComponet from "../ImageCardComponent/ImageCardComponet";
+import ButtonView from "../../../views/ButtonView";
 
-const GeneralComponents = () => {
-  return (
-    <div>GeneralComponents</div>
-  )
-}
+const GeneralComponents = ({
+    imageSrc = "",
+    image2Src = "",
+    paragraphText = "",
+    reverseOrder,
+    srcBackgroundColor = "",
+    colorBTN = "",
+    infoBTN = ""
+}) => {
+    const containerClasses = reverseOrder
+        ? `${style.container} ${style.reverse}`
+        : style.container;
 
-export default GeneralComponents
+    const backgroundImageStyle = {
+        backgroundImage: `url(${srcBackgroundColor})`,
+    };
+    return (
+        <section className={`${containerClasses}`} style={backgroundImageStyle}>
+            <section className={`${style.imageContainer} ${style.children}`}>
+                {imageSrc && (
+                    <ImageCardComponet
+                        image1Src={imageSrc}
+                        image2Src={image2Src}
+                        title={"Vendado de cola Blanca"}
+                        subtitle={"sub title"}
+                    />
+                )}
+            </section>
+
+            <section className={`${style.textContainer} ${style.children}`}>
+                <p className={style.paragraph}>{paragraphText}</p>
+
+                <ButtonView
+                    className={`${colorBTN} manropeFont mt-10`}
+                    link={""}
+                >
+                    {infoBTN}
+                </ButtonView>
+            </section>
+        </section>
+    );
+};
+
+export default GeneralComponents;

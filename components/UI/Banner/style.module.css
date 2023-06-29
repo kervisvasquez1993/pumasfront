@@ -14,7 +14,7 @@
 /* style.module.css */
 
 .container {
-    width: 100vw;
+    width: 100%;
     /* Ancho del 100% del viewport */
     text-align: left;
     /* Alineación del texto a la izquierda */
@@ -24,7 +24,7 @@
 
     /* Estilos para pantallas con un ancho mínimo de 640px (tabletas) */
     .container {
-        width: 60vw;
+        width: 60%;
         /* Ancho del 60% del viewport */
     }
 }
@@ -33,7 +33,7 @@
 
     /* Estilos para pantallas con un ancho mínimo de 768px (escritorios) */
     .container {
-        width: 45vw;
+        width: 45%;
         /* Ancho del 45% del viewport */
     }
 }

@@ -19,7 +19,46 @@ const LangPage = ({ lang }) => {
             >
                 CENTRO DE RESCATE Y SANTUARIO LAS PUMAS
             </HeaderComponets>
-            <GeneralComponents />
+            <GeneralComponents
+                infoBTN={"Conoce más"}
+                colorBTN={"backgroundPrimary"}
+                reverseOrder={false}
+                srcBackgroundColor="/images/fondo1.png"
+                imageSrc="/images/venado.png"
+                image2Src="/images/modelo3d.png"
+                paragraphText={
+                    "In the example below, we use the font Inter from next/font/google (you can use any font from Google or Local Fonts). Load your font with the variable option to define your CSS variable name and assign it to inter."
+                }
+            />
+            <HeaderComponets
+                src="/images/fondo1.png"
+                classNameText={"py-5 colorSecondary"}
+                alignment="end"
+            >
+                ¡CONOCE NUESTRO SANTUARIO VIRTUAL!
+            </HeaderComponets>
+
+            <GeneralComponents
+                infoBTN={"Visita virtual"}
+                colorBTN={"backgroundGris"}
+                reverseOrder={true}
+                srcBackgroundColor="/images/fondo1.png"
+                imageSrc="/images/section2.png"
+                paragraphText={
+                    "In the example below, we use the font Inter from next/font/google (you can use any font from Google or Local Fonts). Load your font with the variable option to define your CSS variable name and assign it to inter."
+                }
+            />
+
+            <GeneralComponents
+                infoBTN={"Visita virtual"}
+                colorBTN={"backgroundGris"}
+                reverseOrder={false}
+                srcBackgroundColor="/images/fondo1.png"
+                imageSrc="/images/section2.png"
+                paragraphText={
+                    "In the example below, we use the font Inter from next/font/google (you can use any font from Google or Local Fonts). Load your font with the variable option to define your CSS variable name and assign it to inter."
+                }
+            />
         </Main>
     );
 };

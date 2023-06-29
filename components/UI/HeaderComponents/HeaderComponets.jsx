@@ -27,6 +27,7 @@ const HeaderComponents = ({
     paddingTop: "100px",
     paddingLeft: "178px",
     paddingRight: "178px",
+    display: "flex",
     justifyContent: getJustifyContent(),
   };
 
