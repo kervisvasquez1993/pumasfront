@@ -14,9 +14,8 @@ const LangPage = ({ lang }) => {
 
             <HeaderComponets
                 src="/images/fondo1.png"
-                className={
-                    "w-screen text-left px-10 chelseaFontTitle py-5 colorPrimary"
-                }
+                classNameText={"py-5 colorPrimary"}
+                alignment="start"
             >
                 CENTRO DE RESCATE Y SANTUARIO LAS PUMAS
             </HeaderComponets>

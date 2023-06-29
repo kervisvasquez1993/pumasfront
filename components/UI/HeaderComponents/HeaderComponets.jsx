@@ -1,30 +1,42 @@
 import { useState } from "react";
+import style from "./style.module.css";
 
-const HeaderComponets = ({
-    children,
-    className,
-    alignment,
-    src = "",
+const HeaderComponents = ({
+  children,
+  classNameText = "",
+  classNameSection = "",
+  alignment,
+  src = "",
 }) => {
-    const [alignmentClasses, setAlignmentClasses] = useState("");
-    const backgroundImageStyle = {
-        backgroundImage: `url(${src})`,
-      };
-    
-    
-    if (alignment === "left") {
-        setAlignmentClasses("text-left");
-    } else if (alignment === "right") {
-        setAlignmentClasses("text-right");
-    } else if (alignment === "center") {
-        setAlignmentClasses("text-center");
-    }
+  const [alignmentClasses, setAlignmentClasses] = useState("");
 
-    return (
-        <section style={backgroundImageStyle}>
-            <h2 className={`${className} ${alignmentClasses}`}>{children}</h2>
-        </section>
-    );
+  const getJustifyContent = () => {
+    if (alignment === "start") {
+      return "flex-start";
+    } else if (alignment === "center") {
+      return "center";
+    } else if (alignment === "end") {
+      return "flex-end";
+    }
+    return "";
+  };
+
+  const backgroundImageStyle = {
+    backgroundImage: `url(${src})`,
+    marginTop: "-200px",
+    paddingTop: "100px",
+    paddingLeft: "178px",
+    paddingRight: "178px",
+    justifyContent: getJustifyContent(),
+  };
+
+  return (
+    <section style={backgroundImageStyle}>
+      <h2 className={`${classNameText} ${style.fontTitle}`}>
+        {children}
+      </h2>
+    </section>
+  );
 };
 
-export default HeaderComponets;
+export default HeaderComponents;

@@ -24,11 +24,11 @@ body {
 
 .chelseaFontTitle {
   font-family: 'Chelsea Market', sans-serif;
-  font-size: 35px;
+  font-size: 28px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  max-width: 534px;
+  max-width: 35vw;
 }
 
 a {
