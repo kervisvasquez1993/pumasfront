@@ -1,14 +1,26 @@
 import { useEffect, useState } from "react";
 import Main from "../../Layout/Main/Main";
 import BannerComponents from "../../components/UI/Banner/BannerComponents";
-// import { api } from "../helpers/apiBackend";
-
+import GeneralComponents from "../../components/UI/GeneralComponet/GeneralComponents";
+import HeaderComponets from "../../components/UI/HeaderComponents/HeaderComponets";
+// import fondo from ""
 const LangPage = ({ lang }) => {
     console.log(lang.code, "lang");
 
     return (
         <Main>
+            {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}
             <BannerComponents />
+
+            <HeaderComponets
+                src="/images/fondo1.png"
+                className={
+                    "w-screen text-left px-10 chelseaFontTitle py-5 colorPrimary"
+                }
+            >
+                CENTRO DE RESCATE Y SANTUARIO LAS PUMAS
+            </HeaderComponets>
+            <GeneralComponents />
         </Main>
     );
 };
