@@ -48,17 +48,31 @@ const LangPage = ({ lang }) => {
                     "In the example below, we use the font Inter from next/font/google (you can use any font from Google or Local Fonts). Load your font with the variable option to define your CSS variable name and assign it to inter."
                 }
             />
-
+            <HeaderComponets
+                src="/images/fondo1.png"
+                classNameText={"py-5 colorVerde"}
+                alignment="start"
+            >
+                NO ME SAQUES DE MI HÁBITAT
+            </HeaderComponets>
             <GeneralComponents
-                infoBTN={"Visita virtual"}
-                colorBTN={"backgroundGris"}
+                infoBTN={"Ver más Programas"}
+                colorBTN={"backgroundVerde"}
                 reverseOrder={false}
                 srcBackgroundColor="/images/fondo1.png"
-                imageSrc="/images/section2.png"
+                imageSrc="/images/nigre.png"
+                image2Src="/images/modelo3d.png"
                 paragraphText={
                     "In the example below, we use the font Inter from next/font/google (you can use any font from Google or Local Fonts). Load your font with the variable option to define your CSS variable name and assign it to inter."
                 }
             />
+            <HeaderComponets
+                src="/images/fondo1.png"
+                classNameText={"py-5 colorPrimary"}
+                alignment="start"
+            >
+                NOTICIAS Y BLOG
+            </HeaderComponets>
         </Main>
     );
 };

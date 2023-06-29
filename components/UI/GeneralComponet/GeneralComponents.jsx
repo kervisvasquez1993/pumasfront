@@ -26,8 +26,8 @@ const GeneralComponents = ({
                     <ImageCardComponet
                         image1Src={imageSrc}
                         image2Src={image2Src}
-                        title={"Vendado de cola Blanca"}
-                        subtitle={"sub title"}
+                        title={"Texto de relleno"}
+                        subtitle={"sub title de rellono"}
                     />
                 )}
             </section>

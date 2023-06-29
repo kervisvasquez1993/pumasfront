@@ -69,7 +69,7 @@ a {
 }
 
 .btnPrimary {
-  width: 207px;
+  width: 260px;
   height: 40px;
   text-align: center;
   color: #FFFDF5;
@@ -83,7 +83,12 @@ a {
 .backgroundSecondary {
   background-color: #50B496;
 }
-
+.backgroundVerde {
+  background-color: #96C473;
+}
+.colorVerde{
+  color: #96C473;
+}
 .backgroundBeiga {
   background-color: #FFFDF6;
 }
