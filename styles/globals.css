@@ -128,8 +128,8 @@ a {
 
 
 /* .maxWidthBody{ */
-  /* margin-left: 178; */
-  /* margin-right: 178px; */
+/* margin-left: 178; */
+/* margin-right: 178px; */
 /* } */
 /*  */
 /*  */
@@ -183,4 +183,8 @@ a {
   border-radius: 4px;
   margin: 0 10px;
   font-size: 13px;
+}
+
+.leaflet-container {
+  height: 500px !important;
 }
