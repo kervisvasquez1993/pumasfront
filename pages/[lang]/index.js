@@ -4,12 +4,18 @@ import BannerComponents from "../../components/UI/Banner/BannerComponents";
 import GeneralComponents from "../../components/UI/GeneralComponet/GeneralComponents";
 import HeaderComponets from "../../components/UI/HeaderComponents/HeaderComponets";
 import Slider from "../../components/UI/Slider/SliderComponts";
-// import fondo from ""
+import Map from "../../components/UI/Map/index";
+// import dynamic from 'next/dynamic';
+// const test = dynamic(() => import("../../components/UI/Map/MapLocations"), { ssr: false });
+// import {MapLocations} from "../../components/UI/Map/MapLocations";
+// import Map from "../../components/UI/Map/Map";
 const LangPage = ({ lang }) => {
     console.log(lang.code, "lang");
 
     return (
         <Main>
+
+            <Map/>
             {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}
             <BannerComponents />
 
@@ -74,7 +80,8 @@ const LangPage = ({ lang }) => {
             >
                 NOTICIAS Y BLOG
             </HeaderComponets>
-            <Slider srcBackgroundColor={"/images/fondo1.png"}/>
+            <Slider srcBackgroundColor={"/images/fondo1.png"} />
+            {/* <Map/> */}
         </Main>
     );
 };
