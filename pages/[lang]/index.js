@@ -5,6 +5,9 @@ import GeneralComponents from "../../components/UI/GeneralComponet/GeneralCompon
 import HeaderComponets from "../../components/UI/HeaderComponents/HeaderComponets";
 import Slider from "../../components/UI/Slider/SliderComponts";
 import Map from "../../components/UI/Map/index";
+import { api } from "../../helpers/apiBackend";
+import MapSection from "../../components/Section/Map/MapSection";
+// api
 // import dynamic from 'next/dynamic';
 // const test = dynamic(() => import("../../components/UI/Map/MapLocations"), { ssr: false });
 // import {MapLocations} from "../../components/UI/Map/MapLocations";
@@ -79,13 +82,13 @@ const LangPage = ({ lang }) => {
         NOTICIAS Y BLOG
       </HeaderComponets>
       <Slider srcBackgroundColor={"/images/fondo1.png"} />
-      <Map />
+      <MapSection />
     </Main>
   );
 };
 
 export default LangPage;
-const getLangs = () => {
+const getLangs = async () => {
   const data = [
     {
       id: 1,
@@ -104,12 +107,33 @@ const getLangs = () => {
       isDefault: true,
     },
   ];
+  const token =
+    "ce0133fe5330488e9cc3e4477911858698e315cf287470843d0c8c8bdce21358013013c78c6817f643218c3076015b2a17bd60926c4921f080911e5c17f2dca90346bc1bdfa8311fcd105bd7f439440f2bb94d5231639f8351d33a7be5372a3796cfc92500c9fa46ac236114ef2e282f4de45e290bc167540bbb8dfa7323681a";
+
+  try {
+    const response = await fetch("http://localhost:1337/api/pages", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data);
+    } else {
+      console.error("Error en la solicitud:", response.status);
+    }
+  } catch (error) {
+    console.error("Error al realizar la solicitud:", error);
+  }
+
   return data;
 };
 export const getStaticProps = async ({ params }) => {
   const paramId = params.lang;
+  console.log(process.env.URL_BASE, "process.env.URL_BASE");
   console.log(paramId, "paramId");
-  const langs = getLangs();
+  const langs = await getLangs();
   // const lang =
   const lang = langs.find((lang) => lang.code === paramId);
   if (!lang) return { notFound: true };
@@ -119,7 +143,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const langs = getLangs();
+  const langs = await getLangs();
   const code = langs.map((lang) => lang.code);
   const paths = code.map((path) => ({ params: { lang: path } }));
   // console.log(langs, "langs");

@@ -1,0 +1,23 @@
+.sectionMap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    background-color: aliceblue;
+}
+.sectionContent{
+    width: 35%;
+    padding: 60px;
+    color: black;
+}
+.sectionContent section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.map {
+    width: 55%;
+    position: relative;
+    height: 75%;
+    background-color: #000;
+  }
+  
