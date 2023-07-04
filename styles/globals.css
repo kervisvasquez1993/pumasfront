@@ -125,7 +125,9 @@ a {
 
 
 
-
+.maxWidthBody{
+  min-width: 100vw;
+}
 
 /* .maxWidthBody{ */
 /* margin-left: 178; */
