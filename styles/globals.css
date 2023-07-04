@@ -125,7 +125,7 @@ a {
 
 
 
-.maxWidthBody{
+.maxWidthBody {
   min-width: 100vw;
 }
 
@@ -189,4 +189,40 @@ a {
 
 .leaflet-container {
   height: 500px !important;
+}
+
+/* s */
+.mySwiper {
+  position: relative;
+}
+
+.swiper-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.swiper-container {
+  position: relative;
+  width: 100%;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.swiper-button-prev {
+  position: absolute;
+  left: 0;
+}
+
+.swiper-button-next {
+  position: absolute;
+  right: 0;
 }

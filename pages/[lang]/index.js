@@ -7,6 +7,7 @@ import Slider from "../../components/UI/Slider/SliderComponts";
 import Map from "../../components/UI/Map/index";
 import { api } from "../../helpers/apiBackend";
 import MapSection from "../../components/Section/Map/MapSection";
+import SliderTwo from "../../components/UI/Slider/SliderTwo";
 // api
 // import dynamic from 'next/dynamic';
 // const test = dynamic(() => import("../../components/UI/Map/MapLocations"), { ssr: false });
@@ -83,6 +84,14 @@ const LangPage = ({ lang }) => {
       </HeaderComponets>
       <Slider srcBackgroundColor={"/images/fondo1.png"} />
       <MapSection />
+      <HeaderComponets
+        src="/images/fondo1.png"
+        classNameText={"py-5 colorSecondary"}
+        alignment="start"
+      >
+        PATROCINADORES
+      </HeaderComponets>
+      <SliderTwo />
     </Main>
   );
 };

@@ -11,6 +11,7 @@ export default function Slider({ srcBackgroundColor = "" }) {
   const [slidesPerView, setSlidesPerView] = useState(3.6);
   const backgroundImageStyle = {
     backgroundImage: `url(${srcBackgroundColor})`,
+    minHeight: "50vh",
   };
 
   useEffect(() => {
