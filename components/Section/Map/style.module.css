@@ -5,19 +5,42 @@
     height: 75vh;
     background-color: aliceblue;
 }
-.sectionContent{
+
+
+
+.sectionContent {
     width: 35%;
     padding: 60px;
     color: black;
 }
+
+
+
 .sectionContent section {
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
 .map {
-    width: 55%;
+    width: 40%;
     position: relative;
-    height: 75%;
+    height: 70%;
     background-color: #000;
-  }
-  
+}
+
+@media (max-width: 992px) {
+
+    .sectionMap {
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    .sectionContent{
+        width: 80%;
+        
+    }
+
+    .map{
+        width: 80%;
+        height: 50%;
+    }
+}

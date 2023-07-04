@@ -3,7 +3,6 @@ import Map from "../../UI/Map";
 import style from "./style.module.css";
 
 const MapSection = () => {
- 
   return (
     <section className={`${style.sectionMap}`}>
       <section className={style.map}>
