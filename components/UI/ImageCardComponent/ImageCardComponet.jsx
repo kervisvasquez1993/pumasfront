@@ -1,11 +1,14 @@
 import React from "react";
 import style from "./style.module.css";
 const ImageCardComponet = ({ image1Src, image2Src = "", title, subtitle }) => {
+    const backgroundCard = {
+        backgroundImage: `url("/images/mask.png")`,
+      };
     return (
         <section className={style.wrapper}>
             <img src={image1Src} alt="Imagen 1" className={style.mainImg} />
             {image2Src && (
-                <section className={style.sectionImg}>
+                <section className={style.sectionImg} style={backgroundCard}>
                     <img
                         src={image2Src}
                         alt="Imagen 2"

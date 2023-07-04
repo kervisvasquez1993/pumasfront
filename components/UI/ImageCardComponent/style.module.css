@@ -8,6 +8,8 @@
     align-items: center;
     margin-top: -35px;
     z-index: 2;
+    position: relative;
+    background-size: 120%;
 
 
 
@@ -19,6 +21,8 @@
     font-weight: 400;
     line-height: normal;
     color: #000;
+    /* background-color: aqua; */
+    width: 100%;
 }
 .font h5{
     font-size: 24px;
