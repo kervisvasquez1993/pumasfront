@@ -80,6 +80,19 @@ a {
   line-height: normal;
 }
 
+.btnPrimaryMenu {
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  color: #FFFDF5;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  border-radius: 2px;
+  line-height: normal;
+}
+
+
 .backgroundSecondary {
   background-color: #50B496;
 }
@@ -127,18 +140,21 @@ a {
 
 .maxWidthBody {
   min-width: 100vw;
+
 }
 
-/* .maxWidthBody{ */
-/* margin-left: 178; */
-/* margin-right: 178px; */
-/* } */
-/*  */
-/*  */
-/*  */
-/*  */
+@media screen and (min-width: 1440px) {
+  .maxWidthBody {
+    width: 1440px;
+    display: flex;
+    flex-direction: column;
+    background-color: #007aff;
+    /* align-items: center; */
 
 
+  }
+
+}
 
 
 .swiper {
@@ -205,7 +221,7 @@ a {
 
 .swiper-container {
   position: relative;
-  height: 30vh;
+  height: 36vh;
   width: 100%;
 }
 
@@ -227,4 +243,3 @@ a {
   position: absolute;
   right: 0;
 }
-
