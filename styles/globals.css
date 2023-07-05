@@ -205,6 +205,7 @@ a {
 
 .swiper-container {
   position: relative;
+  height: 30vh;
   width: 100%;
 }
 

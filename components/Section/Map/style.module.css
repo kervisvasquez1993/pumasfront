@@ -1,9 +1,9 @@
 .sectionMap {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 75vh;
-    background-color: aliceblue;
+    background-color: #fffdf6;
 }
 
 

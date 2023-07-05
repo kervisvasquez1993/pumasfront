@@ -8,6 +8,7 @@ import Map from "../../components/UI/Map/index";
 import { api } from "../../helpers/apiBackend";
 import MapSection from "../../components/Section/Map/MapSection";
 import SliderTwo from "../../components/UI/Slider/SliderTwo";
+import SliderThree from "../../components/UI/Slider/SliderThree";
 // api
 // import dynamic from 'next/dynamic';
 // const test = dynamic(() => import("../../components/UI/Map/MapLocations"), { ssr: false });
@@ -86,12 +87,13 @@ const LangPage = ({ lang }) => {
       <MapSection />
       <HeaderComponets
         src="/images/fondo1.png"
-        classNameText={"py-5 colorSecondary"}
+        classNameText={"py-5 colorVerde"}
         alignment="start"
       >
         PATROCINADORES
       </HeaderComponets>
       <SliderTwo />
+      <SliderThree/>
     </Main>
   );
 };
