@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import React from "react";
+import Head from "next/head";
 import Footer from "../Footer/Footer";
 import Menu from "../Menu/Menu";
 import MobileMenu from "../Menu/MobileMenu";
@@ -13,9 +14,9 @@ const Main = ({ children }) => {
     { name: "Apoyanos", url: "/es/apoyanos" },
   ];
 
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 992);
     };
@@ -27,8 +28,14 @@ const Main = ({ children }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   return (
     <>
+      <Head>
+        <title>Título de tu página</title>
+        <meta name="description" content="Descripción de tu página" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
       <header>
         {isMobile ? (
           <MobileMenu
