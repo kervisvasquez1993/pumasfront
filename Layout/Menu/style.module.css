@@ -17,7 +17,6 @@
         right: 0;
 
         margin: 0 auto;
-        background: red;
     }
 }
 
@@ -48,18 +47,25 @@
 }
 
 .menuItems {
-    background-color: aqua;
     width: 60%;
     display: flex;
     justify-content: center;
 }
 
 
- 
+
 @media (min-width: 992px) and (max-width: 1199px) {
     .hourClockText {
         font-size: 14px;
     }
 
 
+}
+
+.mobilWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 40px;
 }
