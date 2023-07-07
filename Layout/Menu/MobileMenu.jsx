@@ -18,12 +18,12 @@ const MobileMenu = ({ logo, navigationItems }) => {
       <div onClick={handleToggleMenu}>{<MenuHamburguesaIcons />}</div>
       {isOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-black opacity-75">
-          <div className="absolute top-0 right-0 p-4">
+          <div className="top-0 right-0 p-4">
             <button onClick={handleToggleMenu}>
               <CloseIcon />
             </button>
           </div>
-          <div className="flex flex-col items-center justify-center h-full text-white">
+          <div className="flex flex-col text-white">
             {<ItemMenu items={navigationItems} />}
           </div>
         </div>
