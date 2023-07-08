@@ -24,7 +24,7 @@ const LangPage = ({ lang }) => {
 
       <HeaderComponets
         src="/images/fondo1.png"
-        classNameText={"py-5 colorPrimary"}
+        classNameText={"py-5 colorPrimary chelseaFont"}
         alignment="start"
       >
         CENTRO DE RESCATE Y SANTUARIO LAS PUMAS
@@ -42,7 +42,7 @@ const LangPage = ({ lang }) => {
       />
       <HeaderComponets
         src="/images/fondo1.png"
-        classNameText={"py-5 colorSecondary"}
+        classNameText={"py-5 colorSecondary chelseaFont"}
         alignment="end"
       >
         ¡CONOCE NUESTRO SANTUARIO VIRTUAL!
@@ -60,7 +60,7 @@ const LangPage = ({ lang }) => {
       />
       <HeaderComponets
         src="/images/fondo1.png"
-        classNameText={"py-5 colorVerde"}
+        classNameText={"py-5 colorVerde chelseaFont"}
         alignment="start"
       >
         NO ME SAQUES DE MI HÁBITAT
@@ -78,7 +78,7 @@ const LangPage = ({ lang }) => {
       />
       <HeaderComponets
         src="/images/fondo1.png"
-        classNameText={"py-5 colorPrimary"}
+        classNameText={"py-5 colorPrimary chelseaFont"}
         alignment="start"
       >
         NOTICIAS Y BLOG
@@ -87,7 +87,7 @@ const LangPage = ({ lang }) => {
       <MapSection />
       <HeaderComponets
         src="/images/fondo1.png"
-        classNameText={"py-5 colorVerde"}
+        classNameText={"py-5 colorVerde chelseaFont"}
         alignment="start"
       >
         PATROCINADORES

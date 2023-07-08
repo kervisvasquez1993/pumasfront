@@ -23,11 +23,11 @@ const BannerComponents = () => {
                 <p className={`${styles.fontTitleSubTitle} manropeFont`}>
                     motivado el respeto y aprecio hacia estos animales.
                 </p>
-                <section className="mt-10">
+                <section className={`mt-10 ${styles.wrapperButton}`}>
                     <ButtonView className={" backgroundSecondary manropeFont"} link={""}>
                         Visitanos
                     </ButtonView>
-                    <ButtonView className={"backgroundPrimary mx-5 manropeFont"}>
+                    <ButtonView className={"backgroundPrimary  manropeFont"}>
                         Apoyanos
                     </ButtonView>
                 </section>

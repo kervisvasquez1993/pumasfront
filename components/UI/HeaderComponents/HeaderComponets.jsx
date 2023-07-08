@@ -23,10 +23,6 @@ const HeaderComponents = ({
 
   const backgroundImageStyle = {
     backgroundImage: `url(${src})`,
-    marginTop: "-200px",
-    paddingTop: "100px",
-    paddingLeft: "178px",
-    paddingRight: "178px",
     display: "flex",
     justifyContent: getJustifyContent(),
   };
