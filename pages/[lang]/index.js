@@ -41,7 +41,7 @@ const LangPage = ({ lang }) => {
         }
       />
       <HeaderComponets
-        src="/images/fondo1.png"
+        src=""
         classNameText={"py-5 colorSecondary chelseaFont"}
         alignment="end"
       >
@@ -93,7 +93,6 @@ const LangPage = ({ lang }) => {
         PATROCINADORES
       </HeaderComponets>
       <SliderTwo />
-      {/* <SliderThree/> */}
     </Main>
   );
 };

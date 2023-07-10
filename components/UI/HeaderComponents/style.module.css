@@ -3,7 +3,16 @@
     width: 560px;
 }
 
+
+.wrapperElement{
+    width: 1440px;
+    margin: 0 auto;
+}
 @media (max-width: 992px) {
+    .wrapperElement{
+        width: 100%;
+        padding: 0 auto;
+    }
     .fontTitle {
         text-align: center;
     }
