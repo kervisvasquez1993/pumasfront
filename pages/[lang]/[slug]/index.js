@@ -1,35 +1,72 @@
 import React from "react";
-
-const SlugPage = () => {
-    return <div>SlugPage</div>;
-};
-
-export default SlugPage;
-
-export const getStaticProps = ({ params }) => {
-    const paramId = params.slug;
-    const pages = getPages();
-    const page = pages.find((page) => page.slug === paramId);
-    if (!page) return { notFound: true };
-    return {
-        props: { page },
-    };
-};
-
-export const getStaticPaths = () => {
-    const pages = getPages();
-    const page = pages.map((page) => page.slug);
-    const paths = page.map((path) => ({ params: { slug: path } }));
-    return {
-        paths,
-        fallback: true,
-    };
-};
-
+import HomePage from "../../../components/Pages/HomePage";
+import { useRouter } from "next/router";
+import NosotrosPage from "../../../components/Pages/NosotrosPage";
 const getPages = () => {
     const pages = [
-        { code: "es", slug: "inicio", title: "Inicio" },
-        { code: "es", slug: "nosotros", title: "Nosotros" },
+      { code: "es", slug: "inicio", title: "Inicio", contentType: "component", content: "HomePage" },
+      { code: "es", slug: "nosotros", title: "Nosotros", contentType: "component", content: "NosotrosPage" },
     ];
     return pages;
-};
+  };
+  
+  const Page = ({ page }) => {
+    const router = useRouter();
+    console.log(page.slug)
+    if (router.isFallback) {
+    
+      return <div>Cargando...</div>;
+    }
+  
+    if (!page) {
+      return <div>Página no encontrada</div>;
+    }
+  
+
+    const renderContent = () => {
+      if (page.contentType === "component") {
+        // Importar y renderizar el componente adecuado
+        switch (page.content) {
+          case "HomePage":
+            return <HomePage />;
+          case "NosotrosPage":
+            return <NosotrosPage />;
+          default:
+            return null;
+        }
+      } else if (page.contentType === "text") {
+        return <p>{page.content}</p>;
+      } else {
+        return null;
+      }
+    };
+  
+    return (
+      <div>
+        {renderContent()}
+      </div>
+    );
+  };
+  
+  export const getStaticProps = async ({ params }) => {
+    const { lang, slug } = params;
+    const pages = getPages();
+    const page = pages.find((page) => page.code === lang && page.slug === slug);
+    if (!page) return { notFound: true };
+    return {
+      props: { page: { ...page } },
+    };
+  };
+  
+  export const getStaticPaths = async () => {
+    const pages = getPages();
+    const paths = pages.map((page) => ({
+      params: { lang: page.code, slug: page.slug },
+    }));
+    return {
+      paths,
+      fallback: true,
+    };
+  };
+  
+  export default Page;

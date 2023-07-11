@@ -3,10 +3,13 @@ import Link from "next/link";
 import ClockIcons from "../../components/Icons/Clock";
 import ItemMenu from "../../views/ItemMenu";
 import styles from "./style.module.css";
+import { useRouter } from "next/router";
 
 const Menu = ({ items }) => {
+  const router = useRouter()
+  console.log(router, "router")
   return (
-    <div
+    <nav
       className={`flex  justify-between items-center ${styles.menuContainer}`}
     >
       <div className={`px-5 ${styles.logoSection}`}>
@@ -27,7 +30,7 @@ const Menu = ({ items }) => {
       <div className={styles.menuItems}>
         <ItemMenu items={items} />
       </div>
-    </div>
+    </nav>
   );
 };
 
