@@ -3,6 +3,7 @@ import Head from "next/head";
 import Footer from "../Footer/Footer";
 import Menu from "../Menu/Menu";
 import MobileMenu from "../Menu/MobileMenu";
+import style from "./style.module.css";
 
 const Main = ({ children }) => {
   const dataMenu = [
@@ -36,7 +37,7 @@ const Main = ({ children }) => {
         <meta name="description" content="Descripción de tu página" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <header>
+      <header className={`${style.headerMenu}`}>
         {isMobile ? (
           <MobileMenu
             logo="/images/LogoBlanco.png"

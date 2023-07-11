@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import  { Navigation, FreeMode, Thumbs } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
@@ -11,7 +12,7 @@ import "swiper/css/thumbs";
 import  "./style.module.css";
 
 // import required modules
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+// import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
 const SliderThree = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
