@@ -236,3 +236,12 @@ a {
   position: absolute;
   right: 0;
 }
+.slick-dots{
+  position: relative !important;
+}
+
+.slick-dots ul {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

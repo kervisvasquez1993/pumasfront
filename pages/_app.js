@@ -1,5 +1,6 @@
 import 'normalize.css/normalize.css';
 import '../styles/globals.css'
+import '../styles/swipper.css'
 import '../styles/tailwind.css'
 
 
