@@ -1,0 +1,24 @@
+.wrapperSectionSlider {
+    display: flex;
+}
+.contentWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: normal;
+    height: 100%;
+    padding: 0 25px;
+}
+
+.contentWrapper  p {
+    margin: 15px 0;
+}
+
+@media screen and (min-width: 0) and (max-width: 769px) {
+    .wrapperSectionSlider {
+        flex-direction: column;
+    }
+    .carousel-root{
+        max-width: 100% !important;
+      }
+
+}

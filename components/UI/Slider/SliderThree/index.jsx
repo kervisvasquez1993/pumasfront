@@ -23,31 +23,14 @@ const SliderThree = ({ children }) => {
 
   return (
     <Carousel
-      showArrows={true}
+      showArrows={false}
+      itemWidth={300} 
+      itemHeight={200} 
       onChange={onChange}
       onClickItem={onClickItem}
       onClickThumb={onClickThumb}
     >
-      <ItemSlider
-        srcImg={"https://swiperjs.com/demos/images/nature-1.jpg"}
-        altImg={"example"}
-        name={"nature1"}
-      />
-      <ItemSlider
-        srcImg={"https://swiperjs.com/demos/images/nature-2.jpg"}
-        altImg={"example"}
-        name={"nature2"}
-      />
-      <ItemSlider
-        srcImg={"https://swiperjs.com/demos/images/nature-3.jpg"}
-        altImg={"example"}
-        name={"nature3"}
-      />
-      <ItemSlider
-        srcImg={"https://swiperjs.com/demos/images/nature-4.jpg"}
-        altImg={"example"}
-        name={"nature4"}
-      />
+      {children}
     </Carousel>
   );
 };

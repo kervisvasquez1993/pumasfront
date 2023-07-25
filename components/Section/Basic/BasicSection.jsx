@@ -1,9 +1,19 @@
-import React from 'react'
+import React from "react";
 
-const BasicSection = () => {
+const BasicSection = ({
+  title = {},
+  children,
+  classNameWrapper = {},
+  classNameTitle = {},
+  classNameContent = {},
+}) => {
   return (
-    <div>BasicSection</div>
-  )
-}
+    <section className={classNameWrapper}>
+      {title && <h2 className={classNameTitle}>{title}</h2>}
 
-export default BasicSection
+      {children && <section className={classNameContent}>{children}</section>}
+    </section>
+  );
+};
+
+export default BasicSection;

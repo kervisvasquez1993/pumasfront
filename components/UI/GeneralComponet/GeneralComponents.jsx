@@ -4,9 +4,9 @@ import ImageCardComponet from "../ImageCardComponent/ImageCardComponet";
 import ButtonView from "../../../views/ButtonView";
 
 const GeneralComponents = ({
+  children,
   imageSrc = "",
   image2Src = "",
-  paragraphText = "",
   reverseOrder,
   srcBackgroundColor = "",
   colorBTN = "",
@@ -37,11 +37,12 @@ const GeneralComponents = ({
         className={`${style.textContainer} ${style.children}`}
        
       >
-        <p className={style.paragraph}>{paragraphText}</p>
+        {/* <p className={style.paragraph}>{paragraphText}</p>
 
         <ButtonView className={`${colorBTN} manropeFont mt-10`} link={""}>
           {infoBTN}
-        </ButtonView>
+        </ButtonView> */}
+        {children}
       </section>
     </section>
   );
