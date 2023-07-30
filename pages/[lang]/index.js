@@ -8,6 +8,7 @@ import Map from "../../components/UI/Map/index";
 import { api } from "../../helpers/apiBackend";
 import MapSection from "../../components/Section/Map/MapSection";
 import SliderTwo from "../../components/UI/Slider/SliderTwo";
+import { ApiBackend } from "../../apis/ApiBackend";
 
 // api
 // import dynamic from 'next/dynamic';
@@ -15,8 +16,6 @@ import SliderTwo from "../../components/UI/Slider/SliderTwo";
 // import {MapLocations} from "../../components/UI/Map/MapLocations";
 // import Map from "../../components/UI/Map/Map";
 const LangPage = ({ lang }) => {
-  console.log(lang.code, "lang");
-
   return (
     <Main>
       {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}
@@ -98,65 +97,31 @@ const LangPage = ({ lang }) => {
 };
 
 export default LangPage;
-const getLangs = async () => {
-  const data = [
-    {
-      id: 1,
-      name: "English (en)",
-      code: "en",
-      createdAt: "2023-06-20T15:13:26.235Z",
-      updatedAt: "2023-06-20T15:13:26.235Z",
-      isDefault: false,
+const lang = () => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
     },
-    {
-      id: 2,
-      name: "Spanish (es)",
-      code: "es",
-      createdAt: "2023-06-22T18:17:52.442Z",
-      updatedAt: "2023-06-22T19:00:35.298Z",
-      isDefault: true,
-    },
-  ];
-  const token =
-    "ce0133fe5330488e9cc3e4477911858698e315cf287470843d0c8c8bdce21358013013c78c6817f643218c3076015b2a17bd60926c4921f080911e5c17f2dca90346bc1bdfa8311fcd105bd7f439440f2bb94d5231639f8351d33a7be5372a3796cfc92500c9fa46ac236114ef2e282f4de45e290bc167540bbb8dfa7323681a";
-
-  try {
-    const response = await fetch("http://localhost:1337/api/pages", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-    } else {
-      console.error("Error en la solicitud:", response.status);
-    }
-  } catch (error) {
-    console.error("Error al realizar la solicitud:", error);
-  }
-
-  return data;
+  };
+  return ApiBackend("api/i18n/locales", config);
 };
+
 export const getStaticProps = async ({ params }) => {
   const paramId = params.lang;
-  console.log(process.env.URL_BASE, "process.env.URL_BASE");
-  console.log(paramId, "paramId");
-  const langs = await getLangs();
-  // const lang =
-  const lang = langs.find((lang) => lang.code === paramId);
-  if (!lang) return { notFound: true };
+  const langResponse = await lang();
+  const languages = langResponse.data;
+  const language = languages.find((lang) => lang.code === paramId);
+  if (!language) return { notFound: true };
   return {
-    props: { lang },
+    props: { language },
   };
 };
 
 export const getStaticPaths = async () => {
-  const langs = await getLangs();
-  const code = langs.map((lang) => lang.code);
+  const langResponse = await lang();
+  const languages = langResponse.data;
+  const code = languages.map((lang) => lang.code);
   const paths = code.map((path) => ({ params: { lang: path } }));
-  // console.log(langs, "langs");
   return {
     paths,
     // fallback: "blocking ,

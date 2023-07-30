@@ -3,9 +3,9 @@ import { MenuProvider } from '../context/MenuProvider'
 
 const index = ({children}) => {
   return (
-    <MenuProvider>
+    // <MenuProvider>
     <div>{children}</div>
-    </MenuProvider>
+    // </MenuProvider>
   )
 }
 export default index
