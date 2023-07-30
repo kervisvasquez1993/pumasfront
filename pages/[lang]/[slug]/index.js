@@ -3,25 +3,6 @@ import HomePage from "../../../components/Pages/HomePage";
 import { useRouter } from "next/router";
 import NosotrosPage from "../../../components/Pages/NosotrosPage";
 import { ApiBackend } from "../../../apis/ApiBackend";
-const getPages = () => {
-  const pages = [
-    {
-      code: "es",
-      slug: "inicio",
-      title: "Inicio",
-      contentType: "component",
-      content: "HomePage",
-    },
-    {
-      code: "es",
-      slug: "nosotros",
-      title: "Nosotros",
-      contentType: "component",
-      content: "NosotrosPage",
-    },
-  ];
-  return pages;
-};
 
 const Page = ({ page }) => {
   const router = useRouter();
@@ -36,17 +17,16 @@ const Page = ({ page }) => {
 
   const renderContent = () => {
     if (page.contentType === "component") {
-      // Importar y renderizar el componente adecuado
-      switch (page.content) {
-        case "HomePage":
+      switch (page.name) {
+        case "Inicio":
           return <HomePage />;
-        case "NosotrosPage":
+        case "Nosotros":
           return <NosotrosPage />;
         default:
           return null;
       }
     } else if (page.contentType === "text") {
-      return <p>{page.content}</p>;
+      return <p>{page.name}</p>;
     } else {
       return null;
     }
@@ -78,8 +58,22 @@ const getMenus = (language) => {
 
 export const getStaticProps = async ({ params }) => {
   const { lang, slug } = params;
-  const pages = getPages();
-  const page = pages.find((page) => page.code === lang && page.slug === slug);
+  const getLangAll = await langAll();
+  const languages = getLangAll.data;
+  const menu = [];
+  for (const language of languages) {
+    const menusResponse = await getMenus(language.code);
+    const menus = menusResponse.data.data;
+    menus.forEach((element) => {
+      menu.push({
+        lang: element.attributes.locale,
+        slug: element.attributes.slug,
+        name: element.attributes.nombre,
+        contentType : "component"
+      });
+    });
+  }
+  const page = menu.find((page) => page.lang === lang && page.slug === slug);
   if (!page) return { notFound: true };
   return {
     props: { page: { ...page } },
@@ -92,10 +86,8 @@ export const getStaticPaths = async () => {
   const result = [];
   for (const language of languages) {
     const menusResponse = await getMenus(language.code);
-    console.log(language.code, "code");
     const menus = menusResponse.data.data;
     menus.forEach((element) => {
-      console.log(element, "element");
       result.push({
         params: {
           lang: element.attributes.locale,
@@ -106,9 +98,8 @@ export const getStaticPaths = async () => {
     });
   }
 
-  console.log(result)
   return {
-    paths : result,
+    paths: result,
     fallback: true,
   };
 };
