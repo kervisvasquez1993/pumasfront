@@ -6,8 +6,9 @@ import styles from "./style.module.css";
 import { useRouter } from "next/router";
 
 const Menu = ({ items }) => {
-  const router = useRouter()
+
   // console.log(router, "router")
+  console.log(items?.data, "items")
   return (
     <nav
       className={`flex  justify-between items-center ${styles.menuContainer}`}
@@ -28,7 +29,7 @@ const Menu = ({ items }) => {
       </section>
 
       <div className={styles.menuItems}>
-        <ItemMenu items={items} />
+        {items && <ItemMenu items={items.data} />}
       </div>
     </nav>
   );

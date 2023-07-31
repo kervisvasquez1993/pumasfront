@@ -5,20 +5,19 @@ const MenuContext = createContext();
 
 export const MenuProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
-  const [menuData, setMenuData] = useState(
-    () => JSON.parse(localStorage.getItem("menuData")) || []
-  );
+  const [menuData, setMenuData] = useState([]);
 
-  const lang = () => {
+  const lang = async () => {
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
-    return ApiBackend("api/i18n/locales", config);
+    const response = await ApiBackend("api/i18n/locales", config);
+    return response.data;
   };
 
-  const getMenus = (language) => {
+  const getMenus = async (language) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -27,16 +26,15 @@ export const MenuProvider = ({ children }) => {
         locale: language,
       },
     };
-    return ApiBackend("api/menus", config);
+    const response = await ApiBackend("api/menus", config);
+    return response.data.data;
   };
 
   const fetchMenusByLanguage = async (languages) => {
     const menuData = [];
 
     for (const language of languages) {
-      const menusResponse = await getMenus(language.code);
-      const menu = menusResponse.data.data;
-
+      const menu = await getMenus(language.code);
       menuData.push({ lang: language.code, data: menu });
     }
 
@@ -44,38 +42,25 @@ export const MenuProvider = ({ children }) => {
   };
 
   const getMenuData = async () => {
-    const langResponse = await lang();
-    const languages = langResponse.data;
-
+    const languages = await lang();
     const menuData = await fetchMenusByLanguage(languages);
-
     return menuData;
   };
 
   useEffect(() => {
     (async () => {
       try {
-        let storedMenuData = JSON.parse(localStorage.getItem("menuData"));
-        let menuData = [];
-
-        // Obtener datos del localStorage si están disponibles
-        if (storedMenuData) {
-          setMenuData(storedMenuData);
-          setLoading(false);
-          return;
-        }
-
         // Obtener datos de la API
-        menuData = await getMenuData();
+        const menuData = await getMenuData();
 
-        // Almacenar en el localStorage
-        localStorage.setItem("menuData", JSON.stringify(menuData));
-
+        // Actualizar el estado con los datos obtenidos de la API
         setMenuData(menuData);
+
+        setLoading(false);
       } catch (error) {
         console.log(error);
+        setLoading(false);
       }
-      setLoading(false);
     })();
   }, []);
 

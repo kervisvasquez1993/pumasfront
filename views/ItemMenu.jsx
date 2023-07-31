@@ -2,39 +2,42 @@ import React from "react";
 import style from "./style.module.css";
 import Link from "next/link";
 
-
 const ItemMenu = ({ items }) => {
+  items.map((element) => {
+    console.log(element.attributes);
+  });
   return (
     <>
-      {items ? (
+      {items && (
         <ul className={`${style.menuList} flex my-10`}>
           {items.map((item) => {
-            if (item.name === "Apoyanos") {
+            if (item.attributes.nombre === "Apoyanos") {
               return (
                 <li
-                  key={item.name}
+                  key={item.id}
                   className="backgroundPrimary text-center fontMenu btnPrimaryMenu font-bold py-2 rounded"
                 >
-                  <Link href={item.url} className={style.menuItem}>
-                    {item.name}
+                  <Link  href={`/${item.attributes.locale}/${item.attributes.slug}`} className={style.menuItem}>
+                    {item.attributes.nombre}
                   </Link>
                 </li>
               );
             }
             return (
               <li
-                key={item.name}
+                key={item.id}
                 className="px-2 py-2 text-center rounded fontMenu"
               >
-                <Link href={item.url} className={style.menuItem}>
-                  {item.name}
+                <Link
+                  href={`/${item.attributes.locale}/${item.attributes.slug}`}
+                  className={style.menuItem}
+                >
+                  {item.attributes.nombre}
                 </Link>
               </li>
             );
           })}
         </ul>
-      ) : (
-        <p>vacio</p>
       )}
     </>
   );

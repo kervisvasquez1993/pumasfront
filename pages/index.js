@@ -1,11 +1,10 @@
-import React from 'react'
-import { MenuProvider } from '../context/MenuProvider'
+import React from "react";
 
-const index = ({children}) => {
+const index = ({ children }) => {
   return (
-    // <MenuProvider>
-    <div>{children}</div>
-    // </MenuProvider>
-  )
-}
-export default index
+   
+      <div>{children}</div>
+  
+  );
+};
+export default index;
