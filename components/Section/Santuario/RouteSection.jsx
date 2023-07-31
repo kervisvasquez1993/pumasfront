@@ -1,6 +1,7 @@
+// RouteSection.js
 import React from "react";
 
-const ReservaRecorrido = () => {
+const RouteSection = () => {
   return (
     <div className="container-rout">
       <div className="grid-2">
@@ -11,9 +12,8 @@ const ReservaRecorrido = () => {
             de forma permanente en el Santuario: conocerás su comportamiento,
             historia natural, ecología y descubrirás la razón por la que no
             pudieron ser devueltos a la naturaleza. El recorrido guiado no tiene
-            ningún costo económico adicional, pero está sujeto a disponibilidad.
+            ningún costo económico adicional, pero está sujeto a disponibilidad,
           </p>
-
           <p>
             <b>¡Será un gusto mostrarte nuestro Santuario!</b>
           </p>
@@ -24,4 +24,4 @@ const ReservaRecorrido = () => {
   );
 };
 
-export default ReservaRecorrido;
+export default RouteSection;
