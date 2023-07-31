@@ -6,9 +6,6 @@ import styles from "./style.module.css";
 import { useRouter } from "next/router";
 
 const Menu = ({ items }) => {
-
-  // console.log(router, "router")
-  console.log(items?.data, "items")
   return (
     <nav
       className={`flex  justify-between items-center ${styles.menuContainer}`}

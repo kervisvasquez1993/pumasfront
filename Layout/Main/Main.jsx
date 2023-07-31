@@ -7,7 +7,7 @@ import style from "./style.module.css";
 import useMenu from "../../hooks/useMenu";
 import { useRouter } from "next/router";
 
-const Main = ({ children }) => {
+const Main = ({ children, titlePage }) => {
   const { menuData, loading } = useMenu();
   const { query } = useRouter();
   const { lang } = query;
@@ -19,21 +19,24 @@ const Main = ({ children }) => {
         (element) => element.lang === lang
       );
       setStateMenu(currentLanguageMenu || null);
+
+      // Almacena menuData en localStorage cuando está disponible
+      localStorage.setItem("menuData", JSON.stringify(menuData));
     }
   }, [lang, loading, menuData]);
- 
-  const dataMenu = [
-    { name: "Nosotros", url: "/es/nosotros" },
-    { name: "Centro de Rescate", url: "/es/rescate" },
-    { name: "Santuario", url: "/es/santuario" },
-    { name: "Programas", url: "/es/programas" },
-    { name: "Blog", url: "/es/blog" },
-    { name: "Apoyanos", url: "/es/apoyanos" },
-  ];
+
+  // Al cargar el componente, comprueba si hay menuData almacenado en localStorage y úsalo si está disponible
+  useEffect(() => {
+    const storedMenuData = localStorage.getItem("menuData");
+    if (!menuData && storedMenuData) {
+      setStateMenu(JSON.parse(storedMenuData).find((element) => element.lang === lang) || null);
+    }
+  }, []);
+
 
   const [isMobile, setIsMobile] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 992);
     };
@@ -50,7 +53,7 @@ const Main = ({ children }) => {
   return (
     <>
       <Head>
-        <title>Título de tu página</title>
+        <title>{`Pumas - ${titlePage}`}</title>
         <meta name="description" content="Descripción de tu página" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
@@ -58,7 +61,7 @@ const Main = ({ children }) => {
         {isMobile ? (
           <MobileMenu
             logo="/images/LogoBlanco.png"
-            navigationItems={dataMenu}
+            navigationItems={stateMenu}
           />
         ) : (
           <Menu items={stateMenu} />

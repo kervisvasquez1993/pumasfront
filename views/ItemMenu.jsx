@@ -3,9 +3,7 @@ import style from "./style.module.css";
 import Link from "next/link";
 
 const ItemMenu = ({ items }) => {
-  items.map((element) => {
-    console.log(element.attributes);
-  });
+ 
   return (
     <>
       {items && (

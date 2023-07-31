@@ -5,6 +5,8 @@ import NosotrosPage from "../../../components/Pages/NosotrosPage";
 import { ApiBackend } from "../../../apis/ApiBackend";
 import SantuarioPage from "../../../components/Pages/SantuarioPage";
 import CentroDeRescate from "../../../components/Pages/CentroDeRescate";
+import BlogPage from "../../../components/Pages/BlogPage";
+import ProgramaPage from "../../../components/Pages/ProgramaPage";
 
 const Page = ({ page }) => {
   const router = useRouter();
@@ -28,6 +30,10 @@ const Page = ({ page }) => {
           return <SantuarioPage />;
         case "centro-de-rescate":
           return <CentroDeRescate />;
+        case "blog":
+          return <BlogPage />;
+        case "programas":
+          return <ProgramaPage />;
         default:
           return null;
       }
@@ -75,11 +81,11 @@ export const getStaticProps = async ({ params }) => {
         lang: element.attributes.locale,
         slug: element.attributes.slug,
         name: element.attributes.nombre,
-        contentType : "component"
+        contentType: "component",
       });
     });
   }
-  console.log(menu)
+  console.log(menu);
   const page = menu.find((page) => page.lang === lang && page.slug === slug);
   if (!page) return { notFound: true };
   return {
