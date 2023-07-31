@@ -187,8 +187,9 @@ const ProgramaPage = () => {
           </div>
         </div>
       </div>
+    
     </Main>
-    // </div>
+
   );
 };
 

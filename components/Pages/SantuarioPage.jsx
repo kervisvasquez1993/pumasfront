@@ -10,7 +10,7 @@ const SantuarioPage = () => {
           <h3 className="sanctuary-title">Nuestro Santuario</h3>
           <div className="grid-2">
             <div className="sanctuary__imagen">
-              <img src="/images/imgsantuario.png" alt="imagen santuario" />
+              <img src="imgsantuario.png" alt="imagen santuario" />
             </div>
             <div className="about-sanctuary_text">
               <p>
