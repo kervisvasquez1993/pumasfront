@@ -28,7 +28,8 @@ const HeaderComponents = ({
   };
 
   return (
-    <section style={backgroundImageStyle} className={`${style.wrapperElement}`}>
+    // <section style={backgroundImageStyle} className={`${style.wrapperElement}`}>
+    <section style={backgroundImageStyle} className={``}>
       <h2 className={`${classNameText} ${style.fontTitle}`}>{children}</h2>
     </section>
   );

@@ -30,8 +30,14 @@ body {
   justify-content: flex-end;
   height: 95%;
   width: 65%;
-
-
+}
+.setionStyleTwo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  width: 65%;
 }
 
 .chelseaFontTitle {

@@ -3,7 +3,7 @@ import style from "./Button.module.css";
 
 const ButtonView = ({ children, className, link = "" }) => {
     return (
-        <Link className={`${className} btnPrimary py-2 px-10 `} href={link}>
+        <Link className={`${className} btnPrimary py-2  `} href={link}>
             {children}
         </Link>
     );
