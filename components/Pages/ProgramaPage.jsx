@@ -11,7 +11,7 @@ const ProgramaPage = () => {
             Programa de conservacion y manejo de la fauna silvestre
           </h3>
           <div className="grid-2">
-            <div className="about-program_text fuentesParrafo py10">
+            <div className="about-program_text fuentesParrafo py-10">
               <p className="mb-10 py-10">
                 Nuestro Programa de Conservación y Manejo de la Fauna Silvestre
                 consiste en el rescate, rehabilitación, liberación y en brindar

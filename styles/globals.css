@@ -9,16 +9,29 @@ body {
 .manropeFont {
   font-family: 'Manrope', sans-serif;
 }
-.materials_text{
+
+.materials_text {
   font-weight: bold;
   font-size: 46px;
 }
-.fontSize28{
+
+.fontSize28 {
   font-size: 28px;
 }
 
 .chelseaFont {
   font-family: 'Chelsea Market', sans-serif;
+}
+
+.setionStyleOne {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 95%;
+  width: 65%;
+
+
 }
 
 .chelseaFontTitle {
@@ -92,20 +105,23 @@ a {
   line-height: normal;
 }
 
-.fuentesParrafo > *, .fuentesParrafo{
+.fuentesParrafo>*,
+.fuentesParrafo {
   font-size: 20px;
   font-family: 'Manrope', sans-serif;
 }
 
-.edu_text{
+.edu_text {
   font-size: 20px;
   font-weight: 700;
 }
-.fuenteTitulo{
+
+.fuenteTitulo {
   font-size: 24px;
   font-weight: bold;
   font-family: 'Chelsea Market', sans-serif;
 }
+
 .backgroundSecondary {
   background-color: #50B496;
 }
@@ -281,7 +297,7 @@ a {
 }
 
 .carousel-root {
-  max-width: 50% !important;
+  max-width: 80% !important;
 }
 
 @media screen and (min-width: 0) and (max-width: 481px) {
