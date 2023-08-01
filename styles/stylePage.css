@@ -303,7 +303,7 @@ img {
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, minmax(280px, 1fr));
-    grid-gap: 10px;
+    grid-gap: 70px;
     padding: 10px;
     box-sizing: border-box;
 }
