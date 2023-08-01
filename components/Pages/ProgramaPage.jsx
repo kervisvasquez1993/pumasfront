@@ -6,12 +6,13 @@ const ProgramaPage = () => {
     <Main>
       <div className="container">
         <div className="container-program">
-          <h3 className="program-title">
+          {/* TODO:manejar titulo responsive */}
+          <h3 className="program-title fuenteTitulo colorPrimary my-10 py-10">
             Programa de conservacion y manejo de la fauna silvestre
           </h3>
           <div className="grid-2">
-            <div className="about-program_text">
-              <p>
+            <div className="about-program_text fuentesParrafo py10">
+              <p className="mb-10 py-10">
                 Nuestro Programa de Conservación y Manejo de la Fauna Silvestre
                 consiste en el rescate, rehabilitación, liberación y en brindar
                 calidad de vida de los animales silvestres que se reciben por
@@ -38,11 +39,11 @@ const ProgramaPage = () => {
             </div>
           </div>
         </div>
-        <div className="container-edu">
+        <div className="container-edu ">
           <div className="grid-2">
             <div>
-              <h3 className="edu-title">EDUCACIÓN AMBIENTAL</h3>
-              <p>
+              <h3 className="edu-title fuenteTitulo colorSecondary">EDUCACIÓN AMBIENTAL</h3>
+              <p className="fuentesParrafo">
                 Nuestro Programa de Educación Ambiental (PEA) se desarrolla en
                 el área de El Santuario y su objetivo es educar a los visitantes
                 acerca de las amenazas que enfrentan los animales silvestres de
@@ -50,23 +51,23 @@ const ProgramaPage = () => {
                 como una herramienta de conservación.
               </p>
             </div>
-            <div className="edu_text">
-              <h3 className="price-title">Precio</h3>
-              <li>Guarderias, preecolar</li>
-              <li>Secundaria y educacion</li>
-              <li>profesores</li>
-              <li>Padres de familia</li>
+            <div className="edu_text  ">
+              <h3 className="price-title colorSecondary">Precio</h3>
+              <li>Guarderias, preecolar y primaria : 1000$</li>
+              <li>Secundaria y educacion Superiror : 2000$</li>
+              <li>Profesores : 2000$</li>
+              <li>Padres de familia : 3000$</li>
 
               <button className="edu-button">Reservar Recorrido</button>
             </div>
           </div>
-          <div className="edu-icons-container">
+          <div className="edu-icons-container py-10 my-10">
             <div className="icon-flex-2">
               <div className="icons__imagen">
-                <img src="/images/hand.png" alt="imagen santuario" />
+                <img src="/images/ico_presentacion1.png" alt="imagen santuario" />
               </div>
               <div className="icons_text">
-                <p>
+                <p className="fuentesParrafo ">
                   Recorrido guiado: nuestra Educadora Ambiental te dará un
                   recorrido guiado para que conozcás a todos nuestros animales.
                   Aprenderás sobre su hábitat, dieta, curiosidades y sobre todo
@@ -77,10 +78,10 @@ const ProgramaPage = () => {
             </div>
             <div className="icon-flex-2">
               <div className="icons__imagen">
-                <img src="/images/hand.png" alt="imagen santuario" />
+                <img src="/images/ico_guia2.png" alt="imagen santuario" />
               </div>
               <div className="icons_text">
-                <p>
+                <p className="fuentesParrafo ">
                   Recorrido guiado: nuestra Educadora Ambiental te dará un
                   recorrido guiado para que conozcás a todos nuestros animales.
                   Aprenderás sobre su hábitat, dieta, curiosidades y sobre todo
@@ -91,10 +92,10 @@ const ProgramaPage = () => {
             </div>
             <div className="icon-flex-2">
               <div className="icons__imagen">
-                <img src="/images/hand.png" alt="imagen santuario" />
+                <img src="/images/ico_granja1.png" alt="imagen santuario" />
               </div>
               <div className="icons_text">
-                <p>
+                <p className="fuentesParrafo ">
                   Recorrido guiado: nuestra Educadora Ambiental te dará un
                   recorrido guiado para que conozcás a todos nuestros animales.
                   Aprenderás sobre su hábitat, dieta, curiosidades y sobre todo
@@ -105,10 +106,10 @@ const ProgramaPage = () => {
             </div>
             <div className="icon-flex-2">
               <div className="icons__imagen">
-                <img src="/images/hand.png" alt="imagen santuario" />
+                <img src="/images/ico_arte1.png" alt="imagen santuario" />
               </div>
               <div className="icons_text">
-                <p>
+                <p className="fuentesParrafo ">
                   Recorrido guiado: nuestra Educadora Ambiental te dará un
                   recorrido guiado para que conozcás a todos nuestros animales.
                   Aprenderás sobre su hábitat, dieta, curiosidades y sobre todo
@@ -120,9 +121,9 @@ const ProgramaPage = () => {
           </div>
         </div>
         <div className="container-materials-edu">
-          <h3 className="materials-edu-title">MATERIALES EDUCATIVOS</h3>
+          <h3 className="materials-edu-title fuenteTitulo colorSecondary py-10">MATERIALES EDUCATIVOS</h3>
 
-          <div className="materials-edu_text">
+          <div className="materials-edu_text fuentesParrafo ">
             <p>
               Si vas a venir de visita a nuestro Santuario, acá te mostramos
               nuestras reglas. Además, cuando nos visités te recomendamos traer
@@ -134,54 +135,54 @@ const ProgramaPage = () => {
               <div className="materials__imagen">
                 <img src="/images/rectangle.png" alt="imagen santuario" />
               </div>
-              <div className="materials_text">
-                <h2>Animales Silvestres de Costa Rica</h2>
-                <p>Libro de Actividades</p>
+              <div className="wrapperTitleCard">
+                <h2 className="materials_text manropeFont colorSecondary">Animales Silvestres de Costa Rica</h2>
+                <p className="manropeFont fontSize28">Libro de Actividades</p>
               </div>
             </div>
             <div className="dowloads">
               <div className="materials__imagen">
                 <img src="/images/rectangle.png" alt="imagen santuario" />
               </div>
-              <div className="materials_text">
-                <h2>Animales Silvestres de Costa Rica</h2>
-                <p>Libro de Actividades</p>
+              <div className="wrapperTitleCard">
+                <h2 className="materials_text manropeFont colorSecondary">Animales Silvestres de Costa Rica</h2>
+                <p className="manropeFont fontSize28">Libro de Actividades</p>
               </div>
             </div>
             <div className="dowloads">
               <div className="materials__imagen">
                 <img src="/images/rectangle.png" alt="imagen santuario" />
               </div>
-              <div className="materials_text">
-                <h2>Animales Silvestres de Costa Rica</h2>
-                <p>Libro de Actividades</p>
+              <div className="wrapperTitleCard">
+                <h2 className="materials_text manropeFont colorSecondary">Animales Silvestres de Costa Rica</h2>
+                <p className="manropeFont fontSize28">Libro de Actividades</p>
               </div>
             </div>
             <div className="dowloads">
               <div className="materials__imagen">
                 <img src="/images/rectangle.png" alt="imagen santuario" />
               </div>
-              <div className="materials_text">
-                <h2>Animales Silvestres de Costa Rica</h2>
-                <p>Libro de Actividades</p>
+              <div className="wrapperTitleCard">
+                <h2 className="materials_text manropeFont colorSecondary">Animales Silvestres de Costa Rica</h2>
+                <p className="manropeFont fontSize28">Libro de Actividades</p>
               </div>
             </div>
             <div className="dowloads">
               <div className="materials__imagen">
                 <img src="/images/rectangle.png" alt="imagen santuario" />
               </div>
-              <div className="materials_text">
-                <h2>Animales Silvestres de Costa Rica</h2>
-                <p>Libro de Actividades</p>
+              <div className="wrapperTitleCard">
+                <h2 className="materials_text manropeFont colorSecondary">Animales Silvestres de Costa Rica</h2>
+                <p className="manropeFont fontSize28">Libro de Actividades</p>
               </div>
             </div>
             <div className="dowloads">
               <div className="materials__imagen">
                 <img src="/images/rectangle.png" alt="imagen santuario" />
               </div>
-              <div className="materials_text">
-                <h2>Animales Silvestres de Costa Rica</h2>
-                <p>Libro de Actividades</p>
+              <div className="wrapperTitleCard">
+                <h2 className="materials_text manropeFont colorSecondary">Animales Silvestres de Costa Rica</h2>
+                <p className="manropeFont fontSize28">Libro de Actividades</p>
               </div>
             </div>
           </div>
