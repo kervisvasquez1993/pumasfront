@@ -70,11 +70,12 @@ const SantuarioPage = () => {
         <section className="container-section py-10 my-5">
           <section className="grid-2">
             <HeaderComponets
+              alignment="center"
               src="/images/fondo1.png"
-              classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
-              alignment="start"
+              classNameText={"colorSecondary chelseaFont"}
+              classNameSection={"centerElement"}
             >
-              Nuestro Santuario
+              Reserva tu recorrido Guiado
             </HeaderComponets>
             <BasicSection
               classNameTitle={""}
@@ -82,27 +83,101 @@ const SantuarioPage = () => {
               title={""}
               classNameContent={"fuentesParrafo py-10"}
             >
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Nesciunt quibusdam numquam obcaecati perspiciatis natus
-                doloribus, et asperiores illo aliquam tempora quae laboriosam
-                vero esse, harum impedit. Totam quo saepe aliquam placeat
-                expedita eius adipisci error molestiae a reiciendis cumque ab
-                tempora eos reprehenderit dolorum veritatis repellendus, velit
-                praesentium?
+              <p className="py-5">
+                En este recorrido aprenderás sobre los animales silvestres que
+                viven de forma permanente en el Santuario: conocerás su
+                comportamiento, historia natural, ecología y descubrirás la
+                razón por la que no pudieron ser devueltos a la naturaleza. El
+                recorrido guiado no tiene ningún costo económico adicional, pero
+                está sujeto a disponibilidad.
+              </p>
+              <p className="py-5 fontBold ">
+                ¡Sera un gusto mostrarte nuestro santuario!
               </p>
               <ButtonView
-                className={" backgroundSecondary manropeFont my-10"}
+                className={" backgroundSecondary m-0 manropeFont p-5"}
                 link={""}
               >
-                Visitanos
+                Reserva tu recorrido
               </ButtonView>
             </BasicSection>
           </section>
         </section>
-        <SanctuarySection />
-        <RouteSection />
-        <RulesSection />
+        <div className="container-edu ">
+          <div>
+            <h3 className="program-title fuenteTitulo colorVerde">
+              REGLAS Y RECOMENDACIONES
+            </h3>
+            <p className="fuentesParrafo py-10 my-10 width-30">
+              Si vas a venir de visita a nuestro Santuario, acá te mostramos
+              nuestras reglas. Además, cuando nos visités te recomendamos traer
+              bloqueador, repelente e hidratación.
+            </p>
+          </div>
+
+          <div className="icons-container py-10 my-10">
+            <div className="icon-flex-2">
+              <div className="icons__imagen">
+                <img src="/images/hand1.png" alt="imagen santuario" />
+              </div>
+              <div className="icons_text">
+                <p className="fuentesParrafo ">
+                  No tocar, no molestar ni alimentar a los animales.
+                </p>
+              </div>
+            </div>
+            <div className="icon-flex-2">
+              <div className="icons__imagen">
+                <img src="/images/pallet.png" alt="imagen santuario" />
+              </div>
+              <div className="icons_text">
+                <p className="fuentesParrafo ">
+                  Respetar las barandas de seguridad
+                </p>
+              </div>
+            </div>
+            <div className="icon-flex-2">
+              <div className="icons__imagen">
+                <img src="/images/bolt.png" alt="imagen santuario" />
+              </div>
+              <div className="icons_text">
+                <p className="fuentesParrafo ">
+                  No usar flash fotos cuando tomes fotos o videos
+                </p>
+              </div>
+            </div>
+            <div className="icon-flex-2">
+              <div className="icons__imagen">
+                <img src="/images/paw.png" alt="imagen santuario" />
+              </div>
+              <div className="icons_text">
+                <p className="fuentesParrafo ">
+                  No ingresar con mascotas a instalaciones
+                </p>
+              </div>
+            </div>
+            <div className="icon-flex-2">
+              <div className="icons__imagen">
+                <img src="/images/smoking.png" alt="imagen santuario" />
+              </div>
+              <div className="icons_text">
+                <p className="fuentesParrafo ">
+                  No usar flash fotos cuando tomes fotos o videos
+                </p>
+              </div>
+            </div>
+            <div className="icon-flex-2">
+              <div className="icons__imagen">
+                <img src="/images/burger.png" alt="imagen santuario" />
+              </div>
+              <div className="icons_text">
+                <p className="fuentesParrafo ">
+                  No usar flash fotos cuando tomes fotos o videos
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </Main>
   );

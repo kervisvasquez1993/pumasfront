@@ -205,8 +205,17 @@ img {
 }
 
 
-
-
+.centerElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fontBold{
+    font-weight: bold;
+}
+.width-30{
+    width: 30%;
+}
 .edu-button {
     margin-top: 2rem;
     background-color: #97C472;

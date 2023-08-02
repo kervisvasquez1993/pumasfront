@@ -29,7 +29,7 @@ const HeaderComponents = ({
 
   return (
     // <section style={backgroundImageStyle} className={`${style.wrapperElement}`}>
-    <section style={backgroundImageStyle} className={``}>
+    <section style={backgroundImageStyle} className={`${classNameSection}`}>
       <h2 className={`${classNameText} ${style.fontTitle}`}>{children}</h2>
     </section>
   );
