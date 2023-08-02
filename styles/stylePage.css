@@ -216,6 +216,18 @@ img {
 .width-30{
     width: 30%;
 }
+.section-titles{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: 46px;
+}
+.fontSize24{
+    font-size: 30px;
+}
+.puntos{
+    list-style:inside;
+}
 .edu-button {
     margin-top: 2rem;
     background-color: #97C472;
