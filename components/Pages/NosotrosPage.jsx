@@ -7,6 +7,7 @@ import ButtonView from "../../views/ButtonView";
 import TwoSections from "../UI/TwoSection";
 import SectionReverse from "../Section/Basic/SectionReverse";
 import Section from "../Section/Basic/Section";
+import SliderGeneral from "../UI/Slider/SliderGeneral";
 const NosotrosPage = () => {
   const images = [
     "https://swiperjs.com/demos/images/nature-1.jpg",
@@ -187,51 +188,66 @@ const NosotrosPage = () => {
           title1={"Junta Directiva"}
           children1={
             <Section
-            positionTitle={"start"}
-            contentClassName="contentSectionEnd px-10 px-10"
-            titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
-            title=""
-            imageSrc="/images/junta-directiva.png"
-            content={
-              <section>
-              <section className="py-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel sint accusamus autem veritatis! Maiores architecto harum, praesentium reprehenderit cumque assumenda modi provident sit, quis, saepe possimus? Cumque nostrum rerum fuga magni. Neque.</section>
-              <h3 className="chelseaFont fontSize24">Miembros:</h3>
-              <ul>
-                <li className="puntos">Miembro1</li>
-                <li className="puntos">Miembro2</li>
-                <li className="puntos">Miembro3</li>
-                <li className="puntos">Miembro4</li>
-                <li className="puntos">Miembro5</li>
-                
-              </ul>
-              </section>
-            }
-          />
-  
+              positionTitle={"start"}
+              contentClassName="contentSectionEnd px-10 px-10"
+              titleClassName={
+                "program-title fuenteTitulo colorVerde py-10 my-10"
+              }
+              title=""
+              imageSrc="/images/junta-directiva.png"
+              content={
+                <section>
+                  <section className="py-10">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Vel sint accusamus autem veritatis! Maiores architecto
+                    harum, praesentium reprehenderit cumque assumenda modi
+                    provident sit, quis, saepe possimus? Cumque nostrum rerum
+                    fuga magni. Neque.
+                  </section>
+                  <h3 className="chelseaFont fontSize24">Miembros:</h3>
+                  <ul>
+                    <li className="puntos py-1">Miembro1</li>
+                    <li className="puntos py-1">Miembro2</li>
+                    <li className="puntos py-1">Miembro3</li>
+                    <li className="puntos py-1">Miembro4</li>
+                    <li className="puntos py-1">Miembro5</li>
+                  </ul>
+                </section>
+              }
+            />
           }
           title2={"Personal"}
-          childre2={
+          children2={
             <Section
-            positionTitle={"start"}
-            contentClassName="contentSectionEnd px-10 px-10"
-            titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
-            title=""
-            imageSrc="/images/junta-directiva.png"
-            content={
-              <section>
-              <section className="py-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel sint accusamus autem veritatis! Maiores architecto harum, praesentium reprehenderit cumque assumenda modi provident sit, quis, saepe possimus? Cumque nostrum rerum fuga magni. Neque.</section>
-              <h3 className="chelseaFont fontSize24">Miembros:</h3>
-              <ul>
-                <li className="puntos">Miembro1</li>
-                <li className="puntos">Miembro2</li>
-                
-                
-              </ul>
-              </section>
-            }
-          />
+              positionTitle={"start"}
+              contentClassName="contentSectionEnd px-10 px-10"
+              titleClassName={
+                "program-title fuenteTitulo colorVerde py-10 my-10"
+              }
+              title=""
+              imageSrc="/images/junta-directiva.png"
+              content={
+                <section>
+                  <section className="py-10">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Vel sint accusamus autem veritatis! Maiores architecto
+                    harum, praesentium reprehenderit cumque assumenda modi
+                    provident sit, quis, saepe possimus? Cumque nostrum rerum
+                    fuga magni. Neque.
+                  </section>
+                  <h3 className="chelseaFont fontSize24">Miembros:</h3>
+                  <ul>
+                  <li className="puntos py-1">Miembro3</li>
+                    <li className="puntos py-1">Miembro4</li>
+                    <li className="puntos py-1">Miembro5</li>
+                  </ul>
+                </section>
+              }
+            />
           }
         />
+
+        <SliderGeneral/>
       </div>
     </Main>
   );

@@ -228,6 +228,17 @@ img {
 .puntos{
     list-style:inside;
 }
+.active {
+    border-bottom: 4px solid #E86641;
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+}
+.centerElement{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .edu-button {
     margin-top: 2rem;
     background-color: #97C472;
