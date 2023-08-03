@@ -1,15 +1,19 @@
-import React, { useRef, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // import required modules
-import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper';
+import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 
-export default function SliderGeneral({ slides }) {
+export default function SliderGeneral({ slides, themeColor }) {
+  const swiperStyles = {
+    "--swiper-theme-color": themeColor,
+  };
+
   return (
     <>
       <Swiper
@@ -20,6 +24,7 @@ export default function SliderGeneral({ slides }) {
         keyboard={true}
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
         className="mySwiper"
+        style={swiperStyles}
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>{slide}</SwiperSlide>

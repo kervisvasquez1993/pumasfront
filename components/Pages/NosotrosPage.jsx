@@ -16,6 +16,85 @@ const NosotrosPage = () => {
     "https://swiperjs.com/demos/images/nature-4.jpg",
   ];
 
+  const slides = [
+   
+    <Section
+      positionTitle={"start"}
+      contentClassName="contentSectionEnd px-10 px-10"
+      titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
+      title=""
+      imageSrc="/images/junta-directiva.png"
+      content={
+        <section>
+          <section className="py-10">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel sint
+            accusamus autem veritatis! Maiores architecto harum, praesentium
+            reprehenderit cumque assumenda modi provident sit, quis, saepe
+            possimus? Cumque nostrum rerum fuga magni. Neque.
+          </section>
+          <h3 className="chelseaFont fontSize24">Miembros:</h3>
+          <ul>
+            <li className="puntos py-1">Miembro1</li>
+            <li className="puntos py-1">Miembro2</li>
+            <li className="puntos py-1">Miembro3</li>
+            <li className="puntos py-1">Miembro4</li>
+            <li className="puntos py-1">Miembro5</li>
+          </ul>
+        </section>
+      }
+    />,
+    <Section
+      positionTitle={"start"}
+      contentClassName="contentSectionEnd px-10 px-10"
+      titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
+      title=""
+      imageSrc="/images/junta-directiva.png"
+      content={
+        <section>
+          <section className="py-10">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel sint
+            accusamus autem veritatis! Maiores architecto harum, praesentium
+            reprehenderit cumque assumenda modi provident sit, quis, saepe
+            possimus? Cumque nostrum rerum fuga magni. Neque.
+          </section>
+          <h3 className="chelseaFont fontSize24">Miembros:</h3>
+          <ul>
+            <li className="puntos py-1">Miembro1</li>
+            <li className="puntos py-1">Miembro2</li>
+            <li className="puntos py-1">Miembro3</li>
+            <li className="puntos py-1">Miembro4</li>
+            <li className="puntos py-1">Miembro5</li>
+          </ul>
+        </section>
+      }
+    />,
+    <Section
+      positionTitle={"start"}
+      contentClassName="contentSectionEnd px-10 px-10"
+      titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
+      title=""
+      imageSrc="/images/junta-directiva.png"
+      content={
+        <section>
+          <section className="py-10">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel sint
+            accusamus autem veritatis! Maiores architecto harum, praesentium
+            reprehenderit cumque assumenda modi provident sit, quis, saepe
+            possimus? Cumque nostrum rerum fuga magni. Neque.
+          </section>
+          <h3 className="chelseaFont fontSize24">Miembros:</h3>
+          <ul>
+            <li className="puntos py-1">Miembro1</li>
+            <li className="puntos py-1">Miembro2</li>
+            <li className="puntos py-1">Miembro3</li>
+            <li className="puntos py-1">Miembro4</li>
+            <li className="puntos py-1">Miembro5</li>
+          </ul>
+        </section>
+      }
+    />,
+  ];
+
   return (
     <Main>
       <div className="container">
@@ -191,7 +270,7 @@ const NosotrosPage = () => {
               positionTitle={"start"}
               contentClassName="contentSectionEnd px-10 px-10"
               titleClassName={
-                "program-title fuenteTitulo colorVerde py-10 my-10"
+                "program-title fuenteTitulo colorVerde px-10 m-10"
               }
               title=""
               imageSrc="/images/junta-directiva.png"
@@ -237,7 +316,7 @@ const NosotrosPage = () => {
                   </section>
                   <h3 className="chelseaFont fontSize24">Miembros:</h3>
                   <ul>
-                  <li className="puntos py-1">Miembro3</li>
+                    <li className="puntos py-1">Miembro3</li>
                     <li className="puntos py-1">Miembro4</li>
                     <li className="puntos py-1">Miembro5</li>
                   </ul>
@@ -246,8 +325,17 @@ const NosotrosPage = () => {
             />
           }
         />
-
-        <SliderGeneral/>
+        
+        <section className="container-section py-10 my-5">
+        <HeaderComponets
+          src="/images/fondo1.png"
+          classNameText={"colorVerde chelseaFont pt-10 mt-10 "}
+          alignment="start"
+        >
+          Reconocimiento
+        </HeaderComponets>
+          <SliderGeneral slides={slides}  themeColor="#96C473"/>;
+        </section>
       </div>
     </Main>
   );

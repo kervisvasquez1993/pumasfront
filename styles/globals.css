@@ -31,6 +31,7 @@ body {
   height: 95%;
   width: 65%;
 }
+
 .setionStyleTwo {
   height: 100%;
   display: flex;
@@ -39,9 +40,11 @@ body {
   height: 100%;
   width: 65%;
 }
-.colorGrey{
+
+.colorGrey {
   color: #BFBFBF;
 }
+
 .chelseaFontTitle {
   font-family: 'Chelsea Market', sans-serif;
   font-size: 28px;
@@ -169,6 +172,33 @@ a {
   /* max-width: 1512; */
 }
 
+.swiper-wrapper > * {
+  background-color: #fffdf6 !important;
+}
+.swiper-button-next, .swiper-button-prev{
+  color: #96C473 !important;
+  font-size: 70px !important;
+  font-weight: bold;
+}
+.swiper-button-prev{
+  color: #96C473 !important;
+}
+.swiper-pagination-bullet-active{
+  color: #96C473 !important;
+}
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev,
+.swiper-button-prev, 
+.swiper-container-rtl .swiper-button-next{
+    background-image: none;
+}
+
+.swiper-button-next,
+.swiper-button-prev, 
+.swiper-container-rtl .swiper-button-prev,
+.swiper-container-rtl .swiper-button-next{
+    fill: #000;
+}
 /* slider */
 
 
@@ -194,8 +224,12 @@ a {
 
 
 .swiper {
-  max-width: 75%;
+  max-width: 100%;
   height: 35vh;
+}
+
+.mySwiper .swiper-slide {
+  opacity: 1 !important;
 }
 
 .swiper-slide {
