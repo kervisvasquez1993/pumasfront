@@ -461,3 +461,48 @@ footer {
 
     }
 }
+
+.imagen-container {
+    position: relative;
+    
+  }
+  
+  .imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta el comportamiento del contenido de la imagen */
+  }
+  
+  .imagen-superpuesta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 150%;
+    height: 20%; 
+    opacity: 1; 
+  }
+  
+  .imagen-icono-animal{
+    position: absolute;
+    bottom: 36px;
+    left: 0;
+    width: 100px;
+    height: 100px; 
+    opacity: 1; 
+  }
+  .contentElemenCard{
+    position: absolute;
+    bottom: -20px;
+    left: 140px;
+    width:40%;
+    height: 100px; 
+    opacity: 1; 
+  }
+
+  .title-animal{
+    font-size: 28px;
+  }
+  .paragraft-venedo{
+    font-size: 18px;
+    opacity: 0.4;
+  }

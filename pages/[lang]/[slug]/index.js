@@ -7,6 +7,7 @@ import SantuarioPage from "../../../components/Pages/SantuarioPage";
 import CentroDeRescate from "../../../components/Pages/CentroDeRescate";
 import BlogPage from "../../../components/Pages/BlogPage";
 import ProgramaPage from "../../../components/Pages/ProgramaPage";
+import ApoyanosPage from "../../../components/Pages/ApoyanosPage";
 
 const Page = ({ page }) => {
   const router = useRouter();
@@ -34,6 +35,8 @@ const Page = ({ page }) => {
           return <BlogPage />;
         case "programas":
           return <ProgramaPage />;
+        case "apoyanos":
+          return <ApoyanosPage />;
         default:
           return null;
       }

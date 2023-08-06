@@ -41,6 +41,20 @@ body {
   width: 65%;
 }
 
+.setionStyleContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* priincipio de posiciones con flexbox */
+
+
+
+
+
+
 .colorGrey {
   color: #BFBFBF;
 }
@@ -127,6 +141,8 @@ a {
   font-weight: 700;
 }
 
+
+
 .fuenteTitulo {
   font-size: 24px;
   font-weight: bold;
@@ -172,33 +188,39 @@ a {
   /* max-width: 1512; */
 }
 
-.swiper-wrapper > * {
+.swiper-wrapper>* {
   background-color: #fffdf6 !important;
 }
-.swiper-button-next, .swiper-button-prev{
+
+.swiper-button-next,
+.swiper-button-prev {
   color: #96C473 !important;
   font-size: 70px !important;
   font-weight: bold;
 }
-.swiper-button-prev{
+
+.swiper-button-prev {
   color: #96C473 !important;
 }
-.swiper-pagination-bullet-active{
+
+.swiper-pagination-bullet-active {
   color: #96C473 !important;
-}
-.swiper-button-next,
-.swiper-container-rtl .swiper-button-prev,
-.swiper-button-prev, 
-.swiper-container-rtl .swiper-button-next{
-    background-image: none;
 }
 
 .swiper-button-next,
-.swiper-button-prev, 
 .swiper-container-rtl .swiper-button-prev,
-.swiper-container-rtl .swiper-button-next{
-    fill: #000;
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  background-image: none;
 }
+
+.swiper-button-next,
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  fill: #000;
+}
+
 /* slider */
 
 

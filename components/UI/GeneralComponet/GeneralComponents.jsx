@@ -21,7 +21,7 @@ const GeneralComponents = ({
   };
 
   return (
-    <section className={`${containerClasses}`} style={backgroundImageStyle} >
+    <section className={`${containerClasses} test`} style={backgroundImageStyle} >
       <section className={`${style.imageContainer} ${style.children} `}  >
         {imageSrc && (
           <ImageCardComponet

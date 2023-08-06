@@ -2,16 +2,33 @@ import React from "react";
 
 const BasicSection = ({
   title = {},
-  children,
-  classNameWrapper = {},
-  classNameTitle = {},
   classNameContent = {},
+  children,
+  styleWrapper = {},
+  styleTitle = {},
+  styleContent = {},
+  width = "100%",
+  alignItems = "flex-start",
+  justifyContent = "flex-start",
+  classNameWrapper={}
 }) => {
-  return (
-    <section className={classNameWrapper}>
-      {title && <h2 className={classNameTitle}>{title}</h2>}
+  const wrapperStyle = {
+    width: width,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: alignItems,
+    justifyContent: justifyContent,
+    ...styleWrapper,
+  };
 
-      {children && <section className={classNameContent}>{children}</section>}
+  return (
+    <section className={classNameWrapper} style={wrapperStyle}>
+      {title && <h2 style={styleTitle}>{title}</h2>}
+      {children && (
+        <section style={styleContent} className={classNameContent}>
+          {children}
+        </section>
+      )}
     </section>
   );
 };
