@@ -19,9 +19,7 @@ const Menu = ({ items }) => {
           <p className={styles.hourClockText}>Hasta las 4:00 PM</p>
         </div>
         <div className="">
-            <Link href="/es"className="active">ES</Link>
-            <span className={styles.span}>|</span>
-            <Link href="/en"className="">EN</Link>
+            <Link href="/es"className="color-white">ES</Link>
         </div>
       </section>
 

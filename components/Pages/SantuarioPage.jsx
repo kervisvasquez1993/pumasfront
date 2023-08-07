@@ -19,6 +19,9 @@ const SantuarioPage = () => {
   ];
   return (
     <Main titlePage={"Santuario"}>
+      <section className="headerSectionMap">
+        <img className="sizeModelsSantuario" src="/images/tortuga-sin-background.png" alt="tortuga" />
+      </section>
       <div className="container">
         <HeaderComponets
           src="/images/fondo1.png"
@@ -69,42 +72,44 @@ const SantuarioPage = () => {
           </section>
         </section>
         <TwoColumnGrid backgroundImage="/images/mask-background.png">
-            <HeaderComponets
-              alignment="center"
-              src="/images/fondo1.png"
-              classNameText={"colorSecondary chelseaFont"}
-              classNameSection={"centerElement"}
+          <HeaderComponets
+            alignment="center"
+            src="/images/fondo1.png"
+            classNameText={"colorSecondary chelseaFont"}
+            classNameSection={"centerElement"}
+          >
+            Reserva tu recorrido Guiado
+          </HeaderComponets>
+          <BasicSection
+            classNameTitle={""}
+            classNameWrapper={"setionStyleTwo"}
+            title={""}
+            alignItems={"center"}
+            justifyContent={"center"}
+            width="60%"
+            classNameContent={
+              "fuentesParrafo align-vertical-center-horizontal-start py-10 my-10"
+            }
+          >
+            <p className="py-5">
+              En este recorrido aprenderás sobre los animales silvestres que
+              viven de forma permanente en el Santuario: conocerás su
+              comportamiento, historia natural, ecología y descubrirás la razón
+              por la que no pudieron ser devueltos a la naturaleza. El recorrido
+              guiado no tiene ningún costo económico adicional, pero está sujeto
+              a disponibilidad.
+            </p>
+            <p className="py-5 fontBold ">
+              ¡Sera un gusto mostrarte nuestro santuario!
+            </p>
+            <ButtonView
+              className={" backgroundSecondary m-0 manropeFont p-5"}
+              link={""}
             >
-              Reserva tu recorrido Guiado
-            </HeaderComponets>
-            <BasicSection
-              classNameTitle={""}
-              classNameWrapper={"setionStyleTwo"}
-              title={""}
-              alignItems={"center"}
-              justifyContent={"center"}
-              width="60%"
-              classNameContent={"fuentesParrafo align-vertical-center-horizontal-start py-10 my-10"}
-            >
-              <p className="py-5">
-                En este recorrido aprenderás sobre los animales silvestres que
-                viven de forma permanente en el Santuario: conocerás su
-                comportamiento, historia natural, ecología y descubrirás la
-                razón por la que no pudieron ser devueltos a la naturaleza. El
-                recorrido guiado no tiene ningún costo económico adicional, pero
-                está sujeto a disponibilidad.
-              </p>
-              <p className="py-5 fontBold ">
-                ¡Sera un gusto mostrarte nuestro santuario!
-              </p>
-              <ButtonView
-                className={" backgroundSecondary m-0 manropeFont p-5"}
-                link={""}
-              >
-                Reserva tu recorrido
-              </ButtonView>
-            </BasicSection>
-            </TwoColumnGrid>
+              Reserva tu recorrido
+            </ButtonView>
+          </BasicSection>
+        </TwoColumnGrid>
         <div className="container-edu ">
           <div>
             <h3 className="program-title fuenteTitulo colorVerde">

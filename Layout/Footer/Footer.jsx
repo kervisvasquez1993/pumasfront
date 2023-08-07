@@ -12,10 +12,7 @@ const Footer = () => {
             <li className="manropeFont font-size-24">Boletería: +506 2669-6019</li>
             <li className="manropeFont font-size-24">Reservas: +506 8479-7025</li>
             <li className="manropeFont font-size-24">Oficina: +506 2669-6044</li>
-            <div className="social">
-              <li><a href="#">F</a></li>
-              <li><a href="#">I</a></li>
-            </div>
+            
           </ul>
         </div>
         <div className="footer-block ">

@@ -9,9 +9,9 @@ import BlogPage from "../../../components/Pages/BlogPage";
 import ProgramaPage from "../../../components/Pages/ProgramaPage";
 import ApoyanosPage from "../../../components/Pages/ApoyanosPage";
 
-const Page = ({ page }) => {
+const Page = ({ page, models }) => {
   const router = useRouter();
-  console.log(page);
+  models && console.log(models);
   if (router.isFallback) {
     return <div>Cargando...</div>;
   }
@@ -58,6 +58,14 @@ const langAll = () => {
   };
   return ApiBackend("api/i18n/locales", config);
 };
+const getAllModels = (lang) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  return ApiBackend("api/modelos?populate=*&locale=" + lang, config);
+};
 
 const getMenus = (language) => {
   const config = {
@@ -76,6 +84,7 @@ export const getStaticProps = async ({ params }) => {
   const getLangAll = await langAll();
   const languages = getLangAll.data;
   const menu = [];
+
   for (const language of languages) {
     const menusResponse = await getMenus(language.code);
     const menus = menusResponse.data.data;
@@ -88,8 +97,17 @@ export const getStaticProps = async ({ params }) => {
       });
     });
   }
-  console.log(menu);
   const page = menu.find((page) => page.lang === lang && page.slug === slug);
+  const models = {};
+  if (page.slug === "santuario") {
+    for (const language of languages) {
+      const modelsResponse = await getAllModels(language.code);
+      models[language.code] = modelsResponse.data;
+    }
+    return {
+      props: { page: { ...page }, models },
+    };
+  }
   if (!page) return { notFound: true };
   return {
     props: { page: { ...page } },
