@@ -31,7 +31,7 @@ img {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
-    min-height: 45vh;
+    /* min-height: 45vh; */
 }
 
 .sanctuary-title,
@@ -274,8 +274,12 @@ img {
 }
 
 .icons__imagen {
-    width: 50%;
+    width: 20%;
 
+}
+.backgroundProgrmar{
+    background-image: url("/images/mask-proggrama.png");
+    background-size: 100% 100%;
 }
 
 .materials__imagen {

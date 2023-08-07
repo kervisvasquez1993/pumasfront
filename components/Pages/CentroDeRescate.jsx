@@ -4,8 +4,10 @@ import Section from "../Section/Basic/Section";
 import SectionReverse from "../Section/Basic/SectionReverse";
 import SliderThree from "../UI/Slider/SliderThree";
 import BasicSection from "../Section/Basic/BasicSection";
-// import Section from "./Section";
-// import SectionReverse from "./SectionReverse";
+import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
+import ButtonView from "../../views/ButtonView";
+import CardBasic from "../Section/CardBasic";
+import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
 
 const CentroDeRescate = () => {
   const images = [
@@ -89,6 +91,46 @@ const CentroDeRescate = () => {
           contentClassName={"contentSectionReserveEnd"}
           content="El proceso de rescate es crucial para salvar a los animales en peligro y brindarles un lugar seguro donde puedan recuperarse y recibir atención médica y rehabilitación. Nuestro equipo de expertos trabaja incansablemente para garantizar que cada animal reciba el cuidado adecuado y, cuando sea posible, se les devuelva a su hábitat natural."
         />
+         <TwoColumnGrid backgroundImage="/images/mask-secundario.png">
+          <BasicSection
+            classNameTitle={""}
+            classNameWrapper={"setionStyle "}
+            title={""}
+            classNameContent={
+              "fuentesParrafo align-vertical-center-horizontal-start py-10 my-10"
+            }
+            width={"100%"}
+            widthContent="50%"
+            alignItems={"center"}
+            justifyContent={"center"}
+            styleWrapper={{ height: "100%" }}
+
+            // styleContent={{height: "100%"}}
+          >
+            <p className="py-10">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+              aliquam dicta maxime perferendis ducimus, temporibus quae impedit
+              sequi deserunt quasi fuga, rerum omnis odio saepe harum aperiam
+              officia quod! Nulla.
+            </p>
+            <ButtonView
+              className={" backgroundSecondary m-0 manropeFont py-10"}
+              link={""}
+            >
+              Conoce Más
+            </ButtonView>
+          </BasicSection>
+          <section>
+          <HeaderComponets
+          classNameText={" colorSecondary chelseaFont"}
+          alignment="end"
+          width="100%"
+        >
+          NO ME SAQUES DE MI HÁBITAD
+        </HeaderComponets>
+          <CardBasic imgSrc={"/images/section2.png"} />
+          </section>
+        </TwoColumnGrid>
       </div>
     </Main>
   );

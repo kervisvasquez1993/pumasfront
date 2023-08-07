@@ -8,6 +8,7 @@ import SliderThree from "../UI/Slider/SliderThree";
 import BasicSection from "../Section/Basic/BasicSection";
 import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
 import ButtonView from "../../views/ButtonView";
+import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 
 const SantuarioPage = () => {
   const images = [
@@ -67,8 +68,7 @@ const SantuarioPage = () => {
             </BasicSection>
           </section>
         </section>
-        <section className="container-section py-10 my-5">
-          <section className="grid-2">
+        <TwoColumnGrid backgroundImage="/images/mask-background.png">
             <HeaderComponets
               alignment="center"
               src="/images/fondo1.png"
@@ -81,7 +81,10 @@ const SantuarioPage = () => {
               classNameTitle={""}
               classNameWrapper={"setionStyleTwo"}
               title={""}
-              classNameContent={"fuentesParrafo py-10"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              width="60%"
+              classNameContent={"fuentesParrafo align-vertical-center-horizontal-start py-10 my-10"}
             >
               <p className="py-5">
                 En este recorrido aprenderás sobre los animales silvestres que
@@ -101,8 +104,7 @@ const SantuarioPage = () => {
                 Reserva tu recorrido
               </ButtonView>
             </BasicSection>
-          </section>
-        </section>
+            </TwoColumnGrid>
         <div className="container-edu ">
           <div>
             <h3 className="program-title fuenteTitulo colorVerde">

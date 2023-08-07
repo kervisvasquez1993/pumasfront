@@ -39,7 +39,7 @@ const ProgramaPage = () => {
             </div>
           </div>
         </div>
-        <div className="container-edu ">
+        <div className="container-edu backgroundProgrmar py-10 my-10">
           <div className="grid-2">
             <div>
               <h3 className="edu-title fuenteTitulo colorSecondary">EDUCACIÓN AMBIENTAL</h3>
@@ -57,11 +57,10 @@ const ProgramaPage = () => {
               <li>Secundaria y educacion Superiror : 2000$</li>
               <li>Profesores : 2000$</li>
               <li>Padres de familia : 3000$</li>
-
               <button className="edu-button">Reservar Recorrido</button>
             </div>
           </div>
-          <div className="edu-icons-container py-10 my-10">
+          <div className="edu-icons-container">
             <div className="icon-flex-2">
               <div className="icons__imagen">
                 <img src="/images/ico_presentacion1.png" alt="imagen santuario" />
