@@ -48,7 +48,7 @@ const SliderTwo = () => {
   }, []);
 
   return (
-    <div className="swiper-container" style={{ background: backgroundColor }}>
+    <div className="swiper-container py-10 my-10 center" style={{ background: backgroundColor }}>
       <div className="swiper-navigation">
         <button className="swiper-button-prev" onClick={handlePrev}></button>
         <button className="swiper-button-next" onClick={handleNext}></button>

@@ -111,7 +111,7 @@ a {
 
 .btnPrimary {
   width: 260px;
-  height: 40px;
+  height: 45px;
   text-align: center;
   color: #FFFDF5;
   font-size: 18px;
@@ -121,10 +121,19 @@ a {
   line-height: normal;
   margin: 0 20px;
 }
+.font-size-24{
+  font-size: 24px !important;
+}
+.font-size-16{
+  font-size: 16px !important;
+}
 
+.fontBold{
+  font-weight: bold !important;
+}
 .btnPrimaryMenu {
   width: 200px;
-  height: 40px;
+  height: 45px;
   text-align: center;
   color: #FFFDF5;
   font-size: 18px;

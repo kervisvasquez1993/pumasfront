@@ -10,7 +10,7 @@ const CardBasic = ({ imgSrc, showMask, maskSrc=false, iconSrc, title, subtitle }
         )}
        { iconSrc && (<img className="imagen-icono-animal" src={iconSrc} alt={iconSrc} />)} 
       </div>
-      <section className="imagen-container">
+      <section className="container-card">
         <div className="contentElemenCard">
           <h3 className="title-animal fuentesParrafo">{title}</h3>
           <p className="paragraft-venedo">{subtitle}</p>

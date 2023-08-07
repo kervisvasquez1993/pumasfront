@@ -10,6 +10,7 @@ import BasicSection from "../Section/Basic/BasicSection";
 import ButtonView from "../../views/ButtonView";
 import CardBasic from "../Section/CardBasic";
 import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
+import Map from "../UI/Map";
 
 const HomePage = () => {
   return (
@@ -106,12 +107,19 @@ const HomePage = () => {
 
           <CardBasic imgSrc={"/images/section2.png"} />
         </TwoColumnGrid>
+        <HeaderComponets
+          classNameText={"py-10 colorSecondary chelseaFont"}
+          alignment="start"
+          width="35%"
+        >
+          NO ME SAQUES DE MI HÁBITAD
+        </HeaderComponets>
         <TwoColumnGrid>
           <CardBasic
             showMask={true}
             maskSrc={"/images/mask.png"}
             iconSrc={"/images/modelo3d.png"}
-            imgSrc={"/images/venado.png"}
+            imgSrc={"/images/nigre.png"}
             title={"esto es el titulo"}
             subtitle={"esto el el subtitulo"}
           />
@@ -147,8 +155,76 @@ const HomePage = () => {
             </ButtonView>
           </BasicSection>
         </TwoColumnGrid>
+        <HeaderComponets
+          classNameText={"py-10 colorPrimary chelseaFont"}
+          alignment="start"
+          width="35%"
+        >
+          NOTICIAS Y BLOG
+        </HeaderComponets>
         <Slider srcBackgroundColor={"/images/fondo1.png"} />
-        <MapSection />
+        <TwoColumnGrid>
+          <Map />
+          <BasicSection
+            classNameTitle={""}
+            classNameWrapper={"setionStyle"}
+            title={""}
+            classNameContent={" align-vertical-center-horizontal-start "}
+            width={"70%"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            styleWrapper={{ height: "100%" }}
+            // styleContent={{height: "100%"}}
+          >
+            <section className="py-5">
+              <h4 className="chelseaFont colorSecondary font-size-24">HORARIO</h4>
+              <div>
+                <p className="py-1">Luneas a Domingos</p>
+                <p className="py-1">
+                  De 8:00 AM A 4:00 PM Incluidos los festivos
+                </p>
+              </div>
+            </section>
+            <section className="py-5 ">
+              <h4 className="chelseaFont colorSecondary font-size-24">DIRECCIÓN</h4>
+              <div>
+                <p className="py-1 fontBold">Luneas a Domingos</p>
+                <p className="py-1">
+                  <span className="fontBold">De 8:00 AM A 4:00 PM.</span>{" "}
+                  Incluidos los festivos
+                </p>
+              </div>
+            </section>
+            <section className="py-5">
+              <h4 className="chelseaFont colorSecondary font-size-24">PRECIOS</h4>
+              <div>
+                <p className="py-1 fontBold font-size-16">Nacionales</p>
+                <p className="">
+                  Niños(4 - 12 Años) : $1000
+                </p>
+                <p className="">
+                  Estudiantes(Mayores De 12 Años) Y Adultos Mayores: $2000
+                </p>
+                <p className="">
+                  Adultos: $3000
+                </p>
+              </div>
+              <div className="py-5">
+                <p className="py-1 fontBold">Extrangeros:</p>
+                <p className="">
+                  Niños(4 - 12 Años) : $8
+                </p>
+                <p className="">
+                  Estudiantes(Mayores De 12 Años) Y Adultos Mayores: $8
+                </p>
+                <p className="">
+                  Adultos: $12
+                </p>
+              </div>
+            </section>
+          </BasicSection>
+        </TwoColumnGrid>
+        
         <HeaderComponets
           src="/images/fondo1.png"
           classNameText={"py-5 colorVerde chelseaFont"}

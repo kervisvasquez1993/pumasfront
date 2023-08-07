@@ -34,7 +34,7 @@ export default function Slider({ srcBackgroundColor = "" }) {
   }, []);
 
   return (
-    <section style={backgroundImageStyle}>
+    <section style={backgroundImageStyle} className="center">
       <Swiper
         onSwiper={setSwiperRef}
         slidesPerView={slidesPerView}
