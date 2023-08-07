@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <MenuProvider>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </MenuProvider>
   );
 }

@@ -3,36 +3,36 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer style={{ backgroundImage: `url("/images/foooterBackround.png")` }}>
-      <div className="footer" >
+    <footer style={{ backgroundImage: `url("/images/foooterBackround.png")`, backgroundSize : "100% 100%" }} className='footer-wrapper'>
+      <div className="footer center" >
         <div className="footer-block">
-          <h2>Contacto</h2>
-          <ul>
-            <li>laspumascr@gmail.com</li>
-            <li>Boletería: +506 2669-6019</li>
-            <li>Reservas: +506 8479-7025</li>
-            <li>Oficina: +506 2669-6044</li>
+          <h2 className='chelseaFont  font-size-24 color-white'>Contacto</h2>
+          <ul className='py-5 color-white'>
+            <li className="manropeFont font-size-24">laspumascr@gmail.com</li>
+            <li className="manropeFont font-size-24">Boletería: +506 2669-6019</li>
+            <li className="manropeFont font-size-24">Reservas: +506 8479-7025</li>
+            <li className="manropeFont font-size-24">Oficina: +506 2669-6044</li>
             <div className="social">
               <li><a href="#">F</a></li>
               <li><a href="#">I</a></li>
             </div>
           </ul>
         </div>
-        <div className="footer-block">
-          <h2>Dirección</h2>
-          <p>Cañas, Guanacaste. A 4.5 km. de Cañas en dirección hacia Liberia, sobre la Carretera Interamericana Norte, entrada a mano derecha. </p>
+        <div className="footer-block ">
+          <h2 className='chelseaFont  font-size-24 color-white'>Dirección</h2>
+          <p className='py-5 manropeFont font-size-24 color-white'><span className='fontBold'> Cañas, Guanacaste.</span> A 4.5 km. de Cañas en dirección hacia Liberia, sobre la Carretera Interamericana Norte, entrada a mano derecha. </p>
         </div>
-        <div className="footer-block">
-          <h2>Horario</h2>
-          <ul>
+        <div className="footer-block color-white">
+          <h2 className='chelseaFont  font-size-24 color-white'>Horario</h2>
+          <ul className='py-5 manropeFont font-size-24'>
             <li>Lunes a Domingo</li>
             <li>De 8:00am a 9:00am</li>
             <li>Incluso Feriado</li>
           </ul>
         </div>
       </div>
-      <div>
-        <img src="logo.png" alt="" />
+      <div className='w-10vw'>
+        <img src="/images/logo-blanco.png" alt="" />
       </div>
     </footer>
   );

@@ -7,6 +7,7 @@ import ButtonView from "../../views/ButtonView";
 import TwoSections from "../UI/TwoSection";
 import SectionReverse from "../Section/Basic/SectionReverse";
 import Section from "../Section/Basic/Section";
+import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 import SliderGeneral from "../UI/Slider/SliderGeneral";
 const NosotrosPage = () => {
   const images = [
@@ -96,14 +97,14 @@ const NosotrosPage = () => {
   ];
 
   return (
-    <Main>
+    <Main titlePage={"Nosotros"}>
       <div className="container">
         <HeaderComponets
           src="/images/fondo1.png"
           classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
           alignment="start"
         >
-          Nuestro Santuario
+          NUESTRA HISTORIA
         </HeaderComponets>
         <section className="container-section py-10 my-5">
           <section className="grid-2">
@@ -146,12 +147,14 @@ const NosotrosPage = () => {
             </BasicSection>
           </section>
         </section>
-        <section className="container-section py-10 my-5">
-          <section className="grid-2">
+        <TwoColumnGrid backgroundImage="/images/mask-verde.png">
             <BasicSection
               classNameTitle={""}
               classNameWrapper={"setionStyleTwo"}
               title={""}
+              widthContent="50%"
+              alignItems={"center"}
+              justifyContent={"center"}
               classNameContent={"fuentesParrafo py-10"}
             >
               <p className="py-5">
@@ -172,16 +175,16 @@ const NosotrosPage = () => {
                 Reserva tu recorrido
               </ButtonView>
             </BasicSection>
+            
             <HeaderComponets
               alignment="start"
               src="/images/fondo1.png"
               classNameText={"colorSecondary chelseaFont"}
-              classNameSection={"centerElement"}
+              classNameSection={"center"}
             >
-              <img src="/images/logo_fundacion1.png" />
+              <img src="/images/logo_fundacion.png" />
             </HeaderComponets>
-          </section>
-        </section>
+         </TwoColumnGrid>
         <section className="section OneImg">
           <img src="/images/video.png" />
         </section>
@@ -264,6 +267,7 @@ const NosotrosPage = () => {
           </section>
         </section>
         <TwoSections
+        backgroundImage={"/images/mask-naranja.png"}
           title1={"Junta Directiva"}
           children1={
             <Section

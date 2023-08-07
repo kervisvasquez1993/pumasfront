@@ -417,13 +417,19 @@ footer {
     display: flex;
     width: 100vw;
     padding: 2rem;
-
+    min-height: 30vh;
     background-repeat: no-repeat;
     background-size: cover;
     align-items: center;
     justify-content: space-evenly;
+    background: #0EC0B6;
 }
-
+.color-white{
+    color: white;
+}
+.w-10vw{
+    width: 10vw;
+}
 .footer {
     display: flex;
     padding: 1rem;
