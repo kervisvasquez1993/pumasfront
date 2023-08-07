@@ -8,7 +8,7 @@ const CardBasic = ({ imgSrc, showMask, maskSrc=false, iconSrc, title, subtitle }
         {showMask && (
           <img className="imagen-superpuesta" src={maskSrc} alt={maskSrc} />
         )}
-        <img className="imagen-icono-animal" src={iconSrc} alt={iconSrc} />
+       { iconSrc && (<img className="imagen-icono-animal" src={iconSrc} alt={iconSrc} />)} 
       </div>
       <section className="imagen-container">
         <div className="contentElemenCard">

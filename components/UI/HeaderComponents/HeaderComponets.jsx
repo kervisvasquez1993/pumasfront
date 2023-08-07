@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import style from "./style.module.css";
 
 const HeaderComponents = ({
@@ -6,10 +6,8 @@ const HeaderComponents = ({
   classNameText = "",
   classNameSection = "",
   alignment,
-  src = "",
+  width = "100%",
 }) => {
-  const [alignmentClasses, setAlignmentClasses] = useState("");
-
   const getJustifyContent = () => {
     if (alignment === "start") {
       return "flex-start";
@@ -22,13 +20,12 @@ const HeaderComponents = ({
   };
 
   const backgroundImageStyle = {
-    backgroundImage: `url(${src})`,
     display: "flex",
     justifyContent: getJustifyContent(),
+    width: width,
   };
 
   return (
-    // <section style={backgroundImageStyle} className={`${style.wrapperElement}`}>
     <section style={backgroundImageStyle} className={`${classNameSection}`}>
       <h2 className={`${classNameText} ${style.fontTitle}`}>{children}</h2>
     </section>

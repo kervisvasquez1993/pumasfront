@@ -7,6 +7,7 @@ const BasicSection = ({
   styleWrapper = {},
   styleTitle = {},
   styleContent = {},
+  widthContent = "100%",
   width = "100%",
   alignItems = "flex-start",
   justifyContent = "flex-start",
@@ -20,12 +21,17 @@ const BasicSection = ({
     justifyContent: justifyContent,
     ...styleWrapper,
   };
+  const contentStyle = {
+    ...styleContent,
+    width: widthContent, 
+  };
+
 
   return (
     <section className={classNameWrapper} style={wrapperStyle}>
       {title && <h2 style={styleTitle}>{title}</h2>}
       {children && (
-        <section style={styleContent} className={classNameContent}>
+        <section style={contentStyle} className={classNameContent}>
           {children}
         </section>
       )}

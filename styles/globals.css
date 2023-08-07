@@ -47,8 +47,12 @@ body {
   flex-direction: column;
   height: 100%;
 }
+.mask-background{
 
-/* priincipio de posiciones con flexbox */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 
 
 
