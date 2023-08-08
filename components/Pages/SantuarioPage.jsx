@@ -9,6 +9,9 @@ import BasicSection from "../Section/Basic/BasicSection";
 import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
 import ButtonView from "../../views/ButtonView";
 import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
+import MapWithBackground from "../UI/MapWithBackground";
+import useModelo from "../../hooks/useModelo";
+import CanvasElement from "../UI/CanvasElement";
 
 const SantuarioPage = () => {
   const images = [
@@ -17,11 +20,22 @@ const SantuarioPage = () => {
     "https://swiperjs.com/demos/images/nature-3.jpg",
     "https://swiperjs.com/demos/images/nature-4.jpg",
   ];
+  const { modeloList } = useModelo();
+
   return (
     <Main titlePage={"Santuario"}>
-      <section className="headerSectionMap">
-        <img className="sizeModelsSantuario" src="/images/tortuga-sin-background.png" alt="tortuga" />
-      </section>
+      <MapWithBackground backgroundImage={"/images/mapa.jpg"}>
+        {modeloList?.map((models) => {
+          const { ubicacionX, ubicacionY, srcModelo } = models;
+          const x = parseInt(ubicacionX);
+          const y = parseInt(ubicacionY);
+          return (
+            <CanvasElement x={x} y={y} className={"sizeModelsSantuario"}>
+              <img src={srcModelo} alt="" />
+            </CanvasElement>
+          );
+        })}
+      </MapWithBackground>
       <div className="container">
         <HeaderComponets
           src="/images/fondo1.png"

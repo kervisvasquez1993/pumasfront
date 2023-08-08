@@ -6,6 +6,7 @@ import "../styles/tailwind.css";
 import "../styles/stylePage.css";
 import { MenuProvider } from "../context/MenuProvider";
 import { useEffect, useState } from "react";
+import { ModeloProvider } from "../context/ModelosProvider";
 function MyApp({ Component, pageProps }) {
   const [initialRenderComplete, setInitialRenderComplete] = useState(false);
 
@@ -17,10 +18,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <MenuProvider>
-      <Component {...pageProps} />
+      <ModeloProvider>
+        <Component {...pageProps} />
+      </ModeloProvider>
     </MenuProvider>
   );
 }
 export default MyApp;
-
-

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HomePage from "../../../components/Pages/HomePage";
 import { useRouter } from "next/router";
 import NosotrosPage from "../../../components/Pages/NosotrosPage";
@@ -8,9 +8,15 @@ import CentroDeRescate from "../../../components/Pages/CentroDeRescate";
 import BlogPage from "../../../components/Pages/BlogPage";
 import ProgramaPage from "../../../components/Pages/ProgramaPage";
 import ApoyanosPage from "../../../components/Pages/ApoyanosPage";
+import useModelo from "../../../hooks/useModelo";
 
 const Page = ({ page, models }) => {
   const router = useRouter();
+  const { hearlessChangInfo } = useModelo();
+  
+  useEffect(() => {
+    models && hearlessChangInfo(models)
+  },[])
   models && console.log(models);
   if (router.isFallback) {
     return <div>Cargando...</div>;
