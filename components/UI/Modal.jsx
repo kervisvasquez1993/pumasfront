@@ -1,4 +1,5 @@
 import React from "react";
+import NavigationSlider from "./Slider/NavigationSlider";
 
 export default function Modal({ showModal, setShowModal, data }) {
   return (
@@ -9,7 +10,7 @@ export default function Modal({ showModal, setShowModal, data }) {
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                {/*body*/}
+                <NavigationSlider/>
                 <div className="relative p-6 flex-auto">
                   {data?.descripcion}
                 </div>
