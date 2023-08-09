@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation } from "swiper";
+import SwiperCore, { Navigation } from 'swiper/modules';
 import "swiper/css";
 import "swiper/css/navigation";
 import style from "./style.module.css";
