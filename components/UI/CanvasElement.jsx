@@ -5,6 +5,8 @@ const CanvasElement = ({ x, y, children }) => {
     position: "absolute",
     left: x,
     top: y,
+    width : "200px",
+    cursor: "pointer"
   };
 
   return <div style={canvasElementStyle}>{children}</div>;

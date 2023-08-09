@@ -7,10 +7,10 @@ body {
 }
 .headerSectionMap{
   min-height: 80vh !important;
-  background-color: red;
+
 }
 .sizeModelsSantuario{
-  width: 250px;
+  width: 200px;
   cursor: pointer !important;
   position: absolute;
 }

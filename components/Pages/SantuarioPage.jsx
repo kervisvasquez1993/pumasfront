@@ -1,5 +1,5 @@
 // SantuarioPage.js
-import React from "react";
+import React, { useState } from "react";
 import Main from "../../Layout/Main/Main";
 import SanctuarySection from "../Section/Santuario/SanctuarySection";
 import RouteSection from "../Section/Santuario/RouteSection";
@@ -12,6 +12,7 @@ import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 import MapWithBackground from "../UI/MapWithBackground";
 import useModelo from "../../hooks/useModelo";
 import CanvasElement from "../UI/CanvasElement";
+import Modal from "../UI/Modal";
 
 const SantuarioPage = () => {
   const images = [
@@ -21,6 +22,18 @@ const SantuarioPage = () => {
     "https://swiperjs.com/demos/images/nature-4.jpg",
   ];
   const { modeloList } = useModelo();
+  const [stateModal, setStateModal] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+  const hearlessChange = (data) => {
+    setStateModal(data);
+    setOpenModal(true);
+    console.log(data);
+  };
+
+  const handleCloseModal = () => {
+    setStateModal(null);
+    setOpenModal(false);
+  };
 
   return (
     <Main titlePage={"Santuario"}>
@@ -30,12 +43,33 @@ const SantuarioPage = () => {
           const x = parseInt(ubicacionX);
           const y = parseInt(ubicacionY);
           return (
-            <CanvasElement x={x} y={y} className={"sizeModelsSantuario"}>
-              <img src={srcModelo} alt="" />
+            <CanvasElement
+              key={srcModelo}
+              x={x}
+              y={y}
+              className={"sizeModelsSantuario"}
+            >
+              <img
+                src={srcModelo}
+                alt=""
+                onClick={() => hearlessChange(models)}
+              />
             </CanvasElement>
           );
         })}
       </MapWithBackground>
+      <Modal
+        showModal={openModal}
+        setShowModal={setOpenModal}
+        data={stateModal}
+        title={"Model Information"} 
+        body={
+          <p className="my-4 text-slate-500 text-lg leading-relaxed">
+            {stateModal ? stateModal.srcModelo : ""}
+          </p>
+        }
+      />
+
       <div className="container">
         <HeaderComponets
           src="/images/fondo1.png"

@@ -9,15 +9,27 @@ export const ModeloProvider = ({ children }) => {
     setModelInfo(data);
   };
 
-  const modeloList = modelInfo?.es?.data.map((item) => ({
-    nombre: item.attributes.nombre,
-    ubicacionX: item.attributes.ubicacionX,
-    ubicacionY: item.attributes.ubicacionY,
-    srcModelo: item.attributes.srcModelo
-      ? "http://localhost:1337" +
-        item.attributes.srcModelo.data[0]?.attributes?.url
-      : null,
-  }));
+  const modeloList = modelInfo?.es?.data.map((item) => {
+    const srcModeloUrl =
+      "http://localhost:1337" +
+        item.attributes.srcModelo?.data[0]?.attributes?.url || null;
+
+    const imagenes = item.attributes?.imagenes?.data?.map((imagen) => {
+      return {
+        id: imagen.id,
+        url: "http://localhost:1337" + imagen.attributes.url,
+      };
+    });
+    console.log(imagenes, "imagenes")
+
+    return {
+      nombre: item.attributes.nombre,
+      ubicacionX: item.attributes.ubicacionX,
+      ubicacionY: item.attributes.ubicacionY,
+      descripcion: item.attributes.descripcion,
+      srcModelo: srcModeloUrl,
+    };
+  });
 
   return (
     <ModeloContext.Provider

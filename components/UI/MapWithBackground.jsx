@@ -4,9 +4,7 @@ import CanvasElement from "./CanvasElement"; // Asegúrate de importar el compon
 const MapWithBackground = ({ backgroundImage, children }) => {
   const mapStyle = {
     position: "relative",
-    overflow: "hidden", // Para recortar el contenido que se sale de los límites
     maxWidth: "100vw", // Tamaño máximo de pantalla
-    margin: "0 auto", // Centrar el contenido si la pantalla es más ancha que maxWidth
   };
 
   const backgroundContainerStyle = {
@@ -23,8 +21,9 @@ const MapWithBackground = ({ backgroundImage, children }) => {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
     backgroundPosition: "top left", // Cambiamos a la esquina superior izquierda
-    transformOrigin: "top left", // Importante para mantener la escala
-    transform: "scale(1)", // Escala inicial de 1
+    display: "flex", // Usar flex para contener los elementos hijos
+    flexWrap: "nowrap", // Mantener los elementos en una sola línea
+    overflowX: "auto", // Habilitar el desplazamiento horizontal en pantallas pequeñas
   };
 
   const scrollableContentStyle = {
@@ -32,9 +31,6 @@ const MapWithBackground = ({ backgroundImage, children }) => {
     top: 0,
     left: 0,
     width: "100%",
-    height: "100%",
-    overflowX: "auto", // Habilitar el desplazamiento horizontal en pantallas pequeñas
-    whiteSpace: "nowrap", // Mantener los elementos en una sola línea
   };
 
   return (
