@@ -20,14 +20,16 @@ export const ModeloProvider = ({ children }) => {
         url: "http://localhost:1337" + imagen.attributes.url,
       };
     });
-    console.log(imagenes, "imagenes")
 
     return {
       nombre: item.attributes.nombre,
       ubicacionX: item.attributes.ubicacionX,
       ubicacionY: item.attributes.ubicacionY,
       descripcion: item.attributes.descripcion,
+      especie : item.attributes.especie,
+      nombreCientifico : item.attributes.nombreCientifico,
       srcModelo: srcModeloUrl,
+      imagenes: imagenes,
     };
   });
 

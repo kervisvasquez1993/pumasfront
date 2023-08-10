@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['swiperjs.com'],
+    domains: ['swiperjs.com', "localhost"],
   },
 }
 

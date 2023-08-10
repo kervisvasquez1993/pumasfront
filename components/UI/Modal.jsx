@@ -1,42 +1,71 @@
 import React from "react";
 import NavigationSlider from "./Slider/NavigationSlider";
+import CloseIcon from "../Icons/CloseIcon";
+import ButtonView from "../../views/ButtonView";
 
 export default function Modal({ showModal, setShowModal, data }) {
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
-      {showModal ? (
+      {showModal && (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+            <div className="flex justify-end m-4"></div>
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              {/*content*/}
+              <button
+                type="button"
+                className="btnClose box-content  rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none absolute  right-4"
+                data-te-modal-dismiss
+                aria-label="Close"
+                onClick={handleCloseModal}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                <NavigationSlider/>
+                <NavigationSlider slides={data?.imagenes} />
                 <div className="relative p-6 flex-auto">
+                  <div className="headeModal">
+                    <section>
+                      <h2 className="chelseaFont colorPrimary fontSize24">
+                        {data?.nombre}
+                      </h2>
+                      <div className="flex my-2">
+                        <p className="fontSize24">{data?.especie}</p>{" "}
+                        <span className="fontSize24 px-1 mx-1">|</span>
+                        <p className="fontSize24">{data?.nombreCientifico}</p>
+                      </div>
+                    </section>
+                    <ButtonView
+                      className={" backgroundPrimary m-0 manropeFont p-5"}
+                      link={""}
+                    >
+                      Apoyar Animal
+                    </ButtonView>
+                  </div>
                   {data?.descripcion}
-                </div>
-                {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-                  <button
-                    className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Close
-                  </button>
-                  <button
-                    className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Save Changes
-                  </button>
                 </div>
               </div>
             </div>
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
-      ) : null}
+      )}
     </>
   );
 }

@@ -5,15 +5,18 @@
 body {
   background-color: #fffdf6 !important;
 }
-.headerSectionMap{
+
+.headerSectionMap {
   min-height: 80vh !important;
 
 }
-.sizeModelsSantuario{
+
+.sizeModelsSantuario {
   width: 200px;
   cursor: pointer !important;
   position: absolute;
 }
+
 .manropeFont {
   font-family: 'Manrope', sans-serif;
 }
@@ -55,7 +58,8 @@ body {
   flex-direction: column;
   height: 100%;
 }
-.mask-background{
+
+.mask-background {
 
   background-position: center center;
   background-repeat: no-repeat;
@@ -129,16 +133,19 @@ a {
   line-height: normal;
   margin: 0 20px;
 }
-.font-size-24{
+
+.font-size-24 {
   font-size: 24px !important;
 }
-.font-size-16{
+
+.font-size-16 {
   font-size: 16px !important;
 }
 
-.fontBold{
+.fontBold {
   font-weight: bold !important;
 }
+
 .btnPrimaryMenu {
   width: 200px;
   height: 45px;
@@ -409,4 +416,24 @@ a {
     max-width: 100% !important;
   }
 
+}
+
+.santurarioSwipper .swiper-wrapper {
+  height: 450px;
+}
+
+.btnClose {
+  border-radius: 50% !important;
+  background: white;
+  padding: 8px;
+  position: relative;
+  
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.headeModal{
+  display: flex;
+  justify-content: space-between;
 }
