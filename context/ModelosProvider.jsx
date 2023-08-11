@@ -26,6 +26,7 @@ export const ModeloProvider = ({ children }) => {
       ubicacionX: item.attributes.ubicacionX,
       ubicacionY: item.attributes.ubicacionY,
       descripcion: item.attributes.descripcion,
+      slug: item.attributes.slug,
       especie : item.attributes.especie,
       nombreCientifico : item.attributes.nombreCientifico,
       srcModelo: srcModeloUrl,

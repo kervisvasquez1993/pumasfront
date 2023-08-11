@@ -17,7 +17,7 @@ export default function Modal({ showModal, setShowModal, data }) {
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               <button
                 type="button"
-                className="btnClose box-content  rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none absolute  right-4"
+                className="btnClose color-white box-content  rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none absolute  right-4"
                 data-te-modal-dismiss
                 aria-label="Close"
                 onClick={handleCloseModal}
@@ -53,7 +53,7 @@ export default function Modal({ showModal, setShowModal, data }) {
                     </section>
                     <ButtonView
                       className={" backgroundPrimary m-0 manropeFont p-5"}
-                      link={""}
+                      link={"/es/donations?params="+data?.slug}
                     >
                       Apoyar Animal
                     </ButtonView>
