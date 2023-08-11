@@ -265,6 +265,7 @@ a {
     width: 1440px;
     display: flex;
     flex-direction: column;
+    min-height: 80vh;
 
 
 
@@ -427,13 +428,14 @@ a {
   background: white;
   padding: 8px;
   position: relative;
-  
+
   z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.headeModal{
+
+.headeModal {
   display: flex;
   justify-content: space-between;
   align-items: center;

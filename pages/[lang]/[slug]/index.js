@@ -100,7 +100,7 @@ export const getStaticPaths = async () => {
     const menus = menusResponse.data.data;
     menus.forEach((element) => {
       result.push({
-        params: {
+        params: { 
           lang: element.attributes.locale,
           slug: element.attributes.slug,
           name: element.attributes.nombre,

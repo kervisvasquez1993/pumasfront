@@ -3,12 +3,17 @@ import Main from "../../../Layout/Main/Main";
 import BasicSection from "../../../components/Section/Basic/BasicSection";
 import { useRouter } from "next/router";
 import { getAllDonations, langAll } from "../../../apis/ApiBackend";
+import useDonations from "../../../hooks/useDonations";
 
-const Donations = ({ donaciones }) => {
-  console.log(donaciones)
+const Donations = ({ result }) => {
+  const { loadedDonations, loadedParams, paramsProvider, filterArray } = useDonations();
+
   const router = useRouter();
   const { params } = router.query;
-  console.log(params);
+  loadedDonations(result);
+  loadedParams(params);
+  paramsProvider && console.log("informacion cargada")
+  console.log(filterArray)
 
   return (
     <Main titlePage={"Donación"}>
@@ -37,30 +42,31 @@ const Donations = ({ donaciones }) => {
 export default Donations;
 
 export const getStaticProps = async () => {
-  try {
-    const donacions = [];
-    const getLangAll = await langAll();
-    const languages = getLangAll.data;
-    for (const language of languages) {
-      const donacionesResponse = await getAllDonations(language.code);
-      const donaciones = donacionesResponse.data.data;
-      
-    }
-    
-
-    return {
-      props: {
-        donaciones: "donaciones",
-      },
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      props: {
-        donaciones: [],
-      },
-    };
+  let result = [];
+  const getLangAll = await langAll();
+  const languages = getLangAll.data;
+  for (const language of languages) {
+    const response = await getAllDonations(language.code);
+    const results = response.data.data;
+    results.forEach((element) => {
+        console.log(element.attributes.modelos.data, "modelos")
+      result.push({
+        id: element.id,
+        monto: element.attributes.monto,
+        donacion: element.attributes.donacion,
+        locale: element.attributes.locale,
+        imgSrc: element.attributes.imgSrc,
+        modelos: element.attributes.modelos,
+      });
+    });
   }
+  console.log(result);
+
+  return {
+    props: {
+      result,
+    },
+  };
 };
 
 export const getStaticPaths = async () => {

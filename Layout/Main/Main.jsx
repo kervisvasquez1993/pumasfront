@@ -48,7 +48,7 @@ const Main = ({ children, titlePage }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  stateMenu && console.log(stateMenu.data)
+  // stateMenu && console.log(stateMenu.data)
 
   return (
     <>
