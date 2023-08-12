@@ -440,3 +440,8 @@ a {
   justify-content: space-between;
   align-items: center;
 }
+.step-header{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}

@@ -26,7 +26,7 @@ export const DonationsProvider = ({ children }) => {
   // Función para filtrar y crear un nuevo arreglo
   function filtrarPorSlug(arr, slug) {
     return arr?.filter((item) => {
-      const modelos = item.modelos.data; // Todos los elementos en el arreglo
+      const modelos = item.modelos.data; 
       return modelos.some((modelo) => modelo.attributes.slug === slug);
     });
   }
