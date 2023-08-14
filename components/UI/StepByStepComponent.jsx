@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import WrapperDonations from "./Donations/WrapperDonations";
+import ReactMarkdown from "react-markdown";
 
 const StepByStepComponent = ({ typeDonations }) => {
+  console.log(typeDonations);
   const [selectedCard, setSelectedCard] = useState(null);
   const [confirmationData, setConfirmationData] = useState(null);
   const [step, setStep] = useState(1);
@@ -20,14 +22,12 @@ const StepByStepComponent = ({ typeDonations }) => {
 
   const handleCardSelect = (cardName) => {
     setSelectedCard(cardName);
-    // Agregar el nombre de la tarjeta como parámetro en la URL
     router.push(`/es/donations?params=${cardName}`);
     setStep(2);
   };
 
   const handleConfirmation = () => {
     setConfirmationData(selectedCard);
-    // Agregar la información del paso anterior al state como parte de la URL
     router.push(`/es/donations?params=${selectedCard}`);
     setStep(3);
   };
@@ -35,11 +35,9 @@ const StepByStepComponent = ({ typeDonations }) => {
   const handleStepClick = (clickedStep) => {
     if (clickedStep <= step) {
       setStep(clickedStep);
-      // Restablecer datos correspondientes a pasos anteriores
       if (clickedStep === 1) {
         setSelectedCard(null);
         setConfirmationData(null);
-        // Remover el parámetro de la URL cuando regresamos al paso 1
         router.push("/es/donations");
       } else if (clickedStep === 2) {
         setConfirmationData(null);
@@ -51,22 +49,22 @@ const StepByStepComponent = ({ typeDonations }) => {
     return (
       <div className="step-header">
         <div
-          className={`step ${step === 1 ? "active" : ""}`}
+          className={`step fontSize36 ${step === 1 ? "carActive colorPrimary" : "colorGris carInactive"}`}
           onClick={() => handleStepClick(1)}
         >
-          Paso 1: Seleccionar una tarjeta
+          Paso 1
         </div>
         <div
-          className={`step ${step === 2 ? "active" : ""}`}
+          className={`step fontSize36 ${step === 2 ? "carActive colorPrimary" : "colorGris carInactive"}`}
           onClick={() => handleStepClick(2)}
         >
-          Paso 2: Confirmar selección
+          Paso 2
         </div>
         <div
-          className={`step ${step === 3 ? "active" : ""}`}
+          className={`step fontSize36 ${step === 3 ? "carActive colorPrimary" : "colorGris carInactive"}`}
           onClick={() => handleStepClick(3)}
         >
-          Paso 3: Confirmación final
+          Paso 3
         </div>
       </div>
     );
@@ -82,10 +80,35 @@ const StepByStepComponent = ({ typeDonations }) => {
             <WrapperDonations>
               {typeDonations.map((elemento) => {
                 return (
-                  <div className="" key={elemento.id}>
-                    <h1 className="colorPrimary fuenteTitulo ">{elemento.titulo}</h1>
-                    <button onClick={() => handleCardSelect(elemento.slug)}>
-                      Seleccionar Oso Perezoso
+                  <div className="py-10 my-10" key={elemento.id}>
+                    <figure className="p-10 m-10">
+                      {elemento.image ? (
+                        <img src={elemento.image} />
+                      ) : (
+                        <img src={"/images/Ellipse.png"} />
+                      )}
+                    </figure>
+                    <h1 className="colorPrimary fuenteTitulo ">
+                      {elemento.titulo}
+                    </h1>
+
+                    <div className="inline">
+                      <span className="fontBold">Beneficios </span> :
+                      <ReactMarkdown className="fuentesParrafo">
+                        {elemento.beneficio}
+                      </ReactMarkdown>
+                    </div>
+
+                    <br />
+
+                    <ReactMarkdown className="fuentesParrafo">
+                      {elemento.descripcion}
+                    </ReactMarkdown>
+                    <button
+                      className="backgroundPrimary text-center fontMenu btnPrimaryMenu font-bold py-2 mt-10 rounded w-100"
+                      onClick={() => handleCardSelect(elemento.slug)}
+                    >
+                      Seleccionar
                     </button>
                   </div>
                 );

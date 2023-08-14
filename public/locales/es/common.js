@@ -1,0 +1,6 @@
+[
+  {
+    welcome: "Bienvenido",
+    content: "hola",
+  },
+];

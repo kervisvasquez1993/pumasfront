@@ -78,6 +78,7 @@ export const getStaticProps = async () => {
       id: element.id,
       titulo: element.attributes.titulo,
       beneficio: element.attributes.Beneficio,
+      descripcion : element.attributes.descripcion,
       slug: element.attributes.slug,
       imagen: element.attributes.imagen,
       locale: element.attributes.locale,
