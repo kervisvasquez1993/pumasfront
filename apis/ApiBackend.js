@@ -43,3 +43,13 @@ export const getAllDonations = (lang) => {
 
   return ApiBackend("api/donaciones?populate=*&locale=" + lang, config);
 };
+
+export const getTypeDonations = (lang) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  return ApiBackend("api/tipo-de-donacions?populate=*&locale" + lang, config);
+};

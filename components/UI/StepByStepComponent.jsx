@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import WrapperDonations from "./Donations/WrapperDonations";
 
-const StepByStepComponent = () => {
+const StepByStepComponent = ({ typeDonations }) => {
   const [selectedCard, setSelectedCard] = useState(null);
   const [confirmationData, setConfirmationData] = useState(null);
   const [step, setStep] = useState(1);
@@ -77,10 +78,19 @@ const StepByStepComponent = () => {
         return (
           <div>
             {renderHeader()}
-            <button onClick={() => handleCardSelect("oso-perezoso")}>
-              Seleccionar Oso Perezoso
-            </button>
-            {/* Agregar más botones de selección de tarjeta aquí */}
+
+            <WrapperDonations>
+              {typeDonations.map((elemento) => {
+                return (
+                  <div className="" key={elemento.id}>
+                    <h1 className="colorPrimary fuenteTitulo ">{elemento.titulo}</h1>
+                    <button onClick={() => handleCardSelect(elemento.slug)}>
+                      Seleccionar Oso Perezoso
+                    </button>
+                  </div>
+                );
+              })}
+            </WrapperDonations>
           </div>
         );
       case 2:
