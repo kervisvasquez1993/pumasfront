@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Main from "../../../Layout/Main/Main";
 import BasicSection from "../../../components/Section/Basic/BasicSection";
 import { useRouter } from "next/router";
@@ -18,8 +18,7 @@ const Donations = ({ result, typeDonationSchemes }) => {
   const { params } = router.query;
   loadedDonations(result);
   loadedParams(params);
-  console.log(filterArray);
-  console.log(params, "params");
+  console.log(filterArray,"filter")
 
   return (
     <Main titlePage={"Donación"}>
@@ -43,7 +42,10 @@ const Donations = ({ result, typeDonationSchemes }) => {
           </BasicSection>
         </TwoColumnGrid>
         <div>
-          <StepByStepComponent typeDonations={typeDonationSchemes} />
+          <StepByStepComponent
+            typeDonations={typeDonationSchemes}
+            donationAll={result}
+          />
         </div>
       </div>
     </Main>
@@ -72,13 +74,14 @@ export const getStaticProps = async () => {
       locale: element.attributes.locale,
       imgSrc: element.attributes.imgSrc,
       modelos: element.attributes.modelos,
+      tipo_de_donacions : element.attributes.tipo_de_donacions
     }));
 
     const typeDonationSchemes = typeDonationsResponse.map((element) => ({
       id: element.id,
       titulo: element.attributes.titulo,
       beneficio: element.attributes.Beneficio,
-      descripcion : element.attributes.descripcion,
+      descripcion: element.attributes.descripcion,
       slug: element.attributes.slug,
       imagen: element.attributes.imagen,
       locale: element.attributes.locale,

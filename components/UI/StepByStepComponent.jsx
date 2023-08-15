@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import WrapperDonations from "./Donations/WrapperDonations";
 import ReactMarkdown from "react-markdown";
+import useDonations from "../../hooks/useDonations";
 
-const StepByStepComponent = ({ typeDonations }) => {
-  console.log(typeDonations);
+const StepByStepComponent = ({ typeDonations, donationAll }) => {
+  const { loadedDonations, loadedParams, paramsProvider, filterArray } =
+    useDonations();
   const [selectedCard, setSelectedCard] = useState(null);
   const [confirmationData, setConfirmationData] = useState(null);
   const [step, setStep] = useState(1);
@@ -12,13 +14,17 @@ const StepByStepComponent = ({ typeDonations }) => {
 
   useEffect(() => {
     // Obtener el valor del parámetro 'params' de la URL
-    const paramsValue = router.query.params;
-
+    const { params } = router.query;
+    console.log(params)
     // Si el parámetro 'params' está presente en la URL, ir al paso 2
-    if (paramsValue) {
+    if (params) {
+      console.log(params, "paramsValue")
+      
+      loadedDonations(donationAll);
+      loadedParams(params);
       setStep(2);
     }
-  }, []);
+  }, [router.query]);
 
   const handleCardSelect = (cardName) => {
     setSelectedCard(cardName);
@@ -49,19 +55,25 @@ const StepByStepComponent = ({ typeDonations }) => {
     return (
       <div className="step-header">
         <div
-          className={`step fontSize36 ${step === 1 ? "carActive colorPrimary" : "colorGris carInactive"}`}
+          className={`step fontSize36 ${
+            step === 1 ? "carActive colorPrimary" : "colorGris carInactive"
+          }`}
           onClick={() => handleStepClick(1)}
         >
           Paso 1
         </div>
         <div
-          className={`step fontSize36 ${step === 2 ? "carActive colorPrimary" : "colorGris carInactive"}`}
+          className={`step fontSize36 ${
+            step === 2 ? "carActive colorPrimary" : "colorGris carInactive"
+          }`}
           onClick={() => handleStepClick(2)}
         >
           Paso 2
         </div>
         <div
-          className={`step fontSize36 ${step === 3 ? "carActive colorPrimary" : "colorGris carInactive"}`}
+          className={`step fontSize36 ${
+            step === 3 ? "carActive colorPrimary" : "colorGris carInactive"
+          }`}
           onClick={() => handleStepClick(3)}
         >
           Paso 3

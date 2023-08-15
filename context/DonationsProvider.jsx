@@ -23,13 +23,18 @@ export const DonationsProvider = ({ children }) => {
     setParmsProvider(data);
   };
 
-  // Función para filtrar y crear un nuevo arreglo
   function filtrarPorSlug(arr, slug) {
     return arr?.filter((item) => {
-      const modelos = item.modelos.data; 
-      return modelos.some((modelo) => modelo.attributes.slug === slug);
+      const modelos = item.modelos.data;
+      const tipoDonaciones = item.tipo_de_donacions.data;
+  
+      return (
+        modelos.some((modelo) => modelo.attributes.slug === slug) ||
+        tipoDonaciones.some((tipo) => tipo.attributes.slug === slug)
+      );
     });
   }
+  
 
   return (
     <DonationsContext.Provider
