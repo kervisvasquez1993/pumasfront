@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import WrapperDonations from "./Donations/WrapperDonations";
 import ReactMarkdown from "react-markdown";
@@ -6,12 +6,16 @@ import useDonations from "../../hooks/useDonations";
 import ItemDonations from "./Donations/ItemDonations";
 
 const StepByStepComponent = ({ typeDonations, donationAll }) => {
-  const { loadedDonations, loadedParams, paramsProvider, filterArray } =
+  const { loadedDonations, loadedParams, filterArray } =
     useDonations();
   const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [confirmationData, setConfirmationData] = useState(null);
   const [selectedElements, setSelectedElements] = useState([]);
+  const [step, setStep] = useState(1);
+  const router = useRouter();
+
   const handleItemToggle = (itemId) => {
-    console.log("llamando item", itemId);
     if (selectedItems.includes(itemId)) {
       setSelectedItems(selectedItems.filter((id) => id !== itemId));
     } else {
@@ -19,23 +23,9 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
     }
   };
 
-  const [selectedCard, setSelectedCard] = useState(null);
-  const [confirmationData, setConfirmationData] = useState(null);
-  const [step, setStep] = useState(1);
-  const router = useRouter();
-
   useEffect(() => {
-    console.log(selectedItems);
-  }, [selectedItems]);
-
-  useEffect(() => {
-    // Obtener el valor del parámetro 'params' de la URL
     const { params } = router.query;
-    console.log(params);
-    // Si el parámetro 'params' está presente en la URL, ir al paso 2
     if (params) {
-      console.log(params, "paramsValue");
-
       loadedDonations(donationAll);
       loadedParams(params);
       setStep(2);
@@ -55,7 +45,6 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
       selectedItems.includes(element.id)
     );
     setSelectedElements(updatedSelectedElements);
-    console.log("Elementos seleccionados:", updatedSelectedElements);
     setStep(3);
   };
 
@@ -175,6 +164,16 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
           <div>
             {renderHeader()}
             <p>Confirmado: {confirmationData}</p>
+            <section className="itemDonationWrapper">
+              {selectedElements.map((element) => (
+                <ItemDonations
+                  key={element.id}
+                  data={element}
+                  selected={selectedItems.includes(element.id)}
+                  onClick={() => handleItemToggle(element.id)}
+                />
+              ))}
+            </section>
           </div>
         );
       default:
