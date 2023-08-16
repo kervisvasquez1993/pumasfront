@@ -6,17 +6,13 @@ import useDonations from "../../hooks/useDonations";
 import ItemDonations from "./Donations/ItemDonations";
 
 const StepByStepComponent = ({ typeDonations, donationAll }) => {
-  // Estados locales y funciones de estado
+  const { loadedDonations, loadedParams, filterArray } = useDonations();
   const [selectedItems, setSelectedItems] = useState([]);
-  const [selectedCard, setSelectedCard] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null); // selecionar el card en el paso numero 1
   const [confirmationData, setConfirmationData] = useState(null);
   const [selectedElements, setSelectedElements] = useState([]);
   const [step, setStep] = useState(1);
-
-  // Utilidades
   const router = useRouter();
-
-  // Funciones de manipulación de datos
   const handleItemToggle = (itemId) => {
     if (selectedItems.includes(itemId)) {
       setSelectedItems(selectedItems.filter((id) => id !== itemId));
@@ -24,25 +20,32 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
       setSelectedItems([...selectedItems, itemId]);
     }
   };
-
+  useEffect(() => {
+    const { params } = router.query;
+    if (params) {
+      loadedDonations(donationAll);
+      loadedParams(params);
+      setStep(2);
+    }
+  }, [router.query]);
   const handleCardSelect = (cardName) => {
     setSelectedCard(cardName);
+    console.log(cardName, "selected card");
     router.push(`/es/donations?params=${cardName}`);
     setStep(2);
   };
-
   const handleConfirmation = () => {
     const updatedSelectedElements = donationAll.filter((element) =>
       selectedItems.includes(element.id)
     );
-    setSelectedElements(updatedSelectedElements);
-    if (selectedElements.length > 0) {
+    
+    if (updatedSelectedElements.length > 0) {
+      setSelectedElements(updatedSelectedElements);
       setStep(3);
     } else {
-      console.log("Debe seleccionar al menos un elemento.");
+      console.log("Debe seleccionar al menos un elemento antes de continuar.");
     }
   };
-
   const handleStepClick = (clickedStep) => {
     if (clickedStep <= step) {
       setStep(clickedStep);
