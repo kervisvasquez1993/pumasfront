@@ -3,7 +3,6 @@ import React from "react";
 const ItemDonations = ({ data, selected, onClick }) => {
   const { id, monto, donacion, imgSrc } = data;
   if (imgSrc.data) {
-    console.log(imgSrc.data.attributes.url);
     return (
       <div
         className={`item itemDonationSrc chelseaFont ${

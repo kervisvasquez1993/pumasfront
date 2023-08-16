@@ -6,15 +6,17 @@ import useDonations from "../../hooks/useDonations";
 import ItemDonations from "./Donations/ItemDonations";
 
 const StepByStepComponent = ({ typeDonations, donationAll }) => {
-  const { loadedDonations, loadedParams, filterArray } =
-    useDonations();
+  // Estados locales y funciones de estado
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
   const [confirmationData, setConfirmationData] = useState(null);
   const [selectedElements, setSelectedElements] = useState([]);
   const [step, setStep] = useState(1);
+
+  // Utilidades
   const router = useRouter();
 
+  // Funciones de manipulación de datos
   const handleItemToggle = (itemId) => {
     if (selectedItems.includes(itemId)) {
       setSelectedItems(selectedItems.filter((id) => id !== itemId));
@@ -23,15 +25,6 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
     }
   };
 
-  useEffect(() => {
-    const { params } = router.query;
-    if (params) {
-      loadedDonations(donationAll);
-      loadedParams(params);
-      setStep(2);
-    }
-  }, [router.query]);
-
   const handleCardSelect = (cardName) => {
     setSelectedCard(cardName);
     router.push(`/es/donations?params=${cardName}`);
@@ -39,13 +32,15 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
   };
 
   const handleConfirmation = () => {
-    setConfirmationData(selectedCard);
-    router.push(`/es/donations?params=${selectedCard}`);
     const updatedSelectedElements = donationAll.filter((element) =>
       selectedItems.includes(element.id)
     );
     setSelectedElements(updatedSelectedElements);
-    setStep(3);
+    if (selectedElements.length > 0) {
+      setStep(3);
+    } else {
+      console.log("Debe seleccionar al menos un elemento.");
+    }
   };
 
   const handleStepClick = (clickedStep) => {
@@ -60,7 +55,6 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
       }
     }
   };
-
   const renderHeader = () => {
     return (
       <div className="step-header">
@@ -91,7 +85,6 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
       </div>
     );
   };
-
   const renderStep = () => {
     switch (step) {
       case 1:

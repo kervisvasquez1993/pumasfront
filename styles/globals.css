@@ -522,3 +522,6 @@ a {
   color: white;
 }
 
+.selected {
+  border: 5px solid #E86641;
+}
