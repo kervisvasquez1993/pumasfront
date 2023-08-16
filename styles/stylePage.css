@@ -238,13 +238,13 @@ img {
 .carActive{
     border-bottom: 5px solid #E86641;
     display: inline-block;
-    width: 20%;
+    width: 30%;
     text-align: center;
 }
 .carInactive{
     border-bottom: 5px solid #BFBFBF;
     display: inline-block;
-    width: 20%;
+    width: 30%;
     text-align: center;
 }
 .centerElement{

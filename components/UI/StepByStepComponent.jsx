@@ -10,7 +10,7 @@ import DonationInfo from "./Donations/DonationInfo";
 const StepByStepComponent = ({ typeDonations, donationAll }) => {
   const { loadedDonations, loadedParams, filterArray } = useDonations();
   const [selectedItems, setSelectedItems] = useState([]);
-  const [selectedCard, setSelectedCard] = useState(null); // selecionar el card en el paso numero 1
+  const [selectedCard, setSelectedCard] = useState(null);
   const [confirmationData, setConfirmationData] = useState(null);
   const [selectedElements, setSelectedElements] = useState([]);
   const [donationInfo, setDonationInfo] = useState(null);
@@ -20,13 +20,7 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
   });
   const [step, setStep] = useState(1);
   const router = useRouter();
-  const handleItemToggle = (itemId) => {
-    if (selectedItems.includes(itemId)) {
-      setSelectedItems(selectedItems.filter((id) => id !== itemId));
-    } else {
-      setSelectedItems([...selectedItems, itemId]);
-    }
-  };
+
   useEffect(() => {
     const { params } = router.query;
     if (params) {
@@ -35,12 +29,22 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
       setStep(2);
     }
   }, [router.query]);
+
+  const handleItemToggle = (itemId) => {
+    if (selectedItems.includes(itemId)) {
+      setSelectedItems(selectedItems.filter((id) => id !== itemId));
+    } else {
+      setSelectedItems([...selectedItems, itemId]);
+    }
+  };
+
   const handleCardSelect = (cardName) => {
     setSelectedCard(cardName);
-    console.log(cardName, "selected card");
     router.push(`/es/donations?params=${cardName}`);
     setStep(2);
+    setDonationInfo(null); // Limpiar la información de donationInfo al cambiar de selección
   };
+
   const handleConfirmation = () => {
     const updatedSelectedElements = donationAll.filter((element) =>
       selectedItems.includes(element.id)
@@ -53,15 +57,19 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
       console.log("Debe seleccionar al menos un elemento antes de continuar.");
     }
   };
+
   const handleStepClick = (clickedStep) => {
     if (clickedStep <= step) {
       setStep(clickedStep);
       if (clickedStep === 1) {
         setSelectedCard(null);
         setConfirmationData(null);
+        setSelectedItems([]);
+        setDonationInfo(null); // Limpiar la información de donationInfo al regresar al paso 1
         router.push("/es/donations");
       } else if (clickedStep === 2) {
         setConfirmationData(null);
+        setDonationInfo(null); // Limpiar la información de donationInfo al regresar al paso 2
       }
     }
   };
@@ -72,12 +80,12 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
       nombre: formData.nombre,
       correo: formData.correo,
       monto: selectedElements.reduce(
-        (total, element) => total + parseFloat(element.monto),
+        (total, element) => total + parseFloat(element.monto || 0), // Reemplazar null por 0
         0
       ),
       donacion: selectedElements.map((element) => element.donacion).flat(),
     };
-
+  
     setDonationInfo(newElement);
     setFormData({ nombre: "", correo: "" });
   };
@@ -92,30 +100,30 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
   const renderHeader = () => {
     return (
       <div className="step-header">
-        <div
-          className={`step fontSize36 ${
-            step === 1 ? "carActive colorPrimary" : "colorGris carInactive"
+        <h3
+          className={`step fontSize36 chelseaFont ${
+            step >= 1 ? "carActive colorPrimary" : "colorGris carInactive"
           }`}
           onClick={() => handleStepClick(1)}
         >
           Paso 1
-        </div>
-        <div
-          className={`step fontSize36 ${
-            step === 2 ? "carActive colorPrimary" : "colorGris carInactive"
+        </h3>
+        <h3
+          className={`step fontSize36 chelseaFont ${
+            step >= 2 ? "carActive colorPrimary" : "colorGris carInactive"
           }`}
           onClick={() => handleStepClick(2)}
         >
           Paso 2
-        </div>
-        <div
-          className={`step fontSize36 ${
-            step === 3 ? "carActive colorPrimary" : "colorGris carInactive"
+        </h3>
+        <h3
+          className={`step fontSize36 chelseaFont ${
+            step >= 3 ? "carActive colorPrimary" : "colorGris carInactive"
           }`}
           onClick={() => handleStepClick(3)}
         >
           Paso 3
-        </div>
+        </h3>
       </div>
     );
   };
@@ -213,7 +221,7 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
                       htmlFor="nombre"
                       className="block font-semibold mb-1"
                     >
-                      Nombre:
+                      Name:
                     </label>
                     <input
                       type="text"
