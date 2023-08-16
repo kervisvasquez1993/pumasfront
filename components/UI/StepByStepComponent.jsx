@@ -4,6 +4,8 @@ import WrapperDonations from "./Donations/WrapperDonations";
 import ReactMarkdown from "react-markdown";
 import useDonations from "../../hooks/useDonations";
 import ItemDonations from "./Donations/ItemDonations";
+import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
+import DonationInfo from "./Donations/DonationInfo";
 
 const StepByStepComponent = ({ typeDonations, donationAll }) => {
   const { loadedDonations, loadedParams, filterArray } = useDonations();
@@ -11,6 +13,11 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
   const [selectedCard, setSelectedCard] = useState(null); // selecionar el card en el paso numero 1
   const [confirmationData, setConfirmationData] = useState(null);
   const [selectedElements, setSelectedElements] = useState([]);
+  const [donationInfo, setDonationInfo] = useState(null);
+  const [formData, setFormData] = useState({
+    nombre: "",
+    correo: "",
+  });
   const [step, setStep] = useState(1);
   const router = useRouter();
   const handleItemToggle = (itemId) => {
@@ -38,7 +45,7 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
     const updatedSelectedElements = donationAll.filter((element) =>
       selectedItems.includes(element.id)
     );
-    
+
     if (updatedSelectedElements.length > 0) {
       setSelectedElements(updatedSelectedElements);
       setStep(3);
@@ -58,6 +65,30 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
       }
     }
   };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const newElement = {
+      nombre: formData.nombre,
+      correo: formData.correo,
+      monto: selectedElements.reduce(
+        (total, element) => total + parseFloat(element.monto),
+        0
+      ),
+      donacion: selectedElements.map((element) => element.donacion).flat(),
+    };
+
+    setDonationInfo(newElement);
+    setFormData({ nombre: "", correo: "" });
+  };
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const renderHeader = () => {
     return (
       <div className="step-header">
@@ -161,14 +192,63 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
             {renderHeader()}
             <p>Confirmado: {confirmationData}</p>
             <section className="itemDonationWrapper">
-              {selectedElements.map((element) => (
-                <ItemDonations
-                  key={element.id}
-                  data={element}
-                  selected={selectedItems.includes(element.id)}
-                  onClick={() => handleItemToggle(element.id)}
-                />
-              ))}
+              <TwoColumnGrid width={"100%"}>
+                <section>
+                  {selectedElements.map((element) => (
+                    <ItemDonations
+                      className=" my-5"
+                      key={element.id}
+                      data={element}
+                      selected={selectedItems.includes(element.id)}
+                      onClick={() => handleItemToggle(element.id)}
+                    />
+                  ))}
+
+                  
+                </section>
+                {donationInfo && <DonationInfo newElement={donationInfo} />}
+                {!(donationInfo) && <form onSubmit={handleFormSubmit} className="mt-4">
+                  <div className="mb-4">
+                    <label
+                      htmlFor="nombre"
+                      className="block font-semibold mb-1"
+                    >
+                      Nombre:
+                    </label>
+                    <input
+                      type="text"
+                      id="nombre"
+                      name="nombre"
+                      value={formData.nombre}
+                      onChange={handleInputChange}
+                      className="w-full border p-2 rounded"
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="correo"
+                      className="block font-semibold mb-1"
+                    >
+                      Correo:
+                    </label>
+                    <input
+                      type="email"
+                      id="correo"
+                      name="correo"
+                      value={formData.correo}
+                      onChange={handleInputChange}
+                      className="w-full border p-2 rounded"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="bg-blue-500 text-white py-2 px-4 rounded"
+                  >
+                    Enviar
+                  </button>
+                </form>}
+                
+              </TwoColumnGrid>
             </section>
           </div>
         );

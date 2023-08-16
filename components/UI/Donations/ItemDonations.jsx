@@ -1,11 +1,11 @@
 import React from "react";
 
-const ItemDonations = ({ data, selected, onClick }) => {
+const ItemDonations = ({ data, selected, onClick, className="" }) => {
   const { id, monto, donacion, imgSrc } = data;
-  if (imgSrc.data) {
+  if (imgSrc?.data) {
     return (
       <div
-        className={`item itemDonationSrc chelseaFont ${
+        className={`item itemDonationSrc chelseaFont ${className} ${
           selected ? "selected" : ""
         }`}
         onClick={onClick}
@@ -16,7 +16,7 @@ const ItemDonations = ({ data, selected, onClick }) => {
   }
   return (
     <div
-      className={`item itemDonationSrc chelseaFont ${
+      className={`item itemDonationSrc chelseaFont ${className} ${
         selected ? "selected" : ""
       }`}
       onClick={onClick}

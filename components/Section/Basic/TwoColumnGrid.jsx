@@ -1,12 +1,13 @@
 import React from "react";
 
-const TwoColumnGrid = ({ children, backgroundImage, minHeight="", display="", justifyContent="", alignItems="" }) => {
+const TwoColumnGrid = ({ children, backgroundImage, minHeight="", display="", justifyContent="", alignItems="", width="" }) => {
   const containerStyle = {
     backgroundImage: backgroundImage ? `url(${backgroundImage})` : "none",
     minHeight: minHeight ,
     display: display,
     justifyContent: justifyContent,
-    alignItems: alignItems
+    alignItems: alignItems,
+    width : width
   };
 
   return (
