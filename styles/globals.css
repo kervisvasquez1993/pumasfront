@@ -169,7 +169,7 @@ a {
   font-weight: 700;
 }
 
-.w-100{
+.w-100 {
   width: 100%;
 }
 
@@ -442,7 +442,8 @@ a {
   justify-content: space-between;
   align-items: center;
 }
-.step-header{
+
+.step-header {
   display: flex;
   width: 100%;
   justify-content: space-around;
@@ -454,33 +455,33 @@ a {
   justify-content: space-between;
 }
 
-.containerDonations > * {
+.containerDonations>* {
   flex: 1 0 20%;
-  max-width: 20%; 
-  box-sizing: border-box; 
+  max-width: 20%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 @media (max-width: 1200px) {
-  .containerDonations > * {
-      flex-basis: 33.33%;
-      max-width: 33.33%;
+  .containerDonations>* {
+    flex-basis: 33.33%;
+    max-width: 33.33%;
   }
 }
 
 @media (max-width: 992px) {
-  .containerDonations > * {
-      flex-basis: 50%;
-      max-width: 50%; 
+  .containerDonations>* {
+    flex-basis: 50%;
+    max-width: 50%;
   }
 }
 
 @media (max-width: 768px) {
-  .containerDonations > * {
-      flex-basis: 100%;
-      max-width: 100%;
+  .containerDonations>* {
+    flex-basis: 100%;
+    max-width: 100%;
   }
 }
 
@@ -491,3 +492,33 @@ a {
 .fontSize36 {
   font-size: 36px;
 }
+
+.itemDonationWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.itemDonation{
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0DAEA5;
+  border-radius: 50%;
+  font-size: 36px;
+  color: white;
+}
+.itemDonationSrc{
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #50B496;
+  border-radius: 50%;
+  font-size: 36px;
+  color: white;
+}
+
