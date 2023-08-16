@@ -6,6 +6,7 @@ import useDonations from "../../hooks/useDonations";
 import ItemDonations from "./Donations/ItemDonations";
 import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 import DonationInfo from "./Donations/DonationInfo";
+import HeaderComponents from "./HeaderComponents/HeaderComponets";
 
 const StepByStepComponent = ({ typeDonations, donationAll }) => {
   const { loadedDonations, loadedParams, filterArray } = useDonations();
@@ -85,7 +86,7 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
       ),
       donacion: selectedElements.map((element) => element.donacion).flat(),
     };
-  
+
     setDonationInfo(newElement);
     setFormData({ nombre: "", correo: "" });
   };
@@ -134,6 +135,15 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
           <div>
             {renderHeader()}
 
+            {/* <h3 className="chelseaFont colorGris fontSize36">SELECCIONA TU TIPO DE DONACIÓN</h3> */}
+            <HeaderComponents
+              src="/images/fondo1.png"
+              classNameText={"py-10 my-10 colorGris chelseaFont"}
+              alignment="start"
+            >
+              SELECCIONA TU TIPO DE DONACIÓN
+            </HeaderComponents>
+
             <WrapperDonations>
               {typeDonations.map((elemento) => {
                 return (
@@ -177,8 +187,14 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
         return (
           <div>
             {renderHeader()}
-            <p>Has seleccionado: {selectedCard}</p>
-            <section className="itemDonationWrapper">
+            <HeaderComponents
+              src="/images/fondo1.png"
+              classNameText={"py-10 my-10 colorGris chelseaFont"}
+              alignment="start"
+            >
+              ¿QUÉ DESEAS DONAR?
+            </HeaderComponents>
+            <section className="itemDonationWrapper py-10 my-10">
               {filterArray &&
                 filterArray.map((element) => {
                   return (
@@ -191,14 +207,28 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
                   );
                 })}
             </section>
-            <button onClick={handleConfirmation}>Confirmar</button>
+            <div className="center">
+              <button
+                className=" backgroundPrimary my-10 py-10 center manropeFont p-5 btnPrimary py-2  "
+                onClick={handleConfirmation}
+              >
+                Confirmar
+              </button>
+            </div>
           </div>
         );
       case 3:
         return (
           <div>
             {renderHeader()}
-            <p>Confirmado: {confirmationData}</p>
+            <HeaderComponents
+              src="/images/fondo1.png"
+              classNameText={"py-10 my-10 colorGris chelseaFont"}
+              alignment="start"
+            >
+              SELECCIONA EL METODO DE PAGO
+            </HeaderComponents>
+
             <section className="itemDonationWrapper">
               <TwoColumnGrid width={"100%"}>
                 <section>
@@ -211,51 +241,50 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
                       onClick={() => handleItemToggle(element.id)}
                     />
                   ))}
-
-                  
                 </section>
                 {donationInfo && <DonationInfo newElement={donationInfo} />}
-                {!(donationInfo) && <form onSubmit={handleFormSubmit} className="mt-4">
-                  <div className="mb-4">
-                    <label
-                      htmlFor="nombre"
-                      className="block font-semibold mb-1"
+                {!donationInfo && (
+                  <form onSubmit={handleFormSubmit} className="mt-4">
+                    <div className="mb-4">
+                      <label
+                        htmlFor="nombre"
+                        className="block font-semibold mb-1"
+                      >
+                        Name:
+                      </label>
+                      <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        value={formData.nombre}
+                        onChange={handleInputChange}
+                        className="w-full border p-2 rounded"
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label
+                        htmlFor="correo"
+                        className="block font-semibold mb-1"
+                      >
+                        Correo:
+                      </label>
+                      <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        value={formData.correo}
+                        onChange={handleInputChange}
+                        className="w-full border p-2 rounded"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="backgroundPrimary m-0 manropeFont p-5 btnPrimary py-2  "
                     >
-                      Name:
-                    </label>
-                    <input
-                      type="text"
-                      id="nombre"
-                      name="nombre"
-                      value={formData.nombre}
-                      onChange={handleInputChange}
-                      className="w-full border p-2 rounded"
-                    />
-                  </div>
-                  <div className="mb-4">
-                    <label
-                      htmlFor="correo"
-                      className="block font-semibold mb-1"
-                    >
-                      Correo:
-                    </label>
-                    <input
-                      type="email"
-                      id="correo"
-                      name="correo"
-                      value={formData.correo}
-                      onChange={handleInputChange}
-                      className="w-full border p-2 rounded"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="bg-blue-500 text-white py-2 px-4 rounded"
-                  >
-                    Enviar
-                  </button>
-                </form>}
-                
+                      Enviar 
+                    </button>
+                  </form>
+                )}
               </TwoColumnGrid>
             </section>
           </div>

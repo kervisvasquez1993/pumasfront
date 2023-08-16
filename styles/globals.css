@@ -118,7 +118,7 @@ a {
 }
 
 .backgroundPrimary {
-  background-color: #E86641;
+  background-color: #E86641 !important;
 }
 
 .btnPrimary {

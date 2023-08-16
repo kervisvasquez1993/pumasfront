@@ -11,7 +11,8 @@ const DonationInfo = ({ newElement }) => {
         <span className="font-semibold">Correo:</span> {newElement.correo}
       </p>
       <p>
-        <span className="font-semibold">Monto Total:</span> ${newElement.monto.toFixed(2)}
+        <span className="font-semibold">Monto Total:</span> $
+        {newElement.monto.toFixed(2)}
       </p>
       <p>
         <span className="font-semibold">Donaciones Seleccionadas:</span>
@@ -21,6 +22,14 @@ const DonationInfo = ({ newElement }) => {
           ))}
         </ul>
       </p>
+      <a
+        className=" backgroundPrimary m-0 manropeFont p-5 btnPrimary py-2   "
+        href="https://www.paypal.com/donate/?hosted_button_id=ARGVAJFC5LA9W&amount=50.00"
+       
+      >
+        {" "}
+        Donar
+      </a>
     </div>
   );
 };
