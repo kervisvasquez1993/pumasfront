@@ -13,7 +13,25 @@ import MapWithBackground from "../UI/MapWithBackground";
 import useModelo from "../../hooks/useModelo";
 import CanvasElement from "../UI/CanvasElement";
 import Modal from "../UI/Modal";
-import PumasCanvas from "../Canvas/PumaCanvas";
+import CanvasModel from "../Canvas/CanvasModel";
+import { Puma } from "../Models/Puma";
+import { Chucuyo } from "../Models/Chucuyo";
+import { MonoCaraBlanca } from "../Models/MonoCaraBlanca";
+import { LoroCopeteNegro } from "../Models/LoroCopeteNegro";
+import { LoroCopeteRojo } from "../Models/LoroCopeteRoja";
+import { MonoArana } from "../Models/MonoArana";
+import { LoroNucaAmarilla } from "../Models/LoroNucaAmarilla";
+import { Jaguar } from "../Models/Jaguar";
+import { Manigordo } from "../Models/Manigordo";
+import { Yagurandi } from "../Models/Yagurandi";
+import { LapaRoja } from "../Models/LapaRoja";
+import { TortugaRoja } from "../Models/TortugaRoja";
+import { TortugaNegra } from "../Models/TortigaNegra";
+import { TortugaResbaladora } from "../Models/TortugaResbaladora";
+import { TortugaCandado } from "../Models/TortugaCandado";
+import { Grison } from "../Models/Grison";
+import { Saino } from "../Models/Saino";
+import { OsoPerezosoDeDedos } from "../Models/OsoPerezosoDeDedos";
 
 const SantuarioPage = () => {
   const images = [
@@ -81,7 +99,142 @@ const SantuarioPage = () => {
         </HeaderComponets>
         {/* MODELO DE PUMAS COMO PRUEBA */}
         <section className="container-section py-10 my-5">
-          <PumasCanvas />
+          <CanvasModel
+            intensity={1.6}
+            positionX={4}
+            positionY={4}
+            positionZ={10}
+          >
+            <Puma />
+          </CanvasModel>
+          <CanvasModel
+            intensity={15.6}
+            positionX={4}
+            positionY={4}
+            positionZ={1}
+          >
+            <Chucuyo />
+          </CanvasModel>
+          <CanvasModel
+            intensity={3.6}
+            positionX={4}
+            positionY={4}
+            positionZ={60}
+          >
+            <MonoCaraBlanca />
+          </CanvasModel>
+          <CanvasModel
+            intensity={3.6}
+            positionX={4}
+            positionY={4}
+            positionZ={1}
+          >
+            <LoroCopeteNegro/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={2.6}
+            positionX={4}
+            positionY={4}
+            positionZ={1}
+          >
+            <LoroCopeteRojo/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={2.6}
+            positionX={4}
+            positionY={4}
+            positionZ={50}
+          >
+            <MonoArana/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={2.6}
+            positionX={4}
+            positionY={4}
+            positionZ={1}
+          >
+            <LoroNucaAmarilla/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={10.6}
+            positionX={4}
+            positionY={4}
+            positionZ={10}
+          >
+            <Manigordo/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={10.6}
+            positionX={4}
+            positionY={4}
+            positionZ={10}
+          >
+            <Yagurandi/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={5.6}
+            positionX={4}
+            positionY={4}
+            positionZ={5}
+          >
+            <LapaRoja/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={5.6}
+            positionX={4}
+            positionY={4}
+            positionZ={1}
+          >
+            <TortugaRoja/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={5.6}
+            positionX={4}
+            positionY={4}
+            positionZ={1}
+          >
+            <TortugaNegra/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={2.6}
+            positionX={4}
+            positionY={4}
+            positionZ={1}
+          >
+            <TortugaResbaladora/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={2.6}
+            positionX={4}
+            positionY={4}
+            positionZ={1}
+          >
+            <TortugaCandado/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={10.6}
+            positionX={4}
+            positionY={4}
+            positionZ={1}
+          >
+            <Grison/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={10.6}
+            positionX={4}
+            positionY={4}
+            positionZ={1}
+          >
+            <Saino/>
+          </CanvasModel>
+          <CanvasModel
+            intensity={2.6}
+            positionX={4}
+            positionY={4}
+            positionZ={1}
+          >
+            <OsoPerezosoDeDedos/>
+          </CanvasModel>
         </section>
         <section className="container-section py-10 my-5">
           <section className="grid-2">
