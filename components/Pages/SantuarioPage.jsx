@@ -13,6 +13,7 @@ import MapWithBackground from "../UI/MapWithBackground";
 import useModelo from "../../hooks/useModelo";
 import CanvasElement from "../UI/CanvasElement";
 import Modal from "../UI/Modal";
+import PumasCanvas from "../Canvas/PumaCanvas";
 
 const SantuarioPage = () => {
   const images = [
@@ -62,7 +63,7 @@ const SantuarioPage = () => {
         showModal={openModal}
         setShowModal={setOpenModal}
         data={stateModal}
-        title={"Model Information"} 
+        title={"Model Information"}
         body={
           <p className="my-4 text-slate-500 text-lg leading-relaxed">
             {stateModal ? stateModal.srcModelo : ""}
@@ -78,6 +79,10 @@ const SantuarioPage = () => {
         >
           Nuestro Santuario
         </HeaderComponets>
+        {/* MODELO DE PUMAS COMO PRUEBA */}
+        <section className="container-section py-10 my-5">
+          <PumasCanvas />
+        </section>
         <section className="container-section py-10 my-5">
           <section className="grid-2">
             <SliderThree>
