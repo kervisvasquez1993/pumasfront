@@ -13,6 +13,9 @@ export const ModeloProvider = ({ children }) => {
     const srcModeloUrl =
       "http://localhost:1337" +
         item.attributes.srcModelo?.data[0]?.attributes?.url || null;
+    const models3d =
+      "http://localhost:1337" +
+        item.attributes.model3D?.data?.attributes?.url || null;
 
     const imagenes = item.attributes?.imagenes?.data?.map((imagen) => {
       return {
@@ -27,10 +30,11 @@ export const ModeloProvider = ({ children }) => {
       ubicacionY: item.attributes.ubicacionY,
       descripcion: item.attributes.descripcion,
       slug: item.attributes.slug,
-      especie : item.attributes.especie,
-      nombreCientifico : item.attributes.nombreCientifico,
+      especie: item.attributes.especie,
+      nombreCientifico: item.attributes.nombreCientifico,
       srcModelo: srcModeloUrl,
       imagenes: imagenes,
+      modelo3d: models3d,
     };
   });
 

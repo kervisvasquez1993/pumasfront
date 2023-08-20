@@ -107,7 +107,7 @@ const SantuarioPage = () => {
           >
             <Puma />
           </CanvasModel>
-          <CanvasModel
+          {/* <CanvasModel
             intensity={15.6}
             positionX={4}
             positionY={4}
@@ -234,7 +234,7 @@ const SantuarioPage = () => {
             positionZ={1}
           >
             <OsoPerezosoDeDedos/>
-          </CanvasModel>
+          </CanvasModel> */}
         </section>
         <section className="container-section py-10 my-5">
           <section className="grid-2">
