@@ -1,14 +1,15 @@
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+export function Puma({ modelo, ...props }) {
+  if (modelo) {
+    const { nodes, materials } = useGLTF(modelo);
+    return (
+      <group {...props} dispose={null}>
+        <mesh geometry={nodes.Puma.geometry} material={materials.Puma} />
+      </group>
+    );
+  }
 
-export function Puma(props) {
-  const { nodes, materials } = useGLTF('/models/Puma.gltf')
-  return (
-    <group {...props} dispose={null}>
-      <mesh geometry={nodes.Puma.geometry} material={materials.Puma} />
-    </group>
-  )
+  return null;
 }
-
-useGLTF.preload('/models/Puma.gltf')

@@ -17,23 +17,32 @@ import { TortugaCandado } from "./TortugaCandado";
 import { Grison } from "./Grison";
 import { Saino } from "./Saino";
 import { OsoPerezosoDeDedos } from "./OsoPerezosoDeDedos";
-const SelectedModels = ({ componentName }) => {
-  // ...
+import { useEffect, useState } from "react";
+const SelectedModels = ({ componentName, modelo }) => {
+  const [models, setModel] = useState(modelo);
+  useEffect(() => {
+    setModel(modelo);
+  }, [modelo]);
+  let selectedComponent = null;
+  console.log(modelo, "lllamando");
+  switch (componentName) {
+    case "Puma":
+      selectedComponent = <Puma modelo={models} />;
+      break;
+    case "Chucuyo":
+      selectedComponent = <Chucuyo />;
+      break;
+    case "LoroCopeteRoja":
+      selectedComponent = <LoroCopeteRojo modelo={modelo} />;
+      break;
+    // Agrega los demás casos aquí...
+    default:
+      selectedComponent = null;
+  }
 
   return (
     <CanvasModel intensity={1.6} positionX={4} positionY={4} positionZ={10}>
-      {(() => {
-        switch (componentName) {
-          case "Puma":
-            return <Puma />;
-          case "Chucuyo":
-            return <Chucuyo />;
-          case "LoroCopeteRoja":
-            return <LoroCopeteRojo />;
-          default:
-            return null
-        }
-      })()}
+      {selectedComponent}
     </CanvasModel>
   );
 };

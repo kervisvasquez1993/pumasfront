@@ -20,7 +20,7 @@ export default function Modal({ showModal, setShowModal, data }) {
             <TwoColumnGrid>
               <section className="wrapperModel">
                 
-                  <SelectedModels componentName={data?.componente} />
+                  <SelectedModels modelo={data.modelo3d} componentName={data?.componente} />
               
               </section>
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
