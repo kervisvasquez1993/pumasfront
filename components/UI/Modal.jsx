@@ -11,7 +11,7 @@ export default function Modal({ showModal, setShowModal, data }) {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  console.log(data?.componente, "data desde modal");
+  console.log(data, "");
   return (
     <>
       {showModal && (
@@ -19,9 +19,14 @@ export default function Modal({ showModal, setShowModal, data }) {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <TwoColumnGrid>
               <section className="wrapperModel">
-                
-                  <SelectedModels modelo={data.modelo3d} componentName={data?.componente} />
-              
+                <SelectedModels
+                  modelX={data?.modelX}
+                  modelY={data?.modelY}
+                  modelZ={data?.modelZ}
+                  intensity={data?.modelIntensity}
+                  modelo={data.modelo3d}
+                  componentName={data?.componente}
+                />
               </section>
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
                 <button

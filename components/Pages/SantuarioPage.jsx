@@ -15,23 +15,7 @@ import CanvasElement from "../UI/CanvasElement";
 import Modal from "../UI/Modal";
 import CanvasModel from "../Canvas/CanvasModel";
 import { Puma } from "../Models/Puma";
-import { Chucuyo } from "../Models/Chucuyo";
-import { MonoCaraBlanca } from "../Models/MonoCaraBlanca";
-import { LoroCopeteNegro } from "../Models/LoroCopeteNegro";
-import { LoroCopeteRojo } from "../Models/LoroCopeteRojo";
-import { MonoArana } from "../Models/MonoArana";
-import { LoroNucaAmarilla } from "../Models/LoroNucaAmarilla";
-import { Jaguar } from "../Models/Jaguar";
-import { Manigordo } from "../Models/Manigordo";
-import { Yagurandi } from "../Models/Yagurandi";
-import { LapaRoja } from "../Models/LapaRoja";
-import { TortugaRoja } from "../Models/TortugaRoja";
-import { TortugaNegra } from "../Models/TortigaNegra";
-import { TortugaResbaladora } from "../Models/TortugaResbaladora";
-import { TortugaCandado } from "../Models/TortugaCandado";
-import { Grison } from "../Models/Grison";
-import { Saino } from "../Models/Saino";
-import { OsoPerezosoDeDedos } from "../Models/OsoPerezosoDeDedos";
+
 
 const SantuarioPage = () => {
   const images = [

@@ -28,11 +28,12 @@
 
     align-items: center;
     justify-content: center;
-    background-color: green;
+    background-color: transparent;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    color: white;
 }
 
 .logoSection {

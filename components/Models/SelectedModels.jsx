@@ -18,13 +18,13 @@ import { Grison } from "./Grison";
 import { Saino } from "./Saino";
 import { OsoPerezosoDeDedos } from "./OsoPerezosoDeDedos";
 import { useEffect, useState } from "react";
-const SelectedModels = ({ componentName, modelo }) => {
+const SelectedModels = ({ componentName, modelo, modelX=0, modelY=0, modelZ=0, intensity=0 }) => {
   const [models, setModel] = useState(modelo);
   useEffect(() => {
     setModel(modelo);
   }, [modelo]);
   let selectedComponent = null;
-  console.log(modelo, "lllamando");
+  console.log(modelX, modelY, modelZ)
   switch (componentName) {
     case "Puma":
       selectedComponent = <Puma modelo={models} />;
@@ -85,7 +85,7 @@ const SelectedModels = ({ componentName, modelo }) => {
   }
 
   return (
-    <CanvasModel intensity={1.6} positionX={4} positionY={4} positionZ={10}>
+    <CanvasModel intensity={intensity} positionX={modelX} positionY={modelY} positionZ={modelZ}>
       {selectedComponent}
     </CanvasModel>
   );

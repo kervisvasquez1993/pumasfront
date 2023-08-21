@@ -35,7 +35,11 @@ export const ModeloProvider = ({ children }) => {
       srcModelo: srcModeloUrl,
       imagenes: imagenes,
       modelo3d: models3d,
-      componente : item.attributes.Componente
+      componente : item.attributes.Componente,
+      modelX: item.attributes.modelX,
+      modelY: item.attributes.modelY,
+      modelZ : item.attributes.modelZ,
+      modelIntensity: item.attributes.modelIntensity
     };
   });
 
