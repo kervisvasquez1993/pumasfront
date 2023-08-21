@@ -35,7 +35,51 @@ const SelectedModels = ({ componentName, modelo }) => {
     case "LoroCopeteRoja":
       selectedComponent = <LoroCopeteRojo modelo={models} />;
       break;
-    // Agrega los demás casos aquí...
+    case "Grison":
+      selectedComponent = <Grison modelo={models} />;
+      break;
+    case "Jaguar":
+      selectedComponent = <Jaguar modelo={models} />;
+      break;
+    case "LapaRoja":
+      selectedComponent = <LapaRoja modelo={models} />;
+      break;
+    case "LoroCopeteNegro":
+      selectedComponent = <LoroCopeteNegro modelo={models} />;
+      break;
+    case "LoroNucaAmarilla":
+      selectedComponent = <LoroNucaAmarilla modelo={models} />;
+      break;
+    case "Manigordo":
+      selectedComponent = <Manigordo modelo={models} />;
+      break;
+    case "MonoArana":
+      selectedComponent = <MonoArana modelo={models} />;
+      break;
+    case "ManoCaraBlanca":
+      selectedComponent = <ManoCaraBlanca modelo={models} />;
+      break;
+    case "OsoPerezosoDeDedos":
+      selectedComponent = <OsoPerezosoDeDedos modelo={models} />;
+      break;
+    case "Saino":
+      selectedComponent = <Saino modelo={models} />;
+      break;
+    case "TortugaCandado":
+      selectedComponent = <TortugaCandado modelo={models} />;
+      break;
+    case "TortugaResbaladora":
+      selectedComponent = <TortugaResbaladora modelo={models} />;
+      break;
+    case "TortugaRoja":
+      selectedComponent = <TortugaRoja modelo={models} />;
+      break;
+    case "Yagurandi":
+      selectedComponent = <Yagurandi modelo={models} />;
+      break;
+    case "TortugaNegra":
+      selectedComponent = <Yagurandi modelo={models} />;
+      break;
     default:
       selectedComponent = null;
   }
