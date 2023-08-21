@@ -5,7 +5,7 @@ const CanvasElement = ({ x, y, children }) => {
     position: "absolute",
     left: x,
     top: y,
-    width : "200px",
+    width : "100px",
     cursor: "pointer"
   };
 

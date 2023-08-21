@@ -78,7 +78,10 @@ const SelectedModels = ({ componentName, modelo, modelX=0, modelY=0, modelZ=0, i
       selectedComponent = <Yagurandi modelo={models} />;
       break;
     case "TortugaNegra":
-      selectedComponent = <Yagurandi modelo={models} />;
+      selectedComponent = <TortugaNegra modelo={models} />;
+      break;
+    case "MonoCaraBlanca":
+      selectedComponent = <MonoCaraBlanca modelo={models} />;
       break;
     default:
       selectedComponent = null;

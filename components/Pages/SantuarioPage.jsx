@@ -83,14 +83,7 @@ const SantuarioPage = () => {
         </HeaderComponets>
         {/* MODELO DE PUMAS COMO PRUEBA */}
         <section className="container-section py-10 my-5">
-          <CanvasModel
-            intensity={1.6}
-            positionX={4}
-            positionY={4}
-            positionZ={10}
-          >
-            <Puma />
-          </CanvasModel>
+          
           {/* <CanvasModel
             intensity={15.6}
             positionX={4}
@@ -99,14 +92,7 @@ const SantuarioPage = () => {
           >
             <Chucuyo />
           </CanvasModel>
-          <CanvasModel
-            intensity={3.6}
-            positionX={4}
-            positionY={4}
-            positionZ={60}
-          >
-            <MonoCaraBlanca />
-          </CanvasModel>
+          
           <CanvasModel
             intensity={3.6}
             positionX={4}
@@ -115,22 +101,7 @@ const SantuarioPage = () => {
           >
             <LoroCopeteNegro/>
           </CanvasModel>
-          <CanvasModel
-            intensity={2.6}
-            positionX={4}
-            positionY={4}
-            positionZ={1}
-          >
-            <LoroCopeteRojo/>
-          </CanvasModel>
-          <CanvasModel
-            intensity={2.6}
-            positionX={4}
-            positionY={4}
-            positionZ={50}
-          >
-            <MonoArana/>
-          </CanvasModel>
+         
           <CanvasModel
             intensity={2.6}
             positionX={4}
@@ -139,22 +110,7 @@ const SantuarioPage = () => {
           >
             <LoroNucaAmarilla/>
           </CanvasModel>
-          <CanvasModel
-            intensity={10.6}
-            positionX={4}
-            positionY={4}
-            positionZ={10}
-          >
-            <Manigordo/>
-          </CanvasModel>
-          <CanvasModel
-            intensity={10.6}
-            positionX={4}
-            positionY={4}
-            positionZ={10}
-          >
-            <Yagurandi/>
-          </CanvasModel>
+          
           <CanvasModel
             intensity={5.6}
             positionX={4}
@@ -211,14 +167,7 @@ const SantuarioPage = () => {
           >
             <Saino/>
           </CanvasModel>
-          <CanvasModel
-            intensity={2.6}
-            positionX={4}
-            positionY={4}
-            positionZ={1}
-          >
-            <OsoPerezosoDeDedos/>
-          </CanvasModel> */}
+          */}
         </section>
         <section className="container-section py-10 my-5">
           <section className="grid-2">

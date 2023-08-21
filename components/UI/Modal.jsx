@@ -1,4 +1,5 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
 import NavigationSlider from "./Slider/NavigationSlider";
 import CloseIcon from "../Icons/CloseIcon";
 import ButtonView from "../../views/ButtonView";
@@ -72,7 +73,7 @@ export default function Modal({ showModal, setShowModal, data }) {
                         Apoyar Animal
                       </ButtonView>
                     </div>
-                    {data?.descripcion}
+                    <ReactMarkdown>{data?.descripcion}</ReactMarkdown>
                   </div>
                 </div>
               </div>
