@@ -6,13 +6,14 @@ Command: npx gltfjsx@6.1.11 Manigordo.gltf
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function Manigordo(props) {
-  const { nodes, materials } = useGLTF('/models/Manigordo.gltf')
-  return (
+export function Manigordo({ modelo, ...props }) {
+  if (modelo) {
+    const { nodes, materials } = useGLTF(modelo);
+    return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Ocelot.geometry} material={materials.Ocelot} />
     </group>
-  )
+  );
+    }
+    return null;
 }
-
-useGLTF.preload('/models/Manigordo.gltf')

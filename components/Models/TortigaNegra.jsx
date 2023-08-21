@@ -6,13 +6,14 @@ Command: npx gltfjsx@6.1.11 TortugaNegra.gltf
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function TortugaNegra(props) {
-  const { nodes, materials } = useGLTF('/models/TortugaNegra.gltf')
-  return (
+export function TortugaNegra({ modelo, ...props }) {
+  if (modelo) {
+    const { nodes, materials } = useGLTF(modelo);
+    return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.TortugaNegra.geometry} material={materials['13102_pondturtle']} />
     </group>
-  )
+  );
+    }
+    return null;
 }
-
-useGLTF.preload('/models/TortugaNegra.gltf')

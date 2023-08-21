@@ -33,7 +33,7 @@ const SelectedModels = ({ componentName, modelo }) => {
       selectedComponent = <Chucuyo />;
       break;
     case "LoroCopeteRoja":
-      selectedComponent = <LoroCopeteRojo modelo={modelo} />;
+      selectedComponent = <LoroCopeteRojo modelo={models} />;
       break;
     // Agrega los demás casos aquí...
     default:

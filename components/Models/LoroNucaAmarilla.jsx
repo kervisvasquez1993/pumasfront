@@ -6,13 +6,14 @@ Command: npx gltfjsx@6.1.11 LoraNucaAmarilla.gltf
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function LoroNucaAmarilla(props) {
-  const { nodes, materials } = useGLTF('/models/LoraNucaAmarilla.gltf')
-  return (
+export function LoroNucaAmarilla({ modelo, ...props }) {
+  if (modelo) {
+    const { nodes, materials } = useGLTF(modelo);
+    return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.LoraNucaAmarilla.geometry} material={materials.LoraNucaAmarilla} />
     </group>
-  )
+  );
+    }
+    return null;
 }
-
-useGLTF.preload('/models/LoraNucaAmarilla.gltf')
