@@ -35,6 +35,7 @@ export const ModeloProvider = ({ children }) => {
       srcModelo: srcModeloUrl,
       imagenes: imagenes,
       modelo3d: models3d,
+      componente : item.attributes.Componente
     };
   });
 

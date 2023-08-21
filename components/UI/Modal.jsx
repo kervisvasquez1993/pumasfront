@@ -5,12 +5,13 @@ import ButtonView from "../../views/ButtonView";
 import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 import CanvasModel from "../Canvas/CanvasModel";
 import { Puma } from "../Models/Puma";
+import SelectedModels from "../Models/SelectedModels";
 
 export default function Modal({ showModal, setShowModal, data }) {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
+  console.log(data?.componente, "data desde modal");
   return (
     <>
       {showModal && (
@@ -18,14 +19,9 @@ export default function Modal({ showModal, setShowModal, data }) {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <TwoColumnGrid>
               <section className="wrapperModel">
-                <CanvasModel
-                  intensity={1.6}
-                  positionX={4}
-                  positionY={4}
-                  positionZ={10}
-                >
-                  <Puma />
-                </CanvasModel>
+                
+                  <SelectedModels componentName={data?.componente} />
+              
               </section>
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
                 <button

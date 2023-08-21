@@ -18,7 +18,7 @@ import { Puma } from "../Models/Puma";
 import { Chucuyo } from "../Models/Chucuyo";
 import { MonoCaraBlanca } from "../Models/MonoCaraBlanca";
 import { LoroCopeteNegro } from "../Models/LoroCopeteNegro";
-import { LoroCopeteRojo } from "../Models/LoroCopeteRoja";
+import { LoroCopeteRojo } from "../Models/LoroCopeteRojo";
 import { MonoArana } from "../Models/MonoArana";
 import { LoroNucaAmarilla } from "../Models/LoroNucaAmarilla";
 import { Jaguar } from "../Models/Jaguar";
