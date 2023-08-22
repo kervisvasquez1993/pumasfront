@@ -159,14 +159,6 @@ const SantuarioPage = () => {
           >
             <Grison/>
           </CanvasModel>
-          <CanvasModel
-            intensity={10.6}
-            positionX={4}
-            positionY={4}
-            positionZ={1}
-          >
-            <Saino/>
-          </CanvasModel>
           */}
         </section>
         <section className="container-section py-10 my-5">

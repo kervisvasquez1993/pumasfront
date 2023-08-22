@@ -1,130 +1,108 @@
-import { useEffect, useState } from "react";
-import Main from "../../Layout/Main/Main";
-import BannerComponents from "../../components/UI/Banner/BannerComponents";
-import GeneralComponents from "../../components/UI/GeneralComponet/GeneralComponents";
-import HeaderComponets from "../../components/UI/HeaderComponents/HeaderComponets";
-import Slider from "../../components/UI/Slider/SliderComponts";
-import Map from "../../components/UI/Map/index";
-import { api } from "../../helpers/apiBackend";
-import MapSection from "../../components/Section/Map/MapSection";
-import SliderTwo from "../../components/UI/Slider/SliderTwo";
-import { ApiBackend } from "../../apis/ApiBackend";
+import React, { useEffect } from "react";
+import HomePage from "../../components/Pages/HomePage";
+import { useRouter } from "next/router";
+import NosotrosPage from "../../components/Pages/NosotrosPage";
+import { getAllModels, getMenus, langAll } from "../../apis/ApiBackend";
+import SantuarioPage from "../../components/Pages/SantuarioPage";
+import CentroDeRescate from "../../components/Pages/CentroDeRescate";
+import BlogPage from "../../components/Pages/BlogPage";
+import ProgramaPage from "../../components/Pages/ProgramaPage";
+import ApoyanosPage from "../../components/Pages/ApoyanosPage";
+import useModelo from "../../hooks/useModelo";
 
-// api
-// import dynamic from 'next/dynamic';
-// const test = dynamic(() => import("../../components/UI/Map/MapLocations"), { ssr: false });
-// import {MapLocations} from "../../components/UI/Map/MapLocations";
-// import Map from "../../components/UI/Map/Map";
-const LangPage = ({ lang }) => {
-  return (
-    <Main>
-      {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}
-      <BannerComponents />
+const Page = ({ page, models }) => {
+  const router = useRouter();
+  const { hearlessChangInfo } = useModelo();
 
-      <HeaderComponets
-        src="/images/fondo1.png"
-        classNameText={"py-5 colorPrimary chelseaFont"}
-        alignment="start"
-      >
-        CENTRO DE RESCATE Y SANTUARIO LAS PUMAS
-      </HeaderComponets>
-      <GeneralComponents
-        infoBTN={"Conoce más"}
-        colorBTN={"backgroundPrimary"}
-        reverseOrder={false}
-        srcBackgroundColor="/images/fondo1.png"
-        imageSrc="/images/venado.png"
-        image2Src="/images/modelo3d.png"
-        paragraphText={
-          "In the example below, we use the font Inter from next/font/google (you can use any font from Google or Local Fonts). Load your font with the variable option to define your CSS variable name and assign it to inter."
-        }
-      />
-      <HeaderComponets
-        src=""
-        classNameText={"py-5 colorSecondary chelseaFont"}
-        alignment="end"
-      >
-        ¡CONOCE NUESTRO SANTUARIO VIRTUAL!
-      </HeaderComponets>
+  useEffect(() => {
+    models && hearlessChangInfo(models);
+  }, []);
+  models && console.log(models);
+  if (router.isFallback) {
+    return <div>Cargando...</div>;
+  }
 
-      <GeneralComponents
-        infoBTN={"Visita virtual"}
-        colorBTN={"backgroundGris"}
-        reverseOrder={true}
-        srcBackgroundColor="/images/fondo1.png"
-        imageSrc="/images/section2.png"
-        paragraphText={
-          "In the example below, we use the font Inter from next/font/google (you can use any font from Google or Local Fonts). Load your font with the variable option to define your CSS variable name and assign it to inter."
-        }
-      />
-      <HeaderComponets
-        src="/images/fondo1.png"
-        classNameText={"py-5 colorVerde chelseaFont"}
-        alignment="start"
-      >
-        NO ME SAQUES DE MI HÁBITAT
-      </HeaderComponets>
-      <GeneralComponents
-        infoBTN={"Ver más Programas"}
-        colorBTN={"backgroundVerde"}
-        reverseOrder={false}
-        srcBackgroundColor="/images/fondo1.png"
-        imageSrc="/images/nigre.png"
-        image2Src="/images/modelo3d.png"
-        paragraphText={
-          "In the example below, we use the font Inter from next/font/google (you can use any font from Google or Local Fonts). Load your font with the variable option to define your CSS variable name and assign it to inter."
-        }
-      />
-      <HeaderComponets
-        src="/images/fondo1.png"
-        classNameText={"py-5 colorPrimary chelseaFont"}
-        alignment="start"
-      >
-        NOTICIAS Y BLOG
-      </HeaderComponets>
-      <Slider srcBackgroundColor={"/images/fondo1.png"} />
-      <MapSection />
-      <HeaderComponets
-        src="/images/fondo1.png"
-        classNameText={"py-5 colorVerde chelseaFont"}
-        alignment="start"
-      >
-        PATROCINADORES
-      </HeaderComponets>
-      <SliderTwo />
-    </Main>
-  );
-};
+  if (!page) {
+    return <div>Página no encontrada</div>;
+  }
 
-export default LangPage;
-const lang = () => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
+  const renderContent = () => {
+    if (page.contentType === "component") {
+      switch (page.slug) {
+        case "inicio":
+          return <HomePage />;
+        case "nosotros":
+          return <NosotrosPage />;
+        case "santuario":
+          return <SantuarioPage />;
+        case "centro-de-rescate":
+          return <CentroDeRescate />;
+        case "blog":
+          return <BlogPage />;
+        case "programas":
+          return <ProgramaPage />;
+        case "apoyanos":
+          return <ApoyanosPage />;
+        default:
+          return null;
+      }
+    } else if (page.contentType === "text") {
+      return <p>{page.name}</p>;
+    } else {
+      return null;
+    }
   };
-  return ApiBackend("api/i18n/locales", config);
+
+  return <div>{renderContent()}</div>;
 };
 
 export const getStaticProps = async ({ params }) => {
-  const paramId = params.lang;
-  const langResponse = await lang();
-  const languages = langResponse.data;
-  const language = languages.find((lang) => lang.code === paramId);
-  if (!language) return { notFound: true };
+  const { lang, slug } = params;
+  const getLangAll = await langAll();
+  const languages = getLangAll.data;
+  const menu = [];
+
+  for (const language of languages) {
+    const menusResponse = await getMenus(language.code);
+    const menus = menusResponse.data.data;
+    menus.forEach((element) => {
+      menu.push({
+        lang: element.attributes.locale,
+        slug: element.attributes.slug,
+        name: element.attributes.nombre,
+        contentType: "component",
+      });
+    });
+  }
+  const page = menu.find((page) => page.lang === lang && page.slug === slug);
+  if (!page) return { notFound: true };
   return {
-    props: { language },
+    props: { page: { ...page } },
   };
 };
 
 export const getStaticPaths = async () => {
-  const langResponse = await lang();
-  const languages = langResponse.data;
-  const code = languages.map((lang) => lang.code);
-  const paths = code.map((path) => ({ params: { lang: path } }));
+  const lang = await langAll();
+  const languages = lang.data;
+  const result = [];
+  for (const language of languages) {
+    const menusResponse = await getMenus(language.code);
+    const menus = menusResponse.data.data;
+    menus.forEach((element) => {
+      result.push({
+        params: { 
+          lang: element.attributes.locale,
+          slug: element.attributes.slug,
+          name: element.attributes.nombre,
+        },
+      });
+    });
+  }
+
   return {
-    paths,
-    // fallback: "blocking ,
+    paths: result,
     fallback: true,
   };
 };
+
+export default Page;

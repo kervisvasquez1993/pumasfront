@@ -2,7 +2,7 @@ import React from "react";
 
 const DonationInfo = ({ newElement }) => {
   return (
-    <div className="border p-4 rounded mb-4">
+    <div className="border p-4 rounded mb-4 flex-column">
       <h2 className="text-lg font-semibold mb-2">Resumen de Donaciones</h2>
       <p>
         <span className="font-semibold">Nombre:</span> {newElement.nombre}
