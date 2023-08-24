@@ -4,14 +4,15 @@ import CanvasElement from "./CanvasElement"; // Asegúrate de importar el compon
 const MapWithBackground = ({ backgroundImage, children }) => {
   const mapStyle = {
     position: "relative",
-    maxWidth: "100vw", // Tamaño máximo de pantalla
+    maxWidth: "100vw",
+    maxHeight : "100vh",
   };
 
   const backgroundContainerStyle = {
     position: "absolute",
     top: 0,
     left: 0,
-    width: "100%",
+    width: "2500px",
     height: "100%",
   };
 
