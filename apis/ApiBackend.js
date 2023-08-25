@@ -199,6 +199,7 @@ export const getPagesGQ = async (language) => {
         id
         attributes{
           title
+          slug
           DynamicComponent{
             ... on ComponentUiHeaderTitle {
               id

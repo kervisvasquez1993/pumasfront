@@ -2,21 +2,25 @@ import React, { useEffect } from "react";
 import HomePage from "../../../components/Pages/HomePage";
 import { useRouter } from "next/router";
 import NosotrosPage from "../../../components/Pages/NosotrosPage";
-import { getAllModels, getMenus, getPageWithComponents, langAll } from "../../../apis/ApiBackend";
+import { getAllModels, getMenus, getPageWithComponents, getPagesGQ, langAll } from "../../../apis/ApiBackend";
 import SantuarioPage from "../../../components/Pages/SantuarioPage";
 import CentroDeRescate from "../../../components/Pages/CentroDeRescate";
 import BlogPage from "../../../components/Pages/BlogPage";
 import ProgramaPage from "../../../components/Pages/ProgramaPage";
 import ApoyanosPage from "../../../components/Pages/ApoyanosPage";
 import useModelo from "../../../hooks/useModelo";
+import usePages from "../../../hooks/usePages";
 
 const Page = ({ page, models }) => {
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
+  const { slug, lang } = router.query
+  console.log(page)
 
   useEffect(() => {
     models && hearlessChangInfo(models);
-  }, []);
+
+  }, [page]);
   models && console.log(models);
   if (router.isFallback) {
     return <div>Cargando...</div>;
@@ -25,6 +29,7 @@ const Page = ({ page, models }) => {
   if (!page) {
     return <div>Página no encontrada</div>;
   }
+
 
   const renderContent = () => {
     if (page.contentType === "component") {
@@ -59,22 +64,23 @@ const Page = ({ page, models }) => {
 export const getStaticProps = async ({ params }) => {
   const { lang, slug } = params;
   const getLangAll = await langAll();
+  const pagesResponse = await getPagesGQ(lang)
+  const pages = pagesResponse.data.pages
   const languages = getLangAll.data;
-  const menu = [];
-  
-  for (const language of languages) {
-    const menusResponse = await getMenus(language.code);
-    const menus = menusResponse.data.data;
-    menus.forEach((element) => {
-      menu.push({
-        lang: element.attributes.locale,
-        slug: element.attributes.slug,
-        name: element.attributes.nombre,
-        contentType: "component",
-      });
-    });
-  }
-  const page = menu.find((page) => page.lang === lang && page.slug === slug);
+  const dataPages = pages.data;
+  const updatePage = dataPages.map(page => {
+    return {
+      id: page.id,
+      title: page.attributes.title,
+      slug: page.attributes.slug,
+      componentDynamics: page.attributes.DynamicComponent,
+      locales : lang,
+      contentType: "component",
+    }
+  })
+  console.log(updatePage)
+
+  const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
   const models = {};
   if (page.slug === "santuario") {
     for (const language of languages) {
@@ -100,7 +106,7 @@ export const getStaticPaths = async () => {
     const menus = menusResponse.data.data;
     menus.forEach((element) => {
       result.push({
-        params: { 
+        params: {
           lang: element.attributes.locale,
           slug: element.attributes.slug,
           name: element.attributes.nombre,

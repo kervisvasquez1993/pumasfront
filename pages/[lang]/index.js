@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { getMenus, getPagesGQ, langAll } from '../../apis/ApiBackend';
+import usePages from '../../hooks/usePages';
 
 const Lang = ({ lang, menu, pages }) => {
-    console.log(pages)
+    const { updateData } = usePages();
+    useEffect(() => {
+        updateData(pages);
+    }, [lang]);
+
     return (
         <div>Lang</div>
     )

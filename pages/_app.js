@@ -9,9 +9,10 @@ import { useEffect, useState } from "react";
 import { ModeloProvider } from "../context/ModelosProvider";
 import { DonationsProvider } from "../context/DonationsProvider";
 import { appWithTranslation } from 'next-i18next';
+import { PagesProvider } from "../context/PagesProvider";
 function MyApp({ Component, pageProps }) {
   const [initialRenderComplete, setInitialRenderComplete] = useState(false);
-  
+
 
   useEffect(() => {
     setInitialRenderComplete(true);
@@ -21,11 +22,13 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <MenuProvider>
-      <ModeloProvider>
-        <DonationsProvider>
-          <Component {...pageProps} />
-        </DonationsProvider>
-      </ModeloProvider>
+      <PagesProvider>
+        <ModeloProvider>
+          <DonationsProvider>
+            <Component {...pageProps} />
+          </DonationsProvider>
+        </ModeloProvider>
+      </PagesProvider>
     </MenuProvider>
   );
 }
