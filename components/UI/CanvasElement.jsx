@@ -1,6 +1,6 @@
 import React from "react";
 
-const CanvasElement = ({ x, y, children }) => {
+const CanvasElement = ({ x, y, children,className }) => {
   const canvasElementStyle = {
     position: "absolute",
     left: x,
@@ -9,7 +9,7 @@ const CanvasElement = ({ x, y, children }) => {
     cursor: "pointer"
   };
 
-  return <div style={canvasElementStyle}>{children}</div>;
+  return <div style={canvasElementStyle} className={className}>{children}</div>;
 };
 
 export default CanvasElement;

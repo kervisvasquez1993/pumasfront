@@ -5,9 +5,9 @@ const MapWithBackground = ({ backgroundImage, children }) => {
   const mapStyle = {
     position: "relative",
     maxWidth: "100vw",
-    height : "85vh",
-    overflowX : "auto",
-    overflowY : "auto"
+    height: "85vh",
+    overflowX: "auto",
+    overflowY: "auto"
   };
 
   const backgroundContainerStyle = {
@@ -34,19 +34,20 @@ const MapWithBackground = ({ backgroundImage, children }) => {
     top: 0,
     left: 0,
     width: "100%",
+    zIndex: 2
   };
 
   return (
     <section className="headerSectionMap" style={mapStyle}>
       <div style={backgroundContainerStyle}>
-        <div style={backgroundStyle}></div>
+        <div style={backgroundStyle} className="mapa"></div>
       </div>
       <div style={scrollableContentStyle}>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             const { x, y } = child.props; // Coordenadas personalizadas de cada hijo
             return (
-              <CanvasElement key={child.key} x={x} y={y}>
+              <CanvasElement key={child.key} x={x} y={y} className="test">
                 {child}
               </CanvasElement>
             );

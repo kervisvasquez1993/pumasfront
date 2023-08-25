@@ -15,7 +15,7 @@ import CanvasElement from "../UI/CanvasElement";
 import Modal from "../UI/Modal";
 import CanvasModel from "../Canvas/CanvasModel";
 import { Puma } from "../Models/Puma";
-
+import { Tooltip } from 'react-tooltip'
 
 const SantuarioPage = () => {
   const images = [
@@ -45,19 +45,25 @@ const SantuarioPage = () => {
           const { ubicacionX, ubicacionY, srcModelo } = models;
           const x = parseInt(ubicacionX);
           const y = parseInt(ubicacionY);
+          console.log(models)
           return (
+
             <CanvasElement
               key={srcModelo}
               x={x}
               y={y}
-              className={"sizeModelsSantuario"}
+              className={" "}
             >
               <img
                 src={srcModelo}
                 alt=""
+                data-tooltip-id="my-tooltip" data-tooltip-content={models.nombre}
                 onClick={() => hearlessChange(models)}
               />
+              <Tooltip id="my-tooltip" />
             </CanvasElement>
+
+
           );
         })}
       </MapWithBackground>
@@ -83,7 +89,7 @@ const SantuarioPage = () => {
         </HeaderComponets>
         {/* MODELO DE PUMAS COMO PRUEBA */}
         <section className="container-section py-10 my-5">
-          
+
           {/* <CanvasModel
             intensity={15.6}
             positionX={4}

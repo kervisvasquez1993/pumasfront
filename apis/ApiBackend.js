@@ -53,3 +53,139 @@ export const getTypeDonations = (lang) => {
 
   return ApiBackend("api/tipo-de-donacions?populate=*&locale" + lang, config);
 };
+
+
+export const getPageWithComponents = async (language, id) => {
+  const query = `
+    query GetPageWithComponents {
+      page(id: "${id}", locale: "${language}") {
+        data {
+          id
+          attributes {
+            title
+            slug
+            DynamicComponent {
+              ... on ComponentUiHeaderTitle {
+                id
+                Titulo
+                color
+              }
+              ... on ComponentUiImagenes {
+                id
+                Content
+                title
+                colorTitle{
+                  colorTitle
+                }
+                
+                imagenes {
+                  data {
+                    attributes {
+                      url
+                      formats
+                    }
+                  }
+                }
+              }
+              ...on ComponentUiBasicSection{
+                title
+                colorTitle{
+                  colorTitle
+                }
+                content
+                typeSection
+                btn{
+                  id
+                  label
+                  url
+                  backgroundButton
+                }
+                background{
+                  data{
+                    id
+                    attributes{
+                      url
+                      name
+                      
+                    }
+                  }
+                }
+               imagenWithContentBasic{
+                label
+                content
+                img{
+                  data{
+                    attributes{
+                      url
+                    }
+                  }
+                }
+              }
+              
+                
+              }
+              ...on ComponentUiRelacionMaterial{
+                id
+                material_educativos{
+                  data{
+                    attributes{
+                      title
+                      subTitle
+                      description
+                      imgFile{
+                        data{
+                          attributes{
+                            url
+                            name
+                          }
+                        }
+                      }
+                      file{
+                        data{
+                          attributes{
+                            url
+                            name
+                          }
+                        }
+                      }
+                      
+                      
+                    }
+                  }
+                }
+              }
+              ...on ComponentUiImagen{
+                id
+                img{
+                  data{
+                    attributes{
+                      name
+                      url
+                    }
+                  }
+                }
+                
+    
+                
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const response = await ApiBackend.post("graphql", { query }, config);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return null;
+  }
+};

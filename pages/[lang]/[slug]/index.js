@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import HomePage from "../../../components/Pages/HomePage";
 import { useRouter } from "next/router";
 import NosotrosPage from "../../../components/Pages/NosotrosPage";
-import { getAllModels, getMenus, langAll } from "../../../apis/ApiBackend";
+import { getAllModels, getMenus, getPageWithComponents, langAll } from "../../../apis/ApiBackend";
 import SantuarioPage from "../../../components/Pages/SantuarioPage";
 import CentroDeRescate from "../../../components/Pages/CentroDeRescate";
 import BlogPage from "../../../components/Pages/BlogPage";
@@ -61,7 +61,7 @@ export const getStaticProps = async ({ params }) => {
   const getLangAll = await langAll();
   const languages = getLangAll.data;
   const menu = [];
-
+  
   for (const language of languages) {
     const menusResponse = await getMenus(language.code);
     const menus = menusResponse.data.data;

@@ -12,7 +12,7 @@ export default function Modal({ showModal, setShowModal, data }) {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  console.log(data, "");
+  
   return (
     <>
       {showModal && (
