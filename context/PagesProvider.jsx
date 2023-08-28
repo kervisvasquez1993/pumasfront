@@ -15,6 +15,9 @@ export const PagesProvider = ({ children }) => {
         if (pagesState?.slug == "centro-de-rescate") {
             setDynamicsComponent(pagesState.componentDynamics);
         }
+        if (pagesState?.slug == "santuario") {
+            setDynamicsComponent(pagesState.componentDynamics);
+        }
     }, [pagesState])
 
        

@@ -43,7 +43,7 @@ export default function Modal({ showModal, setShowModal, data }) {
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="h-6 w-6"
+                    className="h-6 w-6"
                   >
                     <path
                       stroke-linecap="round"

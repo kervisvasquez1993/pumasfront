@@ -25,7 +25,6 @@ const CentroDeRescate = () => {
       url: `http://localhost:1337${img.attributes.url}`
     }
   })
- 
   const { imagenWithContentBasic } = thirdSection
   const { background, colorTitle, title, content } = fourthSection
   console.log(fourthSection.background.data.attributes.url)

@@ -1,10 +1,6 @@
 // SantuarioPage.js
 import React, { useState } from "react";
 import Main from "../../Layout/Main/Main";
-import SanctuarySection from "../Section/Santuario/SanctuarySection";
-import RouteSection from "../Section/Santuario/RouteSection";
-import RulesSection from "../Section/Santuario/RulesSection";
-import SliderThree from "../UI/Slider/SliderThree";
 import BasicSection from "../Section/Basic/BasicSection";
 import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
 import ButtonView from "../../views/ButtonView";
@@ -13,24 +9,23 @@ import MapWithBackground from "../UI/MapWithBackground";
 import useModelo from "../../hooks/useModelo";
 import CanvasElement from "../UI/CanvasElement";
 import Modal from "../UI/Modal";
-import CanvasModel from "../Canvas/CanvasModel";
-import { Puma } from "../Models/Puma";
 import { Tooltip } from 'react-tooltip'
+import usePages from "../../hooks/usePages";
+import SlidetWithContent from "../Section/Slider/SliderWithContent";
+import ReactMarkdown from "react-markdown";
 
 const SantuarioPage = () => {
-  const images = [
-    "https://swiperjs.com/demos/images/nature-1.jpg",
-    "https://swiperjs.com/demos/images/nature-2.jpg",
-    "https://swiperjs.com/demos/images/nature-3.jpg",
-    "https://swiperjs.com/demos/images/nature-4.jpg",
-  ];
+
+  const { dynamicsComponent } = usePages();
+  if (!dynamicsComponent) {
+    return "cargando...";
+  }
   const { modeloList } = useModelo();
   const [stateModal, setStateModal] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const hearlessChange = (data) => {
     setStateModal(data);
     setOpenModal(true);
-    console.log(data);
   };
 
   const handleCloseModal = () => {
@@ -38,6 +33,15 @@ const SantuarioPage = () => {
     setOpenModal(false);
   };
 
+  console.log(dynamicsComponent)
+  const [firstElement, secondElement, thirdElement, fourthElement, fifthElement] = dynamicsComponent
+  const { imagenes } = secondElement
+  const imgSlider = imagenes.data.map(img => {
+    return {
+      url: `http://localhost:1337${img.attributes.url}`
+    }
+  })
+  console.log(fourthElement)
   return (
     <Main titlePage={"Santuario"}>
       <MapWithBackground backgroundImage={"/images/mapa.jpg"}>
@@ -45,7 +49,7 @@ const SantuarioPage = () => {
           const { ubicacionX, ubicacionY, srcModelo } = models;
           const x = parseInt(ubicacionX);
           const y = parseInt(ubicacionY);
-          console.log(models)
+
           return (
 
             <CanvasElement
@@ -56,7 +60,8 @@ const SantuarioPage = () => {
             >
               <img
                 src={srcModelo}
-                alt=""
+                key={srcModelo}
+                alt={srcModelo}
                 data-tooltip-id="my-tooltip" data-tooltip-content={models.nombre}
                 onClick={() => hearlessChange(models)}
               />
@@ -85,137 +90,22 @@ const SantuarioPage = () => {
           classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
           alignment="start"
         >
-          Nuestro Santuario
+          {firstElement.Titulo}
         </HeaderComponets>
-        {/* MODELO DE PUMAS COMO PRUEBA */}
-        <section className="container-section py-10 my-5">
 
-          {/* <CanvasModel
-            intensity={15.6}
-            positionX={4}
-            positionY={4}
-            positionZ={1}
-          >
-            <Chucuyo />
-          </CanvasModel>
-          
-          <CanvasModel
-            intensity={3.6}
-            positionX={4}
-            positionY={4}
-            positionZ={1}
-          >
-            <LoroCopeteNegro/>
-          </CanvasModel>
-         
-          <CanvasModel
-            intensity={2.6}
-            positionX={4}
-            positionY={4}
-            positionZ={1}
-          >
-            <LoroNucaAmarilla/>
-          </CanvasModel>
-          
-          <CanvasModel
-            intensity={5.6}
-            positionX={4}
-            positionY={4}
-            positionZ={5}
-          >
-            <LapaRoja/>
-          </CanvasModel>
-          <CanvasModel
-            intensity={5.6}
-            positionX={4}
-            positionY={4}
-            positionZ={1}
-          >
-            <TortugaRoja/>
-          </CanvasModel>
-          <CanvasModel
-            intensity={5.6}
-            positionX={4}
-            positionY={4}
-            positionZ={1}
-          >
-            <TortugaNegra/>
-          </CanvasModel>
-          <CanvasModel
-            intensity={2.6}
-            positionX={4}
-            positionY={4}
-            positionZ={1}
-          >
-            <TortugaResbaladora/>
-          </CanvasModel>
-          <CanvasModel
-            intensity={2.6}
-            positionX={4}
-            positionY={4}
-            positionZ={1}
-          >
-            <TortugaCandado/>
-          </CanvasModel>
-          <CanvasModel
-            intensity={10.6}
-            positionX={4}
-            positionY={4}
-            positionZ={1}
-          >
-            <Grison/>
-          </CanvasModel>
-          */}
-        </section>
+
         <section className="container-section py-10 my-5">
-          <section className="grid-2">
-            <SliderThree>
-              {images.map((image) => {
-                return (
-                  <div key={image}>
-                    <img src={image} alt={"natural"} />
-                  </div>
-                );
-              })}
-            </SliderThree>
-            <BasicSection
-              classNameTitle={""}
-              classNameWrapper={"setionStyleTwo"}
-              title={""}
-              classNameContent={"fuentesParrafo py-10"}
-            >
-              <p className="py-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-                sunt veniam quos. Nisi esse quae ullam ab, mollitia vero
-                accusantium. Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Ducimus sunt veniam quos. Nisi esse quae ullam ab,
-                mollitia vero accusantium. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Ducimus sunt veniam quos. Nisi
-                esse quae ullam ab, mollitia vero accusantium.
-              </p>
-              <p className="py-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-                sunt veniam quos. Nisi esse quae ullam ab, mollitia vero
-                accusantium. Lorem ipsum dolor sit amet consectetur adipisicing
-              </p>
-              <p className="py-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-                sunt veniam quos. Nisi esse quae ullam ab, mollitia vero
-                accusantium. Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Ducimus sunt veniam quos. Nisi esse quae ullam ab,
-                mollitia vero accusantium. Lorem ipsum dolor sit amet
-              </p>
-            </BasicSection>
-          </section>
+          <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
+
         </section>
-        <TwoColumnGrid backgroundImage="/images/mask-background.png">
+        <TwoColumnGrid backgroundImage={"http://localhost:1337" + thirdElement.background.data.attributes.url}>
           <HeaderComponets
             alignment="center"
             src="/images/fondo1.png"
             classNameText={"colorSecondary chelseaFont"}
             classNameSection={"centerElement"}
           >
-            Reserva tu recorrido Guiado
+            {thirdElement.title}
           </HeaderComponets>
           <BasicSection
             classNameTitle={""}
@@ -228,17 +118,7 @@ const SantuarioPage = () => {
               "fuentesParrafo align-vertical-center-horizontal-start py-10 my-10"
             }
           >
-            <p className="py-5">
-              En este recorrido aprenderás sobre los animales silvestres que
-              viven de forma permanente en el Santuario: conocerás su
-              comportamiento, historia natural, ecología y descubrirás la razón
-              por la que no pudieron ser devueltos a la naturaleza. El recorrido
-              guiado no tiene ningún costo económico adicional, pero está sujeto
-              a disponibilidad.
-            </p>
-            <p className="py-5 fontBold ">
-              ¡Sera un gusto mostrarte nuestro santuario!
-            </p>
+            <ReactMarkdown className="py-10">{thirdElement.content}</ReactMarkdown>
             <ButtonView
               className={" backgroundSecondary m-0 manropeFont p-5"}
               link={""}
@@ -250,76 +130,29 @@ const SantuarioPage = () => {
         <div className="container-edu ">
           <div>
             <h3 className="program-title fuenteTitulo colorVerde">
-              REGLAS Y RECOMENDACIONES
+              {fourthElement.title}
             </h3>
-            <p className="fuentesParrafo py-10 my-10 width-30">
-              Si vas a venir de visita a nuestro Santuario, acá te mostramos
-              nuestras reglas. Además, cuando nos visités te recomendamos traer
-              bloqueador, repelente e hidratación.
-            </p>
+            <ReactMarkdown className="fuentesParrafo py-10 my-10 width-30">{fourthElement.content}</ReactMarkdown>
           </div>
 
           <div className="icons-container py-10 my-10">
-            <div className="icon-flex-2">
-              <div className="icons__imagen">
-                <img src="/images/hand1.png" alt="imagen santuario" />
-              </div>
-              <div className="icons_text">
-                <p className="fuentesParrafo ">
-                  No tocar, no molestar ni alimentar a los animales.
-                </p>
-              </div>
-            </div>
-            <div className="icon-flex-2">
-              <div className="icons__imagen">
-                <img src="/images/pallet.png" alt="imagen santuario" />
-              </div>
-              <div className="icons_text">
-                <p className="fuentesParrafo ">
-                  Respetar las barandas de seguridad
-                </p>
-              </div>
-            </div>
-            <div className="icon-flex-2">
-              <div className="icons__imagen">
-                <img src="/images/bolt.png" alt="imagen santuario" />
-              </div>
-              <div className="icons_text">
-                <p className="fuentesParrafo ">
-                  No usar flash fotos cuando tomes fotos o videos
-                </p>
-              </div>
-            </div>
-            <div className="icon-flex-2">
-              <div className="icons__imagen">
-                <img src="/images/paw.png" alt="imagen santuario" />
-              </div>
-              <div className="icons_text">
-                <p className="fuentesParrafo ">
-                  No ingresar con mascotas a instalaciones
-                </p>
-              </div>
-            </div>
-            <div className="icon-flex-2">
-              <div className="icons__imagen">
-                <img src="/images/smoking.png" alt="imagen santuario" />
-              </div>
-              <div className="icons_text">
-                <p className="fuentesParrafo ">
-                  No usar flash fotos cuando tomes fotos o videos
-                </p>
-              </div>
-            </div>
-            <div className="icon-flex-2">
-              <div className="icons__imagen">
-                <img src="/images/burger.png" alt="imagen santuario" />
-              </div>
-              <div className="icons_text">
-                <p className="fuentesParrafo ">
-                  No usar flash fotos cuando tomes fotos o videos
-                </p>
-              </div>
-            </div>
+
+            {fourthElement.imagenWithContentBasic.map(element => {
+              return (
+                <div className="icon-flex-2" key={element.id}>
+                  <div className="icons__imagen">
+                    <img src={"http://localhost:1337" + element.img.data[0].attributes.url} alt="imagen santuario" />
+                  </div>
+                  <div className="icons_text">
+                    <ReactMarkdown className="fuentesParrafo ">
+                      {element.content}
+                    </ReactMarkdown>
+                  </div>
+                </div>)
+            })}
+
+
+
           </div>
         </div>
       </div>
