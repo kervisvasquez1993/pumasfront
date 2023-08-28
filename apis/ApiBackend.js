@@ -226,6 +226,13 @@ export const getPagesGQ = async (language) => {
             }
             ...on ComponentUiBasicSection{
               title
+              imgBasicContent{
+                data{
+                  attributes{
+                    url
+                  }
+                }
+              }
               colorTitle{
                 colorTitle
               }

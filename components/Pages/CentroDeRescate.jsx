@@ -11,6 +11,7 @@ import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
 import usePages from "../../hooks/usePages";
 import { cookies } from "next/dist/client/components/headers";
 import SlidetWithContent from "../Section/Slider/SliderWithContent";
+import ReactMarkdown from "react-markdown";
 
 const CentroDeRescate = () => {
   const { dynamicsComponent } = usePages()
@@ -18,63 +19,69 @@ const CentroDeRescate = () => {
     return "cargando...";
   }
   const [firstSection, secondSection, thirdSection, fourthSection] = dynamicsComponent;
-  console.log(thirdSection, "thri section")
   const { imagenes } = firstSection
   const imgSlider = imagenes.data.map(img => {
     return {
       url: `http://localhost:1337${img.attributes.url}`
     }
   })
+ 
+  const { imagenWithContentBasic } = thirdSection
+  const { background, colorTitle, title, content } = fourthSection
+  console.log(fourthSection.background.data.attributes.url)
+
 
   return (
     <Main titlePage={"Centro de Rescate"}>
       <div className="container">
-        <SlidetWithContent images={imgSlider} content={firstSection.Content} title={firstSection.title}/>
+        <SlidetWithContent images={imgSlider} content={firstSection.Content} title={firstSection.title} />
         <h3 className="program-title fuenteTitulo colorPrimary py-10 my-10">
           {secondSection.Titulo}
         </h3>
         <SectionReverse
           positionTitle="start"
           titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
-          title="1. INGRESO DEL ANIMAL"
-          imageSrc="/images/imgsantuario.png"
+          title={`${imagenWithContentBasic[0].label}`}
+          imageSrc={`http://localhost:1337${imagenWithContentBasic[0].img.data[0].attributes.url}`}
           contentClassName={"contentSectionReserveEnd"}
-          content="El proceso de rescate es crucial para salvar a los animales en peligro y brindarles un lugar seguro donde puedan recuperarse y recibir atención médica y rehabilitación. Nuestro equipo de expertos trabaja incansablemente para garantizar que cada animal reciba el cuidado adecuado y, cuando sea posible, se les devuelva a su hábitat natural."
+          content={`${imagenWithContentBasic[0].content}`}
         />
+
         <Section
           positionTitle={"end"}
           contentClassName="contentSectionEnd px-10 px-10"
           titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
-          title="2. VALORACIÓN POR DRA. VETERINARIO"
-          imageSrc="/images/imgsantuario.png"
-          content="Nuestro Centro de Rescate está abierto al público. Aquí es donde se encuentran los animales que no pueden ser liberados nuevamente en la naturaleza por diversas razones, como lesiones físicas que les impiden valerse por sí mismos o porque fueron mantenidos ilegalmente como mascotas y se acostumbraron a vivir con las personas."
+          title={`${imagenWithContentBasic[1].label}`}
+          imageSrc={`http://localhost:1337${imagenWithContentBasic[1].img.data[0].attributes.url}`}
+          content={`${imagenWithContentBasic[1].content}`}
         />
         <SectionReverse
           positionTitle="start"
           titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
-          title="3. TRATAMIENTO O CRIANZA"
-          imageSrc="/images/imgsantuario.png"
+          title={`${imagenWithContentBasic[2].label}`}
+          imageSrc={`http://localhost:1337${imagenWithContentBasic[2].img.data[0].attributes.url}`}
           contentClassName={"contentSectionReserveEnd"}
-          content="El proceso de rescate es crucial para salvar a los animales en peligro y brindarles un lugar seguro donde puedan recuperarse y recibir atención médica y rehabilitación. Nuestro equipo de expertos trabaja incansablemente para garantizar que cada animal reciba el cuidado adecuado y, cuando sea posible, se les devuelva a su hábitat natural."
+          content={`${imagenWithContentBasic[2].content}`}
         />
         <Section
           positionTitle={"end"}
           contentClassName="contentSectionEnd px-10 px-10"
           titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
-          title="4.REABILITACION"
-          imageSrc="/images/imgsantuario.png"
-          content="Nuestro Centro de Rescate está abierto al público. Aquí es donde se encuentran los animales que no pueden ser liberados nuevamente en la naturaleza por diversas razones, como lesiones físicas que les impiden valerse por sí mismos o porque fueron mantenidos ilegalmente como mascotas y se acostumbraron a vivir con las personas."
+          title={`${imagenWithContentBasic[3].label}`}
+          imageSrc={`http://localhost:1337${imagenWithContentBasic[4].img.data[0].attributes.url}`}
+          content={`${imagenWithContentBasic[3].content}`}
         />
 
         <SectionReverse
           positionTitle="start"
           titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
-          title="5. LIBERACION"
-          imageSrc="/images/imgsantuario.png"
+          title={`${imagenWithContentBasic[4].label}`}
+          imageSrc={`http://localhost:1337${imagenWithContentBasic[4].img.data[0].attributes.url}`}
           contentClassName={"contentSectionReserveEnd"}
-          content="El proceso de rescate es crucial para salvar a los animales en peligro y brindarles un lugar seguro donde puedan recuperarse y recibir atención médica y rehabilitación. Nuestro equipo de expertos trabaja incansablemente para garantizar que cada animal reciba el cuidado adecuado y, cuando sea posible, se les devuelva a su hábitat natural."
+          content={`${imagenWithContentBasic[4].content}`}
+
         />
-        <TwoColumnGrid backgroundImage="/images/mask-secundario.png">
+        <TwoColumnGrid backgroundImage={"http://localhost:1337"+fourthSection.background.data.attributes.url}>
           <BasicSection
             classNameTitle={""}
             classNameWrapper={"setionStyle "}
@@ -87,15 +94,10 @@ const CentroDeRescate = () => {
             alignItems={"center"}
             justifyContent={"center"}
             styleWrapper={{ height: "100%" }}
-
-          // styleContent={{height: "100%"}}
           >
-            <p className="py-10">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-              aliquam dicta maxime perferendis ducimus, temporibus quae impedit
-              sequi deserunt quasi fuga, rerum omnis odio saepe harum aperiam
-              officia quod! Nulla.
-            </p>
+            <ReactMarkdown className="py-10">
+              {fourthSection.content}
+            </ReactMarkdown>
             <ButtonView
               className={" backgroundSecondary m-0 manropeFont py-10"}
               link={""}
@@ -109,9 +111,9 @@ const CentroDeRescate = () => {
               alignment="end"
               width="100%"
             >
-              NO ME SAQUES DE MI HÁBITAD
+              {fourthSection.title}
             </HeaderComponets>
-            <CardBasic imgSrc={"/images/section2.png"} />
+            <CardBasic imgSrc={"http://localhost:1337"+fourthSection.imgBasicContent.data.attributes.url} />
           </section>
         </TwoColumnGrid>
       </div>
