@@ -205,6 +205,7 @@ export const getPagesGQ = async (language) => {
               id
               Titulo
               color
+              nameComponent
             }
             ... on ComponentUiImagenes {
               id

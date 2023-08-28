@@ -8,47 +8,30 @@ import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 import ButtonView from "../../views/ButtonView";
 import CardBasic from "../Section/CardBasic";
 import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
+import usePages from "../../hooks/usePages";
+import { cookies } from "next/dist/client/components/headers";
+import SlidetWithContent from "../Section/Slider/SliderWithContent";
 
 const CentroDeRescate = () => {
-  const images = [
-    "https://swiperjs.com/demos/images/nature-1.jpg",
-    "https://swiperjs.com/demos/images/nature-2.jpg",
-    "https://swiperjs.com/demos/images/nature-3.jpg",
-  ];
+  const { dynamicsComponent } = usePages()
+  if (!dynamicsComponent) {
+    return "cargando...";
+  }
+  const [firstSection, secondSection, thirdSection, fourthSection] = dynamicsComponent;
+  console.log(thirdSection, "thri section")
+  const { imagenes } = firstSection
+  const imgSlider = imagenes.data.map(img => {
+    return {
+      url: `http://localhost:1337${img.attributes.url}`
+    }
+  })
+
   return (
     <Main titlePage={"Centro de Rescate"}>
       <div className="container">
-        <section className="container-section py-10 my-5">
-          <section className="grid-2">
-            <SliderThree>
-              {images.map((image) => {
-                return (
-                  <div key={image}>
-                    <img src={image} alt={"natural"} />
-                  </div>
-                );
-              })}
-            </SliderThree>
-            <BasicSection
-              classNameTitle={"program-title fuenteTitulo colorPrimary"}
-              classNameWrapper={"setionStyleOne"}
-              title={"Centro de Rescate"}
-              classNameContent={"fuentesParrafo py-10"}
-            >
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-                sunt veniam quos. Nisi esse quae ullam ab, mollitia vero
-                accusantium. Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Ducimus sunt veniam quos. Nisi esse quae ullam ab,
-                mollitia vero accusantium. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Ducimus sunt veniam quos. Nisi
-                esse quae ullam ab, mollitia vero accusantium.
-              </p>
-            </BasicSection>
-          </section>
-        </section>
+        <SlidetWithContent images={imgSlider} content={firstSection.Content} title={firstSection.title}/>
         <h3 className="program-title fuenteTitulo colorPrimary py-10 my-10">
-          PROCESO DE RESCATE
+          {secondSection.Titulo}
         </h3>
         <SectionReverse
           positionTitle="start"
@@ -91,7 +74,7 @@ const CentroDeRescate = () => {
           contentClassName={"contentSectionReserveEnd"}
           content="El proceso de rescate es crucial para salvar a los animales en peligro y brindarles un lugar seguro donde puedan recuperarse y recibir atención médica y rehabilitación. Nuestro equipo de expertos trabaja incansablemente para garantizar que cada animal reciba el cuidado adecuado y, cuando sea posible, se les devuelva a su hábitat natural."
         />
-         <TwoColumnGrid backgroundImage="/images/mask-secundario.png">
+        <TwoColumnGrid backgroundImage="/images/mask-secundario.png">
           <BasicSection
             classNameTitle={""}
             classNameWrapper={"setionStyle "}
@@ -105,7 +88,7 @@ const CentroDeRescate = () => {
             justifyContent={"center"}
             styleWrapper={{ height: "100%" }}
 
-            // styleContent={{height: "100%"}}
+          // styleContent={{height: "100%"}}
           >
             <p className="py-10">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
@@ -121,14 +104,14 @@ const CentroDeRescate = () => {
             </ButtonView>
           </BasicSection>
           <section>
-          <HeaderComponets
-          classNameText={" colorSecondary chelseaFont"}
-          alignment="end"
-          width="100%"
-        >
-          NO ME SAQUES DE MI HÁBITAD
-        </HeaderComponets>
-          <CardBasic imgSrc={"/images/section2.png"} />
+            <HeaderComponets
+              classNameText={" colorSecondary chelseaFont"}
+              alignment="end"
+              width="100%"
+            >
+              NO ME SAQUES DE MI HÁBITAD
+            </HeaderComponets>
+            <CardBasic imgSrc={"/images/section2.png"} />
           </section>
         </TwoColumnGrid>
       </div>

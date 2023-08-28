@@ -14,10 +14,13 @@ import usePages from "../../../hooks/usePages";
 const Page = ({ page, models }) => {
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
+  const { updateData } = usePages();
+
   const { slug, lang } = router.query
-  console.log(page)
+
 
   useEffect(() => {
+    updateData(page)
     models && hearlessChangInfo(models);
 
   }, [page]);
@@ -74,14 +77,14 @@ export const getStaticProps = async ({ params }) => {
       title: page.attributes.title,
       slug: page.attributes.slug,
       componentDynamics: page.attributes.DynamicComponent,
-      locales : lang,
+      locales: lang,
       contentType: "component",
     }
   })
-  console.log(updatePage)
 
   const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
   const models = {};
+  console.log(page, "pages actual")
   if (page.slug === "santuario") {
     for (const language of languages) {
       const modelsResponse = await getAllModels(language.code);

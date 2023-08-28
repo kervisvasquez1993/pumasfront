@@ -1,30 +1,26 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 const PagesContext = createContext();
 
 export const PagesProvider = ({ children }) => {
     const [pagesState, setPageState] = useState([]);
-    const [selectedPage, setSelectedPage] = useState(null);
+    const [dynamicsComponent, setDynamicsComponent] = useState(null);
 
     const updateData = (data) => {
-        console.log(data,"data")
+
         setPageState(data);
-        console.log(pagesState, "loaded data")
-    }
 
-    const selectPageBySlug = (slug) => {
-        
-        console.log(pagesState, "selected")
-        const selected = pagesState.find(page => page.attributes.slug === slug);
-        setSelectedPage(selected);
-      
     }
+    useEffect(() => {
+        if (pagesState?.slug == "centro-de-rescate") {
+            setDynamicsComponent(pagesState.componentDynamics);
+        }
+    }, [pagesState])
 
-    console.log(pagesState, "updateData");
-    console.log(selectedPage, "selectedPage");
+       
 
     return (
-        <PagesContext.Provider value={{ updateData, selectPageBySlug, selectedPage, pagesState }}>
+        <PagesContext.Provider value={{ updateData, pagesState, dynamicsComponent }}>
             {children}
         </PagesContext.Provider>
     );
