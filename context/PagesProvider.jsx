@@ -7,9 +7,7 @@ export const PagesProvider = ({ children }) => {
     const [dynamicsComponent, setDynamicsComponent] = useState(null);
 
     const updateData = (data) => {
-
         setPageState(data);
-
     }
     useEffect(() => {
         if (pagesState?.slug == "centro-de-rescate") {
@@ -18,6 +16,12 @@ export const PagesProvider = ({ children }) => {
         if (pagesState?.slug == "santuario") {
             setDynamicsComponent(pagesState.componentDynamics);
         }
+        if (pagesState?.slug == "programas") {
+            setDynamicsComponent(pagesState.componentDynamics);
+        }
+
+        setDynamicsComponent(pagesState.componentDynamics);
+
     }, [pagesState])
 
        

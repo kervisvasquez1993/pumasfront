@@ -42,13 +42,13 @@ const Page = ({ page, models }) => {
         case "nosotros":
           return <NosotrosPage />;
         case "santuario":
-          return <SantuarioPage />;
+          return <SantuarioPage data={page}/>;
         case "centro-de-rescate":
-          return <CentroDeRescate />;
+          return <CentroDeRescate data={page} />;
         case "blog":
           return <BlogPage />;
         case "programas":
-          return <ProgramaPage />;
+          return <ProgramaPage data={page}/>;
         case "apoyanos":
           return <ApoyanosPage />;
         default:
@@ -83,8 +83,8 @@ export const getStaticProps = async ({ params }) => {
   })
 
   const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
+  console.log(page);
   const models = {};
-  console.log(page, "pages actual")
   if (page.slug === "santuario") {
     for (const language of languages) {
       const modelsResponse = await getAllModels(language.code);

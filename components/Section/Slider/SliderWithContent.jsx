@@ -10,7 +10,7 @@ const SlidetWithContent = ({ images, title, content }) => {
         <section className="container-section py-10 my-5">
             <section className="grid-2">
                 <SliderThree>
-                    {images.map((image, index) => (
+                    {images?.map((image, index) => (
                         <div key={index}>
                             <img src={image.url} alt={`image-${index}`} />
                         </div>

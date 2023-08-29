@@ -1,62 +1,38 @@
 import React from "react";
 import Main from "../../Layout/Main/Main";
+import usePages from "../../hooks/usePages";
+import BasicSectionFull from "../Section/Basic/BasicSectionFull";
+import ReactMarkdown from "react-markdown";
 
-const ProgramaPage = () => {
+const ProgramaPage = ({ data }) => {
+  console.log(data, "data");
+  const { title, componentDynamics } = data;
+  const [firstElement, secondElement, thirdElement, fourthElement] = componentDynamics
+  const url = "http://localhost:1337" + firstElement.imgBasicContent.data.attributes.url
+  const {precios} = thirdElement
+  console.log(secondElement, "secondElemento")
+const preciosData = precios.data.map(precio=>{
+  console.log(precio)
+return (<li>{precio.attributes.title} : {precio.attributes.value}</li> )
+
+})
+  
+
   return (
-    <Main>
+    <Main titlePage={title}>
       <div className="container">
-        <div className="container-program">
-          {/* TODO:manejar titulo responsive */}
-          <h3 className="program-title fuenteTitulo colorPrimary my-10 py-10">
-            Programa de conservacion y manejo de la fauna silvestre
-          </h3>
-          <div className="grid-2">
-            <div className="about-program_text fuentesParrafo py-10">
-              <p className="mb-10 py-10">
-                Nuestro Programa de Conservación y Manejo de la Fauna Silvestre
-                consiste en el rescate, rehabilitación, liberación y en brindar
-                calidad de vida de los animales silvestres que se reciben por
-                parte del personal de diversas Áreas de Conservación (SINAC),
-                ICE, Bomberos, Fuerza Pública o personas particulares. ​{" "}
-              </p>
-              <p>
-                Durante los ultimos 5 años, se ha recibido un promedio anual de
-                225 animales silvestres de 58 especies. A través de los años el
-                ingreso de animales ha ido en aumento, llegando a los 300
-                rescates en el año 2019. Entre las especies se pueden citar
-                psitácidos (loras y pericos), primates (mono congo, mono
-                carablanca y mono araña), felinos (principalmente manigordos,
-                cauceles y yaguarundis), otros mamíferos (pizotes, mapaches,
-                zorros pelones, puercoespines, armadillos, etc.) y otras aves
-                (búhos, lechuzas, gavilanes, tucanes,). La mayoría de estos
-                animales provienen de la provincia de Guanacaste y la Zona
-                Norte; sin embargo, en algunas ocasiones pueden llegar del resto
-                del país. (Reducir texto)
-              </p>
-            </div>
-            <div className="program__imagen">
-              <img src="/images/imgsantuario.png" alt="imagen santuario" />
-            </div>
-          </div>
-        </div>
+        
+        <BasicSectionFull imageUrl={url} title={firstElement?.title} content={firstElement.content} ></BasicSectionFull>
         <div className="container-edu backgroundProgrmar py-10 my-10">
           <div className="grid-2">
             <div>
-              <h3 className="edu-title fuenteTitulo colorSecondary">EDUCACIÓN AMBIENTAL</h3>
-              <p className="fuentesParrafo">
-                Nuestro Programa de Educación Ambiental (PEA) se desarrolla en
-                el área de El Santuario y su objetivo es educar a los visitantes
-                acerca de las amenazas que enfrentan los animales silvestres de
-                Costa Rica, de esta manera utilizamos la educación ambiental
-                como una herramienta de conservación.
-              </p>
+              <h3 className="edu-title fuenteTitulo colorSecondary">{secondElement.title}</h3>
+              <ReactMarkdown className="fuentesParrafo">{secondElement.content}</ReactMarkdown>
+
             </div>
             <div className="edu_text  ">
-              <h3 className="price-title colorSecondary">Precio</h3>
-              <li>Guarderias, preecolar y primaria : 1000$</li>
-              <li>Secundaria y educacion Superiror : 2000$</li>
-              <li>Profesores : 2000$</li>
-              <li>Padres de familia : 3000$</li>
+              <h3 className="price-title colorSecondary">Precios</h3>
+              {preciosData}
               <button className="edu-button">Reservar Recorrido</button>
             </div>
           </div>
@@ -187,7 +163,7 @@ const ProgramaPage = () => {
           </div>
         </div>
       </div>
-    
+
     </Main>
 
   );

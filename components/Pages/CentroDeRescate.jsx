@@ -13,21 +13,20 @@ import { cookies } from "next/dist/client/components/headers";
 import SlidetWithContent from "../Section/Slider/SliderWithContent";
 import ReactMarkdown from "react-markdown";
 
-const CentroDeRescate = () => {
-  const { dynamicsComponent } = usePages()
-  if (!dynamicsComponent) {
+const CentroDeRescate = ({data}) => {
+  const {componentDynamics} = data;
+  if (!componentDynamics) {
     return "cargando...";
   }
-  const [firstSection, secondSection, thirdSection, fourthSection] = dynamicsComponent;
+  const [firstSection, secondSection, thirdSection, fourthSection] = componentDynamics;
   const { imagenes } = firstSection
-  const imgSlider = imagenes.data.map(img => {
+  const imgSlider = imagenes?.data.map(img => {
     return {
       url: `http://localhost:1337${img.attributes.url}`
     }
   })
   const { imagenWithContentBasic } = thirdSection
   const { background, colorTitle, title, content } = fourthSection
-  console.log(fourthSection.background.data.attributes.url)
 
 
   return (
@@ -40,47 +39,47 @@ const CentroDeRescate = () => {
         <SectionReverse
           positionTitle="start"
           titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
-          title={`${imagenWithContentBasic[0].label}`}
-          imageSrc={`http://localhost:1337${imagenWithContentBasic[0].img.data[0].attributes.url}`}
+          title={`${imagenWithContentBasic[0]?.label}`}
+          imageSrc={`http://localhost:1337${imagenWithContentBasic[0]?.img.data[0].attributes.url}`}
           contentClassName={"contentSectionReserveEnd"}
-          content={`${imagenWithContentBasic[0].content}`}
+          content={`${imagenWithContentBasic[0]?.content}`}
         />
 
         <Section
           positionTitle={"end"}
           contentClassName="contentSectionEnd px-10 px-10"
           titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
-          title={`${imagenWithContentBasic[1].label}`}
-          imageSrc={`http://localhost:1337${imagenWithContentBasic[1].img.data[0].attributes.url}`}
-          content={`${imagenWithContentBasic[1].content}`}
+          title={`${imagenWithContentBasic[1]?.label}`}
+          imageSrc={`http://localhost:1337${imagenWithContentBasic[1]?.img.data[0].attributes.url}`}
+          content={`${imagenWithContentBasic[1]?.content}`}
         />
         <SectionReverse
           positionTitle="start"
           titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
-          title={`${imagenWithContentBasic[2].label}`}
-          imageSrc={`http://localhost:1337${imagenWithContentBasic[2].img.data[0].attributes.url}`}
+          title={`${imagenWithContentBasic[2]?.label}`}
+          imageSrc={`http://localhost:1337${imagenWithContentBasic[2]?.img.data[0].attributes.url}`}
           contentClassName={"contentSectionReserveEnd"}
-          content={`${imagenWithContentBasic[2].content}`}
+          content={`${imagenWithContentBasic[2]?.content}`}
         />
         <Section
           positionTitle={"end"}
           contentClassName="contentSectionEnd px-10 px-10"
           titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
-          title={`${imagenWithContentBasic[3].label}`}
-          imageSrc={`http://localhost:1337${imagenWithContentBasic[4].img.data[0].attributes.url}`}
-          content={`${imagenWithContentBasic[3].content}`}
+          title={`${imagenWithContentBasic[3]?.label}`}
+          imageSrc={`http://localhost:1337${imagenWithContentBasic[4]?.img.data[0].attributes.url}`}
+          content={`${imagenWithContentBasic[3]?.content}`}
         />
 
         <SectionReverse
           positionTitle="start"
           titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
-          title={`${imagenWithContentBasic[4].label}`}
-          imageSrc={`http://localhost:1337${imagenWithContentBasic[4].img.data[0].attributes.url}`}
+          title={`${imagenWithContentBasic[4]?.label}`}
+          imageSrc={`http://localhost:1337${imagenWithContentBasic[4]?.img.data[0].attributes.url}`}
           contentClassName={"contentSectionReserveEnd"}
-          content={`${imagenWithContentBasic[4].content}`}
+          content={`${imagenWithContentBasic[4]?.content}`}
 
         />
-        <TwoColumnGrid backgroundImage={"http://localhost:1337"+fourthSection.background.data.attributes.url}>
+        <TwoColumnGrid backgroundImage={"http://localhost:1337"+fourthSection.background?.data?.attributes.url}>
           <BasicSection
             classNameTitle={""}
             classNameWrapper={"setionStyle "}
@@ -112,7 +111,7 @@ const CentroDeRescate = () => {
             >
               {fourthSection.title}
             </HeaderComponets>
-            <CardBasic imgSrc={"http://localhost:1337"+fourthSection.imgBasicContent.data.attributes.url} />
+            <CardBasic imgSrc={"http://localhost:1337"+fourthSection.imgBasicContent?.data?.attributes.url} />
           </section>
         </TwoColumnGrid>
       </div>

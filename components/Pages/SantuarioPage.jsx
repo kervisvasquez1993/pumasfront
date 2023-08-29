@@ -14,13 +14,15 @@ import usePages from "../../hooks/usePages";
 import SlidetWithContent from "../Section/Slider/SliderWithContent";
 import ReactMarkdown from "react-markdown";
 
-const SantuarioPage = () => {
+const SantuarioPage = ({data}) => {
 
-  const { dynamicsComponent } = usePages();
-  if (!dynamicsComponent) {
-    return "cargando...";
-  }
+  const { componentDynamics } = data;
+  console.log(data)
   const { modeloList } = useModelo();
+  if (!data) {
+    return "cargando...";
+}
+  
   const [stateModal, setStateModal] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const hearlessChange = (data) => {
@@ -33,15 +35,14 @@ const SantuarioPage = () => {
     setOpenModal(false);
   };
 
-  console.log(dynamicsComponent)
-  const [firstElement, secondElement, thirdElement, fourthElement, fifthElement] = dynamicsComponent
+  const [firstElement, secondElement, thirdElement, fourthElement] = componentDynamics
   const { imagenes } = secondElement
-  const imgSlider = imagenes.data.map(img => {
+  const imgSlider = imagenes?.data.map(img => {
     return {
       url: `http://localhost:1337${img.attributes.url}`
     }
   })
-  console.log(fourthElement)
+  
   return (
     <Main titlePage={"Santuario"}>
       <MapWithBackground backgroundImage={"/images/mapa.jpg"}>
@@ -98,7 +99,7 @@ const SantuarioPage = () => {
           <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
 
         </section>
-        <TwoColumnGrid backgroundImage={"http://localhost:1337" + thirdElement.background.data.attributes.url}>
+        <TwoColumnGrid backgroundImage={"http://localhost:1337" + thirdElement.background?.data?.attributes.url}>
           <HeaderComponets
             alignment="center"
             src="/images/fondo1.png"
@@ -137,9 +138,10 @@ const SantuarioPage = () => {
 
           <div className="icons-container py-10 my-10">
 
-            {fourthElement.imagenWithContentBasic.map(element => {
+            {fourthElement.imagenWithContentBasic.map((element, index) => {
+
               return (
-                <div className="icon-flex-2" key={element.id}>
+                <div className="icon-flex-2" key={index}>
                   <div className="icons__imagen">
                     <img src={"http://localhost:1337" + element.img.data[0].attributes.url} alt="imagen santuario" />
                   </div>
