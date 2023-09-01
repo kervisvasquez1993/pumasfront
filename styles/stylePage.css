@@ -343,18 +343,23 @@ img {
 
 /*Blog*/
 .blog {
-    /*display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1px;
-        max-width: 31rem;*/
-    width: 1200px;
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     height: auto;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(280px, 1fr));
-    grid-gap: 70px;
     padding: 10px;
     box-sizing: border-box;
+}
+@media (max-width: 760px) {
+    .blog {
+
+        
+        justify-content: center;
+       
+    }
 }
 
 .container-blog {

@@ -25,7 +25,6 @@ const Page = ({ page, models, blogsPage }) => {
 
   }, [page]);
   models && console.log(models);
-  blogsPage && console.log(blogsPage, "blog pages")
   if (router.isFallback) {
     return <div>Cargando...</div>;
   }
@@ -99,7 +98,7 @@ export const getStaticProps = async ({ params }) => {
   if(page.slug === "blog"){
     for (const language of languages) {
       const blogs = await getBlog(language.code);
-      blogsPage[language.code] = blogs.data;
+      blogsPage["blog"] = blogs.data;
     }
    
     return {

@@ -5,8 +5,22 @@ import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
 import CardComponent from "../UI/Card/CardComponents";
 // import BlogEntry from "./BlogEntry";
 
-const BlogPage = ({ data, dataBlog }) => {
-  console.log(data, dataBlog);
+const BlogPage = ({ data, blogData }) => {
+  console.log(blogData.blog.data, "blogData");
+  const { componentDynamics } = data;
+  const [firtElement] = componentDynamics
+  const blogsInfo = blogData?.blog?.data
+
+  const sectionBlogs = blogsInfo?.map((blog, index) => {
+    const { TitleBlog, ContentBlog, imgBlog } = blog?.attributes
+    const resumen = ContentBlog.substring(0,150)
+    console.log(imgBlog.data[0].attributes.url, "image")
+    return (<CardComponent key={index}
+      description={resumen+" ...... "}
+      title={TitleBlog}
+      imageUrl={"http://localhost:1337"+imgBlog.data[0].attributes.url}
+    />)
+  })
   return (
     <Main titlePage={data.title}>
       <div className="container">
@@ -15,55 +29,10 @@ const BlogPage = ({ data, dataBlog }) => {
           classNameText={"p-10 m-10 colorPrimary chelseaFont"}
           alignment="start"
         >
-          NOTICIAS Y BLOG
+          {firtElement?.Titulo}
         </HeaderComponets>
         <div className="blog">
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-          {/* Agrega más instancias de BlogEntry con diferentes props según sea necesario */}
+          {sectionBlogs}
         </div>
       </div>
     </Main>
