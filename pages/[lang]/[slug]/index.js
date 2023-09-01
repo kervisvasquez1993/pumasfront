@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import HomePage from "../../../components/Pages/HomePage";
 import { useRouter } from "next/router";
 import NosotrosPage from "../../../components/Pages/NosotrosPage";
-import { getAllModels, getMenus, getPageWithComponents, getPagesGQ, langAll } from "../../../apis/ApiBackend";
+import { getAllModels, getBlog, getMenus, getPageWithComponents, getPagesGQ, langAll } from "../../../apis/ApiBackend";
 import SantuarioPage from "../../../components/Pages/SantuarioPage";
 import CentroDeRescate from "../../../components/Pages/CentroDeRescate";
 import BlogPage from "../../../components/Pages/BlogPage";
@@ -11,7 +11,7 @@ import ApoyanosPage from "../../../components/Pages/ApoyanosPage";
 import useModelo from "../../../hooks/useModelo";
 import usePages from "../../../hooks/usePages";
 
-const Page = ({ page, models }) => {
+const Page = ({ page, models, blogsPage }) => {
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
@@ -25,6 +25,7 @@ const Page = ({ page, models }) => {
 
   }, [page]);
   models && console.log(models);
+  blogsPage && console.log(blogsPage, "blog pages")
   if (router.isFallback) {
     return <div>Cargando...</div>;
   }
@@ -46,7 +47,7 @@ const Page = ({ page, models }) => {
         case "centro-de-rescate":
           return <CentroDeRescate data={page} />;
         case "blog":
-          return <BlogPage />;
+          return <BlogPage data={page} blogData={blogsPage} />;
         case "programas":
           return <ProgramaPage data={page}/>;
         case "apoyanos":
@@ -85,6 +86,7 @@ export const getStaticProps = async ({ params }) => {
   const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
   console.log(page);
   const models = {};
+  const blogsPage = {}
   if (page.slug === "santuario") {
     for (const language of languages) {
       const modelsResponse = await getAllModels(language.code);
@@ -93,6 +95,17 @@ export const getStaticProps = async ({ params }) => {
     return {
       props: { page: { ...page }, models },
     };
+  }
+  if(page.slug === "blog"){
+    for (const language of languages) {
+      const blogs = await getBlog(language.code);
+      blogsPage[language.code] = blogs.data;
+    }
+   
+    return {
+      props: { page: { ...page }, blogsPage },
+    };
+
   }
   if (!page) return { notFound: true };
   return {

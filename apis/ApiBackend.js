@@ -16,6 +16,15 @@ export const getMenus = (language) => {
   return ApiBackend("api/menus", config);
 };
 
+export const getBlog = (language) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    }
+  };
+  return ApiBackend("api/blogs?populate=*&locale="+language, config);
+};
+
 export const getAllModels = (lang) => {
   const config = {
     headers: {

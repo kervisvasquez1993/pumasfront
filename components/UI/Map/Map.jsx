@@ -5,9 +5,10 @@ import style from "./style.module.css";
 import { icon } from "leaflet";
 
 const center = {
-  lat: 51.505,
-  lng: -0.09,
+  lat: 10.453528083390585,
+  lng: -85.12522699019031,
 };
+
 
 const Map = () => {
   const ICON = icon({
