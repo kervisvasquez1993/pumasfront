@@ -18,7 +18,7 @@ const Page = ({ page, models, blogsPage }) => {
 
   const { slug, lang } = router.query
 
-  console.log(page, "page")
+
   useEffect(() => {
     updateData(page)
 
@@ -41,7 +41,7 @@ const Page = ({ page, models, blogsPage }) => {
         case "inicio":
           return <HomePage />;
         case "nosotros":
-          return <NosotrosPage />;
+          return <NosotrosPage data={page} />;
         case "santuario":
           return <SantuarioPage data={page} />;
         case "centro-de-rescate":
@@ -84,7 +84,6 @@ export const getStaticProps = async ({ params }) => {
   })
 
   const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
-  console.log(page);
   const models = {};
   const blogsPage = {}
   if (page.slug === "santuario") {
