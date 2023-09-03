@@ -18,9 +18,10 @@ const Page = ({ page, models, blogsPage }) => {
 
   const { slug, lang } = router.query
 
-
+  console.log(page, "page")
   useEffect(() => {
     updateData(page)
+
     models && hearlessChangInfo(models);
 
   }, [page]);
@@ -42,15 +43,15 @@ const Page = ({ page, models, blogsPage }) => {
         case "nosotros":
           return <NosotrosPage />;
         case "santuario":
-          return <SantuarioPage data={page}/>;
+          return <SantuarioPage data={page} />;
         case "centro-de-rescate":
           return <CentroDeRescate data={page} />;
         case "blog":
           return <BlogPage data={page} blogData={blogsPage} />;
         case "programas":
-          return <ProgramaPage data={page}/>;
+          return <ProgramaPage data={page} />;
         case "apoyanos":
-          return <ApoyanosPage />;
+          return <ApoyanosPage data={page} />;
         default:
           return null;
       }
@@ -95,12 +96,12 @@ export const getStaticProps = async ({ params }) => {
       props: { page: { ...page }, models },
     };
   }
-  if(page.slug === "blog"){
+  if (page.slug === "blog") {
     for (const language of languages) {
       const blogs = await getBlog(language.code);
       blogsPage["blog"] = blogs.data;
     }
-   
+
     return {
       props: { page: { ...page }, blogsPage },
     };

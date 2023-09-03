@@ -4,15 +4,32 @@ import BasicSection from "../Section/Basic/BasicSection";
 import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
 import ButtonView from "../../views/ButtonView";
 import SliderThree from "../UI/Slider/SliderThree";
-const ApoyanosPage = () => {
-  const images = [
-    "https://swiperjs.com/demos/images/nature-1.jpg",
-    "https://swiperjs.com/demos/images/nature-2.jpg",
-    "https://swiperjs.com/demos/images/nature-3.jpg",
-    "https://swiperjs.com/demos/images/nature-4.jpg",
-  ];
+import { useRouter } from "next/router";
+import ReactMarkdown from "react-markdown";
+const ApoyanosPage = ({ data }) => {
+  const router = useRouter();
+  const { slug, lang } = router.query
+  const { componentDynamics } = data;
+  const [firstElement, secondElement, threeElement, fourElement, quintoElmento, sextoElemento] = componentDynamics
+  const imagenes = sextoElemento?.imagenWithContentBasic.map(elemento => {
+    const url = elemento.img?.data[0].attributes.url
+    return `http://localhost:1337${url}`
+  })
+
+  const elementDonar = threeElement.imagenWithContentBasic?.map((element, index) => {
+
+    return (<section key={index}>
+      <h3 className="colorSecondary chelseaFont">
+        {element.label}
+      </h3>
+      <section>
+        <ReactMarkdown>{element.content}</ReactMarkdown>
+      </section>
+    </section>)
+  })
+
   return (
-    <Main>
+    <Main titlePage={data.title}>
       <div className="container">
         <section className="container-section py-10 my-5">
           <section className="grid-2">
@@ -22,7 +39,7 @@ const ApoyanosPage = () => {
                 classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
                 alignment="start"
               >
-                Nuestro Santuario
+                {secondElement.title}
               </HeaderComponets>
               <BasicSection
                 classNameTitle={""}
@@ -30,26 +47,12 @@ const ApoyanosPage = () => {
                 title={""}
                 classNameContent={"fuentesParrafo py-10"}
               >
-                <p className="py-5">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ducimus sunt veniam quos. Nisi esse quae ullam ab, mollitia
-                  vero accusantium. Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Ducimus sunt veniam quos. Nisi esse quae
-                  ullam ab, mollitia vero accusantium. Lorem ipsum dolor sit
-                  amet consectetur adipisicing elit. Ducimus sunt veniam quos.
-                  Nisi esse quae ullam ab, mollitia vero accusantium.
-                </p>
-                <p className="py-5">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Ducimus sunt veniam quos. Nisi esse quae ullam ab, mollitia
-                  vero accusantium. Lorem ipsum dolor sit amet consectetur
-                  adipisicing
-                </p>
+                <ReactMarkdown className="py-10">{secondElement.content}</ReactMarkdown>
                 <ButtonView
                   className={" backgroundPrimary m-0 manropeFont p-5"}
-                  link={""}
+                  link={`${lang}/${secondElement.btn.url}`}
                 >
-                  Entra al Programa
+                  {secondElement.btn.label}
                 </ButtonView>
               </BasicSection>
             </section>
@@ -59,45 +62,11 @@ const ApoyanosPage = () => {
                 classNameText={"colorSecondary chelseaFont pt-10 mt-10 "}
                 alignment="start"
               >
-                ¡TAMBIÉN PUEDES DONAR ACÀ!
+                {threeElement.title}
               </HeaderComponets>
               <section className="grid-2">
-                <section>
-                  <h3 className="colorSecondary chelseaFont">
-                    DEPÓSITO BANCARIO
-                  </h3>
-                  <section>
-                    <h5>Fundación Hagnauer</h5>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fuga, veniam!
-                    </p>
-                  </section>
-                  <section>
-                    <h5>Title Banco</h5>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fuga, veniam!
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fuga, veniam!
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fuga, veniam!
-                    </p>
-                  </section>
-                </section>
-                <section>
-                  <h3 className="colorSecondary chelseaFont">SINPE MÓVIL</h3>
-                  <section>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Fuga, veniam!
-                    </p>
-                  </section>
-                </section>
+                {elementDonar}
+
               </section>
             </section>
           </section>
@@ -110,7 +79,7 @@ const ApoyanosPage = () => {
                 classNameText={"colorVerde chelseaFont pt-10 mt-10 "}
                 alignment="start"
               >
-                OTRAS AYUDAS
+                {fourElement.Titulo}
               </HeaderComponets>
               <BasicSection
                 classNameTitle={""}
@@ -118,22 +87,13 @@ const ApoyanosPage = () => {
                 title={""}
                 classNameContent={"fuentesParrafo py-10"}
               >
-                <h3 className="colorVerde chelseaFont">AMAZON WISH LIST</h3>
-                <p className="py-5">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Earum amet repellat exercitationem aliquid quae totam, id,
-                  labore cumque sapiente dicta dolore neque cupiditate debitis
-                  voluptatem consequatur aut, mollitia saepe esse excepturi
-                  iusto quas beatae! Repudiandae dignissimos aspernatur labore
-                  obcaecati iure perspiciatis, aperiam fugiat est nobis hic quae
-                  vero expedita iusto, fuga consectetur quibusdam ut pariatur
-                  assumenda quos. Cupiditate, magnam voluptas?
-                </p>
+                <h3 className="colorVerde chelseaFont">{quintoElmento.title}</h3>
+                <ReactMarkdown className="py-10">{quintoElmento.content}</ReactMarkdown>
                 <ButtonView
                   className={" backgroundVerde m-0 manropeFont p-5"}
-                  link={""}
+                  link={quintoElmento.btn.url}
                 >
-                  Amazon Wishlist
+                  {quintoElmento.btn.label}
                 </ButtonView>
               </BasicSection>
             </section>
@@ -143,9 +103,10 @@ const ApoyanosPage = () => {
         <section className="container-section py-10 my-5">
           <section className="grid-2">
             <SliderThree>
-              {images.map((image) => {
+              {imagenes.map((image, index) => {
+                
                 return (
-                  <div key={image}>
+                  <div key={index}>
                     <img src={image} alt={"natural"} />
                   </div>
                 );
@@ -157,32 +118,12 @@ const ApoyanosPage = () => {
               title={""}
               classNameContent={"fuentesParrafo py-10"}
             >
-              <p className="py-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-                sunt veniam quos. Nisi esse quae ullam ab, mollitia vero
-                accusantium. Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Ducimus sunt veniam quos. Nisi esse quae ullam ab,
-                mollitia vero accusantium. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Ducimus sunt veniam quos. Nisi
-                esse quae ullam ab, mollitia vero accusantium.
-              </p>
-              <p className="py-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-                sunt veniam quos. Nisi esse quae ullam ab, mollitia vero
-                accusantium. Lorem ipsum dolor sit amet consectetur adipisicing
-              </p>
-              <p className="py-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-                sunt veniam quos. Nisi esse quae ullam ab, mollitia vero
-                accusantium. Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Ducimus sunt veniam quos. Nisi esse quae ullam ab,
-                mollitia vero accusantium. Lorem ipsum dolor sit amet
-              </p>
+              <ReactMarkdown className="py-10">{sextoElemento.content}</ReactMarkdown>
               <ButtonView
                 className={" backgroundPrimary m-0 px-10 manropeFont py-10"}
                 link={""}
               >
-               Descargar PDF
+                Descargar PDF
               </ButtonView>
             </BasicSection>
           </section>
