@@ -15,7 +15,7 @@ const Page = ({ page, models, blogsPage }) => {
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
-
+console.log(page)
   const { slug, lang } = router.query
 
 
