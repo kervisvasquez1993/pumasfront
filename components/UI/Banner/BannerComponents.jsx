@@ -3,7 +3,7 @@ import styles from "./style.module.css";
 import Link from "next/link";
 import ButtonView from "../../../views/ButtonView";
 const BannerComponents = () => {
-  const backgroundImageUrl = "/images/pumas.png";
+  const backgroundImageUrl = "/images/pumas.jpg";
 
   return (
     <div
@@ -30,6 +30,7 @@ const BannerComponents = () => {
         </section>
       </div>
       {/* <div style={{ backgroundImage: `url("/images/mask.png")` }}></div> */}
+      <img className="imagen-superpuesta-banner" src={"/images/mask.png"} alt={"maskSrc"} />
     </div>
   );
 };

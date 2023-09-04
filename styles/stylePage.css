@@ -512,6 +512,16 @@ footer {
     height: 20%; 
     opacity: 1; 
   }
+  .imagen-superpuesta-banner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 150%;
+    height: 15%; 
+    opacity: 1; 
+  }
+
+
   
   .imagen-icono-animal{
     position: absolute;

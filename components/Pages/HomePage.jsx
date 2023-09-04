@@ -12,7 +12,8 @@ import CardBasic from "../Section/CardBasic";
 import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 import Map from "../UI/Map";
 
-const HomePage = () => {
+const HomePage = ({data}) => {
+  console.log("hola")
   return (
     <Main titlePage={"Inicio"}>
       {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}

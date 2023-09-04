@@ -39,7 +39,7 @@ const Page = ({ page, models, blogsPage }) => {
     if (page.contentType === "component") {
       switch (page.slug) {
         case "inicio":
-          return <HomePage />;
+          return <HomePage data={page}/>;
         case "nosotros":
           return <NosotrosPage data={page} />;
         case "santuario":
