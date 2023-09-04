@@ -86,6 +86,7 @@ export const getStaticProps = async ({ params }) => {
   const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
   const models = {};
   const blogsPage = {}
+  console.log(page.slug, "slug")
   if (page.slug === "santuario") {
     for (const language of languages) {
       const modelsResponse = await getAllModels(language.code);

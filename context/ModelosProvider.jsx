@@ -11,16 +11,16 @@ export const ModeloProvider = ({ children }) => {
 
   const modeloList = modelInfo?.es?.data.map((item) => {
     const srcModeloUrl =
-      "https://strapi-pumas-ijwsa.ondigitalocean.app/" +
-        item.attributes.srcModelo?.data[0]?.attributes?.url || null;
+      "https://strapi-pumas-ijwsa.ondigitalocean.app" +
+        item?.attributes?.srcModelo?.data[0]?.attributes?.url || null;
     const models3d =
-      "https://strapi-pumas-ijwsa.ondigitalocean.app/" +
+      "https://strapi-pumas-ijwsa.ondigitalocean.app" +
         item.attributes.model3D?.data?.attributes?.url || null;
 
     const imagenes = item.attributes?.imagenes?.data?.map((imagen) => {
       return {
         id: imagen.id,
-        url: "https://strapi-pumas-ijwsa.ondigitalocean.app/" + imagen.attributes.url,
+        url: "https://strapi-pumas-ijwsa.ondigitalocean.app" + imagen.attributes.url,
       };
     });
 

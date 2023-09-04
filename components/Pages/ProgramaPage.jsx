@@ -9,7 +9,7 @@ const ProgramaPage = ({ data }) => {
 
   const { title, componentDynamics } = data;
   const [firstElement, secondElement, thirdElement, fourthElement, fifthElement] = componentDynamics
-  const url = "https://strapi-pumas-ijwsa.ondigitalocean.app/" + firstElement.imgBasicContent.data.attributes.url
+  const url = "https://strapi-pumas-ijwsa.ondigitalocean.app" + firstElement.imgBasicContent.data.attributes.url
   const { precios } = thirdElement
   const preciosData = precios.data.map((precio, index) => {
     return (<li key={index}>{precio.attributes.title} : {precio.attributes.value}</li>)
@@ -19,7 +19,7 @@ const ProgramaPage = ({ data }) => {
   const contentEducation = imagenWithContentBasic.map((element, index) => {
     return (<div className="icon-flex-2" key={index}>
       <div className="icons__imagen">
-        <img src={"https://strapi-pumas-ijwsa.ondigitalocean.app/" + element.img.data[0].attributes.url} alt="imagen santuario" />
+        <img src={"https://strapi-pumas-ijwsa.ondigitalocean.app" + element.img.data[0].attributes.url} alt="imagen santuario" />
       </div>
       <div className="icons_text">
         <ReactMarkdown className="fuentesParrafo">{element.content}</ReactMarkdown>
@@ -31,11 +31,11 @@ const ProgramaPage = ({ data }) => {
     console.log()
     return (<div className="dowloads" key={index}>
       <div className="materials__imagen">
-        <img src={"https://strapi-pumas-ijwsa.ondigitalocean.app/"+elemento.attributes?.imgFile?.data?.attributes?.url} alt="imagen santuario" />
+        <img src={"https://strapi-pumas-ijwsa.ondigitalocean.app"+elemento.attributes?.imgFile?.data?.attributes?.url} alt="imagen santuario" />
       </div>
       <div className="wrapperTitleCard">
         <h2 className="materials_text manropeFont colorSecondary">{elemento.attributes.title}</h2>
-        <Link href={"https://strapi-pumas-ijwsa.ondigitalocean.app/"+elemento.attributes?.file?.data?.attributes.url} className="manropeFont fontSize28" download>Libro de Actividades</Link>
+        <Link href={"https://strapi-pumas-ijwsa.ondigitalocean.app"+elemento.attributes?.file?.data?.attributes.url} className="manropeFont fontSize28" download>Libro de Actividades</Link>
       </div>
     </div>)
   })

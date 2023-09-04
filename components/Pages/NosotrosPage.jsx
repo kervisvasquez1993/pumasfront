@@ -21,7 +21,7 @@ const NosotrosPage = ({ data }) => {
   console.log(septimoElemento, "secundarioElement");
   const sliderImagenes = secundarioElement?.imagenes.data.map(element => {
     const url = element.attributes.url
-    return `https://strapi-pumas-ijwsa.ondigitalocean.app/${url}`
+    return `https://strapi-pumas-ijwsa.ondigitalocean.app${url}`
   })
   const abousUs = quintoElemet.imagenWithContentBasic.map((element, index) => {
     return (<section className="w-50 p-5" key={index}><HeaderComponets
@@ -44,7 +44,7 @@ const NosotrosPage = ({ data }) => {
       contentClassName="contentSectionEnd px-10 px-10"
       titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
       title=""
-      imageSrc={`https://strapi-pumas-ijwsa.ondigitalocean.app/${element.img.data[0].attributes.url}`}
+      imageSrc={`https://strapi-pumas-ijwsa.ondigitalocean.app${element.img.data[0].attributes.url}`}
       content={
         <ReactMarkdown>{element.content}</ReactMarkdown>
       }
@@ -162,7 +162,7 @@ const NosotrosPage = ({ data }) => {
             </BasicSection>
           </section>
         </section>
-        <TwoColumnGrid backgroundImage={`https://strapi-pumas-ijwsa.ondigitalocean.app/${tercerElment.background.data.attributes.url}`}>
+        <TwoColumnGrid backgroundImage={`https://strapi-pumas-ijwsa.ondigitalocean.app${tercerElment.background.data.attributes.url}`}>
           <BasicSection
             classNameTitle={""}
             classNameWrapper={"setionStyleTwo"}
@@ -187,11 +187,11 @@ const NosotrosPage = ({ data }) => {
             classNameText={"colorSecondary chelseaFont"}
             classNameSection={"center"}
           >
-            <img src={`https://strapi-pumas-ijwsa.ondigitalocean.app/${tercerElment.imgBasicContent.data.attributes.url}`} />
+            <img src={`https://strapi-pumas-ijwsa.ondigitalocean.app${tercerElment?.imgBasicContent?.data?.attributes?.url}`} />
           </HeaderComponets>
         </TwoColumnGrid>
         <section className="section OneImg">
-          <img src={`https://strapi-pumas-ijwsa.ondigitalocean.app/${cuartoElement.img.data[0].attributes.url}`} />
+          <img src={`https://strapi-pumas-ijwsa.ondigitalocean.app${cuartoElement.img.data[0].attributes.url}`} />
         </section>
         <section className="container-section py-10 my-5">
 
@@ -207,7 +207,7 @@ const NosotrosPage = ({ data }) => {
 
         </section>
         <TwoSections
-          backgroundImage={`https://strapi-pumas-ijwsa.ondigitalocean.app/${sextoElement.background.data.attributes.url}`}
+          backgroundImage={`https://strapi-pumas-ijwsa.ondigitalocean.app${sextoElement.background.data.attributes.url}`}
           title1={sextoElement.imagenWithContentBasic[0].label}
           children1={
             <Section
@@ -217,7 +217,7 @@ const NosotrosPage = ({ data }) => {
                 "program-title fuenteTitulo colorVerde px-10 m-10"
               }
               title=""
-              imageSrc={`https://strapi-pumas-ijwsa.ondigitalocean.app/${sextoElement.imagenWithContentBasic[0].img.data[0].attributes.url}`}
+              imageSrc={`https://strapi-pumas-ijwsa.ondigitalocean.app${sextoElement.imagenWithContentBasic[0].img.data[0].attributes.url}`}
               content={
 
                 <ReactMarkdown>{sextoElement.imagenWithContentBasic[0].content}</ReactMarkdown>
@@ -234,7 +234,7 @@ const NosotrosPage = ({ data }) => {
                 "program-title fuenteTitulo colorVerde py-10 my-10"
               }
               title=""
-              imageSrc={`https://strapi-pumas-ijwsa.ondigitalocean.app/${sextoElement.imagenWithContentBasic[1].img.data[0].attributes.url}`}
+              imageSrc={`https://strapi-pumas-ijwsa.ondigitalocean.app${sextoElement.imagenWithContentBasic[1].img.data[0].attributes.url}`}
               content={
                 <ReactMarkdown>{sextoElement.imagenWithContentBasic[1].content}</ReactMarkdown>
               }

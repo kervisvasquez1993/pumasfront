@@ -50,7 +50,7 @@ const SantuarioPage = ({data}) => {
           const { ubicacionX, ubicacionY, srcModelo } = models;
           const x = parseInt(ubicacionX);
           const y = parseInt(ubicacionY);
-
+          console.log(models, "models")
           return (
 
             <CanvasElement
