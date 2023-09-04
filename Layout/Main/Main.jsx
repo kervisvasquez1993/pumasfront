@@ -6,11 +6,12 @@ import MobileMenu from "../Menu/MobileMenu";
 import style from "./style.module.css";
 import useMenu from "../../hooks/useMenu";
 import { useRouter } from "next/router";
+import MenuBurger from "../../components/UI/MenuBurguer";
 
 const Main = ({ children, titlePage }) => {
   const { menuData, loading } = useMenu();
   const { query } = useRouter();
-  const { lang } = query;
+  const { lang, slug } = query;
   const [stateMenu, setStateMenu] = useState(null);
 
   useEffect(() => {
@@ -25,14 +26,16 @@ const Main = ({ children, titlePage }) => {
     }
   }, [lang, loading, menuData]);
 
-  // Al cargar el componente, comprueba si hay menuData almacenado en localStorage y úsalo si está disponible
+  // Cargar menuData desde localStorage si no está disponible desde la API
   useEffect(() => {
     const storedMenuData = localStorage.getItem("menuData");
     if (!menuData && storedMenuData) {
-      setStateMenu(JSON.parse(storedMenuData).find((element) => element.lang === lang) || null);
+      setStateMenu(
+        JSON.parse(storedMenuData).find((element) => element.lang === lang) ||
+        null
+      );
     }
   }, []);
-
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -48,8 +51,8 @@ const Main = ({ children, titlePage }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  // stateMenu && console.log(stateMenu.data)
 
+  const shouldApplyHeaderStyle = slug !== "inicio";
   return (
     <>
       <Head>
@@ -57,18 +60,17 @@ const Main = ({ children, titlePage }) => {
         <meta name="description" content="Descripción de tu página" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <header className={`${style.headerMenu}`}>
+      <header
+        className={`${shouldApplyHeaderStyle ? style.headerMenu : ""}`}
+      >
         {isMobile ? (
-          <MobileMenu
-            logo="/images/LogoBlanco.png"
-            navigationItems={stateMenu}
-          />
+          <MenuBurger />
         ) : (
           <Menu items={stateMenu} />
         )}
       </header>
       <main className="maxWidthBody">{children}</main>
-      <Footer items={""} />
+      <Footer />
     </>
   );
 };

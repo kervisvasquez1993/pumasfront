@@ -39,7 +39,7 @@ const SantuarioPage = ({data}) => {
   const { imagenes } = secondElement
   const imgSlider = imagenes?.data.map(img => {
     return {
-      url: `http://localhost:1337${img.attributes.url}`
+      url: `https://strapi-pumas-ijwsa.ondigitalocean.app/${img.attributes.url}`
     }
   })
   
@@ -99,7 +99,7 @@ const SantuarioPage = ({data}) => {
           <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
 
         </section>
-        <TwoColumnGrid backgroundImage={"http://localhost:1337" + thirdElement.background?.data?.attributes.url}>
+        <TwoColumnGrid backgroundImage={"https://strapi-pumas-ijwsa.ondigitalocean.app/" + thirdElement.background?.data?.attributes.url}>
           <HeaderComponets
             alignment="center"
             src="/images/fondo1.png"
@@ -143,7 +143,7 @@ const SantuarioPage = ({data}) => {
               return (
                 <div className="icon-flex-2" key={index}>
                   <div className="icons__imagen">
-                    <img src={"http://localhost:1337" + element.img.data[0].attributes.url} alt="imagen santuario" />
+                    <img src={"https://strapi-pumas-ijwsa.ondigitalocean.app/" + element.img.data[0].attributes.url} alt="imagen santuario" />
                   </div>
                   <div className="icons_text">
                     <ReactMarkdown className="fuentesParrafo ">

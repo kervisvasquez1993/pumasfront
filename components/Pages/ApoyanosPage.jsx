@@ -13,7 +13,7 @@ const ApoyanosPage = ({ data }) => {
   const [firstElement, secondElement, threeElement, fourElement, quintoElmento, sextoElemento] = componentDynamics
   const imagenes = sextoElemento?.imagenWithContentBasic.map(elemento => {
     const url = elemento.img?.data[0].attributes.url
-    return `http://localhost:1337${url}`
+    return `https://strapi-pumas-ijwsa.ondigitalocean.app/${url}`
   })
 
   const elementDonar = threeElement.imagenWithContentBasic?.map((element, index) => {

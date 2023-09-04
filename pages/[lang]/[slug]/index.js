@@ -17,7 +17,7 @@ const Page = ({ page, models, blogsPage }) => {
   const { updateData } = usePages();
 
   const { slug, lang } = router.query
-
+  console.log(page)
 
   useEffect(() => {
     updateData(page)
