@@ -9,11 +9,14 @@ export const ModeloProvider = ({ children }) => {
     setModelInfo(data);
   };
 
-  const modeloList = modelInfo?.es?.data.map((item) => {
+  console.log(modelInfo, "modelosInfo")
+  const modeloList = modelInfo?.data.map((item) => {
+    console.log(item.attributes.model3D?.data?.attributes?.url, "item")
+    console.log(item?.attributes?.nombre, "item")
     const srcModeloUrl =
       "https://strapi-pumas-ijwsa.ondigitalocean.app" +
         item?.attributes?.srcModelo?.data[0]?.attributes?.url || null;
-    const models3d =
+    const models3d = 
       "https://strapi-pumas-ijwsa.ondigitalocean.app" +
         item.attributes.model3D?.data?.attributes?.url || null;
 
@@ -25,6 +28,7 @@ export const ModeloProvider = ({ children }) => {
     });
 
     return {
+      id : item.id,
       nombre: item.attributes.nombre,
       ubicacionX: item.attributes.ubicacionX,
       ubicacionY: item.attributes.ubicacionY,
@@ -42,7 +46,7 @@ export const ModeloProvider = ({ children }) => {
       modelIntensity: item.attributes.modelIntensity
     };
   });
-
+ 
   return (
     <ModeloContext.Provider
       value={{ hearlessChangInfo, modelInfo, modeloList }}

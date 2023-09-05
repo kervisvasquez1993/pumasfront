@@ -14,15 +14,16 @@ import usePages from "../../hooks/usePages";
 import SlidetWithContent from "../Section/Slider/SliderWithContent";
 import ReactMarkdown from "react-markdown";
 
-const SantuarioPage = ({data}) => {
+const SantuarioPage = ({ data }) => {
 
   const { componentDynamics } = data;
   console.log(data)
   const { modeloList } = useModelo();
+  
   if (!data) {
     return "cargando...";
-}
-  
+  }
+
   const [stateModal, setStateModal] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const hearlessChange = (data) => {
@@ -39,39 +40,36 @@ const SantuarioPage = ({data}) => {
   const { imagenes } = secondElement
   const imgSlider = imagenes?.data.map(img => {
     return {
-      url: `https://strapi-pumas-ijwsa.ondigitalocean.app/${img.attributes.url}`
+      url: `https://strapi-pumas-ijwsa.ondigitalocean.app${img.attributes.url}`
     }
   })
-  
+
   return (
     <Main titlePage={"Santuario"}>
       <MapWithBackground backgroundImage={"/images/mapa.jpg"}>
-        {modeloList?.map((models) => {
-          const { ubicacionX, ubicacionY, srcModelo } = models;
-          const x = parseInt(ubicacionX);
-          const y = parseInt(ubicacionY);
-          console.log(models, "models")
-          return (
-
-            <CanvasElement
-              key={srcModelo}
-              x={x}
-              y={y}
-              className={" "}
-            >
-              <img
-                src={srcModelo}
-                key={srcModelo}
-                alt={srcModelo}
-                data-tooltip-id="my-tooltip" data-tooltip-content={models.nombre}
-                onClick={() => hearlessChange(models)}
-              />
-              <Tooltip id="my-tooltip" />
-            </CanvasElement>
-
-
-          );
-        })}
+        {modeloList
+          ?.slice() // Hacemos una copia del array para no modificar el original
+          .sort((a, b) => a.id - b.id) // Ordenamos los elementos de menor a mayor según el id
+          .map((models) => {
+            const { ubicacionX, ubicacionY, srcModelo,id } = models;
+            const x = parseInt(ubicacionX);
+            const y = parseInt(ubicacionY);
+            console.log(models.id, "models");
+            
+            return (
+              <CanvasElement key={id} x={x} y={y} className={" "}>
+                <img
+                  src={srcModelo}
+                  key={id}
+                  alt={srcModelo}
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content={models.nombre}
+                  onClick={() => hearlessChange(models)}
+                />
+                <Tooltip id="my-tooltip" />
+              </CanvasElement>
+            );
+          })}
       </MapWithBackground>
       <Modal
         showModal={openModal}
@@ -99,7 +97,7 @@ const SantuarioPage = ({data}) => {
           <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
 
         </section>
-        <TwoColumnGrid backgroundImage={"https://strapi-pumas-ijwsa.ondigitalocean.app/" + thirdElement.background?.data?.attributes.url}>
+        <TwoColumnGrid backgroundImage={"https://strapi-pumas-ijwsa.ondigitalocean.app" + thirdElement.background?.data?.attributes.url}>
           <HeaderComponets
             alignment="center"
             src="/images/fondo1.png"
@@ -143,7 +141,7 @@ const SantuarioPage = ({data}) => {
               return (
                 <div className="icon-flex-2" key={index}>
                   <div className="icons__imagen">
-                    <img src={"https://strapi-pumas-ijwsa.ondigitalocean.app/" + element.img.data[0].attributes.url} alt="imagen santuario" />
+                    <img src={"https://strapi-pumas-ijwsa.ondigitalocean.app" + element.img.data[0].attributes.url} alt="imagen santuario" />
                   </div>
                   <div className="icons_text">
                     <ReactMarkdown className="fuentesParrafo ">

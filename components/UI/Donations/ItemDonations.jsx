@@ -10,7 +10,7 @@ const ItemDonations = ({ data, selected, onClick, className="" }) => {
         }`}
         onClick={onClick}
       >
-        <img src={"https://strapi-pumas-ijwsa.ondigitalocean.app/" + imgSrc.data.attributes.url} />
+        <img src={"https://strapi-pumas-ijwsa.ondigitalocean.app" + imgSrc.data.attributes.url} />
       </div>
     );
   }
