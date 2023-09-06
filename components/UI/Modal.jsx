@@ -7,11 +7,16 @@ import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 import CanvasModel from "../Canvas/CanvasModel";
 import { Puma } from "../Models/Puma";
 import SelectedModels from "../Models/SelectedModels";
+import { useRouter } from "next/router";
+
 
 export default function Modal({ showModal, setShowModal, data }) {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
+  const router = useRouter();
+  const { slug, lang } = router.query
   console.log(data, "llamando modelo")
   console.log(data?.modelo3d,"llamando a modelo3d")
   console.log(data?.componente,"llamando a componente")
@@ -71,7 +76,7 @@ export default function Modal({ showModal, setShowModal, data }) {
                       </section>
                       <ButtonView
                         className={" backgroundPrimary m-0 manropeFont p-5"}
-                        link={"/es/donations?params=" + data?.slug}
+                        link={`${lang}/donations?params=` + data?.slug}
                       >
                         Apoyar Animal
                       </ButtonView>

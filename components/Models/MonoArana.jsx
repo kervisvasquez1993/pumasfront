@@ -6,9 +6,9 @@ Command: npx gltfjsx@6.1.11 MonoAraña.gltf
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function MonoArana({ modelo, ...props }) {
+export function MonoArana({  ...props }) {
   
-    const { nodes, materials } = useGLTF(modelo);
+    const { nodes, materials } = useGLTF("MonoArana.gltf");
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Spider_Monkey.geometry} material={materials['12958_Spider_Monkey.001']} />

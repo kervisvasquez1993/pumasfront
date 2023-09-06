@@ -6,9 +6,9 @@ Command: npx gltfjsx@6.1.11 LoraNucaAmarilla.gltf
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function LoroNucaAmarilla({ modelo, ...props }) {
+export function LoroNucaAmarilla({  ...props }) {
  
-    const { nodes, materials } = useGLTF(modelo);
+    const { nodes, materials } = useGLTF("models/LoroNucaAmarilla.gltf");
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.LoraNucaAmarilla.geometry} material={materials.LoraNucaAmarilla} />

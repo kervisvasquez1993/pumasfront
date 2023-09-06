@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-export function Saino({ modelo, ...props }) {
+export function Saino({  ...props }) {
   
-    const { nodes, materials } = useGLTF(modelo);
+    const { nodes, materials } = useGLTF("/models/Saino.gltf");
 
     return (
       <group {...props} dispose={null}>

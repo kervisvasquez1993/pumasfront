@@ -6,9 +6,9 @@ Command: npx gltfjsx@6.1.11 TortugaResbaladora.gltf
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function TortugaResbaladora({ modelo, ...props }) {
+export function TortugaResbaladora({  ...props }) {
  
-    const { nodes, materials } = useGLTF(modelo);
+    const { nodes, materials } = useGLTF("/models/resbalTortugaResbaladora.gltf");
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.TortugaResbaladora.geometry} material={materials['13103_pearlturtle_body']} />

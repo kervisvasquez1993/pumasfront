@@ -53,16 +53,16 @@ const SantuarioPage = ({ data }) => {
             const { ubicacionX, ubicacionY, srcModelo, id } = models;
             const x = parseInt(ubicacionX);
             const y = parseInt(ubicacionY);
-
+            const withModels = models.componente ?"100px" : "50px";
             return (
-              <CanvasElement key={id} x={x} y={y} className={" "}>
+              <CanvasElement key={id} x={x} y={y} className={" "} width={withModels}>
                 <img
                   src={srcModelo}
                   key={id}
                   alt={srcModelo}
                   data-tooltip-id="my-tooltip"
                   data-tooltip-content={models.nombre}
-                  onClick={() => models.modelo3d && hearlessChange(models)}
+                  onClick={() => models.componente && hearlessChange(models)}
                 />
                 <Tooltip id="my-tooltip" />
               </CanvasElement>
@@ -95,7 +95,7 @@ const SantuarioPage = ({ data }) => {
           <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
 
         </section>
-        <TwoColumnGrid backgroundImage={"https://strapi-pumas-ijwsa.ondigitalocean.app" + thirdElement.background?.data?.attributes.url}>
+        <TwoColumnGrid backgroundImage={ thirdElement.background?.data?.attributes.url}>
           <HeaderComponets
             alignment="center"
             src="/images/fondo1.png"

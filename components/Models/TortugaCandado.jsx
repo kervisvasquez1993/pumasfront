@@ -6,9 +6,9 @@ Command: npx gltfjsx@6.1.11 TortugaCandado.gltf
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function TortugaCandado({ modelo, ...props }) {
+export function TortugaCandado({  ...props }) {
   
-    const { nodes, materials } = useGLTF(modelo);
+    const { nodes, materials } = useGLTF("/models/TortugaCandado.gltf");
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.TortugaCandado.geometry} material={materials.TortugaCandado} scale={0.88} />

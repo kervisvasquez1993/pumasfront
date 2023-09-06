@@ -2,9 +2,9 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function LoroCopeteRojo({ modelo, ...props }) {
+export function LoroCopeteRojo({  ...props }) {
   
-    const { nodes, materials } = useGLTF(modelo);
+    const { nodes, materials } = useGLTF("/models/LoroCopeteRojo.gltf");
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.LoraCopeteRojo002.geometry} material={materials.wood} />

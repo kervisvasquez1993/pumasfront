@@ -6,9 +6,9 @@ Command: npx gltfjsx@6.1.11 LapaRoja.gltf
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function LapaRoja({ modelo, ...props }) {
+export function LapaRoja({ ...props }) {
   
-    const { nodes, materials } = useGLTF(modelo);
+    const { nodes, materials } = useGLTF("/models/LapaRoja.gltf");
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Lapa.geometry} material={materials['51']} />
