@@ -3,12 +3,14 @@ import style from "./style.module.css";
 import Link from "next/link";
 
 const ItemMenu = ({ items }) => {
- 
   return (
     <>
       {items && (
         <ul className={`${style.menuList} flex my-10`}>
           {items.map((item) => {
+            if(item.attributes.slug === "inicio"){
+              return 
+            }
             if (item.attributes.nombre === "Apoyanos") {
               return (
                 <li

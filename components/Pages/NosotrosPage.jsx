@@ -11,14 +11,15 @@ import Section from "../Section/Basic/Section";
 import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 import SliderGeneral from "../UI/Slider/SliderGeneral";
 import ReactMarkdown from "react-markdown";
+import useScreenSize from "../../hooks/useScreenSize";
 const NosotrosPage = ({ data }) => {
 
   const router = useRouter();
   const { slug, lang } = router.query
   const { componentDynamics } = data;
-
+  const { screenSize } = useScreenSize()
+  console.log(screenSize, "local screen size")
   const [primerElemet, secundarioElement, tercerElment, cuartoElement, quintoElemet, sextoElement, septimoElemento] = componentDynamics;
-  console.log(septimoElemento, "secundarioElement");
   const sliderImagenes = secundarioElement?.imagenes.data.map(element => {
     const url = element.attributes.url
     return `${url}`
@@ -136,7 +137,7 @@ const NosotrosPage = ({ data }) => {
       <div className="container">
         <HeaderComponets
           src="/images/fondo1.png"
-          classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
+          classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-5"}
           alignment="start"
         >
           {primerElemet.Titulo}

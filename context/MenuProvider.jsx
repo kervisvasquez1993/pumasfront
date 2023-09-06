@@ -29,7 +29,8 @@ export const MenuProvider = ({ children }) => {
         locale: language,
       },
     };
-    const response = await ApiBackend("api/menus", config);
+    
+    const response = await ApiBackend("api/menus?sort=rang:asc", config);
     return response.data.data;
   };
 
