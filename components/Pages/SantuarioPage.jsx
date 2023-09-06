@@ -14,15 +14,15 @@ import usePages from "../../hooks/usePages";
 import SlidetWithContent from "../Section/Slider/SliderWithContent";
 import ReactMarkdown from "react-markdown";
 
-const SantuarioPage = ({data}) => {
+const SantuarioPage = ({ data }) => {
 
   const { componentDynamics } = data;
-  console.log(data)
   const { modeloList } = useModelo();
+
   if (!data) {
     return "cargando...";
-}
-  
+  }
+
   const [stateModal, setStateModal] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const hearlessChange = (data) => {
@@ -39,39 +39,35 @@ const SantuarioPage = ({data}) => {
   const { imagenes } = secondElement
   const imgSlider = imagenes?.data.map(img => {
     return {
-      url: `http://localhost:1337${img.attributes.url}`
+      url: `${img?.attributes?.url}`
     }
   })
-  
+
   return (
     <Main titlePage={"Santuario"}>
       <MapWithBackground backgroundImage={"/images/mapa.jpg"}>
-        {modeloList?.map((models) => {
-          const { ubicacionX, ubicacionY, srcModelo } = models;
-          const x = parseInt(ubicacionX);
-          const y = parseInt(ubicacionY);
+        {modeloList
+          ?.slice() // Hacemos una copia del array para no modificar el original
+          .sort((a, b) => a.id - b.id)
+          .map((models) => {
+            const { ubicacionX, ubicacionY, srcModelo, id } = models;
+            const x = parseInt(ubicacionX);
+            const y = parseInt(ubicacionY);
 
-          return (
-
-            <CanvasElement
-              key={srcModelo}
-              x={x}
-              y={y}
-              className={" "}
-            >
-              <img
-                src={srcModelo}
-                key={srcModelo}
-                alt={srcModelo}
-                data-tooltip-id="my-tooltip" data-tooltip-content={models.nombre}
-                onClick={() => hearlessChange(models)}
-              />
-              <Tooltip id="my-tooltip" />
-            </CanvasElement>
-
-
-          );
-        })}
+            return (
+              <CanvasElement key={id} x={x} y={y} className={" "}>
+                <img
+                  src={srcModelo}
+                  key={id}
+                  alt={srcModelo}
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content={models.nombre}
+                  onClick={() => models.modelo3d && hearlessChange(models)}
+                />
+                <Tooltip id="my-tooltip" />
+              </CanvasElement>
+            );
+          })}
       </MapWithBackground>
       <Modal
         showModal={openModal}
@@ -99,7 +95,7 @@ const SantuarioPage = ({data}) => {
           <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
 
         </section>
-        <TwoColumnGrid backgroundImage={"http://localhost:1337" + thirdElement.background?.data?.attributes.url}>
+        <TwoColumnGrid backgroundImage={"https://strapi-pumas-ijwsa.ondigitalocean.app" + thirdElement.background?.data?.attributes.url}>
           <HeaderComponets
             alignment="center"
             src="/images/fondo1.png"
@@ -143,7 +139,12 @@ const SantuarioPage = ({data}) => {
               return (
                 <div className="icon-flex-2" key={index}>
                   <div className="icons__imagen">
-                    <img src={"http://localhost:1337" + element.img.data[0].attributes.url} alt="imagen santuario" />
+                    {element.img?.data[0]?.attributes?.url && (
+                      <img
+                        src={element.img.data[0].attributes.url}
+                        alt="imagen santuario"
+                      />
+                    )}
                   </div>
                   <div className="icons_text">
                     <ReactMarkdown className="fuentesParrafo ">

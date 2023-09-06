@@ -11,13 +11,18 @@ import ButtonView from "../../views/ButtonView";
 import CardBasic from "../Section/CardBasic";
 import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 import Map from "../UI/Map";
+import { slide as Menu } from 'react-burger-menu'
+import MenuBurger from "../UI/MenuBurguer";
 
-const HomePage = ({data}) => {
+
+const HomePage = ({ data }) => {
   console.log("hola")
   return (
     <Main titlePage={"Inicio"}>
       {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}
       <BannerComponents />
+      
+
       <div className="container">
         <HeaderComponets
           classNameText={"py-10 colorPrimary chelseaFont"}
@@ -48,7 +53,7 @@ const HomePage = ({data}) => {
             alignItems={"center"}
             justifyContent={"center"}
             styleWrapper={{ height: "100%" }}
-            // styleContent={{height: "100%"}}
+          // styleContent={{height: "100%"}}
           >
             <p className="py-5">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
@@ -90,7 +95,7 @@ const HomePage = ({data}) => {
             justifyContent={"center"}
             styleWrapper={{ height: "100%" }}
 
-            // styleContent={{height: "100%"}}
+          // styleContent={{height: "100%"}}
           >
             <p className="py-10">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
@@ -136,7 +141,7 @@ const HomePage = ({data}) => {
             alignItems={"center"}
             justifyContent={"center"}
             styleWrapper={{ height: "100%" }}
-            // styleContent={{height: "100%"}}
+          // styleContent={{height: "100%"}}
           >
             <p className="py-5">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
@@ -175,7 +180,7 @@ const HomePage = ({data}) => {
             alignItems={"center"}
             justifyContent={"center"}
             styleWrapper={{ height: "100%" }}
-            // styleContent={{height: "100%"}}
+          // styleContent={{height: "100%"}}
           >
             <section className="py-5">
               <h4 className="chelseaFont colorSecondary font-size-24">HORARIO</h4>
@@ -225,7 +230,7 @@ const HomePage = ({data}) => {
             </section>
           </BasicSection>
         </TwoColumnGrid>
-        
+
         <HeaderComponets
           src="/images/fondo1.png"
           classNameText={"py-5 colorVerde chelseaFont"}

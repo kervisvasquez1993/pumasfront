@@ -12,8 +12,8 @@ const ApoyanosPage = ({ data }) => {
   const { componentDynamics } = data;
   const [firstElement, secondElement, threeElement, fourElement, quintoElmento, sextoElemento] = componentDynamics
   const imagenes = sextoElemento?.imagenWithContentBasic.map(elemento => {
-    const url = elemento.img?.data[0].attributes.url
-    return `http://localhost:1337${url}`
+    return elemento.img?.data[0]?.attributes.url
+
   })
 
   const elementDonar = threeElement.imagenWithContentBasic?.map((element, index) => {
@@ -104,7 +104,7 @@ const ApoyanosPage = ({ data }) => {
           <section className="grid-2">
             <SliderThree>
               {imagenes.map((image, index) => {
-                
+
                 return (
                   <div key={index}>
                     <img src={image} alt={"natural"} />

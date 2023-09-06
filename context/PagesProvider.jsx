@@ -9,20 +9,7 @@ export const PagesProvider = ({ children }) => {
     const updateData = (data) => {
         setPageState(data);
     }
-    useEffect(() => {
-        if (pagesState?.slug == "centro-de-rescate") {
-            setDynamicsComponent(pagesState.componentDynamics);
-        }
-        if (pagesState?.slug == "santuario") {
-            setDynamicsComponent(pagesState.componentDynamics);
-        }
-        if (pagesState?.slug == "programas") {
-            setDynamicsComponent(pagesState.componentDynamics);
-        }
-
-        setDynamicsComponent(pagesState.componentDynamics);
-
-    }, [pagesState])
+    
 
        
 

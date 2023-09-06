@@ -19,10 +19,11 @@ const CentroDeRescate = ({data}) => {
     return "cargando...";
   }
   const [firstSection, secondSection, thirdSection, fourthSection] = componentDynamics;
+  console.log(firstSection, secondSection, thirdSection, fourthSection)
   const { imagenes } = firstSection
   const imgSlider = imagenes?.data.map(img => {
     return {
-      url: `http://localhost:1337${img.attributes.url}`
+      url: `${img.attributes.url}`
     }
   })
   const { imagenWithContentBasic } = thirdSection
@@ -36,11 +37,15 @@ const CentroDeRescate = ({data}) => {
         <h3 className="program-title fuenteTitulo colorPrimary py-10 my-10">
           {secondSection.Titulo}
         </h3>
+        {console.log(imagenWithContentBasic,"imagenes")}
         <SectionReverse
           positionTitle="start"
           titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
           title={`${imagenWithContentBasic[0]?.label}`}
-          imageSrc={`http://localhost:1337${imagenWithContentBasic[0]?.img.data[0].attributes.url}`}
+          imageSrc={
+            imagenWithContentBasic[0]?.img.data[0]?.attributes?.url ||
+            "URL_PREDETERMINADA" 
+          }
           contentClassName={"contentSectionReserveEnd"}
           content={`${imagenWithContentBasic[0]?.content}`}
         />
@@ -50,14 +55,14 @@ const CentroDeRescate = ({data}) => {
           contentClassName="contentSectionEnd px-10 px-10"
           titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
           title={`${imagenWithContentBasic[1]?.label}`}
-          imageSrc={`http://localhost:1337${imagenWithContentBasic[1]?.img.data[0].attributes.url}`}
+          imageSrc={`${imagenWithContentBasic[1]?.img.data[0]?.attributes.url}`}
           content={`${imagenWithContentBasic[1]?.content}`}
         />
         <SectionReverse
           positionTitle="start"
           titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
           title={`${imagenWithContentBasic[2]?.label}`}
-          imageSrc={`http://localhost:1337${imagenWithContentBasic[2]?.img.data[0].attributes.url}`}
+          imageSrc={`${imagenWithContentBasic[2]?.img.data[0]?.attributes.url}`}
           contentClassName={"contentSectionReserveEnd"}
           content={`${imagenWithContentBasic[2]?.content}`}
         />
@@ -66,7 +71,7 @@ const CentroDeRescate = ({data}) => {
           contentClassName="contentSectionEnd px-10 px-10"
           titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
           title={`${imagenWithContentBasic[3]?.label}`}
-          imageSrc={`http://localhost:1337${imagenWithContentBasic[4]?.img.data[0].attributes.url}`}
+          imageSrc={`${imagenWithContentBasic[4]?.img.data[0]?.attributes.url}`}
           content={`${imagenWithContentBasic[3]?.content}`}
         />
 
@@ -74,12 +79,12 @@ const CentroDeRescate = ({data}) => {
           positionTitle="start"
           titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
           title={`${imagenWithContentBasic[4]?.label}`}
-          imageSrc={`http://localhost:1337${imagenWithContentBasic[4]?.img.data[0].attributes.url}`}
+          imageSrc={`${imagenWithContentBasic[4]?.img.data[0]?.attributes.url}`}
           contentClassName={"contentSectionReserveEnd"}
           content={`${imagenWithContentBasic[4]?.content}`}
 
         />
-        <TwoColumnGrid backgroundImage={"http://localhost:1337"+fourthSection.background?.data?.attributes.url}>
+        <TwoColumnGrid backgroundImage={fourthSection.background?.data?.attributes.url}>
           <BasicSection
             classNameTitle={""}
             classNameWrapper={"setionStyle "}
@@ -111,7 +116,7 @@ const CentroDeRescate = ({data}) => {
             >
               {fourthSection.title}
             </HeaderComponets>
-            <CardBasic imgSrc={"http://localhost:1337"+fourthSection.imgBasicContent?.data?.attributes.url} />
+            <CardBasic imgSrc={fourthSection.imgBasicContent?.data?.attributes.url} />
           </section>
         </TwoColumnGrid>
       </div>

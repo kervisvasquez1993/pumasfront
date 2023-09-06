@@ -12,6 +12,9 @@ export default function Modal({ showModal, setShowModal, data }) {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+  console.log(data, "llamando modelo")
+  console.log(data?.modelo3d,"llamando a modelo3d")
+  console.log(data?.componente,"llamando a componente")
   
   return (
     <>
@@ -25,7 +28,7 @@ export default function Modal({ showModal, setShowModal, data }) {
                   modelY={data?.modelY}
                   modelZ={data?.modelZ}
                   intensity={data?.modelIntensity}
-                  modelo={data.modelo3d}
+                  modelo={data?.modelo3d}
                   componentName={data?.componente}
                 />
               </section>

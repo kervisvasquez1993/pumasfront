@@ -9,22 +9,26 @@ export const ModeloProvider = ({ children }) => {
     setModelInfo(data);
   };
 
-  const modeloList = modelInfo?.es?.data.map((item) => {
+  console.log(modelInfo, "modelosInfo")
+  const modeloList = modelInfo?.data.map((item) => {
+    console.log(item.attributes?.model3D?.data?.attributes?.url, "item")
+    console.log(item?.attributes?.nombre, "item")
     const srcModeloUrl =
-      "http://localhost:1337" +
-        item.attributes.srcModelo?.data[0]?.attributes?.url || null;
+
+      item?.attributes?.srcModelo?.data[0]?.attributes?.url || null;
     const models3d =
-      "http://localhost:1337" +
-        item.attributes.model3D?.data?.attributes?.url || null;
+
+      item.attributes.model3D?.data?.attributes?.url || null;
 
     const imagenes = item.attributes?.imagenes?.data?.map((imagen) => {
       return {
         id: imagen.id,
-        url: "http://localhost:1337" + imagen.attributes.url,
+        url: imagen.attributes.url,
       };
     });
 
     return {
+      id: item.id,
       nombre: item.attributes.nombre,
       ubicacionX: item.attributes.ubicacionX,
       ubicacionY: item.attributes.ubicacionY,
@@ -35,10 +39,10 @@ export const ModeloProvider = ({ children }) => {
       srcModelo: srcModeloUrl,
       imagenes: imagenes,
       modelo3d: models3d,
-      componente : item.attributes.Componente,
+      componente: item.attributes.Componente,
       modelX: item.attributes.modelX,
       modelY: item.attributes.modelY,
-      modelZ : item.attributes.modelZ,
+      modelZ: item.attributes.modelZ,
       modelIntensity: item.attributes.modelIntensity
     };
   });
