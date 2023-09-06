@@ -7,13 +7,12 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function LoroNucaAmarilla({ modelo, ...props }) {
-  if (modelo) {
+ 
     const { nodes, materials } = useGLTF(modelo);
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.LoraNucaAmarilla.geometry} material={materials.LoraNucaAmarilla} />
     </group>
   );
-    }
-    return null;
+  
 }

@@ -15,5 +15,5 @@ export function Manigordo({ ...props }) {
     </group>
   );
 
-  return null;
+
 }
