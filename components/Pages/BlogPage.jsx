@@ -18,7 +18,7 @@ const BlogPage = ({ data, blogData }) => {
     return (<CardComponent key={index}
       description={resumen+" ...... "}
       title={TitleBlog}
-      imageUrl={"https://strapi-pumas-ijwsa.ondigitalocean.app"+imgBlog.data[0].attributes.url}
+      imageUrl={imgBlog?.data[0]?.attributes?.url}
     />)
   })
   return (

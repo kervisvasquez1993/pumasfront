@@ -216,6 +216,7 @@ export const getModelGQ = async (lang) => {
           nombre
           nombreCientifico
           slug
+          Componente
           ubicacionX
           ubicacionY
           especie

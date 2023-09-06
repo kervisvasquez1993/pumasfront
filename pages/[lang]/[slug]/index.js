@@ -13,7 +13,6 @@ import usePages from "../../../hooks/usePages";
 
 const Page = ({ page, models, blogsPage, modelsGQ }) => {
     console.log(modelsGQ,"response") 
-    // console.log(models,"models")
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();

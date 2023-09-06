@@ -17,7 +17,6 @@ import ReactMarkdown from "react-markdown";
 const SantuarioPage = ({ data }) => {
 
   const { componentDynamics } = data;
-  console.log(data)
   const { modeloList } = useModelo();
 
   if (!data) {
@@ -40,7 +39,7 @@ const SantuarioPage = ({ data }) => {
   const { imagenes } = secondElement
   const imgSlider = imagenes?.data.map(img => {
     return {
-      url: `https://strapi-pumas-ijwsa.ondigitalocean.app${img.attributes.url}`
+      url: `${img?.attributes?.url}`
     }
   })
 
@@ -49,12 +48,11 @@ const SantuarioPage = ({ data }) => {
       <MapWithBackground backgroundImage={"/images/mapa.jpg"}>
         {modeloList
           ?.slice() // Hacemos una copia del array para no modificar el original
-          .sort((a, b) => a.id - b.id) // Ordenamos los elementos de menor a mayor según el id
+          .sort((a, b) => a.id - b.id)
           .map((models) => {
             const { ubicacionX, ubicacionY, srcModelo, id } = models;
             const x = parseInt(ubicacionX);
             const y = parseInt(ubicacionY);
-            console.log(models.id, "models");
 
             return (
               <CanvasElement key={id} x={x} y={y} className={" "}>
@@ -64,7 +62,7 @@ const SantuarioPage = ({ data }) => {
                   alt={srcModelo}
                   data-tooltip-id="my-tooltip"
                   data-tooltip-content={models.nombre}
-                  onClick={() => hearlessChange(models)}
+                  onClick={() => models.modelo3d && hearlessChange(models)}
                 />
                 <Tooltip id="my-tooltip" />
               </CanvasElement>

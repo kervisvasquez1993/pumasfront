@@ -27,61 +27,61 @@ const SelectedModels = ({ componentName, modelo, modelX=0, modelY=0, modelZ=0, i
   console.log(modelX, modelY, modelZ)
   switch (componentName) {
     case "Puma":
-      selectedComponent = <Puma modelo={models} />;
+      selectedComponent = <Puma />;
       break;
     case "Chucuyo":
       selectedComponent = <Chucuyo />;
       break;
     case "LoroCopeteRoja":
-      selectedComponent = <LoroCopeteRojo modelo={models} />;
+      selectedComponent = <LoroCopeteRojo />;
       break;
     case "Grison":
-      selectedComponent = <Grison modelo={models} />;
+      selectedComponent = <Grison />;
       break;
     case "Jaguar":
-      selectedComponent = <Jaguar modelo={models} />;
+      selectedComponent = <Jaguar />;
       break;
     case "LapaRoja":
-      selectedComponent = <LapaRoja modelo={models} />;
+      selectedComponent = <LapaRoja />;
       break;
     case "LoroCopeteNegro":
-      selectedComponent = <LoroCopeteNegro modelo={models} />;
+      selectedComponent = <LoroCopeteNegro />;
       break;
     case "LoroNucaAmarilla":
-      selectedComponent = <LoroNucaAmarilla modelo={models} />;
+      selectedComponent = <LoroNucaAmarilla />;
       break;
     case "Manigordo":
-      selectedComponent = <Manigordo modelo={models} />;
+      selectedComponent = <Manigordo />;
       break;
     case "MonoArana":
-      selectedComponent = <MonoArana modelo={models} />;
+      selectedComponent = <MonoArana />;
       break;
     case "ManoCaraBlanca":
-      selectedComponent = <ManoCaraBlanca modelo={models} />;
+      selectedComponent = <ManoCaraBlanca />;
       break;
     case "OsoPerezosoDeDedos":
-      selectedComponent = <OsoPerezosoDeDedos modelo={models} />;
+      selectedComponent = <OsoPerezosoDeDedos />;
       break;
     case "Saino":
-      selectedComponent = <Saino modelo={models} />;
+      selectedComponent = <Saino />;
       break;
     case "TortugaCandado":
-      selectedComponent = <TortugaCandado modelo={models} />;
+      selectedComponent = <TortugaCandado />;
       break;
     case "TortugaResbaladora":
-      selectedComponent = <TortugaResbaladora modelo={models} />;
+      selectedComponent = <TortugaResbaladora />;
       break;
     case "TortugaRoja":
-      selectedComponent = <TortugaRoja modelo={models} />;
+      selectedComponent = <TortugaRoja />;
       break;
     case "Yagurandi":
-      selectedComponent = <Yagurandi modelo={models} />;
+      selectedComponent = <Yagurandi />;
       break;
     case "TortugaNegra":
-      selectedComponent = <TortugaNegra modelo={models} />;
+      selectedComponent = <TortugaNegra />;
       break;
     case "MonoCaraBlanca":
-      selectedComponent = <MonoCaraBlanca modelo={models} />;
+      selectedComponent = <MonoCaraBlanca />;
       break;
     default:
       selectedComponent = null;
