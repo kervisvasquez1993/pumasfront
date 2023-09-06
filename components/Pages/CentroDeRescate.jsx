@@ -23,7 +23,7 @@ const CentroDeRescate = ({data}) => {
   const { imagenes } = firstSection
   const imgSlider = imagenes?.data.map(img => {
     return {
-      url: `https://strapi-pumas-ijwsa.ondigitalocean.app${img.attributes.url}`
+      url: `${img.attributes.url}`
     }
   })
   const { imagenWithContentBasic } = thirdSection
@@ -55,14 +55,14 @@ const CentroDeRescate = ({data}) => {
           contentClassName="contentSectionEnd px-10 px-10"
           titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
           title={`${imagenWithContentBasic[1]?.label}`}
-          imageSrc={`https://strapi-pumas-ijwsa.ondigitalocean.app${imagenWithContentBasic[1]?.img.data[0].attributes.url}`}
+          imageSrc={`${imagenWithContentBasic[1]?.img.data[0]?.attributes.url}`}
           content={`${imagenWithContentBasic[1]?.content}`}
         />
         <SectionReverse
           positionTitle="start"
           titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
           title={`${imagenWithContentBasic[2]?.label}`}
-          imageSrc={`https://strapi-pumas-ijwsa.ondigitalocean.app${imagenWithContentBasic[2]?.img.data[0].attributes.url}`}
+          imageSrc={`${imagenWithContentBasic[2]?.img.data[0]?.attributes.url}`}
           contentClassName={"contentSectionReserveEnd"}
           content={`${imagenWithContentBasic[2]?.content}`}
         />
@@ -71,7 +71,7 @@ const CentroDeRescate = ({data}) => {
           contentClassName="contentSectionEnd px-10 px-10"
           titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
           title={`${imagenWithContentBasic[3]?.label}`}
-          imageSrc={`https://strapi-pumas-ijwsa.ondigitalocean.app${imagenWithContentBasic[4]?.img.data[0].attributes.url}`}
+          imageSrc={`${imagenWithContentBasic[4]?.img.data[0]?.attributes.url}`}
           content={`${imagenWithContentBasic[3]?.content}`}
         />
 
@@ -79,12 +79,12 @@ const CentroDeRescate = ({data}) => {
           positionTitle="start"
           titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
           title={`${imagenWithContentBasic[4]?.label}`}
-          imageSrc={`https://strapi-pumas-ijwsa.ondigitalocean.app${imagenWithContentBasic[4]?.img.data[0].attributes.url}`}
+          imageSrc={`${imagenWithContentBasic[4]?.img.data[0]?.attributes.url}`}
           contentClassName={"contentSectionReserveEnd"}
           content={`${imagenWithContentBasic[4]?.content}`}
 
         />
-        <TwoColumnGrid backgroundImage={"https://strapi-pumas-ijwsa.ondigitalocean.app"+fourthSection.background?.data?.attributes.url}>
+        <TwoColumnGrid backgroundImage={fourthSection.background?.data?.attributes.url}>
           <BasicSection
             classNameTitle={""}
             classNameWrapper={"setionStyle "}
@@ -116,7 +116,7 @@ const CentroDeRescate = ({data}) => {
             >
               {fourthSection.title}
             </HeaderComponets>
-            <CardBasic imgSrc={"https://strapi-pumas-ijwsa.ondigitalocean.app"+fourthSection.imgBasicContent?.data?.attributes.url} />
+            <CardBasic imgSrc={fourthSection.imgBasicContent?.data?.attributes.url} />
           </section>
         </TwoColumnGrid>
       </div>

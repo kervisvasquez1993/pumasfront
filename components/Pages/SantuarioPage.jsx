@@ -19,7 +19,7 @@ const SantuarioPage = ({ data }) => {
   const { componentDynamics } = data;
   console.log(data)
   const { modeloList } = useModelo();
-  
+
   if (!data) {
     return "cargando...";
   }
@@ -51,11 +51,11 @@ const SantuarioPage = ({ data }) => {
           ?.slice() // Hacemos una copia del array para no modificar el original
           .sort((a, b) => a.id - b.id) // Ordenamos los elementos de menor a mayor según el id
           .map((models) => {
-            const { ubicacionX, ubicacionY, srcModelo,id } = models;
+            const { ubicacionX, ubicacionY, srcModelo, id } = models;
             const x = parseInt(ubicacionX);
             const y = parseInt(ubicacionY);
             console.log(models.id, "models");
-            
+
             return (
               <CanvasElement key={id} x={x} y={y} className={" "}>
                 <img
@@ -141,7 +141,12 @@ const SantuarioPage = ({ data }) => {
               return (
                 <div className="icon-flex-2" key={index}>
                   <div className="icons__imagen">
-                    <img src={"https://strapi-pumas-ijwsa.ondigitalocean.app" + element.img.data[0].attributes.url} alt="imagen santuario" />
+                    {element.img?.data[0]?.attributes?.url && (
+                      <img
+                        src={element.img.data[0].attributes.url}
+                        alt="imagen santuario"
+                      />
+                    )}
                   </div>
                   <div className="icons_text">
                     <ReactMarkdown className="fuentesParrafo ">

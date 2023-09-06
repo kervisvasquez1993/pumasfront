@@ -9,17 +9,17 @@ const ProgramaPage = ({ data }) => {
 
   const { title, componentDynamics } = data;
   const [firstElement, secondElement, thirdElement, fourthElement, fifthElement] = componentDynamics
-  const url = "https://strapi-pumas-ijwsa.ondigitalocean.app" + firstElement.imgBasicContent.data.attributes.url
+  const url = firstElement?.imgBasicContent?.data?.attributes?.url
   const { precios } = thirdElement
   const preciosData = precios.data.map((precio, index) => {
-    return (<li key={index}>{precio.attributes.title} : {precio.attributes.value}</li>)
+    return (<li key={index}>{precio?.attributes?.title} : {precio?.attributes?.value}</li>)
 
   })
   const { imagenWithContentBasic } = secondElement
   const contentEducation = imagenWithContentBasic.map((element, index) => {
     return (<div className="icon-flex-2" key={index}>
       <div className="icons__imagen">
-        <img src={"https://strapi-pumas-ijwsa.ondigitalocean.app" + element.img.data[0].attributes.url} alt="imagen santuario" />
+        <img src={element?.img?.data[0]?.attributes?.url} alt="imagen santuario" />
       </div>
       <div className="icons_text">
         <ReactMarkdown className="fuentesParrafo">{element.content}</ReactMarkdown>

@@ -14,21 +14,21 @@ export const ModeloProvider = ({ children }) => {
     console.log(item.attributes.model3D?.data?.attributes?.url, "item")
     console.log(item?.attributes?.nombre, "item")
     const srcModeloUrl =
-      "https://strapi-pumas-ijwsa.ondigitalocean.app" +
-        item?.attributes?.srcModelo?.data[0]?.attributes?.url || null;
-    const models3d = 
-      "https://strapi-pumas-ijwsa.ondigitalocean.app" +
-        item.attributes.model3D?.data?.attributes?.url || null;
+
+      item?.attributes?.srcModelo?.data[0]?.attributes?.url || null;
+    const models3d =
+
+      item.attributes.model3D?.data?.attributes?.url || null;
 
     const imagenes = item.attributes?.imagenes?.data?.map((imagen) => {
       return {
         id: imagen.id,
-        url: "https://strapi-pumas-ijwsa.ondigitalocean.app" + imagen.attributes.url,
+        url: imagen.attributes.url,
       };
     });
 
     return {
-      id : item.id,
+      id: item.id,
       nombre: item.attributes.nombre,
       ubicacionX: item.attributes.ubicacionX,
       ubicacionY: item.attributes.ubicacionY,
@@ -39,14 +39,14 @@ export const ModeloProvider = ({ children }) => {
       srcModelo: srcModeloUrl,
       imagenes: imagenes,
       modelo3d: models3d,
-      componente : item.attributes.Componente,
+      componente: item.attributes.Componente,
       modelX: item.attributes.modelX,
       modelY: item.attributes.modelY,
-      modelZ : item.attributes.modelZ,
+      modelZ: item.attributes.modelZ,
       modelIntensity: item.attributes.modelIntensity
     };
   });
- 
+
   return (
     <ModeloContext.Provider
       value={{ hearlessChangInfo, modelInfo, modeloList }}
