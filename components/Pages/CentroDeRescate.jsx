@@ -100,7 +100,7 @@ const CentroDeRescate = ({ data }) => {
                 `${screenSize <= 992 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"}  "fuentesParrafo  p-10 my-10"`
 
               }
-              width={`${screenSize <= 992 ? "100%" : "100%"}`}
+              width={`${screenSize <= 992 ? "100%" : "80%"}`}
 
 
 
