@@ -26,7 +26,7 @@ const NosotrosPage = ({ data }) => {
   const abousUs = quintoElemet.imagenWithContentBasic.map((element, index) => {
     return (<section className="w-50 p-5" key={index}>
       <HeaderComponets
-      alignment={`${screenSize <= 992 ? "center" : "start"}`}
+      alignment={`${screenSize <= 1024 ? "center" : "start"}`}
       src="/images/fondo1.png"
       classNameText={"colorSecondary chelseaFont"}
       classNameSection={"centerElement"}
@@ -138,7 +138,7 @@ const NosotrosPage = ({ data }) => {
         <HeaderComponets
           src="/images/fondo1.png"
           classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-5"}
-          alignment={`${screenSize <= 992 ? "center" : "start"}`}
+          alignment={`${screenSize <= 1024 ? "center" : "start"}`}
         >
           {primerElemet.Titulo}
         </HeaderComponets>
@@ -256,7 +256,7 @@ const NosotrosPage = ({ data }) => {
           <HeaderComponets
             src="/images/fondo1.png"
             classNameText={"colorVerde chelseaFont pt-10 mt-10 "}
-            alignment={`${screenSize <= 992 ? "center" : "start"}`}
+            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
           >
             Reconocimiento
           </HeaderComponets>

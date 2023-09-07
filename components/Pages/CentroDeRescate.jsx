@@ -37,7 +37,7 @@ const CentroDeRescate = ({ data }) => {
       <div className="container">
         <SlidetWithContent images={imgSlider} content={firstSection.Content} title={firstSection.title} />
         <HeaderComponets
-          alignment={`${screenSize <= 992 ? "center" : "start"}`}
+          alignment={`${screenSize <= 1024 ? "center" : "start"}`}
           src="/images/fondo1.png"
           classNameText={"program-title fuenteTitulo colorPrimary py-10 my-10"}
           classNameSection={"centerElement"}
@@ -46,7 +46,7 @@ const CentroDeRescate = ({ data }) => {
         </HeaderComponets>
         <section style={{ backgroundImage: `url("/images/Vector5.png")`, backgroundSize : "100% 100%" }}>
           <SectionReverse
-            positionTitle={`${screenSize <= 992 ? "center" : "start"}`}
+            positionTitle={`${screenSize <= 1024 ? "center" : "start"}`}
             titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
             title={`${imagenWithContentBasic[0]?.label}`}
             imageSrc={
@@ -58,7 +58,7 @@ const CentroDeRescate = ({ data }) => {
           />
 
           <Section
-            positionTitle={`${screenSize <= 992 ? "center" : "end"}`}
+            positionTitle={`${screenSize <= 1024 ? "center" : "end"}`}
             contentClassName="contentSectionEnd px-10 px-10"
             titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
             title={`${imagenWithContentBasic[1]?.label}`}
@@ -66,7 +66,7 @@ const CentroDeRescate = ({ data }) => {
             content={`${imagenWithContentBasic[1]?.content}`}
           />
           <SectionReverse
-            positionTitle={`${screenSize <= 992 ? "center" : "start"}`}
+            positionTitle={`${screenSize <= 1024 ? "center" : "start"}`}
             titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
             title={`${imagenWithContentBasic[2]?.label}`}
             imageSrc={`${imagenWithContentBasic[2]?.img.data[0]?.attributes.url}`}
@@ -74,7 +74,7 @@ const CentroDeRescate = ({ data }) => {
             content={`${imagenWithContentBasic[2]?.content}`}
           />
           <Section
-            positionTitle={`${screenSize <= 992 ? "center" : "end"}`}
+            positionTitle={`${screenSize <= 1024 ? "center" : "end"}`}
             contentClassName="contentSectionEnd px-10 px-10"
             titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
             title={`${imagenWithContentBasic[3]?.label}`}
@@ -83,7 +83,7 @@ const CentroDeRescate = ({ data }) => {
           />
 
           <SectionReverse
-            positionTitle={`${screenSize <= 992 ? "center" : "start"}`}
+            positionTitle={`${screenSize <= 1024 ? "center" : "start"}`}
             titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
             title={`${imagenWithContentBasic[4]?.label}`}
             imageSrc={`${imagenWithContentBasic[4]?.img.data[0]?.attributes.url}`}
@@ -97,10 +97,10 @@ const CentroDeRescate = ({ data }) => {
               classNameWrapper={"setionStyle "}
               title={""}
               classNameContent={
-                `${screenSize <= 992 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"}  "fuentesParrafo  p-10 my-10"`
+                `${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"}  "fuentesParrafo  p-10 my-10"`
 
               }
-              width={`${screenSize <= 992 ? "100%" : "80%"}`}
+              width={`${screenSize <= 1024 ? "100%" : "80%"}`}
 
 
 
@@ -121,7 +121,7 @@ const CentroDeRescate = ({ data }) => {
             <section className="centrar-elemento">
               <HeaderComponets
                 classNameText={" colorSecondary chelseaFont"}
-                alignment={`${screenSize <= 992 ? "center" : "end"}`}
+                alignment={`${screenSize <= 1024 ? "center" : "end"}`}
                 width="100%"
               >
                 {fourthSection.title}

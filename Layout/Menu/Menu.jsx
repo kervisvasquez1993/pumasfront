@@ -5,14 +5,15 @@ import ItemMenu from "../../views/ItemMenu";
 import styles from "./style.module.css";
 import { useRouter } from "next/router";
 
+
 const Menu = ({ items }) => {
   return (
     <nav
       className={`flex  justify-between items-center ${styles.menuContainer}`}
     >
-      <div className={`px-5 ${styles.logoSection}`}>
+      <Link className={`px-5 ${styles.logoSection}`} href="/">
         <img src="/images/LogoBlanco.png" alt="Logo" />
-      </div>
+      </Link>
       <section className={styles.wrapperMenu}>
         <div className={styles.hour}>
           <ClockIcons />
