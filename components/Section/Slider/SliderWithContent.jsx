@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown";
 
 const SlidetWithContent = ({ images, title, content }) => {
     return (
-        <section className="container-section py-10 my-5">
+        <section className="container-section p-10 m-5">
             <section className="grid-2">
                 <SliderThree>
                     {images?.map((image, index) => (

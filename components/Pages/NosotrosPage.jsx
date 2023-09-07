@@ -18,15 +18,15 @@ const NosotrosPage = ({ data }) => {
   const { slug, lang } = router.query
   const { componentDynamics } = data;
   const { screenSize } = useScreenSize()
-  console.log(screenSize, "local screen size")
   const [primerElemet, secundarioElement, tercerElment, cuartoElement, quintoElemet, sextoElement, septimoElemento] = componentDynamics;
   const sliderImagenes = secundarioElement?.imagenes.data.map(element => {
     const url = element.attributes.url
     return `${url}`
   })
   const abousUs = quintoElemet.imagenWithContentBasic.map((element, index) => {
-    return (<section className="w-50 p-5" key={index}><HeaderComponets
-      alignment="start"
+    return (<section className="w-50 p-5" key={index}>
+      <HeaderComponets
+      alignment={`${screenSize <= 992 ? "center" : "start"}`}
       src="/images/fondo1.png"
       classNameText={"colorSecondary chelseaFont"}
       classNameSection={"centerElement"}
@@ -138,7 +138,7 @@ const NosotrosPage = ({ data }) => {
         <HeaderComponets
           src="/images/fondo1.png"
           classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-5"}
-          alignment="start"
+          alignment={`${screenSize <= 992 ? "center" : "start"}`}
         >
           {primerElemet.Titulo}
         </HeaderComponets>
@@ -157,7 +157,7 @@ const NosotrosPage = ({ data }) => {
               classNameTitle={""}
               classNameWrapper={"setionStyleTwo"}
               title={""}
-              classNameContent={"fuentesParrafo py-10"}
+              classNameContent={"fuentesParrafo p-10"}
             >
               <ReactMarkdown className="py-10">{secundarioElement.Content}</ReactMarkdown>
             </BasicSection>
@@ -182,17 +182,25 @@ const NosotrosPage = ({ data }) => {
             </ButtonView>
           </BasicSection>
 
-          <HeaderComponets
-            alignment="start"
-            src="/images/fondo1.png"
-            classNameText={"colorSecondary chelseaFont"}
-            classNameSection={"center"}
+          <BasicSection
+            classNameTitle={""}
+            classNameWrapper={"setionStyleTwo p-10 m-10 "}
+            styleWrapper={{ "padding": "100px" }}
+            title={""}
+            alignItems="center"
+            justifyContent={"flex-start"}
+            classNameContent={"fuentesParrafo p-10 m-10"}
           >
             <img src={`${tercerElment?.imgBasicContent?.data?.attributes?.url}`} />
-          </HeaderComponets>
+          </BasicSection>
         </TwoColumnGrid>
-        <section className="section OneImg">
-          <img src={`${cuartoElement?.img?.data[0]?.attributes?.url}`} />
+        <section className="section OneImg ">
+          <video controls >
+            <source src={cuartoElement?.img?.data[0]?.attributes?.ur} type="video/mp4" />
+            Tu navegador no admite la reproducción de videos.
+          </video>
+
+
         </section>
         <section className="container-section py-10 my-5">
 
@@ -207,6 +215,7 @@ const NosotrosPage = ({ data }) => {
 
 
         </section>
+     
         <TwoSections
           backgroundImage={`${sextoElement?.background?.data?.attributes?.url}`}
           title1={sextoElement?.imagenWithContentBasic[0]?.label}
@@ -247,7 +256,7 @@ const NosotrosPage = ({ data }) => {
           <HeaderComponets
             src="/images/fondo1.png"
             classNameText={"colorVerde chelseaFont pt-10 mt-10 "}
-            alignment="start"
+            alignment={`${screenSize <= 992 ? "center" : "start"}`}
           >
             Reconocimiento
           </HeaderComponets>

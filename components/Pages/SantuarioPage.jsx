@@ -13,11 +13,13 @@ import { Tooltip } from 'react-tooltip'
 import usePages from "../../hooks/usePages";
 import SlidetWithContent from "../Section/Slider/SliderWithContent";
 import ReactMarkdown from "react-markdown";
+import useScreenSize from "../../hooks/useScreenSize";
 
 const SantuarioPage = ({ data }) => {
 
   const { componentDynamics } = data;
   const { modeloList } = useModelo();
+  const { screenSize } = useScreenSize()
 
   if (!data) {
     return "cargando...";
@@ -45,30 +47,32 @@ const SantuarioPage = ({ data }) => {
 
   return (
     <Main titlePage={"Santuario"}>
-      <MapWithBackground backgroundImage={"/images/mapa.jpg"}>
-        {modeloList
-          ?.slice() // Hacemos una copia del array para no modificar el original
-          .sort((a, b) => a.id - b.id)
-          .map((models) => {
-            const { ubicacionX, ubicacionY, srcModelo, id } = models;
-            const x = parseInt(ubicacionX);
-            const y = parseInt(ubicacionY);
-            const withModels = models.componente ?"100px" : "50px";
-            return (
-              <CanvasElement key={id} x={x} y={y} className={" "} width={withModels}>
-                <img
-                  src={srcModelo}
-                  key={id}
-                  alt={srcModelo}
-                  data-tooltip-id="my-tooltip"
-                  data-tooltip-content={models.nombre}
-                  onClick={() => models.componente && hearlessChange(models)}
-                />
-                <Tooltip id="my-tooltip" />
-              </CanvasElement>
-            );
-          })}
-      </MapWithBackground>
+      <section>
+        <MapWithBackground backgroundImage={"/images/mapa.jpg"}>
+          {modeloList
+            ?.slice() // Hacemos una copia del array para no modificar el original
+            .sort((a, b) => a.id - b.id)
+            .map((models) => {
+              const { ubicacionX, ubicacionY, srcModelo, id } = models;
+              const x = parseInt(ubicacionX);
+              const y = parseInt(ubicacionY);
+              const withModels = models.componente ? "100px" : "50px";
+              return (
+                <CanvasElement key={id} x={x} y={y} className={" "} width={withModels}>
+                  <img
+                    src={srcModelo}
+                    key={id}
+                    alt={srcModelo}
+                    data-tooltip-id="my-tooltip"
+                    data-tooltip-content={models.nombre}
+                    onClick={() => models.componente && hearlessChange(models)}
+                  />
+                  <Tooltip id="my-tooltip" />
+                </CanvasElement>
+              );
+            })}
+        </MapWithBackground>
+      </section>
       <Modal
         showModal={openModal}
         setShowModal={setOpenModal}
@@ -91,11 +95,11 @@ const SantuarioPage = ({ data }) => {
         </HeaderComponets>
 
 
-        <section className="container-section py-10 my-5">
+        <section className="container-section p-10 m-5">
           <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
 
         </section>
-        <TwoColumnGrid backgroundImage={ thirdElement.background?.data?.attributes.url}>
+        <TwoColumnGrid backgroundImage={thirdElement.background?.data?.attributes.url}>
           <HeaderComponets
             alignment="center"
             src="/images/fondo1.png"

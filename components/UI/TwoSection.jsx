@@ -10,7 +10,7 @@ const TwoSections = ({ title1, children1, title2, children2, backgroundImage="" 
   const containerStyle = {
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "100% 100%",
-    height : "85vh",
+    minHeight : "100vh",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",

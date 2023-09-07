@@ -29,7 +29,7 @@ const BasicSection = ({
 
   return (
     <section className={classNameWrapper} style={wrapperStyle}>
-      {title && <h2 style={styleTitle}>{title}</h2>}
+      {title && <h2 className="program-title fuenteTitulo colorPrimary py-10 my-10" style={styleTitle}>{title}</h2>}
       {children && (
         <section style={contentStyle} className={classNameContent}>
           {children}

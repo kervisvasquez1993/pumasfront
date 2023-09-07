@@ -64,7 +64,8 @@ const Main = ({ children, titlePage }) => {
         className={`${shouldApplyHeaderStyle ? style.headerMenu : ""}`}
       >
         {isMobile ? (
-          <MenuBurger />
+          // <MenuBurger />
+          "hola"
         ) : (
           <Menu items={stateMenu} />
         )}
