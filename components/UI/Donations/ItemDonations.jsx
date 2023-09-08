@@ -6,7 +6,7 @@ const ItemDonations = ({ data, selected, onClick, className="" }) => {
     return (
       <div
         className={`item itemDonationSrc chelseaFont ${className} ${
-          selected ? "selected" : ""
+          selected ? "selectedItem" : ""
         }`}
         onClick={onClick}
       >
@@ -17,7 +17,7 @@ const ItemDonations = ({ data, selected, onClick, className="" }) => {
   return (
     <div
       className={`item itemDonationSrc chelseaFont ${className} ${
-        selected ? "selected" : ""
+        selected ? "selectedItem" : ""
       }`}
       onClick={onClick}
     >

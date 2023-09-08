@@ -9,6 +9,7 @@ import DonationInfo from "./Donations/DonationInfo";
 import HeaderComponents from "./HeaderComponents/HeaderComponets";
 
 const StepByStepComponent = ({ typeDonations, donationAll }) => {
+  // console.log(typeDonations, "typeDonations")
   const { loadedDonations, loadedParams, filterArray } = useDonations();
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
@@ -66,11 +67,11 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
         setSelectedCard(null);
         setConfirmationData(null);
         setSelectedItems([]);
-        setDonationInfo(null); // Limpiar la información de donationInfo al regresar al paso 1
+        setDonationInfo(null); 
         router.push("/es/donations");
       } else if (clickedStep === 2) {
         setConfirmationData(null);
-        setDonationInfo(null); // Limpiar la información de donationInfo al regresar al paso 2
+        setDonationInfo(null);
       }
     }
   };
@@ -81,7 +82,7 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
       nombre: formData.nombre,
       correo: formData.correo,
       monto: selectedElements.reduce(
-        (total, element) => total + parseFloat(element.monto || 0), // Reemplazar null por 0
+        (total, element) => total + parseFloat(element.monto || 0),
         0
       ),
       donacion: selectedElements.map((element) => element.donacion).flat(),
@@ -155,9 +156,9 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
                         <img src={"/images/Ellipse.png"} />
                       )}
                     </figure>
-                    <h1 className="colorPrimary fuenteTitulo ">
+                    <h2 className="colorPrimary fuenteTitulo ">
                       {elemento.titulo}
-                    </h1>
+                    </h2>
 
                     <div className="inline">
                       <span className="fontBold">Beneficios </span> :

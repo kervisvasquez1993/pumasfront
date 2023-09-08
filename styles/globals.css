@@ -546,8 +546,8 @@ video{
   color: white;
 }
 
-.selected {
-  /* border: 5px solid #E86641; */
+.selectedItem {
+  border: 5px solid #E86641;
 }
 ul.thumbs li {
   max-height: 100px;

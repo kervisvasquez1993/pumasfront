@@ -19,7 +19,7 @@ const Donations = ({ result, typeDonationSchemes }) => {
   loadedDonations(result);
   loadedParams(params);
   console.log(filterArray,"filter")
-
+  console.log(typeDonationSchemes,"typeDonationSchemes")
   return (
     <Main titlePage={"Donación"}>
       <div className="container">
@@ -54,43 +54,51 @@ const Donations = ({ result, typeDonationSchemes }) => {
 
 export default Donations;
 
-export const getStaticProps = async () => {
-  const getLangAll = await langAll();
-  const languages = getLangAll.data;
-
-  const requests = languages.map(async (language) => {
+export const getStaticProps = async ({params}) => {
+  const {lang} = params;
     const [response, typeDonations] = await Promise.all([
-      getAllDonations(language.code),
-      getTypeDonations(language.code),
+      getAllDonations(lang),
+      getTypeDonations(lang),
     ]);
 
+
+
+    
     const typeDonationsResponse = typeDonations.data.data;
     const results = response.data.data;
 
-    const result = results.map((element) => ({
-      id: element.id,
-      monto: element.attributes.monto,
-      donacion: element.attributes.donacion,
-      locale: element.attributes.locale,
-      imgSrc: element.attributes.imgSrc,
-      modelos: element.attributes.modelos,
-      tipo_de_donacions : element.attributes.tipo_de_donacions
-    }));
+    console.log(results, "result"); 
+   
+    
+      const result = results.map((element) => (
+        {
+        id: element.id,
+        monto: element.attributes.monto,
+        donacion: element.attributes.donacion,
+        locale: element.attributes.locale,
+        imgSrc: element.attributes.imgSrc,
+        modelos: element.attributes.modelos,
+        tipo_de_donacions : element.attributes.tipo_de_donacions
+      }));
+  
+      const typeDonationSchemes = typeDonationsResponse.map((element) => ({
+        id: element.id,
+        titulo: element.attributes.titulo,
+        beneficio: element.attributes.Beneficio,
+        descripcion: element.attributes.descripcion,
+        slug: element.attributes.slug,
+        imagen: element.attributes.imagen,
+        locale: element.attributes.locale,
+      }));
+    
+    
+    return {
+      props: {
+        result: result,
+        typeDonationSchemes: typeDonationSchemes,
+      },
+    };
 
-    const typeDonationSchemes = typeDonationsResponse.map((element) => ({
-      id: element.id,
-      titulo: element.attributes.titulo,
-      beneficio: element.attributes.Beneficio,
-      descripcion: element.attributes.descripcion,
-      slug: element.attributes.slug,
-      imagen: element.attributes.imagen,
-      locale: element.attributes.locale,
-    }));
-
-    return { result, typeDonationSchemes };
-  });
-
-  const results = await Promise.all(requests);
 
   const mergedResult = results.reduce(
     (accumulator, currentValue) => {
@@ -100,7 +108,6 @@ export const getStaticProps = async () => {
     },
     { result: [], typeDonationSchemes: [] }
   );
-
   return {
     props: {
       result: mergedResult.result,
