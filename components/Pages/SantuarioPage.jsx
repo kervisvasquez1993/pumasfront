@@ -89,7 +89,7 @@ const SantuarioPage = ({ data }) => {
         <HeaderComponets
           src="/images/fondo1.png"
           classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
-          alignment="start"
+          alignment={`${screenSize <= 1024 ? "center" : "start"}`} 
         >
           {firstElement.Titulo}
         </HeaderComponets>
@@ -103,7 +103,7 @@ const SantuarioPage = ({ data }) => {
           <HeaderComponets
             alignment="center"
             src="/images/fondo1.png"
-            classNameText={"colorSecondary chelseaFont"}
+            classNameText={"colorSecondary chelseaFont px-10 mx-10"}
             classNameSection={"centerElement"}
           >
             {thirdElement.title}
@@ -114,10 +114,9 @@ const SantuarioPage = ({ data }) => {
             title={""}
             alignItems={"center"}
             justifyContent={"center"}
-            width="60%"
-            classNameContent={
-              "fuentesParrafo align-vertical-center-horizontal-start py-10 my-10"
-            }
+            width={`${screenSize <= 1024 ? "100%" : "75%"}`} 
+            classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-10 m-10`} 
+            
           >
             <ReactMarkdown className="py-10">{thirdElement.content}</ReactMarkdown>
             <ButtonView
@@ -130,10 +129,29 @@ const SantuarioPage = ({ data }) => {
         </TwoColumnGrid>
         <div className="container-edu ">
           <div>
-            <h3 className="program-title fuenteTitulo colorVerde">
-              {fourthElement.title}
-            </h3>
-            <ReactMarkdown className="fuentesParrafo py-10 my-10 width-30">{fourthElement.content}</ReactMarkdown>
+            <HeaderComponets
+            alignment="center"
+            src="/images/fondo1.png"
+            classNameText={"program-title fuenteTitulo colorVerde p-10 m-10"}
+            classNameSection={"centerElement"}
+          >
+            {fourthElement.title}
+            
+          </HeaderComponets>
+          <BasicSection
+            classNameTitle={""}
+            classNameWrapper={"setionStyleTwo"}
+            title={""}
+            alignItems={"center"}
+            justifyContent={"center"}
+            width={`${screenSize <= 1024 ? "100%" : "40%"}`} 
+            classNameContent={
+              "fuentesParrafo align-vertical-center-horizontal-start px-10 mx-10"
+            }
+          >
+            <ReactMarkdown className="py-10">{fourthElement?.content}</ReactMarkdown>
+          </BasicSection>
+            
           </div>
 
           <div className="icons-container py-10 my-10">
