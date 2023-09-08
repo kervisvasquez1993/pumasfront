@@ -3,15 +3,29 @@ import Link from "next/link";
 import ClockIcons from "../../components/Icons/Clock";
 import ItemMenu from "../../views/ItemMenu";
 import styles from "./style.module.css";
+import usePages from '../../hooks/usePages';
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 
 const Menu = ({ items }) => {
+  const { query } = useRouter();
+  const { lang } = query;
+  let url = null; 
+  if(lang === "es"){
+      url = items?.data.find(e => e.attributes.slug == "inicio")
+  }
+  else if(lang === "en"){
+    url = items?.data.find(e => e.attributes.slug == "home")
+  }
+  const redirect = `/${url?.attributes?.locale}/${url?.attributes?.slug}` 
+  console.log(redirect)
+
   return (
     <nav
       className={`flex  justify-between items-center ${styles.menuContainer}`}
     >
-      <Link className={`px-5 ${styles.logoSection}`} href="/">
+      <Link className={`px-5 ${styles.logoSection}`} href={redirect}>
         <img src="/images/LogoBlanco.png" alt="Logo" />
       </Link>
       <section className={styles.wrapperMenu}>
@@ -20,7 +34,7 @@ const Menu = ({ items }) => {
           <p className={styles.hourClockText}>Hasta las 4:00 PM</p>
         </div>
         <div className="">
-            <Link href="/es"className="color-white">ES</Link>
+          <Link href="/es" className="color-white">ES</Link>
         </div>
       </section>
 

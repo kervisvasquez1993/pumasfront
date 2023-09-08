@@ -1,17 +1,26 @@
 import React, { useEffect } from 'react'
 import { getMenus, getPagesGQ, langAll } from '../../apis/ApiBackend';
 import usePages from '../../hooks/usePages';
+import { useRouter } from 'next/router';
 
-const Lang = ({ lang, menu, pages }) => {
-    const { updateData } = usePages();
+const Lang = ({ menu, pages }) => {
+    const router = useRouter();
+    const { lang } = router.query;
+
+    const inicio = menu.find(e => e.slug === "inicio")?.slug;
     useEffect(() => {
-        updateData(pages);
-    }, [lang]);
+            router.push(`/${lang}/${inicio}`);
+            updateData(pages);
+        
+    }, [lang, isLangPage]); 
+
+    const { updateData } = usePages();
 
     return (
         <div>Lang</div>
-    )
-}
+    );
+};
+
 
 
 
