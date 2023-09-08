@@ -517,6 +517,13 @@ video{
   font-size: 36px;
 }
 
+@media(max-width:768px) {
+  .fontSize36 {
+    font-size: 25px;
+  }
+  
+}
+
 .itemDonationWrapper {
   width: 100%;
   display: flex;
