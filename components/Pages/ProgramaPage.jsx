@@ -28,14 +28,13 @@ const ProgramaPage = ({ data }) => {
   });
 
   const materialEducativo = fifthElement.material_educativos.data?.map((elemento, index) => {
-    console.log()
     return (<div className="dowloads" key={index}>
       <div className="materials__imagen">
-        <img src={"https://strapi-pumas-ijwsa.ondigitalocean.app"+elemento.attributes?.imgFile?.data?.attributes?.url} alt="imagen santuario" />
+        <img src={elemento?.attributes?.imgFile?.data?.attributes?.url} alt="imagen santuario" />
       </div>
       <div className="wrapperTitleCard">
-        <h2 className="materials_text manropeFont colorSecondary">{elemento.attributes.title}</h2>
-        <Link href={"https://strapi-pumas-ijwsa.ondigitalocean.app"+elemento.attributes?.file?.data?.attributes.url} className="manropeFont fontSize28" download>Libro de Actividades</Link>
+        <h2 className="materials_text manropeFont colorSecondary">{elemento?.attributes.title}</h2>
+        <Link href={elemento?.attributes?.file?.data?.attributes?.url} className="manropeFont fontSize28" download>Libro de Actividades</Link>
       </div>
     </div>)
   })
@@ -45,7 +44,7 @@ const ProgramaPage = ({ data }) => {
       <div className="container">
 
         <BasicSectionFull imageUrl={url} title={firstElement?.title} content={firstElement.content} ></BasicSectionFull>
-        <div className="container-edu backgroundProgrmar py-10 my-10">
+        <div className="container-edu backgroundProgrmar p-10 my-10">
           <div className="grid-2">
             <div>
               <h3 className="edu-title fuenteTitulo colorSecondary">{secondElement.title}</h3>
@@ -58,12 +57,12 @@ const ProgramaPage = ({ data }) => {
               <button className="edu-button">Reservar Recorrido</button>
             </div>
           </div>
-          <div className="edu-icons-container">
+          <div className="edu-icons-container py-10 my-10">
             {contentEducation}
           </div>
         </div>
         <div className="container-materials-edu">
-          <h3 className="materials-edu-title fuenteTitulo colorSecondary py-10">{fourthElement.title}</h3>
+          <h3 className="materials-edu-title fuenteTitulo colorSecondary p-10">{fourthElement.title}</h3>
 
           <div className="materials-edu_text fuentesParrafo ">
             <ReactMarkdown>{fourthElement.content}</ReactMarkdown>
