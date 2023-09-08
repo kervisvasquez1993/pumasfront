@@ -6,9 +6,11 @@ import ButtonView from "../../views/ButtonView";
 import SliderThree from "../UI/Slider/SliderThree";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
+import useScreenSize from "../../hooks/useScreenSize";
 const ApoyanosPage = ({ data }) => {
   const router = useRouter();
   const { slug, lang } = router.query
+  const { screenSize } = useScreenSize()
   const { componentDynamics } = data;
   const [firstElement, secondElement, threeElement, fourElement, quintoElmento, sextoElemento] = componentDynamics
   const imagenes = sextoElemento?.imagenWithContentBasic.map(elemento => {
@@ -22,6 +24,7 @@ const ApoyanosPage = ({ data }) => {
       <h3 className="colorSecondary chelseaFont">
         {element.label}
       </h3>
+      
       <section>
         <ReactMarkdown>{element.content}</ReactMarkdown>
       </section>
@@ -36,8 +39,8 @@ const ApoyanosPage = ({ data }) => {
             <section>
               <HeaderComponets
                 src="/images/fondo1.png"
-                classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
-                alignment="start"
+                classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 "}
+                alignment={`${screenSize <= 1024 ? "center" : "start"}`} 
               >
                 {secondElement.title}
               </HeaderComponets>
@@ -45,12 +48,13 @@ const ApoyanosPage = ({ data }) => {
                 classNameTitle={""}
                 classNameWrapper={"setionStyleTwo"}
                 title={""}
-                classNameContent={"fuentesParrafo py-10"}
+                alignItems="center"
+                classNameContent={"fuentesParrafo px-10 mx-10"}
               >
                 <ReactMarkdown className="py-10">{secondElement.content}</ReactMarkdown>
                 <ButtonView
                   className={" backgroundPrimary m-0 manropeFont p-5"}
-                  link={`${lang}/${secondElement.btn.url}`}
+                  link={`${lang}/${secondElement?.btn?.url}`}
                 >
                   {secondElement.btn.label}
                 </ButtonView>
@@ -58,9 +62,9 @@ const ApoyanosPage = ({ data }) => {
             </section>
             <section>
               <HeaderComponets
-                src="/images/fondo1.png"
+                src=""
                 classNameText={"colorSecondary chelseaFont pt-10 mt-10 "}
-                alignment="start"
+                alignment={`${screenSize <= 1024 ? "center" : "center"}`} 
               >
                 {threeElement.title}
               </HeaderComponets>
@@ -71,13 +75,13 @@ const ApoyanosPage = ({ data }) => {
             </section>
           </section>
         </section>
-        <section className="container-section py-10 my-5">
+        <section className="container-section p-10 m-5">
           <section className="grid-2">
             <section>
               <HeaderComponets
                 src="/images/fondo1.png"
                 classNameText={"colorVerde chelseaFont pt-10 mt-10 "}
-                alignment="start"
+                alignment={`${screenSize <= 1024 ? "center" : "start"}`} 
               >
                 {fourElement.Titulo}
               </HeaderComponets>
@@ -100,8 +104,8 @@ const ApoyanosPage = ({ data }) => {
             <section></section>
           </section>
         </section>
-        <section className="container-section py-10 my-5">
-          <section className="grid-2">
+        <section className="container-section p-10 m-5">
+          <section className="grid-2 px-10 mx-10">
             <SliderThree>
               {imagenes.map((image, index) => {
 
