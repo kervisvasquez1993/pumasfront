@@ -517,6 +517,14 @@ video{
   font-size: 36px;
 }
 
+.carousel .thumb {
+  padding: 0px !important;
+  border: 0;
+}
+.carousel .thumb.selected, .carousel .thumb:hover {
+  border: 3px solid #333;
+}
+
 @media(max-width:768px) {
   .fontSize36 {
     font-size: 25px;

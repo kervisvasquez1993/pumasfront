@@ -30,7 +30,7 @@ const BlogInfo = ({
 
       <section className="container-section py-10 my-5">
         <section className="grid-2">
-          <section>
+          <section className='p-10 m-10'>
             <SliderThree>
               {imgBlog?.data?.map((image, index) => (
                 <div key={index}>
