@@ -446,7 +446,6 @@ img {
 
     width: 100%;
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     height: auto;
     margin: 0 auto;

@@ -16,7 +16,6 @@ import MenuBurger from "../UI/MenuBurguer";
 
 
 const HomePage = ({ data }) => {
-  console.log("hola")
   return (
     <Main titlePage={"Inicio"}>
       {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}

@@ -28,7 +28,7 @@ const Donations = ({ result, typeDonationSchemes }) => {
             classNameTitle={""}
             classNameWrapper={"setionStyleTwo"}
             title={""}
-            classNameContent={"fuentesParrafo py-10"}
+            classNameContent={"fuentesParrafo p-10"}
           >
             <p className="py-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
@@ -98,22 +98,6 @@ export const getStaticProps = async ({params}) => {
         typeDonationSchemes: typeDonationSchemes,
       },
     };
-
-
-  const mergedResult = results.reduce(
-    (accumulator, currentValue) => {
-      accumulator.result.push(...currentValue.result);
-      accumulator.typeDonationSchemes.push(...currentValue.typeDonationSchemes);
-      return accumulator;
-    },
-    { result: [], typeDonationSchemes: [] }
-  );
-  return {
-    props: {
-      result: mergedResult.result,
-      typeDonationSchemes: mergedResult.typeDonationSchemes,
-    },
-  };
 };
 
 export const getStaticPaths = async () => {

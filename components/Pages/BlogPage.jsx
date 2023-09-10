@@ -6,10 +6,11 @@ import CardComponent from "../UI/Card/CardComponents";
 // import BlogEntry from "./BlogEntry";
 
 const BlogPage = ({ data, blogData }) => {
-  console.log(blogData.blog.data, "blogData");
+  console.log(blogData.data, "blogData");
+
   const { componentDynamics } = data;
   const [firtElement] = componentDynamics
-  const blogsInfo = blogData?.blog?.data
+  const blogsInfo = blogData?.data
 
   const sectionBlogs = blogsInfo?.map((blog, index) => {
     const { TitleBlog, ContentBlog, imgBlog } = blog?.attributes
