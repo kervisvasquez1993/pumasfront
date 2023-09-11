@@ -3,11 +3,14 @@ import Main from "../../Layout/Main/Main";
 import BlogEntry from "../Section/BlogEntry";
 import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
 import CardComponent from "../UI/Card/CardComponents";
+import { useRouter } from "next/router";
+import Link from "next/link";
 // import BlogEntry from "./BlogEntry";
 
 const BlogPage = ({ data, blogData }) => {
   console.log(blogData.data, "blogData");
-
+  const router = useRouter();
+  const {  lang } = router.query
   const { componentDynamics } = data;
   const [firtElement] = componentDynamics
   const blogsInfo = blogData?.data
@@ -16,11 +19,11 @@ const BlogPage = ({ data, blogData }) => {
     const { TitleBlog, ContentBlog, imgBlog } = blog?.attributes
     const resumen = ContentBlog.substring(0,150)
     console.log(imgBlog.data[0].attributes.url, "image")
-    return (<CardComponent key={index}
+    return ( <Link href={`/${lang}/blog/${blog.id}`}>  <CardComponent key={index}
       description={resumen+" ...... "}
       title={TitleBlog}
       imageUrl={imgBlog?.data[0]?.attributes?.url}
-    />)
+    /> </Link>)
   })
   return (
     <Main titlePage={data.title}>
