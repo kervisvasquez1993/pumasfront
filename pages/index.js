@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { getMenus, langAll } from '../apis/ApiBackend';
+import Loader from '../components/UI/Loader';
 
 const Home = ({ result, code }) => {
     const [firstTranslation, secondTranslation] = code;
@@ -16,7 +17,7 @@ const Home = ({ result, code }) => {
         }
     }, []); 
 
-    return <h1>Cargando...</h1>;
+    return   <Loader />
 };
 
 export default Home;

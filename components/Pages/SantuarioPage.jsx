@@ -14,6 +14,7 @@ import usePages from "../../hooks/usePages";
 import SlidetWithContent from "../Section/Slider/SliderWithContent";
 import ReactMarkdown from "react-markdown";
 import useScreenSize from "../../hooks/useScreenSize";
+import Loader from "../UI/Loader";
 
 const SantuarioPage = ({ data }) => {
 
@@ -22,7 +23,7 @@ const SantuarioPage = ({ data }) => {
   const { screenSize } = useScreenSize()
 
   if (!data) {
-    return "cargando...";
+    return <Loader />;
   }
 
   const [stateModal, setStateModal] = useState(null);

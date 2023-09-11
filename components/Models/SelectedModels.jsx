@@ -18,7 +18,8 @@ import { Grison } from "./Grison";
 import { Saino } from "./Saino";
 import { OsoPerezosoDeDedos } from "./OsoPerezosoDeDedos";
 import { useEffect, useState } from "react";
-const SelectedModels = ({ componentName, modelo, modelX=0, modelY=0, modelZ=0, intensity=0 }) => {
+import Loader from "../UI/Loader";
+const SelectedModels = ({ componentName, modelo, modelX = 0, modelY = 0, modelZ = 0, intensity = 0 }) => {
   const [models, setModel] = useState(modelo);
   useEffect(() => {
     setModel(modelo);
@@ -89,7 +90,7 @@ const SelectedModels = ({ componentName, modelo, modelX=0, modelY=0, modelZ=0, i
 
   return (
     <CanvasModel intensity={intensity} positionX={modelX} positionY={modelY} positionZ={modelZ}>
-      {selectedComponent}
+      {selectedComponent ? selectedComponent : <Loader />}
     </CanvasModel>
   );
 };

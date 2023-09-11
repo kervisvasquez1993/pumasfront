@@ -10,13 +10,14 @@ import ProgramaPage from "../../../components/Pages/ProgramaPage";
 import ApoyanosPage from "../../../components/Pages/ApoyanosPage";
 import useModelo from "../../../hooks/useModelo";
 import usePages from "../../../hooks/usePages";
+import Loader from "../../../components/UI/Loader";
 
 const Page = ({ page, models, blogsPage, modelsGQ }) => {
-    console.log(blogsPage,"response") 
+  console.log(blogsPage, "response")
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
-console.log(page)
+  console.log(page)
   const { slug, lang } = router.query
   console.log(page)
 
@@ -27,7 +28,7 @@ console.log(page)
 
   }, [page]);
   if (router.isFallback) {
-    return <div>Cargando...</div>;
+    return <Loader />;
   }
 
   if (!page) {
@@ -94,13 +95,13 @@ export const getStaticProps = async ({ params }) => {
       models[language.code] = modelsResponse.data;
     }
     return {
-      props: { page: { ...page }, models, modelsGQ},
+      props: { page: { ...page }, models, modelsGQ },
     };
   }
   if (page.slug === "blog") {
     const blog = await getBlog(lang);
-    const  blogsPage = blog.data;
-    console.log(blogsPage,"blog")
+    const blogsPage = blog.data;
+    console.log(blogsPage, "blog")
 
     return {
       props: { page: { ...page }, blogsPage },

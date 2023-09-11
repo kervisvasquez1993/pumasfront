@@ -13,12 +13,13 @@ import { cookies } from "next/dist/client/components/headers";
 import SlidetWithContent from "../Section/Slider/SliderWithContent";
 import ReactMarkdown from "react-markdown";
 import useScreenSize from "../../hooks/useScreenSize";
+import Loader from "../UI/Loader";
 
 const CentroDeRescate = ({ data }) => {
   const { componentDynamics } = data;
   const { screenSize } = useScreenSize()
   if (!componentDynamics) {
-    return "cargando...";
+    return <Loader />;
   }
   const [firstSection, secondSection, thirdSection, fourthSection] = componentDynamics;
   console.log(firstSection, secondSection, thirdSection, fourthSection)
