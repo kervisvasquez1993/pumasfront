@@ -8,19 +8,16 @@ import SliderThree from '../../../components/UI/Slider/SliderThree';
 import ReactMarkdown from 'react-markdown';
 import BasicSection from '../../../components/Section/Basic/BasicSection';
 import snarkdown from 'snarkdown';
+import SliderSingle from '../../../components/UI/Slider/SliderSingle';
 
 const BlogInfo = ({
   blog
 }) => {
-  console.log(blog.attributes)
-
-
   const { screenSize } = useScreenSize()
   const { TitleBlog, ContentBlog, imgBlog } = blog.attributes
-
-  console.log(snarkdown(ContentBlog))
+  console.log(imgBlog.data, "img blogs")
   return (
-    <Main titlePage={"Inicio"}>
+    <Main titlePage={TitleBlog}>
       <HeaderComponents
         classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 "}
         alignment={`${screenSize <= 1024 ? "center" : "start"}`}
@@ -29,16 +26,17 @@ const BlogInfo = ({
       </HeaderComponents>
 
       <section className="container-section py-10 my-5">
-        <section className="grid-2">
-          <section className='p-10 m-10'>
-            <SliderThree>
+        <section className="flex-2">
+
+          {/* <SliderThree>
               {imgBlog?.data?.map((image, index) => (
                 <div key={index}>
                   <img src={image.attributes.url} alt={`image-${index}`} />
                 </div>
               ))}
-            </SliderThree>
-          </section>
+            </SliderThree> */}
+          <SliderSingle slidesData={imgBlog?.data} />
+
           <section>
             <BasicSection
               classNameTitle={""}
@@ -46,11 +44,11 @@ const BlogInfo = ({
               title={""}
               alignItems={"center"}
               justifyContent={"center"}
-              width={`${screenSize <= 1024 ? "100%" : "75%"}`}
+              width={`${screenSize <= 1024 ? "100%" : "100%"}`}
               classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-10 m-10`}
 
             >
-              <ReactMarkdown className="py-10">{ContentBlog}</ReactMarkdown>
+              <ReactMarkdown className="">{ContentBlog}</ReactMarkdown>
             </BasicSection>
           </section>
         </section>
