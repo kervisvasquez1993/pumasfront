@@ -10,7 +10,7 @@ export default function Slider({ srcBackgroundColor = "" }) {
   const [swiperRef, setSwiperRef] = useState(null);
   const [slidesPerView, setSlidesPerView] = useState(3.6);
   const backgroundImageStyle = {
-    backgroundImage: `url(${srcBackgroundColor})`,
+    // backgroundImage: `url(${srcBackgroundColor})`,
     minHeight: "50vh",
   };
 
@@ -34,7 +34,7 @@ export default function Slider({ srcBackgroundColor = "" }) {
   }, []);
 
   return (
-    <section style={backgroundImageStyle} className="center">
+    // <section style={backgroundImageStyle} className="center">
       <Swiper
         onSwiper={setSwiperRef}
         slidesPerView={slidesPerView}
@@ -94,6 +94,6 @@ export default function Slider({ srcBackgroundColor = "" }) {
           />
         </SwiperSlide>
       </Swiper>
-    </section>
+    // </section>
   );
 }

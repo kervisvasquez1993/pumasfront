@@ -35,19 +35,21 @@ const CentroDeRescate = ({ data }) => {
   return (
     <Main titlePage={"Centro de Rescate"}>
       <div className="container">
-        <SlidetWithContent images={imgSlider} content={firstSection.Content} title={firstSection.title} />
-        <HeaderComponets
-          alignment={`${screenSize <= 1024 ? "center" : "start"}`}
-          src="/images/fondo1.png"
-          classNameText={"program-title fuenteTitulo colorPrimary py-10 my-10"}
-          classNameSection={"centerElement"}
-        >
-          {secondSection.Titulo}
-        </HeaderComponets>
-        <section style={{ backgroundImage: `url("/images/Vector5.png")`, backgroundSize : "100% 100%" }}>
+        <section style={{ backgroundImage: `url("/images/background-rigth.png")`, backgroundPosition: "left", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
+          <SlidetWithContent images={imgSlider} content={firstSection.Content} title={firstSection.title} />
+          <HeaderComponets
+            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+            src="/images/fondo1.png"
+            classNameText={"program-title fuenteTitulo colorPrimary py-10 my-10"}
+            classNameSection={"centerElement"}
+          >
+            {secondSection.Titulo}
+          </HeaderComponets>
+        </section>
+        <section style={{ backgroundImage: `url("/images/Vector5.png")`, backgroundSize: "contain", backgroundPosition: "center center", backgroundRepeat: "no-repeat" }}>
           <SectionReverse
             positionTitle={`${screenSize <= 1024 ? "center" : "start"}`}
-            titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10"}
+            titleClassName={"program-title fuenteTitulo colorPrimary "}
             title={`${imagenWithContentBasic[0]?.label}`}
             imageSrc={
               imagenWithContentBasic[0]?.img.data[0]?.attributes?.url ||
@@ -56,7 +58,7 @@ const CentroDeRescate = ({ data }) => {
             contentClassName={"contentSectionReserveEnd"}
             content={`${imagenWithContentBasic[0]?.content}`}
           />
-
+        <section style={{ backgroundImage: `url("/images/background-left.png")`, backgroundPosition: "100%", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
           <Section
             positionTitle={`${screenSize <= 1024 ? "center" : "end"}`}
             contentClassName="contentSectionEnd px-10 px-10"
@@ -73,6 +75,8 @@ const CentroDeRescate = ({ data }) => {
             contentClassName={"contentSectionReserveEnd"}
             content={`${imagenWithContentBasic[2]?.content}`}
           />
+          </section>
+          <section style={{ backgroundImage: `url("/images/background-rigth.png")`, backgroundPosition: "left", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
           <Section
             positionTitle={`${screenSize <= 1024 ? "center" : "end"}`}
             contentClassName="contentSectionEnd px-10 px-10"
@@ -91,6 +95,7 @@ const CentroDeRescate = ({ data }) => {
             content={`${imagenWithContentBasic[4]?.content}`}
 
           />
+          </section>
           <TwoColumnGrid backgroundImage={fourthSection.background?.data?.attributes.url}>
             <BasicSection
               classNameTitle={""}

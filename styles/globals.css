@@ -687,3 +687,7 @@ ul.thumbs li {
 .column-reverse{
   flex-direction: column-reverse;
 }
+
+.swiper-wrapper .swiper-slide{
+  background: transparent !important;
+}

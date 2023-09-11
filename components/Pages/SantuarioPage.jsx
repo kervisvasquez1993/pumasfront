@@ -86,73 +86,77 @@ const SantuarioPage = ({ data }) => {
       />
 
       <div className="container">
-        <HeaderComponets
-          src="/images/fondo1.png"
-          classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
-          alignment={`${screenSize <= 1024 ? "center" : "start"}`} 
-        >
-          {firstElement.Titulo}
-        </HeaderComponets>
-
-
-        <section className="container-section p-10 m-5">
-          <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
-
-        </section>
-        <TwoColumnGrid backgroundImage={thirdElement.background?.data?.attributes.url}>
+        <section style={{ backgroundImage: `url("/images/background-left.png")`, backgroundPosition: "100%", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
           <HeaderComponets
-            alignment="center"
             src="/images/fondo1.png"
-            classNameText={"colorSecondary chelseaFont px-10 mx-10"}
-            classNameSection={"centerElement"}
+            classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
+            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
           >
-            {thirdElement.title}
+            {firstElement.Titulo}
           </HeaderComponets>
-          <BasicSection
-            classNameTitle={""}
-            classNameWrapper={"setionStyleTwo"}
-            title={""}
-            alignItems={"center"}
-            justifyContent={"center"}
-            width={`${screenSize <= 1024 ? "100%" : "75%"}`} 
-            classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-10 m-10`} 
-            
-          >
-            <ReactMarkdown className="py-10">{thirdElement.content}</ReactMarkdown>
-            <ButtonView
-              className={" backgroundSecondary m-0 manropeFont p-5"}
-              link={""}
-            >
-              Reserva tu recorrido
-            </ButtonView>
-          </BasicSection>
-        </TwoColumnGrid>
-        <div className="container-edu ">
-          <div>
+
+
+          <section className="container-section p-10 m-5">
+            <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
+          </section>
+        </section>
+        <section style={{ backgroundImage: `url("/images/background-rigth.png")`, backgroundPosition: "left", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
+          <TwoColumnGrid backgroundImage={thirdElement.background?.data?.attributes.url}>
             <HeaderComponets
-            alignment="center"
-            src="/images/fondo1.png"
-            classNameText={"program-title fuenteTitulo colorVerde p-10 m-10"}
-            classNameSection={"centerElement"}
-          >
-            {fourthElement.title}
-            
-          </HeaderComponets>
-          <BasicSection
-            classNameTitle={""}
-            classNameWrapper={"setionStyleTwo"}
-            title={""}
-            alignItems={"center"}
-            justifyContent={"center"}
-            width={`${screenSize <= 1024 ? "100%" : "40%"}`} 
-            classNameContent={
-              "fuentesParrafo align-vertical-center-horizontal-start px-10 mx-10"
-            }
-          >
-            <ReactMarkdown className="py-10">{fourthElement?.content}</ReactMarkdown>
-          </BasicSection>
-            
-          </div>
+              alignment="center"
+              src="/images/fondo1.png"
+              classNameText={"colorSecondary chelseaFont px-10 mx-10"}
+              classNameSection={"centerElement"}
+            >
+              {thirdElement.title}
+            </HeaderComponets>
+            <BasicSection
+              classNameTitle={""}
+              classNameWrapper={"setionStyleTwo"}
+              title={""}
+              alignItems={"center"}
+              justifyContent={"center"}
+              width={`${screenSize <= 1024 ? "100%" : "75%"}`}
+              classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-10 m-10`}
+
+            >
+              <ReactMarkdown className="py-10">{thirdElement.content}</ReactMarkdown>
+              <ButtonView
+                className={" backgroundSecondary m-0 manropeFont p-5"}
+                link={""}
+              >
+                Reserva tu recorrido
+              </ButtonView>
+            </BasicSection>
+          </TwoColumnGrid>
+        
+        
+       
+            <HeaderComponets
+              alignment="center"
+              src="/images/fondo1.png"
+              classNameText={"program-title fuenteTitulo colorVerde p-10 m-10"}
+              classNameSection={"centerElement"}
+            >
+              {fourthElement.title}
+
+            </HeaderComponets>
+            <BasicSection
+              classNameTitle={""}
+              classNameWrapper={"setionStyleTwo"}
+              title={""}
+              alignItems={"center"}
+              justifyContent={"center"}
+              width={`${screenSize <= 1024 ? "100%" : "40%"}`}
+              classNameContent={
+                "fuentesParrafo align-vertical-center-horizontal-start px-10 mx-10"
+              }
+            >
+              <ReactMarkdown className="py-10">{fourthElement?.content}</ReactMarkdown>
+            </BasicSection>
+
+            </section>
+          <div className="container-edu ">
 
           <div className="icons-container py-10 my-10">
 

@@ -42,8 +42,9 @@ const ProgramaPage = ({ data }) => {
   return (
     <Main titlePage={title}>
       <div className="container">
-
-        <BasicSectionFull imageUrl={url} title={firstElement?.title} content={firstElement.content} ></BasicSectionFull>
+        <section style={{ backgroundImage: `url("/images/background-rigth.png")`, backgroundPosition: "left", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
+          <BasicSectionFull imageUrl={url} title={firstElement?.title} content={firstElement.content} ></BasicSectionFull>
+        </section>
         <div className="container-edu backgroundProgrmar p-10 my-10">
           <div className="grid-2">
             <div>
@@ -61,16 +62,18 @@ const ProgramaPage = ({ data }) => {
             {contentEducation}
           </div>
         </div>
-        <div className="container-materials-edu">
-          <h3 className="materials-edu-title fuenteTitulo colorSecondary p-10">{fourthElement.title}</h3>
+        <section style={{ backgroundImage: `url("/images/background-left.png")`, backgroundPosition: "100%", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
+          <div className="container-materials-edu">
+            <h3 className="materials-edu-title fuenteTitulo colorSecondary p-10">{fourthElement.title}</h3>
 
-          <div className="materials-edu_text fuentesParrafo ">
-            <ReactMarkdown>{fourthElement.content}</ReactMarkdown>
-          </div>
-          <div className="dowloads-container">
+            <div className="materials-edu_text fuentesParrafo ">
+              <ReactMarkdown>{fourthElement.content}</ReactMarkdown>
+            </div>
+            <div className="dowloads-container">
               {materialEducativo}
+            </div>
           </div>
-        </div>
+        </section>
       </div>
 
     </Main>

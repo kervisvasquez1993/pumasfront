@@ -3,7 +3,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer style={{ backgroundImage: `url("/images/foooterBackround.png")`, backgroundSize : "100% 100%" }} className='footer-wrapper'>
+    <footer style={{ backgroundImage: `url("/images/foooterBackround.png")`, backgroundSize : "100% 100%", backgroundSize : "cover" }} className='footer-wrapper'>
       <div className="footer center" >
         <div className="footer-block">
           <h2 className='chelseaFont  font-size-24 color-white'>Contacto</h2>

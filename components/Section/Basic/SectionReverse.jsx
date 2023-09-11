@@ -24,13 +24,13 @@ const SectionReverse = ({
   const textAlignClass = getTextAlignClass(positionTitle);
 
   return (
-    <div className="container-section p-10 m-10">
+    <div className="container-section px-10 mx-10">
       <div className={`grid-2 ${textAlignClass}`}>
         <div className={`about-section_text ${contentClassName}`}>
           <h3 className={`${titleClassName} section-title`}>{title}</h3>
           <p className="fuentesParrafo">{content}</p>
         </div>
-        <div className="py-10">
+        <div className="px-10">
           <img src={imageSrc} alt="Imagen de la sección" />
         </div>
       </div>
