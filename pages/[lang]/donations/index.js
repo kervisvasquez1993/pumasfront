@@ -10,11 +10,15 @@ import {
 import useDonations from "../../../hooks/useDonations";
 import TwoColumnGrid from "../../../components/Section/Basic/TwoColumnGrid";
 import StepByStepComponent from "../../../components/UI/StepByStepComponent";
+import HeaderComponents from "../../../components/UI/HeaderComponents/HeaderComponets";
+import SliderTwo from "../../../components/UI/Slider/SliderTwo";
+import useScreenSize from "../../../hooks/useScreenSize";
 
 const Donations = ({ result, typeDonationSchemes }) => {
   const { loadedDonations, loadedParams, paramsProvider, filterArray } =
     useDonations();
   const router = useRouter();
+  const { screenSize } = useScreenSize()
   const { params } = router.query;
   loadedDonations(result);
   loadedParams(params);
@@ -47,6 +51,14 @@ const Donations = ({ result, typeDonationSchemes }) => {
             donationAll={result}
           />
         </div>
+        <HeaderComponents
+            src="/images/fondo1.png"
+            classNameText={"py-5 colorVerde chelseaFont"}
+            alignment={`${screenSize <= 1200 ? "center" : "start"}`}
+          >
+            PATROCINADORES
+          </HeaderComponents>
+          <SliderTwo />
       </div>
     </Main>
   );
