@@ -11,3 +11,5 @@ export function Puma({  ...props }) {
     );
  
 }
+
+useGLTF.preload("/models/Puma.gltf");

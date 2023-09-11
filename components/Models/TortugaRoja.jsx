@@ -16,3 +16,5 @@ export function TortugaRoja({  ...props }) {
 );
 
 }
+
+useGLTF.preload("/models/TortugaRoja.gltf");

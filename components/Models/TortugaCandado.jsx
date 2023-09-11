@@ -16,3 +16,5 @@ export function TortugaCandado({  ...props }) {
   );
 
 }
+
+useGLTF.preload("/models/TortugaCandado.gltf");

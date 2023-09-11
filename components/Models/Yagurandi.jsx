@@ -12,3 +12,5 @@ export function Yagurandi({  ...props }) {
   );
 
 }
+
+useGLTF.preload("/models/Yagurandi.gltf");

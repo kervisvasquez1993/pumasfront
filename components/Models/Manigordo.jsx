@@ -17,3 +17,6 @@ export function Manigordo({ ...props }) {
 
 
 }
+
+
+useGLTF.preload("/models/Manigordo.gltf");

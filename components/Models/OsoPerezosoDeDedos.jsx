@@ -17,3 +17,6 @@ export function OsoPerezosoDeDedos({  ...props }) {
   );
   
 }
+
+
+useGLTF.preload("/models/OsoPerezosoDeDedos.gltf");

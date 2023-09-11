@@ -12,3 +12,6 @@ export function MonoCaraBlanca({  ...props }) {
   );
    
 }
+
+
+useGLTF.preload("/models/MonoCaraBlanca.gltf");

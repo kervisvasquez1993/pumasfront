@@ -16,3 +16,5 @@ export function MonoArana({  ...props }) {
   );
    
 }
+
+useGLTF.preload("/models/MonoArana.gltf");

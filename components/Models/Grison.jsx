@@ -12,5 +12,8 @@ export function Grison({ ...props }) {
       </group>
     );
   
-  return null;
+
 }
+
+
+useGLTF.preload("/models/Grison.gltf");

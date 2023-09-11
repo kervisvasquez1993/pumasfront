@@ -17,3 +17,5 @@ export function LapaRoja({ ...props }) {
 
 }
 
+useGLTF.preload("/models/LapaRoja.gltf");
+

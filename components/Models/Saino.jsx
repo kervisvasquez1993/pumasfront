@@ -15,3 +15,5 @@ export function Saino({  ...props }) {
     );
 
 }
+
+useGLTF.preload("/models/Saino.gltf");

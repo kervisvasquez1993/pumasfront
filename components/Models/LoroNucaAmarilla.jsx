@@ -16,3 +16,6 @@ export function LoroNucaAmarilla({  ...props }) {
   );
   
 }
+
+
+useGLTF.preload("/models/LoraNucaAmarilla.gltf");

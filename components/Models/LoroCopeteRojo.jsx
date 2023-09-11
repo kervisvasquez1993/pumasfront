@@ -13,3 +13,6 @@ export function LoroCopeteRojo({  ...props }) {
   );
  
 }
+
+
+useGLTF.preload("/models/LoroCopeteRojo.gltf");

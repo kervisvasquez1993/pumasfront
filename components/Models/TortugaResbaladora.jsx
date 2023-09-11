@@ -16,3 +16,5 @@ export function TortugaResbaladora({  ...props }) {
   );
   
 }
+
+useGLTF.preload("/models/resbalTortugaResbaladora.gltf");

@@ -13,3 +13,6 @@ export function Jaguar({ ...props }) {
 
 
 }
+
+
+useGLTF.preload("/models/Jaguar.gltf");
