@@ -13,9 +13,13 @@ import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 import Map from "../UI/Map";
 import { slide as Menu } from 'react-burger-menu'
 import MenuBurger from "../UI/MenuBurguer";
+import useScreenSize from "../../hooks/useScreenSize";
 
 
 const HomePage = ({ data }) => {
+
+  const { screenSize } = useScreenSize()
+
   return (
     <Main titlePage={"Inicio"}>
       {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}
@@ -24,9 +28,9 @@ const HomePage = ({ data }) => {
 
       <div className="container">
         <HeaderComponets
-          classNameText={"py-10 colorPrimary chelseaFont"}
-          alignment="start"
-          width="70%"
+          classNameText={"p-10 my-10 colorPrimary chelseaFont"}
+          alignment={`${screenSize <= 1200 ? "center" : "start"}`}
+          width={`${screenSize <= 1200 ? "100%" : "70%"}`}
         >
           CENTRO DE RESCATE Y SANTUARIO LAS PUMAS
         </HeaderComponets>
@@ -46,9 +50,9 @@ const HomePage = ({ data }) => {
             classNameWrapper={"setionStyle"}
             title={""}
             classNameContent={
-              "fuentesParrafo align-vertical-center-horizontal-start "
+              ` fuentesParrafo  ${screenSize <= 1200 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start "} p-10 m-10`
             }
-            width={"70%"}
+            width={`${screenSize <= 1200 ? "100%" : "70%"}`}
             alignItems={"center"}
             justifyContent={"center"}
             styleWrapper={{ height: "100%" }}
@@ -86,12 +90,12 @@ const HomePage = ({ data }) => {
             classNameWrapper={"setionStyle "}
             title={""}
             classNameContent={
-              "fuentesParrafo align-vertical-center-horizontal-start py-10 my-10"
+              ` fuentesParrafo  ${screenSize <= 1200 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start "} p-10 m-10`
             }
             width={"100%"}
             widthContent="50%"
             alignItems={"center"}
-            justifyContent={"center"}
+            alignment={`${screenSize <= 1200 ? "center" : "end"}`}
             styleWrapper={{ height: "100%" }}
 
           // styleContent={{height: "100%"}}
@@ -113,9 +117,9 @@ const HomePage = ({ data }) => {
           <CardBasic imgSrc={"/images/section2.png"} />
         </TwoColumnGrid>
         <HeaderComponets
-          classNameText={"py-10 colorSecondary chelseaFont"}
-          alignment="start"
-          width="35%"
+          classNameText={"p-10 colorSecondary chelseaFont"}
+          alignment={`${screenSize <= 1200 ? "center" : "start"}`}
+          width={`${screenSize <= 1200 ? "100%" : "40%"}`}
         >
           NO ME SAQUES DE MI HÁBITAD
         </HeaderComponets>
@@ -129,14 +133,14 @@ const HomePage = ({ data }) => {
             subtitle={"esto el el subtitulo"}
           />
 
-          <BasicSection
+<BasicSection
             classNameTitle={""}
             classNameWrapper={"setionStyle"}
             title={""}
             classNameContent={
-              "fuentesParrafo align-vertical-center-horizontal-start "
+              ` fuentesParrafo  ${screenSize <= 1200 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start "} p-10 m-10`
             }
-            width={"70%"}
+            width={`${screenSize <= 1200 ? "100%" : "70%"}`}
             alignItems={"center"}
             justifyContent={"center"}
             styleWrapper={{ height: "100%" }}
@@ -162,8 +166,8 @@ const HomePage = ({ data }) => {
         </TwoColumnGrid>
         <HeaderComponets
           classNameText={"py-10 colorPrimary chelseaFont"}
-          alignment="start"
-          width="35%"
+          alignment={`${screenSize <= 1200 ? "center" : "start"}`}
+          width={`${screenSize <= 1200 ? "100%" : "70%"}`}
         >
           NOTICIAS Y BLOG
         </HeaderComponets>
@@ -174,12 +178,13 @@ const HomePage = ({ data }) => {
             classNameTitle={""}
             classNameWrapper={"setionStyle"}
             title={""}
-            classNameContent={" align-vertical-center-horizontal-start "}
-            width={"70%"}
+            classNameContent={
+              ` fuentesParrafo  ${screenSize <= 1200 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start "}`
+            }
+            width={`${screenSize <= 1200 ? "100%" : "70%"}`}
             alignItems={"center"}
             justifyContent={"center"}
             styleWrapper={{ height: "100%" }}
-          // styleContent={{height: "100%"}}
           >
             <section className="py-5">
               <h4 className="chelseaFont colorSecondary font-size-24">HORARIO</h4>
@@ -233,7 +238,7 @@ const HomePage = ({ data }) => {
         <HeaderComponets
           src="/images/fondo1.png"
           classNameText={"py-5 colorVerde chelseaFont"}
-          alignment="start"
+          alignment={`${screenSize <= 1200 ? "center" : "start"}`}
         >
           PATROCINADORES
         </HeaderComponets>

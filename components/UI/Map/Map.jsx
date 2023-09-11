@@ -34,6 +34,7 @@ const Map = () => {
   }, []);
 
   return (
+    <section className="mx-10 px-10">
     <MapContainer
       className={style.map}
       center={center}
@@ -60,6 +61,7 @@ const Map = () => {
         </Popup>
       </Marker>
     </MapContainer>
+    </section>
   );
 };
 

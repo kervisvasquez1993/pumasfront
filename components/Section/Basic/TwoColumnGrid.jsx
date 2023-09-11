@@ -12,7 +12,7 @@ const TwoColumnGrid = ({ children, backgroundImage, minHeight="", display="", ju
 
   return (
     <section className="container-section py-10 my-10 mask-background " style={containerStyle}>
-      <section className="grid-2">{children}</section>
+      <section className="grid-2 column-reverse">{children}</section>
     </section>
   );
 };

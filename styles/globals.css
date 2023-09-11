@@ -682,3 +682,8 @@ ul.thumbs li {
   }
 }
 
+
+
+.column-reverse{
+  flex-direction: column-reverse;
+}
