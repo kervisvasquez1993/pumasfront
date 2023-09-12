@@ -730,3 +730,24 @@ ul.thumbs li {
     background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(0% - 2px), 100% calc(100% + 2px);
   }
 }
+
+
+
+.menuContainer {
+  display: flex;
+  justify-content: space-between;
+  background: transparent;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 1440px) {
+  .menuContainer {
+      max-width: 1600px !important;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+  }
+}

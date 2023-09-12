@@ -7,6 +7,7 @@ import style from "./style.module.css";
 import useMenu from "../../hooks/useMenu";
 import { useRouter } from "next/router";
 import MenuBurger from "../../components/UI/MenuBurguer";
+import Navbar from "../../components/UI/Navbar/NavBar";
 
 const Main = ({ children, titlePage }) => {
   const { menuData, loading } = useMenu();
@@ -41,7 +42,7 @@ const Main = ({ children, titlePage }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 992);
+      setIsMobile(window.innerWidth < 1024);
     };
 
     window.addEventListener("resize", handleResize);
@@ -63,12 +64,7 @@ const Main = ({ children, titlePage }) => {
       <header
         className={`${shouldApplyHeaderStyle ? style.headerMenu : ""}`}
       >
-        {isMobile ? (
-          // <MenuBurger />
-          "hola"
-        ) : (
-          <Menu items={stateMenu} />
-        )}
+        <Navbar items={stateMenu} />
       </header>
       <main className="maxWidthBody">{children}</main>
       <Footer />

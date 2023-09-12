@@ -31,7 +31,7 @@ class MenuBurger extends Component {
                 <Menu
                     isOpen={this.state.isOpen}
                     onStateChange={({ isOpen }) => this.setState({ isOpen })}
-                    width={'100vw'} 
+                    // width={'100vw'} 
                     right 
                     noOverlay 
                     pageWrapId={'page-wrap'} // ID del elemento que contiene el contenido principal

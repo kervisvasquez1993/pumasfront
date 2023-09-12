@@ -11,14 +11,14 @@ import { useState } from "react";
 const Menu = ({ items }) => {
   const { query } = useRouter();
   const { lang } = query;
-  let url = null; 
-  if(lang === "es"){
-      url = items?.data.find(e => e.attributes.slug == "inicio")
+  let url = null;
+  if (lang === "es") {
+    url = items?.data.find(e => e.attributes.slug == "inicio")
   }
-  else if(lang === "en"){
+  else if (lang === "en") {
     url = items?.data.find(e => e.attributes.slug == "home")
   }
-  const redirect = `/${url?.attributes?.locale}/${url?.attributes?.slug}` 
+  const redirect = `/${url?.attributes?.locale}/${url?.attributes?.slug}`
   console.log(redirect)
 
   return (
