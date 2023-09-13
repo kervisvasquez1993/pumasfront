@@ -751,3 +751,10 @@ ul.thumbs li {
       margin: 0 auto;
   }
 }
+
+.container {
+  background-image: url("/images/fondo.jpeg");
+  background-size: contain;
+  background-position: center center;
+
+}

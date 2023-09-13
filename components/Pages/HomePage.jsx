@@ -14,6 +14,7 @@ import Map from "../UI/Map";
 import { slide as Menu } from 'react-burger-menu'
 import MenuBurger from "../UI/MenuBurguer";
 import useScreenSize from "../../hooks/useScreenSize";
+import PaypalForm from "../Section/PaypalForm";
 
 
 const HomePage = ({ data }) => {
@@ -27,7 +28,9 @@ const HomePage = ({ data }) => {
 
 
       <div className="container">
-        <section style={{ backgroundImage: `url("/images/background-left.png")`, backgroundPosition: "100%", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
+
+
+
           <HeaderComponets
             classNameText={"p-10 my-10 colorPrimary chelseaFont"}
             alignment={`${screenSize <= 1200 ? "center" : "start"}`}
@@ -117,8 +120,8 @@ const HomePage = ({ data }) => {
 
             <CardBasic imgSrc={"/images/section2.png"} />
           </TwoColumnGrid>
-        </section>
-        <section style={{ backgroundImage: `url("/images/background-rigth.png")`, backgroundPosition: "left", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
+        
+        
           <HeaderComponets
             classNameText={"p-10 colorSecondary chelseaFont"}
             alignment={`${screenSize <= 1200 ? "center" : "start"}`}
@@ -174,10 +177,11 @@ const HomePage = ({ data }) => {
           >
             NOTICIAS Y BLOG
           </HeaderComponets>
+
+
+          <Slider />
+        
        
-        <Slider />
-        </section>
-        <section style={{ backgroundImage: `url("/images/background-left.png")`, backgroundPosition: "100%", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
           <TwoColumnGrid>
             <Map />
             <BasicSection
@@ -249,7 +253,7 @@ const HomePage = ({ data }) => {
             PATROCINADORES
           </HeaderComponets>
           <SliderTwo />
-        </section>
+        
       </div>
     </Main>
   );

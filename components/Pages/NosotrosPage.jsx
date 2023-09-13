@@ -135,92 +135,92 @@ const NosotrosPage = ({ data }) => {
   return (
     <Main titlePage={"Nosotros"}>
       <div className="container">
-        <section style={{ backgroundImage: `url("/images/background-left.png")`, backgroundPosition: "100%", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
-          <HeaderComponets
-            src="/images/fondo1.png"
-            classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-5"}
-            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+
+        <HeaderComponets
+          src="/images/fondo1.png"
+          classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-5"}
+          alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+        >
+          {primerElemet.Titulo}
+        </HeaderComponets>
+        <section className="container-section py-10 my-5">
+          <section className="grid-2">
+            <SliderThree>
+              {sliderImagenes.map((image, index) => {
+                return (
+                  <div key={index}>
+                    <img src={image} alt={"natural"} />
+                  </div>
+                );
+              })}
+            </SliderThree>
+            <BasicSection
+              classNameTitle={""}
+              classNameWrapper={"setionStyleTwo"}
+              title={""}
+              classNameContent={"fuentesParrafo p-10"}
+            >
+              <ReactMarkdown className="py-10">{secundarioElement.Content}</ReactMarkdown>
+            </BasicSection>
+          </section>
+        </section>
+
+        <TwoColumnGrid backgroundImage={`${tercerElment?.background?.data?.attributes?.url}`}>
+          <BasicSection
+            classNameTitle={""}
+            classNameWrapper={"setionStyleTwo"}
+            title={""}
+            widthContent="50%"
+            alignItems={"center"}
+            justifyContent={"center"}
+            classNameContent={"fuentesParrafo py-10"}
           >
-            {primerElemet.Titulo}
-          </HeaderComponets>
-          <section className="container-section py-10 my-5">
-            <section className="grid-2">
-              <SliderThree>
-                {sliderImagenes.map((image, index) => {
-                  return (
-                    <div key={index}>
-                      <img src={image} alt={"natural"} />
-                    </div>
-                  );
-                })}
-              </SliderThree>
-              <BasicSection
-                classNameTitle={""}
-                classNameWrapper={"setionStyleTwo"}
-                title={""}
-                classNameContent={"fuentesParrafo p-10"}
-              >
-                <ReactMarkdown className="py-10">{secundarioElement.Content}</ReactMarkdown>
-              </BasicSection>
-            </section>
-          </section>
-
-          <TwoColumnGrid backgroundImage={`${tercerElment?.background?.data?.attributes?.url}`}>
-            <BasicSection
-              classNameTitle={""}
-              classNameWrapper={"setionStyleTwo"}
-              title={""}
-              widthContent="50%"
-              alignItems={"center"}
-              justifyContent={"center"}
-              classNameContent={"fuentesParrafo py-10"}
+            <ReactMarkdown className="py-10">{tercerElment.content}</ReactMarkdown>
+            <ButtonView
+              className={" backgroundSecondary m-0 manropeFont p-5"}
+              link={`${lang}/${tercerElment?.btn?.url}`}
             >
-              <ReactMarkdown className="py-10">{tercerElment.content}</ReactMarkdown>
-              <ButtonView
-                className={" backgroundSecondary m-0 manropeFont p-5"}
-                link={`${lang}/${tercerElment?.btn?.url}`}
-              >
-                {tercerElment.btn.label}
-              </ButtonView>
-            </BasicSection>
+              {tercerElment.btn.label}
+            </ButtonView>
+          </BasicSection>
 
-            <BasicSection
-              classNameTitle={""}
-              classNameWrapper={"setionStyleTwo p-10 m-10 "}
-              styleWrapper={{ "padding": "100px" }}
-              title={""}
-              alignItems="center"
-              justifyContent={"flex-start"}
-              classNameContent={"fuentesParrafo p-10 m-10"}
-            >
-              <img src={`${tercerElment?.imgBasicContent?.data?.attributes?.url}`} />
-            </BasicSection>
-          </TwoColumnGrid>
+          <BasicSection
+            classNameTitle={""}
+            classNameWrapper={"setionStyleTwo p-10 m-10 "}
+            styleWrapper={{ "padding": "100px" }}
+            title={""}
+            alignItems="center"
+            justifyContent={"flex-start"}
+            classNameContent={"fuentesParrafo p-10 m-10"}
+          >
+            <img src={`${tercerElment?.imgBasicContent?.data?.attributes?.url}`} />
+          </BasicSection>
+        </TwoColumnGrid>
+
+
+        <section className="section OneImg ">
+          <video controls >
+            <source src={cuartoElement?.img?.data[0]?.attributes?.ur} type="video/mp4" />
+            Tu navegador no admite la reproducción de videos.
+          </video>
+
+
         </section>
-        <section style={{ backgroundImage: `url("/images/background-rigth.png")`, backgroundPosition: "left", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
-          <section className="section OneImg ">
-            <video controls >
-              <source src={cuartoElement?.img?.data[0]?.attributes?.ur} type="video/mp4" />
-              Tu navegador no admite la reproducción de videos.
-            </video>
+
+        <section className="container-section py-10 my-5">
+
+          <BasicSection
+            classNameTitle={""}
+            classNameWrapper={"setionStyleTwo"}
+            title={""}
+            classNameContent={"fuentesParrafo py-10 flex-vision"}
+          >
+            {abousUs}
+          </BasicSection>
 
 
-          </section>
-
-          <section className="container-section py-10 my-5">
-
-            <BasicSection
-              classNameTitle={""}
-              classNameWrapper={"setionStyleTwo"}
-              title={""}
-              classNameContent={"fuentesParrafo py-10 flex-vision"}
-            >
-              {abousUs}
-            </BasicSection>
-
-
-          </section>
         </section>
+
 
         <TwoSections
           backgroundImage={`${sextoElement?.background?.data?.attributes?.url}`}
@@ -257,7 +257,7 @@ const NosotrosPage = ({ data }) => {
             />
           }
         />
-        <section style={{ backgroundImage: `url("/images/background-left.png")`, backgroundPosition: "100%", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
+       
 
 
           <section className="container-section py-10 my-5">
@@ -270,7 +270,7 @@ const NosotrosPage = ({ data }) => {
             </HeaderComponets>
             <SliderGeneral slides={sliderReconocimiento} themeColor="#96C473" />;
           </section>
-        </section>
+        
       </div>
     </Main>
   );
