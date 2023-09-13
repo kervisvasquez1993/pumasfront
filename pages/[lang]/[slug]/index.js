@@ -96,6 +96,7 @@ export const getStaticProps = async ({ params }) => {
     }
     return {
       props: { page: { ...page }, models, modelsGQ },
+      revalidate : 10
     };
   }
   if (page.slug === "blog") {
