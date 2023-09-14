@@ -755,6 +755,8 @@ ul.thumbs li {
 .container {
   background-image: url("/images/fondo.jpeg");
   background-size: contain;
-  background-position: center center;
+  background-position: 100% 100%;
+  background-repeat-x: no-repeat;
+  min-height: 100vh;
 
 }

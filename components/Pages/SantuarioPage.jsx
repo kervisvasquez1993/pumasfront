@@ -87,7 +87,7 @@ const SantuarioPage = ({ data }) => {
       />
 
       <div className="container">
-        <section style={{ backgroundImage: `url("/images/background-left.png")`, backgroundPosition: "100%", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
+       
           <HeaderComponets
             src="/images/fondo1.png"
             classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
@@ -100,8 +100,8 @@ const SantuarioPage = ({ data }) => {
           <section className="container-section p-10 m-5">
             <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
           </section>
-        </section>
-        <section style={{ backgroundImage: `url("/images/background-rigth.png")`, backgroundPosition: "left", backgroundSize: "contain", backgroundRepeat: "no-repeat", }} className='backgrounLeft'>
+        
+        
           <TwoColumnGrid backgroundImage={thirdElement.background?.data?.attributes.url}>
             <HeaderComponets
               alignment="center"
@@ -156,7 +156,7 @@ const SantuarioPage = ({ data }) => {
               <ReactMarkdown className="py-10">{fourthElement?.content}</ReactMarkdown>
             </BasicSection>
 
-            </section>
+            
           <div className="container-edu ">
 
           <div className="icons-container py-10 my-10">
