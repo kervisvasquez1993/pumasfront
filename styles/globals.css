@@ -5,7 +5,8 @@
 body {
   background-color: #fffdf6 !important;
 }
-input{
+
+input {
   background: white;
 }
 
@@ -14,7 +15,7 @@ input{
 
 }
 
-.flex-column{
+.flex-column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -95,7 +96,7 @@ input{
 }
 
 @media (max-width: 992px) {
-  .chelseaFontTitle{
+  .chelseaFontTitle {
     font-size: 20px;
   }
 }
@@ -434,27 +435,29 @@ a {
   height: 450px;
 }
 
-.section{
+.section {
   padding: 200px;
 }
 
 
 @media (max-width: 992px) {
-  .section{
+  .section {
     padding: 50px;
   }
 }
 
-.centrar-elemento{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.centrar-elemento {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-video{
+
+video {
   width: 100%;
   height: 100%;
 }
+
 .btnClose {
   border-radius: 50% !important;
   background: white;
@@ -527,7 +530,9 @@ video{
   padding: 0px !important;
   border: 0;
 }
-.carousel .thumb.selected, .carousel .thumb:hover {
+
+.carousel .thumb.selected,
+.carousel .thumb:hover {
   border: 3px solid #333;
 }
 
@@ -535,7 +540,7 @@ video{
   .fontSize36 {
     font-size: 25px;
   }
-  
+
 }
 
 .itemDonationWrapper {
@@ -544,7 +549,8 @@ video{
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.itemDonation{
+
+.itemDonation {
   width: 120px;
   height: 120px;
   display: flex;
@@ -555,7 +561,8 @@ video{
   font-size: 36px;
   color: white;
 }
-.itemDonationSrc{
+
+.itemDonationSrc {
   width: 120px;
   height: 120px;
   display: flex;
@@ -570,13 +577,14 @@ video{
 .selectedItem {
   border: 5px solid #E86641;
 }
+
 ul.thumbs li {
   max-height: 100px;
 }
 
 .mapa {
   position: relative;
-  
+
   padding: 20px;
 }
 
@@ -589,51 +597,56 @@ ul.thumbs li {
   height: 100%;
   background-color: white;
   opacity: 0.4;
-  z-index: 1; 
+  z-index: 1;
 }
 
-.flex-vision{
+.flex-vision {
   display: flex;
   flex-wrap: wrap;
 
 }
-.w-50{
+
+.w-50 {
   width: 50%;
 }
+
 @media screen and (max-width: 992px) {
-  .w-50{
+  .w-50 {
     width: 100%;
   }
 }
 
-.btn-boton-menu{
+.btn-boton-menu {
   display: flex;
   justify-content: space-between;
   background: transparent;
   position: relative;
   cursor: pointer;
 }
-.wrapperMenuMobil{
+
+.wrapperMenuMobil {
   display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
 }
-.wrapperLogo{
+
+.wrapperLogo {
   position: relative;
-  
+
 }
-.menu-custom{
+
+.menu-custom {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: red;
 }
 
-.menu-custom nav{
+.menu-custom nav {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -644,44 +657,47 @@ ul.thumbs li {
 
 
 
-.wrapperElementoSlider{
+.wrapperElementoSlider {
   width: 50vw;
   height: auto;
 }
 
-.flex-2{
+.flex-2 {
   display: flex;
   justify-content: space-around;
 }
 
-.flex-2 .wrapperElementoSlider{
+.flex-2 .wrapperElementoSlider {
   width: 45%;
 }
 
-.flex-2 .fuentesParrafo{
+.flex-2 .fuentesParrafo {
   width: 70%;
 }
+
 @media (max-width: 1224px) {
-  .flex-2{
+  .flex-2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  .flex-2 .wrapperElementoSlider{
+
+  .flex-2 .wrapperElementoSlider {
     width: 100%;
   }
 
-  .flex-2 .fuentesParrafo{
+  .flex-2 .fuentesParrafo {
     width: 100%;
   }
 }
 
-.wrapperElementoSlider  .swiper img{
+.wrapperElementoSlider .swiper img {
   max-width: 100%;
-  max-height: 500px ;
+  max-height: 500px;
 }
+
 @media (max-width: 1024px) {
-  .wrapperElementGrip{
+  .wrapperElementGrip {
     max-width: 100vw;
     height: 600px;
     background-color: #000;
@@ -690,11 +706,11 @@ ul.thumbs li {
 
 
 
-.column-reverse{
+.column-reverse {
   flex-direction: column-reverse;
 }
 
-.swiper-wrapper .swiper-slide{
+.swiper-wrapper .swiper-slide {
   background: transparent !important;
 }
 
@@ -704,7 +720,7 @@ ul.thumbs li {
   --c: linear-gradient(#000 0 0);
   --r1: radial-gradient(farthest-side at bottom, #000 93%, #0000);
   --r2: radial-gradient(farthest-side at top, #000 93%, #0000);
-  background: 
+  background:
     var(--c), var(--r1), var(--r2),
     var(--c), var(--r1), var(--r2),
     var(--c), var(--r1), var(--r2);
@@ -713,19 +729,25 @@ ul.thumbs li {
 }
 
 @keyframes l2 {
-  0%, 25% {
+
+  0%,
+  25% {
     background-size: 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
     background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
   }
+
   50% {
     background-size: 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
     background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
   }
+
   75% {
     background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
     background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
   }
-  95%, 100% {
+
+  95%,
+  100% {
     background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px;
     background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(0% - 2px), 100% calc(100% + 2px);
   }
@@ -745,10 +767,10 @@ ul.thumbs li {
 
 @media screen and (min-width: 1440px) {
   .menuContainer {
-      max-width: 1600px !important;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
+    max-width: 1600px !important;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
   }
 }
 
@@ -758,5 +780,32 @@ ul.thumbs li {
   background-position: 100% 100%;
   background-repeat-x: no-repeat;
   min-height: 100vh;
-
 }
+
+.headerLogo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 30%; 
+}
+@media (max-width: 1024px) {
+  .headerLogo {
+    
+    width: 50%; 
+   
+  }
+}
+
+.horario {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+.idomas {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+

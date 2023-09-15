@@ -47,6 +47,15 @@ export const langAll = () => {
   };
   return ApiBackend("api/i18n/locales", config);
 };
+export const getHorario = () => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer 5cb67cace7cc00d222d3dfee88a4bf2d145b14d586b2be114fbea9ced2712b4e87d8c910c3a6995229a3db140cca57106a676ce4db525e550c81fdf5c08d191764cf62603fe154f4e85bee1e7480a5d9b1530978f61b7194a6fc7d912933bfa6e3f2454772a6429605e2616be2f38d5f29214baacab29df5c248613518724439`,
+    },
+  };
+  return ApiBackend("api/horarios", config);
+};
 
 export const getAllDonations = (lang) => {
   const config = {
