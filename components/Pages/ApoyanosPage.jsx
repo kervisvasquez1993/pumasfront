@@ -18,13 +18,15 @@ const ApoyanosPage = ({ data }) => {
 
   })
 
+  console.log(sextoElemento, "sextoElemento")
+
   const elementDonar = threeElement.imagenWithContentBasic?.map((element, index) => {
 
     return (<section key={index}>
       <h3 className="colorSecondary chelseaFont">
         {element.label}
       </h3>
-      
+
       <section>
         <ReactMarkdown>{element.content}</ReactMarkdown>
       </section>
@@ -40,7 +42,7 @@ const ApoyanosPage = ({ data }) => {
               <HeaderComponets
                 src="/images/fondo1.png"
                 classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 "}
-                alignment={`${screenSize <= 1024 ? "center" : "start"}`} 
+                alignment={`${screenSize <= 1024 ? "center" : "start"}`}
               >
                 {secondElement.title}
               </HeaderComponets>
@@ -64,7 +66,7 @@ const ApoyanosPage = ({ data }) => {
               <HeaderComponets
                 src=""
                 classNameText={"colorSecondary chelseaFont pt-10 mt-10 "}
-                alignment={`${screenSize <= 1024 ? "center" : "center"}`} 
+                alignment={`${screenSize <= 1024 ? "center" : "center"}`}
               >
                 {threeElement.title}
               </HeaderComponets>
@@ -76,22 +78,28 @@ const ApoyanosPage = ({ data }) => {
           </section>
         </section>
         <section className="container-section p-10 m-5">
+          {/* content 2  */}
+          <HeaderComponets
+            src="/images/fondo1.png"
+            classNameText={"colorVerde chelseaFont"}
+            classNameSection={"py-5 my-5"}
+            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+          >
+            {sextoElemento.title}
+          </HeaderComponets>
           <section className="grid-2">
             <section>
-              <HeaderComponets
-                src="/images/fondo1.png"
-                classNameText={"colorVerde chelseaFont pt-10 mt-10 "}
-                alignment={`${screenSize <= 1024 ? "center" : "start"}`} 
-              >
-                {fourElement.Titulo}
-              </HeaderComponets>
               <BasicSection
                 classNameTitle={""}
                 classNameWrapper={"setionStyleTwo"}
                 title={""}
                 classNameContent={"fuentesParrafo py-10"}
               >
+                <div className="header-apoyanos">
+                  <img src="/images/amazon.png" alt="" />
                 <h3 className="colorVerde chelseaFont">{quintoElmento.title}</h3>
+                </div>
+               
                 <ReactMarkdown className="py-10">{quintoElmento.content}</ReactMarkdown>
                 <ButtonView
                   className={" backgroundVerde m-0 manropeFont p-5"}
@@ -104,7 +112,14 @@ const ApoyanosPage = ({ data }) => {
             <section></section>
           </section>
         </section>
-        <section className="container-section p-10 m-5">
+        <section className="container-section py-10 m-5">
+          <HeaderComponets
+            src="/images/fondo1.png"
+            classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 "}
+            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+          >
+            {secondElement.title}
+          </HeaderComponets>
           <section className="grid-2 px-10 mx-10">
             <SliderThree>
               {imagenes.map((image, index) => {

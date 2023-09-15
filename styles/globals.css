@@ -809,3 +809,12 @@ ul.thumbs li {
   text-transform: uppercase;
 }
 
+
+
+.header-apoyanos img{
+  width: 50px;
+}
+.header-apoyanos {
+  display: flex;
+  align-items: center;
+}
