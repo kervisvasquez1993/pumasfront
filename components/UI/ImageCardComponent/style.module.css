@@ -1,0 +1,39 @@
+.wrapper {
+    display: block;
+    width: 100%;
+}
+
+.sectionImg {
+    display: flex;
+    align-items: center;
+    margin-top: -35px;
+    z-index: 2;
+    position: relative;
+    background-size: 120%;
+
+
+
+}
+
+.font {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+    /* background-color: aqua; */
+    width: 100%;
+}
+.font h5{
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.model3d {
+    padding-right: 30px;
+}
+
+.mainImg {
+    z-index: 1;
+    width: 100%;
+}

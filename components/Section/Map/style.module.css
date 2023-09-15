@@ -1,0 +1,56 @@
+.sectionMap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 75vh;
+    background-color: #fffdf6;
+}
+
+
+
+.sectionContent {
+    width: 35%;
+    padding: 60px;
+    color: black;
+}
+
+
+
+.sectionContent section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.map {
+    width: 40%;
+    position: relative;
+    height: 70%;
+    background-color: #000;
+}
+
+@media (max-width: 1024px) {
+
+    .sectionMap {
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .sectionContent {
+        width: 80%;
+
+    }
+
+    .map {
+        width: 80%;
+        height: 50%;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .map {
+
+        height: 65%;
+
+    }
+
+}

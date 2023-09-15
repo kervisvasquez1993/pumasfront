@@ -1,0 +1,18 @@
+.fontTitle {
+    font-size: 54px;
+}
+
+
+.wrapperElement{
+    width: 1440px;
+    margin: 0 auto;
+}
+@media (max-width: 1024px) {
+    .wrapperElement{
+        width: 100%;
+        padding: 0 auto;
+    }
+    .fontTitle {
+        text-align: center;
+    }
+}

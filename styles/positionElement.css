@@ -1,0 +1,156 @@
+/* Clase para centrar elementos vertical y horizontalmente */
+.center {
+    display: flex;
+    justify-content: center;
+    /* Alineación horizontal */
+    align-items: center;
+    /* Alineación vertical */
+  }
+  
+  /* Clase para alinear elementos al final, tanto horizontal como verticalmente */
+  .align-end {
+    display: flex;
+    justify-content: flex-end;
+    /* Alineación horizontal al final */
+    align-items: flex-end;
+    /* Alineación vertical al final */
+  }
+  
+  /* Alinear al inicio horizontal y verticalmente */
+  .align-start {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  /* Alinear al centro horizontal y verticalmente */
+  .align-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Alinear al final horizontal y verticalmente */
+  .align-end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  
+  /* Alinear horizontalmente al inicio y verticalmente al centro */
+  .align-horizontal-start-vertical-center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  /* Alinear horizontalmente al inicio y verticalmente al final */
+  .align-horizontal-start-vertical-end {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  
+  /* Alinear horizontalmente al centro y verticalmente al inicio */
+  .align-horizontal-center-vertical-start {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  /* Alinear horizontalmente al centro y verticalmente al final */
+  .align-horizontal-center-vertical-end {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  /* Alinear horizontalmente al final y verticalmente al inicio */
+  .align-horizontal-end-vertical-start {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+  
+  /* Alinear horizontalmente al final y verticalmente al centro */
+  .align-horizontal-end-vertical-center {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  /* fin de posicion con flezbox */
+  
+  
+  /* Alinear al inicio verticalmente y horizontalmente */
+  .align-vertical-start-horizontal-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  /* Alinear al inicio verticalmente y centrar horizontalmente */
+  .align-vertical-start-horizontal-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  /* Alinear al inicio verticalmente y al final horizontalmente */
+  .align-vertical-start-horizontal-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  
+  /* Alinear en el centro verticalmente y alinear horizontalmente al inicio */
+  .align-vertical-center-horizontal-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  /* Alinear en el centro verticalmente y centrar horizontalmente */
+  .align-vertical-center-horizontal-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Alinear en el centro verticalmente y alinear horizontalmente al final */
+  .align-vertical-center-horizontal-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  /* Alinear al final verticalmente y alinear horizontalmente al inicio */
+  .align-vertical-end-horizontal-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+  
+  /* Alinear al final verticalmente y centrar horizontalmente */
+  .align-vertical-end-horizontal-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  /* Alinear al final verticalmente y al final horizontalmente */
+  .align-vertical-end-horizontal-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  

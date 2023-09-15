@@ -1,0 +1,702 @@
+/*Santuario*/
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+
+    justify-content: center;
+}
+
+
+
+.no-margin {
+    margin: 0;
+}
+
+img {
+    width: 100%;
+}
+
+.container-sactuary {
+    margin: 2rem;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    /* min-height: 45vh; */
+}
+
+.sanctuary-title,
+.rules-title {
+    font-size: 3rem;
+}
+
+.about-sanctuary_text {
+    margin: 0 7rem;
+}
+
+.about-sanctuary_text a {
+    color: orange;
+    text-decoration: none;
+}
+
+.container-rout {
+    padding: 5rem;
+}
+
+.rout-title {
+    margin: 0 5rem 0;
+    font-size: 5rem;
+}
+
+.route-button {
+    background-color: #51B497;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.flex-2 {
+    display: flex;
+
+}
+
+.rules_text {
+    width: 30%;
+}
+
+.icons-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+
+}
+
+
+.flex-2 {
+    padding: 2rem 0;
+}
+
+.icons__imagen {
+    width: 300px;
+
+}
+
+.contentSectionReserveEnd {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    height: 90%;
+    width: 75%;
+}
+
+@media(max-width: 1024px) {
+    .contentSectionReserveEnd {
+        width: 100%;
+    }
+    
+}
+/* .contentSectionEnd {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    height: 90%;
+    width: 90%;
+    align-items: center;
+} */
+
+.text-align-start {
+    text-align: left;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.text-align-end {
+    text-align: right;
+}
+
+@media(max-width: 1400px) {
+    .grid-2 {
+        display: block;
+        text-align: center;
+    }
+
+    .rules_text {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media(max-width: 1024px) {
+    .icons-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .icons-container  .icon-flex-2{
+        width: 40%;
+    }
+
+
+    .about-sanctuary_text {
+        margin: 0;
+    }
+
+    .rout-title {
+        margin: 0;
+    }
+}
+@media(max-width: 768px) {
+
+    .icons-container  .icon-flex-2{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0px;
+
+    }
+    .icons_text{
+        padding: 0 !important;
+    }
+}
+
+/*Program*/
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media (max-width: 1439px) {
+    .container {
+        min-width: 100vw !important;
+        
+    }
+  }
+
+.no-margin {
+    margin: 0;
+}
+
+img {
+    width: 100%;
+}
+
+.container-sactuary {
+    margin: 2rem;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+}
+
+.program-title,
+.materials-edu-title {
+    font-size: 3rem;
+    width: 100%;
+}
+
+.about-program_text {
+    margin: 0 2rem;
+}
+
+.container-edu {
+    padding: 12rem 0;
+}
+
+.edu-title {
+    margin: 0.5rem 0;
+    font-size: 3rem;
+}
+
+.price-title {
+    font-size: 2.5rem;
+    margin: 0.5rem 0;
+}
+
+.edu_text {
+    align-items: center;
+}
+
+.edu_text li {
+    list-style: none;
+    font-weight: 600;
+}
+
+
+.centerElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fontBold {
+    font-weight: bold;
+}
+
+.width-30 {
+    width: 30%;
+}
+
+.section-titles {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: 46px;
+}
+
+.fontSize24 {
+    font-size: 24px;
+}
+
+.puntos {
+    list-style: inside;
+}
+
+.active {
+    border-bottom: 4px solid #E86641;
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+}
+
+.carActive {
+    border-bottom: 5px solid #E86641;
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+}
+
+.carInactive {
+    border-bottom: 5px solid #BFBFBF;
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+}
+
+.centerElement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.edu-button {
+    margin-top: 2rem;
+    background-color: #97C472;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.icon-flex-2 {
+    display: flex;
+    padding: 2rem;
+}
+
+.icons_text {
+    padding: 0 2rem;
+}
+
+.materials-edu_text {
+    width: 30%;
+}
+
+.edu-icons-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+
+}
+@media screen and (max-width: 1024px) {
+    .edu-icons-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .icon-flex-2{
+        width: 40%;
+    }
+
+   
+}
+@media screen and (max-width: 768px) {
+   
+
+    .icon-flex-2{
+        width: 80%;
+    }
+}
+
+
+.icons__imagen {
+    width: 50%;
+
+}
+
+.backgroundProgrmar {
+    background-image: url("/images/mask-proggrama.png");
+    background-size: 100% 100%;
+}
+
+.materials__imagen {
+    width: 100%;
+}
+
+.dowloads-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+
+}
+
+.dowloads {
+    width: 85%;
+    padding: 3rem;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .grid-2 {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dowloads-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+    }
+
+
+    .dowloads{
+        width: 45%;
+    }
+}
+
+@media (max-width: 760px) {
+    .dowloads-container {
+        
+        justify-content: center;
+}
+}
+
+
+@media(max-width: 1400px) {
+    .grid-2 {
+        display: block;
+        text-align: center;
+    }
+
+    .materials-edu_text {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media(max-width: 930px) {
+    .program-title {
+        width: 100%;
+    }
+
+    .icons__imagen {
+        width: 100%;
+    }
+
+    .icon-flex-2 {
+        padding: 1rem;
+    }
+
+    .dowloads {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    .icon-flex-2 {
+     
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    
+    }
+    .icons__imagen{
+        width: 50%;
+    }
+}
+
+
+
+/*Blog*/
+.blog {
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 760px) {
+    .blog {
+
+
+        justify-content: center;
+
+    }
+}
+
+.container-blog {
+    margin: 1rem;
+    position: relative;
+    width: 278px;
+    height: 382px;
+    background: black;
+    overflow: hidden;
+}
+
+.container-blog .card-blog {
+    position: relative;
+    overflow: hidden;
+}
+
+.container-blog .card-blog::before {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, #000, transparent);
+    z-index: 1;
+}
+
+.container-blog .card-blog img {
+    width: 100%;
+}
+
+.container-blog .content {
+    position: absolute;
+    color: #ffff;
+    bottom: 0;
+    width: 90%;
+    z-index: 2;
+    padding: 1rem;
+}
+
+@media(max-width: 570px) {
+
+    .blog {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+}
+
+@media(max-width: 380px) {
+
+    .blog {
+
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+}
+
+/*rescute*/
+.text-img {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.text-em {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transform: translate(100%, -10%);
+    max-width: 50%;
+    font-size: 2rem;
+}
+
+/*footer*/
+footer {
+    display: flex;
+    width: 100vw;
+    padding: 2rem;
+    min-height: 30vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #0EC0B6;
+}
+
+.color-white {
+    color: white;
+}
+
+.w-10vw {
+    width: 10vw;
+}
+
+.footer {
+    display: flex;
+    padding: 1rem;
+    width: 50%;
+}
+
+.footer-block {
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.footer li {
+    list-style: none;
+}
+
+.social {
+    display: flex;
+    margin: 0.5rem;
+}
+
+@media(max-width: 820px) {
+    footer {
+        display: inline-block;
+    }
+
+    .footer-block {
+        width: 100%;
+    }
+
+    .footer {
+
+        display: inline-block;
+        width: 100%;
+
+    }
+}
+
+.imagen-container {
+    position: relative;
+    height: 100%;
+}
+
+.container-card {
+    position: relative;
+}
+
+.imagen {
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    /* Ajusta el comportamiento del contenido de la imagen */
+}
+
+.imagen-superpuesta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 150%;
+    height: 20%;
+    opacity: 1;
+}
+
+.imagen-superpuesta-banner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 150%;
+    height: 15%;
+    opacity: 1;
+}
+
+@media(max-width: 768px) {
+
+    .imagen-superpuesta-banner {
+
+        bottom: 100px
+
+    }
+    .font-responsive{
+        font-size: 2rem !important;
+    }
+    .p-10{
+        padding: 0;
+    }
+    .px-10 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .m-10{
+        margin: 0;
+    }
+    .mx-10{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+
+    }
+    .contentElemenCard{
+        position: relative !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+    }
+    .section-titles{
+        justify-content: start;
+        font-size: 1.5rem !important;
+    }
+}
+
+
+.imagen-icono-animal {
+    position: absolute;
+    bottom: 36px;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+}
+
+.contentElemenCard {
+    position: absolute;
+    bottom: -20px;
+    left: 140px;
+    width: 40%;
+    height: 100px;
+    opacity: 1;
+}
+
+.title-animal {
+    font-size: 28px;
+}
+
+.paragraft-venedo {
+    font-size: 18px;
+    opacity: 0.4;
+}

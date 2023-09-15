@@ -1,0 +1,762 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Manrope:wght@200&family=Roboto:wght@100&display=swap');
+
+
+body {
+  background-color: #fffdf6 !important;
+}
+input{
+  background: white;
+}
+
+.headerSectionMap {
+  min-height: 80vh !important;
+
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.sizeModelsSantuario {
+  width: 200px;
+  cursor: pointer !important;
+  position: absolute;
+}
+
+.manropeFont {
+  font-family: 'Manrope', sans-serif;
+}
+
+.materials_text {
+  font-weight: bold;
+  font-size: 46px;
+}
+
+.fontSize28 {
+  font-size: 28px;
+}
+
+.chelseaFont {
+  font-family: 'Chelsea Market', sans-serif;
+}
+
+.setionStyleOne {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 95%;
+  width: 65%;
+}
+
+.setionStyleTwo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  width: 65%;
+}
+
+.setionStyleContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mask-background {
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+
+
+
+
+
+.colorGrey {
+  color: #BFBFBF;
+}
+
+.chelseaFontTitle {
+  font-family: 'Chelsea Market', sans-serif;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  max-width: 35vw;
+}
+
+@media (max-width: 992px) {
+  .chelseaFontTitle{
+    font-size: 20px;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.colorPrimary {
+  color: #E86641;
+}
+
+.colorSecondary {
+  color: #50B496;
+}
+
+.colorBeiga {
+  color: #FFFDF6;
+}
+
+.colorGris {
+  color: #BFBFBF;
+}
+
+.fontMenu {
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.backgroundPrimary {
+  background-color: #E86641 !important;
+}
+
+.btnPrimary {
+  width: 260px;
+  height: 45px;
+  text-align: center;
+  color: #FFFDF5;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  border-radius: 2px;
+  line-height: normal;
+  margin: 0 20px;
+}
+
+.font-size-24 {
+  font-size: 24px !important;
+}
+
+.font-size-16 {
+  font-size: 16px !important;
+}
+
+.fontBold {
+  font-weight: bold !important;
+}
+
+.btnPrimaryMenu {
+  width: 200px;
+  height: 45px;
+  text-align: center;
+  color: #FFFDF5;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  border-radius: 2px;
+  line-height: normal;
+}
+
+.fuentesParrafo>*,
+.fuentesParrafo {
+  font-size: 18px;
+  font-family: 'Manrope', sans-serif;
+}
+
+.edu_text {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.fuenteTitulo {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Chelsea Market', sans-serif;
+}
+
+.backgroundSecondary {
+  background-color: #50B496;
+}
+
+.backgroundVerde {
+  background-color: #96C473;
+}
+
+.colorVerde {
+  color: #96C473;
+}
+
+.backgroundBeiga {
+  background-color: #FFFDF6;
+}
+
+.backgroundGris {
+  background-color: #BFBFBF;
+}
+
+.backgroundBlack {
+  background-color: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    color: white;
+    background: black;
+  }
+}
+
+.maxWidth {
+  /* max-width: 1512; */
+}
+
+.swiper-wrapper>* {
+  background-color: #fffdf6 !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #96C473 !important;
+  font-size: 70px !important;
+  font-weight: bold;
+}
+
+.swiper-button-prev {
+  color: #96C473 !important;
+}
+
+.swiper-pagination-bullet-active {
+  color: #96C473 !important;
+}
+
+.swiper-button-next,
+.swiper-container-rtl .swiper-button-prev,
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  background-image: none;
+}
+
+.swiper-button-next,
+.swiper-button-prev,
+.swiper-container-rtl .swiper-button-prev,
+.swiper-container-rtl .swiper-button-next {
+  fill: #000;
+}
+
+.maxWidthBody {
+  max-width: 100vw;
+
+}
+
+@media screen and (min-width: 1440px) {
+  .maxWidthBody {
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;
+
+
+
+  }
+
+}
+
+
+.swiper {
+  max-width: 100%;
+  height: 35vh;
+}
+
+.mySwiper .swiper-slide {
+  opacity: 1 !important;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: transparent;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper {
+  width: 100%;
+  height: 35vh;
+  margin: 0px auto;
+}
+
+.append-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.append-buttons button {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #007aff;
+  color: #007aff;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin: 0 10px;
+  font-size: 13px;
+}
+
+.leaflet-container {
+  height: 500px !important;
+}
+
+/* s */
+.mySwiper {
+  position: relative;
+}
+
+.swiper-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.swiper-container {
+  position: relative;
+  height: 36vh;
+  width: 100%;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.swiper-button-prev {
+  position: absolute;
+  left: 0;
+}
+
+.swiper-button-next {
+  position: absolute;
+  right: 0;
+}
+
+.slick-dots {
+  position: relative !important;
+}
+
+.slick-dots ul {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.thumbs {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.thumbs li {
+  width: 150px !important;
+}
+
+.carousel {
+  max-height: 500px;
+}
+
+.carousel-root {
+  max-width: 100% !important;
+}
+
+@media screen and (min-width: 0) and (max-width: 481px) {
+  .thumbs li {
+    width: 80px !important;
+  }
+
+  .carousel-root {
+    max-width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 992px) {
+
+  .thumbs li {
+    width: 100px !important;
+  }
+
+}
+
+@media screen and (min-width: 0) and (max-width: 769px) {
+
+  .carousel-root {
+    max-width: 100% !important;
+  }
+
+}
+
+.santurarioSwipper .swiper-wrapper {
+  height: 450px;
+}
+
+.section{
+  padding: 200px;
+}
+
+
+@media (max-width: 992px) {
+  .section{
+    padding: 50px;
+  }
+}
+
+.centrar-elemento{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+video{
+  width: 100%;
+  height: 100%;
+}
+.btnClose {
+  border-radius: 50% !important;
+  background: white;
+  padding: 8px;
+  position: relative;
+
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headeModal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.containerDonations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.containerDonations>* {
+  flex: 1 0 20%;
+  max-width: 20%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 1200px) {
+  .containerDonations>* {
+    flex-basis: 33.33%;
+    max-width: 33.33%;
+  }
+}
+
+@media (max-width: 992px) {
+  .containerDonations>* {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .containerDonations>* {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+.inline {
+  display: inline;
+}
+
+.fontSize36 {
+  font-size: 36px;
+}
+
+.carousel .thumb {
+  padding: 0px !important;
+  border: 0;
+}
+.carousel .thumb.selected, .carousel .thumb:hover {
+  border: 3px solid #333;
+}
+
+@media(max-width:768px) {
+  .fontSize36 {
+    font-size: 25px;
+  }
+  
+}
+
+.itemDonationWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.itemDonation{
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0DAEA5;
+  border-radius: 50%;
+  font-size: 36px;
+  color: white;
+}
+.itemDonationSrc{
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #50B496;
+  border-radius: 50%;
+  font-size: 36px;
+  color: white;
+}
+
+.selectedItem {
+  border: 5px solid #E86641;
+}
+ul.thumbs li {
+  max-height: 100px;
+}
+
+.mapa {
+  position: relative;
+  
+  padding: 20px;
+}
+
+.mapa::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.4;
+  z-index: 1; 
+}
+
+.flex-vision{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+.w-50{
+  width: 50%;
+}
+@media screen and (max-width: 992px) {
+  .w-50{
+    width: 100%;
+  }
+}
+
+.btn-boton-menu{
+  display: flex;
+  justify-content: space-between;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+.wrapperMenuMobil{
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+}
+.wrapperLogo{
+  position: relative;
+  
+}
+.menu-custom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}
+
+.menu-custom nav{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+
+
+.wrapperElementoSlider{
+  width: 50vw;
+  height: auto;
+}
+
+.flex-2{
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-2 .wrapperElementoSlider{
+  width: 45%;
+}
+
+.flex-2 .fuentesParrafo{
+  width: 70%;
+}
+@media (max-width: 1224px) {
+  .flex-2{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .flex-2 .wrapperElementoSlider{
+    width: 100%;
+  }
+
+  .flex-2 .fuentesParrafo{
+    width: 100%;
+  }
+}
+
+.wrapperElementoSlider  .swiper img{
+  max-width: 100%;
+  max-height: 500px ;
+}
+@media (max-width: 1024px) {
+  .wrapperElementGrip{
+    max-width: 100vw;
+    height: 600px;
+    background-color: #000;
+  }
+}
+
+
+
+.column-reverse{
+  flex-direction: column-reverse;
+}
+
+.swiper-wrapper .swiper-slide{
+  background: transparent !important;
+}
+
+.loader {
+  width: 40px;
+  aspect-ratio: 1;
+  --c: linear-gradient(#000 0 0);
+  --r1: radial-gradient(farthest-side at bottom, #000 93%, #0000);
+  --r2: radial-gradient(farthest-side at top, #000 93%, #0000);
+  background: 
+    var(--c), var(--r1), var(--r2),
+    var(--c), var(--r1), var(--r2),
+    var(--c), var(--r1), var(--r2);
+  background-repeat: no-repeat;
+  animation: l2 1s infinite alternate;
+}
+
+@keyframes l2 {
+  0%, 25% {
+    background-size: 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
+    background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+  }
+  50% {
+    background-size: 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
+    background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+  }
+  75% {
+    background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
+    background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+  }
+  95%, 100% {
+    background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px;
+    background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(0% - 2px), 100% calc(100% + 2px);
+  }
+}
+
+
+
+.menuContainer {
+  display: flex;
+  justify-content: space-between;
+  background: transparent;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 1440px) {
+  .menuContainer {
+      max-width: 1600px !important;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+  }
+}
+
+.container {
+  background-image: url("/images/fondo.jpeg");
+  background-size: contain;
+  background-position: 100% 100%;
+  background-repeat-x: no-repeat;
+  min-height: 100vh;
+
+}
