@@ -639,28 +639,12 @@ footer {
 @media(max-width: 768px) {
 
     .imagen-superpuesta-banner {
-
         bottom: 100px
-
     }
     .font-responsive{
         font-size: 2rem !important;
     }
-    .p-10{
-        padding: 0;
-    }
-    .px-10 {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-    .m-10{
-        margin: 0;
-    }
-    .mx-10{
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-
-    }
+    
     .contentElemenCard{
         position: relative !important;
         bottom: 0 !important;
@@ -673,7 +657,11 @@ footer {
     }
 }
 
-
+@media(max-width: 630px){
+    .m-responsive{
+        padding: 1rem;
+    }
+}
 .imagen-icono-animal {
     position: absolute;
     bottom: 36px;

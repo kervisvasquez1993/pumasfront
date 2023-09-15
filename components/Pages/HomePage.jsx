@@ -82,7 +82,7 @@ const HomePage = ({ data }) => {
           </TwoColumnGrid>
 
           <HeaderComponets
-            classNameText={"py-10 colorSecondary chelseaFont"}
+            classNameText={"lg:py-10 md:py-5 colorSecondary chelseaFont"}
             alignment="end"
             width="100%"
           >
@@ -94,7 +94,7 @@ const HomePage = ({ data }) => {
               classNameWrapper={"setionStyle "}
               title={""}
               classNameContent={
-                ` fuentesParrafo  ${screenSize <= 1200 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start "} p-10 m-10`
+                ` fuentesParrafo  ${screenSize <= 1200 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start "} lg:p-10 lg:m-10 md:p-5 md:m-5 sm:p-5 sm:m-5`
               }
               width={"100%"}
               widthContent="100%"
@@ -104,8 +104,8 @@ const HomePage = ({ data }) => {
 
             // styleContent={{height: "100%"}}
             >
-              <p className="py-10">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+              <p className="lg:py-10 md:py-5 sm:m-5 m-responsive">
+                santuarioLorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
                 aliquam dicta maxime perferendis ducimus, temporibus quae impedit
                 sequi deserunt quasi fuga, rerum omnis odio saepe harum aperiam
                 officia quod! Nulla.
