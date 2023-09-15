@@ -8,13 +8,16 @@ import useMenu from "../../hooks/useMenu";
 import { useRouter } from "next/router";
 import MenuBurger from "../../components/UI/MenuBurguer";
 import Navbar from "../../components/UI/Navbar/NavBar";
+import useLocale from "../../hooks/useLocales";
 
 const Main = ({ children, titlePage }) => {
   const { menuData, loading } = useMenu();
+  const { langAllContext } = useLocale()
+  console.log(langAllContext)
   const { query } = useRouter();
   const { lang, slug } = query;
   const [stateMenu, setStateMenu] = useState(null);
-
+ 
   useEffect(() => {
     if (!loading && menuData && lang) {
       const currentLanguageMenu = menuData.find(

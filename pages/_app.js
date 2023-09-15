@@ -11,6 +11,7 @@ import { ModeloProvider } from "../context/ModelosProvider";
 import { DonationsProvider } from "../context/DonationsProvider";
 import { PagesProvider } from "../context/PagesProvider";
 import { ScreenSizeProvider } from "../context/ScreenSizeProvider";
+import { LocaleProvider } from "../context/LocalesProvider";
 
 function MyApp({ Component, pageProps }) {
   const [initialRenderComplete, setInitialRenderComplete] = useState(false);
@@ -24,16 +25,19 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ScreenSizeProvider>
-      <MenuProvider>
-        <PagesProvider>
-          <ModeloProvider>
-            <DonationsProvider>
-              <Component {...pageProps} />
-            </DonationsProvider>
-          </ModeloProvider>
-        </PagesProvider>
-      </MenuProvider>
+      <LocaleProvider>
+        <MenuProvider>
+          <PagesProvider>
+            <ModeloProvider>
+              <DonationsProvider>
+                <Component {...pageProps} />
+              </DonationsProvider>
+            </ModeloProvider>
+          </PagesProvider>
+        </MenuProvider>
+      </LocaleProvider>
     </ScreenSizeProvider>
+
   );
 }
 export default MyApp;
