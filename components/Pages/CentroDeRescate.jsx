@@ -41,7 +41,7 @@ const CentroDeRescate = ({ data }) => {
           <HeaderComponets
             alignment={`${screenSize <= 1024 ? "center" : "start"}`}
             src="/images/fondo1.png"
-            classNameText={"program-title fuenteTitulo colorPrimary py-10 my-10"}
+            classNameText={"hola program-title fuenteTitulo colorPrimary py-10 my-10"}
             classNameSection={"centerElement"}
           >
             {secondSection.Titulo}
@@ -62,15 +62,15 @@ const CentroDeRescate = ({ data }) => {
         
           <Section
             positionTitle={`${screenSize <= 1024 ? "center" : "end"}`}
-            contentClassName="contentSectionEnd px-10 px-10"
-            titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10 font-responsive"}
+            contentClassName="contentSectionEnd sm:px-10 sm:px-10"
+            titleClassName={"program-title fuenteTitulo colorVerde py-5 sm:py-10 sm:my-10 font-responsive"}
             title={`${imagenWithContentBasic[1]?.label}`}
             imageSrc={`${imagenWithContentBasic[1]?.img.data[0]?.attributes.url}`}
             content={`${imagenWithContentBasic[1]?.content}`}
           />
           <SectionReverse
             positionTitle={`${screenSize <= 1024 ? "center" : "start"}`}
-            titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10 font-responsive"}
+            titleClassName={"program-title fuenteTitulo colorPrimary sm:py-10 sm:my-10 font-responsive"}
             title={`${imagenWithContentBasic[2]?.label}`}
             imageSrc={`${imagenWithContentBasic[2]?.img.data[0]?.attributes.url}`}
             contentClassName={"contentSectionReserveEnd"}
@@ -80,8 +80,8 @@ const CentroDeRescate = ({ data }) => {
          
           <Section
             positionTitle={`${screenSize <= 1024 ? "center" : "end"}`}
-            contentClassName="contentSectionEnd px-10 px-10"
-            titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10 font-responsive"}
+            contentClassName="contentSectionEnd sm:px-10 sm:px-10"
+            titleClassName={"program-title fuenteTitulo colorVerde py-5 sm:py-10 sm:my-10 font-responsive"}
             title={`${imagenWithContentBasic[3]?.label}`}
             imageSrc={`${imagenWithContentBasic[4]?.img.data[0]?.attributes.url}`}
             content={`${imagenWithContentBasic[3]?.content}`}
@@ -89,7 +89,7 @@ const CentroDeRescate = ({ data }) => {
 
           <SectionReverse
             positionTitle={`${screenSize <= 1024 ? "center" : "start"}`}
-            titleClassName={"program-title fuenteTitulo colorPrimary py-10 my-10 font-responsive"}
+            titleClassName={"program-title fuenteTitulo colorPrimary py-5 sm:py-10 sm:my-10 font-responsive"}
             title={`${imagenWithContentBasic[4]?.label}`}
             imageSrc={`${imagenWithContentBasic[4]?.img.data[0]?.attributes.url}`}
             contentClassName={"contentSectionReserveEnd"}

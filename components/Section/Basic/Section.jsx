@@ -24,7 +24,7 @@ const Section = ({
   const textAlignClass = getTextAlignClass(positionTitle);
 
   return (
-    <div className="container-section p-10 m-10">
+    <div className="container-section p-5 sm:p-10 sm:m-10">
       <div className={`grid-2 ${textAlignClass}`}>
         <div className="section__imagen">
           <img src={imageSrc} alt="Imagen de la sección" />

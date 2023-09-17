@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown";
 
 const SlidetWithContent = ({ images, title, content }) => {
     return (
-        <section className="container-section p-10 m-5">
+        <section className="container-section sm:p-10 sm:m-5">
             <section className="grid-2">
                 <SliderThree>
                     {images?.map((image, index) => (
@@ -20,7 +20,7 @@ const SlidetWithContent = ({ images, title, content }) => {
                     classNameTitle={"program-title fuenteTitulo colorPrimary"}
                     classNameWrapper={"setionStyleOne"}
                     title={title} // Usa el título pasado como prop
-                    classNameContent={"fuentesParrafo py-10"}
+                    classNameContent={"fuentesParrafo p-5 sm:py-10"}
                 >
                     <ReactMarkdown>{content}</ReactMarkdown>
 

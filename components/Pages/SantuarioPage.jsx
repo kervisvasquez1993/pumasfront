@@ -97,7 +97,7 @@ const SantuarioPage = ({ data }) => {
           </HeaderComponets>
 
 
-          <section className="container-section p-10 m-5">
+          <section className="container-section sm:p-10 sm:m-5">
             <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
           </section>
         
@@ -118,7 +118,7 @@ const SantuarioPage = ({ data }) => {
               alignItems={"center"}
               justifyContent={"center"}
               width={`${screenSize <= 1024 ? "100%" : "75%"}`}
-              classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-10 m-10`}
+              classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-5 sm:p-10 sm:m-10`}
 
             >
               <ReactMarkdown className="py-10">{thirdElement.content}</ReactMarkdown>
@@ -159,7 +159,7 @@ const SantuarioPage = ({ data }) => {
             
           <div className="container-sant ">
 
-          <div className="icons-container py-10 my-10">
+          <div className="icons-container sm:py-10 sm:my-10">
 
             {fourthElement.imagenWithContentBasic.map((element, index) => {
 

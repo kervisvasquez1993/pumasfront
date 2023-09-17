@@ -159,11 +159,15 @@ img {
     }
 }
 @media(max-width: 768px) {
-
+   .icons-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+   }
     .icons-container  .icon-flex-2{
         width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: space-between;
         margin: 0px;
@@ -173,7 +177,19 @@ img {
         padding: 0 !important;
     }
 }
-
+@media(max-width: 420px) {
+    .icons-container{
+     display: grid;
+     grid-template-columns: repeat(1, 1fr);
+     gap: 1px;
+    }
+    .icons__imagen {
+        width: 4rem !important;
+    }
+    .icons-container .icon-flex-2{
+        justify-content: flex-start !important;
+    }
+}
 /*Program*/
 
 .container {
@@ -655,6 +671,7 @@ footer {
         justify-content: start;
         font-size: 1.5rem !important;
     }
+    
 }
 
 @media(max-width: 630px){

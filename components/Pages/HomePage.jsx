@@ -144,7 +144,7 @@ const HomePage = ({ data }) => {
               classNameWrapper={"setionStyle"}
               title={""}
               classNameContent={
-                ` fuentesParrafo  ${screenSize <= 1200 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start "} p-10 m-10`
+                ` fuentesParrafo  ${screenSize <= 1200 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start "} p-5 sm:p-10 sm:m-10`
               }
               width={`${screenSize <= 1200 ? "100%" : "70%"}`}
               alignItems={"center"}
@@ -153,7 +153,7 @@ const HomePage = ({ data }) => {
             // styleContent={{height: "100%"}}
             >
               <p className="py-5">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
+                nio me sauesLorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
                 amet repellat exercitationem aliquid quae totam, id, labore cumque
                 sapiente dicta dolore neque cupiditate debitis voluptatem
                 consequatur aut, mollitia saepe esse excepturi iusto quas beatae!
