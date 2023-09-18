@@ -173,7 +173,7 @@ const NosotrosPage = ({ data }) => {
             widthContent="70%"
             alignItems={"center"}
             justifyContent={"center"}
-            classNameContent={"fuentesParrafo sm:py-10"}
+            classNameContent={" font-min sm:py-10"}
           >
             <ReactMarkdown className="py-10">{tercerElment.content}</ReactMarkdown>
             <ButtonView

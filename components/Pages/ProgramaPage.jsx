@@ -19,7 +19,7 @@ const ProgramaPage = ({ data }) => {
   const contentEducation = imagenWithContentBasic.map((element, index) => {
     return (
       <div className="icon-flex-2" key={index}>
-        <div className="icons__imagen">
+        <div className="icons__imagen2">
           <img src={element?.img?.data[0]?.attributes?.url} alt="imagen santuario" />
         </div>
         <div className="icons_text">
@@ -35,8 +35,8 @@ const ProgramaPage = ({ data }) => {
           <img src={elemento?.attributes?.imgFile?.data?.attributes?.url} alt="imagen santuario" />
         </div>
         <div className="wrapperTitleCard">
-          <h2 className="materials_text manropeFont colorSecondary">{elemento?.attributes.title}</h2>
-          <Link href={elemento?.attributes?.file?.data?.attributes?.url} className="manropeFont fontSize28" download>Libro de Actividades</Link>
+          <h2 className="materials_text2 manropeFont colorSecondary font-bold">{elemento?.attributes.title}</h2>
+          <Link href={elemento?.attributes?.file?.data?.attributes?.url} className="manropeFont fontSize20" download>Libro de Actividades</Link>
         </div>
       </div>)
   })
@@ -48,11 +48,11 @@ const ProgramaPage = ({ data }) => {
         <div className="container-edu backgroundProgrmar p-10 my-10">
           <div className="grid-2">
             <div>
-              <h3 className="edu-title fuenteTitulo colorSecondary">{secondElement.title}</h3>
+              <h3 className="edu-title fuenteTitulo titleGreen">{secondElement.title}</h3>
               <ReactMarkdown className="fuentesParrafo">{secondElement.content}</ReactMarkdown>
             </div>
             <div className="edu_text">
-              <h3 className="price-title colorSecondary">Precios</h3>
+              <h3 className="price-title titleGreen">Precios</h3>
               {preciosData}
               <button className="edu-button">Reservar Recorrido</button>
             </div>
@@ -64,7 +64,7 @@ const ProgramaPage = ({ data }) => {
 
         <div className="container-materials-edu">
           <h3 className="materials-edu-title fuenteTitulo colorSecondary p-10">{fourthElement.title}</h3>
-          <div className="materials-edu_text fuentesParrafo ">
+          <div className="materials-edu_text fuentesParrafo px-10">
             <ReactMarkdown>{fourthElement.content}</ReactMarkdown>
           </div>
           <div className="dowloads-container">

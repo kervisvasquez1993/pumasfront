@@ -191,7 +191,12 @@ img {
     }
 }
 /*Program*/
-
+.titleGreen{
+    color: #97C472;
+}
+.buttonGreen{
+    background-color: #97C472;
+}
 .container {
     width: 100%;
     margin: 0 auto;
@@ -261,7 +266,10 @@ img {
     justify-content: center;
     align-items: center;
 }
-
+.font-min{
+    font-size: 15px;
+    font-family: 'Manrope', sans-serif;
+}
 .fontBold {
     font-weight: bold;
 }
@@ -335,7 +343,7 @@ img {
 }
 
 .materials-edu_text {
-    width: 30%;
+    width: 50%;
 }
 
 .edu-icons-container {
@@ -367,15 +375,23 @@ img {
 
 
 .icons__imagen {
+    width: 5rem;
+}
+.icons__imagen2 {
     width: 50%;
-
 }
 
 .backgroundProgrmar {
     background-image: url("/images/mask-proggrama.png");
     background-size: 100% 100%;
 }
-
+.fontSize20 {
+    font-size: 20px;
+}
+.materials_text2{
+    font-weight: bold;
+    font-size: 30px;
+}
 .materials__imagen {
     width: 100%;
 }
@@ -645,13 +661,18 @@ footer {
 
 .imagen-superpuesta-banner {
     position: absolute;
-    bottom: 0;
+    bottom: 110px;
     left: 0;
     width: 150%;
     height: 15%;
     opacity: 1;
 }
 
+@media(max-width: 375px){
+    .imagen-superpuesta-banner {
+        bottom: 50px !important;
+    }
+}
 @media(max-width: 768px) {
 
     .imagen-superpuesta-banner {
@@ -681,8 +702,8 @@ footer {
 }
 .imagen-icono-animal {
     position: absolute;
-    bottom: 36px;
-    left: 0;
+    bottom: 19px;
+    left: 3px;
     width: 100px;
     height: 100px;
     opacity: 1;
@@ -690,9 +711,8 @@ footer {
 
 .contentElemenCard {
     position: absolute;
-    bottom: -20px;
-    left: 140px;
-    width: 40%;
+    bottom: -29px;
+    left: 117px;
     height: 100px;
     opacity: 1;
 }

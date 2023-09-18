@@ -32,7 +32,7 @@ const HomePage = ({ data }) => {
 
 
           <HeaderComponets
-            classNameText={"p-10 my-10 colorPrimary chelseaFont"}
+            classNameText={"p-5 colorPrimary chelseaFont"}
             alignment={`${screenSize <= 1200 ? "center" : "start"}`}
             width={`${screenSize <= 1200 ? "100%" : "70%"}`}
           >
@@ -45,8 +45,8 @@ const HomePage = ({ data }) => {
               maskSrc={"/images/mask.png"}
               iconSrc={"/images/modelo3d.png"}
               imgSrc={"/images/venado.png"}
-              title={"esto es el titulo"}
-              subtitle={"esto el el subtitulo"}
+              title={"Venado Cola Blanca"}
+              subtitle={"Odocoileus virginianus"}
             />
 
             <BasicSection
@@ -54,7 +54,7 @@ const HomePage = ({ data }) => {
               classNameWrapper={"setionStyle"}
               title={""}
               classNameContent={
-                ` fuentesParrafo  ${screenSize <= 1200 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start "} p-10 m-10`
+                ` fuentesParrafo  ${screenSize <= 1200 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start "} sm:p-10`
               }
               width={`${screenSize <= 1200 ? "100%" : "70%"}`}
               alignItems={"center"}
@@ -63,7 +63,7 @@ const HomePage = ({ data }) => {
             // styleContent={{height: "100%"}}
             >
               <p className="py-5">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
+                holaLorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
                 amet repellat exercitationem aliquid quae totam, id, labore cumque
                 sapiente dicta dolore neque cupiditate debitis voluptatem
                 consequatur aut, mollitia saepe esse excepturi iusto quas beatae!
@@ -82,7 +82,7 @@ const HomePage = ({ data }) => {
           </TwoColumnGrid>
 
           <HeaderComponets
-            classNameText={"lg:py-10 md:py-5 colorSecondary chelseaFont"}
+            classNameText={" lg:py-10 py-5 colorSecondary chelseaFont"}
             alignment="end"
             width="100%"
           >
@@ -123,7 +123,7 @@ const HomePage = ({ data }) => {
         
         
           <HeaderComponets
-            classNameText={"p-10 colorSecondary chelseaFont"}
+            classNameText={"p-10 titleGreen chelseaFont"}
             alignment={`${screenSize <= 1200 ? "center" : "start"}`}
             width={`${screenSize <= 1200 ? "100%" : "40%"}`}
           >
@@ -163,7 +163,7 @@ const HomePage = ({ data }) => {
                 Cupiditate, magnam voluptas?
               </p>
               <ButtonView
-                className={" backgroundPrimary m-0 manropeFont p-5"}
+                className={" buttonGreen m-0 manropeFont p-5"}
                 link={""}
               >
                 Conoce Más
