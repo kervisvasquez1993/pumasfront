@@ -8,7 +8,7 @@ import { useGLTF } from '@react-three/drei'
 
 export function TortugaResbaladora({  ...props }) {
  
-    const { nodes, materials } = useGLTF("/models/resbalTortugaResbaladora.gltf");
+    const { nodes, materials } = useGLTF("/models/TortugaResbaladora.gltf");
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.TortugaResbaladora.geometry} material={materials['13103_pearlturtle_body']} />
@@ -17,4 +17,4 @@ export function TortugaResbaladora({  ...props }) {
   
 }
 
-useGLTF.preload("/models/resbalTortugaResbaladora.gltf");
+useGLTF.preload("/models/TortugaResbaladora.gltf");

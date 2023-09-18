@@ -288,6 +288,7 @@ export const getPagesGQ = async (language) => {
         id
         attributes{
           title
+          
           slug
           DynamicComponent{
             ... on ComponentUiHeaderTitle {
@@ -315,6 +316,7 @@ export const getPagesGQ = async (language) => {
             }
             ...on ComponentUiBasicSection{
               title
+              subTitle
               imgBasicContent{
                 data{
                   attributes{
