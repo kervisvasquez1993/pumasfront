@@ -47,7 +47,7 @@ const HomePage = ({ data }) => {
 
 
         <HeaderComponets
-          classNameText={"p-5 colorPrimary chelseaFont"}
+          classNameText={"mt-10 p-5 colorPrimary chelseaFont"}
           alignment={`${screenSize <= 1200 ? "center" : "start"}`}
           width={`${screenSize <= 1200 ? "100%" : "70%"}`}
         >
