@@ -26,7 +26,17 @@ const HomePage = ({ data }) => {
   const {componentDynamics} = data
   console.log(componentDynamics, "component");
   const [primerElement, segundoElemento, tercerElemento, cuartoElemento, quintoElemento, sextoElemento, septiomoElemento, octavoElemento] = componentDynamics
-  console.log(quintoElemento, "cuarto elemento")
+  console.log(octavoElemento, "octavoElemento")
+  const {imagenWithContentBasic} = octavoElemento
+  console.log(imagenWithContentBasic, "imagenWithContentBasic")
+  const horarios = imagenWithContentBasic.map(element=> {
+    return (<section className="py-5">
+    <h4 className="chelseaFont colorSecondary font-size-24">{element.label}</h4>
+    <div>
+      <ReactMarkdown className="py-1">{element.content}</ReactMarkdown>
+    </div>
+  </section>)
+  })
   const { screenSize } = useScreenSize()
 
   return (
@@ -130,9 +140,9 @@ const HomePage = ({ data }) => {
               showMask={true}
               maskSrc={"/images/mask.png"}
               iconSrc={"/images/modelo3d.png"}
-              imgSrc={"/images/nigre.png"}
-              title={"esto es el titulo"}
-              subtitle={"esto el el subtitulo"}
+              imgSrc={quintoElemento.imgBasicContent.data.attributes.url}
+              title={quintoElemento.title}
+              subtitle={quintoElemento.subTitle}
             />
 
             <BasicSection
@@ -148,21 +158,14 @@ const HomePage = ({ data }) => {
               styleWrapper={{ height: "100%" }}
             // styleContent={{height: "100%"}}
             >
-              <p className="py-5">
-                nio me sauesLorem ipsum dolor sit amet consectetur, adipisicing elit. Earum
-                amet repellat exercitationem aliquid quae totam, id, labore cumque
-                sapiente dicta dolore neque cupiditate debitis voluptatem
-                consequatur aut, mollitia saepe esse excepturi iusto quas beatae!
-                Repudiandae dignissimos aspernatur labore obcaecati iure
-                perspiciatis, aperiam fugiat est nobis hic quae vero expedita
-                iusto, fuga consectetur quibusdam ut pariatur assumenda quos.
-                Cupiditate, magnam voluptas?
-              </p>
+              
+              <ReactMarkdown className="py-5">{quintoElemento.content}</ReactMarkdown>
+              
               <ButtonView
                 className={" buttonGreen m-0 manropeFont p-5"}
-                link={""}
+                link={lang+"/"+quintoElemento.btn.url}
               >
-                Conoce Más
+               {quintoElemento.btn.label}
               </ButtonView>
             </BasicSection>
           </TwoColumnGrid>
@@ -171,7 +174,7 @@ const HomePage = ({ data }) => {
             alignment={`${screenSize <= 1200 ? "center" : "start"}`}
             width={`${screenSize <= 1200 ? "100%" : "70%"}`}
           >
-            NOTICIAS Y BLOG
+            {sextoElemento.Titulo}
           </HeaderComponets>
 
 
@@ -192,52 +195,7 @@ const HomePage = ({ data }) => {
               justifyContent={"center"}
               styleWrapper={{ height: "100%" }}
             >
-              <section className="py-5">
-                <h4 className="chelseaFont colorSecondary font-size-24">HORARIO</h4>
-                <div>
-                  <p className="py-1">Luneas a Domingos</p>
-                  <p className="py-1">
-                    De 8:00 AM A 4:00 PM Incluidos los festivos
-                  </p>
-                </div>
-              </section>
-              <section className="py-5 ">
-                <h4 className="chelseaFont colorSecondary font-size-24">DIRECCIÓN</h4>
-                <div>
-                  <p className="py-1 fontBold">Luneas a Domingos</p>
-                  <p className="py-1">
-                    <span className="fontBold">De 8:00 AM A 4:00 PM.</span>{" "}
-                    Incluidos los festivos
-                  </p>
-                </div>
-              </section>
-              <section className="py-5">
-                <h4 className="chelseaFont colorSecondary font-size-24">PRECIOS</h4>
-                <div>
-                  <p className="py-1 fontBold font-size-16">Nacionales</p>
-                  <p className="">
-                    Niños(4 - 12 Años) : $1000
-                  </p>
-                  <p className="">
-                    Estudiantes(Mayores De 12 Años) Y Adultos Mayores: $2000
-                  </p>
-                  <p className="">
-                    Adultos: $3000
-                  </p>
-                </div>
-                <div className="py-5">
-                  <p className="py-1 fontBold">Extrangeros:</p>
-                  <p className="">
-                    Niños(4 - 12 Años) : $8
-                  </p>
-                  <p className="">
-                    Estudiantes(Mayores De 12 Años) Y Adultos Mayores: $8
-                  </p>
-                  <p className="">
-                    Adultos: $12
-                  </p>
-                </div>
-              </section>
+              {horarios}
             </BasicSection>
           </TwoColumnGrid>
 
