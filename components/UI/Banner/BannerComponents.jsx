@@ -10,7 +10,7 @@ const BannerComponents = () => {
       className={`${styles.hero} bg-cover bg-center text-white flex items-center justify-center`}
       style={{ backgroundImage: `url(${backgroundImageUrl})` }}
     >
-      <div className={`${styles.container} sm:w-60vw md:w-45vw lg:w-45vw`}>
+      <div className={`${styles.container} px-10 sm:w-60vw md:w-45vw lg:w-45vw`}>
         <h1 className={`${styles.fontTitleBannerTitle} manropeFont`}>
           Rescata, rehabilita y libera
         </h1>

@@ -435,7 +435,19 @@ img {
         width: 45%;
     }
 }
-
+@media (max-width: 689px){ 
+    .imagen-superpuesta-banner{
+        height: 12%;
+    }
+    .headerLogo {
+        width: 100%;
+    }
+}
+@media (max-width: 404px){ 
+    .horario {
+        width: 100%;
+    }
+}
 @media (max-width: 760px) {
     .dowloads-container {
         
@@ -670,7 +682,7 @@ footer {
     bottom: 110px;
     left: 0;
     width: 150%;
-    height: 15%;
+    height: 20%;
     opacity: 1;
 }
 
@@ -682,7 +694,8 @@ footer {
 @media(max-width: 768px) {
 
     .imagen-superpuesta-banner {
-        bottom: 100px
+        bottom: 100px;
+        height: 15%;
     }
     .font-responsive{
         font-size: 2rem !important;
