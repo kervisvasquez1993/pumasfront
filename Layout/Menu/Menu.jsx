@@ -19,7 +19,7 @@ const Menu = ({ items }) => {
     url = items?.data.find(e => e.attributes.slug == "home")
   }
   const redirect = `/${url?.attributes?.locale}/${url?.attributes?.slug}`
-  console.log(redirect)
+  // console.log(redirect)
 
   return (
     <nav

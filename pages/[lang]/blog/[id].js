@@ -15,7 +15,7 @@ const BlogInfo = ({
 }) => {
   const { screenSize } = useScreenSize()
   const { TitleBlog, ContentBlog, imgBlog } = blog.attributes
-  console.log(imgBlog.data, "img blogs")
+  // console.log(imgBlog.data, "img blogs")
   return (
     <Main titlePage={TitleBlog}>
       <HeaderComponents
@@ -63,10 +63,10 @@ export default BlogInfo
 
 export const getStaticProps = async ({ params }) => {
   const { lang, id } = params
-  console.log(id, "id")
+  // console.log(id, "id")
   const blogAllResponse = await getBlog(lang);
   const blogAll = blogAllResponse.data.data
-  console.log(blogAll, "data")
+  // console.log(blogAll, "data")
 
   const blog = blogAll.find(e => e.id == id)
 

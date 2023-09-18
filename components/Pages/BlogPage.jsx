@@ -8,7 +8,7 @@ import Link from "next/link";
 // import BlogEntry from "./BlogEntry";
 
 const BlogPage = ({ data, blogData }) => {
-  console.log(blogData.data, "blogData");
+  // console.log(blogData.data, "blogData");
   const router = useRouter();
   const {  lang } = router.query
   const { componentDynamics } = data;
@@ -18,7 +18,7 @@ const BlogPage = ({ data, blogData }) => {
   const sectionBlogs = blogsInfo?.map((blog, index) => {
     const { TitleBlog, ContentBlog, imgBlog } = blog?.attributes
     const resumen = ContentBlog.substring(0,150)
-    console.log(imgBlog.data[0].attributes.url, "image")
+    // console.log(imgBlog.data[0].attributes.url, "image")
     return ( <Link href={`/${lang}/blog/${blog.id}`}>  <CardComponent key={index}
       description={resumen+" ...... "}
       title={TitleBlog}

@@ -25,7 +25,7 @@ export const getStaticProps = async () => {
     const lang = await langAll();
     
     const languages = lang.data;
-    console.log(languages, "languages")
+    // console.log(languages, "languages")
     const result = [];
     const code = languages.map(element => {
         return element.code 

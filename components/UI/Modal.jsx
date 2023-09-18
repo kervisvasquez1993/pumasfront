@@ -17,9 +17,9 @@ export default function Modal({ showModal, setShowModal, data }) {
 
   const router = useRouter();
   const { slug, lang } = router.query
-  console.log(data, "llamando modelo")
-  console.log(data?.modelo3d,"llamando a modelo3d")
-  console.log(data?.componente,"llamando a componente")
+  // console.log(data, "llamando modelo")
+  // console.log(data?.modelo3d,"llamando a modelo3d")
+  // console.log(data?.componente,"llamando a componente")
   
   return (
     <>
