@@ -83,7 +83,7 @@ const CentroDeRescate = ({ data }) => {
             contentClassName="contentSectionEnd sm:px-10 sm:px-10"
             titleClassName={"program-title fuenteTitulo colorVerde py-5 sm:py-10 sm:my-10 font-responsive"}
             title={`${imagenWithContentBasic[3]?.label}`}
-            imageSrc={`${imagenWithContentBasic[4]?.img.data[0]?.attributes.url}`}
+            imageSrc={`${imagenWithContentBasic[3]?.img.data[0]?.attributes.url}`}
             content={`${imagenWithContentBasic[3]?.content}`}
           />
 

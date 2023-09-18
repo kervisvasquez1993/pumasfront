@@ -409,6 +409,12 @@ img {
 }
 
 
+@media screen and (max-width: 820px){
+    .icons__imagen2{
+        width: 4rem;
+        margin: 1rem;
+    }
+} 
 @media screen and (max-width: 1024px) {
     .grid-2 {
         display: flex;
