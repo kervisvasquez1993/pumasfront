@@ -26,10 +26,10 @@ const HomePage = ({ data }) => {
   const {componentDynamics} = data
   console.log(componentDynamics, "component");
   const [primerElement, segundoElemento, tercerElemento, cuartoElemento, quintoElemento, sextoElemento, septiomoElemento, octavoElemento] = componentDynamics
-  console.log(octavoElemento, "octavoElemento")
+  // console.log(octavoElemento, "octavoElemento")
   const {imagenWithContentBasic} = octavoElemento
   console.log(imagenWithContentBasic, "imagenWithContentBasic")
-  const horarios = imagenWithContentBasic.map((element,index)=> {
+  const horarios = imagenWithContentBasic?.map((element,index)=> {
     return (<section className="py-5" key={index}>
     <h4 className="chelseaFont colorSecondary font-size-24">{element.label}</h4>
     <div>
