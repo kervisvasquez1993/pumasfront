@@ -22,7 +22,7 @@ const CentroDeRescate = ({ data }) => {
     return <Loader />;
   }
   const [firstSection, secondSection, thirdSection, fourthSection] = componentDynamics;
-  console.log(firstSection, secondSection, thirdSection, fourthSection)
+  // console.log(firstSection, secondSection, thirdSection, fourthSection)
   const { imagenes } = firstSection
   const imgSlider = imagenes?.data?.map(img => {
     return {

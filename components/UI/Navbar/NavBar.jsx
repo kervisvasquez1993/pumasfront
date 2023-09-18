@@ -24,7 +24,7 @@ const Navbar = ({ items }) => {
     const horaCierre = convertirHora(cierre);
     const horaApertura = convertirHora(apertura);
 
-    console.log(apertura, "apertura")
+    // console.log(apertura, "apertura")
     if (lang === "es") {
         url = items?.data.find(e => e.attributes.slug == "inicio")
     }

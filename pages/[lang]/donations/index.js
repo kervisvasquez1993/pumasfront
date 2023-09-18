@@ -22,8 +22,8 @@ const Donations = ({ result, typeDonationSchemes }) => {
   const { params } = router.query;
   loadedDonations(result);
   loadedParams(params);
-  console.log(filterArray,"filter")
-  console.log(typeDonationSchemes,"typeDonationSchemes")
+  // console.log(filterArray,"filter")
+  // console.log(typeDonationSchemes,"typeDonationSchemes")
   return (
     <Main titlePage={"Donación"}>
       <div className="container">
@@ -79,7 +79,7 @@ export const getStaticProps = async ({params}) => {
     const typeDonationsResponse = typeDonations.data.data;
     const results = response.data.data;
 
-    console.log(results, "result"); 
+    // console.log(results, "result"); 
    
     
       const result = results.map((element) => (
@@ -119,7 +119,7 @@ export const getStaticPaths = async () => {
   for (const language of languages) {
     lang.push({ params: { lang: language.code } });
   }
-  console.log(lang);
+  // console.log(lang);
   return {
     paths: lang,
     fallback: true,

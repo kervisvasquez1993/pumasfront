@@ -18,7 +18,7 @@ const ApoyanosPage = ({ data }) => {
 
   })
 
-  console.log(sextoElemento, "sextoElemento")
+  // console.log(sextoElemento, "sextoElemento")
 
   const elementDonar = threeElement.imagenWithContentBasic?.map((element, index) => {
 

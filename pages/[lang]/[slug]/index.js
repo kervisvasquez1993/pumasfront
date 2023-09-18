@@ -17,9 +17,9 @@ const Page = ({ page, models, blogsPage, modelsGQ }) => {
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
-  console.log(page)
+  // console.log(page)
   const { slug, lang } = router.query
-  console.log(page)
+  // console.log(page)
 
   useEffect(() => {
     updateData(page)
@@ -88,7 +88,7 @@ export const getStaticProps = async ({ params }) => {
   const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
   const models = {};
   const blogsPage = {}
-  console.log(page.slug, "slug")
+  // console.log(page.slug, "slug")
   if (page.slug === "santuario") {
     for (const language of languages) {
       const modelsResponse = await getAllModels(language.code);
@@ -102,7 +102,7 @@ export const getStaticProps = async ({ params }) => {
   if (page.slug === "blog") {
     const blog = await getBlog(lang);
     const blogsPage = blog.data;
-    console.log(blogsPage, "blog")
+    // console.log(blogsPage, "blog")
 
     return {
       props: { page: { ...page }, blogsPage },
