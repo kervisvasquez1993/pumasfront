@@ -21,7 +21,7 @@ const BlogPage = ({ data, blogData }) => {
     return (<Link href={`/${lang}/blog/${blog.id}`}>  <CardComponent key={index}
       description={resumen + " ...... "}
       title={TitleBlog}
-      imageUrl={`${imgBlog?.data ? imgBlog?.data[0]?.attributes?.url : ""} `}
+      imageUrl={`${imgBlog?.data ? imgBlog?.data[0]?.attributes?.url : "/images/no-img.jpg"}`}
     /> </Link>)
   })
   return (
