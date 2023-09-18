@@ -18,10 +18,10 @@ const TwoSections = ({ title1, children1, title2, children2, backgroundImage="" 
   };
 
   return (
-    <div className="container-section py-10 my-5" style={containerStyle}>
-      <div className="section-titles">
+    <div className="container-section sm:py-10 sm:my-5" style={containerStyle}>
+      <div className="section-titles px-5">
         <div
-          className={`section-title chelseaFont px-10 mx-10 centerElement ${
+          className={`section-title chelseaFont px-5 sm:px-10 sm:mx-10 centerElement ${
             activeSection === 1 ? "colorPrimary" : "colorGrey"
           }`}
           onClick={() => handleSectionClick(1)}
@@ -30,7 +30,7 @@ const TwoSections = ({ title1, children1, title2, children2, backgroundImage="" 
           <div className={`${activeSection === 1 ? "colorPrimary active" : ""}`}></div>
         </div>
         <div
-          className={`section-title centerElement chelseaFont px-10 ${
+          className={`section-title centerElement chelseaFont px-5 sm:px-10 ${
             activeSection === 2 ? "colorPrimary " : "colorGrey"
           }`}
           onClick={() => handleSectionClick(2)}

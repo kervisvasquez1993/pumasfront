@@ -97,7 +97,7 @@ const SantuarioPage = ({ data }) => {
           </HeaderComponets>
 
 
-          <section className="container-section p-10 m-5">
+          <section className="container-section sm:p-10 sm:m-5">
             <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
           </section>
         
@@ -118,7 +118,7 @@ const SantuarioPage = ({ data }) => {
               alignItems={"center"}
               justifyContent={"center"}
               width={`${screenSize <= 1024 ? "100%" : "75%"}`}
-              classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-10 m-10`}
+              classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-5 sm:p-10 sm:m-10`}
 
             >
               <ReactMarkdown className="py-10">{thirdElement.content}</ReactMarkdown>
@@ -136,7 +136,7 @@ const SantuarioPage = ({ data }) => {
             <HeaderComponets
               alignment="center"
               src="/images/fondo1.png"
-              classNameText={"program-title fuenteTitulo colorVerde p-10 m-10"}
+              classNameText={"program-title fuenteTitulo colorVerde p-10 m-10 font-responsive"}
               classNameSection={"centerElement"}
             >
               {fourthElement.title}
@@ -157,9 +157,9 @@ const SantuarioPage = ({ data }) => {
             </BasicSection>
 
             
-          <div className="container-edu ">
+          <div className="container-sant ">
 
-          <div className="icons-container py-10 my-10">
+          <div className="icons-container sm:py-10 sm:my-10">
 
             {fourthElement.imagenWithContentBasic.map((element, index) => {
 
@@ -174,7 +174,7 @@ const SantuarioPage = ({ data }) => {
                     )}
                   </div>
                   <div className="icons_text">
-                    <ReactMarkdown className="fuentesParrafo ">
+                    <ReactMarkdown className="fuentesParrafo p-5">
                       {element.content}
                     </ReactMarkdown>
                   </div>

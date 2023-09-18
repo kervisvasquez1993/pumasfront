@@ -5,8 +5,7 @@
 body {
   background-color: #fffdf6 !important;
 }
-
-input {
+input{
   background: white;
 }
 
@@ -540,7 +539,6 @@ video {
   .fontSize36 {
     font-size: 25px;
   }
-
 }
 
 .itemDonationWrapper {
@@ -577,14 +575,12 @@ video {
 .selectedItem {
   border: 5px solid #E86641;
 }
-
 ul.thumbs li {
   max-height: 100px;
 }
 
 .mapa {
   position: relative;
-
   padding: 20px;
 }
 
@@ -740,7 +736,6 @@ ul.thumbs li {
     background-size: 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
     background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
   }
-
   75% {
     background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
     background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
@@ -774,13 +769,13 @@ ul.thumbs li {
   }
 }
 
-.container {
+/*.container {
   background-image: url("/images/fondo.jpeg");
   background-size: contain;
   background-position: 100% 100%;
   background-repeat-x: no-repeat;
   min-height: 100vh;
-}
+}*/
 
 .headerLogo {
   display: flex;

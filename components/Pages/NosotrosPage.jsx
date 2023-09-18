@@ -143,7 +143,7 @@ const NosotrosPage = ({ data }) => {
         >
           {primerElemet.Titulo}
         </HeaderComponets>
-        <section className="container-section py-10 my-5">
+        <section className="container-section sm:py-10 my-5">
           <section className="grid-2">
             <SliderThree>
               {sliderImagenes.map((image, index) => {
@@ -158,9 +158,9 @@ const NosotrosPage = ({ data }) => {
               classNameTitle={""}
               classNameWrapper={"setionStyleTwo"}
               title={""}
-              classNameContent={"fuentesParrafo p-10"}
+              classNameContent={"fuentesParrafo p-5 sm:p-10"}
             >
-              <ReactMarkdown className="py-10">{secundarioElement.Content}</ReactMarkdown>
+              <ReactMarkdown className="sm:py-10 m-5">{secundarioElement.Content}</ReactMarkdown>
             </BasicSection>
           </section>
         </section>
@@ -170,10 +170,10 @@ const NosotrosPage = ({ data }) => {
             classNameTitle={""}
             classNameWrapper={"setionStyleTwo"}
             title={""}
-            widthContent="50%"
+            widthContent="70%"
             alignItems={"center"}
             justifyContent={"center"}
-            classNameContent={"fuentesParrafo py-10"}
+            classNameContent={" font-min sm:py-10"}
           >
             <ReactMarkdown className="py-10">{tercerElment.content}</ReactMarkdown>
             <ButtonView
@@ -186,12 +186,12 @@ const NosotrosPage = ({ data }) => {
 
           <BasicSection
             classNameTitle={""}
-            classNameWrapper={"setionStyleTwo p-10 m-10 "}
-            styleWrapper={{ "padding": "100px" }}
+            classNameWrapper={"setionStyleTwo sm:p-10 sm:m-10 "}
+            styleWrapper={{ "padding": "90px" }}
             title={""}
             alignItems="center"
             justifyContent={"flex-start"}
-            classNameContent={"fuentesParrafo p-10 m-10"}
+            classNameContent={"fuentesParrafo sm:p-10 sm:m-10"}
           >
             <img src={`${tercerElment?.imgBasicContent?.data?.attributes?.url}`} />
           </BasicSection>
@@ -207,7 +207,7 @@ const NosotrosPage = ({ data }) => {
 
         </section>
 
-        <section className="container-section py-10 my-5">
+        <section className="container-section sm:py-10 my-5">
 
           <BasicSection
             classNameTitle={""}
@@ -260,10 +260,10 @@ const NosotrosPage = ({ data }) => {
        
 
 
-          <section className="container-section py-10 my-5">
+          <section className="container-section sm:py-10 my-5">
             <HeaderComponets
               src="/images/fondo1.png"
-              classNameText={"colorVerde chelseaFont pt-10 mt-10 "}
+              classNameText={"colorVerde chelseaFont pt-10 mt-10 font-responsive"}
               alignment={`${screenSize <= 1024 ? "center" : "start"}`}
             >
               Reconocimiento

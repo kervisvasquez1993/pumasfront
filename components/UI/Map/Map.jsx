@@ -34,7 +34,7 @@ const Map = () => {
   }, []);
 
   return (
-    <section className="mx-10 px-10">
+    <section className="sm:mx-10 sm:px-10">
     <MapContainer
       className={style.map}
       center={center}
