@@ -29,8 +29,8 @@ const HomePage = ({ data }) => {
   console.log(octavoElemento, "octavoElemento")
   const {imagenWithContentBasic} = octavoElemento
   console.log(imagenWithContentBasic, "imagenWithContentBasic")
-  const horarios = imagenWithContentBasic.map(element=> {
-    return (<section className="py-5">
+  const horarios = imagenWithContentBasic.map((element,index)=> {
+    return (<section className="py-5" key={index}>
     <h4 className="chelseaFont colorSecondary font-size-24">{element.label}</h4>
     <div>
       <ReactMarkdown className="py-1">{element.content}</ReactMarkdown>
