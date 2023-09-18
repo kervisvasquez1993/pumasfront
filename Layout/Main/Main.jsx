@@ -69,7 +69,7 @@ const Main = ({ children, titlePage }) => {
       >
         <Navbar items={stateMenu} />
       </header>
-      <main className="">{children}</main>
+      <main className="maxWidthBody">{children}</main>
       <Footer />
     </>
   );
