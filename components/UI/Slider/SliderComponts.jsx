@@ -5,8 +5,24 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 import CardComponent from "../Card/CardComponents";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
-export default function Slider({ srcBackgroundColor = "" }) {
+export default function Slider({ srcBackgroundColor = "", data = {} }) {
+  console.log(data, "data")
+
+  const router = useRouter();
+  const { lang } = router.query
+  const blogInfo = data.map((e, index) => {
+    const resumen = e.attributes.ContentBlog.substring(0, 150)
+    return (<SwiperSlide key={index}><Link href={`/${lang}/blog/${e.id}`}>
+      <CardComponent
+        description={resumen + " ...... "}
+        title={e.attributes.TitleBlog}
+        imageUrl={`${e?.attributes.imgBlog ? e?.attributes.imgBlog.data[0]?.attributes?.url : "/images/no-img.jpg"}`}
+      />
+    </Link></SwiperSlide>)
+  })
   const [swiperRef, setSwiperRef] = useState(null);
   const [slidesPerView, setSlidesPerView] = useState(3.6);
   const backgroundImageStyle = {
@@ -20,7 +36,11 @@ export default function Slider({ srcBackgroundColor = "" }) {
         setSlidesPerView(1);
       } else if (window.innerWidth < 992) {
         setSlidesPerView(2);
-      } else {
+      }
+      else if (innerWidth < 1220) {
+        setSlidesPerView(3);
+      }
+      else {
         setSlidesPerView(3.6);
       }
     }
@@ -35,65 +55,17 @@ export default function Slider({ srcBackgroundColor = "" }) {
 
   return (
     // <section style={backgroundImageStyle} className="center">
-      <Swiper
-        onSwiper={setSwiperRef}
-        slidesPerView={slidesPerView}
-        centeredSlides={false}
-        spaceBetween={60}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardComponent
-            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat natus fugiat tenetur."
-            title="test"
-            imageUrl="/images/nigre.png"
-          />
-        </SwiperSlide>
-      </Swiper>
+    <Swiper
+      onSwiper={setSwiperRef}
+      slidesPerView={slidesPerView}
+      centeredSlides={false}
+      spaceBetween={60}
+      navigation={true}
+      modules={[Pagination, Navigation]}
+      className="mySwiper"
+    >
+      {blogInfo}
+    </Swiper>
     // </section>
   );
 }

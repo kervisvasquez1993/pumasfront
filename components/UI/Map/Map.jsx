@@ -12,7 +12,7 @@ const center = {
 
 const Map = () => {
   const ICON = icon({
-    iconUrl: "/images/modelo3d.png",
+    iconUrl: "/images/marcador.png",
     iconSize: [60, 60],
   });
   const [draggable, setDraggable] = useState(false);
@@ -38,7 +38,7 @@ const Map = () => {
     <MapContainer
       className={style.map}
       center={center}
-      zoom={13}
+      zoom={15}
       scrollWheelZoom={true}
     >
       <TileLayer

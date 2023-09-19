@@ -26,6 +26,7 @@ const HomePage = ({ data }) => {
   const { componentDynamics } = data
   // console.log(componentDynamics, "component");
   const [primerElement, segundoElemento, tercerElemento, cuartoElemento, quintoElemento, sextoElemento, septiomoElemento, octavoElemento] = componentDynamics
+  
   const horarios = octavoElemento?.imagenWithContentBasic?.map((element, index) => {
     return (<section className="py-5" key={index}>
       <h4 className="chelseaFont colorSecondary font-size-24">{element.label}</h4>
@@ -175,7 +176,7 @@ const HomePage = ({ data }) => {
         </HeaderComponets>
 
 
-        <Slider />
+        <Slider data={septiomoElemento?.blogs?.data} />
 
 
         <TwoColumnGrid>
