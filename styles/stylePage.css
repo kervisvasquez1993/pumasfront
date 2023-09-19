@@ -667,6 +667,26 @@ footer {
     object-fit: cover;
     /* Ajusta el comportamiento del contenido de la imagen */
 }
+.fuentesParrafo h6{
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+    font-family: 'Hanken Grotesk';
+}
+.fuentesParrafo h6,
+.fuentesParrafo p {
+  display: inline;
+}
+.fuentesParrafo h5{
+    font-size: 20px;
+    color: orangered;
+    font-weight: bold;
+    font-family: 'Hanken Grotesk';
+}
+.fuentesParrafo h5,
+.fuentesParrafo p {
+  display: inline;
+}
 .btnPrimary{
     z-index: 1;
 }
