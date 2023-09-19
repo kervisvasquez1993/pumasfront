@@ -158,7 +158,7 @@ const NosotrosPage = ({ data }) => {
               classNameTitle={""}
               classNameWrapper={"setionStyleTwo"}
               title={""}
-              classNameContent={"fuentesParrafo p-5 sm:p-10"}
+              classNameContent={"fuentesParrafo p-5 "}
             >
               <ReactMarkdown className="sm:py-10 m-5">{secundarioElement.Content}</ReactMarkdown>
             </BasicSection>
@@ -186,12 +186,12 @@ const NosotrosPage = ({ data }) => {
 
           <BasicSection
             classNameTitle={""}
-            classNameWrapper={"setionStyleTwo sm:p-10 sm:m-10 "}
+            classNameWrapper={"setionStyleTwo lg:p-10 lg:m-10 "}
             styleWrapper={{ "padding": "90px" }}
             title={""}
             alignItems="center"
             justifyContent={"flex-start"}
-            classNameContent={"fuentesParrafo sm:p-10 sm:m-10"}
+            classNameContent={"fuentesParrafo lg:p-10 lg:m-10"}
           >
             <img src={`${tercerElment?.imgBasicContent?.data?.attributes?.url}`} />
           </BasicSection>

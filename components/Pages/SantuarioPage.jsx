@@ -97,7 +97,7 @@ const SantuarioPage = ({ data }) => {
           </HeaderComponets>
 
 
-          <section className="container-section sm:p-10 sm:m-5">
+          <section className="container-section lg:p-10 lg:m-5">
             <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
           </section>
         
@@ -106,7 +106,7 @@ const SantuarioPage = ({ data }) => {
             <HeaderComponets
               alignment="center"
               src="/images/fondo1.png"
-              classNameText={"colorSecondary chelseaFont px-10 mx-10"}
+              classNameText={"colorSecondary chelseaFont lg:px-10 mx-10"}
               classNameSection={"centerElement"}
             >
               {thirdElement.title}
@@ -118,7 +118,7 @@ const SantuarioPage = ({ data }) => {
               alignItems={"center"}
               justifyContent={"center"}
               width={`${screenSize <= 1024 ? "100%" : "75%"}`}
-              classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-5 sm:p-10 sm:m-10`}
+              classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-5 lg:p-10 lg:m-10`}
 
             >
               <ReactMarkdown className="py-10">{thirdElement.content}</ReactMarkdown>
