@@ -919,3 +919,51 @@ ul.thumbs li {
   display: none;
   z-index: 1; /* Asegura que el botón esté por encima del fondo */
 }
+
+/* Estilo del contenedor de la imagen */
+.materials__imagen {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Estilo del fondo cuando el cursor está sobre la imagen */
+.materials__imagen:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
+  z-index: 1; /* Coloca el fondo por encima de la imagen */
+}
+
+/* Estilo de la imagen dentro del contenedor */
+.materials__imagen img {
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+  height: 100%; /* Asegura que la imagen ocupe todo el alto del contenedor */
+  object-fit: cover; /* Controla cómo se ajusta la imagen dentro del contenedor */
+}
+
+/* Estilo del botón de descarga */
+.download-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 16px;
+  transform: translate(-50%, -50%);
+  background-color: #97C472;
+  color: #fff;
+  padding: 10px 40px;
+  border: none;
+  cursor: pointer;
+  display: none;
+  z-index: 2; /* Asegura que el botón esté por encima del fondo */
+}
+
+/* Mostrar el botón al pasar el cursor sobre el contenedor */
+.materials__imagen:hover .download-button {
+  display: block;
+}
