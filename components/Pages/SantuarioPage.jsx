@@ -15,9 +15,11 @@ import SlidetWithContent from "../Section/Slider/SliderWithContent";
 import ReactMarkdown from "react-markdown";
 import useScreenSize from "../../hooks/useScreenSize";
 import Loader from "../UI/Loader";
+import { useRouter } from "next/router";
 
 const SantuarioPage = ({ data }) => {
-
+  const router = useRouter();
+  const { slug, lang } = router.query
   const { componentDynamics } = data;
   const { modeloList } = useModelo();
   const { screenSize } = useScreenSize()
@@ -124,7 +126,7 @@ const SantuarioPage = ({ data }) => {
               <ReactMarkdown className="py-10">{thirdElement.content}</ReactMarkdown>
               <ButtonView
                 className={" backgroundSecondary m-0 manropeFont p-5"}
-                link={""}
+                link={`${lang}/${thirdElement?.btn?.url}`}
               >
                 Reserva tu recorrido
               </ButtonView>
