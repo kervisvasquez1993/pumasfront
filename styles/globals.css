@@ -819,7 +819,7 @@ ul.thumbs li {
   top: 0; /* Establece la posición superior deseada */
   background-color: #ffffff; /* Fondo del menú pegajoso */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra si es necesario */
-  z-index: 100; /* Asegúrate de que esté por encima de otros elementos */
+  z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
 }
 
 .video-container {

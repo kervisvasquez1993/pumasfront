@@ -33,7 +33,7 @@ const Main = ({ children, titlePage }) => {
     if (!menuData && storedMenuData) {
       setStateMenu(
         JSON.parse(storedMenuData).find((element) => element.lang === lang) ||
-          null
+        null
       );
     }
   }, []);
@@ -58,9 +58,13 @@ const Main = ({ children, titlePage }) => {
     };
   }, []);
 
-  const headerClassName = `${style.headerMenu} ${
-    isHeaderSticky ? "stickyHeader" : ""
-  }`;
+  const headerClassName = `${style.headerMenu} ${isHeaderSticky ? "stickyHeader" : ""
+    }`;
+  const shouldApplyHeaderStyle = slug !== "inicio";
+
+  const headerClassNameInicio = `${isHeaderSticky ? style.headerMenu + " stickyHeader" : ""
+    }`;
+
 
   return (
     <>
@@ -69,7 +73,7 @@ const Main = ({ children, titlePage }) => {
         <meta name="description" content="Descripción de tu página" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <header className={headerClassName}>
+      <header className={`${shouldApplyHeaderStyle ? headerClassName : headerClassNameInicio} `}>
         <Navbar items={stateMenu} />
       </header>
       <main className="maxWidthBody">{children}</main>
