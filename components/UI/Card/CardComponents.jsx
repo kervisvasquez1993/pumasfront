@@ -1,9 +1,14 @@
 import React from "react";
 import style from "./style.module.css";
+import useScreenSize from "../../../hooks/useScreenSize";
 
 const CardComponent = ({ imageUrl, title, description }) => {
+
+    const { screenSize } = useScreenSize()
+    console.log(screenSize, "screen")
     const cardStyle = {
         backgroundImage: `url(${imageUrl})`,
+        margin : `${screenSize < 768 ? "0 auto" : ""}`
     };
 
     return (

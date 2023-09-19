@@ -356,8 +356,25 @@ export const getPagesGQ = async (language) => {
                 }
               }
             }
-            
-              
+            }...on ComponentUiBlogSection{
+              id
+              blogs{
+                data{
+                  id
+                  attributes{
+                    TitleBlog
+                    ContentBlog
+                    imgBlog{
+                      data{
+                        attributes{
+                          url
+                          previewUrl
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
             ...on ComponentUiRelacionMaterial{
               id
