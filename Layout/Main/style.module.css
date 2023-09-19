@@ -1,4 +1,5 @@
 .headerMenu{
     background-color: #50B496;
     height: 10vh;
+    z-index: 10000;
 }
