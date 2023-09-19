@@ -198,13 +198,22 @@ const NosotrosPage = ({ data }) => {
         </TwoColumnGrid>
 
 
-        <section className="section OneImg ">
+        {/* <section className="section OneImg ">
           <video controls >
-            <source src={cuartoElement?.img?.data[0]?.attributes?.ur} type="video/mp4" />
+            <source src={cuartoElement?.img?.data[0]?.attributes?.url} type="video/mp4" />
             Tu navegador no admite la reproducción de videos.
           </video>
-
-
+        </section> */}
+        <section className="section OneImg">
+          <div className="video-container">
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/Vr3FNq5djxs"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
         </section>
 
         <section className="container-section sm:py-10 my-5">
@@ -257,20 +266,20 @@ const NosotrosPage = ({ data }) => {
             />
           }
         />
-       
 
 
-          <section className="container-section sm:py-10 my-5">
-            <HeaderComponets
-              src="/images/fondo1.png"
-              classNameText={"colorVerde chelseaFont pt-10 mt-10 font-responsive"}
-              alignment={`${screenSize <= 1024 ? "center" : "start"}`}
-            >
-              Reconocimiento
-            </HeaderComponets>
-            <SliderGeneral slides={sliderReconocimiento} themeColor="#96C473" />;
-          </section>
-        
+
+        <section className="container-section sm:py-10 my-5">
+          <HeaderComponets
+            src="/images/fondo1.png"
+            classNameText={"colorVerde chelseaFont pt-10 mt-10 font-responsive"}
+            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+          >
+            Reconocimiento
+          </HeaderComponets>
+          <SliderGeneral slides={sliderReconocimiento} themeColor="#96C473" />;
+        </section>
+
       </div>
     </Main>
   );
