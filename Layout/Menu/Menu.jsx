@@ -19,8 +19,6 @@ const Menu = ({ items }) => {
     url = items?.data.find(e => e.attributes.slug == "home")
   }
   const redirect = `/${url?.attributes?.locale}/${url?.attributes?.slug}`
-  // console.log(redirect)
-
   return (
     <nav
       className={`flex  justify-between items-center ${styles.menuContainer}`}

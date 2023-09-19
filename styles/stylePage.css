@@ -523,6 +523,7 @@ img {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     height: auto;
     margin: 0 auto;
     padding: 10px;
@@ -725,7 +726,7 @@ footer {
 
 .imagen-superpuesta-banner {
     position: absolute;
-    bottom: 110px;
+    bottom: 40px;
     left: 0;
     width: 150%;
     height: 20%;
@@ -734,7 +735,7 @@ footer {
 
 @media(max-width: 375px){
     .imagen-superpuesta-banner {
-        bottom: 50px !important;
+        bottom: 0px !important;
     }
 }
 @media(max-width: 768px) {

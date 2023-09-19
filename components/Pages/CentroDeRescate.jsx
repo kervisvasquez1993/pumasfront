@@ -14,8 +14,11 @@ import SlidetWithContent from "../Section/Slider/SliderWithContent";
 import ReactMarkdown from "react-markdown";
 import useScreenSize from "../../hooks/useScreenSize";
 import Loader from "../UI/Loader";
+import { useRouter } from "next/router";
 
 const CentroDeRescate = ({ data }) => {
+  const router = useRouter();
+  const { slug, lang } = router.query
   const { componentDynamics } = data;
   const { screenSize } = useScreenSize()
   if (!componentDynamics) {
@@ -119,7 +122,7 @@ const CentroDeRescate = ({ data }) => {
               </ReactMarkdown>
               <ButtonView
                 className={" backgroundSecondary m-0 manropeFont py-10"}
-                link={""}
+                link={`${lang}/${fourthSection?.btn?.url}`}
               >
                 Conoce Más
               </ButtonView>

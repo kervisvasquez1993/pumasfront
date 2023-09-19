@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Footer from "../Footer/Footer";
-import Menu from "../Menu/Menu";
-import MobileMenu from "../Menu/MobileMenu";
+import Navbar from "../../components/UI/Navbar/NavBar";
 import style from "./style.module.css";
 import useMenu from "../../hooks/useMenu";
 import { useRouter } from "next/router";
-import MenuBurger from "../../components/UI/MenuBurguer";
-import Navbar from "../../components/UI/Navbar/NavBar";
 import useLocale from "../../hooks/useLocales";
 
 const Main = ({ children, titlePage }) => {
   const { menuData, loading } = useMenu();
-  const { langAllContext } = useLocale()
-  // console.log(langAllContext)
+  const { langAllContext } = useLocale();
   const { query } = useRouter();
   const { lang, slug } = query;
   const [stateMenu, setStateMenu] = useState(null);
- 
+  const [isHeaderSticky, setIsHeaderSticky] = useState(false);
+
   useEffect(() => {
     if (!loading && menuData && lang) {
       const currentLanguageMenu = menuData.find(
@@ -41,22 +38,34 @@ const Main = ({ children, titlePage }) => {
     }
   }, []);
 
-  const [isMobile, setIsMobile] = useState(false);
-
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024);
+    const handleScroll = () => {
+      const threshold = 100; // Ajusta esto según tu preferencia
+
+      // Si el desplazamiento vertical es mayor o igual al umbral, establece el encabezado como pegajoso
+      if (window.scrollY >= threshold) {
+        setIsHeaderSticky(true);
+      } else {
+        setIsHeaderSticky(false);
+      }
     };
 
-    window.addEventListener("resize", handleResize);
-    handleResize();
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  const headerClassName = `${style.headerMenu} ${isHeaderSticky ? "stickyHeader" : ""
+    }`;
   const shouldApplyHeaderStyle = slug !== "inicio";
+
+  const headerClassNameInicio = `${isHeaderSticky ? style.headerMenu + " stickyHeader" : ""
+    }`;
+
+
   return (
     <>
       <Head>
@@ -64,9 +73,7 @@ const Main = ({ children, titlePage }) => {
         <meta name="description" content="Descripción de tu página" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <header
-        className={`${shouldApplyHeaderStyle ? style.headerMenu : ""}`}
-      >
+      <header className={`${shouldApplyHeaderStyle ? headerClassName : headerClassNameInicio} `}>
         <Navbar items={stateMenu} />
       </header>
       <main className="maxWidthBody">{children}</main>
