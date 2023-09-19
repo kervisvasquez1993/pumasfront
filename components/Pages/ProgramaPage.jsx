@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Main from "../../Layout/Main/Main";
 import usePages from "../../hooks/usePages";
 import BasicSectionFull from "../Section/Basic/BasicSectionFull";
@@ -29,14 +29,35 @@ const ProgramaPage = ({ data }) => {
   });
 
   const materialEducativo = fifthElement.material_educativos.data?.map((elemento, index) => {
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+    };
     return (
-      <div className="dowloads" key={index}>
+      <div
+        className="downloads"
+        key={index}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className="materials__imagen">
-          <img src={elemento?.attributes?.imgFile?.data?.attributes?.url} alt="imagen santuario" />
+          <img
+            src={elemento?.attributes?.imgFile?.data?.attributes?.url}
+            alt="imagen santuario"
+          />
+          {isHovered && (
+            <Link className="download-button" href={elemento?.attributes?.file?.data?.attributes?.url}  download>Descargar</Link>
+          )}
         </div>
         <div className="wrapperTitleCard">
-          <h2 className="materials_text2 manropeFont colorSecondary font-bold">{elemento?.attributes.title}</h2>
-          <Link href={elemento?.attributes?.file?.data?.attributes?.url} className="manropeFont fontSize20" download>Libro de Actividades</Link>
+          <h2 className="materials_text2 manropeFont colorSecondary font-bold">
+            {elemento?.attributes.title}
+          </h2>
         </div>
       </div>)
   })
@@ -73,7 +94,7 @@ const ProgramaPage = ({ data }) => {
         </div>
 
       </div>
-      
+
 
     </Main>
 

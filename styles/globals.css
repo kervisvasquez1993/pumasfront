@@ -835,3 +835,87 @@ ul.thumbs li {
   width: 100%;
   height: 100%;
 }
+
+
+
+
+
+/* Estilo del contenedor de la imagen */
+.materials__imagen {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Estilo del fondo cuando el cursor está sobre la imagen */
+.materials__imagen:hover {
+  background-color: rgba(255, 255, 255, 1); /* Fondo blanco con opacidad */
+}
+
+/* Estilo del botón de descarga */
+.download-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  display: none;
+  z-index: 1; /* Asegura que el botón esté por encima del fondo */
+}
+
+/* Mostrar el botón al pasar el cursor sobre el contenedor */
+.materials__imagen:hover .download-button {
+  display: block;
+}
+
+.materials__imagen:hover:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con opacidad */
+  z-index: -1; /* Coloca el fondo detrás del contenido */
+}
+/* Estilo del contenedor de la imagen */
+.materials__imagen {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 300px; /* Tamaño fijo para el ancho */
+  height: 200px; /* Tamaño fijo para la altura */
+  overflow: hidden;
+}
+
+/* Estilo del fondo cuando el cursor está sobre la imagen */
+.materials__imagen:hover {
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con opacidad */
+}
+
+/* Estilo de la imagen dentro del contenedor */
+.materials__imagen img {
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+  height: 100%; /* Asegura que la imagen ocupe todo el alto del contenedor */
+  object-fit: cover; /* Controla cómo se ajusta la imagen dentro del contenedor */
+}
+
+/* Estilo del botón de descarga */
+.download-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  display: none;
+  z-index: 1; /* Asegura que el botón esté por encima del fondo */
+}
