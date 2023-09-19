@@ -442,8 +442,19 @@ img {
 .dowloads-container .downloads{
     width: 30%;
     height: auto;
+    padding: 20px;
 }
+@media (max-width: 992px) {
+    .dowloads-container .downloads{
+        width: 50%;
+    }
+  }
 
+  @media (max-width: 768px) {
+    .dowloads-container .downloads{
+        width: 80%;
+    }
+  }
 .materials__imagen {
   width: 100%;
   position: relative; /* Añade posición relativa para el seudoelemento ::before */

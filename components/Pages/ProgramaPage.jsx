@@ -88,7 +88,7 @@ const ProgramaPage = ({ data }) => {
           <div className="materials-edu_text fuentesParrafo px-10">
             <ReactMarkdown>{fourthElement.content}</ReactMarkdown>
           </div>
-          <div className="dowloads-container">
+          <div className="dowloads-container my-5">
             {materialEducativo}
           </div>
         </div>
