@@ -7,11 +7,11 @@ const BasicSectionFull = ({ title, content, imageUrl }) => {
       <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
         {title}
       </h3>
-      <div className="grid-2">
-        <div className="about-program_text fuentesParrafo sm:px-10 sm:py-5 ">
+      <div className="grid-2 px-5">
+        <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 ">
           <ReactMarkdown>{content}</ReactMarkdown>
         </div>
-        <div className="program__imagen p-10">
+        <div className="program__imagen lg:p-10">
           <img src={imageUrl} alt="imagen santuario" />
         </div>
       </div>

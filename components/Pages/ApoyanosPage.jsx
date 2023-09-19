@@ -37,11 +37,12 @@ const ApoyanosPage = ({ data }) => {
     <Main titlePage={data.title}>
       <div className="container">
         <section className="container-section py-10 my-5">
-          <section className="grid-2">
+          <section className={ `${screenSize >= 1024 ? "grid-2" : ""}` }>
+           
             <section>
               <HeaderComponets
                 src="/images/fondo1.png"
-                classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 "}
+                classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 font-responsive"}
                 alignment={`${screenSize <= 1024 ? "center" : "start"}`}
               >
                 {secondElement.title}
@@ -62,7 +63,7 @@ const ApoyanosPage = ({ data }) => {
                 </ButtonView>
               </BasicSection>
             </section>
-            <section>
+            <section className="px-5">
               <HeaderComponets
                 src=""
                 classNameText={"colorSecondary chelseaFont pt-10 mt-10 "}
@@ -70,7 +71,7 @@ const ApoyanosPage = ({ data }) => {
               >
                 {threeElement.title}
               </HeaderComponets>
-              <section className="grid-2">
+              <section className="grid-2 px-5">
                 {elementDonar}
 
               </section>
@@ -81,13 +82,13 @@ const ApoyanosPage = ({ data }) => {
           {/* content 2  */}
           <HeaderComponets
             src="/images/fondo1.png"
-            classNameText={"colorVerde chelseaFont"}
+            classNameText={"colorVerde chelseaFont font-responsive"}
             classNameSection={"py-5 my-5"}
             alignment={`${screenSize <= 1024 ? "center" : "start"}`}
           >
             {sextoElemento.title}
           </HeaderComponets>
-          <section className="grid-2">
+          <section className={ `${screenSize >= 1024 ? "grid-2" : ""}` }>
             <section>
               <BasicSection
                 classNameTitle={""}
@@ -115,12 +116,12 @@ const ApoyanosPage = ({ data }) => {
         <section className="container-section py-10 m-5">
           <HeaderComponets
             src="/images/fondo1.png"
-            classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 "}
+            classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 font-responsive"}
             alignment={`${screenSize <= 1024 ? "center" : "start"}`}
           >
             {secondElement.title}
           </HeaderComponets>
-          <section className="grid-2 px-10 mx-10">
+          <section className="grid-2 lg:px-10 mx-10">
             <SliderThree>
               {imagenes.map((image, index) => {
 

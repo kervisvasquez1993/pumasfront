@@ -49,8 +49,8 @@ const HomePage = ({ data }) => {
 
         <HeaderComponets
           classNameText={"mt-10 p-5 colorPrimary chelseaFont"}
-          alignment={`${screenSize <= 1200 ? "center" : "start"}`}
-          width={`${screenSize <= 1200 ? "100%" : "70%"}`}
+          alignment={`${screenSize <= 900 ? "center" : "start"}`}
+          width={`${screenSize <= 900 ? "100%" : "70%"}`}
         >
           {primerElement?.Titulo}
         </HeaderComponets>
@@ -70,7 +70,7 @@ const HomePage = ({ data }) => {
             classNameWrapper={"setionStyle"}
             title={""}
             classNameContent={
-              ` fuentesParrafo  ${screenSize <= 1200 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start "} sm:p-10`
+              ` fuentesParrafo  ${screenSize <= 1200 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start "} p-5 lg:p-10`
             }
             width={`${screenSize <= 1200 ? "100%" : "70%"}`}
             alignItems={"center"}

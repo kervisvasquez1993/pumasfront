@@ -67,7 +67,7 @@ const ProgramaPage = ({ data }) => {
       <div className="container">
         <BasicSectionFull imageUrl={url} title={firstElement?.title} content={firstElement.content} ></BasicSectionFull>
         <div className="container-edu backgroundProgrmar p-10 my-10">
-          <div className="grid-2">
+          <div className="grid-2 px-8">
             <div>
               <h3 className="edu-title fuenteTitulo titleGreen">{secondElement.title}</h3>
               <ReactMarkdown className="fuentesParrafo">{secondElement.content}</ReactMarkdown>

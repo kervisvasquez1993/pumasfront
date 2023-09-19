@@ -2,7 +2,7 @@ import React from "react";
 
 const CardBasic = ({ imgSrc, showMask, maskSrc=false, iconSrc, title, subtitle }) => {
   return (
-    <section className="wrapperElement sm:p-10">
+    <section className="wrapperElement lg:p-10">
       <div className="imagen-container p-5">
         <img className="imagen" src={imgSrc} alt={imgSrc} />
         {showMask && (

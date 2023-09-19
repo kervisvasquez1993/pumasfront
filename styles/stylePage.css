@@ -127,7 +127,7 @@ img {
     text-align: right;
 }
 
-@media(max-width: 1400px) {
+@media(max-width: 800px) {
     .grid-2 {
         display: block;
         text-align: center;
@@ -375,7 +375,28 @@ img {
     .icon-flex-2 {
         width: 40%;
     }
-
+    .imagen-icono-animal {
+        
+        left: 17px;
+        width: 80px;
+        height: 80px;
+        
+    }
+   
+}
+@media screen and (max-width: 500px) {
+    
+    .imagen-icono-animal {
+        
+        left: 17px !important;
+        width: 70px !important;
+        height: 70px !important;
+        
+    }
+   
+}
+@media screen and (max-width: 768px) {
+   
 
 }
 
@@ -432,9 +453,8 @@ img {
         width: 4rem;
         margin: 1rem;
     }
-}
-
-@media screen and (max-width: 1024px) {
+} 
+@media screen and (max-width: 800px) {
     .grid-2 {
         display: flex;
         text-align: center;
@@ -480,10 +500,10 @@ img {
 
 
 @media(max-width: 1400px) {
-    .grid-2 {
+    /* .grid-2 {
         display: block;
         text-align: center;
-    }
+    } */
 
     .materials-edu_text {
         width: 100%;
@@ -535,6 +555,7 @@ img {
     margin: 0 auto;
     padding: 10px;
     box-sizing: border-box;
+    justify-content: center;
 }
 
 @media (max-width: 760px) {
@@ -716,8 +737,13 @@ footer {
 .fuentesParrafo p {
     display: inline;
 }
-
-.btnPrimary {
+.fuentesParrafo h4{
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+    font-family: 'Chelsea Market', sans-serif;
+}
+.btnPrimary{
     z-index: 1;
 }
 
@@ -787,7 +813,7 @@ footer {
 
 .contentElemenCard {
     position: absolute;
-    bottom: -29px;
+    bottom: -48px;
     left: 117px;
     height: 100px;
     opacity: 1;
