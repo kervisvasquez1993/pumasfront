@@ -371,6 +371,17 @@ img {
     }
    
 }
+@media screen and (max-width: 500px) {
+    
+    .imagen-icono-animal {
+        
+        left: 17px !important;
+        width: 70px !important;
+        height: 70px !important;
+        
+    }
+   
+}
 @media screen and (max-width: 768px) {
    
 
