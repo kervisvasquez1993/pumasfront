@@ -117,7 +117,7 @@ const CentroDeRescate = ({ data }) => {
               justifyContent={"center"}
               styleWrapper={{ height: "100%" }}
             >
-              <ReactMarkdown className="py-10">
+              <ReactMarkdown className="py-10 fuentesParrafo">
                 {fourthSection.content}
               </ReactMarkdown>
               <ButtonView

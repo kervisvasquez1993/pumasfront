@@ -42,7 +42,6 @@
         transform: translateX(0) !important;
         height: 100vh;
         z-index: 100;
-        margin: 5vh 0;
     }
 
     .nav_toggle {

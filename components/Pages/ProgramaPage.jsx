@@ -11,9 +11,12 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 import CardBasic from "../Section/CardBasic";
 import CardComponent from "../UI/Card/CardComponents";
+import ButtonView from "../../views/ButtonView";
+import { useRouter } from "next/router";
 
 const ProgramaPage = ({ data }) => {
-
+  const router = useRouter();
+  const { slug, lang } = router.query
   const { title, componentDynamics } = data;
   const [firstElement, secondElement, thirdElement, fourthElement, fifthElement] = componentDynamics
   const url = firstElement?.imgBasicContent?.data?.attributes?.url
@@ -124,9 +127,15 @@ const ProgramaPage = ({ data }) => {
               <ReactMarkdown className="fuentesParrafo">{secondElement.content}</ReactMarkdown>
             </div>
             <div className="edu_text">
-              <h3 className="price-title titleGreen">Precios</h3>
+              <h3 className="px-5 price-title titleGreen">Precios</h3>
               {preciosData}
-              <button className="edu-button">Reservar Recorrido</button>
+             
+              <ButtonView
+                className={"edu-button"}
+                link={`${lang}/${secondElement?.btn?.url}`}
+              >
+                Reserva tu recorrido
+              </ButtonView>
             </div>
           </div>
           <div className="edu-icons-container py-10 my-10">
