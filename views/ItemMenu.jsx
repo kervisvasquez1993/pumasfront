@@ -7,15 +7,15 @@ const ItemMenu = ({ items }) => {
     <>
       {items && (
         <ul className={`${style.menuList} flex my-10`}>
-          {items.map((item) => {
+          {items.map((item, index) => {
             if (item.attributes.slug === "inicio") {
               return
             }
             if (item.attributes.nombre === "Apoyanos") {
               return (
-                <Link href={`/${item.attributes.locale}/${item.attributes.slug}`} className={style.menuItem}>
+                <Link href={`/${item.attributes.locale}/${item.attributes.slug}`} className={style.menuItem} key={item.id}>
                   <li
-                    key={item.id}
+                    
                     className="backgroundPrimary text-center fontMenu btnPrimaryMenu font-bold py-2 rounded"
                   >
 

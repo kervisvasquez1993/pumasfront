@@ -23,21 +23,24 @@ const NosotrosPage = ({ data }) => {
     const url = element.attributes.url
     return `${url}`
   })
-  const abousUs = quintoElemet.imagenWithContentBasic.map((element, index) => {
-    return (<section className="w-50 p-5" key={index}>
-      <HeaderComponets
-        alignment={`${screenSize <= 1024 ? "center" : "start"}`}
-        src="/images/fondo1.png"
-        classNameText={"colorSecondary chelseaFont"}
-        classNameSection={"centerElement"}
-      >
-        {element.label}
-      </HeaderComponets>
-      <ReactMarkdown className="py-5">{
-        element.content
-      }</ReactMarkdown>
-    </ section>)
-  })
+  const abousUs = quintoElemet.imagenWithContentBasic
+    .slice(0, 2) // Esto limitará el arreglo a los dos primeros elementos
+    .map((element, index) => {
+      return (
+        <section className="" key={index}>
+          <HeaderComponets
+            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+            src="/images/fondo1.png"
+            classNameText={"colorSecondary chelseaFont"}
+            classNameSection={"centerElement"}
+          >
+            {element.label}
+          </HeaderComponets>
+          <ReactMarkdown className="py-5">{element.content}</ReactMarkdown>
+        </section>
+      );
+    });
+
 
   const sliderReconocimiento = septimoElemento.imagenWithContentBasic.map(element => {
     return (<Section
@@ -146,7 +149,24 @@ const NosotrosPage = ({ data }) => {
             title={""}
             classNameContent={"fuentesParrafo py-10 flex-vision"}
           >
-            {abousUs}
+            <section className="w-50 p-5">
+              {abousUs}
+            </section>
+            <section className="w-50 p-5">
+              <section className="">
+                <HeaderComponets
+                  alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+                  src="/images/fondo1.png"
+                  classNameText={"colorSecondary chelseaFont"}
+                  classNameSection={"centerElement"}
+                >
+                  {quintoElemet.imagenWithContentBasic[2].label}
+                </HeaderComponets>
+                <ReactMarkdown className="py-5">{quintoElemet.imagenWithContentBasic[2].content}</ReactMarkdown>
+              </section>
+            </section>
+
+
           </BasicSection>
 
 

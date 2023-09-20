@@ -821,7 +821,7 @@ footer {
     }
 
     .section-titles {
-        justify-content: start;
+        justify-content: center;
         font-size: 1.5rem !important;
     }
 
