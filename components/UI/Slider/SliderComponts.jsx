@@ -9,8 +9,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 export default function Slider({ srcBackgroundColor = "", data = {} }) {
-  console.log(data, "data")
-
   const router = useRouter();
   const { lang } = router.query
   const blogInfo = data.map((e, index) => {

@@ -967,3 +967,13 @@ ul.thumbs li {
 .materials__imagen:hover .download-button {
   display: block;
 }
+
+.sliderCustom{
+  max-width: 30vw;
+  margin: 0 auto;
+  background: blue;
+}
+.wrapperSliderCustom{
+  margin: 0 auto;
+  background: red;
+}

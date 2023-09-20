@@ -199,7 +199,7 @@ const NosotrosPage = ({ data }) => {
           >
             Reconocimiento
           </HeaderComponets>
-          <SliderGeneral slides={sliderReconocimiento} themeColor="#96C473" />;
+          <SliderGeneral slides={sliderReconocimiento} themeColor="#96C473" />
         </section>
 
       </div>

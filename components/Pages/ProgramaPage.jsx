@@ -4,6 +4,13 @@ import usePages from "../../hooks/usePages";
 import BasicSectionFull from "../Section/Basic/BasicSectionFull";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper";
+import CardBasic from "../Section/CardBasic";
+import CardComponent from "../UI/Card/CardComponents";
 
 const ProgramaPage = ({ data }) => {
 
@@ -51,7 +58,7 @@ const ProgramaPage = ({ data }) => {
             alt="imagen santuario"
           />
           {isHovered && (
-            <Link className="download-button" href={elemento?.attributes?.file?.data?.attributes?.url}  download>Descargar</Link>
+            <Link className="download-button" href={elemento?.attributes?.file?.data?.attributes?.url} download>Descargar</Link>
           )}
         </div>
         <div className="wrapperTitleCard">
@@ -61,11 +68,55 @@ const ProgramaPage = ({ data }) => {
         </div>
       </div>)
   })
-
+  console.log(firstElement?.imagenWithContentBasic[0], "firstElement")
+  const animales = firstElement?.imagenWithContentBasic?.map((element, index) => {
+    console.log(element?.img?.data[0].attributes.url, "element?.img?.data?.attributes?.url")
+    return (
+      <SwiperSlide key={index} className="wrapperSliderCustom">
+        {/* <CardComponent
+        description={"tets"}
+        title={element.title}
+        imageUrl={element?.img?.data[0].attributes.url}
+      /> */}
+      </SwiperSlide>
+    )
+  })
   return (
     <Main titlePage={title}>
       <div className="container">
-        <BasicSectionFull imageUrl={url} title={firstElement?.title} content={firstElement.content} ></BasicSectionFull>
+        {/* <BasicSectionFull imageUrl={url} title={firstElement?.title} content={firstElement.content} ></BasicSectionFull> */}
+        <div className="container-program">
+          <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
+            {firstElement?.title}
+          </h3>
+          <div className="grid-2 px-5">
+            <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 ">
+              <ReactMarkdown>{firstElement?.content}</ReactMarkdown>
+            </div>
+            {/* <div className="program__imagen lg:p-10"> */}
+              {/* <Swiper
+                // onSwiper={true}
+                slidesPerView={1}
+                centeredSlides={false}
+                spaceBetween={60}
+                navigation={true}
+                modules={[Pagination, Navigation]}
+                className="mySwiper sliderCustom"
+              >
+                {animales}
+              </Swiper> */}
+              <CardBasic
+                showMask={true}
+                maskSrc={"/images/mask.png"}
+                iconSrc={"/images/modelo3d.png"}
+                imgSrc={firstElement?.imagenWithContentBasic[0].img.data[0].attributes.url}
+                title={firstElement?.imagenWithContentBasic[0].label}
+                subtitle={firstElement?.imagenWithContentBasic[0].subtitle}
+              />
+
+            {/* </div> */}
+          </div>
+        </div>
         <div className="container-edu backgroundProgrmar p-10 my-10">
           <div className="grid-2 px-8">
             <div>

@@ -347,6 +347,7 @@ export const getPagesGQ = async (language) => {
               }
              imagenWithContentBasic{
               label
+              subtitle
               content
               img{
                 data{
