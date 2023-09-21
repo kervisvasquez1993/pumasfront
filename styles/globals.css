@@ -274,8 +274,8 @@ a {
 
 @media screen and (min-width: 1440px) {
   .maxWidthBody {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     min-height: 80vh;
 
 
@@ -983,4 +983,8 @@ ul.thumbs li {
 .wrapperSliderCustom{
   margin: 0 auto;
   background: red;
+}
+
+.widthMap{
+  width: 100%;
 }

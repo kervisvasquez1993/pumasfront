@@ -20,11 +20,9 @@ import { useRouter } from "next/router";
 
 
 const HomePage = ({ data }) => {
-  // console.log(data, "data desde home");
   const router = useRouter();
   const { lang } = router.query
-  const { componentDynamics } = data
-  // console.log(componentDynamics, "component");
+  const { componentDynamics, banner } = data
   const [primerElement, segundoElemento, tercerElemento, cuartoElemento, quintoElemento, sextoElemento, septiomoElemento, octavoElemento] = componentDynamics
   
   const horarios = octavoElemento?.imagenWithContentBasic?.map((element, index) => {
@@ -36,11 +34,10 @@ const HomePage = ({ data }) => {
     </section>)
   })
   const { screenSize } = useScreenSize()
-
   return (
     <Main titlePage={"Inicio"}>
       {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}
-      <BannerComponents />
+      <BannerComponents data={banner} />
 
 
       <div className=" container">
