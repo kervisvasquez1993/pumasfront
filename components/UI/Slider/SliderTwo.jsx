@@ -5,6 +5,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import style from "./style.module.css";
 import ImgComponent from "../ImgComponent/ImgComponents";
+import usePatocinadores from "../../../hooks/usePatrocinadores";
+import { Loader } from "@react-three/drei";
 
 SwiperCore.use([Navigation]);
 
@@ -12,7 +14,15 @@ const SliderTwo = () => {
   const backgroundColor = "#fffdf6";
   const [swiper, setSwiper] = useState(null);
   const [slidesPerView, setSlidesPerView] = useState(5); // Valor predeterminado para pantallas mayores a 1200px
+  const { patrocinadores, loading } = usePatocinadores()
+  if (loading) <Loader />
+  const dataPatrocidores = patrocinadores?.map((patrocindador, index) => {
 
+    return (<SwiperSlide key={index}>
+      {/* <ImgComponent imageUrl={patrocindador?.attributes?.logo?.data?.attributes?.formats?.small?.url} /> */}
+      <ImgComponent imageUrl={patrocindador?.attributes?.logo?.data?.attributes?.url} />
+    </SwiperSlide>)
+  })
   const handlePrev = () => {
     if (swiper) {
       swiper.slidePrev();
@@ -69,27 +79,7 @@ const SliderTwo = () => {
         className="mySwiper"
         onSwiper={setSwiper}
       >
-        <SwiperSlide>
-          <ImgComponent imageUrl={"/images/marca1.png"} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ImgComponent imageUrl={"/images/marca2.png"} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ImgComponent imageUrl={"/images/marca3.png"} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ImgComponent imageUrl={"/images/marca4.png"} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ImgComponent imageUrl={"/images/marca5.png"} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ImgComponent imageUrl={"/images/marca5.png"} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ImgComponent imageUrl={"/images/marca5.png"} />
-        </SwiperSlide>
+        {dataPatrocidores}
       </Swiper>
     </div>
   );

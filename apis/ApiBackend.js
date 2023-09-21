@@ -29,7 +29,7 @@ export const getPatrocinadores = (language) => {
       locale: language,
     },
   };
-  return ApiBackend("api/patrocinadores", config);
+  return ApiBackend("api/patrocinadores?populate=*", config);
 };
 
 
@@ -80,7 +80,7 @@ export const getAllDonations = (lang) => {
     },
   };
 
-  return ApiBackend("api/donaciones?populate=*&locale=" + lang, config);
+  return ApiBackend("api/donaciones?populate=*&sort=rang:asc&locale=" + lang, config);
 };
 
 export const getTypeDonations = (lang) => {

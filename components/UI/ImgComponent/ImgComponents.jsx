@@ -5,7 +5,7 @@ const ImgComponent = ({ imageUrl }) => {
     <img
       src={imageUrl}
       alt="Imagen"
-      style={{ width: "100%", height: "100%", objectFit: "none" }}
+      style={{ width: "100%", height: "100%", objectFit: "contain" }}
     />
   );
 };

@@ -12,6 +12,7 @@ import { DonationsProvider } from "../context/DonationsProvider";
 import { PagesProvider } from "../context/PagesProvider";
 import { ScreenSizeProvider } from "../context/ScreenSizeProvider";
 import { LocaleProvider } from "../context/LocalesProvider";
+import { PatrocindadoresProvider } from "../context/PatrocinadoresProvider";
 
 function MyApp({ Component, pageProps }) {
   const [initialRenderComplete, setInitialRenderComplete] = useState(false);
@@ -29,9 +30,11 @@ function MyApp({ Component, pageProps }) {
         <MenuProvider>
           <PagesProvider>
             <ModeloProvider>
-              <DonationsProvider>
-                <Component {...pageProps} />
-              </DonationsProvider>
+              <PatrocindadoresProvider>
+                <DonationsProvider>
+                  <Component {...pageProps} />
+                </DonationsProvider>
+              </PatrocindadoresProvider>
             </ModeloProvider>
           </PagesProvider>
         </MenuProvider>
