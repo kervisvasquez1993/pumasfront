@@ -8,6 +8,7 @@ import CanvasModel from "../Canvas/CanvasModel";
 import { Puma } from "../Models/Puma";
 import SelectedModels from "../Models/SelectedModels";
 import { useRouter } from "next/router";
+import useScreenSize from "../../hooks/useScreenSize";
 
 
 export default function Modal({ showModal, setShowModal, data }) {
@@ -17,16 +18,14 @@ export default function Modal({ showModal, setShowModal, data }) {
 
   const router = useRouter();
   const { slug, lang } = router.query
-  // console.log(data, "llamando modelo")
-  // console.log(data?.modelo3d,"llamando a modelo3d")
-  // console.log(data?.componente,"llamando a componente")
-  
+  const { screenSize } = useScreenSize()
   return (
     <>
       {showModal && (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <TwoColumnGrid>
+          <section className="container-section mask-background ">
+          <section className="modelShowItem  py-5">
               <section className="wrapperModel">
                 <SelectedModels
                   modelX={data?.modelX}
@@ -85,7 +84,8 @@ export default function Modal({ showModal, setShowModal, data }) {
                   </div>
                 </div>
               </div>
-            </TwoColumnGrid>
+              </section>
+            </section>
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>

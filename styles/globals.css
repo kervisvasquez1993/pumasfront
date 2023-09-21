@@ -710,6 +710,13 @@ ul.thumbs li {
   background: transparent !important;
 }
 
+.modelShowItem{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .loader {
   width: 40px;
   aspect-ratio: 1;

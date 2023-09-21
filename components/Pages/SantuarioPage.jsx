@@ -76,90 +76,91 @@ const SantuarioPage = ({ data }) => {
             })}
         </MapWithBackground>
       </section>
-      <Modal
-        showModal={openModal}
-        setShowModal={setOpenModal}
-        data={stateModal}
-        title={"Model Information"}
-        body={
-          <p className="my-4 text-slate-500 text-lg leading-relaxed">
-            {stateModal ? stateModal.srcModelo : ""}
-          </p>
-        }
-      />
 
       <div className="container">
-       
+        <Modal
+          showModal={openModal}
+          setShowModal={setOpenModal}
+          data={stateModal}
+          title={"Model Information"}
+          body={
+            <p className="my-4 text-slate-500 text-lg leading-relaxed">
+              {stateModal ? stateModal.srcModelo : ""}
+            </p>
+          }
+        />
+
+
+        <HeaderComponets
+          src="/images/fondo1.png"
+          classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
+          alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+        >
+          {firstElement.Titulo}
+        </HeaderComponets>
+
+
+        <section className="container-section lg:p-10 lg:m-5">
+          <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
+        </section>
+
+
+        <TwoColumnGrid backgroundImage={thirdElement.background?.data?.attributes.url}>
           <HeaderComponets
+            alignment="center"
             src="/images/fondo1.png"
-            classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
-            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+            classNameText={"colorSecondary chelseaFont lg:px-10 mx-10"}
+            classNameSection={"centerElement"}
           >
-            {firstElement.Titulo}
+            {thirdElement.title}
           </HeaderComponets>
+          <BasicSection
+            classNameTitle={""}
+            classNameWrapper={"setionStyleTwo"}
+            title={""}
+            alignItems={"center"}
+            justifyContent={"center"}
+            width={`${screenSize <= 1024 ? "100%" : "75%"}`}
+            classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-5 lg:p-10 lg:m-10`}
 
-
-          <section className="container-section lg:p-10 lg:m-5">
-            <SlidetWithContent images={imgSlider} content={secondElement.Content} title={secondElement.title} />
-          </section>
-        
-        
-          <TwoColumnGrid backgroundImage={thirdElement.background?.data?.attributes.url}>
-            <HeaderComponets
-              alignment="center"
-              src="/images/fondo1.png"
-              classNameText={"colorSecondary chelseaFont lg:px-10 mx-10"}
-              classNameSection={"centerElement"}
+          >
+            <ReactMarkdown className="py-10">{thirdElement.content}</ReactMarkdown>
+            <ButtonView
+              className={" backgroundSecondary m-0 manropeFont p-5"}
+              link={`${lang}/${thirdElement?.btn?.url}`}
             >
-              {thirdElement.title}
-            </HeaderComponets>
-            <BasicSection
-              classNameTitle={""}
-              classNameWrapper={"setionStyleTwo"}
-              title={""}
-              alignItems={"center"}
-              justifyContent={"center"}
-              width={`${screenSize <= 1024 ? "100%" : "75%"}`}
-              classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-5 lg:p-10 lg:m-10`}
+              Reserva tu recorrido
+            </ButtonView>
+          </BasicSection>
+        </TwoColumnGrid>
 
-            >
-              <ReactMarkdown className="py-10">{thirdElement.content}</ReactMarkdown>
-              <ButtonView
-                className={" backgroundSecondary m-0 manropeFont p-5"}
-                link={`${lang}/${thirdElement?.btn?.url}`}
-              >
-                Reserva tu recorrido
-              </ButtonView>
-            </BasicSection>
-          </TwoColumnGrid>
-        
-        
-       
-            <HeaderComponets
-              alignment="center"
-              src="/images/fondo1.png"
-              classNameText={"program-title fuenteTitulo colorVerde p-10 m-10 font-responsive"}
-              classNameSection={"centerElement"}
-            >
-              {fourthElement.title}
 
-            </HeaderComponets>
-            <BasicSection
-              classNameTitle={""}
-              classNameWrapper={"setionStyleTwo"}
-              title={""}
-              alignItems={"center"}
-              justifyContent={"center"}
-              width={`${screenSize <= 1024 ? "100%" : "40%"}`}
-              classNameContent={
-                "fuentesParrafo align-vertical-center-horizontal-start px-10 mx-10"
-              }
-            >
-              <ReactMarkdown className="py-10">{fourthElement?.content}</ReactMarkdown>
-            </BasicSection>
 
-            
-          <div className="container-sant ">
+        <HeaderComponets
+          alignment="center"
+          src="/images/fondo1.png"
+          classNameText={"program-title fuenteTitulo colorVerde p-10 m-10 font-responsive"}
+          classNameSection={"centerElement"}
+        >
+          {fourthElement.title}
+
+        </HeaderComponets>
+        <BasicSection
+          classNameTitle={""}
+          classNameWrapper={"setionStyleTwo"}
+          title={""}
+          alignItems={"center"}
+          justifyContent={"center"}
+          width={`${screenSize <= 1024 ? "100%" : "40%"}`}
+          classNameContent={
+            "fuentesParrafo align-vertical-center-horizontal-start px-10 mx-10"
+          }
+        >
+          <ReactMarkdown className="py-10">{fourthElement?.content}</ReactMarkdown>
+        </BasicSection>
+
+
+        <div className="container-sant ">
 
           <div className="icons-container sm:py-10 sm:my-10">
 
