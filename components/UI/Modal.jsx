@@ -59,10 +59,10 @@ export default function Modal({ showModal, setShowModal, data }) {
                     />
                   </svg>
                 </button>
-                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <div className="conte border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                   <NavigationSlider slides={data?.imagenes} />
-                  <div className="relative p-6 flex-auto">
-                    <div className="headeModal">
+                  <div className=" relative p-6 flex-auto">
+                    <div className="conte1 headeModal">
                       <section>
                         <h2 className="chelseaFont colorPrimary fontSize24">
                           {data?.nombre}

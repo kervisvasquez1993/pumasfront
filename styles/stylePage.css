@@ -10,7 +10,6 @@ body {
 }
 
 
-
 .no-margin {
     margin: 0;
 }
@@ -180,6 +179,12 @@ img {
     .icons_text {
         padding: 0 !important;
     }
+    .modelShowItem {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+    }
 }
 
 @media(max-width: 420px) {
@@ -195,6 +200,12 @@ img {
 
     .icons-container .icon-flex-2 {
         justify-content: flex-start !important;
+    }
+    .conte{
+        width: 90vw;
+    }
+    .conte1{
+        flex-direction: column;
     }
 }
 
