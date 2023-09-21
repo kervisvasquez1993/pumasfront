@@ -13,7 +13,6 @@ import usePages from "../../../hooks/usePages";
 import Loader from "../../../components/UI/Loader";
 
 const Page = ({ page, models, blogsPage, modelsGQ }) => {
-  console.log(blogsPage, "response")
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
@@ -82,6 +81,7 @@ export const getStaticProps = async ({ params }) => {
       slug: page.attributes.slug,
       componentDynamics: page.attributes.DynamicComponent,
       locales: lang,
+      banner: page?.attributes?.banner,
       contentType: "component",
     }
   })
@@ -96,7 +96,7 @@ export const getStaticProps = async ({ params }) => {
     }
     return {
       props: { page: { ...page }, models, modelsGQ },
-      revalidate : 10
+      revalidate: 10
     };
   }
   if (page.slug === "blog") {

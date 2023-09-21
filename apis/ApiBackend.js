@@ -303,8 +303,26 @@ export const getPagesGQ = async (language) => {
         id
         attributes{
           title
-          
           slug
+          banner{
+            ...on ComponentUiBanner{
+              content
+              tituloBanner
+              backgroundImage{
+                data{
+                  attributes{
+                    url
+                  }
+                }
+              }
+              btn{
+                label
+                id
+                url
+                backgroundButton
+              }
+            }
+          }
           DynamicComponent{
             ... on ComponentUiHeaderTitle {
               id
