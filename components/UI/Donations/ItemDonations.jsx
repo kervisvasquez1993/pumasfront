@@ -2,7 +2,7 @@ import React from "react";
 
 const ItemDonations = ({ data, selected, onClick, className="" }) => {
   const { id, monto, donacion, imgSrc } = data;
-  if (imgSrc?.data) {
+  if (imgSrc?.data, "imagen del modelo") {
     return (
       <div
         className={`item itemDonationSrc chelseaFont ${className} ${
@@ -10,7 +10,7 @@ const ItemDonations = ({ data, selected, onClick, className="" }) => {
         }`}
         onClick={onClick}
       >
-        <img src={+ imgSrc.data.attributes.url} />
+        <img src={imgSrc?.data?.attributes?.url} />
       </div>
     );
   }

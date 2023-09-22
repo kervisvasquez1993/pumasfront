@@ -7,6 +7,7 @@ import SliderThree from "../UI/Slider/SliderThree";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
 import useScreenSize from "../../hooks/useScreenSize";
+import Link from "next/link";
 const ApoyanosPage = ({ data }) => {
   const router = useRouter();
   const { slug, lang } = router.query
@@ -73,7 +74,6 @@ const ApoyanosPage = ({ data }) => {
               </HeaderComponets>
               <section className="grid-2 px-5">
                 {elementDonar}
-
               </section>
             </section>
           </section>
@@ -102,6 +102,7 @@ const ApoyanosPage = ({ data }) => {
                 </div>
                
                 <ReactMarkdown className="py-10">{quintoElmento.content}</ReactMarkdown>
+                {/* amazon */}
                 <ButtonView
                   className={" backgroundVerde m-0 manropeFont p-5"}
                   link={quintoElmento.btn.url}
@@ -139,12 +140,13 @@ const ApoyanosPage = ({ data }) => {
               classNameContent={"fuentesParrafo py-10"}
             >
               <ReactMarkdown className="py-10">{sextoElemento.content}</ReactMarkdown>
-              <ButtonView
-                className={" backgroundPrimary m-0 px-10 manropeFont py-10"}
-                link={""}
-              >
-                Descargar PDF
-              </ButtonView>
+              <Link className={`backgroundPrimary m-0 px-10 manropeFont py-10 btnPrimary py-2  `} href={`${sextoElemento.btn.url}`}>
+                   {sextoElemento?.btn?.label}
+              </Link>
+               
+               
+              
+             
             </BasicSection>
           </section>
         </section>

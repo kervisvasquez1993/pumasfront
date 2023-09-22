@@ -9,7 +9,6 @@ import DonationInfo from "./Donations/DonationInfo";
 import HeaderComponents from "./HeaderComponents/HeaderComponets";
 
 const StepByStepComponent = ({ typeDonations, donationAll }) => {
-  // console.log(typeDonations, "typeDonations")
   const { loadedDonations, loadedParams, filterArray } = useDonations();
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);

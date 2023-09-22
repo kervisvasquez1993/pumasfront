@@ -52,13 +52,13 @@ const Donations = ({ result, typeDonationSchemes }) => {
           />
         </div>
         <HeaderComponents
-            src="/images/fondo1.png"
-            classNameText={"py-5 colorVerde chelseaFont"}
-            alignment={`${screenSize <= 1200 ? "center" : "start"}`}
-          >
-            PATROCINADORES
-          </HeaderComponents>
-          <SliderTwo />
+          src="/images/fondo1.png"
+          classNameText={"py-5 colorVerde chelseaFont"}
+          alignment={`${screenSize <= 1200 ? "center" : "start"}`}
+        >
+          PATROCINADORES
+        </HeaderComponents>
+        <SliderTwo />
       </div>
     </Main>
   );
@@ -66,50 +66,50 @@ const Donations = ({ result, typeDonationSchemes }) => {
 
 export default Donations;
 
-export const getStaticProps = async ({params}) => {
-  const {lang} = params;
-    const [response, typeDonations] = await Promise.all([
-      getAllDonations(lang),
-      getTypeDonations(lang),
-    ]);
+export const getStaticProps = async ({ params }) => {
+  const { lang } = params;
+  const [response, typeDonations] = await Promise.all([
+    getAllDonations(lang),
+    getTypeDonations(lang),
+  ]);
 
 
 
-    
-    const typeDonationsResponse = typeDonations.data.data;
-    const results = response.data.data;
 
-    // console.log(results, "result"); 
-   
-    
-      const result = results.map((element) => (
-        {
-        id: element.id,
-        monto: element.attributes.monto,
-        donacion: element.attributes.donacion,
-        locale: element.attributes.locale,
-        imgSrc: element.attributes.imgSrc,
-        modelos: element.attributes.modelos,
-        tipo_de_donacions : element.attributes.tipo_de_donacions
-      }));
-  
-      const typeDonationSchemes = typeDonationsResponse.map((element) => ({
-        id: element.id,
-        titulo: element.attributes.titulo,
-        beneficio: element.attributes.Beneficio,
-        descripcion: element.attributes.descripcion,
-        slug: element.attributes.slug,
-        imagen: element.attributes.imagen,
-        locale: element.attributes.locale,
-      }));
-    
-    
-    return {
-      props: {
-        result: result,
-        typeDonationSchemes: typeDonationSchemes,
-      },
-    };
+  const typeDonationsResponse = typeDonations.data.data;
+  const results = response.data.data;
+
+  // console.log(results, "result"); 
+
+
+  const result = results.map((element) => (
+    {
+      id: element.id,
+      monto: element.attributes.monto,
+      donacion: element.attributes.donacion,
+      locale: element.attributes.locale,
+      imgSrc: element.attributes.imgSrc,
+      modelos: element.attributes.modelos,
+      tipo_de_donacions: element.attributes.tipo_de_donacions
+    }));
+
+  const typeDonationSchemes = typeDonationsResponse.map((element) => ({
+    id: element.id,
+    titulo: element.attributes.titulo,
+    beneficio: element.attributes.Beneficio,
+    descripcion: element.attributes.descripcion,
+    slug: element.attributes.slug,
+    imagen: element.attributes.imagen,
+    locale: element.attributes.locale,
+  }));
+
+
+  return {
+    props: {
+      result: result,
+      typeDonationSchemes: typeDonationSchemes,
+    },
+  };
 };
 
 export const getStaticPaths = async () => {
