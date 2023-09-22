@@ -61,7 +61,7 @@ const SantuarioPage = ({ data }) => {
               const y = parseInt(ubicacionY);
               const withModels = models.componente ? "100px" : "50px";
               return (
-                <CanvasElement key={id} x={x} y={y} className={" "} width={withModels}>
+                <CanvasElement key={id} x={x} y={y} width={withModels}>
                   <img
                     src={srcModelo}
                     key={id}

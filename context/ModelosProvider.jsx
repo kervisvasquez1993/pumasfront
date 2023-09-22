@@ -11,14 +11,9 @@ export const ModeloProvider = ({ children }) => {
 
   console.log(modelInfo, "modelosInfo")
   const modeloList = modelInfo?.data.map((item) => {
-    console.log(item.attributes?.model3D?.data?.attributes?.url, "item")
-    console.log(item?.attributes?.nombre, "item")
-    const srcModeloUrl =
-
-      item?.attributes?.srcModelo?.data[0]?.attributes?.url || null;
-    const models3d =
-
-      item.attributes.model3D?.data?.attributes?.url || null;
+    
+    const srcModeloUrl = item?.attributes?.srcModelo?.data[0]?.attributes?.url || null;
+    const models3d = item.attributes.model3D?.data?.attributes?.url || null;
 
     const imagenes = item.attributes?.imagenes?.data?.map((imagen) => {
       return {

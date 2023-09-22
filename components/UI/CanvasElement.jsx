@@ -3,8 +3,8 @@ import React from "react";
 const CanvasElement = ({ x, y, children,className, width }) => {
   const canvasElementStyle = {
     position: "absolute",
-    left: x,
-    top: y,
+    left: x+"px",
+    top: y+"px",
     width : width,
     cursor: "pointer"
   };

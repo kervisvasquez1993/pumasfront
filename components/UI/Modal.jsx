@@ -40,7 +40,7 @@ export default function Modal({ showModal, setShowModal, data }) {
                 <button
                   type="button"
                   className="btnClose color-white box-content  rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none absolute  right-4"
-                  data-te-modal-dismiss
+                  data-te-modal-dismiss={true}
                   aria-label="Close"
                   onClick={handleCloseModal}
                 >
@@ -48,13 +48,13 @@ export default function Modal({ showModal, setShowModal, data }) {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="currentColor"
                     className="h-6 w-6"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>
