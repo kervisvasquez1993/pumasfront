@@ -197,6 +197,12 @@ img {
         justify-content: center;
         flex-wrap: wrap-reverse;
     }
+    .wrapperModel {
+        display: none;
+    }
+    .santurarioSwipper .swiper-wrapper {
+        height: 200px !important;
+    }
 }
 
 @media(max-width: 420px) {
