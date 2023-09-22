@@ -26,7 +26,7 @@ export default function Modal({ showModal, setShowModal, data }) {
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
           <section className="container-section mask-background ">
           <section className="modelShowItem  py-5">
-              <section className="wrapperModel">
+              <section className="wrapperModel ">
                 <SelectedModels
                   modelX={data?.modelX}
                   modelY={data?.modelY}

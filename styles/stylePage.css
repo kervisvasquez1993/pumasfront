@@ -9,7 +9,10 @@ body {
     justify-content: center;
 }
 
-
+canvas{
+    width: 500px;
+    height: 500px;
+}
 .no-margin {
     margin: 0;
 }
@@ -103,6 +106,15 @@ img {
         width: 100%;
     }
 
+}
+@media(max-width: 1267px) {
+    
+    .modelShowItem {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+    }
 }
 
 /* .contentSectionEnd {
