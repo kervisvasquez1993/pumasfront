@@ -15,7 +15,7 @@ import SliderTwo from "../../../components/UI/Slider/SliderTwo";
 import useScreenSize from "../../../hooks/useScreenSize";
 
 const Donations = ({ result, typeDonationSchemes, filtro, }) => {
-  
+
   const { screenSize } = useScreenSize()
   console.log(filtro)
   // console.log(filterArray,"filter")
@@ -31,13 +31,7 @@ const Donations = ({ result, typeDonationSchemes, filtro, }) => {
             classNameContent={"fuentesParrafo p-10"}
           >
             <p className="py-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-              sunt veniam quos. Nisi esse quae ullam ab, mollitia vero
-              accusantium. Lorem ipsum dolor sit amet consectetur adipisicing
-              elit. Ducimus sunt veniam quos. Nisi esse quae ullam ab, mollitia
-              vero accusantium. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Ducimus sunt veniam quos. Nisi esse quae ullam
-              ab, mollitia vero accusantium.
+              El Centro de Rescate y Santuario Las Pumas es financiado y administrado por la Fundación Hagnauer, la cual es una organización sin fines de lucro que obtiene sus ingresos principalmente de las visitas de turistas al Santuario. Lamentablemente, los ingresos económicos no son suficientes para sustentar la totalidad de los gastos. Por esta razón, creamos un sistema de apadrinamiento en el que VOS podés ser parte de nuestros aliados para que continuemos con nuestra labor de rescate, rehabilitación y liberación de los animales silvestres; así como el desarrollo de la educación ambiental.
             </p>
           </BasicSection>
         </TwoColumnGrid>
@@ -65,7 +59,7 @@ export async function getServerSideProps(context) {
   const { params, query } = context;
   const lang = params.lang;
   const parametros = query?.params;
-  let isLoading = true; 
+  let isLoading = true;
 
   try {
     const [donationsResponse, typeDonationsResponse] = await Promise.all([
