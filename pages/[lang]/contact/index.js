@@ -22,36 +22,75 @@ const Contact = () => {
   const [responseSubmitForm, setResponseSubmitForm] = useState("");
 
   const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "hora") {
+      // Validación para la hora: debe estar entre las 8 am y las 5 pm
+      const selectedHour = parseInt(value.split(":")[0], 10);
+      if (selectedHour < 8 || selectedHour >= 17) {
+        // Hora inválida, muestra un mensaje de error
+        setErrors({
+          ...errors,
+          hora: "La hora debe estar entre las 8 am y las 5 pm.",
+        });
+      } else {
+        // Hora válida, borra el mensaje de error si existía previamente
+        const newErrors = { ...errors };
+        delete newErrors.hora;
+        setErrors(newErrors);
+      }
+    }
 
+    if (name === "fecha") {
+      // Validación para la fecha: no se permite seleccionar una fecha anterior a la actual
+      const selectedDate = new Date(value);
+      const currentDate = new Date();
+
+      if (selectedDate < currentDate) {
+        // Fecha inválida, puedes mostrar un mensaje de error
+        setErrors({
+          ...errors,
+          fecha: "La fecha no puede ser anterior a la fecha actual.",
+        });
+        return;
+      } else {
+        // Fecha válida, borra el mensaje de error si existía previamente
+        const newErrors = { ...errors };
+        delete newErrors.fecha;
+        setErrors(newErrors);
+      }
+    }
+
+    // Actualiza el estado con el nuevo valor del campo
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setLoadingForm(true);
 
-    // const validationErrors = {};
-    // if (!formData.nombre) {
-    //   validationErrors.nombre = "El nombre es requerido.";
-    // }
-    // if (!formData.correo) {
-    //   validationErrors.correo = "El correo es requerido.";
-    // }
-    // if (!formData.fecha) {
-    //   validationErrors.fecha = "La fecha es requerida.";
-    // }
+    const validationErrors = {};
+    if (!formData.nombre) {
+      validationErrors.nombre = "El nombre es requerido.";
+    }
+    if (!formData.correo) {
+      validationErrors.correo = "El correo es requerido.";
+    }
+    if (!formData.fecha) {
+      validationErrors.fecha = "La fecha es requerida.";
+    }
 
 
 
-    // if (Object.keys(validationErrors).length > 0) {
-    //   setErrors(validationErrors);
-    //   setLoadingForm(false);
-    //   return;
-    // }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setLoadingForm(false);
+      return;
+    }
 
     console.log("llamadando form submit")
     const newElement = {
