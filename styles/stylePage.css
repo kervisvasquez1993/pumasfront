@@ -9,7 +9,10 @@ body {
     justify-content: center;
 }
 
-
+canvas{
+    width: 500px;
+    height: 500px;
+}
 .no-margin {
     margin: 0;
 }
@@ -104,6 +107,15 @@ img {
     }
 
 }
+@media(max-width: 1267px) {
+    
+    .modelShowItem {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+    }
+}
 
 /* .contentSectionEnd {
     display: flex;
@@ -184,6 +196,12 @@ img {
         align-items: center;
         justify-content: center;
         flex-wrap: wrap-reverse;
+    }
+    .wrapperModel {
+        display: none;
+    }
+    .santurarioSwipper .swiper-wrapper {
+        height: 200px !important;
     }
 }
 
