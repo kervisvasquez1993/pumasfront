@@ -60,6 +60,19 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Llama a la API para enviar el correo electrónico
+    try {
+      const res = await fetch("/api/send", { method: "POST" });
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error al enviar el formulario:", error);
+    }
+  };
+
   const handleStepClick = (clickedStep) => {
     if (clickedStep <= step) {
       setStep(clickedStep);
@@ -70,7 +83,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
         setConfirmationData(null);
         setSelectedItems([]);
         setDonationInfo(null);
-        
+
       } else if (clickedStep === 2) {
         console.log("test")
         setConfirmationData(null);
@@ -200,14 +213,14 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                 filtro?.map((element) => {
                   return (
                     <>
-                    <ItemDonations
-                      
-                      key={element.id}
-                      data={element}
-                      selected={selectedItems.includes(element.id)}
-                      onClick={() => handleItemToggle(element.id)}
-                    />
-                
+                      <ItemDonations
+
+                        key={element.id}
+                        data={element}
+                        selected={selectedItems.includes(element.id)}
+                        onClick={() => handleItemToggle(element.id)}
+                      />
+
                     </>
                   );
                 }) : "Cargando..."}
@@ -249,7 +262,10 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                 </section>
                 {donationInfo && <DonationInfo newElement={donationInfo} />}
                 {!donationInfo && (
-                  <form onSubmit={handleFormSubmit} className="mt-4">
+                  <form onSubmit={handleSubmit}
+
+                    className="mt-4">
+
                     <div className="mb-4">
                       <label
                         htmlFor="nombre"

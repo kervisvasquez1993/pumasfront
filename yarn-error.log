@@ -1,0 +1,68 @@
+Arguments: 
+  /Users/kervisvasquez/.nvm/versions/node/v16.18.1/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js add --exact --cwd /Users/kervisvasquez/Qanta/test --dev @types/node
+
+PATH: 
+  /Users/kervisvasquez/Qanta/test/node_modules/.bin:/Users/kervisvasquez/Qanta/node_modules/.bin:/Users/kervisvasquez/node_modules/.bin:/Users/node_modules/.bin:/node_modules/.bin:/Users/kervisvasquez/.nvm/versions/node/v16.18.1/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/Users/kervisvasquez/.nvm/versions/node/v16.18.1/bin:/opt/homebrew/opt/python@3.11:/Users/kervisvasquez/.deno/bin:/opt/homebrew/opt/php@8.1/sbin:/opt/homebrew/opt/php@8.1/bin:/Library/Frameworks/Python.framework/Versions/3.11/bin:/Users/kervisvasquez/.nvm/versions/node/v18.12.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.11/bin/python3:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/opt/homebrew/opt/python@3.11:/Users/kervisvasquez/.deno/bin:/opt/homebrew/opt/php@8.1/sbin:/opt/homebrew/opt/php@8.1/bin:/Library/Frameworks/Python.framework/Versions/3.11/bin:/Users/kervisvasquez/.nvm/versions/node/v18.12.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.11/bin/python3:/Users/kervisvasquez/Library/Android/sdk/platform-tools:/Users/kervisvasquez/development/flutter/bin:/Users/kervisvasquez/Library/Android/sdk/platform-tools:/Users/kervisvasquez/development/flutter/bin:/Users/kervisvasquez/Library/Android/sdk/platform-tools
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.18.1
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: ENOENT: no such file or directory, open '/Users/kervisvasquez/Library/Caches/Yarn/v6/npm-escodegen-1.2.0-09de7967791cc958b7f89a2ddb6d23451af327e1-integrity/node_modules/escodegen/.yarn-tarball.tgz'
+
+npm manifest: 
+  {
+    "name": "laspumas",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+    },
+    "dependencies": {
+      "@next/font": "^13.4.7",
+      "@react-three/drei": "^9.80.3",
+      "@react-three/fiber": "^8.13.7",
+      "@types/three": "^0.155.0",
+      "axios": "^1.4.0",
+      "graphql": "^16.8.0",
+      "leaflet": "^1.8.0",
+      "next": "13.4.6",
+      "normalize.css": "^8.0.1",
+      "react": "^18.1.0",
+      "react-burger-menu": "^3.0.9",
+      "react-dom": "^18.1.0",
+      "react-leaflet": "^4.0.2",
+      "react-markdown": "^8.0.7",
+      "react-responsive-carousel": "^3.2.23",
+      "react-slick": "^0.29.0",
+      "react-tooltip": "^5.21.1",
+      "resend": "^1.1.0",
+      "slick-carousel": "^1.8.1",
+      "snarkdown": "^2.0.0",
+      "sweetalert2": "^11.7.10",
+      "swiper": "^9.4.1",
+      "three": "^0.155.0"
+    },
+    "devDependencies": {
+      "autoprefixer": "^10.4.14",
+      "eslint": "8.43.0",
+      "eslint-config-next": "13.4.6",
+      "postcss": "^8.4.24",
+      "tailwindcss": "^3.3.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  
