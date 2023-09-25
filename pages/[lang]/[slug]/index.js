@@ -66,53 +66,63 @@ const Page = ({ page, models, blogsPage, modelsGQ }) => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { lang, slug } = params;
-  const getLangAll = await langAll();
-  const pagesResponse = await getPagesGQ(lang)
-  const pages = pagesResponse?.data?.pages
-  const languages = getLangAll?.data;
-  const dataPages = pages.data;
-  const modelsGQResponse = await getModelGQ(lang)
-  const modelsGQ = modelsGQResponse.data.modelos
-  const updatePage = dataPages.map(page => {
-    return {
-      id: page.id,
-      title: page.attributes.title,
-      slug: page.attributes.slug,
-      componentDynamics: page.attributes.DynamicComponent,
-      locales: lang,
-      banner: page?.attributes?.banner,
-      contentType: "component",
+  try {
+
+    const { lang, slug } = params;
+    const getLangAll = await langAll();
+    const pagesResponse = await getPagesGQ(lang)
+    const pages = pagesResponse?.data?.pages
+    const languages = getLangAll?.data;
+    const dataPages = pages?.data;
+    const modelsGQResponse = await getModelGQ(lang)
+    console.log(modelsGQResponse, "data")
+    const modelsGQ = modelsGQResponse?.data?.modelos
+    const updatePage = dataPages?.map(page => {
+      return {
+        id: page.id,
+        title: page.attributes.title,
+        slug: page.attributes.slug,
+        componentDynamics: page.attributes.DynamicComponent,
+        locales: lang,
+        banner: page?.attributes?.banner,
+        contentType: "component",
+      }
+    })
+    const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
+    const models = {};
+    const blogsPage = {}
+    // console.log(page.slug, "slug")
+    if (page.slug === "santuario") {
+      for (const language of languages) {
+        const modelsResponse = await getAllModels(language.code);
+        models[language.code] = modelsResponse.data;
+      }
+      return {
+        props: { page: { ...page }, models, modelsGQ },
+        revalidate: 10
+      };
     }
-  })
-  const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
-  const models = {};
-  const blogsPage = {}
-  // console.log(page.slug, "slug")
-  if (page.slug === "santuario") {
-    for (const language of languages) {
-      const modelsResponse = await getAllModels(language.code);
-      models[language.code] = modelsResponse.data;
+    if (page.slug === "blog") {
+      const blog = await getBlog(lang);
+      const blogsPage = blog.data;
+      // console.log(blogsPage, "blog")
+
+      return {
+        props: { page: { ...page }, blogsPage },
+      };
+
     }
+    if (!page) return { notFound: true };
     return {
-      props: { page: { ...page }, models, modelsGQ },
-      revalidate: 10
+      props: { page: { ...page } },
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    // Puedes personalizar esta parte para devolver una página de error personalizada
+    return {
+      props: { error: "Hubo un error al cargar la página." },
     };
   }
-  if (page.slug === "blog") {
-    const blog = await getBlog(lang);
-    const blogsPage = blog.data;
-    // console.log(blogsPage, "blog")
-
-    return {
-      props: { page: { ...page }, blogsPage },
-    };
-
-  }
-  if (!page) return { notFound: true };
-  return {
-    props: { page: { ...page } },
-  };
 };
 
 export const getStaticPaths = async () => {
