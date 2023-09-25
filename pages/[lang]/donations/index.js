@@ -17,9 +17,6 @@ import useScreenSize from "../../../hooks/useScreenSize";
 const Donations = ({ result, typeDonationSchemes, filtro, }) => {
 
   const { screenSize } = useScreenSize()
-  console.log(filtro)
-  // console.log(filterArray,"filter")
-  // console.log(typeDonationSchemes,"typeDonationSchemes")
   return (
     <Main titlePage={"Donación"}>
       <div className="container">
@@ -31,7 +28,6 @@ const Donations = ({ result, typeDonationSchemes, filtro, }) => {
             classNameContent={"fuentesParrafo p-10"}
           >
             <p className="py-5">
-              El Centro de Rescate y Santuario Las Pumas es financiado y administrado por la Fundación Hagnauer, la cual es una organización sin fines de lucro que obtiene sus ingresos principalmente de las visitas de turistas al Santuario. Lamentablemente, los ingresos económicos no son suficientes para sustentar la totalidad de los gastos. Por esta razón, creamos un sistema de apadrinamiento en el que VOS podés ser parte de nuestros aliados para que continuemos con nuestra labor de rescate, rehabilitación y liberación de los animales silvestres; así como el desarrollo de la educación ambiental.
             </p>
           </BasicSection>
         </TwoColumnGrid>
@@ -103,7 +99,7 @@ export async function getServerSideProps(context) {
 
     const filteredResults = parametros ? filterBySlug(result, parametros) : [];
 
-    isLoading = false; // Cambiamos el estado a "false" para indicar que la carga ha terminado
+    isLoading = false; 
 
     return {
       props: {

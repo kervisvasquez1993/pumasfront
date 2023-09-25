@@ -200,9 +200,9 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
             </HeaderComponents>
 
             <WrapperDonations>
-              {donationInitial.map((elemento) => {
+              {donationInitial.map((elemento, index) => {
                 return (
-                  <div className="py-10 my-10" key={elemento.id}>
+                  <div className="py-10 my-10" key={index}>
                     <figure className="p-10 m-10">
                       {elemento.image ? (
                         <img src={elemento.image} />
@@ -251,18 +251,18 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
             </HeaderComponents>
             <section className="itemDonationWrapper py-10 my-10">
               {(filtro) ?
-                filtro?.map((element) => {
+                filtro?.map((element, index) => {
                   return (
-                    <>
+                    <div key={index}>
                       <ItemDonations
 
-                        key={element.id}
+                        // key={index}
                         data={element}
                         selected={selectedItems.includes(element.id)}
                         onClick={() => handleItemToggle(element.id)}
                       />
 
-                    </>
+                    </div>
                   );
                 }) : "Cargando..."}
             </section>
@@ -300,10 +300,10 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
             <section className="itemDonationWrapper">
               <TwoColumnGrid width={"100%"}>
                 <section>
-                  {selectedElements.map((element) => (
+                  {selectedElements.map((element, index) => (
                     <ItemDonations
                       className=" my-5"
-                      key={element.id}
+                      key={index}
                       data={element}
                       selected={selectedItems.includes(element.id)}
                       onClick={() => handleItemToggle(element.id)}
