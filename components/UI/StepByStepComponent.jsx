@@ -19,6 +19,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
   const [selectedElements, setSelectedElements] = useState([]);
   const [donationInfo, setDonationInfo] = useState(null);
   const [loadingForm, setLoadingForm] = useState(false);
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     nombre: "",
     correo: "",
@@ -65,7 +66,20 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoadingForm(true);
-    // Crea un objeto que contiene la información a enviar
+
+    const validationErrors = {};
+    if (!formData.nombre) {
+      validationErrors.nombre = 'El nombre es requerido.';
+    }
+    if (!formData.correo) {
+      validationErrors.correo = 'El correo es requerido.';
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setLoadingForm(false);
+      return;
+    }
     const newElement = {
       type: "Donación",
       nombre: formData.nombre,
@@ -76,8 +90,6 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
       ),
       donacion: selectedElements.map((element) => element.donacion).flat(),
     };
-
-    // Realiza una solicitud POST a la API con los datos
     try {
       const res = await fetch("/api/send", {
         method: "POST",
@@ -91,6 +103,10 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
       setDonationInfo(newElement);
       setFormData({ nombre: "", correo: "" });
       console.log(data);
+      setResponseSubmitForm(data.mensaje);
+      setTimeout(() => {
+        setResponseSubmitForm("")
+      }, 5000)
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
     }
@@ -272,6 +288,15 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
               SELECCIONA EL METODO DE PAGO
             </HeaderComponents>
 
+            {responseSubmitForm && <HeaderComponents
+              src="/images/fondo1.png"
+              classNameText={""}
+              alignment="center"
+            >
+              <span className="backgroundPrimary m-0 manropeFont p-5 btnPrimary py-2">{responseSubmitForm}</span>
+            </HeaderComponents> }
+
+
             <section className="itemDonationWrapper">
               <TwoColumnGrid width={"100%"}>
                 <section>
@@ -285,16 +310,13 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                     />
                   ))}
                 </section>
+                <>
                 {donationInfo && <DonationInfo newElement={donationInfo} />}
                 {!donationInfo && (
-                  <form onSubmit={handleSubmit}
-                    className="mt-4">
+                  <form onSubmit={handleSubmit} className="mt-4">
                     <div className="mb-4">
-                      <label
-                        htmlFor="nombre"
-                        className="block font-semibold mb-1"
-                      >
-                        Name:
+                      <label htmlFor="nombre" className="block font-semibold mb-1">
+                        Nombre:
                       </label>
                       <input
                         type="text"
@@ -304,12 +326,12 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                         onChange={handleInputChange}
                         className="w-full border p-2 rounded"
                       />
+                      {errors.nombre && (
+                        <p className="text-red-500">{errors.nombre}</p>
+                      )}
                     </div>
                     <div className="mb-4">
-                      <label
-                        htmlFor="correo"
-                        className="block font-semibold mb-1"
-                      >
+                      <label htmlFor="correo" className="block font-semibold mb-1">
                         Correo:
                       </label>
                       <input
@@ -320,15 +342,20 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                         onChange={handleInputChange}
                         className="w-full border p-2 rounded"
                       />
+                      {errors.correo && (
+                        <p className="text-red-500">{errors.correo}</p>
+                      )}
                     </div>
                     <button
                       type="submit"
-                      className="backgroundPrimary m-0 manropeFont p-5 btnPrimary py-2  "
+                      className="backgroundPrimary m-0 manropeFont p-5 btnPrimary py-2"
+                      disabled={loadingForm}
                     >
-                      {loadingForm ? "Enviando Informacion" : "Enviar"}
+                      {loadingForm ? 'Enviando Información' : 'Enviar'}
                     </button>
                   </form>
                 )}
+                </>
               </TwoColumnGrid>
             </section>
           </div>

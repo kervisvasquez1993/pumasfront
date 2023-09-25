@@ -5,7 +5,7 @@
 body {
   background-color: #fffdf6 !important;
 }
-input, textarea{
+input, textarea, select{
   background: white;
 }
 
