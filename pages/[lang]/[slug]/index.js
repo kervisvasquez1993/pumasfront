@@ -69,8 +69,8 @@ export const getStaticProps = async ({ params }) => {
   const { lang, slug } = params;
   const getLangAll = await langAll();
   const pagesResponse = await getPagesGQ(lang)
-  const pages = pagesResponse.data.pages
-  const languages = getLangAll.data;
+  const pages = pagesResponse?.data?.pages
+  const languages = getLangAll?.data;
   const dataPages = pages.data;
   const modelsGQResponse = await getModelGQ(lang)
   const modelsGQ = modelsGQResponse.data.modelos
