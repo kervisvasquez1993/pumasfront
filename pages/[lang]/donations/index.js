@@ -14,14 +14,10 @@ import HeaderComponents from "../../../components/UI/HeaderComponents/HeaderComp
 import SliderTwo from "../../../components/UI/Slider/SliderTwo";
 import useScreenSize from "../../../hooks/useScreenSize";
 
-const Donations = ({ result, typeDonationSchemes }) => {
-  const { loadedDonations, loadedParams, paramsProvider, filterArray } =
-    useDonations();
-  const router = useRouter();
+const Donations = ({ result, typeDonationSchemes, filtro, }) => {
+  
   const { screenSize } = useScreenSize()
-  const { params } = router.query;
-  loadedDonations(result);
-  loadedParams(params);
+  console.log(filtro)
   // console.log(filterArray,"filter")
   // console.log(typeDonationSchemes,"typeDonationSchemes")
   return (
@@ -48,7 +44,7 @@ const Donations = ({ result, typeDonationSchemes }) => {
         <div>
           <StepByStepComponent
             typeDonations={typeDonationSchemes}
-            donationAll={result}
+            filtro={filtro}
           />
         </div>
         <HeaderComponents
@@ -65,63 +61,72 @@ const Donations = ({ result, typeDonationSchemes }) => {
 };
 
 export default Donations;
+export async function getServerSideProps(context) {
+  const { params, query } = context;
+  const lang = params.lang;
+  const parametros = query?.params;
+  let isLoading = true; 
 
-export const getStaticProps = async ({ params }) => {
-  const { lang } = params;
-  const [response, typeDonations] = await Promise.all([
-    getAllDonations(lang),
-    getTypeDonations(lang),
-  ]);
+  try {
+    const [donationsResponse, typeDonationsResponse] = await Promise.all([
+      getAllDonations(lang),
+      getTypeDonations(lang),
+    ]);
 
+    const donations = donationsResponse.data.data;
+    const typeDonations = typeDonationsResponse.data.data;
 
-
-
-  const typeDonationsResponse = typeDonations.data.data;
-  const results = response.data.data;
-
-  // console.log(results, "result"); 
-
-
-  const result = results.map((element) => (
-    {
+    const result = donations.map((element) => ({
       id: element.id,
       monto: element.attributes.monto,
       donacion: element.attributes.donacion,
       locale: element.attributes.locale,
       imgSrc: element.attributes.imgSrc,
       modelos: element.attributes.modelos,
-      tipo_de_donacions: element.attributes.tipo_de_donacions
+      tipo_de_donacions: element.attributes.tipo_de_donacions,
     }));
 
-  const typeDonationSchemes = typeDonationsResponse.map((element) => ({
-    id: element.id,
-    titulo: element.attributes.titulo,
-    beneficio: element.attributes.Beneficio,
-    descripcion: element.attributes.descripcion,
-    slug: element.attributes.slug,
-    imagen: element.attributes.imagen,
-    locale: element.attributes.locale,
-  }));
+    const typeDonationSchemes = typeDonations.map((element) => ({
+      id: element.id,
+      titulo: element.attributes.titulo,
+      beneficio: element.attributes.Beneficio,
+      descripcion: element.attributes.descripcion,
+      slug: element.attributes.slug,
+      imagen: element.attributes.imagen,
+      locale: element.attributes.locale,
+    }));
 
+    const filterBySlug = (arr, slug) => {
+      return arr?.filter((item) => {
+        const modelos = item.modelos.data;
+        const tipoDonaciones = item.tipo_de_donacions.data;
+        return (
+          modelos.some((modelo) => modelo.attributes.slug === slug) ||
+          tipoDonaciones.some((tipo) => tipo.attributes.slug === slug)
+        );
+      });
+    };
 
-  return {
-    props: {
-      result: result,
-      typeDonationSchemes: typeDonationSchemes,
-    },
-  };
-};
+    const filteredResults = parametros ? filterBySlug(result, parametros) : [];
 
-export const getStaticPaths = async () => {
-  const locales = await langAll();
-  const languages = locales.data;
-  const lang = [];
-  for (const language of languages) {
-    lang.push({ params: { lang: language.code } });
+    isLoading = false; // Cambiamos el estado a "false" para indicar que la carga ha terminado
+
+    return {
+      props: {
+        filtro: filteredResults,
+        typeDonationSchemes,
+        isLoading, // Pasamos el estado de carga como prop
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    isLoading = false; // En caso de error, cambiamos el estado a "false"
+    return {
+      props: {
+        filtro: [],
+        typeDonationSchemes: [],
+        isLoading, // Pasamos el estado de carga como prop
+      },
+    };
   }
-  // console.log(lang);
-  return {
-    paths: lang,
-    fallback: true,
-  };
-};
+}

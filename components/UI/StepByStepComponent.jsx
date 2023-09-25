@@ -7,10 +7,12 @@ import ItemDonations from "./Donations/ItemDonations";
 import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 import DonationInfo from "./Donations/DonationInfo";
 import HeaderComponents from "./HeaderComponents/HeaderComponets";
+import Loader from "./Loader";
+import { Tooltip } from 'react-tooltip'
 
-const StepByStepComponent = ({ typeDonations, donationAll }) => {
-  const { loadedDonations, loadedParams, filterArray } = useDonations();
+const StepByStepComponent = ({ typeDonations, filtro }) => {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [donationInitial, setDonationInitial] = useState(typeDonations);
   const [selectedCard, setSelectedCard] = useState(null);
   const [confirmationData, setConfirmationData] = useState(null);
   const [selectedElements, setSelectedElements] = useState([]);
@@ -24,9 +26,8 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
 
   useEffect(() => {
     const { params } = router.query;
+
     if (params) {
-      loadedDonations(donationAll);
-      loadedParams(params);
       setStep(2);
     }
   }, [router.query]);
@@ -47,7 +48,7 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
   };
 
   const handleConfirmation = () => {
-    const updatedSelectedElements = donationAll.filter((element) =>
+    const updatedSelectedElements = filtro.filter((element) =>
       selectedItems.includes(element.id)
     );
 
@@ -63,12 +64,15 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
     if (clickedStep <= step) {
       setStep(clickedStep);
       if (clickedStep === 1) {
+        router.back();
+        console.log("punto")
         setSelectedCard(null);
         setConfirmationData(null);
         setSelectedItems([]);
-        setDonationInfo(null); 
-        router.push("/es/donations");
+        setDonationInfo(null);
+        
       } else if (clickedStep === 2) {
+        console.log("test")
         setConfirmationData(null);
         setDonationInfo(null);
       }
@@ -102,25 +106,22 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
     return (
       <div className="step-header">
         <h3
-          className={`step fontSize36 chelseaFont ${
-            step >= 1 ? "carActive colorPrimary" : "colorGris carInactive"
-          }`}
+          className={`step fontSize36 chelseaFont ${step >= 1 ? "carActive colorPrimary" : "colorGris carInactive"
+            }`}
           onClick={() => handleStepClick(1)}
         >
           Paso 1
         </h3>
         <h3
-          className={`step fontSize36 chelseaFont ${
-            step >= 2 ? "carActive colorPrimary" : "colorGris carInactive"
-          }`}
+          className={`step fontSize36 chelseaFont ${step >= 2 ? "carActive colorPrimary" : "colorGris carInactive"
+            }`}
           onClick={() => handleStepClick(2)}
         >
           Paso 2
         </h3>
         <h3
-          className={`step fontSize36 chelseaFont ${
-            step >= 3 ? "carActive colorPrimary" : "colorGris carInactive"
-          }`}
+          className={`step fontSize36 chelseaFont ${step >= 3 ? "carActive colorPrimary" : "colorGris carInactive"
+            }`}
           onClick={() => handleStepClick(3)}
         >
           Paso 3
@@ -145,7 +146,7 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
             </HeaderComponents>
 
             <WrapperDonations>
-              {typeDonations.map((elemento) => {
+              {donationInitial.map((elemento) => {
                 return (
                   <div className="py-10 my-10" key={elemento.id}>
                     <figure className="p-10 m-10">
@@ -195,17 +196,21 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
               ¿QUÉ DESEAS DONAR?
             </HeaderComponents>
             <section className="itemDonationWrapper py-10 my-10">
-              {filterArray &&
-                filterArray.map((element) => {
+              {(filtro) ?
+                filtro?.map((element) => {
                   return (
+                    <>
                     <ItemDonations
+                      
                       key={element.id}
                       data={element}
                       selected={selectedItems.includes(element.id)}
                       onClick={() => handleItemToggle(element.id)}
                     />
+                
+                    </>
                   );
-                })}
+                }) : "Cargando..."}
             </section>
             <div className="center">
               <button
@@ -281,7 +286,7 @@ const StepByStepComponent = ({ typeDonations, donationAll }) => {
                       type="submit"
                       className="backgroundPrimary m-0 manropeFont p-5 btnPrimary py-2  "
                     >
-                      Enviar 
+                      Enviar
                     </button>
                   </form>
                 )}
