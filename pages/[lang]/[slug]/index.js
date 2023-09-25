@@ -140,4 +140,3 @@ export const getStaticPaths = async () => {
 };
 
 export default Page;
-// tes
