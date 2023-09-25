@@ -116,15 +116,15 @@ const Contact = () => {
 
       const data = await res.json();
 
-      // setFormData({
-      //   nombre: "",
-      //   correo: "",
-      //   fecha: "",
-      //   hora: "",
-      //   cantidadAdultos: "",
-      //   cantidadNinos: "",
-      //   descripcion: "",
-      // });
+      setFormData({
+        nombre: "",
+        correo: "",
+        fecha: "",
+        hora: "",
+        cantidadAdultos: "",
+        cantidadNinos: "",
+        descripcion: "",
+      });
       console.log(data);
       setResponseSubmitForm(data.mensaje);
       setTimeout(() => {
