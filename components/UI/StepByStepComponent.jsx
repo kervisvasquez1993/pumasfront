@@ -13,10 +13,12 @@ import { Tooltip } from 'react-tooltip'
 const StepByStepComponent = ({ typeDonations, filtro }) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [donationInitial, setDonationInitial] = useState(typeDonations);
+  const [responseSubmitForm, setResponseSubmitForm] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const [confirmationData, setConfirmationData] = useState(null);
   const [selectedElements, setSelectedElements] = useState([]);
   const [donationInfo, setDonationInfo] = useState(null);
+  const [loadingForm, setLoadingForm] = useState(false);
   const [formData, setFormData] = useState({
     nombre: "",
     correo: "",
@@ -62,15 +64,52 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Llama a la API para enviar el correo electrónico
+    setLoadingForm(true);
+    // Crea un objeto que contiene la información a enviar
+    const newElement = {
+      type: "Donación",
+      nombre: formData.nombre,
+      correo: formData.correo,
+      monto: selectedElements.reduce(
+        (total, element) => total + parseFloat(element.monto || 0),
+        0
+      ),
+      donacion: selectedElements.map((element) => element.donacion).flat(),
+    };
+
+    // Realiza una solicitud POST a la API con los datos
     try {
-      const res = await fetch("/api/send", { method: "POST" });
+      const res = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newElement),
+      });
+
       const data = await res.json();
+      setDonationInfo(newElement);
+      setFormData({ nombre: "", correo: "" });
       console.log(data);
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
     }
+    setLoadingForm(false);
+  };
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const newElement = {
+      nombre: formData.nombre,
+      correo: formData.correo,
+      monto: selectedElements.reduce(
+        (total, element) => total + parseFloat(element.monto || 0),
+        0
+      ),
+      donacion: selectedElements.map((element) => element.donacion).flat(),
+    };
+
+    setDonationInfo(newElement);
+    setFormData({ nombre: "", correo: "" });
   };
 
   const handleStepClick = (clickedStep) => {
@@ -92,21 +131,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
     }
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    const newElement = {
-      nombre: formData.nombre,
-      correo: formData.correo,
-      monto: selectedElements.reduce(
-        (total, element) => total + parseFloat(element.monto || 0),
-        0
-      ),
-      donacion: selectedElements.map((element) => element.donacion).flat(),
-    };
 
-    setDonationInfo(newElement);
-    setFormData({ nombre: "", correo: "" });
-  };
 
   const handleInputChange = (e) => {
     setFormData({
@@ -263,9 +288,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                 {donationInfo && <DonationInfo newElement={donationInfo} />}
                 {!donationInfo && (
                   <form onSubmit={handleSubmit}
-
                     className="mt-4">
-
                     <div className="mb-4">
                       <label
                         htmlFor="nombre"
@@ -302,7 +325,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                       type="submit"
                       className="backgroundPrimary m-0 manropeFont p-5 btnPrimary py-2  "
                     >
-                      Enviar
+                      {loadingForm ? "Enviando Informacion" : "Enviar"}
                     </button>
                   </form>
                 )}
