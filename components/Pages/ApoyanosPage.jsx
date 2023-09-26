@@ -103,12 +103,12 @@ const ApoyanosPage = ({ data }) => {
                
                 <ReactMarkdown className="py-10">{quintoElmento.content}</ReactMarkdown>
                 {/* amazon */}
-                <ButtonView
-                  className={" backgroundVerde m-0 manropeFont p-5"}
-                  link={quintoElmento.btn.url}
+                <Link
+                  className={" backgroundVerde m-0 manropeFont p-5 btnPrimary py-2 "}
+                  href={quintoElmento.btn.url}
                 >
                   {quintoElmento.btn.label}
-                </ButtonView>
+                </Link>
               </BasicSection>
             </section>
             <section></section>

@@ -69,20 +69,21 @@ export const getStaticProps = async ({ params }) => {
   try {
 
     const { lang, slug } = params;
+    console.log(lang, "lang")
     const getLangAll = await langAll();
     const pagesResponse = await getPagesGQ(lang)
     const pages = pagesResponse?.data?.pages
     const languages = getLangAll?.data;
     const dataPages = pages?.data;
     const modelsGQResponse = await getModelGQ(lang)
-    console.log(modelsGQResponse, "data")
+    console.log(modelsGQResponse.data.modelos.data, "data")
     const modelsGQ = modelsGQResponse?.data?.modelos
     const updatePage = dataPages?.map(page => {
       return {
         id: page.id,
         title: page.attributes.title,
         slug: page.attributes.slug,
-        componentDynamics: page.attributes.DynamicComponent,
+        componentDynamics: page?.attributes?.DynamicComponent,
         locales: lang,
         banner: page?.attributes?.banner,
         contentType: "component",
