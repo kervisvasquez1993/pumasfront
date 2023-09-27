@@ -264,14 +264,7 @@ export const getModelGQ = async (lang) => {
               }
             }
           }
-          model3D{
-            data{
-              attributes{
-                name
-                url
-              }
-            }
-          }
+         
           
           
         }

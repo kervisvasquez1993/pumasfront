@@ -19,6 +19,8 @@ import { Saino } from "./Saino";
 import { OsoPerezosoDeDedos } from "./OsoPerezosoDeDedos";
 import { useEffect, useState } from "react";
 import Loader from "../UI/Loader";
+import { Venado } from "./Venado";
+import { Tucan } from "./Tucan";
 const SelectedModels = ({ componentName, modelo, modelX = 0, modelY = 0, modelZ = 0, intensity = 0 }) => {
   const [models, setModel] = useState(modelo);
   useEffect(() => {
@@ -84,8 +86,11 @@ const SelectedModels = ({ componentName, modelo, modelX = 0, modelY = 0, modelZ 
     case "MonoCaraBlanca":
       selectedComponent = <MonoCaraBlanca />;
       break;
-    case "MonoCaraBlanca":
-      selectedComponent = <MonoCaraBlanca />;
+    case "Venado":
+      selectedComponent = <Venado />;
+      break;
+    case "Tucan":
+      selectedComponent = <Tucan />;
       break;
     default:
       selectedComponent = null;

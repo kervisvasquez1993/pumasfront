@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-export function Tucan(props) {
+export const Tucan = (props) => {
   const { nodes, materials } = useGLTF("/models/Tucan.glb");
   return (
     <group {...props} dispose={null}>

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-export function Venado(props) {
+export const  Venado= (props) =>  {
   const { nodes, materials } = useGLTF("/models/VenadoColaBlanca.glb");
   return (
     <group {...props} dispose={null}>
