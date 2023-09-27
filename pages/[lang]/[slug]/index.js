@@ -77,7 +77,6 @@ export const getStaticProps = async ({ params }) => {
     const languages = getLangAll?.data;
     const dataPages = pages?.data;
     const modelsGQResponse = await getModelGQ(lang)
-    console.log(modelsGQResponse.data.modelos.data, "data")
     const modelsGQ = modelsGQResponse?.data?.modelos
     const updatePage = dataPages?.map(page => {
       return {
