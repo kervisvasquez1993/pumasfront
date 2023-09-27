@@ -12,18 +12,18 @@ import useModelo from "../../../hooks/useModelo";
 import usePages from "../../../hooks/usePages";
 import Loader from "../../../components/UI/Loader";
 
-const Page = ({ page, models, blogsPage, modelsGQ }) => {
+const Page = ({ page,  blogsPage, modelsGQ }) => {
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
-  // console.log(page)
+
   const { slug, lang } = router.query
   // console.log(page)
 
   useEffect(() => {
     updateData(page)
 
-    models && hearlessChangInfo(modelsGQ);
+    modelsGQ && hearlessChangInfo(modelsGQ);
 
   }, [page]);
   if (router.isFallback) {
@@ -89,15 +89,11 @@ export const getStaticProps = async ({ params }) => {
       }
     })
     const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
-    const models = {};
     const blogsPage = {}
     if (page.slug === "santuario") {
-      for (const language of languages) {
-        const modelsResponse = await getAllModels(language.code);
-        models[language.code] = modelsResponse.data;
-      }
+      
       return {
-        props: { page: { ...page }, models, modelsGQ },
+        props: { page: { ...page },  modelsGQ },
         revalidate: 10
       };
     }
