@@ -119,7 +119,6 @@ export const getStaticProps = async ({ params }) => {
     };
   } catch (error) {
     console.error("Error fetching data:", error);
-    // Puedes personalizar esta parte para devolver una página de error personalizada
     return {
       props: { error: "Hubo un error al cargar la página." },
     };
