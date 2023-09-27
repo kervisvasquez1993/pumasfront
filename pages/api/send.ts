@@ -3,7 +3,7 @@ import EmailTemplate from '../../components/email-template';
 import { Resend } from 'resend';
 import ContactForm from '../../components/contact';
 
-const resend = new Resend("re_XrHmKWqJ_Q9aNJyoQeh3a13pFTQ7vrNwc");
+const resend = new Resend(process.env.NEXT_PUBLIC_RESEND);
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   console.log(req.body.type)

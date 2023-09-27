@@ -13,7 +13,7 @@ import usePages from "../../../hooks/usePages";
 import Loader from "../../../components/UI/Loader";
 
 const Page = ({ page, models, blogsPage, modelsGQ }) => {
-  console.log(process.env.NEXT_PUBLIC_URL_BASE,  "TOKEN DESDE .ENV")
+  console.log(process.env.NEXT_PUBLIC_URL_BASE, "TOKEN DESDE .ENV")
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
@@ -92,7 +92,6 @@ export const getStaticProps = async ({ params }) => {
     const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
     const models = {};
     const blogsPage = {}
-    // console.log(page.slug, "slug")
     if (page.slug === "santuario") {
       for (const language of languages) {
         const modelsResponse = await getAllModels(language.code);
@@ -106,8 +105,6 @@ export const getStaticProps = async ({ params }) => {
     if (page.slug === "blog") {
       const blog = await getBlog(lang);
       const blogsPage = blog.data;
-      // console.log(blogsPage, "blog")
-
       return {
         props: { page: { ...page }, blogsPage },
       };
