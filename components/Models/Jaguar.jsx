@@ -14,7 +14,7 @@ export const Jaguar = (props) => {
       {/* Agrega la luz a la escena usando 'new' */}
       <pointLight
         ref={lightRef}
-        position={[0, 1000, 0]}
+        position={[0, 1, 0]}
         intensity={intensity}
         castShadow={true}
       />
