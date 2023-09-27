@@ -90,13 +90,7 @@ export const getStaticProps = async ({ params }) => {
     })
     const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
     const blogsPage = {}
-    if (page.slug === "santuario") {
-
-      return {
-        props: { page: { ...page }, modelsGQ },
-        revalidate: 10
-      };
-    }
+    
     if (page.slug === "blog") {
       const blog = await getBlog(lang);
       const blogsPage = blog.data;
@@ -107,7 +101,8 @@ export const getStaticProps = async ({ params }) => {
     }
     if (!page) return { notFound: true };
     return {
-      props: { page: { ...page } },
+      props: { page: { ...page },modelsGQ },
+      revalidate: 10
     };
   } catch (error) {
     console.error("Error fetching data:", error);
