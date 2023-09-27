@@ -13,6 +13,7 @@ import usePages from "../../../hooks/usePages";
 import Loader from "../../../components/UI/Loader";
 
 const Page = ({ page, models, blogsPage, modelsGQ }) => {
+  console.log(process.env.NEXT_PUBLIC_URL_BASE,  "TOKEN DESDE .ENV")
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
