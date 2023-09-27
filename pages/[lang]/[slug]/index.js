@@ -12,7 +12,7 @@ import useModelo from "../../../hooks/useModelo";
 import usePages from "../../../hooks/usePages";
 import Loader from "../../../components/UI/Loader";
 
-const Page = ({ page,  blogsPage, modelsGQ }) => {
+const Page = ({ page, blogsPage, modelsGQ }) => {
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
@@ -91,9 +91,9 @@ export const getStaticProps = async ({ params }) => {
     const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
     const blogsPage = {}
     if (page.slug === "santuario") {
-      
+
       return {
-        props: { page: { ...page },  modelsGQ },
+        props: { page: { ...page }, modelsGQ },
         revalidate: 10
       };
     }
