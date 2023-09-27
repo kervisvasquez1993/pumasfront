@@ -84,6 +84,9 @@ const SelectedModels = ({ componentName, modelo, modelX = 0, modelY = 0, modelZ 
     case "MonoCaraBlanca":
       selectedComponent = <MonoCaraBlanca />;
       break;
+    case "MonoCaraBlanca":
+      selectedComponent = <MonoCaraBlanca />;
+      break;
     default:
       selectedComponent = null;
   }

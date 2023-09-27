@@ -135,9 +135,12 @@ const NosotrosPage = ({ data }) => {
               width="560"
               height="315"
               src="https://www.youtube.com/embed/Vr3FNq5djxs"
-              frameborder="0"
-              allowfullscreen
+              frameBorder="0"
+              allowFullScreen
             ></iframe>
+
+
+
           </div>
         </section>
 
