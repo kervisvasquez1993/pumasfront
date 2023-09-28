@@ -818,9 +818,9 @@ footer {
 
 .imagen-superpuesta-banner {
     position: absolute;
-    bottom: 40px;
+    bottom: 0px;
     left: 0;
-    width: 150%;
+    width: 100%;
     height: 20%;
     opacity: 1;
 }
@@ -834,7 +834,7 @@ footer {
 @media(max-width: 768px) {
 
     .imagen-superpuesta-banner {
-        bottom: 100px;
+        bottom: 0px;
         height: 15%;
     }
 
@@ -865,9 +865,9 @@ footer {
 .imagen-icono-animal {
     position: absolute;
     bottom: 19px;
-    left: 3px;
-    width: 100px;
-    height: 100px;
+    left: 15px;
+    width: 75px;
+    height: 75px;
     opacity: 1;
 }
 
