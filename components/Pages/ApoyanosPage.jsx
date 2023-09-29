@@ -67,7 +67,7 @@ const ApoyanosPage = ({ data }) => {
             <section className="px-5">
               <HeaderComponets
                 src=""
-                classNameText={"colorSecondary chelseaFont pt-10 mt-10 "}
+                classNameText={"font-responsive colorSecondary chelseaFont pt-10 mt-10 "}
                 alignment={`${screenSize <= 1024 ? "center" : "center"}`}
               >
                 {threeElement.title}
