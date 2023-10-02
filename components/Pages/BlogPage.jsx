@@ -18,7 +18,7 @@ const BlogPage = ({ data, blogData }) => {
   const sectionBlogs = blogsInfo?.map((blog, index) => {
     const { TitleBlog, ContentBlog, imgBlog } = blog?.attributes
     const resumen = ContentBlog.substring(0, 150)
-    return (<Link href={`/${lang}/blog/${blog.id}`}>  <CardComponent key={index}
+    return (<Link href={`/${lang}/blog/${blog.id}`} class={"py-5"}>  <CardComponent key={index}
       description={resumen + " ...... "}
       title={TitleBlog}
       imageUrl={`${imgBlog?.data ? imgBlog?.data[0]?.attributes?.url : "/images/no-img.jpg"}`}
