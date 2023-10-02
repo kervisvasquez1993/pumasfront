@@ -44,7 +44,7 @@ const CentroDeRescate = ({ data }) => {
           <HeaderComponets
             alignment={`${screenSize <= 1024 ? "center" : "start"}`}
             src="/images/fondo1.png"
-            classNameText={"hola program-title fuenteTitulo colorPrimary py-10 my-10"}
+            classNameText={"font-responsive program-title fuenteTitulo colorPrimary py-10 my-10"}
             classNameSection={"centerElement"}
           >
             {secondSection.Titulo}

@@ -48,7 +48,7 @@ const BlogInfo = ({
               classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-10 m-10`}
 
             >
-              <ReactMarkdown className="">{ContentBlog}</ReactMarkdown>
+              <ReactMarkdown className="contentBlog">{ContentBlog}</ReactMarkdown>
             </BasicSection>
           </section>
         </section>
