@@ -866,6 +866,16 @@ footer {
     font-weight: bold;
     padding-bottom: 0.5rem;
 }
+.contentBlog h2 {
+    font-size: 1rem;
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+}
+.contentBlog h3 {
+    font-size: 0.5rem;
+    font-weight: bold;
+    padding-bottom: 0.5rem;
+}
 .contentBlog ul li{
    list-style: inside;
     padding-top: 0.2rem;
