@@ -193,7 +193,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
             {/* <h3 className="chelseaFont colorGris fontSize36">SELECCIONA TU TIPO DE DONACIÓN</h3> */}
             <HeaderComponents
               src="/images/fondo1.png"
-              classNameText={"py-10 my-10 colorGris chelseaFont"}
+              classNameText={"py-10 my-10 colorGris chelseaFont font-responsive"}
               alignment="start"
             >
               SELECCIONA TU TIPO DE DONACIÓN
@@ -202,7 +202,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
             <WrapperDonations>
               {donationInitial.map((elemento, index) => {
                 return (
-                  <div className="py-10 my-10" key={index}>
+                  <div className="lg:py-10 lg:my-10 p-5" key={index}>
                     <figure className="p-10 m-10">
                       {elemento.image ? (
                         <img src={elemento.image} />
@@ -244,7 +244,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
             {renderHeader()}
             <HeaderComponents
               src="/images/fondo1.png"
-              classNameText={"py-10 my-10 colorGris chelseaFont"}
+              classNameText={"lg:py-10 lg:my-10 p-5 colorGris chelseaFont font-responsive"}
               alignment="start"
             >
               ¿QUÉ DESEAS DONAR?
@@ -282,7 +282,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
             {renderHeader()}
             <HeaderComponents
               src="/images/fondo1.png"
-              classNameText={"py-10 my-10 colorGris chelseaFont"}
+              classNameText={"lg:py-10 lg:my-10 p-5 colorGris chelseaFont font-responsive"}
               alignment="start"
             >
               SELECCIONA EL METODO DE PAGO
