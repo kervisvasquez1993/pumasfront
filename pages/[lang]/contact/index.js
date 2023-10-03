@@ -94,8 +94,8 @@ const Contact = () => {
   // const notify = () => toast("Wow so easy!");
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if( Object.keys(errors).length > 0) {
-      return 
+    if (Object.keys(errors).length > 0) {
+      return
     }
     setLoadingForm(true);
 
@@ -217,36 +217,38 @@ const Contact = () => {
             {errors.correo && <p className="text-red-500 mt-1">{errors.correo}</p>}
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="fecha" className="block font-semibold mb-1">
-              Fecha Reserva:
-            </label>
-            <DatePicker
-              id="fecha"
-              name="fecha"
-              selected={startDate}
-              onChange={(e) => handleInputChange(e, 'fecha')}
-              className={`w-full border p-2 rounded ${errors.fecha ? "border-red-500" : ""
-                }`}
-              required
-            />
-            {errors.fecha && <p className="text-red-500 mt-1">{errors.fecha}</p>}
-          </div>
+          <div className="mb-4 flex "> {/* Agregar la clase 'flex' y 'items-center' */}
+            <div className="mr-4"> 
+              <label htmlFor="fecha" className="block font-semibold mb-1">
+                Fecha Reserva:
+              </label>
+              <DatePicker
+                id="fecha"
+                name="fecha"
+                selected={startDate}
+                onChange={(e) => handleInputChange(e, 'fecha')}
+                className={`w-full border p-2 rounded ${errors.fecha ? "border-red-500" : ""
+                  }`}
+                required
+              />
+              {errors.fecha && <p className="text-red-500 mt-1">{errors.fecha}</p>}
+            </div>
 
-          <div className="mb-4">
-            <label htmlFor="hora" className="block font-semibold mb-1">
-              Hora:
-            </label>
-            <input
-              type="time"
-              id="hora"
-              name="hora"
-              value={formData.hora}
-              onChange={(e) => handleInputChange(e, 'hora')}
-              className={`w-full border p-2 rounded ${errors.hora ? "border-red-500" : ""
-                }`}
-            />
-            {errors.hora && <p className="text-red-500 mt-1">{errors.hora}</p>}
+            <div className='w-full' > 
+              <label htmlFor="hora" className="block font-semibold mb-1">
+                Hora:
+              </label>
+              <input
+                type="time"
+                id="hora"
+                name="hora"
+                value={formData.hora}
+                onChange={(e) => handleInputChange(e, 'hora')}
+                className={`w-full border p-2 rounded ${errors.hora ? "border-red-500" : ""
+                  }`}
+              />
+              {errors.hora && <p className="text-red-500 mt-1">{errors.hora}</p>}
+            </div>
           </div>
 
           <div className="mb-4">
