@@ -45,7 +45,7 @@ const HomePage = ({ data }) => {
 
 
         <HeaderComponets
-          classNameText={"mt-10 p-5 colorPrimary chelseaFont"}
+          classNameText={"mt-10 p-5 colorPrimary chelseaFont font-responsive"}
           alignment={`${screenSize <= 900 ? "center" : "start"}`}
           width={`${screenSize <= 900 ? "100%" : "70%"}`}
         >
@@ -87,7 +87,7 @@ const HomePage = ({ data }) => {
         </TwoColumnGrid>
 
         <HeaderComponets
-          classNameText={" lg:py-10 py-5 colorSecondary chelseaFont"}
+          classNameText={" lg:py-10 py-5 colorSecondary chelseaFont font-responsive"}
           alignment="end"
           width="100%"
         >
@@ -124,7 +124,7 @@ const HomePage = ({ data }) => {
 
 
         <HeaderComponets
-          classNameText={"p-10 titleGreen chelseaFont"}
+          classNameText={"p-10 titleGreen chelseaFont font-responsive"}
           alignment={`${screenSize <= 1200 ? "center" : "start"}`}
           width={`${screenSize <= 1200 ? "100%" : "40%"}`}
         >
@@ -165,7 +165,7 @@ const HomePage = ({ data }) => {
           </BasicSection>
         </TwoColumnGrid>
         <HeaderComponets
-          classNameText={"py-10 colorPrimary chelseaFont"}
+          classNameText={"py-10 colorPrimary chelseaFont font-responsive"}
           alignment={`${screenSize <= 1200 ? "center" : "start"}`}
           width={`${screenSize <= 1200 ? "100%" : "70%"}`}
         >

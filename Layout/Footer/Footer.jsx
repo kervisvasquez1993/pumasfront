@@ -28,7 +28,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className='w-10vw'>
+      <div className='lg:w-10vw p-5 m-5'>
         <img src="/images/logo-blanco.png" alt="" />
       </div>
     </footer>

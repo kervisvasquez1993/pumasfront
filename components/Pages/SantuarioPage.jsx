@@ -93,7 +93,7 @@ const SantuarioPage = ({ data }) => {
 
         <HeaderComponets
           src="/images/fondo1.png"
-          classNameText={"colorPrimary chelseaFont pt-10 mt-10 "}
+          classNameText={"font-responsive colorPrimary chelseaFont pt-10 mt-10 "}
           alignment={`${screenSize <= 1024 ? "center" : "start"}`}
         >
           {firstElement.Titulo}
@@ -109,7 +109,7 @@ const SantuarioPage = ({ data }) => {
           <HeaderComponets
             alignment="center"
             src="/images/fondo1.png"
-            classNameText={"colorSecondary chelseaFont lg:px-10 mx-10"}
+            classNameText={"font-responsive colorSecondary chelseaFont lg:px-10 mx-10"}
             classNameSection={"centerElement"}
           >
             {thirdElement.title}

@@ -39,7 +39,7 @@ const Donations = ({ result, typeDonationSchemes, filtro, }) => {
         </div>
         <HeaderComponents
           src="/images/fondo1.png"
-          classNameText={"py-5 colorVerde chelseaFont"}
+          classNameText={"py-5 colorVerde chelseaFont font-responsive"}
           alignment={`${screenSize <= 1200 ? "center" : "start"}`}
         >
           PATROCINADORES
