@@ -3,9 +3,13 @@ import { langAll } from '../../../apis/ApiBackend';
 import Main from '../../../Layout/Main/Main';
 import HeaderComponents from '../../../components/UI/HeaderComponents/HeaderComponets';
 import useScreenSize from '../../../hooks/useScreenSize';
+import { ToastContainer, toast } from 'react-toastify';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
-  const { screenSize } = useScreenSize()
+  const { screenSize } = useScreenSize();
   const [formData, setFormData] = useState({
     nombre: "",
     correo: "",
@@ -14,60 +18,69 @@ const Contact = () => {
     cantidadAdultos: "",
     cantidadNinos: "",
     descripcion: "",
-    requiereGuia : ""
+    requiereGuia: ""
   });
 
   const [loadingForm, setLoadingForm] = useState(false);
   const [errors, setErrors] = useState({});
   const [responseSubmitForm, setResponseSubmitForm] = useState("");
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  const handleInputChange = (e, name = null) => {
+    const input = e.target;
+  
     if (name === "hora") {
       // Validación para la hora: debe estar entre las 8 am y las 5 pm
-      const selectedHour = parseInt(value.split(":")[0], 10);
-      if (selectedHour < 8 || selectedHour >= 17) {
-        // Hora inválida, muestra un mensaje de error
-        setErrors({
-          ...errors,
-          hora: "La hora debe estar entre las 8 am y las 5 pm.",
-        });
-      } else {
-        // Hora válida, borra el mensaje de error si existía previamente
-        const newErrors = { ...errors };
-        delete newErrors.hora;
-        setErrors(newErrors);
+      if (input && input.value) {
+        const selectedHour = parseInt(input.value.split(":")[0], 10);
+        if (selectedHour < 8 || selectedHour >= 17) {
+          // Hora inválida, muestra un mensaje de error
+          setErrors({
+            ...errors,
+            hora: "La hora debe estar entre las 8 am y las 5 pm.",
+          });
+        } else {
+          // Hora válida, borra el mensaje de error si existía previamente
+          const newErrors = { ...errors };
+          delete newErrors.hora;
+          setErrors(newErrors);
+        }
       }
     }
-
+  
     if (name === "fecha") {
+      console.log(input.value)
       // Validación para la fecha: no se permite seleccionar una fecha anterior a la actual
-      const selectedDate = new Date(value);
-      const currentDate = new Date();
-
-      if (selectedDate < currentDate) {
-        // Fecha inválida, puedes mostrar un mensaje de error
-        setErrors({
-          ...errors,
-          fecha: "La fecha no puede ser anterior a la fecha actual.",
-        });
-        return;
-      } else {
-        // Fecha válida, borra el mensaje de error si existía previamente
-        const newErrors = { ...errors };
-        delete newErrors.fecha;
-        setErrors(newErrors);
+      if (input && input.value) {
+        
+        const selectedDate = new Date(input.value);
+        const currentDate = new Date();
+  
+        if (selectedDate < currentDate) {
+          // Fecha inválida, puedes mostrar un mensaje de error
+          setErrors({
+            ...errors,
+            fecha: "La fecha no puede ser anterior a la fecha actual.",
+          });
+          return;
+        } else {
+          // Fecha válida, borra el mensaje de error si existía previamente
+          const newErrors = { ...errors };
+          delete newErrors.fecha;
+          setErrors(newErrors);
+        }
       }
     }
-
+  
     // Actualiza el estado con el nuevo valor del campo
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+    if (e.target) {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    }
+  }
 
-
+  // const notify = () => toast("Wow so easy!");
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -92,7 +105,7 @@ const Contact = () => {
       return;
     }
 
-    console.log("llamadando form submit")
+   
     const newElement = {
       type: "Contacto",
       nombre: formData.nombre,
@@ -102,7 +115,7 @@ const Contact = () => {
       cantidadAdultos: formData.cantidadAdultos,
       cantidadNinos: formData.cantidadNinos,
       descripcion: formData.descripcion,
-      requiereGuia : formData.requiereGuia
+      requiereGuia: formData.requiereGuia
     };
 
     try {
@@ -125,8 +138,10 @@ const Contact = () => {
         cantidadNinos: "",
         descripcion: "",
       });
-      console.log(data);
+      console.log(data, "desde data");
+      toast(data.mensaje);
       setResponseSubmitForm(data.mensaje);
+
       setTimeout(() => {
         setResponseSubmitForm("");
       }, 5000);
@@ -139,6 +154,18 @@ const Contact = () => {
   return (
     <Main titlePage={"Contacto"}>
       <div className="container">
+        <div>
+          <ToastContainer position="bottom-left"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light" />
+        </div>
         <HeaderComponents
           classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 "}
           alignment={`${screenSize <= 1024 ? "center" : "center"}`}
@@ -185,12 +212,12 @@ const Contact = () => {
             <label htmlFor="fecha" className="block font-semibold mb-1">
               Fecha Reserva:
             </label>
-            <input
-              type="date"
+            <DatePicker
               id="fecha"
               name="fecha"
+              selected={formData.fecha}
               value={formData.fecha}
-              onChange={handleInputChange}
+              onChange={(e) => handleInputChange(e, 'hora')}
               className={`w-full border p-2 rounded ${errors.fecha ? "border-red-500" : ""
                 }`}
               required
@@ -207,7 +234,7 @@ const Contact = () => {
               id="hora"
               name="hora"
               value={formData.hora}
-              onChange={handleInputChange}
+              onChange={(e) => handleInputChange(e, 'hora')}
               className={`w-full border p-2 rounded ${errors.hora ? "border-red-500" : ""
                 }`}
             />
