@@ -27,16 +27,7 @@ const BlogInfo = ({
 
       <section className="container-section py-10 my-5">
         <section className="flex-2">
-
-          {/* <SliderThree>
-              {imgBlog?.data?.map((image, index) => (
-                <div key={index}>
-                  <img src={image.attributes.url} alt={`image-${index}`} />
-                </div>
-              ))}
-            </SliderThree> */}
           <SliderSingle slidesData={imgBlog?.data} />
-
           <section>
             <BasicSection
               classNameTitle={""}
@@ -53,8 +44,6 @@ const BlogInfo = ({
           </section>
         </section>
       </section>
-
-
     </Main>
   )
 }
@@ -63,22 +52,14 @@ export default BlogInfo
 
 export const getStaticProps = async ({ params }) => {
   const { lang, id } = params
-  // console.log(id, "id")
   const blogAllResponse = await getBlog(lang);
   const blogAll = blogAllResponse.data.data
-  // console.log(blogAll, "data")
-
   const blog = blogAll.find(e => e.id == id)
-
-
   return {
     props: {
       blog
     },
   };
-
-
-
 }
 
 export const getStaticPaths = async () => {
@@ -86,7 +67,6 @@ export const getStaticPaths = async () => {
   const blogs = [];
   const locales = await langAll();
   const languages = locales.data;
-
   for (const language of languages) {
     const blogAllResponse = await getBlog(language.code);
     const blogAll = blogAllResponse.data

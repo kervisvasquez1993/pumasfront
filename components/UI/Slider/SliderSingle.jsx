@@ -20,7 +20,7 @@ export default function SliderSingle({ slidesData = [] }) {
                 <Swiper
                     slidesPerView={1}
                     centeredSlides={false}
-                    spaceBetween={20} // Espacio entre las imágenes
+                    spaceBetween={20} 
                     navigation={true}
                     modules={[Pagination, Navigation]}
                     className="mySwiper"
