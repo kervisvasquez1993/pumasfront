@@ -30,7 +30,6 @@ const Contact = () => {
       if (e instanceof Date) {
         const selectedDate = e;
         const currentDate = new Date();
-        // Extraer el año, mes y día de currentDate
         const currentYear = currentDate.getFullYear();
         const currentMonth = currentDate.getMonth();
         const currentDay = currentDate.getDate();
@@ -347,10 +346,6 @@ export default Contact
 
 export const getStaticProps = async ({ params }) => {
   const { lang } = params;
-
-
-
-
   return {
     props: {
       result: lang
@@ -365,7 +360,6 @@ export const getStaticPaths = async () => {
   for (const language of languages) {
     lang.push({ params: { lang: language.code } });
   }
-  // console.log(lang);
   return {
     paths: lang,
     fallback: true,
