@@ -8,7 +8,10 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const Contact = () => {
+  const whatsappNumber = '584244144008431';
+  const whatsappMessage = 'Hola, ¿cómo puedo ayudarte?';
   const { screenSize } = useScreenSize();
   const [formData, setFormData] = useState({
     nombre: "",
@@ -217,7 +220,7 @@ const Contact = () => {
           </div>
 
           <div className="mb-4 flex "> {/* Agregar la clase 'flex' y 'items-center' */}
-            <div className="mr-4"> 
+            <div className="mr-4">
               <label htmlFor="fecha" className="block font-semibold mb-1">
                 Fecha Reserva:
               </label>
@@ -233,7 +236,7 @@ const Contact = () => {
               {errors.fecha && <p className="text-red-500 mt-1">{errors.fecha}</p>}
             </div>
 
-            <div className='w-full' > 
+            <div className='w-full' >
               <label htmlFor="hora" className="block font-semibold mb-1">
                 Hora:
               </label>
@@ -334,7 +337,12 @@ const Contact = () => {
         </form>
 
 
+         
 
+   
+    
+
+       
 
       </div>
     </Main>

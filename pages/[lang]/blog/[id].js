@@ -26,12 +26,12 @@ const BlogInfo = ({
       </HeaderComponents>
 
       <section className="container-section py-10 my-5">
-        <section className="flex-2">
+        <section className={`${imgBlog?.data  ? "flex-2" : "" }`}>
           <SliderSingle slidesData={imgBlog?.data} />
           <section>
             <BasicSection
               classNameTitle={""}
-              classNameWrapper={"setionStyleTwo"}
+              classNameWrapper={"setionStyleTwo px-10"}
               title={""}
               alignItems={"center"}
               justifyContent={"center"}

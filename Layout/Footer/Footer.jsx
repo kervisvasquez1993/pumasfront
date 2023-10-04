@@ -1,4 +1,5 @@
 import React from 'react';
+import WhatsAppButton from '../../components/whatsapp';
 // import backgroundImg from './ruta/de/la/imagen/fondo.jpg'; // Ruta de la imagen de fondo
 
 const Footer = () => {
@@ -31,6 +32,7 @@ const Footer = () => {
       <div className='lg:w-10vw p-5 m-5'>
         <img src="/images/logo-blanco.png" alt="" />
       </div>
+      <WhatsAppButton phoneNumber="584144008431" message="¡Hola! Quiero saber más." />
     </footer>
   );
 };

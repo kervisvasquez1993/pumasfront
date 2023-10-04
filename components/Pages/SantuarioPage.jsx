@@ -1,5 +1,8 @@
 // SantuarioPage.js
 import React, { useState } from "react";
+import { useRouter } from "next/router";
+import ReactMarkdown from "react-markdown";
+import { Tooltip } from 'react-tooltip'
 import Main from "../../Layout/Main/Main";
 import BasicSection from "../Section/Basic/BasicSection";
 import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
@@ -9,13 +12,13 @@ import MapWithBackground from "../UI/MapWithBackground";
 import useModelo from "../../hooks/useModelo";
 import CanvasElement from "../UI/CanvasElement";
 import Modal from "../UI/Modal";
-import { Tooltip } from 'react-tooltip'
+
 import usePages from "../../hooks/usePages";
 import SlidetWithContent from "../Section/Slider/SliderWithContent";
-import ReactMarkdown from "react-markdown";
+
 import useScreenSize from "../../hooks/useScreenSize";
 import Loader from "../UI/Loader";
-import { useRouter } from "next/router";
+
 
 const SantuarioPage = ({ data }) => {
   const router = useRouter();

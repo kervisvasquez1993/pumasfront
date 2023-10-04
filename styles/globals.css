@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&family=Roboto:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Manrope:wght@200&family=Roboto:wght@100&display=swap');
 
-.leaflet-control-attribution{
+.leaflet-control-attribution {
   display: none !important;
 }
+
 body {
   background-color: #fffdf6 !important;
 }
-input, textarea, select{
+
+input,
+textarea,
+select {
   background: white;
 }
 
@@ -582,6 +586,7 @@ video {
 .selectedItem {
   border: 5px solid #E86641;
 }
+
 ul.thumbs li {
   max-height: 100px;
 }
@@ -717,7 +722,7 @@ ul.thumbs li {
   background: transparent !important;
 }
 
-.modelShowItem{
+.modelShowItem {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -750,6 +755,7 @@ ul.thumbs li {
     background-size: 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
     background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
   }
+
   75% {
     background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
     background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
@@ -795,13 +801,14 @@ ul.thumbs li {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 30%; 
+  width: 30%;
 }
+
 @media (max-width: 1024px) {
   .headerLogo {
-    
-    width: 50%; 
-   
+
+    width: 50%;
+
   }
 }
 
@@ -820,9 +827,10 @@ ul.thumbs li {
 
 
 
-.header-apoyanos img{
+.header-apoyanos img {
   width: 50px;
 }
+
 .header-apoyanos {
   display: flex;
   align-items: center;
@@ -830,15 +838,16 @@ ul.thumbs li {
 
 .stickyHeader {
   position: sticky;
-  top: 0; 
-  background-color: #ffffff; 
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
-  z-index: 10000; 
+  top: 0;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
 }
 
 .video-container {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  padding-bottom: 56.25%;
+  /* 16:9 aspect ratio */
   overflow: hidden;
 }
 
@@ -864,7 +873,8 @@ ul.thumbs li {
 
 /* Estilo del fondo cuando el cursor está sobre la imagen */
 .materials__imagen:hover {
-  background-color: rgba(255, 255, 255, 1); /* Fondo blanco con opacidad */
+  background-color: rgba(255, 255, 255, 1);
+  /* Fondo blanco con opacidad */
 }
 
 /* Estilo del botón de descarga */
@@ -879,7 +889,8 @@ ul.thumbs li {
   border: none;
   cursor: pointer;
   display: none;
-  z-index: 1; /* Asegura que el botón esté por encima del fondo */
+  z-index: 1;
+  /* Asegura que el botón esté por encima del fondo */
 }
 
 /* Mostrar el botón al pasar el cursor sobre el contenedor */
@@ -894,29 +905,38 @@ ul.thumbs li {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con opacidad */
-  z-index: -1; /* Coloca el fondo detrás del contenido */
+  background-color: rgba(255, 255, 255, 0.5);
+  /* Fondo blanco con opacidad */
+  z-index: -1;
+  /* Coloca el fondo detrás del contenido */
 }
+
 /* Estilo del contenedor de la imagen */
 .materials__imagen {
   position: relative;
   display: inline-block;
   cursor: pointer;
-  width: 300px; /* Tamaño fijo para el ancho */
-  height: 200px; /* Tamaño fijo para la altura */
+  width: 300px;
+  /* Tamaño fijo para el ancho */
+  height: 200px;
+  /* Tamaño fijo para la altura */
   overflow: hidden;
 }
 
 /* Estilo del fondo cuando el cursor está sobre la imagen */
 .materials__imagen:hover {
-  background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco con opacidad */
+  background-color: rgba(255, 255, 255, 0.5);
+  /* Fondo blanco con opacidad */
 }
 
 /* Estilo de la imagen dentro del contenedor */
 .materials__imagen img {
-  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
-  height: 100%; /* Asegura que la imagen ocupe todo el alto del contenedor */
-  object-fit: cover; /* Controla cómo se ajusta la imagen dentro del contenedor */
+  width: 100%;
+  /* Asegura que la imagen ocupe todo el ancho del contenedor */
+  height: 100%;
+  /* Asegura que la imagen ocupe todo el alto del contenedor */
+  object-fit: cover;
+  /* Controla cómo se ajusta la imagen dentro del contenedor */
 }
 
 /* Estilo del botón de descarga */
@@ -931,7 +951,8 @@ ul.thumbs li {
   border: none;
   cursor: pointer;
   display: none;
-  z-index: 1; /* Asegura que el botón esté por encima del fondo */
+  z-index: 1;
+  /* Asegura que el botón esté por encima del fondo */
 }
 
 /* Estilo del contenedor de la imagen */
@@ -950,15 +971,20 @@ ul.thumbs li {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
-  z-index: 1; /* Coloca el fondo por encima de la imagen */
+  background-color: rgba(255, 255, 255, 0.8);
+  /* Fondo blanco con opacidad */
+  z-index: 1;
+  /* Coloca el fondo por encima de la imagen */
 }
 
 /* Estilo de la imagen dentro del contenedor */
 .materials__imagen img {
-  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
-  height: 100%; /* Asegura que la imagen ocupe todo el alto del contenedor */
-  object-fit: cover; /* Controla cómo se ajusta la imagen dentro del contenedor */
+  width: 100%;
+  /* Asegura que la imagen ocupe todo el ancho del contenedor */
+  height: 100%;
+  /* Asegura que la imagen ocupe todo el alto del contenedor */
+  object-fit: cover;
+  /* Controla cómo se ajusta la imagen dentro del contenedor */
 }
 
 /* Estilo del botón de descarga */
@@ -974,7 +1000,8 @@ ul.thumbs li {
   border: none;
   cursor: pointer;
   display: none;
-  z-index: 2; /* Asegura que el botón esté por encima del fondo */
+  z-index: 2;
+  /* Asegura que el botón esté por encima del fondo */
 }
 
 /* Mostrar el botón al pasar el cursor sobre el contenedor */
@@ -982,16 +1009,41 @@ ul.thumbs li {
   display: block;
 }
 
-.sliderCustom{
+.sliderCustom {
   max-width: 30vw;
   margin: 0 auto;
   background: blue;
 }
-.wrapperSliderCustom{
+
+.wrapperSliderCustom {
   margin: 0 auto;
   background: red;
 }
 
-.widthMap{
+.widthMap {
   width: 100%;
+}
+
+/* Estilo para el container principal */
+.whatsapp-container {
+  position: relative; /* Importante para que el botón esté posicionado con respecto a este container */
+}
+
+/* Estilo para el botón de WhatsApp */
+.whatsapp-button {
+  font-family: 'Chelsea Market', sans-serif;
+  display: flex;
+  align-items: flex-end;
+  font-weight: bold;
+  font-size: 20px;
+  position: fixed; /* Fijar el botón en la ventana del navegador */
+  bottom: 30px; /* Distancia desde la parte inferior */
+  right: 0px; /* Distancia desde la parte derecha */
+  z-index: 1000; /* Asegurar que el botón esté por encima del contenido */
+}
+
+.whatsapp-button svg {
+  color: #50B496;
+  margin: 0 20px ;
+  font-size: 80px;
 }
