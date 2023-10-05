@@ -1,50 +1,57 @@
-import React, { useEffect } from 'react'
-import { getMenus, getPagesGQ, langAll } from '../../apis/ApiBackend';
-import usePages from '../../hooks/usePages';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { getMenus, langAll } from '../../apis/ApiBackend';
+import Loader from '../../components/UI/Loader';
 
-const Lang = ({ menu, pages }) => {
+const Lang = ({ result, notFoundMessage }) => {
     const router = useRouter();
-    const { lang } = router.query;
+    if (notFoundMessage) {
+        return notFoundMessage
+    }
+    console.log(result?.code)
+    let ruta;
+    if (result?.code === "es") {
+        ruta = `/${result?.code}/inicio`;
+    }
+    else if (result?.code === "en") {
+        ruta = `/${result?.code}/home`;
+    }
+    else {
 
-    const inicio = menu.find(e => e.slug === "inicio")?.slug;
+        return notFoundMessage
+    }
+
+
+
+
     useEffect(() => {
-            router.push(`/${lang}/${inicio}`);
-            updateData(pages);
-        
-    }, [lang, isLangPage]); 
 
-    const { updateData } = usePages();
+        router.push(ruta);
 
-    return (
-        <div>Lang</div>
-    );
+    }, [result]);
+
+    return <Loader />;
 };
 
-
-
-
-
+export default Lang;
 export const getStaticProps = async ({ params }) => {
     const { lang } = params;
+    const getLangAll = await langAll();
+    const result = getLangAll.data.find(element => element.code === lang);
 
-    const [menusResponse, pagesResponse] = await Promise.all([
-        getMenus(lang),
-        getPagesGQ(lang)
-    ]);
-    const menus = menusResponse.data.data;
-    const pages = pagesResponse.data.pages
+    if (!result) {
+        return {
+            props: {
+                notFoundMessage: "No se encontró la ruta para el idioma proporcionado.",
+            },
+        };
+    }
 
-    const menu = menus.map((element) => ({
-        lang: element.attributes.locale,
-        slug: element.attributes.slug,
-        name: element.attributes.nombre,
-        contentType: "component",
-    }));
     return {
-        props: { menu, lang, pages },
+        props: { result },
     };
 };
+
 export const getStaticPaths = async () => {
     const lang = await langAll();
     const languages = lang.data;
@@ -69,6 +76,3 @@ export const getStaticPaths = async () => {
     };
 };
 
-
-
-export default Lang

@@ -1,23 +1,22 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-
 import { getMenus, langAll } from '../apis/ApiBackend';
 import Loader from '../components/UI/Loader';
 
 const Home = ({ result, code }) => {
-    const [firstTranslation, secondTranslation] = code;
-    const router = useRouter();
+  const [firstTranslation, secondTranslation] = code;
+  const router = useRouter();
 
-    useEffect(() => {
-        const inicio = result.find(element => element.params.slug === 'inicio')?.params.slug;
+  useEffect(() => {
+    const inicio = result.find((element) => element.params.slug === 'inicio')?.params.slug;
 
-        if (inicio) {
-            const urlRedirect = `/${firstTranslation}/${inicio}`;
-            router.push(urlRedirect);
-        }
-    }, []); 
+    if (inicio) {
+      const urlRedirect = `/${firstTranslation}/${inicio}`;
+      router.push(urlRedirect);
+    }
+  }, []);
 
-    return   <Loader />
+  return <Loader />;
 };
 
 export default Home;
