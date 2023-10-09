@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import HomePage from "../../../components/Pages/HomePage";
 import { useRouter } from "next/router";
 import NosotrosPage from "../../../components/Pages/NosotrosPage";
-import { getAllModels, getBlog, getMenus, getModelGQ, getPageWithComponents, getPagesGQ, langAll } from "../../../apis/ApiBackend";
+import { getAllModels, getBlog, getMenus, getModelGQ, getPageWithComponents, getPagesGQ, langAll, getFooter } from "../../../apis/ApiBackend";
 import SantuarioPage from "../../../components/Pages/SantuarioPage";
 import CentroDeRescate from "../../../components/Pages/CentroDeRescate";
 import BlogPage from "../../../components/Pages/BlogPage";
@@ -12,13 +12,14 @@ import useModelo from "../../../hooks/useModelo";
 import usePages from "../../../hooks/usePages";
 import Loader from "../../../components/UI/Loader";
 
-const Page = ({ page, blogsPage, modelsGQ }) => {
+const Page = ({ page, blogsPage, modelsGQ, footer }) => {
+  console.log(footer, "footer");
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
 
   const { slug, lang } = router.query
-  // console.log(page)
+
 
   useEffect(() => {
     updateData(page)
@@ -69,13 +70,10 @@ export const getStaticProps = async ({ params }) => {
   try {
 
     const { lang, slug } = params;
-    console.log(lang, "lang")
-    const getLangAll = await langAll();
-    const pagesResponse = await getPagesGQ(lang)
+    const [pagesResponse, footerResponse, modelsGQResponse] = await Promise.all([getPagesGQ(lang), getFooter(lang), getModelGQ(lang)]);
+    const footer = footerResponse?.data?.data?.attributes?.footerInfo
     const pages = pagesResponse?.data?.pages
-    const languages = getLangAll?.data;
     const dataPages = pages?.data;
-    const modelsGQResponse = await getModelGQ(lang)
     const modelsGQ = modelsGQResponse?.data?.modelos
     const updatePage = dataPages?.map(page => {
       return {
@@ -89,19 +87,17 @@ export const getStaticProps = async ({ params }) => {
       }
     })
     const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
-    const blogsPage = {}
-    
     if (page.slug === "blog") {
       const blog = await getBlog(lang);
       const blogsPage = blog.data;
       return {
-        props: { page: { ...page }, blogsPage },
+        props: { page: { ...page }, blogsPage, footer },
       };
 
     }
     if (!page) return { notFound: true };
     return {
-      props: { page: { ...page },modelsGQ },
+      props: { page: { ...page }, modelsGQ, footer },
       revalidate: 10
     };
   } catch (error) {

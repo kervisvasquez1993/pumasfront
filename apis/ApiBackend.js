@@ -31,6 +31,17 @@ export const getPatrocinadores = (language) => {
   };
   return ApiBackend("api/patrocinadores?populate=*", config);
 };
+export const getFooter = (language) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+
+    },
+
+  };
+  return ApiBackend("api/footer?populate=*&locale=" + language, config);
+};
 
 
 export const getBlog = (language) => {
