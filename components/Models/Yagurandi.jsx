@@ -4,7 +4,7 @@ import { useGLTF } from '@react-three/drei'
 
 export function Yagurandi({  ...props }) {
 
-  const { nodes, materials } = useGLTF("/models/Yagurandi.gltf");
+  const { nodes, materials } = useGLTF("/models/Yagurandi.glb");
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Yaguarundi.geometry} material={materials['Ocelot.001']} />
@@ -13,4 +13,4 @@ export function Yagurandi({  ...props }) {
 
 }
 
-useGLTF.preload("/models/Yagurandi.gltf");
+useGLTF.preload("/models/Yagurandi.glb");

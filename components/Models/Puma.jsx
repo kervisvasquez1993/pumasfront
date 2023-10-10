@@ -3,7 +3,7 @@ import { useGLTF } from "@react-three/drei";
 
 export function Puma({  ...props }) {
   
-    const { nodes, materials } = useGLTF("/models/Puma.gltf");
+    const { nodes, materials } = useGLTF("/models/Puma.glb");
     return (
       <group {...props} dispose={null}>
         <mesh geometry={nodes.Puma.geometry} material={materials.Puma} />
@@ -12,4 +12,4 @@ export function Puma({  ...props }) {
  
 }
 
-useGLTF.preload("/models/Puma.gltf");
+useGLTF.preload("/models/Puma.glb");

@@ -8,7 +8,7 @@ import { useGLTF } from '@react-three/drei'
 
 export function TortugaNegra({  ...props }) {
   
-    const { nodes, materials } = useGLTF("/models/TortugaNegra.gltf");
+    const { nodes, materials } = useGLTF("/models/TortugaNegra.glb");
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.TortugaNegra.geometry} material={materials['13102_pondturtle']} />

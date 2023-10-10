@@ -3,7 +3,7 @@ import { useGLTF } from "@react-three/drei";
 
 export function Saino({  ...props }) {
   
-    const { nodes, materials } = useGLTF("/models/Saino.gltf");
+    const { nodes, materials } = useGLTF("/models/Saino.glb");
 
     return (
       <group {...props} dispose={null}>
@@ -16,4 +16,4 @@ export function Saino({  ...props }) {
 
 }
 
-useGLTF.preload("/models/Saino.gltf");
+useGLTF.preload("/models/Saino.glb");

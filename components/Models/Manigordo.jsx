@@ -8,7 +8,7 @@ import { useGLTF } from '@react-three/drei'
 
 export function Manigordo({ ...props }) {
 
-  const { nodes, materials } = useGLTF("/models/Manigordo.gltf");
+  const { nodes, materials } = useGLTF("/models/Manigordo.glb");
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Ocelot.geometry} material={materials.Ocelot} />
@@ -19,4 +19,4 @@ export function Manigordo({ ...props }) {
 }
 
 
-useGLTF.preload("/models/Manigordo.gltf");
+useGLTF.preload("/models/Manigordo.glb");

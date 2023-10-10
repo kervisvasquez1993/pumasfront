@@ -8,7 +8,7 @@ import { useGLTF } from '@react-three/drei'
 
 export function LoroNucaAmarilla({  ...props }) {
  
-    const { nodes, materials } = useGLTF("/models/LoraNucaAmarilla.gltf");
+    const { nodes, materials } = useGLTF("/models/LoraNucaAmarilla.glb");
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.LoraNucaAmarilla.geometry} material={materials.LoraNucaAmarilla} />
@@ -18,4 +18,4 @@ export function LoroNucaAmarilla({  ...props }) {
 }
 
 
-useGLTF.preload("/models/LoraNucaAmarilla.gltf");
+useGLTF.preload("/models/LoraNucaAmarilla.glb");

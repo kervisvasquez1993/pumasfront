@@ -4,7 +4,7 @@ import { useGLTF } from '@react-three/drei'
 
 export function LoroCopeteRojo({  ...props }) {
   
-    const { nodes, materials } = useGLTF("/models/LoraCopeteRojo.gltf");
+    const { nodes, materials } = useGLTF("/models/LoraCopeteRojo.glb");
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.LoraCopeteRojo002.geometry} material={materials.wood} />
@@ -15,5 +15,5 @@ export function LoroCopeteRojo({  ...props }) {
 }
 
 
-useGLTF.preload("/models/LoraCopeteRojo.gltf");
+useGLTF.preload("/models/LoraCopeteRojo.glb");
 

@@ -8,7 +8,7 @@ import { useGLTF } from '@react-three/drei'
 
 export function OsoPerezosoDeDedos({  ...props }) {
   
-    const { nodes, materials } = useGLTF("/models/OsoPerezosoDeDedos.gltf");
+    const { nodes, materials } = useGLTF("/models/OsoPerezosoDeDedos.glb");
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes['13565_Linns_Sloth_v1_L2'].geometry} material={materials.Branch} />
@@ -19,4 +19,4 @@ export function OsoPerezosoDeDedos({  ...props }) {
 }
 
 
-useGLTF.preload("/models/OsoPerezosoDeDedos.gltf");
+useGLTF.preload("/models/OsoPerezosoDeDedos.glb");

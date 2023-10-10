@@ -8,7 +8,7 @@ import { useGLTF } from '@react-three/drei'
 
 export function LapaRoja({ ...props }) {
   
-    const { nodes, materials } = useGLTF("/models/LapaRoja.gltf");
+    const { nodes, materials } = useGLTF("/models/LapaRoja.glb");
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Lapa.geometry} material={materials['51']} />
@@ -17,5 +17,5 @@ export function LapaRoja({ ...props }) {
 
 }
 
-useGLTF.preload("/models/LapaRoja.gltf");
+useGLTF.preload("/models/LapaRoja.glb");
 

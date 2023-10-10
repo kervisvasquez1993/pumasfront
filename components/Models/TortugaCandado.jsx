@@ -8,7 +8,7 @@ import { useGLTF } from '@react-three/drei'
 
 export function TortugaCandado({  ...props }) {
   
-    const { nodes, materials } = useGLTF("/models/TortugaCandado.gltf");
+    const { nodes, materials } = useGLTF("/models/TortugaCandado.glb");
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.TortugaCandado.geometry} material={materials.TortugaCandado} scale={0.88} />

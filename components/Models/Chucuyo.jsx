@@ -3,7 +3,7 @@ import { useGLTF } from "@react-three/drei";
 
 export function Chucuyo({ ...props }) {
   
-    const { nodes, materials } = useGLTF("/models/Chucuyo.gltf");
+    const { nodes, materials } = useGLTF("/models/Chucuyo.glb");
     return (
       <group {...props} dispose={null}>
         <mesh geometry={nodes.Chucuyo.geometry} material={materials.amazon} />
@@ -12,4 +12,4 @@ export function Chucuyo({ ...props }) {
 
 }
 
-useGLTF.preload("/models/Chucuyo.gltf");
+useGLTF.preload("/models/Chucuyo.glb");

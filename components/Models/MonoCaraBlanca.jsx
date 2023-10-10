@@ -4,7 +4,7 @@ import { useGLTF } from '@react-three/drei'
 
 export function MonoCaraBlanca({  ...props }) {
   
-    const { nodes, materials } = useGLTF("/models/MonoCraBlance.gltf");
+    const { nodes, materials } = useGLTF("/models/MonoCraBlance.glb");
     return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.MonoCaraBlanca.geometry} material={materials['12958_Spider_Monkey.002']} />
@@ -14,4 +14,4 @@ export function MonoCaraBlanca({  ...props }) {
 }
 
 
-useGLTF.preload("/models/MonoCraBlance.gltf");
+useGLTF.preload("/models/MonoCraBlance.glb");
