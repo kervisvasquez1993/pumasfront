@@ -13,7 +13,7 @@ import usePages from "../../../hooks/usePages";
 import Loader from "../../../components/UI/Loader";
 
 const Page = ({ page, blogsPage, modelsGQ, footer }) => {
-  console.log(footer, "footer");
+  console.log(page, "footer");
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
@@ -41,17 +41,29 @@ const Page = ({ page, blogsPage, modelsGQ, footer }) => {
       switch (page.slug) {
         case "inicio":
           return <HomePage data={page} />;
+        case "home":
+          return <HomePage data={page} />;
         case "nosotros":
+          return <NosotrosPage data={page} />;
+        case "history":
           return <NosotrosPage data={page} />;
         case "santuario":
           return <SantuarioPage data={page} />;
+        case "sanctuary":
+          return <SantuarioPage data={page} />;
         case "centro-de-rescate":
+          return <CentroDeRescate data={page} />;
+        case "rescue-center":
           return <CentroDeRescate data={page} />;
         case "blog":
           return <BlogPage data={page} blogData={blogsPage} />;
         case "programas":
           return <ProgramaPage data={page} />;
+        case "programs":
+          return <ProgramaPage data={page} />;
         case "apoyanos":
+          return <ApoyanosPage data={page} />;
+        case "support-us":
           return <ApoyanosPage data={page} />;
         default:
           return null;
@@ -70,6 +82,7 @@ export const getStaticProps = async ({ params }) => {
   try {
 
     const { lang, slug } = params;
+    
     const [pagesResponse, footerResponse, modelsGQResponse] = await Promise.all([getPagesGQ(lang), getFooter(lang), getModelGQ(lang)]);
     const footer = footerResponse?.data?.data?.attributes?.footerInfo
     const pages = pagesResponse?.data?.pages
@@ -87,6 +100,7 @@ export const getStaticProps = async ({ params }) => {
       }
     })
     const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
+    console.log(page, "page")
     if (page.slug === "blog") {
       const blog = await getBlog(lang);
       const blogsPage = blog.data;
@@ -125,7 +139,7 @@ export const getStaticPaths = async () => {
       });
     });
   }
-
+  // console.log(result, "results")
   return {
     paths: result,
     fallback: true,

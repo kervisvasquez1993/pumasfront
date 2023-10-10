@@ -105,7 +105,7 @@ const NosotrosPage = ({ data }) => {
               className={" backgroundSecondary m-0 manropeFont p-5"}
               link={`${lang}/${tercerElment?.btn?.url}`}
             >
-              {tercerElment.btn.label}
+              {tercerElment?.btn?.label}
             </ButtonView>
           </BasicSection>
 

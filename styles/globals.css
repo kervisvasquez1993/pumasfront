@@ -1047,3 +1047,8 @@ ul.thumbs li {
   margin: 0 20px ;
   font-size: 80px;
 }
+
+
+.codeLang{
+  cursor: pointer;
+}

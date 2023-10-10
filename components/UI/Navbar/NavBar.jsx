@@ -32,9 +32,27 @@ const Navbar = ({ items }) => {
         url = items?.data.find(e => e.attributes.slug == "home")
     }
     const redirect = `/${url?.attributes?.locale}/${url?.attributes?.slug}`
-    const lenguaje = langAllContext?.map((element, index) => {
-        return <Link key={index} href={`/${element.code}`}>{element.code}</Link>
-    })
+    const lenguaje = langAllContext?.map((element, index, array) => {
+
+        const isLast = index === array.length - 1;
+
+
+        if (isLast) {
+            return (
+                <React.Fragment key={index}>
+                    <Link href={`/${element.code}`} className="codeLang">{element.code}</Link>
+                </React.Fragment>
+            );
+        }
+
+
+        return (
+            <React.Fragment key={index}>
+                <Link href={`/${element.code}`} className="codeLang">{element.code}</Link>
+                <span className="sepadador px-1">|</span>
+            </React.Fragment>
+        );
+    });
     const [isOpen, setIsOpen] = useState(false)
     return (
         <div className="navbar menuContainer">
