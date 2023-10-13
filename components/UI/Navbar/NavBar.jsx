@@ -8,6 +8,7 @@ import { convertirHora } from "../../../helpers/apiBackend";
 
 
 const Navbar = ({ items }) => {
+    // console.log(items, "items")
     const { langAllContext, horario } = useLocale()
     const [apertura, setApertura] = useState(null)
     const [cierre, setCierre] = useState(null)
@@ -24,7 +25,6 @@ const Navbar = ({ items }) => {
     const horaCierre = convertirHora(cierre);
     const horaApertura = convertirHora(apertura);
 
-    // console.log(apertura, "apertura")
     if (lang === "es") {
         url = items?.data.find(e => e.attributes.slug == "inicio")
     }
@@ -33,10 +33,8 @@ const Navbar = ({ items }) => {
     }
     const redirect = `/${url?.attributes?.locale}/${url?.attributes?.slug}`
     const lenguaje = langAllContext?.map((element, index, array) => {
-
+        
         const isLast = index === array.length - 1;
-
-
         if (isLast) {
             return (
                 <React.Fragment key={index}>
@@ -44,8 +42,6 @@ const Navbar = ({ items }) => {
                 </React.Fragment>
             );
         }
-
-
         return (
             <React.Fragment key={index}>
                 <Link href={`/${element.code}`} className="codeLang">{element.code}</Link>

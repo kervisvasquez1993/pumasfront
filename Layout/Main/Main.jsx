@@ -9,6 +9,7 @@ import useLocale from "../../hooks/useLocales";
 
 const Main = ({ children, titlePage }) => {
   const { menuData, loading } = useMenu();
+  // console.log(menuData, "data")
   const { langAllContext } = useLocale();
   const { query } = useRouter();
   const { lang, slug } = query;

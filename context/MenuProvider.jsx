@@ -32,6 +32,7 @@ export const MenuProvider = ({ children }) => {
     };
     
     const response = await ApiBackend("api/menus?sort=rang:asc", config);
+    // console.log(response.data.data, "data");
     return response.data.data;
   };
 
