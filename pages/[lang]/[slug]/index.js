@@ -55,8 +55,8 @@ const Page = ({ page, blogsPage, modelsGQ, footer }) => {
           return <CentroDeRescate data={page} />;
         case "rescue-center":
           return <CentroDeRescate data={page} />;
-        case "blog":
-          return <BlogPage data={page} blogData={blogsPage} />;
+        // case "blog":
+        //   return <BlogPage data={page} blogData={blogsPage} />;
         case "programas":
           return <ProgramaPage data={page} />;
         case "programs":
