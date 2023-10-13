@@ -5,26 +5,31 @@ import Loader from "../Loader"
 import ItemMenu from "../../../views/ItemMenu";
 import useLocale from "../../../hooks/useLocales";
 import { convertirHora } from "../../../helpers/apiBackend";
+import useMenu from "../../../hooks/useMenu";
 
 
 const Navbar = ({ items }) => {
     const { langAllContext, horario } = useLocale()
+    const { menuData, loading } = useMenu();
     const [apertura, setApertura] = useState(null)
     const [cierre, setCierre] = useState(null)
     const { query } = useRouter();
     const { lang } = query;
-    let url = null;
+    const langActual = menuData?.find(element => element.lang === lang)
+    let url = null
+    let redirectSlug = null
+    if(query.slug){
+        redirectSlug = langActual?.data.find(element => element.attributes.slug == query.slug )
+    }
+    console.log(redirectSlug)
     useEffect(() => {
         if (horario) {
             setApertura(horario[0].attributes.apertura);
             setCierre(horario[0].attributes.cierre);
         }
     }, [langAllContext, horario])
-
     const horaCierre = convertirHora(cierre);
     const horaApertura = convertirHora(apertura);
-
-    // console.log(apertura, "apertura")
     if (lang === "es") {
         url = items?.data.find(e => e.attributes.slug == "inicio")
     }
@@ -32,27 +37,48 @@ const Navbar = ({ items }) => {
         url = items?.data.find(e => e.attributes.slug == "home")
     }
     const redirect = `/${url?.attributes?.locale}/${url?.attributes?.slug}`
+
+
+    
     const lenguaje = langAllContext?.map((element, index, array) => {
-
         const isLast = index === array.length - 1;
-
-
-        if (isLast) {
+        const isActive = element.code === lang; // Verifica si el idioma es el actual
+        const linkClassName = `codeLang ${isActive ? 'active' : ''}`;
+        
+        const handleLanguageChange = () => {
+            if (redirectSlug && redirectSlug.attributes.slugTranslate) {
+              const translatedSlug = redirectSlug.attributes.slugTranslate;
+        
+              if (element.code !== lang) {
+                // Utiliza Link para realizar la redirección
+                return (
+                  <Link href={`/${element.code}/${translatedSlug}`} key={index} className={linkClassName}>
+                   
+                      {element.code}
+                    
+                  </Link>
+                );
+              }
+            }
+        
+            // Si no hay redirección, simplemente muestra el enlace
             return (
-                <React.Fragment key={index}>
-                    <Link href={`/${element.code}`} className="codeLang">{element.code}</Link>
-                </React.Fragment>
+              <Link key={index} href={'#'} className={linkClassName}>
+                {element.code}
+              </Link>
             );
-        }
+          };
+          
 
-
-        return (
+          return (
             <React.Fragment key={index}>
-                <Link href={`/${element.code}`} className="codeLang">{element.code}</Link>
-                <span className="sepadador px-1">|</span>
+              {handleLanguageChange()}
+              {!isLast && <span className="separador px-1">|</span>}
             </React.Fragment>
-        );
-    });
+          );
+
+
+      });
     const [isOpen, setIsOpen] = useState(false)
     return (
         <div className="navbar menuContainer">
