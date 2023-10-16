@@ -1052,3 +1052,17 @@ ul.thumbs li {
 .codeLang{
   cursor: pointer;
 }
+
+/* Estilos para elementos del menú activos */
+.active-menu {
+  opacity: 1;
+  
+ 
+}
+
+/* Estilos para elementos del menú desactivados */
+.desactivated-menu {
+  opacity: 0.6;
+  
+
+}
