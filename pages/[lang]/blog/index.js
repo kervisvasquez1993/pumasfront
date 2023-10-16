@@ -10,7 +10,6 @@ const index = ({blogsPage}) => {
     const router = useRouter();
     const { lang } = router.query
     const blogs = blogsPage?.data
-    console.log(blogs)
     const sectionBlogs = blogs?.map((blog, index) => {
         const { TitleBlog, ContentBlog, imgBlog } = blog?.attributes
         const resumen = ContentBlog.substring(0, 150)

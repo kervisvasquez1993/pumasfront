@@ -43,7 +43,7 @@ const Navbar = ({ items }) => {
 
     const lenguaje = langAllContext?.map((element, index, array) => {
         const isLast = index === array.length - 1;
-        const isActive = element.code === lang; // Verifica si el idioma es el actual
+        const isActive = element.code === lang; 
         const linkClassName = `codeLang ${isActive ? 'active-menu' : 'desactivated-menu'}`;
 
         const handleLanguageChange = () => {
@@ -51,18 +51,13 @@ const Navbar = ({ items }) => {
                 const translatedSlug = redirectSlug.attributes.slugTranslate;
 
                 if (element.code !== lang) {
-                    // Utiliza Link para realizar la redirección
                     return (
                         <Link href={`/${element.code}/${translatedSlug}`} key={index} className={linkClassName}>
-
                             {element.code}
-
                         </Link>
                     );
                 }
             }
-
-            // Si no hay redirección, simplemente muestra el enlace
             return (
                 <Link key={index} href={'#'} className={linkClassName}>
                     {element.code}

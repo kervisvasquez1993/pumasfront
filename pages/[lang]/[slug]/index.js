@@ -55,8 +55,10 @@ const Page = ({ page, blogsPage, modelsGQ, footer }) => {
           return <CentroDeRescate data={page} />;
         case "rescue-center":
           return <CentroDeRescate data={page} />;
-        // case "blog":
-        //   return <BlogPage data={page} blogData={blogsPage} />;
+        case "publicaciones":
+          return <BlogPage data={page} blogData={blogsPage} />;
+        case "blogs":
+          return <BlogPage data={page} blogData={blogsPage} />;
         case "programas":
           return <ProgramaPage data={page} />;
         case "programs":
@@ -99,11 +101,13 @@ export const getStaticProps = async ({ params }) => {
         contentType: "component",
       }
     })
+    console.log(updatePage, "updatePage")
     const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
-    console.log(page, "page")
-    if (page.slug === "blog") {
+    // console.log(page, "page")
+    if (page.slug === "blogs" || page.slug === "publicaciones") {
       const blog = await getBlog(lang);
       const blogsPage = blog.data;
+      console.log(blogsPage, "blogsPage")
       return {
         props: { page: { ...page }, blogsPage, footer },
       };
