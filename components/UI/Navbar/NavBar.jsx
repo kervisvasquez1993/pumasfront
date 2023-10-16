@@ -9,6 +9,7 @@ import useMenu from "../../../hooks/useMenu";
 
 
 const Navbar = ({ items }) => {
+    // console.log(items, "items")
     const { langAllContext, horario } = useLocale()
     const { menuData, loading } = useMenu();
     const [apertura, setApertura] = useState(null)

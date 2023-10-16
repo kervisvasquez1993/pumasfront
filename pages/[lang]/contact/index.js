@@ -335,15 +335,6 @@ const Contact = () => {
             </button>
           </div>
         </form>
-
-
-         
-
-   
-    
-
-       
-
       </div>
     </Main>
 
