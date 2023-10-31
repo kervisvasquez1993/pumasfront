@@ -55,10 +55,10 @@ export const getStaticProps = async ({ params }) => {
 
   export const getStaticPaths = async () => {
     const locales = await langAll();
-    const languages = locales.data;
+    const languages = locales;
     const lang = [];
     for (const language of languages) {
-      lang.push({ params: { lang: language.code } });
+      lang.push({ params: { lang: language.attributes.code } });
     }
     return {
       paths: lang,

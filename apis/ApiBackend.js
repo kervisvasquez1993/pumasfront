@@ -64,15 +64,47 @@ export const getAllModels = (lang) => {
   return ApiBackend("api/modelos?populate=*&locale=" + lang, config);
 };
 
-export const langAll = () => {
+// export const langAll = () => {
+//   const config = {
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+//     },
+//   };
+//   return ApiBackend("api/i18n/locales", config);
+// };
+
+
+export const langAll = async () => {
+  const query = `query {
+    i18NLocales {
+      data {
+        id
+        attributes {
+          name
+          code
+        }
+      }
+    }
+  }`;
+
   const config = {
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
   };
-  return ApiBackend("api/i18n/locales", config);
-};
+
+  try {
+    const response = await ApiBackend.post("graphql", { query }, config);
+    return response.data.data.i18NLocales.data;
+  } catch (error) {
+    console.error('Error fetching data models:', error);
+    return null;
+  }
+}
+
+
 export const getHorario = () => {
   const config = {
     headers: {

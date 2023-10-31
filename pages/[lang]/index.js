@@ -54,21 +54,24 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = async () => {
     const lang = await langAll();
-    const languages = lang.data;
-    const result = [];
-    for (const language of languages) {
-        const menusResponse = await getMenus(language.code);
-        const menus = menusResponse.data.data;
-        menus.forEach((element) => {
-            result.push({
-                params: {
-                    lang: element.attributes.locale,
-                    slug: element.attributes.slug,
-                    name: element.attributes.nombre,
-                },
-            });
-        });
-    }
+    const languages = lang;
+    const results = await Promise.all(
+        languages.map(async (language) => {
+          console.log(language.attributes.code, "language");
+          const menusResponse = await getMenus(language.attributes.code);
+          const menus = menusResponse.data.data;
+          
+          return menus.map((element) => ({
+            params: {
+              lang: element.attributes.locale,
+              slug: element.attributes.slug,
+              name: element.attributes.nombre,
+            },
+          }));
+        })
+      );
+      
+      const result = results.flat();
 
     return {
         paths: result,

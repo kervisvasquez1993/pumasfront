@@ -101,7 +101,7 @@ export const getStaticProps = async ({ params }) => {
         contentType: "component",
       }
     })
-    console.log(updatePage, "updatePage")
+    
     const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
     // console.log(page, "page")
     if (page.slug === "blogs" || page.slug === "publicaciones") {
@@ -128,10 +128,12 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = async () => {
   const lang = await langAll();
-  const languages = lang.data;
+  const languages = lang;
+  console.log(lang, "Languages")
   const result = [];
   for (const language of languages) {
-    const menusResponse = await getMenus(language.code);
+    console.log(language.attributes.code,"language")
+    const menusResponse = await getMenus(language.attributes.code);
     const menus = menusResponse.data.data;
     menus.forEach((element) => {
       result.push({
