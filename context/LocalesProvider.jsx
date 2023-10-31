@@ -21,7 +21,7 @@ export const LocaleProvider = ({ children }) => {
         (async () => {
             try {
                 const [langData, horarioData] = await Promise.all([getLang(), callHorario()]);
-                setLangAllContext(langData.data);
+                setLangAllContext(langData);
                 setHorario(horarioData.data?.data);
             } catch (error) {
                 // Manejar errores si es necesario
@@ -29,6 +29,7 @@ export const LocaleProvider = ({ children }) => {
             }
         })();
     }, []);
+    console.log(langAllContext, "lang")
     return (
         <LocaleContext.Provider value={{ langAllContext, horario }}>
             {children}

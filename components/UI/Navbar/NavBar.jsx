@@ -43,24 +43,24 @@ const Navbar = ({ items }) => {
 
     const lenguaje = langAllContext?.map((element, index, array) => {
         const isLast = index === array.length - 1;
-        const isActive = element.code === lang; 
+        const isActive = element.attributes.code === lang; 
         const linkClassName = `codeLang ${isActive ? 'active-menu' : 'desactivated-menu'}`;
 
         const handleLanguageChange = () => {
             if (redirectSlug && redirectSlug.attributes.slugTranslate) {
                 const translatedSlug = redirectSlug.attributes.slugTranslate;
 
-                if (element.code !== lang) {
+                if (element.attributes.code !== lang) {
                     return (
-                        <Link href={`/${element.code}/${translatedSlug}`} key={index} className={linkClassName}>
-                            {element.code}
+                        <Link href={`/${element.attributes.code}/${translatedSlug}`} key={index} className={linkClassName}>
+                            {element.attributes.code}
                         </Link>
                     );
                 }
             }
             return (
                 <Link key={index} href={'#'} className={linkClassName}>
-                    {element.code}
+                    {element.attributes.code}
                 </Link>
             );
         };

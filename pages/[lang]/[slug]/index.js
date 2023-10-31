@@ -132,7 +132,6 @@ export const getStaticPaths = async () => {
   console.log(lang, "Languages")
   const result = [];
   for (const language of languages) {
-    console.log(language.attributes.code,"language")
     const menusResponse = await getMenus(language.attributes.code);
     const menus = menusResponse.data.data;
     menus.forEach((element) => {
@@ -145,7 +144,6 @@ export const getStaticPaths = async () => {
       });
     });
   }
-  // console.log(result, "results")
   return {
     paths: result,
     fallback: true,

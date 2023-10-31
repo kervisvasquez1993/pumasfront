@@ -14,8 +14,7 @@ const BlogInfo = ({
   blog
 }) => {
   const { screenSize } = useScreenSize()
-  const { TitleBlog, ContentBlog, imgBlog } = blog.attributes
-  // console.log(imgBlog.data, "img blogs")
+  const { TitleBlog="", ContentBlog="", imgBlog= "" } = blog.attributes
   return (
     <Main titlePage={TitleBlog}>
       <HeaderComponents
@@ -55,6 +54,7 @@ export const getStaticProps = async ({ params }) => {
   const blogAllResponse = await getBlog(lang);
   const blogAll = blogAllResponse.data.data
   const blog = blogAll.find(e => e.id == id)
+
   return {
     props: {
       blog
@@ -66,7 +66,7 @@ export const getStaticPaths = async () => {
   const lang = [];
   const blogs = [];
   const locales = await langAll();
-  const languages = locales.data;
+  const languages = locales;
   for (const language of languages) {
     const blogAllResponse = await getBlog(language.code);
     const blogAll = blogAllResponse.data
