@@ -61,7 +61,7 @@ const Main = ({ children, titlePage }) => {
 
   const headerClassName = `${style.headerMenu} ${isHeaderSticky ? "stickyHeader" : ""
     }`;
-  const shouldApplyHeaderStyle = slug !== "inicio";
+  const shouldApplyHeaderStyle = (slug !== "home" && slug !== "inicio");
 
   const headerClassNameInicio = `${isHeaderSticky ? style.headerMenu + " stickyHeader" : ""
     }`;
