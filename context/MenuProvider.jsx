@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import { ApiBackend } from "../apis/ApiBackend";
+import { ApiBackend, langAll } from "../apis/ApiBackend";
 
 const MenuContext = createContext();
 
@@ -7,17 +7,7 @@ export const MenuProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [menuData, setMenuData] = useState([]);
 
-  const lang = async () => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`
-      },
-    };
-    const response = await ApiBackend("api/i18n/locales", config);
-   
-    return response.data;
-  };
+
 
   const getMenus = async (language) => {
     const config = {
@@ -30,25 +20,26 @@ export const MenuProvider = ({ children }) => {
         locale: language,
       },
     };
-    
+
     const response = await ApiBackend("api/menus?sort=rang:asc", config);
     // console.log(response.data.data, "data");
     return response.data.data;
   };
 
   const fetchMenusByLanguage = async (languages) => {
+    console.log(languages, "language");
     const menuData = [];
 
     for (const language of languages) {
-      const menu = await getMenus(language.code);
-      menuData.push({ lang: language.code, data: menu });
+      const menu = await getMenus(language.attributes.code);
+      menuData.push({ lang: language.attributes.code, data: menu });
     }
 
     return menuData;
   };
 
   const getMenuData = async () => {
-    const languages = await lang();
+    const languages = await langAll();
     const menuData = await fetchMenusByLanguage(languages);
     return menuData;
   };
