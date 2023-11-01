@@ -901,3 +901,10 @@ font-weight: bold;
     font-size: 18px;
     opacity: 0.4;
 }
+.saltoLinea p{
+    white-space: pre-line;
+}
+.saltoLinea2 {
+    white-space: pre-line;
+    margin-bottom: 1em; 
+}

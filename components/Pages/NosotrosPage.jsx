@@ -85,7 +85,7 @@ const NosotrosPage = ({ data }) => {
               title={""}
               classNameContent={"fuentesParrafo p-5 "}
             >
-              <ReactMarkdown className="sm:py-10 m-5">{secundarioElement.Content}</ReactMarkdown>
+              <ReactMarkdown className="sm:py-10 m-5 saltoLinea2">{secundarioElement.Content}</ReactMarkdown>
             </BasicSection>
           </section>
         </section>
@@ -165,7 +165,7 @@ const NosotrosPage = ({ data }) => {
                 >
                   {quintoElemet.imagenWithContentBasic[2].label}
                 </HeaderComponets>
-                <ReactMarkdown className="py-5">{quintoElemet.imagenWithContentBasic[2].content}</ReactMarkdown>
+                <ReactMarkdown className="py-5 saltoLinea">{quintoElemet.imagenWithContentBasic[2].content}</ReactMarkdown>
               </section>
             </section>
 
