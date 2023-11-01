@@ -906,5 +906,7 @@ font-weight: bold;
 }
 .saltoLinea2 {
     white-space: pre-line;
-    margin-bottom: 1em; 
+}
+.saltoLinea2 h2{
+    margin-top: 1em;
 }

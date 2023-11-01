@@ -29,7 +29,7 @@ const HomePage = ({ data }) => {
     return (<section className="py-5" key={index}>
       <h4 className="chelseaFont colorSecondary font-size-24">{element.label}</h4>
       <div>
-        <ReactMarkdown className="py-1">{element.content}</ReactMarkdown>
+        <ReactMarkdown className="py-1 saltoLinea2">{element.content}</ReactMarkdown>
       </div>
     </section>)
   })
