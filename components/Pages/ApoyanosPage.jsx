@@ -53,7 +53,7 @@ const ApoyanosPage = ({ data }) => {
                 classNameWrapper={"setionStyleTwo"}
                 title={""}
                 alignItems="center"
-                classNameContent={"fuentesParrafo px-10 mx-10"}
+                classNameContent={"fuentesParrafo px-10 mx-10 saltoLinea2"}
               >
                 <ReactMarkdown className="py-10">{secondElement.content}</ReactMarkdown>
                 <ButtonView
@@ -72,7 +72,7 @@ const ApoyanosPage = ({ data }) => {
               >
                 {threeElement.title}
               </HeaderComponets>
-              <section className="grid-2 px-5">
+              <section className="grid-2 px-5 saltoLinea2">
                 {elementDonar}
               </section>
             </section>
@@ -140,7 +140,7 @@ const ApoyanosPage = ({ data }) => {
               classNameContent={"fuentesParrafo py-10"}
             >
               <ReactMarkdown className="py-10">{sextoElemento.content}</ReactMarkdown>
-              <Link className={`backgroundPrimary m-0 px-10 manropeFont py-10 btnPrimary py-2  `} href={`${sextoElemento.btn.url}`}>
+              <Link className={`backgroundPrimary m-0 px-10 manropeFont py-10 btnPrimary py-2  `} href={`${sextoElemento.btn?.url}`}>
                    {sextoElemento?.btn?.label}
               </Link>
                

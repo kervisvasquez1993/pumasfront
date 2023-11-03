@@ -93,7 +93,7 @@ const ProgramaPage = ({ data }) => {
             {firstElement?.title}
           </h3>
           <div className="grid-2 px-5">
-            <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 ">
+            <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2">
               <ReactMarkdown>{firstElement?.content}</ReactMarkdown>
             </div>
             {/* <div className="program__imagen lg:p-10"> */}
