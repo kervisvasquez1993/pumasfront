@@ -4,7 +4,6 @@ import { getMenus, langAll } from '../apis/ApiBackend';
 import Loader from '../components/UI/Loader';
 
 const Home = ({ result, code }) => {
-  const [firstTranslation, secondTranslation] = code;
   const [slug, setSlug] = useState("")
   const [lang, setLang] = useState("")
   
@@ -12,6 +11,7 @@ const Home = ({ result, code }) => {
  
   useEffect(() => {
     const inicio = result.find((element) => element.params.slug === 'inicio')
+
     setLang(inicio.params.lang, "lang");
     setSlug(inicio.params.slug, "slugs");
     if (inicio) {
