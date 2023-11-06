@@ -488,16 +488,7 @@ export const getPagesGQ = async (language) => {
                 }
               }
             }
-            ... on ComponentUiTitlePrecio {
-              precios{
-               	data{
-                  attributes{
-                    title
-                    value
-                  }
-                }
-              }
-            }
+           
           }
         }
       }
