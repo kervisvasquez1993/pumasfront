@@ -818,7 +818,7 @@ footer {
 
 .imagen-superpuesta-banner {
     position: absolute;
-    bottom: 0px;
+    bottom: -24px;
     left: 0;
     width: 100%;
     height: 20%;

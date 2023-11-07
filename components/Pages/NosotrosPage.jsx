@@ -23,8 +23,8 @@ const NosotrosPage = ({ data }) => {
     const url = element.attributes.url
     return `${url}`
   })
-  const abousUs = quintoElemet.imagenWithContentBasic
-    .slice(0, 2) // Esto limitará el arreglo a los dos primeros elementos
+  const abousUs = quintoElemet?.imagenWithContentBasic
+    .slice(0, 2) 
     .map((element, index) => {
       return (
         <section className="" key={index}>
@@ -42,7 +42,7 @@ const NosotrosPage = ({ data }) => {
     });
 
 
-  const sliderReconocimiento = septimoElemento.imagenWithContentBasic.map(element => {
+  const sliderReconocimiento = septimoElemento?.imagenWithContentBasic?.map(element => {
     return (<Section
       positionTitle={"start"}
       contentClassName="contentSectionEnd px-10 px-10"
@@ -134,7 +134,7 @@ const NosotrosPage = ({ data }) => {
             <iframe
               width="560"
               height="315"
-              src="https://www.youtube.com/embed/Vr3FNq5djxs"
+              src={"https://www.youtube.com/embed/cGGCJRUkum4"}
               frameBorder="0"
               allowFullScreen
             ></iframe>
@@ -163,9 +163,9 @@ const NosotrosPage = ({ data }) => {
                   classNameText={"colorSecondary chelseaFont"}
                   classNameSection={"centerElement"}
                 >
-                  {quintoElemet.imagenWithContentBasic[2].label}
+                  {quintoElemet.imagenWithContentBasic[2]?.label}
                 </HeaderComponets>
-                <ReactMarkdown className="py-5 saltoLinea">{quintoElemet.imagenWithContentBasic[2].content}</ReactMarkdown>
+                <ReactMarkdown className="py-5 saltoLinea">{quintoElemet.imagenWithContentBasic[2]?.content}</ReactMarkdown>
               </section>
             </section>
 

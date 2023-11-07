@@ -10,7 +10,6 @@ const Footer = () => {
           <h2 className='chelseaFont  font-size-24 color-white'>Contacto</h2>
           <ul className='py-5 color-white'>
             <li className="manropeFont font-size-20">laspumascr@gmail.com</li>
-            <li className="manropeFont font-size-20">Boletería: +506 2669-6019</li>
             <li className="manropeFont font-size-20">Reservas: +506 8479-7025</li>
             <li className="manropeFont font-size-20">Oficina: +506 2669-6044</li>
             

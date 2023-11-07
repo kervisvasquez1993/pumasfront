@@ -26,7 +26,7 @@ export default function SliderGeneral({ slides, themeColor }) {
         className="mySwiper"
         style={swiperStyles}
       >
-        {slides.map((slide, index) => (
+        {slides?.map((slide, index) => (
           <SwiperSlide key={index}>{slide}</SwiperSlide>
         ))}
       </Swiper>

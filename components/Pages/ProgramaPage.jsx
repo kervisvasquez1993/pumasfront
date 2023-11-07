@@ -21,7 +21,7 @@ const ProgramaPage = ({ data }) => {
   const [firstElement, secondElement, thirdElement, fourthElement, fifthElement] = componentDynamics
   const url = firstElement?.imgBasicContent?.data?.attributes?.url
   const { precios } = thirdElement
-  const preciosData = precios.data.map((precio, index) => {
+  const preciosData = precios?.data?.map((precio, index) => {
     return (<li key={index}>{precio?.attributes?.title} : {precio?.attributes?.value}</li>)
 
   })
