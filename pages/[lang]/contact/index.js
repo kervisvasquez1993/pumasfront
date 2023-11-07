@@ -307,6 +307,22 @@ const Contact = () => {
               <option value="SI" className='w-full border p-2 rounded '>SI</option>
             </select>
           </div>
+          <div className="mb-4">
+            <label htmlFor="requiereGuia" className="block font-semibold mb-1">
+             Procedencia:
+            </label>
+            <select
+              id="Nacional"
+              name="Nacional"
+              value={formData.Nacional}
+              onChange={handleInputChange}
+              className={`w-full border p-2 rounded ${errors.requiereGuia ? "border-red-500" : ""
+                }`}
+            >
+              <option value="Nacional" className='w-full border p-2 rounded '>Nacional</option>
+              <option value="Extrangero" className='w-full border p-2 rounded '>Extrangero</option>
+            </select>
+          </div>
 
           <div className="mb-4">
             <label htmlFor="descripcion" className="block font-semibold mb-1">
