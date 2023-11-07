@@ -783,7 +783,8 @@ footer {
 
 .fuentesParrafo h6,
 .fuentesParrafo p {
-    display: inline;
+    display: block;
+    padding: 10px 0;
 }
 
 .fuentesParrafo h5 {
@@ -795,7 +796,8 @@ footer {
 
 .fuentesParrafo h5,
 .fuentesParrafo p {
-    display: inline;
+    display: block;
+    padding: 10px 0;
 }
 .fuentesParrafo h4{
     font-size: 30px;

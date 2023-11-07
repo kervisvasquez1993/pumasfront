@@ -19,12 +19,18 @@ const NosotrosPage = ({ data }) => {
   const { componentDynamics } = data;
   const { screenSize } = useScreenSize()
   const [primerElemet, secundarioElement, tercerElment, cuartoElement, quintoElemet, sextoElement, septimoElemento] = componentDynamics;
+
   const sliderImagenes = secundarioElement?.imagenes.data.map(element => {
     const url = element.attributes.url
     return `${url}`
   })
+
+  const DynamicPage = componentDynamics.map(elementos => {
+
+  })
+
   const abousUs = quintoElemet?.imagenWithContentBasic
-    .slice(0, 2) 
+    .slice(0, 2)
     .map((element, index) => {
       return (
         <section className="" key={index}>
@@ -79,13 +85,15 @@ const NosotrosPage = ({ data }) => {
                 );
               })}
             </SliderThree>
+            {console.log(secundarioElement.Content, "text")}
             <BasicSection
               classNameTitle={""}
               classNameWrapper={"setionStyleTwo"}
               title={""}
               classNameContent={"fuentesParrafo p-5 "}
             >
-              <ReactMarkdown className="sm:py-10 m-5 saltoLinea2">{secundarioElement.Content}</ReactMarkdown>
+              <ReactMarkdown source={"markdown"}
+                skipHtml={false} className="sm:py-10 m-5 saltoLinea2">{secundarioElement.Content}</ReactMarkdown>
             </BasicSection>
           </section>
         </section>
