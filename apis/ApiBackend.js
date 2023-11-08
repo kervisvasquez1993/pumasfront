@@ -29,7 +29,7 @@ export const getPatrocinadores = (language) => {
       locale: language,
     },
   };
-  return ApiBackend("api/patrocinadores?populate=*", config);
+  return ApiBackend("api/patrocinadores?populate=*&sort=rang:asc", config);
 };
 export const getFooter = (language) => {
   const config = {

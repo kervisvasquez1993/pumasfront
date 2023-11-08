@@ -25,120 +25,126 @@ const CentroDeRescate = ({ data }) => {
     return <Loader />;
   }
   const [firstSection, secondSection, thirdSection, fourthSection] = componentDynamics;
-  // console.log(firstSection, secondSection, thirdSection, fourthSection)
-  const { imagenes } = firstSection
-  const imgSlider = imagenes?.data?.map(img => {
-    return {
-      url: `${img.attributes.url}`
-    }
-  })
+
+
   const { imagenWithContentBasic } = thirdSection
   const { background, colorTitle, title, content } = fourthSection
 
+  const ComponentDynamicsRenderer = ({ componentDynamics }) => {
+
+    const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {
+
+      if (elemento?.typeSlider === "slider_img_destacada") {
+        const imgSlider = elemento?.imagenes?.data?.map(img => {
+          return {
+            url: `${img.attributes.url}`
+          }
+        })
+        const component = (<SlidetWithContent images={imgSlider} content={elemento.Content} title={elemento.title} key={index} />)
+        return [...acc, component];
+      }
+      if (elemento?.nameComponent === "titleBasic") {
+        const component = (<HeaderComponets
+          key={index}
+          alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+          src="/images/fondo1.png"
+          classNameText={"font-responsive program-title fuenteTitulo colorPrimary py-10 my-10"}
+          classNameSection={"centerElement"}
+        >
+          {elemento.Titulo}
+        </HeaderComponets>)
+        return [...acc, component];
+      }
+      if (elemento?.typeSection === "section7") {
+        let section = []
+        const iteradorElement = elemento?.imagenWithContentBasic?.forEach((item, index) => {
+          const value = index % 2
+          if (value === 0) {
+            const addSection = (<SectionReverse
+              positionTitle={`${screenSize <= 1024 ? "center" : "start"}`}
+              titleClassName={"program-title fuenteTitulo colorPrimary font-responsive "}
+              title={`${item?.label}`}
+              imageSrc={
+                item?.img.data[0]?.attributes?.url ||
+                "URL_PREDETERMINADA"
+              }
+              contentClassName={"contentSectionReserveEnd"}
+              content={`${item?.content}`}
+            />)
+
+            section.push(addSection)
+          }
+          if (value === 1) {
+            const addSection = (<Section
+              positionTitle={`${screenSize <= 1024 ? "center" : "end"}`}
+              contentClassName="contentSectionEnd sm:px-10 sm:px-10"
+              titleClassName={"program-title fuenteTitulo colorVerde py-5 sm:py-10 sm:my-10 font-responsive"}
+              title={`${item?.label}`}
+              imageSrc={`${item?.img.data[0]?.attributes.url}`}
+              content={`${item?.content}`}
+            />)
+            section.push(addSection)
+          }
+
+        })
+        const component = (<section style={{ backgroundImage: `url("/images/Vector5.png")`, backgroundSize: "contain", backgroundPosition: "center center", backgroundRepeat: "no-repeat" }}>
+          {section}
+
+        </section>)
+        return [...acc, component];
+      }
+
+      if (elemento?.typeSection === "section4") {
+        const component = (<TwoColumnGrid key={index} backgroundImage={elemento.background?.data?.attributes.url}>
+          <BasicSection
+            classNameTitle={""}
+            classNameWrapper={"setionStyle "}
+            title={""}
+            classNameContent={
+              `${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"}  "fuentesParrafo  p-10 my-10"`
+
+            }
+            width={`${screenSize <= 1024 ? "100%" : "80%"}`}
+
+
+
+            alignItems={"center"}
+            justifyContent={"center"}
+            styleWrapper={{ height: "100%" }}
+          >
+            <ReactMarkdown className="py-10 fuentesParrafo">
+              {elemento.content}
+            </ReactMarkdown>
+            <ButtonView
+              className={" backgroundSecondary m-0 manropeFont py-10"}
+              link={`${lang}/${elemento?.btn?.url}`}
+            >
+              Conoce Más
+            </ButtonView>
+          </BasicSection>
+          <section className="centrar-elementob pt-5">
+            <HeaderComponets
+              classNameText={" colorSecondary chelseaFont font-responsive"}
+              alignment={`${screenSize <= 1024 ? "center" : "end"}`}
+              width="100%"
+            >
+              {elemento.title}
+            </HeaderComponets>
+            <CardBasic imgSrc={elemento.imgBasicContent?.data?.attributes.url} />
+          </section>
+        </TwoColumnGrid>)
+        return [...acc, component];
+      }
+      // return [...acc, component];
+      return acc;
+    }, []);
+    return <div>{renderedComponents}</div>;
+  };
 
   return (
     <Main titlePage={"Centro de Rescate"}>
       <div className="container">
-       
-          <SlidetWithContent images={imgSlider} content={firstSection.Content} title={firstSection.title} />
-          <HeaderComponets
-            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
-            src="/images/fondo1.png"
-            classNameText={"font-responsive program-title fuenteTitulo colorPrimary py-10 my-10"}
-            classNameSection={"centerElement"}
-          >
-            {secondSection.Titulo}
-          </HeaderComponets>
-       
-        <section style={{ backgroundImage: `url("/images/Vector5.png")`, backgroundSize: "contain", backgroundPosition: "center center", backgroundRepeat: "no-repeat" }}>
-          <SectionReverse
-            positionTitle={`${screenSize <= 1024 ? "center" : "start"}`}
-            titleClassName={"program-title fuenteTitulo colorPrimary font-responsive "}
-            title={`${imagenWithContentBasic[0]?.label}`}
-            imageSrc={
-              imagenWithContentBasic[0]?.img.data[0]?.attributes?.url ||
-              "URL_PREDETERMINADA"
-            }
-            contentClassName={"contentSectionReserveEnd"}
-            content={`${imagenWithContentBasic[0]?.content}`}
-          />
-        
-          <Section
-            positionTitle={`${screenSize <= 1024 ? "center" : "end"}`}
-            contentClassName="contentSectionEnd sm:px-10 sm:px-10"
-            titleClassName={"program-title fuenteTitulo colorVerde py-5 sm:py-10 sm:my-10 font-responsive"}
-            title={`${imagenWithContentBasic[1]?.label}`}
-            imageSrc={`${imagenWithContentBasic[1]?.img.data[0]?.attributes.url}`}
-            content={`${imagenWithContentBasic[1]?.content}`}
-          />
-          <SectionReverse
-            positionTitle={`${screenSize <= 1024 ? "center" : "start"}`}
-            titleClassName={"program-title fuenteTitulo colorPrimary sm:py-10 sm:my-10 font-responsive"}
-            title={`${imagenWithContentBasic[2]?.label}`}
-            imageSrc={`${imagenWithContentBasic[2]?.img.data[0]?.attributes.url}`}
-            contentClassName={"contentSectionReserveEnd"}
-            content={`${imagenWithContentBasic[2]?.content}`}
-          />
-        
-         
-          <Section
-            positionTitle={`${screenSize <= 1024 ? "center" : "end"}`}
-            contentClassName="contentSectionEnd sm:px-10 sm:px-10"
-            titleClassName={"program-title fuenteTitulo colorVerde py-5 sm:py-10 sm:my-10 font-responsive"}
-            title={`${imagenWithContentBasic[3]?.label}`}
-            imageSrc={`${imagenWithContentBasic[3]?.img.data[0]?.attributes.url}`}
-            content={`${imagenWithContentBasic[3]?.content}`}
-          />
-
-          <SectionReverse
-            positionTitle={`${screenSize <= 1024 ? "center" : "start"}`}
-            titleClassName={"program-title fuenteTitulo colorPrimary py-5 sm:py-10 sm:my-10 font-responsive"}
-            title={`${imagenWithContentBasic[4]?.label}`}
-            imageSrc={`${imagenWithContentBasic[4]?.img.data[0]?.attributes.url}`}
-            contentClassName={"contentSectionReserveEnd"}
-            content={`${imagenWithContentBasic[4]?.content}`}
-
-          />
-          
-          <TwoColumnGrid backgroundImage={fourthSection.background?.data?.attributes.url}>
-            <BasicSection
-              classNameTitle={""}
-              classNameWrapper={"setionStyle "}
-              title={""}
-              classNameContent={
-                `${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"}  "fuentesParrafo  p-10 my-10"`
-
-              }
-              width={`${screenSize <= 1024 ? "100%" : "80%"}`}
-
-
-
-              alignItems={"center"}
-              justifyContent={"center"}
-              styleWrapper={{ height: "100%" }}
-            >
-              <ReactMarkdown className="py-10 fuentesParrafo">
-                {fourthSection.content}
-              </ReactMarkdown>
-              <ButtonView
-                className={" backgroundSecondary m-0 manropeFont py-10"}
-                link={`${lang}/${fourthSection?.btn?.url}`}
-              >
-                Conoce Más
-              </ButtonView>
-            </BasicSection>
-            <section className="centrar-elementob pt-5">
-              <HeaderComponets
-                classNameText={" colorSecondary chelseaFont font-responsive"}
-                alignment={`${screenSize <= 1024 ? "center" : "end"}`}
-                width="100%"
-              >
-                {fourthSection.title}
-              </HeaderComponets>
-              <CardBasic imgSrc={fourthSection.imgBasicContent?.data?.attributes.url} />
-            </section>
-          </TwoColumnGrid>
-        </section>
+        {ComponentDynamicsRenderer(data)}
       </div>
     </Main>
   );
