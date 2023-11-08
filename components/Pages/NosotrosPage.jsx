@@ -18,7 +18,7 @@ const NosotrosPage = ({ data }) => {
   const { slug, lang } = router.query
   const { componentDynamics } = data;
   const { screenSize } = useScreenSize()
-  const [primerElemet, secundarioElement, tercerElment, cuartoElement, quintoElemet, sextoElement, septimoElemento] = componentDynamics;
+
   const componentMap = {
     titleBasic: "TitleBasic"
   };
@@ -108,7 +108,7 @@ const NosotrosPage = ({ data }) => {
         return [...acc, component];
       }
       if (elemento?.label === "youtube") {
-        
+
         const component = (<section className="section OneImg">
           <div className="video-container">
             <iframe
@@ -124,7 +124,7 @@ const NosotrosPage = ({ data }) => {
         return [...acc, component];
       }
       if (elemento?.typeSection === "section11") {
-        console.log(elemento)
+
         const abousUs = elemento?.imagenWithContentBasic
           .slice(0, 2)
           .map((element, index) => {
@@ -171,44 +171,10 @@ const NosotrosPage = ({ data }) => {
 
         return [...acc, component];
       }
-
-      return acc;
-    }, []);
-    return <div>{renderedComponents}</div>;
-  };
-
-
-
-
-
-
-  const sliderReconocimiento = septimoElemento?.imagenWithContentBasic?.map(element => {
-    return (<Section
-      positionTitle={"start"}
-      contentClassName="contentSectionEnd px-10 px-10"
-      titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
-      title=""
-      imageSrc={`${element.img.data[0]?.attributes.url}`}
-      content={
-        <ReactMarkdown>{element.content}</ReactMarkdown>
-      }
-    />)
-  })
-
-
-
-  return (
-    <Main titlePage={"Nosotros"}>
-      <div className="container">
-        {ComponentDynamicsRenderer(data)}
-
-
-
-
-
-        <TwoSections
-          backgroundImage={`${sextoElement?.background?.data?.attributes?.url}`}
-          title1={sextoElement?.imagenWithContentBasic[0]?.label}
+      if (elemento?.typeSection === "section10") {
+        const component = (<TwoSections
+          backgroundImage={`${elemento?.background?.data?.attributes?.url}`}
+          title1={elemento?.imagenWithContentBasic[0]?.label}
           children1={
             <Section
               positionTitle={"start"}
@@ -217,15 +183,15 @@ const NosotrosPage = ({ data }) => {
                 "program-title fuenteTitulo colorVerde px-10 m-10"
               }
               title=""
-              imageSrc={`${sextoElement?.imagenWithContentBasic[0]?.img?.data[0]?.attributes?.url}`}
+              imageSrc={`${elemento?.imagenWithContentBasic[0]?.img?.data[0]?.attributes?.url}`}
               content={
 
-                <ReactMarkdown>{sextoElement?.imagenWithContentBasic[0]?.content}</ReactMarkdown>
+                <ReactMarkdown>{elemento?.imagenWithContentBasic[0]?.content}</ReactMarkdown>
 
               }
             />
           }
-          title2={sextoElement?.imagenWithContentBasic[1]?.label}
+          title2={elemento?.imagenWithContentBasic[1]?.label}
           children2={
             <Section
               positionTitle={"start"}
@@ -234,17 +200,29 @@ const NosotrosPage = ({ data }) => {
                 "program-title fuenteTitulo colorVerde py-10 my-10"
               }
               title=""
-              imageSrc={`${sextoElement?.imagenWithContentBasic[1]?.img?.data[0]?.attributes?.url}`}
+              imageSrc={`${elemento?.imagenWithContentBasic[1]?.img?.data[0]?.attributes?.url}`}
               content={
-                <ReactMarkdown>{sextoElement?.imagenWithContentBasic[1]?.content}</ReactMarkdown>
+                <ReactMarkdown>{elemento?.imagenWithContentBasic[1]?.content}</ReactMarkdown>
               }
             />
           }
-        />
-
-
-
-        <section className="container-section sm:py-10 my-5">
+        />)
+        return [...acc, component];
+      }
+      if (elemento.typeSection === "section9") {
+        const sliderReconocimiento = elemento?.imagenWithContentBasic?.map(element => {
+          return (<Section
+            positionTitle={"start"}
+            contentClassName="contentSectionEnd px-10 px-10"
+            titleClassName={"program-title fuenteTitulo colorVerde py-10 my-10"}
+            title=""
+            imageSrc={`${element.img.data[0]?.attributes.url}`}
+            content={
+              <ReactMarkdown>{element.content}</ReactMarkdown>
+            }
+          />)
+        })
+        const component = (<section className="container-section sm:py-10 my-5">
           <HeaderComponets
             src="/images/fondo1.png"
             classNameText={"colorVerde chelseaFont pt-10 mt-10 font-responsive"}
@@ -253,8 +231,18 @@ const NosotrosPage = ({ data }) => {
             Reconocimiento
           </HeaderComponets>
           <SliderGeneral slides={sliderReconocimiento} themeColor="#96C473" />
-        </section>
+        </section>)
+        return [...acc, component];
+      }
+      return acc;
+    }, []);
+    return <div>{renderedComponents}</div>;
+  };
 
+  return (
+    <Main titlePage={"Nosotros"}>
+      <div className="container">
+        {ComponentDynamicsRenderer(data)}
       </div>
     </Main>
   );

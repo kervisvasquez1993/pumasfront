@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import HomePage from "../../../components/Pages/HomePage";
 import { useRouter } from "next/router";
 import NosotrosPage from "../../../components/Pages/NosotrosPage";
-import { getAllModels, getBlog, getMenus, getModelGQ, getPageWithComponents, getPagesGQ, langAll, getFooter } from "../../../apis/ApiBackend";
+import { getAllModels, getBlog, getMenus, getModelGQ, getPageWithComponents, getPagesGQ, langAll, getFooter, getMaterialEducativo } from "../../../apis/ApiBackend";
 import SantuarioPage from "../../../components/Pages/SantuarioPage";
 import CentroDeRescate from "../../../components/Pages/CentroDeRescate";
 import BlogPage from "../../../components/Pages/BlogPage";
@@ -12,8 +12,8 @@ import useModelo from "../../../hooks/useModelo";
 import usePages from "../../../hooks/usePages";
 import Loader from "../../../components/UI/Loader";
 
-const Page = ({ page, blogsPage, modelsGQ, footer }) => {
-  
+const Page = ({ page, blogsPage, modelsGQ, footer, materialEductivoSort }) => {
+
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
@@ -60,7 +60,7 @@ const Page = ({ page, blogsPage, modelsGQ, footer }) => {
         case "blogs":
           return <BlogPage data={page} blogData={blogsPage} />;
         case "programas":
-          return <ProgramaPage data={page} />;
+          return <ProgramaPage data={page} material={materialEductivoSort} />;
         case "programs":
           return <ProgramaPage data={page} />;
         case "apoyanos":
@@ -84,12 +84,28 @@ export const getStaticProps = async ({ params }) => {
   try {
 
     const { lang, slug } = params;
-    
-    const [pagesResponse, footerResponse, modelsGQResponse] = await Promise.all([getPagesGQ(lang), getFooter(lang), getModelGQ(lang)]);
+
+    const [pagesResponse, footerResponse, modelsGQResponse, materialEductaivo] = await Promise.all([getPagesGQ(lang), getFooter(lang), getModelGQ(lang), getMaterialEducativo(lang)]);
+    const materialEducativodataResponse = materialEductaivo?.data?.data
+    const materialEductivoSort = [];
     const footer = footerResponse?.data?.data?.attributes?.footerInfo
     const pages = pagesResponse?.data?.pages
     const dataPages = pages?.data;
     const modelsGQ = modelsGQResponse?.data?.modelos
+    materialEducativodataResponse.forEach((item) => {
+      const { title, description, subTitle } = item.attributes;
+      const imgFile = {
+        name: item.attributes.imgFile.data.attributes.name,
+        url: item.attributes.imgFile.data.attributes.url,
+      };
+      const file = {
+        name: item.attributes.file.data.attributes.name,
+        url: item.attributes.file.data.attributes.url,
+      };
+
+      const newItem = { id: item.id, title, description, subTitle, imgFile, file };
+      materialEductivoSort.push(newItem);
+    });
     const updatePage = dataPages?.map(page => {
       return {
         id: page.id,
@@ -101,13 +117,11 @@ export const getStaticProps = async ({ params }) => {
         contentType: "component",
       }
     })
-    
+
     const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
-    // console.log(page, "page")
     if (page.slug === "blogs" || page.slug === "publicaciones") {
       const blog = await getBlog(lang);
       const blogsPage = blog.data;
-      console.log(blogsPage, "blogsPage")
       return {
         props: { page: { ...page }, blogsPage, footer },
       };
@@ -115,7 +129,7 @@ export const getStaticProps = async ({ params }) => {
     }
     if (!page) return { notFound: true };
     return {
-      props: { page: { ...page }, modelsGQ, footer },
+      props: { page: { ...page }, modelsGQ, footer, materialEductivoSort },
       revalidate: 10
     };
   } catch (error) {

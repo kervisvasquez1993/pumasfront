@@ -117,6 +117,16 @@ export const getAllDonations = (lang) => {
 
   return ApiBackend("api/donaciones?populate=*&sort=rang:asc&locale=" + lang, config);
 };
+export const getMaterialEducativo = (lang) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+    },
+  };
+
+  return ApiBackend("api/material-educativos?populate=*&sort=rang:asc&locale=" + lang, config);
+};
 
 export const getTypeDonations = (lang) => {
   const config = {
@@ -266,7 +276,51 @@ export const getPageWithComponents = async (language, id) => {
     return null;
   }
 };
+export const matalEducativo = async (lang) => {
+  const query = `query {
+    materialEducativos(locale: "${lang}"){
+      data{
+        id
+        attributes{
+          title
+          description
+          subTitle
+          file{
+            data{
+              attributes{
+                url
+                name
+              }
+            }
+          }
+          imgFile{
+            data{
+              attributes{
+                url
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }`
 
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+    },
+  };
+
+  try {
+    const response = await ApiBackend.post("api/graphql", { query }, config);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching data models:', error);
+    return null;
+  }
+};
 export const getModelGQ = async (lang) => {
   const query = `query getmodels{
     modelos(locale : "${lang}" , pagination : {start : 1 , limit : 100}){
