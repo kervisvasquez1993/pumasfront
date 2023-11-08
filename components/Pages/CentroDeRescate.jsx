@@ -24,12 +24,7 @@ const CentroDeRescate = ({ data }) => {
   if (!componentDynamics) {
     return <Loader />;
   }
-  const [firstSection, secondSection, thirdSection, fourthSection] = componentDynamics;
-
-
-  const { imagenWithContentBasic } = thirdSection
-  const { background, colorTitle, title, content } = fourthSection
-
+ 
   const ComponentDynamicsRenderer = ({ componentDynamics }) => {
 
     const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {

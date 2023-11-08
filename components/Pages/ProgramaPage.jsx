@@ -60,7 +60,7 @@ const ProgramaPage = ({ data, material }) => {
         return [...acc, component];
       }
 
-      if (elemento.typeSection === "section8") {
+      if (elemento?.typeSection === "section8") {
 
 
         const contentEducation = elemento.imagenWithContentBasic.map((element, index) => {
