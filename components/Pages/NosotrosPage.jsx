@@ -22,15 +22,11 @@ const NosotrosPage = ({ data }) => {
   const componentMap = {
     titleBasic: "TitleBasic"
   };
-  const sliderImagenes = secundarioElement?.imagenes.data.map(element => {
-    const url = element.attributes.url
-    return `${url}`
-  })
 
   const ComponentDynamicsRenderer = ({ componentDynamics }) => {
-   
+
     const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {
-      if (elemento?.nameComponent === "titleBasic" ) {
+      if (elemento?.nameComponent === "titleBasic") {
         const component = (
           <HeaderComponets
             key={index}
@@ -43,6 +39,139 @@ const NosotrosPage = ({ data }) => {
         );
         return [...acc, component];
       }
+
+      if (elemento?.typeSlider === "slider_img_destacada") {
+        const sliderImagenes = elemento?.imagenes.data.map(element => {
+          const url = element.attributes.url
+          return `${url}`
+        })
+
+        const component = (
+          <section className="container-section sm:py-10 my-5">
+            <section className="grid-2">
+              <SliderThree>
+                {sliderImagenes.map((image, index) => {
+                  return (
+                    <div key={index}>
+                      <img src={image} alt={"natural"} />
+                    </div>
+                  );
+                })}
+              </SliderThree>
+              <BasicSection
+                classNameTitle={""}
+                classNameWrapper={"setionStyleTwo"}
+                title={""}
+                classNameContent={"fuentesParrafo p-5 "}
+              >
+                <ReactMarkdown
+                  className="sm:py-10 m-5 saltoLinea2">{elemento.Content}</ReactMarkdown>
+              </BasicSection>
+            </section>
+          </section>
+        );
+        return [...acc, component];
+      }
+      if (elemento.typeSection === "section1") {
+        const component = (
+          <TwoColumnGrid backgroundImage={`${elemento?.background?.data?.attributes?.url}`}>
+            <BasicSection
+              classNameTitle={""}
+              classNameWrapper={"setionStyleTwo"}
+              title={""}
+              widthContent="70%"
+              alignItems={"center"}
+              justifyContent={"center"}
+              classNameContent={" font-min sm:py-10"}
+            >
+              <ReactMarkdown className="py-10">{elemento.content}</ReactMarkdown>
+              <ButtonView
+                className={" backgroundSecondary m-0 manropeFont p-5"}
+                link={`${lang}/${elemento?.btn?.url}`}
+              >
+                {elemento?.btn?.label}
+              </ButtonView>
+            </BasicSection>
+
+            <BasicSection
+              classNameTitle={""}
+              classNameWrapper={"setionStyleTwo lg:p-10 lg:m-10 "}
+              styleWrapper={{ "padding": "90px" }}
+              title={""}
+              alignItems="center"
+              justifyContent={"flex-start"}
+              classNameContent={"fuentesParrafo lg:p-10 lg:m-10"}
+            >
+              <img src={`${elemento?.imgBasicContent?.data?.attributes?.url}`} />
+            </BasicSection>
+          </TwoColumnGrid>)
+        return [...acc, component];
+      }
+      if (elemento?.label === "youtube") {
+        
+        const component = (<section className="section OneImg">
+          <div className="video-container">
+            <iframe
+              width="560"
+              height="315"
+              src={elemento?.url}
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </section>)
+
+        return [...acc, component];
+      }
+      if (elemento?.typeSection === "section11") {
+        console.log(elemento)
+        const abousUs = elemento?.imagenWithContentBasic
+          .slice(0, 2)
+          .map((element, index) => {
+            return (
+              <section className="" key={index}>
+                <HeaderComponets
+                  alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+                  src="/images/fondo1.png"
+                  classNameText={"colorSecondary chelseaFont"}
+                  classNameSection={"centerElement"}
+                >
+                  {element.label}
+                </HeaderComponets>
+                <ReactMarkdown className="py-5">{element.content}</ReactMarkdown>
+              </section>
+            );
+          });
+        const component = (
+          <section className="container-section sm:py-10 my-5">
+            <BasicSection
+              classNameTitle={""}
+              classNameWrapper={"setionStyleTwo"}
+              title={""}
+              classNameContent={"fuentesParrafo py-10 flex-vision"}
+            >
+              <section className="w-50 p-5">
+                {abousUs}
+              </section>
+              <section className="w-50 p-5">
+                <section className="">
+                  <HeaderComponets
+                    alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+                    src="/images/fondo1.png"
+                    classNameText={"colorSecondary chelseaFont"}
+                    classNameSection={"centerElement"}
+                  >
+                    {elemento.imagenWithContentBasic[2]?.label}
+                  </HeaderComponets>
+                  <ReactMarkdown className="py-5 saltoLinea">{elemento?.imagenWithContentBasic[2]?.content}</ReactMarkdown>
+                </section>
+              </section>
+            </BasicSection>
+          </section>)
+
+        return [...acc, component];
+      }
+
       return acc;
     }, []);
     return <div>{renderedComponents}</div>;
@@ -50,23 +179,7 @@ const NosotrosPage = ({ data }) => {
 
 
 
-  const abousUs = quintoElemet?.imagenWithContentBasic
-    .slice(0, 2)
-    .map((element, index) => {
-      return (
-        <section className="" key={index}>
-          <HeaderComponets
-            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
-            src="/images/fondo1.png"
-            classNameText={"colorSecondary chelseaFont"}
-            classNameSection={"centerElement"}
-          >
-            {element.label}
-          </HeaderComponets>
-          <ReactMarkdown className="py-5">{element.content}</ReactMarkdown>
-        </section>
-      );
-    });
+
 
 
   const sliderReconocimiento = septimoElemento?.imagenWithContentBasic?.map(element => {
@@ -83,125 +196,14 @@ const NosotrosPage = ({ data }) => {
   })
 
 
-  
+
   return (
     <Main titlePage={"Nosotros"}>
       <div className="container">
-       {ComponentDynamicsRenderer(data)}
-        {/* <HeaderComponets
-          src="/images/fondo1.png"
-          classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-5"}
-          alignment={`${screenSize <= 1024 ? "center" : "start"}`}
-        >
-          {primerElemet.Titulo}
-        </HeaderComponets> */}
-        <section className="container-section sm:py-10 my-5">
-          <section className="grid-2">
-            <SliderThree>
-              {sliderImagenes.map((image, index) => {
-                return (
-                  <div key={index}>
-                    <img src={image} alt={"natural"} />
-                  </div>
-                );
-              })}
-            </SliderThree>
-            <BasicSection
-              classNameTitle={""}
-              classNameWrapper={"setionStyleTwo"}
-              title={""}
-              classNameContent={"fuentesParrafo p-5 "}
-            >
-              <ReactMarkdown 
-                className="sm:py-10 m-5 saltoLinea2">{secundarioElement.Content}</ReactMarkdown>
-            </BasicSection>
-          </section>
-        </section>
-
-        <TwoColumnGrid backgroundImage={`${tercerElment?.background?.data?.attributes?.url}`}>
-          <BasicSection
-            classNameTitle={""}
-            classNameWrapper={"setionStyleTwo"}
-            title={""}
-            widthContent="70%"
-            alignItems={"center"}
-            justifyContent={"center"}
-            classNameContent={" font-min sm:py-10"}
-          >
-            <ReactMarkdown className="py-10">{tercerElment.content}</ReactMarkdown>
-            <ButtonView
-              className={" backgroundSecondary m-0 manropeFont p-5"}
-              link={`${lang}/${tercerElment?.btn?.url}`}
-            >
-              {tercerElment?.btn?.label}
-            </ButtonView>
-          </BasicSection>
-
-          <BasicSection
-            classNameTitle={""}
-            classNameWrapper={"setionStyleTwo lg:p-10 lg:m-10 "}
-            styleWrapper={{ "padding": "90px" }}
-            title={""}
-            alignItems="center"
-            justifyContent={"flex-start"}
-            classNameContent={"fuentesParrafo lg:p-10 lg:m-10"}
-          >
-            <img src={`${tercerElment?.imgBasicContent?.data?.attributes?.url}`} />
-          </BasicSection>
-        </TwoColumnGrid>
-
-
-        {/* <section className="section OneImg ">
-          <video controls >
-            <source src={cuartoElement?.img?.data[0]?.attributes?.url} type="video/mp4" />
-            Tu navegador no admite la reproducción de videos.
-          </video>
-        </section> */}
-        <section className="section OneImg">
-          <div className="video-container">
-            <iframe
-              width="560"
-              height="315"
-              src={"https://www.youtube.com/embed/cGGCJRUkum4"}
-              frameBorder="0"
-              allowFullScreen
-            ></iframe>
+        {ComponentDynamicsRenderer(data)}
 
 
 
-          </div>
-        </section>
-
-        <section className="container-section sm:py-10 my-5">
-
-          <BasicSection
-            classNameTitle={""}
-            classNameWrapper={"setionStyleTwo"}
-            title={""}
-            classNameContent={"fuentesParrafo py-10 flex-vision"}
-          >
-            <section className="w-50 p-5">
-              {abousUs}
-            </section>
-            <section className="w-50 p-5">
-              <section className="">
-                <HeaderComponets
-                  alignment={`${screenSize <= 1024 ? "center" : "start"}`}
-                  src="/images/fondo1.png"
-                  classNameText={"colorSecondary chelseaFont"}
-                  classNameSection={"centerElement"}
-                >
-                  {quintoElemet.imagenWithContentBasic[2]?.label}
-                </HeaderComponets>
-                <ReactMarkdown className="py-5 saltoLinea">{quintoElemet.imagenWithContentBasic[2]?.content}</ReactMarkdown>
-              </section>
-            </section>
-
-
-          </BasicSection>
-
-
-        </section>
 
 
         <TwoSections

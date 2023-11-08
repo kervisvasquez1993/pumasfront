@@ -364,6 +364,7 @@ export const getPagesGQ = async (language) => {
               id
               Content
               title
+              typeSlider
               colorTitle{
                 colorTitle
               }
@@ -472,6 +473,8 @@ export const getPagesGQ = async (language) => {
             }
             ...on ComponentUiImagen{
               id
+              label
+              url
               img{
                 data{
                   attributes{
