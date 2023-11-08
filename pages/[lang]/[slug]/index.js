@@ -13,7 +13,7 @@ import usePages from "../../../hooks/usePages";
 import Loader from "../../../components/UI/Loader";
 
 const Page = ({ page, blogsPage, modelsGQ, footer }) => {
-  console.log(page, "footer");
+  
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();

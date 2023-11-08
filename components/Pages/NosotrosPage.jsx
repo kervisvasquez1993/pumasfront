@@ -19,15 +19,36 @@ const NosotrosPage = ({ data }) => {
   const { componentDynamics } = data;
   const { screenSize } = useScreenSize()
   const [primerElemet, secundarioElement, tercerElment, cuartoElement, quintoElemet, sextoElement, septimoElemento] = componentDynamics;
-
+  const componentMap = {
+    titleBasic: "TitleBasic"
+  };
   const sliderImagenes = secundarioElement?.imagenes.data.map(element => {
     const url = element.attributes.url
     return `${url}`
   })
 
-  const DynamicPage = componentDynamics.map(elementos => {
+  const ComponentDynamicsRenderer = ({ componentDynamics }) => {
+   
+    const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {
+      if (elemento?.nameComponent === "titleBasic" ) {
+        const component = (
+          <HeaderComponets
+            key={index}
+            src="/images/fondo1.png"
+            classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-5"}
+            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
+          >
+            {elemento.Titulo}
+          </HeaderComponets>
+        );
+        return [...acc, component];
+      }
+      return acc;
+    }, []);
+    return <div>{renderedComponents}</div>;
+  };
 
-  })
+
 
   const abousUs = quintoElemet?.imagenWithContentBasic
     .slice(0, 2)
@@ -62,18 +83,18 @@ const NosotrosPage = ({ data }) => {
   })
 
 
-
+  
   return (
     <Main titlePage={"Nosotros"}>
       <div className="container">
-
-        <HeaderComponets
+       {ComponentDynamicsRenderer(data)}
+        {/* <HeaderComponets
           src="/images/fondo1.png"
           classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-5"}
           alignment={`${screenSize <= 1024 ? "center" : "start"}`}
         >
           {primerElemet.Titulo}
-        </HeaderComponets>
+        </HeaderComponets> */}
         <section className="container-section sm:py-10 my-5">
           <section className="grid-2">
             <SliderThree>
@@ -85,15 +106,14 @@ const NosotrosPage = ({ data }) => {
                 );
               })}
             </SliderThree>
-            {console.log(secundarioElement.Content, "text")}
             <BasicSection
               classNameTitle={""}
               classNameWrapper={"setionStyleTwo"}
               title={""}
               classNameContent={"fuentesParrafo p-5 "}
             >
-              <ReactMarkdown source={"markdown"}
-                skipHtml={false} className="sm:py-10 m-5 saltoLinea2">{secundarioElement.Content}</ReactMarkdown>
+              <ReactMarkdown 
+                className="sm:py-10 m-5 saltoLinea2">{secundarioElement.Content}</ReactMarkdown>
             </BasicSection>
           </section>
         </section>

@@ -64,15 +64,7 @@ export const getAllModels = (lang) => {
   return ApiBackend("api/modelos?populate=*&locale=" + lang, config);
 };
 
-// export const langAll = () => {
-//   const config = {
-//     headers: {
-//       "Content-Type": "application/json",
-//       "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
-//     },
-//   };
-//   return ApiBackend("api/i18n/locales", config);
-// };
+
 
 
 export const langAll = async () => {
@@ -172,6 +164,7 @@ export const getPageWithComponents = async (language, id) => {
               }
               ...on ComponentUiBasicSection{
                 title
+                
                 colorTitle{
                   colorTitle
                 }

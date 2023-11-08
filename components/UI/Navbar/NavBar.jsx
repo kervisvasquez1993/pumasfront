@@ -22,7 +22,7 @@ const Navbar = ({ items }) => {
     if (query.slug) {
         redirectSlug = langActual?.data.find(element => element.attributes.slug == query.slug)
     }
-    console.log(redirectSlug)
+    // console.log(redirectSlug)
     useEffect(() => {
         if (horario) {
             setApertura(horario[0].attributes.apertura);

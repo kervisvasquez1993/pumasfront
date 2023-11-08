@@ -6,8 +6,7 @@ import { useRouter } from "next/router";
 const ItemMenu = ({ items }) => {
   const { query, asPath } = useRouter();
   const router = useRouter();
-  console.log(asPath)
-  console.log(items, "items")
+
   return (
     <>
       {items && (
