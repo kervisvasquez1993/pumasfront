@@ -6,10 +6,8 @@ import CardComponent from "../UI/Card/CardComponents";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import CardComponentHover from "../UI/Card/CardComponentHover";
-// import BlogEntry from "./BlogEntry";
 
 const BlogPage = ({ data, blogData }) => {
-  // console.log(blogData.data, "blogData");
   const router = useRouter();
   const { lang } = router.query
   const { componentDynamics } = data;
@@ -28,16 +26,33 @@ const BlogPage = ({ data, blogData }) => {
 
     )
   })
+
+  const ComponentDynamicsRenderer = ({ componentDynamics }) => {
+
+    const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {  
+      
+      if(elemento?.typeSection === "section2"){
+        console.log(elemento, "component")
+        const component = (<div className="container-program">
+        <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
+          {elemento?.title}
+        </h3>
+        <div className="grid-2 px-5">
+          <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2">
+            <ReactMarkdown>{elemento?.content}</ReactMarkdown>
+          </div>
+        </div>
+      </div>)
+       return [...acc, component];
+      }
+      return acc;
+    }, []);
+    return <div>{renderedComponents}</div>;
+  };  
   return (
     <Main titlePage={data.title}>
       <div className="container">
-        <HeaderComponets
-          src="/images/fondo1.png"
-          classNameText={"p-10 m-10 colorPrimary chelseaFont"}
-          alignment="start"
-        >
-          {firtElement?.Titulo}
-        </HeaderComponets>
+        {ComponentDynamicsRenderer(data)}
         <div className="blog">
           {sectionBlogs}
         </div>

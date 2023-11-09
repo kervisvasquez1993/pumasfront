@@ -43,15 +43,6 @@ const SantuarioPage = ({ data }) => {
     setOpenModal(false);
   };
 
-  const [firstElement, secondElement, thirdElement, fourthElement] = componentDynamics
-
-  const imgSlider = secondElement?.imagenes?.data.map(img => {
-    return {
-      url: `${img?.attributes?.url}`
-    }
-  })
-
-
   const ComponentDynamicsRenderer = ({ componentDynamics }) => {
 
     const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {
@@ -204,12 +195,7 @@ const SantuarioPage = ({ data }) => {
             </p>
           }
         />
-
         {ComponentDynamicsRenderer(data)}
-
-
-
-        
       </div>
     </Main>
   );
