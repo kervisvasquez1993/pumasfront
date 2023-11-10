@@ -14,7 +14,7 @@ const BlogInfo = ({
   blog
 }) => {
   const { screenSize } = useScreenSize()
-  console.log(blog, "blog")
+  
   const { TitleBlog="", ContentBlog="", imgBlog= "" } = blog?.attributes
   return (
     <Main titlePage={TitleBlog}>
