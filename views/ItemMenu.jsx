@@ -5,14 +5,15 @@ import { useRouter } from "next/router";
 
 const ItemMenu = ({ items }) => {
   const { query, asPath } = useRouter();
-  const router = useRouter();
-
+  
+  
   return (
     <>
       {items && (
         
         <ul className={`${style.menuList} flex my-10`}>
           {items.map((item, index) => {
+            console.log(item, "item")
             if (item.attributes.slug === "inicio" || item.attributes.slug === "home") {
               return
             }
@@ -27,6 +28,7 @@ const ItemMenu = ({ items }) => {
                 </Link>
               );
             }
+          
             const itemSlug = item.attributes.slug;
             const isActive = query.slug === itemSlug;
             return (

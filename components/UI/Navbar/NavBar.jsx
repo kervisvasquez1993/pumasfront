@@ -14,15 +14,28 @@ const Navbar = ({ items }) => {
     const { menuData, loading } = useMenu();
     const [apertura, setApertura] = useState(null)
     const [cierre, setCierre] = useState(null)
-    const { query } = useRouter();
-    const { lang } = query;
+    const { query, asPath } = useRouter();
+    const { lang,  } = query;
     const langActual = menuData?.find(element => element.lang === lang)
+    const  getDataInPath = (cadena) => {
+        const partes = cadena.split('/');
+        if (partes.length >= 3) {
+          return partes[2];
+        } else {
+          return null; 
+        }
+      }
     let url = null
     let redirectSlug = null
+    const pageContext = getDataInPath(asPath)
+    console.log(pageContext)
     if (query.slug) {
         redirectSlug = langActual?.data.find(element => element.attributes.slug == query.slug)
     }
-    // console.log(redirectSlug)
+    if(pageContext){
+        redirectSlug = langActual?.data.find(element => element.attributes.slug == pageContext)
+    }
+ 
     useEffect(() => {
         if (horario) {
             setApertura(horario[0].attributes.apertura);
@@ -47,9 +60,10 @@ const Navbar = ({ items }) => {
         const linkClassName = `codeLang ${isActive ? 'active-menu' : 'desactivated-menu'}`;
 
         const handleLanguageChange = () => {
+            
             if (redirectSlug && redirectSlug.attributes.slugTranslate) {
                 const translatedSlug = redirectSlug.attributes.slugTranslate;
-
+                
                 if (element.attributes.code !== lang) {
                     return (
                         <Link href={`/${element.attributes.code}/${translatedSlug}`} key={index} className={linkClassName}>

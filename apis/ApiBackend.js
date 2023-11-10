@@ -276,6 +276,7 @@ export const getPageWithComponents = async (language, id) => {
     return null;
   }
 };
+
 export const matalEducativo = async (lang) => {
   const query = `query {
     materialEducativos(locale: "${lang}"){
@@ -321,6 +322,7 @@ export const matalEducativo = async (lang) => {
     return null;
   }
 };
+
 export const getModelGQ = async (lang) => {
   const query = `query getmodels{
     modelos(locale : "${lang}" , pagination : {start : 1 , limit : 100}){

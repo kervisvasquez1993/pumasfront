@@ -1,12 +1,15 @@
 import React from 'react'
-import { getBlog, langAll } from '../../../apis/ApiBackend';
+import { getBlog, getPageWithComponents, langAll } from '../../../apis/ApiBackend';
 import { useRouter } from 'next/router';
 import BlogPage from '../../../components/Pages/BlogPage';
 import CardComponentHover from '../../../components/UI/Card/CardComponentHover';
 import Main from '../../../Layout/Main/Main';
 import HeaderComponents from '../../../components/UI/HeaderComponents/HeaderComponets';
+import ReactMarkdown from 'react-markdown';
 
-const index = ({blogsPage}) => {
+const index = ({blogsPage, blogPageData}) => {
+    console.log(blogPageData.attributes, "blogPageData")
+
     const router = useRouter();
     const { lang } = router.query
     const blogs = blogsPage?.data
@@ -22,16 +25,31 @@ const index = ({blogsPage}) => {
     
         )
       })
+
+      const ComponentDynamicsRenderer = ({ DynamicComponent }) => {
+      const renderedComponents = DynamicComponent.reduce((acc, elemento, index) => {
+        if (elemento?.typeSection === "section2") {
+          const component = (<div className="container-program">
+            <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
+              {elemento?.title}
+            </h3>
+            <div className="grid-2 px-5">
+              <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2">
+                <ReactMarkdown>{elemento?.content}</ReactMarkdown>
+              </div>         
+            </div>
+          </div>)
+          return [...acc, component];
+        }
+  
+      return acc;
+    }, []);
+    return <div>{renderedComponents}</div>;
+  };
   return (
     <Main titlePage={"Blog"}>
       <div className="container">
-        <HeaderComponents
-          src="/images/fondo1.png"
-          classNameText={"p-10 m-10 colorPrimary chelseaFont"}
-          alignment="start"
-        >
-            Blogs
-        </HeaderComponents>
+      {ComponentDynamicsRenderer(blogPageData.attributes)}
         <div className="blog">
           {sectionBlogs}
         </div>
@@ -43,16 +61,27 @@ const index = ({blogsPage}) => {
 export default index
 
 export const getStaticProps = async ({ params }) => {
+    let idOfBlog = null
     const { lang } = params;
-    const blog = await getBlog(lang);
+
+    if(lang == "es"){
+      idOfBlog = 2
+    }
+    else if(lang == "en"){
+      idOfBlog = 14
+    }
+    const [blogPage, blog] = await Promise.all([
+      getPageWithComponents(lang, idOfBlog),
+      getBlog(lang)
+    ]);
+    const blogPageData = blogPage?.data?.page?.data;
     const blogsPage = blog.data;
     return {
-      props: { blogsPage},
+      props: { blogsPage, blogPageData},
     };
   
   };
   
-
   export const getStaticPaths = async () => {
     const locales = await langAll();
     const languages = locales;

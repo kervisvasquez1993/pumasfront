@@ -19,7 +19,7 @@ const ProgramaPage = ({ data, material }) => {
   const router = useRouter();
   const { slug, lang } = router.query
   const { title, componentDynamics } = data;
-  const [firstElement, secondElement, thirdElement, fourthElement, fifthElement] = componentDynamics
+  
 
   const ComponentDynamicsRenderer = ({ componentDynamics }) => {
 
@@ -115,10 +115,7 @@ const ProgramaPage = ({ data, material }) => {
     return <div>{renderedComponents}</div>;
   };
 
-  const { precios } = thirdElement
-  const preciosData = precios?.data?.map((precio, index) => {
-    return (<li key={index}>{precio?.attributes?.title} : {precio?.attributes?.value}</li>)
-  })
+  
   const materialEducativo = material?.map((elemento, index) => {
     const [isHovered, setIsHovered] = useState(false);
 

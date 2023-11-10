@@ -9,7 +9,6 @@ import useLocale from "../../hooks/useLocales";
 
 const Main = ({ children, titlePage }) => {
   const { menuData, loading } = useMenu();
-  // console.log(menuData, "data")
   const { langAllContext } = useLocale();
   const { query } = useRouter();
   const { lang, slug } = query;
@@ -22,13 +21,11 @@ const Main = ({ children, titlePage }) => {
         (element) => element.lang === lang
       );
       setStateMenu(currentLanguageMenu || null);
-
-      // Almacena menuData en localStorage cuando está disponible
       localStorage.setItem("menuData", JSON.stringify(menuData));
     }
   }, [lang, loading, menuData]);
 
-  // Cargar menuData desde localStorage si no está disponible desde la API
+
   useEffect(() => {
     const storedMenuData = localStorage.getItem("menuData");
     if (!menuData && storedMenuData) {
@@ -41,9 +38,7 @@ const Main = ({ children, titlePage }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const threshold = 100; // Ajusta esto según tu preferencia
-
-      // Si el desplazamiento vertical es mayor o igual al umbral, establece el encabezado como pegajoso
+      const threshold = 100; 
       if (window.scrollY >= threshold) {
         setIsHeaderSticky(true);
       } else {
