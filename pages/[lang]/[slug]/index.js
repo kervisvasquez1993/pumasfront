@@ -55,10 +55,6 @@ const Page = ({ page, blogsPage, modelsGQ, footer, materialEductivoSort }) => {
           return <CentroDeRescate data={page} />;
         case "rescue-center":
           return <CentroDeRescate data={page} />;
-        case "publicaciones":
-          return <BlogPage data={page} blogData={blogsPage} />;
-        case "blogs":
-          return <BlogPage data={page} blogData={blogsPage} />;
         case "programas":
           return <ProgramaPage data={page} material={materialEductivoSort} />;
         case "programs":
@@ -147,13 +143,20 @@ export const getStaticPaths = async () => {
   const result = [];
   for (const language of languages) {
     const menusResponse = await getMenus(language.attributes.code);
+    const pages = await getPagesGQ(language.attributes.code)
+    
     const menus = menusResponse.data.data;
+   
     menus.forEach((element) => {
+      // console.log(element, "elemento")
+      if(element.attributes.slug === "blog"){
+        return 
+      }
       result.push({
         params: {
-          lang: element.attributes.locale,
+          lang: language.attributes.code,
           slug: element.attributes.slug,
-          name: element.attributes.nombre,
+          name: element.attributes.title,
         },
       });
     });
