@@ -28,7 +28,7 @@ const CardComponentHover = ({ imageUrl, title, description, url }) => {
                 <p className={style.cardDescription}>{description}</p>
             </div>
             {isHovered && (
-                <Link className="download-button" href={url} >Ver Mas</Link>
+                <Link  className="download-button" href={url} >Ver Mas</Link>
             )}
         </div>
     );

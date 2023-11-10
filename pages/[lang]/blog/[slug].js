@@ -8,12 +8,14 @@ import SliderThree from '../../../components/UI/Slider/SliderThree';
 import ReactMarkdown from 'react-markdown';
 import BasicSection from '../../../components/Section/Basic/BasicSection';
 import SliderSingle from '../../../components/UI/Slider/SliderSingle';
+import { versionInfo } from 'graphql';
 
 const BlogInfo = ({
   blog
 }) => {
   const { screenSize } = useScreenSize()
-  const { TitleBlog="", ContentBlog="", imgBlog= "" } = blog.attributes
+  console.log(blog, "blog")
+  const { TitleBlog="", ContentBlog="", imgBlog= "" } = blog?.attributes
   return (
     <Main titlePage={TitleBlog}>
       <HeaderComponents
@@ -50,11 +52,11 @@ export default BlogInfo
 
 export const getStaticProps = async ({ params }) => {
   const { lang, slug } = params
+  console.log(lang, "lang")
   const blogAllResponse = await getBlog(lang);
   const blogAll = blogAllResponse.data.data
   
   const blog = blogAll.find(e => e.attributes.slug == slug)
-
   return {
     props: {
       blog
