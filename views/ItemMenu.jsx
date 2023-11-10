@@ -6,6 +6,16 @@ import { useRouter } from "next/router";
 const ItemMenu = ({ items }) => {
   const { query, asPath } = useRouter();
   
+  const  getDataInPath = (cadena) => {
+    const partes = cadena.split('/');
+    if (partes.length >= 3) {
+      return partes[2];
+    } else {
+      return null; 
+    }
+  }
+  const pageContext = getDataInPath(asPath)
+
   
   return (
     <>
@@ -13,7 +23,7 @@ const ItemMenu = ({ items }) => {
         
         <ul className={`${style.menuList} flex my-10`}>
           {items.map((item, index) => {
-            console.log(item, "item")
+            
             if (item.attributes.slug === "inicio" || item.attributes.slug === "home") {
               return
             }
@@ -28,13 +38,16 @@ const ItemMenu = ({ items }) => {
                 </Link>
               );
             }
+            
           
             const itemSlug = item.attributes.slug;
-            const isActive = query.slug === itemSlug;
+         
+            const isActive = query.slug === itemSlug ;
+              
             return (
               <li
               key={item.id}
-              className={`px-2 py-2 text-center rounded fontMenu ${isActive ? 'active-menu' : 'desactivated-menu'}`}
+              className={`px-2 py-2 text-center rounded fontMenu ${(isActive || (itemSlug === "blog" && pageContext === "blog")) ? 'active-menu' : 'desactivated-menu'}`}
             >
               <Link href={`/${item.attributes.locale}/${itemSlug}`} className={style.menuItem}>
                 {item.attributes.nombre}

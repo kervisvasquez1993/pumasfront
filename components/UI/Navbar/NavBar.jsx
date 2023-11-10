@@ -28,7 +28,6 @@ const Navbar = ({ items }) => {
     let url = null
     let redirectSlug = null
     const pageContext = getDataInPath(asPath)
-    console.log(pageContext)
     if (query.slug) {
         redirectSlug = langActual?.data.find(element => element.attributes.slug == query.slug)
     }

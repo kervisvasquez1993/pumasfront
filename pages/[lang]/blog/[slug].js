@@ -7,7 +7,6 @@ import useScreenSize from '../../../hooks/useScreenSize';
 import SliderThree from '../../../components/UI/Slider/SliderThree';
 import ReactMarkdown from 'react-markdown';
 import BasicSection from '../../../components/Section/Basic/BasicSection';
-import snarkdown from 'snarkdown';
 import SliderSingle from '../../../components/UI/Slider/SliderSingle';
 
 const BlogInfo = ({
@@ -50,10 +49,11 @@ const BlogInfo = ({
 export default BlogInfo
 
 export const getStaticProps = async ({ params }) => {
-  const { lang, id } = params
+  const { lang, slug } = params
   const blogAllResponse = await getBlog(lang);
   const blogAll = blogAllResponse.data.data
-  const blog = blogAll.find(e => e.id == id)
+  
+  const blog = blogAll.find(e => e.attributes.slug == slug)
 
   return {
     props: {
@@ -63,7 +63,7 @@ export const getStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
-  const lang = [];
+  
   const blogs = [];
   const locales = await langAll();
   const languages = locales;
