@@ -464,7 +464,7 @@ img {
 .dowloads-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 
 }
 
@@ -902,5 +902,9 @@ font-weight: bold;
 .paragraft-venedo {
     font-size: 18px;
     opacity: 0.4;
+    font-style: italic;
+}
+.curvisa {
+
     font-style: italic;
 }

@@ -38,8 +38,8 @@ const ApoyanosPage = ({ data }) => {
     <Main titlePage={data.title}>
       <div className="container">
         <section className="container-section py-10 my-5">
-          <section className={ `${screenSize >= 1024 ? "grid-2" : ""}` }>
-           
+          <section className={`${screenSize >= 1024 ? "grid-2" : ""}`}>
+
             <section>
               <HeaderComponets
                 src="/images/fondo1.png"
@@ -57,6 +57,7 @@ const ApoyanosPage = ({ data }) => {
               >
                 <ReactMarkdown className="py-10">{secondElement.content}</ReactMarkdown>
                 <ButtonView
+                  blank={true}
                   className={" backgroundPrimary m-0 manropeFont p-5"}
                   link={`${lang}/${secondElement?.btn?.url}`}
                 >
@@ -88,7 +89,7 @@ const ApoyanosPage = ({ data }) => {
           >
             {sextoElemento.title}
           </HeaderComponets>
-          <section className={ `${screenSize >= 1024 ? "grid-2" : ""}` }>
+          <section className={`${screenSize >= 1024 ? "grid-2" : ""}`}>
             <section>
               <BasicSection
                 classNameTitle={""}
@@ -98,9 +99,9 @@ const ApoyanosPage = ({ data }) => {
               >
                 <div className="header-apoyanos">
                   <img src="/images/amazon.png" alt="" />
-                <h3 className="colorVerde chelseaFont">{quintoElmento.title}</h3>
+                  <h3 className="colorVerde chelseaFont">{quintoElmento.title}</h3>
                 </div>
-               
+
                 <ReactMarkdown className="py-10">{quintoElmento.content}</ReactMarkdown>
                 {/* amazon */}
                 <Link
@@ -141,12 +142,12 @@ const ApoyanosPage = ({ data }) => {
             >
               <ReactMarkdown className="py-10">{sextoElemento.content}</ReactMarkdown>
               <Link className={`backgroundPrimary m-0 px-10 manropeFont py-10 btnPrimary py-2  `} href={`${sextoElemento.btn?.url}`}>
-                   {sextoElemento?.btn?.label}
+                {sextoElemento?.btn?.label}
               </Link>
-               
-               
-              
-             
+
+
+
+
             </BasicSection>
           </section>
         </section>

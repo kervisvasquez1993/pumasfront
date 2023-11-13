@@ -139,7 +139,7 @@ const ProgramaPage = ({ data, material }) => {
             alt="imagen santuario"
           />
           {isHovered && (
-            <Link className="download-button" href={elemento?.file?.url} download>Descargar</Link>
+            <Link className="download-button" href={elemento?.file?.url}  target="_blank">Descargar</Link>
           )}
         </div>
         <div className="wrapperTitleCard">

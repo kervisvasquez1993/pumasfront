@@ -70,12 +70,13 @@ export default function Modal({ showModal, setShowModal, data }) {
                         <div className="flex my-2">
                           <p className="fontSize24">{data?.especie}</p>{" "}
                           <span className="fontSize24 px-1 mx-1">|</span>
-                          <p className="fontSize24">{data?.nombreCientifico}</p>
+                          <p className="fontSize24 curvisa">{data?.nombreCientifico}</p>
                         </div>
                       </section>
                       <ButtonView
                         className={" backgroundPrimary m-0 manropeFont p-5"}
                         link={`${lang}/donations?params=` + data?.slug}
+                        blank={true}
                       >
                         Apoyar Animal
                       </ButtonView>
