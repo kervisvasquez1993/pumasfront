@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Main from "../../../Layout/Main/Main";
 import BasicSection from "../../../components/Section/Basic/BasicSection";
-import { useRouter } from "next/router";
 import {
   getAllDonations,
   getTypeDonations,
@@ -14,9 +14,20 @@ import HeaderComponents from "../../../components/UI/HeaderComponents/HeaderComp
 import SliderTwo from "../../../components/UI/Slider/SliderTwo";
 import useScreenSize from "../../../hooks/useScreenSize";
 
-const Donations = ({ result, typeDonationSchemes, filtro, }) => {
-
+const Donations = ({  typeDonationSchemes, filtro }) => {
   const { screenSize } = useScreenSize()
+  const [filter, setFilter] = useState("")
+  const [parametros, setParametros] = useState("")
+  const { query, asPath, push } = useRouter();
+  
+
+  useEffect(() => {
+ 
+    const data = typeDonationSchemes?.find(elemento => elemento.slug === query.params)?.donaciones.data
+    setFilter(data)
+  }, [query.params]); 
+
+  console.log(filter, "filter")
   return (
     <Main titlePage={"Donación"}>
       <div className="container">
@@ -34,7 +45,7 @@ const Donations = ({ result, typeDonationSchemes, filtro, }) => {
         <div>
           <StepByStepComponent
             typeDonations={typeDonationSchemes}
-            filtro={filtro}
+            filtro={filter}
           />
         </div>
         <HeaderComponents
@@ -53,7 +64,10 @@ const Donations = ({ result, typeDonationSchemes, filtro, }) => {
 export default Donations;
 
 
-export async function getServerSideProps(context) {
+
+
+
+export async function getStaticProps(context) {
   const { params, query } = context;
   const lang = params.lang;
   const parametros = query?.params;
@@ -66,6 +80,8 @@ export async function getServerSideProps(context) {
 
   const donations = donationsResponse.data.data;
   const typeDonations = typeDonationsResponse.data.data;
+
+  // console.log(typeDonationSchemes, "typeDonationSchemes")
   const result = donations.map((element) => ({
     id: element.id,
     monto: element.attributes.monto,
@@ -76,7 +92,9 @@ export async function getServerSideProps(context) {
     tipo_de_donacions: element.attributes.tipo_de_donacions,
   }));
 
-  const typeDonationSchemes = typeDonations.map((element) => ({
+  const typeDonationSchemes = typeDonations.map((element) => {
+    console.log(element)
+    return ({
     id: element.id,
     titulo: element.attributes.titulo,
     beneficio: element.attributes.Beneficio,
@@ -84,7 +102,8 @@ export async function getServerSideProps(context) {
     slug: element.attributes.slug,
     imagen: element.attributes.imagen,
     locale: element.attributes.locale,
-  }));
+    donaciones : element.attributes?.donaciones
+  })});
 
   const filterBySlug = (arr, slug) => {
     return arr?.filter((item) => {
@@ -110,3 +129,16 @@ export async function getServerSideProps(context) {
   };
 
 }
+
+export const getStaticPaths = async () => {
+  const locales = await langAll();
+  const languages = locales;
+  const lang = [];
+  for (const language of languages) {
+    lang.push({ params: { lang: language.attributes.code } });
+  }
+  return {
+    paths: lang,
+    fallback: true,
+  };
+};

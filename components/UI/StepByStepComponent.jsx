@@ -47,7 +47,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
     setSelectedCard(cardName);
     router.push(`/es/donations?params=${cardName}`);
     setStep(2);
-    setDonationInfo(null); // Limpiar la información de donationInfo al cambiar de selección
+    setDonationInfo(null); 
   };
 
   const handleConfirmation = () => {
@@ -132,7 +132,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
     if (clickedStep <= step) {
       setStep(clickedStep);
       if (clickedStep === 1) {
-        router.back();
+
         console.log("punto")
         setSelectedCard(null);
         setConfirmationData(null);
@@ -255,9 +255,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                   return (
                     <div key={index}>
                       <ItemDonations
-
-                        // key={index}
-                        data={element}
+                        data={element.attributes}
                         selected={selectedItems.includes(element.id)}
                         onClick={() => handleItemToggle(element.id)}
                       />
@@ -304,7 +302,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                     <ItemDonations
                       className=" my-5"
                       key={index}
-                      data={element}
+                      data={element.attributes}
                       selected={selectedItems.includes(element.id)}
                       onClick={() => handleItemToggle(element.id)}
                     />
