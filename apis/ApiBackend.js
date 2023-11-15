@@ -469,6 +469,7 @@ export const getPagesGQ = async (language) => {
               label
               subtitle
               content
+              url
               img{
                 data{
                   attributes{

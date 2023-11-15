@@ -18,11 +18,7 @@ const ApoyanosPage = ({ data }) => {
     return elemento.img?.data[0]?.attributes.url
 
   })
-
-  // console.log(sextoElemento, "sextoElemento")
-
   const elementDonar = threeElement.imagenWithContentBasic?.map((element, index) => {
-
     return (<section key={index}>
       <h3 className="colorSecondary chelseaFont">
         {element.label}
@@ -55,7 +51,7 @@ const ApoyanosPage = ({ data }) => {
                 alignItems="center"
                 classNameContent={"fuentesParrafo px-10 mx-10 saltoLinea2"}
               >
-                <ReactMarkdown className="py-10">{secondElement.content}</ReactMarkdown>
+                <ReactMarkdown className="py-10">{secondElement?.content}</ReactMarkdown>
                 <ButtonView
                   blank={true}
                   className={" backgroundPrimary m-0 manropeFont p-5"}
@@ -97,19 +93,35 @@ const ApoyanosPage = ({ data }) => {
                 title={""}
                 classNameContent={"fuentesParrafo py-10"}
               >
-                <div className="header-apoyanos">
-                  <img src="/images/amazon.png" alt="" />
-                  <h3 className="colorVerde chelseaFont">{quintoElmento.title}</h3>
+
+                {
+                  quintoElmento?.imagenWithContentBasic?.map((element, index) => {
+                    return (
+                      <div className="header-apoyanos">
+                  {/* <img src="/images/amazon.png" alt="" /> */}
+                  <h3 className="colorVerde chelseaFont">{element.label}</h3>
                 </div>
+                    )
+                  })
+                }
+                
 
                 <ReactMarkdown className="py-10">{quintoElmento.content}</ReactMarkdown>
                 {/* amazon */}
-                <Link
-                  className={" backgroundVerde m-0 manropeFont p-5 btnPrimary py-2 "}
-                  href={quintoElmento.btn.url}
-                >
-                  {quintoElmento.btn.label}
-                </Link>
+                {
+                  quintoElmento?.imagenWithContentBasic?.map((element, index) => {
+                    return (
+                    <Link
+                      className={" backgroundVerde m-2 manropeFont p-5 btnPrimary py-2 "}
+                      href={element.url}
+                      target="_blank"
+                    >
+                      {element.label}
+                    </Link>
+                    )
+                  })
+                }
+                
               </BasicSection>
             </section>
             <section></section>
