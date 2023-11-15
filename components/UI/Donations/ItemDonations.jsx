@@ -2,7 +2,9 @@ import React from "react";
 import { Tooltip } from 'react-tooltip'
 
 const ItemDonations = ({ data, selected, onClick, className = "" }) => {
-  const { id, monto, donacion, imgSrc } = data;
+  // console.log(data)
+  const { id,  monto, donacion, imgSrc } = data;
+  // console.log(donacion, "donations")
   if (imgSrc?.data) {
     return (
       <div
@@ -10,7 +12,6 @@ const ItemDonations = ({ data, selected, onClick, className = "" }) => {
           }`}
         onClick={onClick}
       >
-        {console.log(imgSrc.null, "imgSrc")}
         <img src={imgSrc?.data?.attributes?.url} data-tooltip-id="my-tooltip"
           data-tooltip-content={donacion} />
         <Tooltip id="my-tooltip" />

@@ -132,7 +132,6 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
     if (clickedStep <= step) {
       setStep(clickedStep);
       if (clickedStep === 1) {
-
         console.log("punto")
         setSelectedCard(null);
         setConfirmationData(null);
@@ -255,7 +254,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                   return (
                     <div key={index}>
                       <ItemDonations
-                        data={element.attributes}
+                        data={element}
                         selected={selectedItems.includes(element.id)}
                         onClick={() => handleItemToggle(element.id)}
                       />
@@ -302,7 +301,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                     <ItemDonations
                       className=" my-5"
                       key={index}
-                      data={element.attributes}
+                      data={element}
                       selected={selectedItems.includes(element.id)}
                       onClick={() => handleItemToggle(element.id)}
                     />

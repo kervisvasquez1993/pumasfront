@@ -14,20 +14,34 @@ import HeaderComponents from "../../../components/UI/HeaderComponents/HeaderComp
 import SliderTwo from "../../../components/UI/Slider/SliderTwo";
 import useScreenSize from "../../../hooks/useScreenSize";
 
-const Donations = ({  typeDonationSchemes, filtro }) => {
+const Donations = ({  typeDonationSchemes,  result }) => {
+  
   const { screenSize } = useScreenSize()
   const [filter, setFilter] = useState("")
-  const [parametros, setParametros] = useState("")
   const { query, asPath, push } = useRouter();
   
-
+  // console.log(filtro, "filtro")
   useEffect(() => {
  
-    const data = typeDonationSchemes?.find(elemento => elemento.slug === query.params)?.donaciones.data
+
+    const data = filterBySlug(result, query.params)
+    
     setFilter(data)
+    
   }, [query.params]); 
 
-  console.log(filter, "filter")
+
+
+  const filterBySlug = (arr, slug) => {
+    return arr?.filter((item) => {
+      const modelos = item.modelos.data;
+      const tipoDonaciones = item.tipo_de_donacions.data;
+      return (
+        modelos.some((modelo) => modelo.attributes.slug === slug) ||
+        tipoDonaciones.some((tipo) => tipo.attributes.slug === slug)
+      );
+    });
+  };
   return (
     <Main titlePage={"Donación"}>
       <div className="container">
@@ -71,7 +85,6 @@ export async function getStaticProps(context) {
   const { params, query } = context;
   const lang = params.lang;
   const parametros = query?.params;
-  console.log(params, "parametros")
   let isLoading = true;
   const [donationsResponse, typeDonationsResponse] = await Promise.all([
     getAllDonations(lang),
@@ -80,8 +93,7 @@ export async function getStaticProps(context) {
 
   const donations = donationsResponse.data.data;
   const typeDonations = typeDonationsResponse.data.data;
-
-  // console.log(typeDonationSchemes, "typeDonationSchemes")
+  // console.log(donations, "typeDonations")
   const result = donations.map((element) => ({
     id: element.id,
     monto: element.attributes.monto,
@@ -93,7 +105,7 @@ export async function getStaticProps(context) {
   }));
 
   const typeDonationSchemes = typeDonations.map((element) => {
-    console.log(element)
+  
     return ({
     id: element.id,
     titulo: element.attributes.titulo,
@@ -105,25 +117,26 @@ export async function getStaticProps(context) {
     donaciones : element.attributes?.donaciones
   })});
 
-  const filterBySlug = (arr, slug) => {
-    return arr?.filter((item) => {
-      const modelos = item.modelos.data;
-      const tipoDonaciones = item.tipo_de_donacions.data;
-      return (
-        modelos.some((modelo) => modelo.attributes.slug === slug) ||
-        tipoDonaciones.some((tipo) => tipo.attributes.slug === slug)
-      );
-    });
-  };
+  // const filterBySlug = (arr, slug) => {
+  //   return arr?.filter((item) => {
+  //     const modelos = item.modelos.data;
+  //     const tipoDonaciones = item.tipo_de_donacions.data;
+  //     return (
+  //       modelos.some((modelo) => modelo.attributes.slug === slug) ||
+  //       tipoDonaciones.some((tipo) => tipo.attributes.slug === slug)
+  //     );
+  //   });
+  // };
 
-  const filteredResults = parametros ? filterBySlug(result, parametros) : [];
-
+  // const filteredResults = parametros ? filterBySlug(result, parametros) : [];
+  // console.log(filteredResults, "filteredResults")
   isLoading = false;
 
   return {
     props: {
-      filtro: filteredResults,
+      // filtro: filteredResults,
       typeDonationSchemes,
+      result,
       isLoading,
     },
   };
