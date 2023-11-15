@@ -51,72 +51,62 @@ const Donations = ({ result, typeDonationSchemes, filtro, }) => {
 };
 
 export default Donations;
+
+
 export async function getServerSideProps(context) {
   const { params, query } = context;
   const lang = params.lang;
   const parametros = query?.params;
+  console.log(params, "parametros")
   let isLoading = true;
+  const [donationsResponse, typeDonationsResponse] = await Promise.all([
+    getAllDonations(lang),
+    getTypeDonations(lang),
+  ]);
 
-  try {
-    const [donationsResponse, typeDonationsResponse] = await Promise.all([
-      getAllDonations(lang),
-      getTypeDonations(lang),
-    ]);
+  const donations = donationsResponse.data.data;
+  const typeDonations = typeDonationsResponse.data.data;
+  const result = donations.map((element) => ({
+    id: element.id,
+    monto: element.attributes.monto,
+    donacion: element.attributes.donacion,
+    locale: element.attributes.locale,
+    imgSrc: element.attributes.imgSrc,
+    modelos: element.attributes.modelos,
+    tipo_de_donacions: element.attributes.tipo_de_donacions,
+  }));
 
-    const donations = donationsResponse.data.data;
-    const typeDonations = typeDonationsResponse.data.data;
+  const typeDonationSchemes = typeDonations.map((element) => ({
+    id: element.id,
+    titulo: element.attributes.titulo,
+    beneficio: element.attributes.Beneficio,
+    descripcion: element.attributes.descripcion,
+    slug: element.attributes.slug,
+    imagen: element.attributes.imagen,
+    locale: element.attributes.locale,
+  }));
 
-    const result = donations.map((element) => ({
-      id: element.id,
-      monto: element.attributes.monto,
-      donacion: element.attributes.donacion,
-      locale: element.attributes.locale,
-      imgSrc: element.attributes.imgSrc,
-      modelos: element.attributes.modelos,
-      tipo_de_donacions: element.attributes.tipo_de_donacions,
-    }));
+  const filterBySlug = (arr, slug) => {
+    return arr?.filter((item) => {
+      const modelos = item.modelos.data;
+      const tipoDonaciones = item.tipo_de_donacions.data;
+      return (
+        modelos.some((modelo) => modelo.attributes.slug === slug) ||
+        tipoDonaciones.some((tipo) => tipo.attributes.slug === slug)
+      );
+    });
+  };
 
-    const typeDonationSchemes = typeDonations.map((element) => ({
-      id: element.id,
-      titulo: element.attributes.titulo,
-      beneficio: element.attributes.Beneficio,
-      descripcion: element.attributes.descripcion,
-      slug: element.attributes.slug,
-      imagen: element.attributes.imagen,
-      locale: element.attributes.locale,
-    }));
+  const filteredResults = parametros ? filterBySlug(result, parametros) : [];
 
-    const filterBySlug = (arr, slug) => {
-      return arr?.filter((item) => {
-        const modelos = item.modelos.data;
-        const tipoDonaciones = item.tipo_de_donacions.data;
-        return (
-          modelos.some((modelo) => modelo.attributes.slug === slug) ||
-          tipoDonaciones.some((tipo) => tipo.attributes.slug === slug)
-        );
-      });
-    };
+  isLoading = false;
 
-    const filteredResults = parametros ? filterBySlug(result, parametros) : [];
+  return {
+    props: {
+      filtro: filteredResults,
+      typeDonationSchemes,
+      isLoading,
+    },
+  };
 
-    isLoading = false; 
-
-    return {
-      props: {
-        filtro: filteredResults,
-        typeDonationSchemes,
-        isLoading, // Pasamos el estado de carga como prop
-      },
-    };
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    isLoading = false; // En caso de error, cambiamos el estado a "false"
-    return {
-      props: {
-        filtro: [],
-        typeDonationSchemes: [],
-        isLoading, // Pasamos el estado de carga como prop
-      },
-    };
-  }
 }

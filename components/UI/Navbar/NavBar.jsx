@@ -9,32 +9,32 @@ import useMenu from "../../../hooks/useMenu";
 
 
 const Navbar = ({ items }) => {
-    // console.log(items, "items")
     const { langAllContext, horario } = useLocale()
     const { menuData, loading } = useMenu();
     const [apertura, setApertura] = useState(null)
     const [cierre, setCierre] = useState(null)
-    const { query, asPath } = useRouter();
-    const { lang,  } = query;
+    const { query, asPath, push } = useRouter();
+    const { lang, } = query;
     const langActual = menuData?.find(element => element.lang === lang)
-    const  getDataInPath = (cadena) => {
+    const getDataInPath = (cadena) => {
         const partes = cadena.split('/');
         if (partes.length >= 3) {
-          return partes[2];
+            return partes[2];
         } else {
-          return null; 
+            return null;
         }
-      }
+    }
     let url = null
     let redirectSlug = null
     const pageContext = getDataInPath(asPath)
+    console.log(pageContext, "pageContext")
     if (query.slug) {
         redirectSlug = langActual?.data.find(element => element.attributes.slug == query.slug)
     }
-    if(pageContext){
+    if (pageContext) {
         redirectSlug = langActual?.data.find(element => element.attributes.slug == pageContext)
     }
- 
+
     useEffect(() => {
         if (horario) {
             setApertura(horario[0].attributes.apertura);
@@ -55,14 +55,14 @@ const Navbar = ({ items }) => {
 
     const lenguaje = langAllContext?.map((element, index, array) => {
         const isLast = index === array.length - 1;
-        const isActive = element.attributes.code === lang; 
+        const isActive = element.attributes.code === lang;
         const linkClassName = `codeLang ${isActive ? 'active-menu' : 'desactivated-menu'}`;
 
         const handleLanguageChange = () => {
-            
+
             if (redirectSlug && redirectSlug.attributes.slugTranslate) {
                 const translatedSlug = redirectSlug.attributes.slugTranslate;
-                
+
                 if (element.attributes.code !== lang) {
                     return (
                         <Link href={`/${element.attributes.code}/${translatedSlug}`} key={index} className={linkClassName}>
@@ -71,8 +71,9 @@ const Navbar = ({ items }) => {
                     );
                 }
             }
+            // const handleLanguageChange = () => {}
             return (
-                <Link key={index} href={'#'} className={linkClassName}>
+                <Link key={index} href={`/${element.attributes.code}/${pageContext}`} className={linkClassName}>
                     {element.attributes.code}
                 </Link>
             );
