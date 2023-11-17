@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import Main from "../../../Layout/Main/Main";
 import BasicSection from "../../../components/Section/Basic/BasicSection";
@@ -14,21 +14,32 @@ import HeaderComponents from "../../../components/UI/HeaderComponents/HeaderComp
 import SliderTwo from "../../../components/UI/Slider/SliderTwo";
 import useScreenSize from "../../../hooks/useScreenSize";
 
-const Donations = ({  typeDonationSchemes,  result }) => {
-  
+
+const Donations = ({ typeDonationSchemes, result }) => {
+  const [isInitialRender, setisInitialRender] = useState(true);
   const { screenSize } = useScreenSize()
   const [filter, setFilter] = useState("")
   const { query, asPath, push } = useRouter();
-  
-  // console.log(filtro, "filtro")
+  const router = useRouter();
+
+
+  // useEffect(() => {
+  //   if (isInitialRender) {
+  //     setisInitialRender(false);
+  //     return;
+  //   }
+  //   router.reload();
+  // }, [query.lang])
+
+
   useEffect(() => {
- 
+
 
     const data = filterBySlug(result, query.params)
-    
+
     setFilter(data)
-    
-  }, [query.params]); 
+
+  }, [query.params]);
 
 
 
@@ -93,7 +104,6 @@ export async function getStaticProps(context) {
 
   const donations = donationsResponse.data.data;
   const typeDonations = typeDonationsResponse.data.data;
-  // console.log(donations, "typeDonations")
   const result = donations.map((element) => ({
     id: element.id,
     monto: element.attributes.monto,
@@ -105,36 +115,23 @@ export async function getStaticProps(context) {
   }));
 
   const typeDonationSchemes = typeDonations.map((element) => {
-  
+
     return ({
-    id: element.id,
-    titulo: element.attributes.titulo,
-    beneficio: element.attributes.Beneficio,
-    descripcion: element.attributes.descripcion,
-    slug: element.attributes.slug,
-    imagen: element.attributes.imagen,
-    locale: element.attributes.locale,
-    donaciones : element.attributes?.donaciones
-  })});
+      id: element.id,
+      titulo: element.attributes.titulo,
+      beneficio: element.attributes.Beneficio,
+      descripcion: element.attributes.descripcion,
+      slug: element.attributes.slug,
+      imagen: element.attributes.imagen,
+      locale: element.attributes.locale,
+      donaciones: element.attributes?.donaciones
+    })
+  });
 
-  // const filterBySlug = (arr, slug) => {
-  //   return arr?.filter((item) => {
-  //     const modelos = item.modelos.data;
-  //     const tipoDonaciones = item.tipo_de_donacions.data;
-  //     return (
-  //       modelos.some((modelo) => modelo.attributes.slug === slug) ||
-  //       tipoDonaciones.some((tipo) => tipo.attributes.slug === slug)
-  //     );
-  //   });
-  // };
-
-  // const filteredResults = parametros ? filterBySlug(result, parametros) : [];
-  // console.log(filteredResults, "filteredResults")
   isLoading = false;
 
   return {
     props: {
-      // filtro: filteredResults,
       typeDonationSchemes,
       result,
       isLoading,
