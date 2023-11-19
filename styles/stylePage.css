@@ -723,6 +723,7 @@ footer {
     display: flex;
     padding: 1rem;
     width: 50%;
+    align-items: flex-start;
 }
 
 .footer-block {

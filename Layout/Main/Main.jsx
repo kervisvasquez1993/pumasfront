@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import useLocale from "../../hooks/useLocales";
 
 const Main = ({ children, titlePage }) => {
-  const { menuData, loading } = useMenu();
+  const { menuData, loading, footerData } = useMenu();
   const { langAllContext } = useLocale();
   const { query } = useRouter();
   const { lang, slug } = query;
@@ -73,7 +73,7 @@ const Main = ({ children, titlePage }) => {
         <Navbar items={stateMenu} />
       </header>
       <main className="maxWidthBody">{children}</main>
-      <Footer />
+      <Footer items={footerData}/>
     </>
   );
 };

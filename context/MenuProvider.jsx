@@ -1,14 +1,20 @@
 import React, { createContext, useEffect, useState } from "react";
-import { ApiBackend, langAll } from "../apis/ApiBackend";
+import { ApiBackend, langAll,getFooter } from "../apis/ApiBackend";
 
 const MenuContext = createContext();
 
 export const MenuProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [menuData, setMenuData] = useState([]);
+  const [footerData, setFooterData] = useState([]);
+  const [langsInfo, setLangsInfo] = useState([]);
 
+  const getLangContext = async ()=> {
+    const languages = await langAll();
+    setLangsInfo(languages)
+  }
 
-
+  
   const getMenus = async (language) => {
     const config = {
       headers: {
@@ -20,14 +26,15 @@ export const MenuProvider = ({ children }) => {
         locale: language,
       },
     };
-
+    const footer = await getFooter(language)
+    const responsefooter = footer?.data?.data?.attributes?.footerInfo
+    setFooterData(responsefooter)
     const response = await ApiBackend("api/menus?sort=rang:asc", config);
-    // console.log(response.data.data, "data");
+
     return response.data.data;
   };
 
   const fetchMenusByLanguage = async (languages) => {
-    console.log(languages, "language");
     const menuData = [];
 
     for (const language of languages) {
@@ -43,10 +50,13 @@ export const MenuProvider = ({ children }) => {
     const menuData = await fetchMenusByLanguage(languages);
     return menuData;
   };
+  const getFooterData = async () => {};
 
   useEffect(() => {
     (async () => {
       try {
+        getLangContext()
+        
         // Obtener datos de la API
         const menuData = await getMenuData();
 
@@ -62,7 +72,7 @@ export const MenuProvider = ({ children }) => {
   }, []);
 
   return (
-    <MenuContext.Provider value={{ loading, menuData }}>
+    <MenuContext.Provider value={{ loading, menuData, footerData }}>
       {children}
     </MenuContext.Provider>
   );
