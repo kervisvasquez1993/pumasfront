@@ -19,8 +19,8 @@ const SliderThree = ({ children }) => {
   return (
     <Carousel
       showArrows={false}
-      itemWidth={300} 
-      itemHeight={200} 
+      itemWidth={500} 
+      itemHeight={400} 
       onChange={onChange}
       onClickItem={onClickItem}
       onClickThumb={onClickThumb}

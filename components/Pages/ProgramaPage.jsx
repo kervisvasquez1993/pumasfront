@@ -13,18 +13,27 @@ import CardBasic from "../Section/CardBasic";
 import CardComponent from "../UI/Card/CardComponents";
 import ButtonView from "../../views/ButtonView";
 import { useRouter } from "next/router";
+import SlidetWithContent from "../Section/Slider/SliderWithContent";
+import SliderThree from "../UI/Slider/SliderThree";
 
 const ProgramaPage = ({ data, material }) => {
 
   const router = useRouter();
   const { slug, lang } = router.query
   const { title, componentDynamics } = data;
-  
+
 
   const ComponentDynamicsRenderer = ({ componentDynamics }) => {
 
     const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {
       if (elemento?.typeSection === "section2") {
+        const imgSlider = elemento?.imagenWithContentBasic?.map(item => {
+
+          return {
+            url: `${item?.img.data[0].attributes.url}`
+          }
+        })
+
         const component = (<div className="container-program">
           <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
             {elemento?.title}
@@ -33,28 +42,16 @@ const ProgramaPage = ({ data, material }) => {
             <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2">
               <ReactMarkdown>{elemento?.content}</ReactMarkdown>
             </div>
-            {/* <div className="program__imagen lg:p-10"> */}
-            {/* <Swiper
-                  // onSwiper={true}
-                  slidesPerView={1}
-                  centeredSlides={false}
-                  spaceBetween={60}
-                  navigation={true}
-                  modules={[Pagination, Navigation]}
-                  className="mySwiper sliderCustom"
-                >
-                  {animales}
-                </Swiper> */}
-            <CardBasic
-              showMask={true}
-              maskSrc={"/images/mask.png"}
-              iconSrc={"/images/modelo3d.png"}
-              imgSrc={elemento?.imagenWithContentBasic[0].img.data[0].attributes.url}
-              title={elemento?.imagenWithContentBasic[0].label}
-              subtitle={elemento?.imagenWithContentBasic[0].subtitle}
-            />
 
-        
+            <SliderThree>
+              {imgSlider?.map((image, index) => (
+                <div key={index}>
+                  <img src={image.url} alt={`image-${index}`} />
+                </div>
+              ))}
+            </SliderThree>
+
+
           </div>
         </div>)
         return [...acc, component];
@@ -115,7 +112,7 @@ const ProgramaPage = ({ data, material }) => {
     return <div>{renderedComponents}</div>;
   };
 
-  
+
   const materialEducativo = material?.map((elemento, index) => {
     const [isHovered, setIsHovered] = useState(false);
 
@@ -139,7 +136,7 @@ const ProgramaPage = ({ data, material }) => {
             alt="imagen santuario"
           />
           {isHovered && (
-            <Link className="download-button" href={elemento?.file?.url}  target="_blank">Descargar</Link>
+            <Link className="download-button" href={elemento?.file?.url} target="_blank">Descargar</Link>
           )}
         </div>
         <div className="wrapperTitleCard">
