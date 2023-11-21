@@ -20,7 +20,7 @@ const Footer = ({ items }) => {
       <div className='lg:w-10vw p-5 m-5'>
         <img src="/images/logo-blanco.png" alt="" />
       </div>
-      <WhatsAppButton phoneNumber="584144008431" message="¡Hola! Quiero saber más." />
+      <WhatsAppButton phoneNumber="84797025" message="¡Hola! Quiero saber más." />
     </footer>
   );
 };
