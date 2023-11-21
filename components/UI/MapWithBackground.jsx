@@ -5,7 +5,7 @@ const MapWithBackground = ({ backgroundImage, children }) => {
   const mapStyle = {
     position: "relative",
     maxWidth: "100vw",
-    height: "85vh",
+    height: "95vh",
     overflowX: "auto",
     overflowY: "auto"
   };
