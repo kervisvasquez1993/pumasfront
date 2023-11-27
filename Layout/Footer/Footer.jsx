@@ -13,10 +13,8 @@ const Footer = ({ items }) => {
     )
   })
   return (
-
     <footer style={{ backgroundImage: `url("/images/foooterBackround.png")`, backgroundSize: "100% 100%", backgroundSize: "cover" }} className='footer-wrapper'>
       <section className="footer center" >{footer}</section>
-
       <div className='lg:w-10vw p-5 m-5'>
         <img src="/images/logo-blanco.png" alt="" />
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import CanvasElement from "./CanvasElement"; // Asegúrate de importar el componente CanvasElement desde la ruta correcta
+import CanvasElement from "./CanvasElement"; 
 
 const MapWithBackground = ({ backgroundImage, children }) => {
   const mapStyle = {
@@ -23,10 +23,10 @@ const MapWithBackground = ({ backgroundImage, children }) => {
     height: "100%",
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
-    backgroundPosition: "top left", // Cambiamos a la esquina superior izquierda
-    display: "flex", // Usar flex para contener los elementos hijos
-    flexWrap: "nowrap", // Mantener los elementos en una sola línea
-    overflowX: "auto", // Habilitar el desplazamiento horizontal en pantallas pequeñas
+    backgroundPosition: "top left", 
+    display: "flex",
+    flexWrap: "nowrap", 
+    overflowX: "auto",
   };
 
   const scrollableContentStyle = {
@@ -45,7 +45,7 @@ const MapWithBackground = ({ backgroundImage, children }) => {
       <div style={scrollableContentStyle}>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
-            const { x, y } = child.props; // Coordenadas personalizadas de cada hijo
+            const { x, y } = child.props; 
             return (
               <CanvasElement key={child.key} x={x} y={y} className="test">
                 {child}

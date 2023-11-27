@@ -11,10 +11,10 @@ const WhatsAppButton = ({ phoneNumber, message }) => {
   };
 
   return (
-    <>    <button className="whatsapp-button colorPrimary" data-tooltip-id="my-tooltip"  data-tooltip-content={"Reservar Recorrido"} onClick={handleClick}>
+    <>    <button className="whatsapp-button colorPrimary" data-tooltip-id="my-tooltip" data-tooltip-content={"Reservar Recorrido"} onClick={handleClick}>
       <FaWhatsapp className="whatsapp-icon" />
     </button>
-    <Tooltip id="my-tooltip" />
+      <Tooltip id="my-tooltip" />
     </>
   );
 };
