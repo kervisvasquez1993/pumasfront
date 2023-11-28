@@ -27,7 +27,9 @@ export const MenuProvider = ({ children }) => {
       },
     };
     const footer = await getFooter(language)
-    const responsefooter = footer?.data?.data?.attributes?.footerInfo
+    const responsefooter = footer?.data?.data[0]?.attributes?.footerInfo
+
+
     setFooterData(responsefooter)
     const response = await ApiBackend("api/menus?sort=rang:asc", config);
 

@@ -84,7 +84,7 @@ export const getStaticProps = async ({ params }) => {
     const [pagesResponse, footerResponse, modelsGQResponse, materialEductaivo] = await Promise.all([getPagesGQ(lang), getFooter(lang), getModelGQ(lang), getMaterialEducativo(lang)]);
     const materialEducativodataResponse = materialEductaivo?.data?.data
     const materialEductivoSort = [];
-    const footer = footerResponse?.data?.data?.attributes?.footerInfo
+    const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo
     const pages = pagesResponse?.data?.pages
     const dataPages = pages?.data;
     const modelsGQ = modelsGQResponse?.data?.modelos

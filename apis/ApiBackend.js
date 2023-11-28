@@ -40,7 +40,7 @@ export const getFooter = (language) => {
     },
 
   };
-  return ApiBackend("api/footer?populate=*&locale=" + language, config);
+  return ApiBackend("api/footers?populate=*&locale=" + language, config);
 };
 
 
