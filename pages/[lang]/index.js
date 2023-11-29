@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { getMenus, langAll } from '../../apis/ApiBackend';
+import { getFooter, getMenus, langAll } from '../../apis/ApiBackend';
 import Loader from '../../components/UI/Loader';
 
 const Lang = ({ result, notFoundMessage }) => {
@@ -38,6 +38,7 @@ export default Lang;
 export const getStaticProps = async ({ params }) => {
     const { lang } = params;
     const getLangAll = await langAll();
+    console.log(footer, "footer")
     const result = getLangAll.find(element => element.attributes.code === lang);
 
     if (!result) {

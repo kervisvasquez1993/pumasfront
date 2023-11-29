@@ -1,6 +1,11 @@
 import React, { createContext, useEffect, useState } from "react";
-import { useRouter } from 'next/router';
-import { ApiBackend, langAll,getFooter, getWhatsapp } from "../apis/ApiBackend";
+import { useRouter } from "next/router";
+import {
+  ApiBackend,
+  langAll,
+  getFooter,
+  getWhatsapp,
+} from "../apis/ApiBackend";
 
 const MenuContext = createContext();
 
@@ -10,47 +15,29 @@ export const MenuProvider = ({ children }) => {
   const [footerData, setFooterData] = useState([]);
   const [langsInfo, setLangsInfo] = useState([]);
   const [whatsapp, SetWhatsapp] = useState({});
-  const router = useRouter();
-  const { asPath } = router;
-  const [, idioma] = asPath.split('/');
-  console.log(idioma,"idioma")
+  
 
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      const [, idioma] = url.split('/');
-    };
-
-
-    router.events.on('routeChangeComplete', handleRouteChange);
-
-    
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-    };
-  }, [asPath]);
-  const getLangContext = async ()=> {
+  const loadedFooter = (params) => {
+      setFooterData(params);
+  };
+  const loadedWhatsapp = (params) => {
+      SetWhatsapp(params);
+  };
+  const getLangContext = async () => {
     const languages = await langAll();
-    setLangsInfo(languages)
-  }
+    setLangsInfo(languages);
+  };
   const getMenus = async (language) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
-
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
       },
       params: {
         locale: language,
       },
     };
-    const footer = await getFooter(language)
-    const responsefooter = footer?.data?.data[0]?.attributes?.footerInfo
-    const whatsapp = await getWhatsapp(language)
-    const responseWhatsapp = whatsapp.data?.data[0]?.attributes
-    SetWhatsapp(responseWhatsapp)
-    setFooterData(responsefooter)
     const response = await ApiBackend("api/menus?sort=rang:asc", config);
-
     return response.data.data;
   };
 
@@ -73,9 +60,9 @@ export const MenuProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        getLangContext()
+        getLangContext();
         const menuData = await getMenuData();
-        console.log("test desde menu")
+        console.log("test desde menu");
         setMenuData(menuData);
 
         setLoading(false);
@@ -87,7 +74,7 @@ export const MenuProvider = ({ children }) => {
   }, []);
 
   return (
-    <MenuContext.Provider value={{ loading, menuData, footerData, whatsapp }}>
+    <MenuContext.Provider value={{ loading, menuData, footerData, whatsapp, loadedFooter, loadedWhatsapp }}>
       {children}
     </MenuContext.Provider>
   );

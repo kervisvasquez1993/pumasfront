@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import HomePage from "../../../components/Pages/HomePage";
 import { useRouter } from "next/router";
 import NosotrosPage from "../../../components/Pages/NosotrosPage";
-import { getAllModels, getBlog, getMenus, getModelGQ, getPageWithComponents, getPagesGQ, langAll, getFooter, getMaterialEducativo } from "../../../apis/ApiBackend";
+import { getAllModels, getBlog, getMenus, getModelGQ, getPageWithComponents, getPagesGQ, langAll, getFooter, getMaterialEducativo, getWhatsapp } from "../../../apis/ApiBackend";
 import SantuarioPage from "../../../components/Pages/SantuarioPage";
 import CentroDeRescate from "../../../components/Pages/CentroDeRescate";
 import BlogPage from "../../../components/Pages/BlogPage";
@@ -11,16 +11,17 @@ import ApoyanosPage from "../../../components/Pages/ApoyanosPage";
 import useModelo from "../../../hooks/useModelo";
 import usePages from "../../../hooks/usePages";
 import Loader from "../../../components/UI/Loader";
+import useMenu from "../../../hooks/useMenu";
 
-const Page = ({ page, blogsPage, modelsGQ, footer, materialEductivoSort }) => {
+const Page = ({ page, blogsPage, modelsGQ, footer, materialEductivoSort, whatsapp }) => {
 
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
-
   const { slug, lang } = router.query
-
-
+  const {loadedFooter, loadedWhatsapp} = useMenu()
+  loadedFooter(footer)
+  loadedWhatsapp(whatsapp)
   useEffect(() => {
     updateData(page)
 
@@ -81,10 +82,12 @@ export const getStaticProps = async ({ params }) => {
 
     const { lang, slug } = params;
 
-    const [pagesResponse, footerResponse, modelsGQResponse, materialEductaivo] = await Promise.all([getPagesGQ(lang), getFooter(lang), getModelGQ(lang), getMaterialEducativo(lang)]);
+    
+    const [pagesResponse, footerResponse, modelsGQResponse, materialEductaivo, whatsappResponse] = await Promise.all([getPagesGQ(lang), getFooter(lang), getModelGQ(lang), getMaterialEducativo(lang), getWhatsapp(lang)]);
     const materialEducativodataResponse = materialEductaivo?.data?.data
     const materialEductivoSort = [];
     const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo
+    const whatsapp = whatsappResponse?.data?.data[0]?.attributes
     const pages = pagesResponse?.data?.pages
     const dataPages = pages?.data;
     const modelsGQ = modelsGQResponse?.data?.modelos
@@ -119,13 +122,13 @@ export const getStaticProps = async ({ params }) => {
       const blog = await getBlog(lang);
       const blogsPage = blog.data;
       return {
-        props: { page: { ...page }, blogsPage, footer },
+        props: { page: { ...page }, blogsPage, footer, whatsapp },
       };
 
     }
     if (!page) return { notFound: true };
     return {
-      props: { page: { ...page }, modelsGQ, footer, materialEductivoSort },
+      props: { page: { ...page }, modelsGQ, footer,whatsapp,  materialEductivoSort },
       revalidate: 10
     };
   } catch (error) {
