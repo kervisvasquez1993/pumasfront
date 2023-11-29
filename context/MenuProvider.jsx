@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
-import { ApiBackend, langAll,getFooter } from "../apis/ApiBackend";
+import { useRouter } from 'next/router';
+import { ApiBackend, langAll,getFooter, getWhatsapp } from "../apis/ApiBackend";
 
 const MenuContext = createContext();
 
@@ -8,13 +9,29 @@ export const MenuProvider = ({ children }) => {
   const [menuData, setMenuData] = useState([]);
   const [footerData, setFooterData] = useState([]);
   const [langsInfo, setLangsInfo] = useState([]);
+  const [whatsapp, SetWhatsapp] = useState({});
+  const router = useRouter();
+  const { asPath } = router;
+  const [, idioma] = asPath.split('/');
+  console.log(idioma,"idioma")
 
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      const [, idioma] = url.split('/');
+    };
+
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [asPath]);
   const getLangContext = async ()=> {
     const languages = await langAll();
     setLangsInfo(languages)
   }
-
-  
   const getMenus = async (language) => {
     const config = {
       headers: {
@@ -28,8 +45,9 @@ export const MenuProvider = ({ children }) => {
     };
     const footer = await getFooter(language)
     const responsefooter = footer?.data?.data[0]?.attributes?.footerInfo
-
-
+    const whatsapp = await getWhatsapp(language)
+    const responseWhatsapp = whatsapp.data?.data[0]?.attributes
+    SetWhatsapp(responseWhatsapp)
     setFooterData(responsefooter)
     const response = await ApiBackend("api/menus?sort=rang:asc", config);
 
@@ -52,17 +70,12 @@ export const MenuProvider = ({ children }) => {
     const menuData = await fetchMenusByLanguage(languages);
     return menuData;
   };
-  const getFooterData = async () => {};
-
   useEffect(() => {
     (async () => {
       try {
         getLangContext()
-        
-        // Obtener datos de la API
         const menuData = await getMenuData();
-
-        // Actualizar el estado con los datos obtenidos de la API
+        console.log("test desde menu")
         setMenuData(menuData);
 
         setLoading(false);
@@ -74,7 +87,7 @@ export const MenuProvider = ({ children }) => {
   }, []);
 
   return (
-    <MenuContext.Provider value={{ loading, menuData, footerData }}>
+    <MenuContext.Provider value={{ loading, menuData, footerData, whatsapp }}>
       {children}
     </MenuContext.Provider>
   );

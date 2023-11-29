@@ -42,6 +42,17 @@ export const getFooter = (language) => {
   };
   return ApiBackend("api/footers?populate=*&locale=" + language, config);
 };
+export const getWhatsapp = (language) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+
+    },
+
+  };
+  return ApiBackend("api/whatsapps?populate=*&locale=" + language, config);
+};
 
 
 export const getBlog = (language) => {
