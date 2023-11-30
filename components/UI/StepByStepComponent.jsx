@@ -26,7 +26,11 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
   });
   const [step, setStep] = useState(1);
   const router = useRouter();
-
+  console.log(donationInitial, "donationInitial")
+  console.log(typeDonations, "typeDonations")
+  useEffect(() => {
+    setDonationInitial(typeDonations)
+  }, [typeDonations]);
   useEffect(() => {
     const { params } = router.query;
 
@@ -199,7 +203,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
             </HeaderComponents>
 
             <WrapperDonations>
-              {donationInitial.map((elemento, index) => {
+              {donationInitial?.map((elemento, index) => {
                 return (
                   <div className="lg:py-10 lg:my-10 p-5" key={index}>
                     <figure className="p-10 m-10">
