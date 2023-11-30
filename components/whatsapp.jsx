@@ -5,7 +5,6 @@ import useMenu from "../hooks/useMenu";
 
 const WhatsAppButton = () => {
   const {whatsapp} = useMenu()
-  console.log(whatsapp.numero, "call whatsapp")
   const handleClick = () => {
     const url = `https://api.whatsapp.com/send?phone=${whatsapp.numero}&text=${encodeURIComponent(
       whatsapp.mensaje

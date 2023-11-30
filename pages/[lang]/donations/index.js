@@ -4,7 +4,9 @@ import Main from "../../../Layout/Main/Main";
 import BasicSection from "../../../components/Section/Basic/BasicSection";
 import {
   getAllDonations,
+  getFooter,
   getTypeDonations,
+  getWhatsapp,
   langAll,
 } from "../../../apis/ApiBackend";
 import useDonations from "../../../hooks/useDonations";
@@ -13,35 +15,22 @@ import StepByStepComponent from "../../../components/UI/StepByStepComponent";
 import HeaderComponents from "../../../components/UI/HeaderComponents/HeaderComponets";
 import SliderTwo from "../../../components/UI/Slider/SliderTwo";
 import useScreenSize from "../../../hooks/useScreenSize";
+import useMenu from "../../../hooks/useMenu";
 
-
-const Donations = ({ typeDonationSchemes, result }) => {
+const Donations = ({ typeDonationSchemes, result, whatsapp, footer }) => {
   const [isInitialRender, setisInitialRender] = useState(true);
-  const { screenSize } = useScreenSize()
-  const [filter, setFilter] = useState("")
+  const { screenSize } = useScreenSize();
+  const [filter, setFilter] = useState("");
   const { query, asPath, push } = useRouter();
-  const router = useRouter();
-
-
-  // useEffect(() => {
-  //   if (isInitialRender) {
-  //     setisInitialRender(false);
-  //     return;
-  //   }
-  //   router.reload();
-  // }, [query.lang])
-
-
+  const { loadedFooter, loadedWhatsapp } = useMenu();
+  loadedFooter(footer);
+  loadedWhatsapp(whatsapp);
+  console.log(result)
   useEffect(() => {
+    const data = filterBySlug(result, query.params);
 
-
-    const data = filterBySlug(result, query.params)
-
-    setFilter(data)
-
+    setFilter(data);
   }, [query.params]);
-
-
 
   const filterBySlug = (arr, slug) => {
     return arr?.filter((item) => {
@@ -63,8 +52,7 @@ const Donations = ({ typeDonationSchemes, result }) => {
             title={""}
             classNameContent={"fuentesParrafo p-10"}
           >
-            <p className="py-5">
-            </p>
+            <p className="py-5"></p>
           </BasicSection>
         </TwoColumnGrid>
         <div>
@@ -88,22 +76,23 @@ const Donations = ({ typeDonationSchemes, result }) => {
 
 export default Donations;
 
-
-
-
-
 export async function getStaticProps(context) {
   const { params, query } = context;
   const lang = params.lang;
   const parametros = query?.params;
   let isLoading = true;
-  const [donationsResponse, typeDonationsResponse] = await Promise.all([
-    getAllDonations(lang),
-    getTypeDonations(lang),
-  ]);
+  const [donationsResponse, typeDonationsResponse, whatsappResponse,footerResponse] =
+    await Promise.all([
+      getAllDonations(lang),
+      getTypeDonations(lang),
+      getWhatsapp(lang),
+      getFooter(lang)
+    ]);
 
   const donations = donationsResponse.data.data;
   const typeDonations = typeDonationsResponse.data.data;
+  const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
+  const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo
   const result = donations.map((element) => ({
     id: element.id,
     monto: element.attributes.monto,
@@ -115,8 +104,7 @@ export async function getStaticProps(context) {
   }));
 
   const typeDonationSchemes = typeDonations.map((element) => {
-
-    return ({
+    return {
       id: element.id,
       titulo: element.attributes.titulo,
       beneficio: element.attributes.Beneficio,
@@ -124,8 +112,8 @@ export async function getStaticProps(context) {
       slug: element.attributes.slug,
       imagen: element.attributes.imagen,
       locale: element.attributes.locale,
-      donaciones: element.attributes?.donaciones
-    })
+      donaciones: element.attributes?.donaciones,
+    };
   });
 
   isLoading = false;
@@ -135,9 +123,10 @@ export async function getStaticProps(context) {
       typeDonationSchemes,
       result,
       isLoading,
+      whatsapp,
+      footer
     },
   };
-
 }
 
 export const getStaticPaths = async () => {
