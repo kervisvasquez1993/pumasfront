@@ -26,14 +26,19 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
   });
   const [step, setStep] = useState(1);
   const router = useRouter();
-  console.log(donationInitial, "donationInitial")
-  console.log(typeDonations, "typeDonations")
   useEffect(() => {
     setDonationInitial(typeDonations)
   }, [typeDonations]);
+  const {lang} = router.query;
+
+  
+  const obtenerObjetoLang = () => {
+    const { params, ...resto } = router.query;
+    return resto;
+  };
+    
   useEffect(() => {
     const { params } = router.query;
-
     if (params) {
       setStep(2);
     }
@@ -49,7 +54,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
 
   const handleCardSelect = (cardName) => {
     setSelectedCard(cardName);
-    router.push(`/es/donations?params=${cardName}`);
+    router.push(`/${lang}/donations?params=${cardName}`);
     setStep(2);
     setDonationInfo(null); 
   };
@@ -132,18 +137,21 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
     setFormData({ nombre: "", correo: "" });
   };
 
+
+
   const handleStepClick = (clickedStep) => {
     if (clickedStep <= step) {
       setStep(clickedStep);
       if (clickedStep === 1) {
-        console.log("punto")
+        router.push(`/${lang}/donations`);
         setSelectedCard(null);
         setConfirmationData(null);
         setSelectedItems([]);
         setDonationInfo(null);
+        
+        
 
       } else if (clickedStep === 2) {
-        console.log("test")
         setConfirmationData(null);
         setDonationInfo(null);
       }
@@ -192,8 +200,6 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
         return (
           <div>
             {renderHeader()}
-
-            {/* <h3 className="chelseaFont colorGris fontSize36">SELECCIONA TU TIPO DE DONACIÓN</h3> */}
             <HeaderComponents
               src="/images/fondo1.png"
               classNameText={"py-10 my-10 colorGris chelseaFont font-responsive"}

@@ -25,9 +25,7 @@ const Donations = ({ typeDonationSchemes, result, whatsapp, footer }) => {
   const { loadedFooter, loadedWhatsapp } = useMenu();
   loadedFooter(footer);
   loadedWhatsapp(whatsapp);
-  console.log(typeDonationSchemes, "typeDonationSchemes")
-
-  useEffect(() => {
+   useEffect(() => {
     const data = filterBySlug(result, query.params);
     setFilter(data);
   }, [query.params]);
