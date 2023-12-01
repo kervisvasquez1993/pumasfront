@@ -10,6 +10,8 @@ export const traducciones = {
     email : "Correo", 
     enviarMensaje : "Enviar",
     mensajeEnviando : "Enviando Información...",
+    validateName : "El nombre es requerido.",
+    validateEmail : "El correo es requerido.",
   },
   en: {
     paso1: "Step 1",
@@ -22,6 +24,8 @@ export const traducciones = {
     email : "Email",
     enviarMensaje : "Send",
     mensajeEnviando : "Sending Information...",
+    validateName : "The name is required.",
+    validateEmail : "The email is required.",
   },
 };
 

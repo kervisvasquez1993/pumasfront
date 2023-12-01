@@ -12,6 +12,20 @@ import { Tooltip } from "react-tooltip";
 import { obtenerFrase } from "../../lang/traducciones";
 
 const StepByStepComponent = ({ typeDonations, filtro }) => {
+  const router = useRouter();
+  const { lang } = router.query;
+  const paso1 = obtenerFrase(lang, "paso1");
+  const paso2 = obtenerFrase(lang, "paso2");
+  const paso3 = obtenerFrase(lang, "paso3");
+  const type_donations = obtenerFrase(lang, "tipo_donations");
+  const select_donaciones = obtenerFrase(lang, "select_donaciones");
+  const confirmar = obtenerFrase(lang, "confirmar");
+  const nombre = obtenerFrase(lang, "nombre");
+  const correo = obtenerFrase(lang, "email");
+  const enviendo = obtenerFrase(lang, "mensajeEnviando");
+  const enviar  = obtenerFrase(lang, "enviarMensaje");
+  const validateName = obtenerFrase(lang, "validateName");
+  const validateEmail = obtenerFrase(lang, "validateEmail");
   const [selectedItems, setSelectedItems] = useState([]);
   const [donationInitial, setDonationInitial] = useState(typeDonations);
   const [responseSubmitForm, setResponseSubmitForm] = useState(null);
@@ -26,22 +40,11 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
     correo: "",
   });
   const [step, setStep] = useState(1);
-  const router = useRouter();
+  
   useEffect(() => {
     setDonationInitial(typeDonations);
   }, [typeDonations]);
-  const { lang } = router.query;
-
-  const paso1 = obtenerFrase(lang, "paso1");
-  const paso2 = obtenerFrase(lang, "paso2");
-  const paso3 = obtenerFrase(lang, "paso3");
-  const type_donations = obtenerFrase(lang, "tipo_donations");
-  const select_donaciones = obtenerFrase(lang, "select_donaciones");
-  const confirmar = obtenerFrase(lang, "confirmar");
-  const nombre = obtenerFrase(lang, "nombre");
-  const correo = obtenerFrase(lang, "email");
-  const enviendo = obtenerFrase(lang, "mensajeEnviando");
-  const enviar  = obtenerFrase(lang, "enviarMensaje");
+   
   useEffect(() => {
     const { params } = router.query;
     if (params) {
@@ -83,10 +86,10 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
 
     const validationErrors = {};
     if (!formData.nombre) {
-      validationErrors.nombre = "El nombre es requerido.";
+      validationErrors.nombre = validateName
     }
     if (!formData.correo) {
-      validationErrors.correo = "El correo es requerido.";
+      validationErrors.correo = validateEmail;
     }
 
     if (Object.keys(validationErrors).length > 0) {
