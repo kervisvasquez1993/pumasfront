@@ -16,6 +16,7 @@ import HeaderComponents from "../../../components/UI/HeaderComponents/HeaderComp
 import SliderTwo from "../../../components/UI/Slider/SliderTwo";
 import useScreenSize from "../../../hooks/useScreenSize";
 import useMenu from "../../../hooks/useMenu";
+import { obtenerFrase } from "../../../lang/traducciones";
 
 const Donations = ({ typeDonationSchemes, result, whatsapp, footer }) => {
   const [isInitialRender, setisInitialRender] = useState(true);
@@ -25,7 +26,8 @@ const Donations = ({ typeDonationSchemes, result, whatsapp, footer }) => {
   const { loadedFooter, loadedWhatsapp } = useMenu();
   loadedFooter(footer);
   loadedWhatsapp(whatsapp);
-   useEffect(() => {
+  const donations = obtenerFrase(query.lang, "patrocinadores");
+  useEffect(() => {
     const data = filterBySlug(result, query.params);
     setFilter(data);
   }, [query.params]);
@@ -64,7 +66,7 @@ const Donations = ({ typeDonationSchemes, result, whatsapp, footer }) => {
           classNameText={"py-5 colorVerde chelseaFont font-responsive"}
           alignment={`${screenSize <= 1200 ? "center" : "start"}`}
         >
-          PATROCINADORES
+          {donations}
         </HeaderComponents>
         <SliderTwo />
       </div>

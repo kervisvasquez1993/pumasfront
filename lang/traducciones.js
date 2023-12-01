@@ -12,6 +12,7 @@ export const traducciones = {
     mensajeEnviando : "Enviando Información...",
     validateName : "El nombre es requerido.",
     validateEmail : "El correo es requerido.",
+    patrocinadores : "Patrocinadores",
   },
   en: {
     paso1: "Step 1",
@@ -26,6 +27,7 @@ export const traducciones = {
     mensajeEnviando : "Sending Information...",
     validateName : "The name is required.",
     validateEmail : "The email is required.",
+    patrocinadores : "Sponsors",
   },
 };
 
