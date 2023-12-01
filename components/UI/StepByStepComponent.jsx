@@ -8,7 +8,8 @@ import TwoColumnGrid from "../Section/Basic/TwoColumnGrid";
 import DonationInfo from "./Donations/DonationInfo";
 import HeaderComponents from "./HeaderComponents/HeaderComponets";
 import Loader from "./Loader";
-import { Tooltip } from 'react-tooltip'
+import { Tooltip } from "react-tooltip";
+import { obtenerFrase } from "../../lang/traducciones";
 
 const StepByStepComponent = ({ typeDonations, filtro }) => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -27,16 +28,20 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
   const [step, setStep] = useState(1);
   const router = useRouter();
   useEffect(() => {
-    setDonationInitial(typeDonations)
+    setDonationInitial(typeDonations);
   }, [typeDonations]);
-  const {lang} = router.query;
+  const { lang } = router.query;
 
-  
-  const obtenerObjetoLang = () => {
-    const { params, ...resto } = router.query;
-    return resto;
-  };
-    
+  const paso1 = obtenerFrase(lang, "paso1");
+  const paso2 = obtenerFrase(lang, "paso2");
+  const paso3 = obtenerFrase(lang, "paso3");
+  const type_donations = obtenerFrase(lang, "tipo_donations");
+  const select_donaciones = obtenerFrase(lang, "select_donaciones");
+  const confirmar = obtenerFrase(lang, "confirmar");
+  const nombre = obtenerFrase(lang, "nombre");
+  const correo = obtenerFrase(lang, "email");
+  const enviendo = obtenerFrase(lang, "mensajeEnviando");
+  const enviar  = obtenerFrase(lang, "enviarMensaje");
   useEffect(() => {
     const { params } = router.query;
     if (params) {
@@ -56,7 +61,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
     setSelectedCard(cardName);
     router.push(`/${lang}/donations?params=${cardName}`);
     setStep(2);
-    setDonationInfo(null); 
+    setDonationInfo(null);
   };
 
   const handleConfirmation = () => {
@@ -78,10 +83,10 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
 
     const validationErrors = {};
     if (!formData.nombre) {
-      validationErrors.nombre = 'El nombre es requerido.';
+      validationErrors.nombre = "El nombre es requerido.";
     }
     if (!formData.correo) {
-      validationErrors.correo = 'El correo es requerido.';
+      validationErrors.correo = "El correo es requerido.";
     }
 
     if (Object.keys(validationErrors).length > 0) {
@@ -114,8 +119,8 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
       console.log(data);
       setResponseSubmitForm(data.mensaje);
       setTimeout(() => {
-        setResponseSubmitForm("")
-      }, 5000)
+        setResponseSubmitForm("");
+      }, 5000);
     } catch (error) {
       console.error("Error al enviar el formulario:", error);
     }
@@ -137,8 +142,6 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
     setFormData({ nombre: "", correo: "" });
   };
 
-
-
   const handleStepClick = (clickedStep) => {
     if (clickedStep <= step) {
       setStep(clickedStep);
@@ -148,17 +151,12 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
         setConfirmationData(null);
         setSelectedItems([]);
         setDonationInfo(null);
-        
-        
-
       } else if (clickedStep === 2) {
         setConfirmationData(null);
         setDonationInfo(null);
       }
     }
   };
-
-
 
   const handleInputChange = (e) => {
     setFormData({
@@ -171,25 +169,28 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
     return (
       <div className="step-header">
         <h3
-          className={`step fontSize36 chelseaFont ${step >= 1 ? "carActive colorPrimary" : "colorGris carInactive"
-            }`}
+          className={`step fontSize36 chelseaFont ${
+            step >= 1 ? "carActive colorPrimary" : "colorGris carInactive"
+          }`}
           onClick={() => handleStepClick(1)}
         >
-          Paso 1
+          {paso1}
         </h3>
         <h3
-          className={`step fontSize36 chelseaFont ${step >= 2 ? "carActive colorPrimary" : "colorGris carInactive"
-            }`}
+          className={`step fontSize36 chelseaFont ${
+            step >= 2 ? "carActive colorPrimary" : "colorGris carInactive"
+          }`}
           onClick={() => handleStepClick(2)}
         >
-          Paso 2
+          {paso2}
         </h3>
         <h3
-          className={`step fontSize36 chelseaFont ${step >= 3 ? "carActive colorPrimary" : "colorGris carInactive"
-            }`}
+          className={`step fontSize36 chelseaFont ${
+            step >= 3 ? "carActive colorPrimary" : "colorGris carInactive"
+          }`}
           onClick={() => handleStepClick(3)}
         >
-          Paso 3
+          {paso3}
         </h3>
       </div>
     );
@@ -202,10 +203,12 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
             {renderHeader()}
             <HeaderComponents
               src="/images/fondo1.png"
-              classNameText={"py-10 my-10 colorGris chelseaFont font-responsive"}
+              classNameText={
+                "py-10 my-10 colorGris chelseaFont font-responsive"
+              }
               alignment="start"
             >
-              SELECCIONA TU TIPO DE DONACIÓN
+              {type_donations}
             </HeaderComponents>
 
             <WrapperDonations>
@@ -253,32 +256,34 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
             {renderHeader()}
             <HeaderComponents
               src="/images/fondo1.png"
-              classNameText={"lg:py-10 lg:my-10 p-5 colorGris chelseaFont font-responsive"}
+              classNameText={
+                "lg:py-10 lg:my-10 p-5 colorGris chelseaFont font-responsive"
+              }
               alignment="start"
             >
-              ¿QUÉ DESEAS DONAR?
+              {select_donaciones}
             </HeaderComponents>
             <section className="itemDonationWrapper py-10 my-10">
-              {(filtro) ?
-                filtro?.map((element, index) => {
-                  return (
-                    <div key={index}>
-                      <ItemDonations
-                        data={element}
-                        selected={selectedItems.includes(element.id)}
-                        onClick={() => handleItemToggle(element.id)}
-                      />
-
-                    </div>
-                  );
-                }) : "Cargando..."}
+              {filtro
+                ? filtro?.map((element, index) => {
+                    return (
+                      <div key={index}>
+                        <ItemDonations
+                          data={element}
+                          selected={selectedItems.includes(element.id)}
+                          onClick={() => handleItemToggle(element.id)}
+                        />
+                      </div>
+                    );
+                  })
+                : "Loading..."}
             </section>
             <div className="center">
               <button
                 className=" backgroundPrimary my-10 py-10 center manropeFont p-5 btnPrimary py-2  "
                 onClick={handleConfirmation}
               >
-                Confirmar
+                {confirmar}
               </button>
             </div>
           </div>
@@ -289,20 +294,25 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
             {renderHeader()}
             <HeaderComponents
               src="/images/fondo1.png"
-              classNameText={"lg:py-10 lg:my-10 p-5 colorGris chelseaFont font-responsive"}
+              classNameText={
+                "lg:py-10 lg:my-10 p-5 colorGris chelseaFont font-responsive"
+              }
               alignment="start"
             >
-              SELECCIONA EL METODO DE PAGO
+              {type_donations}
             </HeaderComponents>
 
-            {responseSubmitForm && <HeaderComponents
-              src="/images/fondo1.png"
-              classNameText={""}
-              alignment="center"
-            >
-              <span className="backgroundPrimary m-0 manropeFont p-5 btnPrimary py-2">{responseSubmitForm}</span>
-            </HeaderComponents> }
-
+            {responseSubmitForm && (
+              <HeaderComponents
+                src="/images/fondo1.png"
+                classNameText={""}
+                alignment="center"
+              >
+                <span className="backgroundPrimary m-0 manropeFont p-5 btnPrimary py-2">
+                  {responseSubmitForm}
+                </span>
+              </HeaderComponents>
+            )}
 
             <section className="itemDonationWrapper">
               <TwoColumnGrid width={"100%"}>
@@ -318,50 +328,56 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                   ))}
                 </section>
                 <>
-                {donationInfo && <DonationInfo newElement={donationInfo} />}
-                {!donationInfo && (
-                  <form onSubmit={handleSubmit} className="mt-4">
-                    <div className="mb-4">
-                      <label htmlFor="nombre" className="block font-semibold mb-1">
-                        Nombre:
-                      </label>
-                      <input
-                        type="text"
-                        id="nombre"
-                        name="nombre"
-                        value={formData.nombre}
-                        onChange={handleInputChange}
-                        className="w-full border p-2 rounded"
-                      />
-                      {errors.nombre && (
-                        <p className="text-red-500">{errors.nombre}</p>
-                      )}
-                    </div>
-                    <div className="mb-4">
-                      <label htmlFor="correo" className="block font-semibold mb-1">
-                        Correo:
-                      </label>
-                      <input
-                        type="email"
-                        id="correo"
-                        name="correo"
-                        value={formData.correo}
-                        onChange={handleInputChange}
-                        className="w-full border p-2 rounded"
-                      />
-                      {errors.correo && (
-                        <p className="text-red-500">{errors.correo}</p>
-                      )}
-                    </div>
-                    <button
-                      type="submit"
-                      className="backgroundPrimary m-0 manropeFont p-5 btnPrimary py-2"
-                      disabled={loadingForm}
-                    >
-                      {loadingForm ? 'Enviando Información' : 'Enviar'}
-                    </button>
-                  </form>
-                )}
+                  {donationInfo && <DonationInfo newElement={donationInfo} />}
+                  {!donationInfo && (
+                    <form onSubmit={handleSubmit} className="mt-4">
+                      <div className="mb-4">
+                        <label
+                          htmlFor="nombre"
+                          className="block font-semibold mb-1"
+                        >
+                          {nombre}: 
+                        </label>
+                        <input
+                          type="text"
+                          id="nombre"
+                          name="nombre"
+                          value={formData.nombre}
+                          onChange={handleInputChange}
+                          className="w-full border p-2 rounded"
+                        />
+                        {errors.nombre && (
+                          <p className="text-red-500">{errors.nombre}</p>
+                        )}
+                      </div>
+                      <div className="mb-4">
+                        <label
+                          htmlFor="correo"
+                          className="block font-semibold mb-1"
+                        >
+                          {correo}:
+                        </label>
+                        <input
+                          type="email"
+                          id="correo"
+                          name="correo"
+                          value={formData.correo}
+                          onChange={handleInputChange}
+                          className="w-full border p-2 rounded"
+                        />
+                        {errors.correo && (
+                          <p className="text-red-500">{errors.correo}</p>
+                        )}
+                      </div>
+                      <button
+                        type="submit"
+                        className="backgroundPrimary m-0 manropeFont p-5 btnPrimary py-2"
+                        disabled={loadingForm}
+                      >
+                        {loadingForm ? enviendo : enviar}
+                      </button>
+                    </form>
+                  )}
                 </>
               </TwoColumnGrid>
             </section>
