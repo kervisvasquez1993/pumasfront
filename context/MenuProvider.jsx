@@ -62,9 +62,7 @@ export const MenuProvider = ({ children }) => {
       try {
         getLangContext();
         const menuData = await getMenuData();
-        console.log("test desde menu");
         setMenuData(menuData);
-
         setLoading(false);
       } catch (error) {
         console.log(error);
