@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { langAll } from '../../../apis/ApiBackend';
+import { getFooter, getWhatsapp, langAll } from '../../../apis/ApiBackend';
 import Main from '../../../Layout/Main/Main';
 import HeaderComponents from '../../../components/UI/HeaderComponents/HeaderComponets';
 import useScreenSize from '../../../hooks/useScreenSize';
@@ -7,11 +7,26 @@ import { ToastContainer, toast } from 'react-toastify';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-toastify/dist/ReactToastify.css';
+import useMenu from '../../../hooks/useMenu';
+import { useRouter } from 'next/router';
+import { obtenerFrase } from '../../../lang/traducciones';
 
 
-const Contact = () => {
-  const whatsappNumber = '584244144008431';
-  const whatsappMessage = 'Hola, ¿cómo puedo ayudarte?';
+const Contact = ({ whatsapp,footer}) => {
+  const { query } = useRouter();
+  const { loadedFooter, loadedWhatsapp } = useMenu();
+  loadedFooter(footer);
+  loadedWhatsapp(whatsapp);
+  const nombreLang = obtenerFrase(query.lang, "nombreForm");
+  const correoForm = obtenerFrase(query.lang, "correoForm");
+  const fechaForm = obtenerFrase(query.lang, "fechaForm");
+  const horaForm = obtenerFrase(query.lang, "horaForm");
+  const cantidadAdultosForm = obtenerFrase(query.lang, "cantidadAdultosForm");
+  const cantidadNinosForm = obtenerFrase(query.lang, "cantidadNinosForm");
+  const descripcionForm = obtenerFrase(query.lang, "descripcionForm");
+  const requiereGuiaForm = obtenerFrase(query.lang, "requiereGuiaForm");
+  const contactarForm = obtenerFrase(query.lang, "contactarForm");
+  const sent = obtenerFrase(query.lang, "enviarMensaje");
   const { screenSize } = useScreenSize();
   const [formData, setFormData] = useState({
     nombre: "",
@@ -181,13 +196,13 @@ const Contact = () => {
           classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 "}
           alignment={`${screenSize <= 1024 ? "center" : "center"}`}
         >
-          Contactar
+          {contactarForm}
         </HeaderComponents>
 
         <form onSubmit={handleSubmit} className="m-10 p-10">
           <div className="mb-4">
             <label htmlFor="nombre" className="block font-semibold mb-1">
-              Nombre Completo:
+              {nombreLang} :
             </label>
             <input
               type="text"
@@ -204,7 +219,7 @@ const Contact = () => {
 
           <div className="mb-4">
             <label htmlFor="correo" className="block font-semibold mb-1">
-              Email:
+              {correoForm} :
             </label>
             <input
               type="email"
@@ -222,7 +237,7 @@ const Contact = () => {
           <div className="mb-4 flex "> {/* Agregar la clase 'flex' y 'items-center' */}
             <div className="mr-4">
               <label htmlFor="fecha" className="block font-semibold mb-1">
-                Fecha Reserva:
+                {fechaForm}:
               </label>
               <DatePicker
                 id="fecha"
@@ -238,7 +253,7 @@ const Contact = () => {
 
             <div className='w-full' >
               <label htmlFor="hora" className="block font-semibold mb-1">
-                Hora:
+                {horaForm}:
               </label>
               <input
                 type="time"
@@ -255,7 +270,7 @@ const Contact = () => {
 
           <div className="mb-4">
             <label htmlFor="cantidadAdultos" className="block font-semibold mb-1">
-              Cantidad de Adultos:
+              {cantidadAdultosForm}:
             </label>
             <input
               type="number"
@@ -274,7 +289,7 @@ const Contact = () => {
 
           <div className="mb-4">
             <label htmlFor="cantidadNinos" className="block font-semibold mb-1">
-              Cantidad de Niños:
+              {cantidadNinosForm}:
             </label>
             <input
               type="number"
@@ -293,7 +308,7 @@ const Contact = () => {
 
           <div className="mb-4">
             <label htmlFor="requiereGuia" className="block font-semibold mb-1">
-              Requiere Guía:
+              {requiereGuiaForm}:
             </label>
             <select
               id="requiereGuia"
@@ -326,7 +341,7 @@ const Contact = () => {
 
           <div className="mb-4">
             <label htmlFor="descripcion" className="block font-semibold mb-1">
-              Descripción:
+              {descripcionForm}:
             </label>
             <textarea
               id="descripcion"
@@ -347,7 +362,7 @@ const Contact = () => {
               type="submit"
               className="backgroundPrimary m-0 manropeFont p-5 btnPrimary py-2"
             >
-              Enviar
+              {sent}
             </button>
           </div>
         </form>
@@ -361,9 +376,18 @@ export default Contact
 
 export const getStaticProps = async ({ params }) => {
   const { lang } = params;
+  const [whatsappResponse,footerResponse] =
+  await Promise.all([
+    getWhatsapp(lang),
+    getFooter(lang)
+  ]);
+  const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
+  const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo
   return {
     props: {
-      result: lang
+      result: lang,
+      whatsapp,
+      footer
     },
   };
 };
