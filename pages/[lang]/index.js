@@ -38,7 +38,6 @@ export default Lang;
 export const getStaticProps = async ({ params }) => {
     const { lang } = params;
     const getLangAll = await langAll();
-    console.log(footer, "footer")
     const result = getLangAll.find(element => element.attributes.code === lang);
 
     if (!result) {
