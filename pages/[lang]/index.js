@@ -38,8 +38,9 @@ export default Lang;
 export const getStaticProps = async ({ params }) => {
     const { lang } = params;
     const getLangAll = await langAll();
+    console.log(getLangAll, "getLangAll")
     const result = getLangAll.find(element => element.attributes.code === lang);
-
+    console.log(result, "result")
     if (!result) {
         return {
             props: {
@@ -58,7 +59,6 @@ export const getStaticPaths = async () => {
     const languages = lang;
     const results = await Promise.all(
         languages.map(async (language) => {
-          console.log(language.attributes.code, "language");
           const menusResponse = await getMenus(language.attributes.code);
           const menus = menusResponse.data.data;
           

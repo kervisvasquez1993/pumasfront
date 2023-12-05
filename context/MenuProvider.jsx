@@ -23,10 +23,6 @@ export const MenuProvider = ({ children }) => {
   const loadedWhatsapp = (params) => {
       SetWhatsapp(params);
   };
-  const getLangContext = async () => {
-    const languages = await langAll();
-    setLangsInfo(languages);
-  };
   const getMenus = async (language) => {
     const config = {
       headers: {
@@ -60,7 +56,6 @@ export const MenuProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        getLangContext();
         const menuData = await getMenuData();
         setMenuData(menuData);
         setLoading(false);
