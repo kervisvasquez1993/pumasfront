@@ -22,10 +22,13 @@ const Donations = ({ typeDonationSchemes, result, whatsapp, footer }) => {
   const [isInitialRender, setisInitialRender] = useState(true);
   const { screenSize } = useScreenSize();
   const [filter, setFilter] = useState("");
-  const { query, asPath, push } = useRouter();
+  const { query } = useRouter();
   const { loadedFooter, loadedWhatsapp } = useMenu();
-  loadedFooter(footer);
-  loadedWhatsapp(whatsapp);
+  const { lang } = query
+  useEffect(() => {
+    loadedFooter(footer)
+  loadedWhatsapp(whatsapp)
+  }, [lang]);
   const donations = obtenerFrase(query.lang, "patrocinadores");
   useEffect(() => {
     const data = filterBySlug(result, query.params);

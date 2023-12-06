@@ -20,8 +20,10 @@ const Page = ({ page, blogsPage, modelsGQ, footer, materialEductivoSort, whatsap
   const { updateData } = usePages();
   const { slug, lang } = router.query
   const {loadedFooter, loadedWhatsapp} = useMenu()
-  loadedFooter(footer)
+  useEffect(() => {
+    loadedFooter(footer)
   loadedWhatsapp(whatsapp)
+  }, [lang]);
   useEffect(() => {
     updateData(page)
 

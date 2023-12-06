@@ -14,8 +14,11 @@ import useMenu from "../../../hooks/useMenu";
 const BlogInfo = ({ blog, whatsapp, footer  }) => {
   const { screenSize } = useScreenSize();
   const { loadedFooter, loadedWhatsapp } = useMenu();
-  loadedFooter(footer);
-  loadedWhatsapp(whatsapp);
+  const { lang } = router.query
+  useEffect(() => {
+    loadedFooter(footer)
+  loadedWhatsapp(whatsapp)
+  }, [lang]);
   const { TitleBlog = "", ContentBlog = "", imgBlog = "" } = blog?.attributes;
   return (
     <Main titlePage={TitleBlog}>

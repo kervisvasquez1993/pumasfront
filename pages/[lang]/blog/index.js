@@ -17,8 +17,10 @@ const index = ({ blogsPage, blogPageData, whatsapp, footer }) => {
   const { lang } = router.query;
   const blogs = blogsPage?.data;
   const { loadedFooter, loadedWhatsapp } = useMenu();
-  loadedFooter(footer);
-  loadedWhatsapp(whatsapp);
+  useEffect(() => {
+    loadedFooter(footer)
+  loadedWhatsapp(whatsapp)
+  }, [lang]);
   const sectionBlogs = blogs?.map((blog, index) => {
     const { TitleBlog, ContentBlog, imgBlog, slug } = blog?.attributes;
     const resumen = ContentBlog.substring(0, 150);

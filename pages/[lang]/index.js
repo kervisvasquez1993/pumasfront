@@ -6,6 +6,7 @@ import Loader from '../../components/UI/Loader';
 const Lang = ({ result, notFoundMessage }) => {
     console.log(result, "result")
     const router = useRouter();
+    
     if (notFoundMessage) {
         return notFoundMessage
     }

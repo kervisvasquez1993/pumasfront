@@ -15,8 +15,11 @@ import { obtenerFrase } from '../../../lang/traducciones';
 const Contact = ({ whatsapp,footer}) => {
   const { query } = useRouter();
   const { loadedFooter, loadedWhatsapp } = useMenu();
-  loadedFooter(footer);
-  loadedWhatsapp(whatsapp);
+  const { lang } = query
+  useEffect(() => {
+    loadedFooter(footer)
+  loadedWhatsapp(whatsapp)
+  }, [lang]);
   const nombreLang = obtenerFrase(query.lang, "nombreForm");
   const correoForm = obtenerFrase(query.lang, "correoForm");
   const fechaForm = obtenerFrase(query.lang, "fechaForm");
