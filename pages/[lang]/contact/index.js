@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getFooter, getWhatsapp, langAll } from '../../../apis/ApiBackend';
 import Main from '../../../Layout/Main/Main';
 import HeaderComponents from '../../../components/UI/HeaderComponents/HeaderComponets';

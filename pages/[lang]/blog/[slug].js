@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { getBlog, getFooter, getWhatsapp, langAll } from "../../../apis/ApiBackend";
 import { useRouter } from "next/router";
 import Main from "../../../Layout/Main/Main";
