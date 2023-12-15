@@ -38,7 +38,7 @@ const Menu = ({ items }) => {
       </section>
 
       <div className={styles.menuItems}>
-        {items && <ItemMenu items={items.data} />}
+        {/* {items && <ItemMenu items={items.data} />} */}
       </div>
     </nav>
   );
