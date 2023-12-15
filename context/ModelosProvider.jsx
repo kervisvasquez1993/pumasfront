@@ -8,8 +8,6 @@ export const ModeloProvider = ({ children }) => {
   const hearlessChangInfo = (data) => {
     setModelInfo(data);
   };
-
-  console.log(modelInfo, "modelosInfo")
   const modeloList = modelInfo?.data.map((item) => {
     
     const srcModeloUrl = item?.attributes?.srcModelo?.data[0]?.attributes?.url || null;

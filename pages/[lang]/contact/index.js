@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { getFooter, getWhatsapp, langAll } from '../../../apis/ApiBackend';
-import Main from '../../../Layout/Main/Main';
-import HeaderComponents from '../../../components/UI/HeaderComponents/HeaderComponets';
-import useScreenSize from '../../../hooks/useScreenSize';
-import { ToastContainer, toast } from 'react-toastify';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import 'react-toastify/dist/ReactToastify.css';
-import useMenu from '../../../hooks/useMenu';
-import { useRouter } from 'next/router';
-import { obtenerFrase } from '../../../lang/traducciones';
+import React, { useEffect, useState } from "react";
+import { getFooter, getWhatsapp, langAll } from "../../../apis/ApiBackend";
+import Main from "../../../Layout/Main/Main";
+import HeaderComponents from "../../../components/UI/HeaderComponents/HeaderComponets";
+import useScreenSize from "../../../hooks/useScreenSize";
+import { ToastContainer, toast } from "react-toastify";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "react-toastify/dist/ReactToastify.css";
+import useMenu from "../../../hooks/useMenu";
+import { useRouter } from "next/router";
+import { obtenerFrase } from "../../../lang/traducciones";
 
-
-const Contact = ({ whatsapp,footer}) => {
+const Contact = ({ whatsapp, footer }) => {
+  console.log(whatsapp)
   const { query } = useRouter();
   const { loadedFooter, loadedWhatsapp } = useMenu();
-  const { lang } = query
+  const { lang } = query;
   useEffect(() => {
-    loadedFooter(footer)
-  loadedWhatsapp(whatsapp)
+    loadedFooter(footer);
+    loadedWhatsapp(whatsapp);
   }, [lang]);
   const nombreLang = obtenerFrase(query.lang, "nombreForm");
   const correoForm = obtenerFrase(query.lang, "correoForm");
@@ -38,7 +38,7 @@ const Contact = ({ whatsapp,footer}) => {
     cantidadAdultos: "",
     cantidadNinos: "",
     descripcion: "",
-    requiereGuia: ""
+    requiereGuia: "",
   });
 
   const [loadingForm, setLoadingForm] = useState(false);
@@ -64,20 +64,21 @@ const Contact = ({ whatsapp,footer}) => {
         if (
           selectedYear < currentYear ||
           (selectedYear === currentYear && selectedMonth < currentMonth) ||
-          (selectedYear === currentYear && selectedMonth === currentMonth && selectedDay < currentDay)
+          (selectedYear === currentYear &&
+            selectedMonth === currentMonth &&
+            selectedDay < currentDay)
         ) {
           setErrors({
             ...errors,
             fecha: "La fecha no puede ser anterior a la fecha actual.",
           });
-          return
+          return;
         } else {
           const newErrors = { ...errors };
           delete newErrors.fecha;
           setErrors(newErrors);
         }
-        setStartDate(e)
-
+        setStartDate(e);
       }
     } else {
       // Para otros campos, manejar el cambio de valor
@@ -115,7 +116,7 @@ const Contact = ({ whatsapp,footer}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(errors).length > 0) {
-      return
+      return;
     }
     setLoadingForm(true);
 
@@ -127,15 +128,14 @@ const Contact = ({ whatsapp,footer}) => {
       validationErrors.correo = "El correo es requerido.";
     }
 
-
-
-
-    if (Object.keys(validationErrors).length > 0 && Object.keys(errors).length > 0) {
+    if (
+      Object.keys(validationErrors).length > 0 &&
+      Object.keys(errors).length > 0
+    ) {
       setErrors(validationErrors);
       setLoadingForm(false);
       return;
     }
-
 
     const newElement = {
       type: "Contacto",
@@ -146,7 +146,7 @@ const Contact = ({ whatsapp,footer}) => {
       cantidadAdultos: formData.cantidadAdultos,
       cantidadNinos: formData.cantidadNinos,
       descripcion: formData.descripcion,
-      requiereGuia: formData.requiereGuia
+      requiereGuia: formData.requiereGuia,
     };
 
     try {
@@ -184,7 +184,8 @@ const Contact = ({ whatsapp,footer}) => {
     <Main titlePage={"Contacto"}>
       <div className="container">
         <div>
-          <ToastContainer position="bottom-left"
+          <ToastContainer
+            position="bottom-left"
             autoClose={5000}
             hideProgressBar={false}
             newestOnTop={false}
@@ -193,7 +194,8 @@ const Contact = ({ whatsapp,footer}) => {
             pauseOnFocusLoss
             draggable
             pauseOnHover
-            theme="light" />
+            theme="light"
+          />
         </div>
         <HeaderComponents
           classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 "}
@@ -213,11 +215,14 @@ const Contact = ({ whatsapp,footer}) => {
               name="nombre"
               value={formData.nombre}
               onChange={handleInputChange}
-              className={`w-full border p-2 rounded ${errors.nombre ? "border-red-500" : ""
-                }`}
+              className={`w-full border p-2 rounded ${
+                errors.nombre ? "border-red-500" : ""
+              }`}
               required
             />
-            {errors.nombre && <p className="text-red-500 mt-1">{errors.nombre}</p>}
+            {errors.nombre && (
+              <p className="text-red-500 mt-1">{errors.nombre}</p>
+            )}
           </div>
 
           <div className="mb-4">
@@ -230,14 +235,19 @@ const Contact = ({ whatsapp,footer}) => {
               name="correo"
               value={formData.correo}
               onChange={handleInputChange}
-              className={`w-full border p-2 rounded ${errors.correo ? "border-red-500" : ""
-                }`}
+              className={`w-full border p-2 rounded ${
+                errors.correo ? "border-red-500" : ""
+              }`}
               required
             />
-            {errors.correo && <p className="text-red-500 mt-1">{errors.correo}</p>}
+            {errors.correo && (
+              <p className="text-red-500 mt-1">{errors.correo}</p>
+            )}
           </div>
 
-          <div className="mb-4 flex "> {/* Agregar la clase 'flex' y 'items-center' */}
+          <div className="mb-4 flex ">
+            {" "}
+            {/* Agregar la clase 'flex' y 'items-center' */}
             <div className="mr-4">
               <label htmlFor="fecha" className="block font-semibold mb-1">
                 {fechaForm}:
@@ -246,15 +256,17 @@ const Contact = ({ whatsapp,footer}) => {
                 id="fecha"
                 name="fecha"
                 selected={startDate}
-                onChange={(e) => handleInputChange(e, 'fecha')}
-                className={`w-full border p-2 rounded ${errors.fecha ? "border-red-500" : ""
-                  }`}
+                onChange={(e) => handleInputChange(e, "fecha")}
+                className={`w-full border p-2 rounded ${
+                  errors.fecha ? "border-red-500" : ""
+                }`}
                 required
               />
-              {errors.fecha && <p className="text-red-500 mt-1">{errors.fecha}</p>}
+              {errors.fecha && (
+                <p className="text-red-500 mt-1">{errors.fecha}</p>
+              )}
             </div>
-
-            <div className='w-full' >
+            <div className="w-full">
               <label htmlFor="hora" className="block font-semibold mb-1">
                 {horaForm}:
               </label>
@@ -263,16 +275,22 @@ const Contact = ({ whatsapp,footer}) => {
                 id="hora"
                 name="hora"
                 value={formData.hora}
-                onChange={(e) => handleInputChange(e, 'hora')}
-                className={`w-full border p-2 rounded ${errors.hora ? "border-red-500" : ""
-                  }`}
+                onChange={(e) => handleInputChange(e, "hora")}
+                className={`w-full border p-2 rounded ${
+                  errors.hora ? "border-red-500" : ""
+                }`}
               />
-              {errors.hora && <p className="text-red-500 mt-1">{errors.hora}</p>}
+              {errors.hora && (
+                <p className="text-red-500 mt-1">{errors.hora}</p>
+              )}
             </div>
           </div>
 
           <div className="mb-4">
-            <label htmlFor="cantidadAdultos" className="block font-semibold mb-1">
+            <label
+              htmlFor="cantidadAdultos"
+              className="block font-semibold mb-1"
+            >
               {cantidadAdultosForm}:
             </label>
             <input
@@ -282,8 +300,9 @@ const Contact = ({ whatsapp,footer}) => {
               min="0"
               value={formData.cantidadAdultos}
               onChange={handleInputChange}
-              className={`w-full border p-2 rounded ${errors.cantidadAdultos ? "border-red-500" : ""
-                }`}
+              className={`w-full border p-2 rounded ${
+                errors.cantidadAdultos ? "border-red-500" : ""
+              }`}
             />
             {errors.cantidadAdultos && (
               <p className="text-red-500 mt-1">{errors.cantidadAdultos}</p>
@@ -301,8 +320,9 @@ const Contact = ({ whatsapp,footer}) => {
               min="0"
               value={formData.cantidadNinos}
               onChange={handleInputChange}
-              className={`w-full border p-2 rounded ${errors.cantidadNinos ? "border-red-500" : ""
-                }`}
+              className={`w-full border p-2 rounded ${
+                errors.cantidadNinos ? "border-red-500" : ""
+              }`}
             />
             {errors.cantidadNinos && (
               <p className="text-red-500 mt-1">{errors.cantidadNinos}</p>
@@ -318,27 +338,37 @@ const Contact = ({ whatsapp,footer}) => {
               name="requiereGuia"
               value={formData.requiereGuia}
               onChange={handleInputChange}
-              className={`w-full border p-2 rounded ${errors.requiereGuia ? "border-red-500" : ""
-                }`}
+              className={`w-full border p-2 rounded ${
+                errors.requiereGuia ? "border-red-500" : ""
+              }`}
             >
-              <option value="NO" className='w-full border p-2 rounded '>NO</option>
-              <option value="SI" className='w-full border p-2 rounded '>SI</option>
+              <option value="NO" className="w-full border p-2 rounded ">
+                NO
+              </option>
+              <option value="SI" className="w-full border p-2 rounded ">
+                SI
+              </option>
             </select>
           </div>
           <div className="mb-4">
             <label htmlFor="requiereGuia" className="block font-semibold mb-1">
-             Procedencia:
+              Procedencia:
             </label>
             <select
               id="Nacional"
               name="Nacional"
               value={formData.Nacional}
               onChange={handleInputChange}
-              className={`w-full border p-2 rounded ${errors.requiereGuia ? "border-red-500" : ""
-                }`}
+              className={`w-full border p-2 rounded ${
+                errors.requiereGuia ? "border-red-500" : ""
+              }`}
             >
-              <option value="Nacional" className='w-full border p-2 rounded '>Nacional</option>
-              <option value="Extrangero" className='w-full border p-2 rounded '>Extrangero</option>
+              <option value="Nacional" className="w-full border p-2 rounded ">
+                Nacional
+              </option>
+              <option value="Extrangero" className="w-full border p-2 rounded ">
+                Extrangero
+              </option>
             </select>
           </div>
 
@@ -351,8 +381,9 @@ const Contact = ({ whatsapp,footer}) => {
               name="descripcion"
               value={formData.descripcion}
               onChange={handleInputChange}
-              className={`w-full border p-2 rounded ${errors.descripcion ? "border-red-500" : ""
-                }`}
+              className={`w-full border p-2 rounded ${
+                errors.descripcion ? "border-red-500" : ""
+              }`}
               rows="4"
             />
             {errors.descripcion && (
@@ -371,26 +402,24 @@ const Contact = ({ whatsapp,footer}) => {
         </form>
       </div>
     </Main>
+  );
+};
 
-  )
-}
-
-export default Contact
+export default Contact;
 
 export const getStaticProps = async ({ params }) => {
   const { lang } = params;
-  const [whatsappResponse,footerResponse] =
-  await Promise.all([
+  const [whatsappResponse, footerResponse] = await Promise.all([
     getWhatsapp(lang),
-    getFooter(lang)
+    getFooter(lang),
   ]);
   const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
-  const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo
+  const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo;
   return {
     props: {
       result: lang,
       whatsapp,
-      footer
+      footer,
     },
   };
 };
