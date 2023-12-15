@@ -17,11 +17,13 @@ import useScreenSize from "../../hooks/useScreenSize";
 import PaypalForm from "../Section/PaypalForm";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
+import { obtenerFrase } from "../../lang/traducciones";
 
 
 const HomePage = ({ data }) => {
   const router = useRouter();
   const { lang } = router.query
+  const patrocinadores = obtenerFrase(lang, "patrocinadores");
   const { componentDynamics, banner } = data
   const [primerElement, segundoElemento, tercerElemento, cuartoElemento, quintoElemento, sextoElemento, septiomoElemento, octavoElemento] = componentDynamics
   
@@ -199,7 +201,7 @@ const HomePage = ({ data }) => {
           classNameText={"py-5 colorVerde chelseaFont font-responsive"}
           alignment={`${screenSize <= 1200 ? "center" : "start"}`}
         >
-          PATROCINADORES
+          {patrocinadores}
         </HeaderComponets>
         <SliderTwo />
 

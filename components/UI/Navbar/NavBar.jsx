@@ -14,7 +14,7 @@ const Navbar = ({ items }) => {
   const [cierre, setCierre] = useState(null);
   const { query, asPath, push } = useRouter();
   const { lang } = query;
-  const langActual = menuData?.find((element) => element.lang === lang);
+  const langActual = menuData;
   const getDataInPath = (cadena) => {
     const partes = cadena.split("/");
     if (partes.length >= 3) {

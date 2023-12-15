@@ -2,7 +2,18 @@ import React, { useEffect } from "react";
 import HomePage from "../../../components/Pages/HomePage";
 import { useRouter } from "next/router";
 import NosotrosPage from "../../../components/Pages/NosotrosPage";
-import { getAllModels, getBlog, getMenus, getModelGQ, getPageWithComponents, getPagesGQ, langAll, getFooter, getMaterialEducativo, getWhatsapp } from "../../../apis/ApiBackend";
+import {
+  getAllModels,
+  getBlog,
+  getMenus,
+  getModelGQ,
+  getPageWithComponents,
+  getPagesGQ,
+  langAll,
+  getFooter,
+  getMaterialEducativo,
+  getWhatsapp,
+} from "../../../apis/ApiBackend";
 import SantuarioPage from "../../../components/Pages/SantuarioPage";
 import CentroDeRescate from "../../../components/Pages/CentroDeRescate";
 import BlogPage from "../../../components/Pages/BlogPage";
@@ -13,22 +24,29 @@ import usePages from "../../../hooks/usePages";
 import Loader from "../../../components/UI/Loader";
 import useMenu from "../../../hooks/useMenu";
 
-const Page = ({ page, blogsPage, modelsGQ, footer, materialEductivoSort, whatsapp }) => {
-
+const Page = ({
+  page,
+  blogsPage,
+  modelsGQ,
+  footer,
+  materialEductivoSort,
+  whatsapp,
+  menus,
+}) => {
   const router = useRouter();
   const { hearlessChangInfo } = useModelo();
   const { updateData } = usePages();
-  const { slug, lang } = router.query
-  const {loadedFooter, loadedWhatsapp} = useMenu()
+  const { lang } = router.query;
+  const { loadedFooter, loadedWhatsapp, updateMenuLoader } = useMenu();
   useEffect(() => {
-    loadedFooter(footer)
-  loadedWhatsapp(whatsapp)
+    loadedFooter(footer);
+    loadedWhatsapp(whatsapp);
+    updateMenuLoader(menus, lang);
   }, [lang]);
   useEffect(() => {
-    updateData(page)
+    updateData(page);
 
     modelsGQ && hearlessChangInfo(modelsGQ);
-
   }, [page]);
   if (router.isFallback) {
     return <Loader />;
@@ -37,7 +55,6 @@ const Page = ({ page, blogsPage, modelsGQ, footer, materialEductivoSort, whatsap
   if (!page) {
     return <div>Página no encontrada</div>;
   }
-
 
   const renderContent = () => {
     if (page.contentType === "component") {
@@ -81,18 +98,32 @@ const Page = ({ page, blogsPage, modelsGQ, footer, materialEductivoSort, whatsap
 
 export const getStaticProps = async ({ params }) => {
   try {
-
     const { lang, slug } = params;
 
-    
-    const [pagesResponse, footerResponse, modelsGQResponse, materialEductaivo, whatsappResponse] = await Promise.all([getPagesGQ(lang), getFooter(lang), getModelGQ(lang), getMaterialEducativo(lang), getWhatsapp(lang)]);
-    const materialEducativodataResponse = materialEductaivo?.data?.data
+    const [
+      pagesResponse,
+      footerResponse,
+      modelsGQResponse,
+      materialEductaivo,
+      whatsappResponse,
+      menusResponse,
+    ] = await Promise.all([
+      getPagesGQ(lang),
+      getFooter(lang),
+      getModelGQ(lang),
+      getMaterialEducativo(lang),
+      getWhatsapp(lang),
+      getMenus(lang),
+    ]);
+    const materialEducativodataResponse = materialEductaivo?.data?.data;
     const materialEductivoSort = [];
-    const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo
-    const whatsapp = whatsappResponse?.data?.data[0]?.attributes
-    const pages = pagesResponse?.data?.pages
+    const menus = menusResponse.data.data;
+    // console.log(menus, "menus response");
+    const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo;
+    const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
+    const pages = pagesResponse?.data?.pages;
     const dataPages = pages?.data;
-    const modelsGQ = modelsGQResponse?.data?.modelos
+    const modelsGQ = modelsGQResponse?.data?.modelos;
     materialEducativodataResponse.forEach((item) => {
       const { title, description, subTitle } = item.attributes;
       const imgFile = {
@@ -104,10 +135,17 @@ export const getStaticProps = async ({ params }) => {
         url: item.attributes.file.data.attributes.url,
       };
 
-      const newItem = { id: item.id, title, description, subTitle, imgFile, file };
+      const newItem = {
+        id: item.id,
+        title,
+        description,
+        subTitle,
+        imgFile,
+        file,
+      };
       materialEductivoSort.push(newItem);
     });
-    const updatePage = dataPages?.map(page => {
+    const updatePage = dataPages?.map((page) => {
       return {
         id: page.id,
         title: page.attributes.title,
@@ -116,22 +154,30 @@ export const getStaticProps = async ({ params }) => {
         locales: lang,
         banner: page?.attributes?.banner,
         contentType: "component",
-      }
-    })
+      };
+    });
 
-    const page = updatePage.find((page) => page.locales === lang && page.slug === slug);
+    const page = updatePage.find(
+      (page) => page.locales === lang && page.slug === slug
+    );
     if (page.slug === "blogs" || page.slug === "publicaciones") {
       const blog = await getBlog(lang);
       const blogsPage = blog.data;
       return {
-        props: { page: { ...page }, blogsPage, footer, whatsapp },
+        props: { page: { ...page }, blogsPage, footer, whatsapp, menus },
       };
-
     }
     if (!page) return { notFound: true };
     return {
-      props: { page: { ...page }, modelsGQ, footer,whatsapp,  materialEductivoSort },
-      revalidate: 10
+      props: {
+        page: { ...page },
+        modelsGQ,
+        footer,
+        whatsapp,
+        materialEductivoSort,
+        menus,
+      },
+      revalidate: 10,
     };
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -144,18 +190,16 @@ export const getStaticProps = async ({ params }) => {
 export const getStaticPaths = async () => {
   const lang = await langAll();
   const languages = lang;
-  console.log(lang, "Languages")
   const result = [];
   for (const language of languages) {
     const menusResponse = await getMenus(language.attributes.code);
-    const pages = await getPagesGQ(language.attributes.code)
-    
+    const pages = await getPagesGQ(language.attributes.code);
+
     const menus = menusResponse.data.data;
-   
+
     menus.forEach((element) => {
-      // console.log(element, "elemento")
-      if(element.attributes.slug === "blog"){
-        return 
+      if (element.attributes.slug === "blog") {
+        return;
       }
       result.push({
         params: {

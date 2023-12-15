@@ -4,7 +4,7 @@ export const ApiBackend = axios.create({
   baseURL: process.env.NEXT_PUBLIC_URL_BASE
 });
 
-export const getMenus = (language) => {
+export const getMenus = async (language) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -15,9 +15,10 @@ export const getMenus = (language) => {
       locale: language,
     },
   };
-  return ApiBackend("api/menus", config);
-};
+  const response = await ApiBackend("api/menus?sort=rang:asc", config);
 
+  return response;
+};
 export const getPatrocinadores = (language) => {
   const config = {
     headers: {
