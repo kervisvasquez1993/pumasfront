@@ -14,12 +14,9 @@ const Main = ({ children, titlePage }) => {
   const { lang, slug } = query;
   const [stateMenu, setStateMenu] = useState(null);
   const [isHeaderSticky, setIsHeaderSticky] = useState(false);
-
   useEffect(() => {
     if (!loading && menuData && lang) {
-      const currentLanguageMenu = menuData.find(
-        (element) => element.lang === lang
-      );
+      const currentLanguageMenu = menuData
       setStateMenu(currentLanguageMenu || null);
       localStorage.setItem("menuData", JSON.stringify(menuData));
     }
@@ -30,7 +27,7 @@ const Main = ({ children, titlePage }) => {
     const storedMenuData = localStorage.getItem("menuData");
     if (!menuData && storedMenuData) {
       setStateMenu(
-        JSON.parse(storedMenuData).find((element) => element.lang === lang) ||
+        JSON.parse(storedMenuData) ||
         null
       );
     }
