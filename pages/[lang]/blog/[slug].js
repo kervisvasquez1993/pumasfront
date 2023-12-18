@@ -14,24 +14,25 @@ import useMenu from "../../../hooks/useMenu";
 const BlogInfo = ({ blog, whatsapp, footer  }) => {
   const { screenSize } = useScreenSize();
   const { loadedFooter, loadedWhatsapp } = useMenu();
+  const router = useRouter();
   const { lang } = router.query
   useEffect(() => {
     loadedFooter(footer)
   loadedWhatsapp(whatsapp)
   }, [lang]);
-  const { TitleBlog = "", ContentBlog = "", imgBlog = "" } = blog?.attributes;
+
   return (
-    <Main titlePage={TitleBlog}>
+    <Main titlePage={blog?.attributes?.TitleBlog}>
       <HeaderComponents
         classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 "}
         alignment={`${screenSize <= 1024 ? "center" : "start"}`}
       >
-        {TitleBlog}
+        {blog?.attributes?.TitleBlog}
       </HeaderComponents>
 
       <section className="container-section py-10 my-5">
-        <section className={`${imgBlog?.data ? "flex-2" : ""}`}>
-          <SliderSingle slidesData={imgBlog?.data} />
+        <section className={`${blog?.attributes?.imgBlog?.data ? "flex-2" : ""}`}>
+          <SliderSingle slidesData={blog?.attributes?.imgBlog?.data} />
           <section>
             <BasicSection
               classNameTitle={""}
@@ -47,7 +48,7 @@ const BlogInfo = ({ blog, whatsapp, footer  }) => {
               } fuentesParrafo  p-10 m-10`}
             >
               <ReactMarkdown className="contentBlog">
-                {ContentBlog}
+                {blog?.attributes?.ContentBlog}
               </ReactMarkdown>
             </BasicSection>
           </section>
