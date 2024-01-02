@@ -6,16 +6,28 @@ Command: npx gltfjsx@6.1.11 LapaRoja.gltf
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function LapaRoja({ ...props }) {
+// export function LapaRoja({ ...props }) {
   
-    const { nodes, materials } = useGLTF("/models/LapaRoja.glb");
+//     const { nodes, materials } = useGLTF("/models/LapaRoja.glb");
+//   return (
+//     <group {...props} dispose={null}>
+//       <mesh geometry={nodes.Lapa.geometry} material={materials['51']} />
+//     </group>
+//   )
+
+// }
+
+// useGLTF.preload("/models/LapaRoja.glb");
+
+
+export function LapaRoja(props) {
+  const { nodes, materials } = useGLTF('/models/Birds/psitacidos/LapaRoja/LapaRoja.glb')
   return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.Lapa.geometry} material={materials['51']} />
+      <mesh geometry={nodes.LapaRoja.geometry} material={materials.LapaRoja} />
     </group>
   )
-
 }
 
-useGLTF.preload("/models/LapaRoja.glb");
+useGLTF.preload('/models/Birds/psitacidos/LapaRoja/LapaRoja.glb')
 

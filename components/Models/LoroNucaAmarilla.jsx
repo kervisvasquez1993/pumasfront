@@ -6,16 +6,39 @@ Command: npx gltfjsx@6.1.11 LoraNucaAmarilla.gltf
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function LoroNucaAmarilla({  ...props }) {
+// export function LoroNucaAmarilla({  ...props }) {
  
-    const { nodes, materials } = useGLTF("/models/LoraNucaAmarilla.glb");
-    return (
+//     const { nodes, materials } = useGLTF("/models/LoraNucaAmarilla.glb");
+//     return (
+//     <group {...props} dispose={null}>
+//       <mesh geometry={nodes.LoraNucaAmarilla.geometry} material={materials.LoraNucaAmarilla} />
+//     </group>
+//   );
+  
+// }
+
+
+// useGLTF.preload("/models/LoraNucaAmarilla.glb");
+
+
+export function LoroNucaAmarilla(props) {
+  const { nodes, materials } = useGLTF("/models/Birds/psitacidos/LoraNucaAmarilla/LoraNucaAmarilla.glb");
+  return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes.LoraNucaAmarilla.geometry} material={materials.LoraNucaAmarilla} />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.LoraCopeteRojo001.geometry}
+        material={materials.LoraNucaAmarilla}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.LoraCopeteRojo001_1.geometry}
+        material={materials.wood}
+      />
     </group>
   );
-  
 }
 
-
-useGLTF.preload("/models/LoraNucaAmarilla.glb");
+useGLTF.preload("/models/Birds/psitacidos/LoraNucaAmarilla/LoraNucaAmarilla.glb");

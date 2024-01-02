@@ -21,6 +21,8 @@ import { useEffect, useState } from "react";
 import Loader from "../UI/Loader";
 import { Venado } from "./Venado";
 import { Tucan } from "./Tucan";
+import { TortugaOrejaAmarilla } from "./TortugaOrejaAmarilla";
+
 const SelectedModels = ({ componentName, modelo, modelX = 0, modelY = 0, modelZ = 0, intensity = 0 }) => {
   const [models, setModel] = useState(modelo);
   useEffect(() => {
@@ -76,6 +78,9 @@ const SelectedModels = ({ componentName, modelo, modelX = 0, modelY = 0, modelZ 
       break;
     case "TortugaRoja":
       selectedComponent = <TortugaRoja />;
+      break;
+    case "TortugaOrejaAmarilla":
+      selectedComponent = <TortugaOrejaAmarilla />;
       break;
     case "Yagurandi":
       selectedComponent = <Yagurandi />;
