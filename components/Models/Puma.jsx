@@ -14,7 +14,7 @@ import { useGLTF } from "@react-three/drei";
 
 // useGLTF.preload("/models/Puma.glb");
 
-export function Model(props) {
+export function Puma(props) {
   const { nodes, materials } = useGLTF("/models/Felinos/Puma/Puma_01.glb");
   return (
     <group {...props} dispose={null}>
