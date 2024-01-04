@@ -15,6 +15,7 @@ import { useGLTF } from '@react-three/drei'
 
 // useGLTF.preload("/models/Yagurandi.glb");
 
+
 export function Yagurandi(props) {
   const { nodes, materials } = useGLTF("/models/Felinos/Yagurandi/Yaguarundi_01.glb");
   return (
@@ -30,3 +31,4 @@ export function Yagurandi(props) {
 }
 
 useGLTF.preload("/models/Felinos/Yagurandi/Yaguarundi_01.glb");
+
