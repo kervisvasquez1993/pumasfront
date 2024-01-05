@@ -22,7 +22,7 @@ import { useGLTF } from '@react-three/drei'
 // useGLTF.preload("/models/Manigordo.glb");
 
 
-export function Model(props) {
+export function Manigordo(props) {
   const { nodes, materials } = useGLTF("/models/Felinos/Manigordo/Manigordo.glb");
   return (
     <group {...props} dispose={null}>
