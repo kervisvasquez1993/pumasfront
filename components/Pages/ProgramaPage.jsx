@@ -30,7 +30,7 @@ const ProgramaPage = ({ data, material }) => {
         const imgSlider = elemento?.imagenWithContentBasic?.map(item => {
 
           return {
-            url: `${item?.img.data[0].attributes.url}`
+            url: `${item?.img?.data[0]?.attributes.url}`
           }
         })
 
