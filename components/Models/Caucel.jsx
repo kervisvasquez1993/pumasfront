@@ -4,7 +4,7 @@ import { useGLTF } from "@react-three/drei";
 
 
 
-export function Model(props) {
+export function Caucel(props) {
   const { nodes, materials } = useGLTF("/models/Felinos/Caucel/Caucel.glb");
   return (
     <group {...props} dispose={null}>

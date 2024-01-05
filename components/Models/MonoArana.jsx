@@ -21,7 +21,7 @@ import { useGLTF } from "@react-three/drei";
 
 export function MonoArana(props) {
   const { nodes, materials } = useGLTF(
-    "/models/Monos/MonoArana/MonoAraña_01.glb"
+    "/models/Monos/MonoArana/MonoArana_01.glb"
   );
   return (
     <group {...props} dispose={null}>
@@ -41,4 +41,4 @@ export function MonoArana(props) {
   );
 }
 
-useGLTF.preload("/models/Monos/MonoArana/MonoAraña_01.glb");
+useGLTF.preload("/models/Monos/MonoArana/MonoArana_01.glb");

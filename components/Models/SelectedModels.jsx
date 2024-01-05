@@ -22,6 +22,7 @@ import Loader from "../UI/Loader";
 import { Venado } from "./Venado";
 import { Tucan } from "./Tucan";
 import { TortugaOrejaAmarilla } from "./TortugaOrejaAmarilla";
+import { Caucel } from "./Caucel";
 
 const SelectedModels = ({ componentName, modelo, modelX = 0, modelY = 0, modelZ = 0, intensity = 0 }) => {
   const [models, setModel] = useState(modelo);
@@ -33,6 +34,9 @@ const SelectedModels = ({ componentName, modelo, modelX = 0, modelY = 0, modelZ 
   switch (componentName) {
     case "Puma":
       selectedComponent = <Puma />;
+      break;
+    case "Caucel":
+      selectedComponent = <Caucel />;
       break;
     case "Chucuyo":
       selectedComponent = <Chucuyo />;
