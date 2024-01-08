@@ -13,10 +13,11 @@ export default function Slider({ srcBackgroundColor = "", data = {} }) {
   const router = useRouter();
   const { lang } = router.query
   const blogInfo = data.map((e, index) => {
+    console.log(e.attributes.slug, "index")
     const resumen = e.attributes.ContentBlog.substring(0, 150)
     return (<SwiperSlide key={index}>
       <CardComponentHover
-        url={`/${lang}/blog/${e.id}`}
+        url={`/${lang}/blog/${e.attributes.slug}`}
         description={resumen + " ...... "}
         title={e.attributes.TitleBlog}
         imageUrl={`${e?.attributes?.imgBlog ? e?.attributes?.imgBlog.data[0]?.attributes?.url : "/images/no-img.jpg"}`}

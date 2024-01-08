@@ -498,6 +498,7 @@ export const getPagesGQ = async (language) => {
                   attributes{
                     TitleBlog
                     ContentBlog
+                    slug
                     imgBlog{
                       data{
                         attributes{

@@ -15,7 +15,7 @@ const BlogPage = ({ data, blogData }) => {
   const blogsInfo = blogData?.data
 
   const sectionBlogs = blogsInfo?.map((blog, index) => {
-    const { TitleBlog, ContentBlog, imgBlog } = blog?.attributes
+    const { TitleBlog, ContentBlog, imgBlog, slug } = blog?.attributes
     const resumen = ContentBlog.substring(0, 150)
     return (
       <div key={index}>
