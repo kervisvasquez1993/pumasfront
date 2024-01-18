@@ -451,6 +451,11 @@ export const getPagesGQ = async (language) => {
                   }
                 }
               }
+              imgModelBasic{
+                data{
+                  id
+                }
+              }
               colorTitle{
                 colorTitle
               }
