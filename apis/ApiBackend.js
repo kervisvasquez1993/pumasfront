@@ -191,7 +191,7 @@ export const getPageWithComponents = async (language, id) => {
                   label
                   url
                   backgroundButton
-                  fileLabel
+                 
                 }
                 background{
                   data{
