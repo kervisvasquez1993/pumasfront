@@ -216,11 +216,12 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
 
             <WrapperDonations>
               {donationInitial?.map((elemento, index) => {
+                
                 return (
                   <div className="lg:py-10 lg:my-10 p-5" key={index}>
                     <figure className="p-10 m-10">
-                      {elemento.image ? (
-                        <img src={elemento.image} />
+                      {elemento?.imagen?.data?.attributes?.url ? (
+                        <img src={elemento.imagen.data.attributes.url} />
                       ) : (
                         <img src={"/images/Ellipse.png"} />
                       )}
