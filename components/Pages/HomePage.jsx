@@ -53,17 +53,16 @@ const HomePage = ({ data }) => {
         >
           {primerElement?.Titulo}
         </HeaderComponets>
-        <pre>{JSON.stringify(segundoElemento)}</pre>
         <TwoColumnGrid>
           <CardBasic
             showMask={true}
             maskSrc={"/images/mask.png"}
             iconSrc={segundoElemento?.imgModelBasic?.data?.attributes?.url}
-            imgSrc={segundoElemento?.imgBasicContent?.data.attributes.url}
+            imgSrc={segundoElemento?.imgBasicContent?.data.attributes?.url}
             title={segundoElemento?.title}
             subtitle={segundoElemento?.subTitle}
           />
-
+        
           <BasicSection
             classNameTitle={""}
             classNameWrapper={"setionStyle"}
