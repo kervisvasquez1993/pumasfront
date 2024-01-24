@@ -29,9 +29,9 @@ const HomePage = ({ data }) => {
   
   const horarios = octavoElemento?.imagenWithContentBasic?.map((element, index) => {
     return (<section className="py-5" key={index}>
-      <h4 className="chelseaFont colorSecondary font-size-24">{element.label}</h4>
+      <h4 className="chelseaFont colorSecondary font-size-24">{element?.label}</h4>
       <div>
-        <ReactMarkdown className="py-1 saltoLinea2">{element.content}</ReactMarkdown>
+        <ReactMarkdown className="py-1 saltoLinea2">{element?.content}</ReactMarkdown>
       </div>
     </section>)
   })
@@ -43,9 +43,6 @@ const HomePage = ({ data }) => {
 
 
       <div className=" container">
-
-
-
         <HeaderComponets
           classNameText={"mt-10 p-5 colorPrimary chelseaFont font-responsive"}
           alignment={`${screenSize <= 900 ? "center" : "start"}`}
@@ -58,7 +55,7 @@ const HomePage = ({ data }) => {
             showMask={true}
             maskSrc={"/images/mask.png"}
             iconSrc={segundoElemento?.imgModelBasic?.data?.attributes?.url}
-            imgSrc={segundoElemento?.imgBasicContent?.data.attributes?.url}
+            imgSrc={segundoElemento?.imgBasicContent?.data?.attributes?.url}
             title={segundoElemento?.title}
             subtitle={segundoElemento?.subTitle}
           />
@@ -120,7 +117,7 @@ const HomePage = ({ data }) => {
             </ButtonView>
           </BasicSection>
 
-          <CardBasic imgSrc={tercerElemento?.imgBasicContent.data.attributes.url} />
+          <CardBasic imgSrc={tercerElemento?.imgBasicContent?.data?.attributes.url} />
         </TwoColumnGrid>
 
 
@@ -135,7 +132,7 @@ const HomePage = ({ data }) => {
           <CardBasic
             showMask={true}
             maskSrc={"/images/mask.png"}
-            iconSrc={"/images/modelo3d.png"}
+            iconSrc={quintoElemento?.imgModelBasic?.data?.attributes?.url}
             imgSrc={quintoElemento?.imgBasicContent.data.attributes.url}
             title={quintoElemento?.title}
             subtitle={quintoElemento?.subTitle}
