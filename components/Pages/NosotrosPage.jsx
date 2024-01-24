@@ -84,7 +84,7 @@ const NosotrosPage = ({ data }) => {
               justifyContent={"center"}
               classNameContent={" font-min sm:py-10"}
             >
-              <ReactMarkdown className="py-10">{elemento.content}</ReactMarkdown>
+              <ReactMarkdown className="py-10 saltoLinea2">{elemento.content}</ReactMarkdown>
               <ButtonView
                 className={" backgroundSecondary m-0 manropeFont p-5"}
                 link={`${lang}/${elemento?.btn?.url}`}
@@ -163,7 +163,7 @@ const NosotrosPage = ({ data }) => {
                   >
                     {elemento.imagenWithContentBasic[2]?.label}
                   </HeaderComponets>
-                  <ReactMarkdown className="py-5 saltoLinea">{elemento?.imagenWithContentBasic[2]?.content}</ReactMarkdown>
+                  <ReactMarkdown className="py-5 saltoLinea2">{elemento?.imagenWithContentBasic[2]?.content}</ReactMarkdown>
                 </section>
               </section>
             </BasicSection>
