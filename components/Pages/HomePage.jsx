@@ -53,17 +53,16 @@ const HomePage = ({ data }) => {
         >
           {primerElement?.Titulo}
         </HeaderComponets>
-
         <TwoColumnGrid>
           <CardBasic
             showMask={true}
             maskSrc={"/images/mask.png"}
-            iconSrc={"/images/modelo3d.png"}
-            imgSrc={segundoElemento?.imgBasicContent.data.attributes.url}
+            iconSrc={segundoElemento?.imgModelBasic?.data?.attributes?.url}
+            imgSrc={segundoElemento?.imgBasicContent?.data.attributes?.url}
             title={segundoElemento?.title}
             subtitle={segundoElemento?.subTitle}
           />
-
+        
           <BasicSection
             classNameTitle={""}
             classNameWrapper={"setionStyle"}

@@ -108,6 +108,7 @@ const ApoyanosPage = ({ data }) => {
 
                 <ReactMarkdown className="py-10">{quintoElmento.content}</ReactMarkdown>
                 {/* amazon */}
+                <div style={{display : "flex", flexWrap : "wrap"}}>
                 {
                   quintoElmento?.imagenWithContentBasic?.map((element, index) => {
                     return (
@@ -121,6 +122,7 @@ const ApoyanosPage = ({ data }) => {
                     )
                   })
                 }
+                </div>
                 
               </BasicSection>
             </section>

@@ -6,17 +6,41 @@ Command: npx gltfjsx@6.1.11 OsoPerezosoDeDedos.gltf
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function OsoPerezosoDeDedos({  ...props }) {
+// export function OsoPerezosoDeDedos({  ...props }) {
   
-    const { nodes, materials } = useGLTF("/models/OsoPerezosoDeDedos.glb");
-    return (
+//     const { nodes, materials } = useGLTF("/models/OsoPerezosoDeDedos.glb");
+//     return (
+//     <group {...props} dispose={null}>
+//       <mesh geometry={nodes['13565_Linns_Sloth_v1_L2'].geometry} material={materials.Branch} />
+//       <mesh geometry={nodes['13565_Linns_Sloth_v1_L2_1'].geometry} material={materials.Linns_Sloth} />
+//     </group>
+//   );
+  
+// }
+
+
+// useGLTF.preload("/models/OsoPerezosoDeDedos.glb");
+
+export function OsoPerezosoDeDedos(props) {
+  const { nodes, materials } = useGLTF("/models/OsoPerezoso/OsoPerezosoDeDosDedos.glb");
+  return (
     <group {...props} dispose={null}>
-      <mesh geometry={nodes['13565_Linns_Sloth_v1_L2'].geometry} material={materials.Branch} />
-      <mesh geometry={nodes['13565_Linns_Sloth_v1_L2_1'].geometry} material={materials.Linns_Sloth} />
+      <group position={[0, 1.908, 0]} rotation={[0, 0, Math.PI]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.OsoPerezosoDeDosDedos_02_1.geometry}
+          material={materials.Linns_Sloth}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.OsoPerezosoDeDosDedos_02_2.geometry}
+          material={materials.Branch}
+        />
+      </group>
     </group>
   );
-  
 }
 
-
-useGLTF.preload("/models/OsoPerezosoDeDedos.glb");
+useGLTF.preload("/models/OsoPerezoso/OsoPerezosoDeDosDedos.glb");

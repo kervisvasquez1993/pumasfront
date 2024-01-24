@@ -1,15 +1,14 @@
 import axios from "axios";
 
 export const ApiBackend = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_URL_BASE
+  baseURL: process.env.NEXT_PUBLIC_URL_BASE,
 });
 
 export const getMenus = async (language) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
-
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
     params: {
       locale: language,
@@ -23,8 +22,7 @@ export const getPatrocinadores = (language) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
-
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
     params: {
       locale: language,
@@ -36,10 +34,8 @@ export const getFooter = (language) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
-
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
-
   };
   return ApiBackend("api/footers?populate=*&locale=" + language, config);
 };
@@ -47,21 +43,18 @@ export const getWhatsapp = (language) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
-
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
-
   };
   return ApiBackend("api/whatsapps?populate=*&locale=" + language, config);
 };
-
 
 export const getBlog = (language) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
-    }
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+    },
   };
   return ApiBackend("api/blogs?populate=*&locale=" + language, config);
 };
@@ -70,14 +63,11 @@ export const getAllModels = (lang) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
   };
   return ApiBackend("api/modelos?populate=*&locale=" + lang, config);
 };
-
-
-
 
 export const langAll = async () => {
   const query = `query {
@@ -95,7 +85,7 @@ export const langAll = async () => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
   };
 
@@ -103,17 +93,16 @@ export const langAll = async () => {
     const response = await ApiBackend.post("api/graphql", { query }, config);
     return response.data.data.i18NLocales.data;
   } catch (error) {
-    console.error('Error fetching data models:', error);
+    console.error("Error fetching data models:", error);
     return null;
   }
-}
-
+};
 
 export const getHorario = () => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
   };
   return ApiBackend("api/horarios", config);
@@ -123,34 +112,39 @@ export const getAllDonations = (lang) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
   };
 
-  return ApiBackend("api/donaciones?populate=*&sort=rang:asc&locale=" + lang, config);
+  return ApiBackend(
+    "api/donaciones?populate=*&sort=rang:asc&locale=" + lang,
+    config
+  );
 };
 export const getMaterialEducativo = (lang) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
   };
 
-  return ApiBackend("api/material-educativos?populate=*&sort=rang:asc&locale=" + lang, config);
+  return ApiBackend(
+    "api/material-educativos?populate=*&sort=rang:asc&locale=" + lang,
+    config
+  );
 };
 
 export const getTypeDonations = (lang) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
   };
 
   return ApiBackend("api/tipo-de-donacions?populate=*&locale=" + lang, config);
 };
-
 
 export const getPageWithComponents = async (language, id) => {
   const query = `
@@ -197,6 +191,7 @@ export const getPageWithComponents = async (language, id) => {
                   label
                   url
                   backgroundButton
+                 
                 }
                 background{
                   data{
@@ -276,7 +271,7 @@ export const getPageWithComponents = async (language, id) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
   };
 
@@ -284,7 +279,7 @@ export const getPageWithComponents = async (language, id) => {
     const response = await ApiBackend.post("api/graphql", { query }, config);
     return response.data;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error("Error fetching data:", error);
     return null;
   }
 };
@@ -317,12 +312,12 @@ export const matalEducativo = async (lang) => {
         }
       }
     }
-  }`
+  }`;
 
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
   };
 
@@ -330,7 +325,7 @@ export const matalEducativo = async (lang) => {
     const response = await ApiBackend.post("api/graphql", { query }, config);
     return response.data;
   } catch (error) {
-    console.error('Error fetching data models:', error);
+    console.error("Error fetching data models:", error);
     return null;
   }
 };
@@ -379,7 +374,7 @@ export const getModelGQ = async (lang) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
   };
 
@@ -387,10 +382,10 @@ export const getModelGQ = async (lang) => {
     const response = await ApiBackend.post("api/graphql", { query }, config);
     return response.data;
   } catch (error) {
-    console.error('Error fetching data models:', error);
+    console.error("Error fetching data models:", error);
     return null;
   }
-}
+};
 
 export const getPagesGQ = async (language) => {
   const query = `
@@ -456,6 +451,15 @@ export const getPagesGQ = async (language) => {
                   }
                 }
               }
+
+              imgModelBasic{
+                data{
+                  attributes{
+                    url
+                  }
+                }
+              }
+              
               colorTitle{
                 colorTitle
               }
@@ -466,6 +470,14 @@ export const getPagesGQ = async (language) => {
                 label
                 url
                 backgroundButton
+                fileLabel{
+                	data{
+                    id
+                    attributes{
+                      url
+                    }
+                  }
+              }
               }
               background{
                 data{
@@ -498,6 +510,7 @@ export const getPagesGQ = async (language) => {
                   attributes{
                     TitleBlog
                     ContentBlog
+                    slug
                     imgBlog{
                       data{
                         attributes{
@@ -564,7 +577,7 @@ export const getPagesGQ = async (language) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
     },
   };
 
@@ -572,7 +585,7 @@ export const getPagesGQ = async (language) => {
     const response = await ApiBackend.post("api/graphql", { query }, config);
     return response.data;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error("Error fetching data:", error);
     return null;
   }
 };
