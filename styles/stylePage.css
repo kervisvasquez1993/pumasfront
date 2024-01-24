@@ -9,10 +9,11 @@ body {
     justify-content: center;
 }
 
-canvas{
+canvas {
     width: 500px;
     height: 500px;
 }
+
 .no-margin {
     margin: 0;
 }
@@ -107,8 +108,9 @@ img {
     }
 
 }
+
 @media(max-width: 1267px) {
-    
+
     .modelShowItem {
         display: flex;
         align-items: center;
@@ -191,15 +193,18 @@ img {
     .icons_text {
         padding: 0 !important;
     }
+
     .modelShowItem {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap-reverse;
     }
+
     .wrapperModel {
         display: none;
     }
+
     .santurarioSwipper .swiper-wrapper {
         height: 200px !important;
     }
@@ -219,10 +224,12 @@ img {
     .icons-container .icon-flex-2 {
         justify-content: flex-start !important;
     }
-    .conte{
+
+    .conte {
         width: 90vw;
     }
-    .conte1{
+
+    .conte1 {
         flex-direction: column;
     }
 }
@@ -404,30 +411,30 @@ img {
     .icon-flex-2 {
         width: 40%;
     }
+
     .imagen-icono-animal {
-        
+
         left: 17px;
         width: 80px;
         height: 80px;
-        
+
     }
-   
+
 }
+
 @media screen and (max-width: 500px) {
-    
+
     .imagen-icono-animal {
-        
+
         left: 17px !important;
         width: 70px !important;
         height: 70px !important;
-        
+
     }
-   
-}
-@media screen and (max-width: 768px) {
-   
 
 }
+
+@media screen and (max-width: 768px) {}
 
 @media screen and (max-width: 768px) {
 
@@ -468,38 +475,43 @@ img {
 
 }
 
-.dowloads-container .downloads{
+.dowloads-container .downloads {
     width: 30%;
     height: auto;
     padding: 20px;
 }
+
 @media (max-width: 992px) {
-    .dowloads-container .downloads{
+    .dowloads-container .downloads {
         width: 50%;
     }
-  }
+}
 
-  @media (max-width: 768px) {
-    .dowloads-container .downloads{
+@media (max-width: 768px) {
+    .dowloads-container .downloads {
         width: 80%;
     }
-  }
+}
+
 .materials__imagen {
-  width: 100%;
-  position: relative; /* Añade posición relativa para el seudoelemento ::before */
-  height: 300px;
+    width: 100%;
+    position: relative;
+    /* Añade posición relativa para el seudoelemento ::before */
+    height: 300px;
 }
 
 /* Estilo del fondo cuando el cursor está sobre la imagen */
 .dowloads-container .downloads:hover materials__imagen::before {
-  content: "kervis";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 1); /* Fondo blanco con opacidad */
-  z-index: 1000; /* Coloca el fondo detrás del contenido */
+    content: "kervis";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    /* Fondo blanco con opacidad */
+    z-index: 1000;
+    /* Coloca el fondo detrás del contenido */
 }
 
 .dowloads {
@@ -513,7 +525,8 @@ img {
         width: 4rem;
         margin: 1rem;
     }
-} 
+}
+
 @media screen and (max-width: 800px) {
     .grid-2 {
         display: flex;
@@ -727,7 +740,7 @@ footer {
 }
 
 .footer-block {
-    margin-right: 2rem;
+    margin-right: 1.5rem;
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -782,8 +795,7 @@ footer {
     font-family: 'Hanken Grotesk';
 }
 
-.fuentesParrafo h6,
-.fuentesParrafo p {
+.fuentesParrafo h6 {
     display: block;
     padding: 10px 0;
 }
@@ -795,18 +807,19 @@ footer {
     font-family: 'Hanken Grotesk';
 }
 
-.fuentesParrafo h5,
-.fuentesParrafo p {
+.fuentesParrafo h5 {
     display: block;
     padding: 10px 0;
 }
-.fuentesParrafo h4{
+
+.fuentesParrafo h4 {
     font-size: 30px;
     color: black;
     font-weight: bold;
     font-family: 'Chelsea Market', sans-serif;
 }
-.btnPrimary{
+
+.btnPrimary {
     z-index: 1;
 }
 
@@ -864,21 +877,25 @@ footer {
         padding: 1rem;
     }
 }
-.contentBlog h1{
+
+.contentBlog h1 {
     font-size: 1.5rem;
     font-weight: bold;
     padding-bottom: 0.5rem;
 }
-.contentBlog ul li{
-   list-style: inside;
+
+.contentBlog ul li {
+    list-style: inside;
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
 }
-.contentBlog  strong{
-    
+
+.contentBlog strong {
+
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-font-weight: bold;
+    font-weight: bold;
 }
+
 .imagen-icono-animal {
     position: absolute;
     bottom: 19px;
@@ -906,7 +923,17 @@ font-weight: bold;
     opacity: 0.4;
     font-style: italic;
 }
+
 .curvisa {
 
     font-style: italic;
+}
+
+.saltoLinea2 p {
+    margin-bottom: 1em;
+}
+
+.fuentesParrafo ul li strong {
+    font-family: sans-serif;
+    font-weight: bold;
 }

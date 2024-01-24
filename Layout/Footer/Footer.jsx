@@ -1,5 +1,6 @@
 import React from "react";
 import WhatsAppButton from "../../components/whatsapp";
+import ReactMarkdown from "react-markdown";
 
 const Footer = ({ items }) => {
   const footer = items?.map((item) => {
@@ -9,11 +10,11 @@ const Footer = ({ items }) => {
           {item?.TitleFooter}
         </h2>
         {item?.TitleFooter == "Dirección" ? (
-          <div className="py-5 manropeFont font-size-20 color-white">
+          <ReactMarkdown className="py-5 manropeFont font-size-20 color-white">
             {item?.contentFooter}
-          </div>
+          </ReactMarkdown>
         ) : (
-          <div className="py-5 color-white">{item?.contentFooter}</div>
+          <ReactMarkdown className="py-5 color-white">{item?.contentFooter}</ReactMarkdown>
         )}
       </div>
     );

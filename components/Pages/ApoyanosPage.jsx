@@ -154,10 +154,12 @@ const ApoyanosPage = ({ data }) => {
               title={""}
               classNameContent={"fuentesParrafo py-10"}
             >
-              <ReactMarkdown className="py-10">{sextoElemento.content}</ReactMarkdown>
-              <Link className={`backgroundPrimary m-0 px-10 manropeFont py-10 btnPrimary py-2  `} target="_blank"  href={`${sextoElemento?.btn?.fileLabel?.data?.attributes?.url}`}>
-                {sextoElemento?.btn?.label}
-              </Link>
+              <ReactMarkdown className="py-10 saltoLinea2">{sextoElemento.content}</ReactMarkdown>
+              
+
+
+
+
             </BasicSection>
           </section>
         </section>
