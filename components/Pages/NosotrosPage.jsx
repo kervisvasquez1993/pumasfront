@@ -85,12 +85,12 @@ const NosotrosPage = ({ data }) => {
               classNameContent={" font-min sm:py-10"}
             >
               <ReactMarkdown className="py-10 saltoLinea2">{elemento.content}</ReactMarkdown>
-              <ButtonView
+              {/* <ButtonView
                 className={" backgroundSecondary m-0 manropeFont p-5"}
                 link={`${lang}/${elemento?.btn?.url}`}
               >
                 {elemento?.btn?.label}
-              </ButtonView>
+              </ButtonView> */}
             </BasicSection>
 
             <BasicSection
