@@ -1,3 +1,4 @@
+import ReactMarkdown from "react-markdown";
 const SectionReverse = ({
   title,
   positionTitle,
@@ -28,7 +29,7 @@ const SectionReverse = ({
       <div className={`grid-2 ${textAlignClass}`}>
         <div className={`about-section_text ${contentClassName}`}>
           <h3 className={`${titleClassName} section-title`}>{title}</h3>
-          <p className="py-5 fuentesParrafo">{content}</p>
+          <ReactMarkdown className=" highlight py-5 fuentesParrafo react-mark-down">{content}</ReactMarkdown>
         </div>
         <div >
           <img src={imageSrc} alt="Imagen de la sección" />

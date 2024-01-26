@@ -79,6 +79,7 @@ const ProgramaPage = ({ data, material }) => {
             </div>
             <div className="edu_text">
               <ButtonView
+                blank={true}
                 className={"edu-button"}
                 link={`${lang}/${elemento?.btn?.url}`}
               >

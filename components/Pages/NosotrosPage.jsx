@@ -163,7 +163,7 @@ const NosotrosPage = ({ data }) => {
                   >
                     {elemento.imagenWithContentBasic[2]?.label}
                   </HeaderComponets>
-                  <ReactMarkdown className="py-5 saltoLinea2">{elemento?.imagenWithContentBasic[2]?.content}</ReactMarkdown>
+                  <ReactMarkdown className="py-5 saltoLinea2 highlight">{elemento?.imagenWithContentBasic[2]?.content}</ReactMarkdown>
                 </section>
               </section>
             </BasicSection>

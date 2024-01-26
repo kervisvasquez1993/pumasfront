@@ -367,7 +367,7 @@ const Contact = ({ whatsapp, footer }) => {
                 Nacional
               </option>
               <option value="Extrangero" className="w-full border p-2 rounded ">
-                Extrangero
+                Extranjero
               </option>
             </select>
           </div>

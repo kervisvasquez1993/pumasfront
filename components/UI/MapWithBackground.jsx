@@ -14,15 +14,19 @@ const MapWithBackground = ({ backgroundImage, children }) => {
     position: "absolute",
     top: 0,
     left: 0,
-    width: "2800px",
-    height: "2000px",
+    bottom: 0,
+    rigth : 0,
+    width: "1800px",
+    height: "1000px",
+ 
   };
 
   const backgroundStyle = {
     width: "100%",
     height: "100%",
     backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: "cover",
+    backgroundSize: "contain",
+    repeat: 'no-repeat',
     backgroundPosition: "top left", 
     display: "flex",
     flexWrap: "nowrap", 

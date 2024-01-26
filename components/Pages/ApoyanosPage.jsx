@@ -91,22 +91,22 @@ const ApoyanosPage = ({ data }) => {
                 classNameTitle={""}
                 classNameWrapper={"setionStyleTwo"}
                 title={""}
-                classNameContent={"fuentesParrafo py-10"}
+                classNameContent={"fuentesParrafo"}
               >
 
-                {
+                {/* {
                   quintoElmento?.imagenWithContentBasic?.map((element, index) => {
                     return (
                       <div className="header-apoyanos">
-                  {/* <img src="/images/amazon.png" alt="" /> */}
+                  { <img src="/images/amazon.png" alt="" /> }
                   <h3 className="colorVerde chelseaFont">{element.label}</h3>
                 </div>
                     )
                   })
-                }
+                } */}
                 
 
-                <ReactMarkdown className="py-10">{quintoElmento.content}</ReactMarkdown>
+                <ReactMarkdown className="pb-5">{quintoElmento.content}</ReactMarkdown>
                 {/* amazon */}
                 <div style={{display : "flex", flexWrap : "wrap"}}>
                 {

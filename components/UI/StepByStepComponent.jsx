@@ -219,7 +219,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                 
                 return (
                   <div className="lg:py-10 lg:my-10 p-5" key={index}>
-                    <figure className="p-10 m-10">
+                    <figure className="lg:p-1 p-1 m-10">
                       {elemento?.imagen?.data?.attributes?.url ? (
                         <img src={elemento.imagen.data.attributes.url} />
                       ) : (

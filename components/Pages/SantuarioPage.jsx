@@ -90,6 +90,7 @@ const SantuarioPage = ({ data }) => {
           >
             <ReactMarkdown className="py-10">{elemento.content}</ReactMarkdown>
             <ButtonView
+              blank={true}
               className={" backgroundSecondary m-0 manropeFont p-5"}
               link={`${lang}/${elemento?.btn?.url}`}
             >
