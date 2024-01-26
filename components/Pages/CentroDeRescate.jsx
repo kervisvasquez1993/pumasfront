@@ -15,12 +15,14 @@ import ReactMarkdown from "react-markdown";
 import useScreenSize from "../../hooks/useScreenSize";
 import Loader from "../UI/Loader";
 import { useRouter } from "next/router";
+import { obtenerFrase } from "../../lang/traducciones";
 
 const CentroDeRescate = ({ data }) => {
   const router = useRouter();
   const { slug, lang } = router.query
   const { componentDynamics } = data;
   const { screenSize } = useScreenSize()
+  const conoceMas = obtenerFrase(lang, "conoceMas");
   if (!componentDynamics) {
     return <Loader />;
   }
@@ -114,7 +116,7 @@ const CentroDeRescate = ({ data }) => {
               className={" backgroundSecondary m-0 manropeFont py-10"}
               link={`${lang}/${elemento?.btn?.url}`}
             >
-              Conoce Más
+              {conoceMas}
             </ButtonView>
           </BasicSection>
           <section className="centrar-elementob pt-5">

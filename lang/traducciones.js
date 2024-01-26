@@ -22,6 +22,7 @@ export const traducciones = {
     descripcionForm: "Descripción",
     requiereGuiaForm : "Requiere Guía",
     contactarForm : "Contactar",
+    conoceMas : "Conoce Más"
   },
   en: {
     paso1: "Step 1",
@@ -46,6 +47,7 @@ export const traducciones = {
     descripcionForm : "Description",
     requiereGuiaForm : "Require Guia",
     contactarForm : "Contact",
+    conoceMas : "Know more"
   },
 };
 
