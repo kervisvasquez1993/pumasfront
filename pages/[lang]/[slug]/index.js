@@ -43,6 +43,7 @@ const Page = ({
     loadedWhatsapp(whatsapp);
     updateMenuLoader(menus, lang);
   }, [lang]);
+  // console.log(materialEductivoSort, 'materialEductivoSort')
   useEffect(() => {
     updateData(page);
 
@@ -78,7 +79,7 @@ const Page = ({
         case "programas":
           return <ProgramaPage data={page} material={materialEductivoSort} />;
         case "programs":
-          return <ProgramaPage data={page} />;
+          return <ProgramaPage data={page} material={materialEductivoSort} />;
         case "apoyanos":
           return <ApoyanosPage data={page} />;
         case "support-us":
@@ -145,6 +146,8 @@ export const getStaticProps = async ({ params }) => {
       };
       materialEductivoSort.push(newItem);
     });
+
+    console.log(materialEducativodataResponse, 'materialEducativodataResponse')
     const updatePage = dataPages?.map((page) => {
       return {
         id: page.id,
