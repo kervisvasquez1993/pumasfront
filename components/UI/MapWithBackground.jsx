@@ -1,13 +1,12 @@
 import React from "react";
 import CanvasElement from "./CanvasElement"; 
 
-const MapWithBackground = ({ backgroundImage, children }) => {
+ const MapWithBackground = ({ backgroundImage, children }) => {
   const mapStyle = {
     position: "relative",
     maxWidth: "100vw",
     height: "95vh",
-    overflowX: "auto",
-    overflowY: "auto"
+    overflow: "auto",  // Habilita el desplazamiento
   };
 
   const backgroundContainerStyle = {
@@ -15,22 +14,20 @@ const MapWithBackground = ({ backgroundImage, children }) => {
     top: 0,
     left: 0,
     bottom: 0,
-    rigth : 0,
-    width: "1800px",
-    height: "1000px",
- 
+    right: 0,
+    width: "100%",
+    height: "100%",
   };
 
   const backgroundStyle = {
-    width: "100%",
-    height: "100%",
+    width: "1500px",  // Tamaño fijo para la imagen de fondo
+    height: "1500px", // Tamaño fijo para la imagen de fondo
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "contain",
-    repeat: 'no-repeat',
-    backgroundPosition: "top left", 
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "top left",
     display: "flex",
-    flexWrap: "nowrap", 
-    overflowX: "auto",
+    flexWrap: "nowrap",
   };
 
   const scrollableContentStyle = {
@@ -38,7 +35,7 @@ const MapWithBackground = ({ backgroundImage, children }) => {
     top: 0,
     left: 0,
     width: "100%",
-    zIndex: 2
+    zIndex: 2,
   };
 
   return (
@@ -49,7 +46,7 @@ const MapWithBackground = ({ backgroundImage, children }) => {
       <div style={scrollableContentStyle}>
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
-            const { x, y } = child.props; 
+            const { x, y } = child.props;
             return (
               <CanvasElement key={child.key} x={x} y={y} className="test">
                 {child}
@@ -63,4 +60,5 @@ const MapWithBackground = ({ backgroundImage, children }) => {
   );
 };
 
-export default MapWithBackground;
+
+export default MapWithBackground
