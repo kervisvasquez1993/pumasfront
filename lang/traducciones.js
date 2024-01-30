@@ -47,7 +47,7 @@ export const traducciones = {
     descripcionForm : "Description",
     requiereGuiaForm : "Require Guia",
     contactarForm : "Contact",
-    conoceMas : "Know more"
+    conoceMas : "LEARN MORE"
   },
 };
 
