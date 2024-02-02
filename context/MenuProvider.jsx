@@ -46,7 +46,7 @@ export const MenuProvider = ({ children }) => {
         // setMenuData(pruebaMenu);
         setLoading(false);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         setLoading(false);
       }
     })();

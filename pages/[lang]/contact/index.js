@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { obtenerFrase } from "../../../lang/traducciones";
 
 const Contact = ({ whatsapp, footer }) => {
-  console.log(whatsapp)
+  //console.log(whatsapp)
   const { query } = useRouter();
   const { loadedFooter, loadedWhatsapp } = useMenu();
   const { lang } = query;

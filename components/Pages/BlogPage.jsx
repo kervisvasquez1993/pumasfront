@@ -32,7 +32,7 @@ const BlogPage = ({ data, blogData }) => {
     const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {  
       
       if(elemento?.typeSection === "section2"){
-        console.log(elemento, "component")
+        //console.log(elemento, "component")
         const component = (<div className="container-program">
         <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
           {elemento?.title}

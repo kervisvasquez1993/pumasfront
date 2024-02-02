@@ -118,7 +118,7 @@ export const getStaticProps = async ({ params }) => {
     const materialEducativodataResponse = materialEductaivo?.data?.data;
     const materialEductivoSort = [];
     const menus = menusResponse.data.data;
-    // console.log(menus, "menus response");
+    // //console.log(menus, "menus response");
     const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo;
     const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
     const pages = pagesResponse?.data?.pages;

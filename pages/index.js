@@ -29,7 +29,7 @@ const Home = ({ result, code }) => {
     setLang(languageName);
 
     const urlRedirect = `/${languageName}/${defaultSlug}`;
-    console.log(urlRedirect, "Redirecting to");
+    //console.log(urlRedirect, "Redirecting to");
     router.push(urlRedirect);
 
   }, []);

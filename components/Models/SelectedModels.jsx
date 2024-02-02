@@ -30,7 +30,7 @@ const SelectedModels = ({ componentName, modelo, modelX = 0, modelY = 0, modelZ 
     setModel(modelo);
   }, [modelo]);
   let selectedComponent = null;
-  // console.log(modelX, modelY, modelZ)
+  // //console.log(modelX, modelY, modelZ)
   switch (componentName) {
     case "Puma":
       selectedComponent = <Puma />;

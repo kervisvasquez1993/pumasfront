@@ -29,7 +29,7 @@ export const LocaleProvider = ({ children }) => {
             }
         })();
     }, []);
-    console.log(langAllContext, "lang")
+    //console.log(langAllContext, "lang")
     return (
         <LocaleContext.Provider value={{ langAllContext, horario }}>
             {children}

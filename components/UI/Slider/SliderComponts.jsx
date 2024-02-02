@@ -13,7 +13,7 @@ export default function Slider({ srcBackgroundColor = "", data = {} }) {
   const router = useRouter();
   const { lang } = router.query
   const blogInfo = data.map((e, index) => {
-    console.log(e.attributes.slug, "index")
+    //console.log(e.attributes.slug, "index")
     const resumen = e.attributes.ContentBlog.substring(0, 150)
     return (<SwiperSlide key={index}>
       <CardComponentHover

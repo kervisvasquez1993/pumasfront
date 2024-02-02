@@ -9,7 +9,7 @@ import { useState } from "react";
 
 
 const Menu = ({ items }) => {
-  console.log(items , "items")
+  //console.log(items , "items")
   const { query } = useRouter();
   const { lang } = query;
   let url = null;

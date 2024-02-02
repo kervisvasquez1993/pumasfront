@@ -18,9 +18,11 @@ import PaypalForm from "../Section/PaypalForm";
 import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
 import { obtenerFrase } from "../../lang/traducciones";
+import Link from "next/link";
 
 
 const HomePage = ({ data }) => {
+  //console.log(data, "data")
   const router = useRouter();
   const { lang } = router.query
   const patrocinadores = obtenerFrase(lang, "patrocinadores");
@@ -154,12 +156,13 @@ const HomePage = ({ data }) => {
 
             <ReactMarkdown className="py-5">{quintoElemento?.content}</ReactMarkdown>
 
-            <ButtonView
-              className={" buttonGreen m-0 manropeFont p-5"}
-              link={lang + "/" + quintoElemento?.btn.url}
+            <Link
+              className={" buttonGreen m-0 manropeFont p-5 btnPrimary py-2"}
+              href={quintoElemento?.btn.fileLabel.data.attributes.url}
+              target="_blank"
             >
               {quintoElemento?.btn.label}
-            </ButtonView>
+            </Link>
           </BasicSection>
         </TwoColumnGrid>
         <HeaderComponets

@@ -4,13 +4,13 @@ import { getFooter, getMenus, langAll } from '../../apis/ApiBackend';
 import Loader from '../../components/UI/Loader';
 
 const Lang = ({ result, notFoundMessage }) => {
-    console.log(result, "result")
+    //console.log(result, "result")
     const router = useRouter();
     
     if (notFoundMessage) {
         return notFoundMessage
     }
-    console.log(result?.code)
+    //console.log(result?.code)
     let ruta;
     if (result?.attributes?.code === "es") {
         ruta = `/${result?.attributes?.code}/inicio`;
@@ -39,9 +39,9 @@ export default Lang;
 export const getStaticProps = async ({ params }) => {
     const { lang } = params;
     const getLangAll = await langAll();
-    console.log(getLangAll, "getLangAll")
+    //console.log(getLangAll, "getLangAll")
     const result = getLangAll.find(element => element.attributes.code === lang);
-    console.log(result, "result")
+    //console.log(result, "result")
     if (!result) {
         return {
             props: {

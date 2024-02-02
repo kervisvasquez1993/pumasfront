@@ -6,11 +6,11 @@ import ContactForm from '../../components/contact';
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND);
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  console.log(req.body.type)
+  //console.log(req.body.type)
   if (req.body.type === "Contacto") {
     try {
 
-      console.log(req.body)
+      //console.log(req.body)
       const data = await resend.emails.send({
         from: 'Acme <onboarding@resend.dev>',
         to: ['kervisvasquez24@gmail.com'],

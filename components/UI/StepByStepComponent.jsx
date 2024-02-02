@@ -76,7 +76,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
       setSelectedElements(updatedSelectedElements);
       setStep(3);
     } else {
-      console.log("Debe seleccionar al menos un elemento antes de continuar.");
+      //console.log("Debe seleccionar al menos un elemento antes de continuar.");
     }
   };
 
@@ -119,7 +119,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
       const data = await res.json();
       setDonationInfo(newElement);
       setFormData({ nombre: "", correo: "" });
-      console.log(data);
+      //console.log(data);
       setResponseSubmitForm(data.mensaje);
       setTimeout(() => {
         setResponseSubmitForm("");
