@@ -128,13 +128,13 @@ export const getStaticProps = async ({ params }) => {
     materialEducativodataResponse.forEach((item) => {
       const { title, description, subTitle } = item.attributes;
       const imgFile = {
-        name: item.attributes.imgFile.data.attributes.name,
-        url: item.attributes.imgFile.data.attributes.url,
+        name: item?.attributes?.imgFile?.data?.attributes?.name,
+        url: item?.attributes?.imgFile?.data?.attributes?.url,
       };
       const file = {
-        name: item.attributes.file.data.attributes.name,
-        url: item.attributes.file.data.attributes.url,
-      };
+        name: item?.attributes?.file?.data?.attributes?.name || "", 
+        url: item?.attributes?.file?.data?.attributes?.url || "", 
+          };
 
       const newItem = {
         id: item.id,
@@ -146,8 +146,7 @@ export const getStaticProps = async ({ params }) => {
       };
       materialEductivoSort.push(newItem);
     });
-
-    console.log(materialEducativodataResponse, 'materialEducativodataResponse')
+    console.log("hola")
     const updatePage = dataPages?.map((page) => {
       return {
         id: page.id,
