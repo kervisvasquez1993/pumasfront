@@ -158,7 +158,7 @@ const SantuarioPage = ({ data }) => {
   return (
     <Main titlePage={"Santuario"}>
       <section>
-        <MapWithBackground backgroundImage={"/images/mapa.jpg"}>
+        <MapWithBackground backgroundImage={"/images/mapa1.jpeg"}>
           {modeloList
             ?.slice() // Hacemos una copia del array para no modificar el original
             .sort((a, b) => a.id - b.id)
@@ -166,7 +166,7 @@ const SantuarioPage = ({ data }) => {
               const { ubicacionX, ubicacionY, srcModelo, id } = models;
               const x = parseInt(ubicacionX);
               const y = parseInt(ubicacionY);
-              const withModels = models.componente ? "100px" : "50px";
+              const withModels = models.componente ? "70px" : "40px";
               return (
                 <CanvasElement key={id} x={x} y={y} width={withModels}>
                   <img

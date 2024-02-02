@@ -22,7 +22,7 @@ const ProgramaPage = ({ data, material }) => {
   const { slug, lang } = router.query
   const { title, componentDynamics } = data;
 
-
+  console.log(material, 'material')
   const ComponentDynamicsRenderer = ({ componentDynamics }) => {
 
     const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {

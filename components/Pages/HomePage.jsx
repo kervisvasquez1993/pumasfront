@@ -110,7 +110,7 @@ const HomePage = ({ data }) => {
             styleContent={{ height: "100%" }}
           >
 
-            <ReactMarkdown className="sm:m-lg:py-10 md:py-55 m-responsive">{tercerElemento?.content}</ReactMarkdown>
+            <ReactMarkdown className="sm:m-lg:py-10 md:py-55 m-responsive highlight">{tercerElemento?.content}</ReactMarkdown>
             <ButtonView
               className={" backgroundGris m-0 mt-5 manropeFont py-10"}
               link={lang + "/" + tercerElemento?.btn.url}

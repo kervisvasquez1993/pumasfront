@@ -46,9 +46,9 @@ const Navbar = ({ items }) => {
   const horaCierre = convertirHora(cierre);
   const horaApertura = convertirHora(apertura);
   if (lang === "es") {
-    url = items?.data.find((e) => e.attributes.slug == "inicio");
+    url = items?.data?.find((e) => e.attributes.slug == "inicio");
   } else if (lang === "en") {
-    url = items?.data.find((e) => e.attributes.slug == "home");
+    url = items?.data?.find((e) => e.attributes.slug == "home");
   }
   const redirect = `/${url?.attributes?.locale}/${url?.attributes?.slug}`;
 
