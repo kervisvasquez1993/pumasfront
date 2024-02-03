@@ -18,9 +18,10 @@ const ProgramaPage = ({ data, material }) => {
   const { slug, lang } = router.query
   const [dynamicComponents, setDynamicComponents] = useState([]);
   const [materialEducativo, setMaterialEducativo] = useState([]);
+  const [isHovered, setIsHovered] = useState(false);
 
   const { title, componentDynamics } = data;
-
+  const materialSection = data.componentDynamics.find(elemento => elemento.typeSection == "section5" )
  
   useEffect(() => {
 
@@ -96,18 +97,7 @@ const ProgramaPage = ({ data, material }) => {
           return [...acc, component];
         }
   
-        if (elemento.typeSection === "section5") {
-          const component = (<div className="container-materials-edu">
-            <h3 className="materials-edu-title fuenteTitulo colorSecondary p-10">{elemento.title}</h3>
-            <div className="materials-edu_text fuentesParrafo px-10">
-              <ReactMarkdown>{elemento.content}</ReactMarkdown>
-            </div>
-            <div className="dowloads-container my-5">
-              {materialEducativo}
-            </div>
-          </div>)
-          return [...acc, component];
-        }
+
   
   
         return acc;
@@ -115,15 +105,12 @@ const ProgramaPage = ({ data, material }) => {
       setDynamicComponents(renderedComponents)
       
     };
-    ComponentDynamicsRenderer(data)
-  }, [lang, data])
-  
+   
 
-  useEffect(() => {
-
-    const fetchMaterialEducativo = () => {
+    // material educativo 
+    const fetchMaterialEducativo = (material) => {
       const materialData = material?.map((elemento, index) => {
-        const [isHovered, setIsHovered] = useState(false);
+        console.log(elemento, "elemento")
     
         const handleMouseEnter = () => {
           setIsHovered(true);
@@ -160,17 +147,27 @@ const ProgramaPage = ({ data, material }) => {
     
     }
 
-    fetchMaterialEducativo()
+    fetchMaterialEducativo(material)
+    ComponentDynamicsRenderer(data)
 
+  }, [lang, data])
   
 
-  }, [lang])
  
 
   return (
     <Main titlePage={title}>
       <div className="container">
-        {ComponentDynamicsRenderer(data)}
+        {dynamicComponents}
+        <div className="container-materials-edu">
+            <h3 className="materials-edu-title fuenteTitulo colorSecondary p-10">{materialSection.title}</h3>
+            <div className="materials-edu_text fuentesParrafo px-10">
+              <ReactMarkdown>{materialSection.content}</ReactMarkdown>
+            </div>
+            <div className="dowloads-container my-5">
+              {materialEducativo}
+            </div>
+          </div>
       </div>
     </Main>
 
