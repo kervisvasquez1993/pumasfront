@@ -22,7 +22,8 @@ export const traducciones = {
     descripcionForm: "Descripción",
     requiereGuiaForm : "Requiere Guía",
     contactarForm : "Contactar",
-    conoceMas : "Conoce Más"
+    conoceMas : "Conoce Más",
+    descargar : "Descargar",
   },
   en: {
     paso1: "Step 1",
@@ -47,7 +48,8 @@ export const traducciones = {
     descripcionForm : "Description",
     requiereGuiaForm : "Require Guia",
     contactarForm : "Contact",
-    conoceMas : "LEARN MORE"
+    conoceMas : "LEARN MORE",
+    descargar : "Download"
   },
 };
 
