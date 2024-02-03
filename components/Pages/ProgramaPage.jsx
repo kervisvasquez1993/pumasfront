@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Main from "../../Layout/Main/Main";
 import usePages from "../../hooks/usePages";
 import BasicSectionFull from "../Section/Basic/BasicSectionFull";
@@ -21,8 +21,7 @@ const ProgramaPage = ({ data, material }) => {
   const router = useRouter();
   const { slug, lang } = router.query
   const { title, componentDynamics } = data;
-
-  console.log(material, 'material')
+ 
   const ComponentDynamicsRenderer = ({ componentDynamics }) => {
 
     const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {
@@ -83,6 +82,7 @@ const ProgramaPage = ({ data, material }) => {
                 className={"edu-button"}
                 link={`${lang}/${elemento?.btn?.url}`}
               >
+                {/* TODO */}
                 Reserva tu recorrido
               </ButtonView>
             </div>
@@ -137,7 +137,7 @@ const ProgramaPage = ({ data, material }) => {
             alt="imagen santuario"
           />
           {isHovered && (
-            <Link className="download-button" href={elemento?.file?.url} target="_blank">Descargar</Link>
+            <Link className="download-button" href={(elemento?.file?.url)? elemento?.file?.url : `${elemento?.urlExterna}`} target="_blank">{(elemento?.file?.url)? "Descargar" : `Ver`}</Link>
           )}
         </div>
         <div className="wrapperTitleCard">

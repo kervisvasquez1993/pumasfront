@@ -293,6 +293,7 @@ export const matalEducativo = async (lang) => {
           title
           description
           subTitle
+          urlExterna
           file{
             data{
               attributes{

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Main from "../../Layout/Main/Main";
 import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
 import SliderTwo from "../UI/Slider/SliderTwo";
@@ -26,6 +26,20 @@ const HomePage = ({ data }) => {
   const router = useRouter();
   const { lang } = router.query
   const patrocinadores = obtenerFrase(lang, "patrocinadores");
+  useEffect(() => {
+  
+    const targetId = window.location.hash.substring(1);
+    console.log(targetId);
+    if (targetId) {
+      // Encuentra el elemento con el ID deseado
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        // Realiza el scroll al elemento
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
   const { componentDynamics, banner } = data
   const [primerElement, segundoElemento, tercerElemento, cuartoElemento, quintoElemento, sextoElemento, septiomoElemento, octavoElemento] = componentDynamics
   
@@ -139,7 +153,7 @@ const HomePage = ({ data }) => {
             title={quintoElemento?.title}
             subtitle={quintoElemento?.subTitle}
           />
-
+    
           <BasicSection
             classNameTitle={""}
             classNameWrapper={"setionStyle"}
@@ -153,16 +167,18 @@ const HomePage = ({ data }) => {
             styleWrapper={{ height: "100%" }}
           // styleContent={{height: "100%"}}
           >
-
+            <span id="material"></span>
             <ReactMarkdown className="py-5">{quintoElemento?.content}</ReactMarkdown>
-
+            
             <Link
               className={" buttonGreen m-0 manropeFont p-5 btnPrimary py-2"}
               href={quintoElemento?.btn.fileLabel.data.attributes.url}
               target="_blank"
+              
             >
               {quintoElemento?.btn.label}
             </Link>
+            
           </BasicSection>
         </TwoColumnGrid>
         <HeaderComponets

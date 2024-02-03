@@ -143,6 +143,7 @@ export const getStaticProps = async ({ params }) => {
         subTitle,
         imgFile,
         file,
+        urlExterna : item?.attributes?.urlExterna || ""
       };
       materialEductivoSort.push(newItem);
     });
