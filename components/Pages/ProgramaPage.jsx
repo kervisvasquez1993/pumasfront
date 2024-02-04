@@ -12,24 +12,26 @@ import ButtonView from "../../views/ButtonView";
 import { useRouter } from "next/router";
 import SliderThree from "../UI/Slider/SliderThree";
 import { obtenerFrase } from "../../lang/traducciones";
+import { useLayoutEffect } from "react";
 
 const ProgramaPage = ({ data, material }) => {
   const router = useRouter();
-  const { slug, lang } = router.query
+  const {  lang } = router.query
   const [dynamicComponents, setDynamicComponents] = useState([]);
   const [materialEducativo, setMaterialEducativo] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
-
+  const descarga = obtenerFrase(lang,"descargar")
+  const ver = obtenerFrase(lang , "ver")
   const { title, componentDynamics } = data;
   const materialSection = data.componentDynamics.find(elemento => elemento.typeSection == "section5" )
- 
-  useEffect(() => {
+  
+  useLayoutEffect(() => {
 
     const ComponentDynamicsRenderer = ({ componentDynamics }) => {
 
-      const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {
+      const renderedComponents = componentDynamics.reduce((acc, elemento,  ) => {
         if (elemento?.typeSection === "section2") {
-          const imgSlider = elemento?.imagenWithContentBasic?.map(item => {
+          const imgSlider = elemento?.imagenWithContentBasic?.map((item, index) => {
   
             return {
               url: `${item?.img?.data[0]?.attributes.url}`
@@ -110,8 +112,7 @@ const ProgramaPage = ({ data, material }) => {
     // material educativo 
     const fetchMaterialEducativo = (material) => {
       const materialData = material?.map((elemento, index) => {
-        console.log(elemento, "elemento")
-    
+           
         const handleMouseEnter = () => {
           setIsHovered(true);
         };
@@ -131,9 +132,9 @@ const ProgramaPage = ({ data, material }) => {
                 src={elemento?.imgFile?.url}
                 alt="imagen santuario"
               />
-              {isHovered && (
-                <Link className="download-button" href={(elemento?.file?.url)? elemento?.file?.url : `${elemento?.urlExterna}`} target="_blank">{(elemento?.file?.url)? "descargar" : `Ver`}</Link>
-              )}
+             
+                <Link className="download-button" href={(elemento?.file?.url)? elemento?.file?.url : `${elemento?.urlExterna}`} target="_blank">{(elemento?.file?.url)? descarga : ver}</Link>
+            
             </div>
             <div className="wrapperTitleCard">
               <h2 className="materials_text2 manropeFont colorSecondary font-bold">
@@ -150,7 +151,7 @@ const ProgramaPage = ({ data, material }) => {
     fetchMaterialEducativo(material)
     ComponentDynamicsRenderer(data)
 
-  }, [lang, data])
+  }, [lang, data, material])
   
 
  
