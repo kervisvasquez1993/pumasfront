@@ -13,23 +13,25 @@ const ApoyanosPage = ({ data }) => {
   const { slug, lang } = router.query
   const { screenSize } = useScreenSize()
   const { componentDynamics } = data;
-  const [firstElement, secondElement, threeElement, fourElement, quintoElmento, sextoElemento] = componentDynamics
-  const imagenes = sextoElemento?.imagenWithContentBasic.map(elemento => {
+  const secction1 = componentDynamics.find(element => element.typeSection == "section1")
+  const secction2 = componentDynamics.find(element => element.typeSection == "section2")
+  const section3 = componentDynamics.find(element => element.typeSection == "section3")
+  const section4 = componentDynamics.find(element => element.typeSection == "section4")
+  const imagenes = section4?.imagenWithContentBasic.map(elemento => {
     return elemento.img?.data[0]?.attributes.url
 
   })
-  const elementDonar = threeElement.imagenWithContentBasic?.map((element, index) => {
+  const elementDonar = secction2?.imagenWithContentBasic?.map((element, index) => {
     return (<section key={index}>
       <h3 className="colorSecondary chelseaFont">
-        {element.label}
+        {element?.label}
       </h3>
 
       <section>
-        <ReactMarkdown>{element.content}</ReactMarkdown>
+        <ReactMarkdown>{element?.content}</ReactMarkdown>
       </section>
     </section>)
   })
-
   return (
     <Main titlePage={data.title}>
       <div className="container">
@@ -42,7 +44,7 @@ const ApoyanosPage = ({ data }) => {
                 classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 font-responsive"}
                 alignment={`${screenSize <= 1024 ? "center" : "start"}`}
               >
-                {secondElement.title}
+                {secction1.title}
               </HeaderComponets>
               <BasicSection
                 classNameTitle={""}
@@ -51,13 +53,13 @@ const ApoyanosPage = ({ data }) => {
                 alignItems="center"
                 classNameContent={"fuentesParrafo px-10 mx-10 saltoLinea2"}
               >
-                <ReactMarkdown className="py-10">{secondElement?.content}</ReactMarkdown>
+                <ReactMarkdown className="py-10">{secction1?.content}</ReactMarkdown>
                 <ButtonView
                   blank={true}
                   className={" backgroundPrimary m-0 manropeFont p-5"}
-                  link={`${lang}/${secondElement?.btn?.url}`}
+                  link={`${lang}/${secction1?.btn?.url}`}
                 >
-                  {secondElement.btn.label}
+                  {secction1?.btn?.label}
                 </ButtonView>
               </BasicSection>
             </section>
@@ -67,7 +69,7 @@ const ApoyanosPage = ({ data }) => {
                 classNameText={"font-responsive colorSecondary chelseaFont pt-10 mt-10 "}
                 alignment={`${screenSize <= 1024 ? "center" : "center"}`}
               >
-                {threeElement.title}
+                {secction2?.title}
               </HeaderComponets>
               <section className="grid-2 px-5 saltoLinea2">
                 {elementDonar}
@@ -83,7 +85,7 @@ const ApoyanosPage = ({ data }) => {
             classNameSection={"py-5 my-5"}
             alignment={`${screenSize <= 1024 ? "center" : "start"}`}
           >
-            {sextoElemento.title}
+            {section3?.title}
           </HeaderComponets>
           <section className={`${screenSize >= 1024 ? "grid-2" : ""}`}>
             <section>
@@ -94,30 +96,20 @@ const ApoyanosPage = ({ data }) => {
                 classNameContent={"fuentesParrafo"}
               >
 
-                {/* {
-                  quintoElmento?.imagenWithContentBasic?.map((element, index) => {
-                    return (
-                      <div className="header-apoyanos">
-                  { <img src="/images/amazon.png" alt="" /> }
-                  <h3 className="colorVerde chelseaFont">{element.label}</h3>
-                </div>
-                    )
-                  })
-                } */}
                 
 
-                <ReactMarkdown className="pb-5">{quintoElmento.content}</ReactMarkdown>
+                <ReactMarkdown className="pb-5">{section3?.content}</ReactMarkdown>
                 {/* amazon */}
                 <div style={{display : "flex", flexWrap : "wrap"}}>
                 {
-                  quintoElmento?.imagenWithContentBasic?.map((element, index) => {
+                  section3?.imagenWithContentBasic?.map((element, index) => {
                     return (
                     <Link
                       className={" backgroundVerde m-2 manropeFont p-5 btnPrimary py-2 "}
-                      href={element.url}
+                      href={element?.url}
                       target="_blank"
                     >
-                      {element.label}
+                      {element?.label}
                     </Link>
                     )
                   })
@@ -135,7 +127,7 @@ const ApoyanosPage = ({ data }) => {
             classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 font-responsive"}
             alignment={`${screenSize <= 1024 ? "center" : "start"}`}
           >
-            {secondElement.title}
+            {section4.title}
           </HeaderComponets>
           <section className="grid-2 lg:px-10 mx-10">
             <SliderThree>
@@ -154,7 +146,7 @@ const ApoyanosPage = ({ data }) => {
               title={""}
               classNameContent={"fuentesParrafo py-10"}
             >
-              <ReactMarkdown className="py-10 saltoLinea2">{sextoElemento.content}</ReactMarkdown>
+              <ReactMarkdown className="py-10 saltoLinea2">{section4?.content}</ReactMarkdown>
               
 
 

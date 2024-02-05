@@ -1,5 +1,5 @@
 // SantuarioPage.js
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { useRouter } from "next/router";
 import ReactMarkdown from "react-markdown";
 import { Tooltip } from 'react-tooltip'
@@ -23,7 +23,8 @@ import Loader from "../UI/Loader";
 const SantuarioPage = ({ data }) => {
   const router = useRouter();
   const { slug, lang } = router.query
-  const { componentDynamics } = data;
+  const [dynamicComponents, setDynamicComponents] = useState([]);
+  const { componentDynamics, title } = data;
   const { modeloList } = useModelo();
   const { screenSize } = useScreenSize()
 
@@ -42,121 +43,128 @@ const SantuarioPage = ({ data }) => {
     setStateModal(null);
     setOpenModal(false);
   };
+  if (!componentDynamics) {
+    return <Loader />;
+  }
+ 
+  useLayoutEffect(() => {
+    const ComponentDynamicsRenderer = ({ componentDynamics }) => {
 
-  const ComponentDynamicsRenderer = ({ componentDynamics }) => {
-
-    const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {
-
-      if (elemento?.nameComponent === "titleBasic") {
-        const component = (<HeaderComponets
-          src="/images/fondo1.png"
-          classNameText={"font-responsive colorPrimary chelseaFont pt-10 mt-10 "}
-          alignment={`${screenSize <= 1024 ? "center" : "start"}`}
-        >
-          {elemento.Titulo}
-        </HeaderComponets>)
-        return [...acc, component];
-      }
-      if (elemento?.typeSlider === "slider_img_destacada") {
-        const imgSlider = elemento?.imagenes?.data.map(img => {
-          return {
-            url: `${img?.attributes?.url}`
-          }
-        })
-
-        const component = (<section className="container-section lg:p-10 lg:m-5"><SlidetWithContent images={imgSlider} content={elemento.Content} title={elemento.title} /></section>)
-        return [...acc, component];
-      }
-      if (elemento?.typeSection === "section3") {
-
-        const component = (<TwoColumnGrid backgroundImage={elemento.background?.data?.attributes.url}>
-          <HeaderComponets
-            alignment="center"
+      const renderedComponents = componentDynamics.reduce((acc, elemento, index) => {
+  
+        if (elemento?.nameComponent === "titleBasic") {
+          const component = (<HeaderComponets
             src="/images/fondo1.png"
-            classNameText={"font-responsive colorSecondary chelseaFont lg:px-10 mx-10"}
-            classNameSection={"centerElement"}
+            classNameText={"font-responsive colorPrimary chelseaFont pt-10 mt-10 "}
+            alignment={`${screenSize <= 1024 ? "center" : "start"}`}
           >
-            {elemento.title}
-          </HeaderComponets>
-          <BasicSection
-            classNameTitle={""}
-            classNameWrapper={"setionStyleTwo"}
-            title={""}
-            alignItems={"center"}
-            justifyContent={"center"}
-            width={`${screenSize <= 1024 ? "100%" : "75%"}`}
-            classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-5 lg:p-10 lg:m-10`}
-
-          >
-            <ReactMarkdown className="py-10">{elemento.content}</ReactMarkdown>
-            <ButtonView
-              blank={true}
-              className={" backgroundSecondary m-0 manropeFont p-5"}
-              link={`${lang}/${elemento?.btn?.url}`}
-            >
-              {elemento?.btn?.label}
-            </ButtonView>
-          </BasicSection>
-        </TwoColumnGrid>
-        )
-        return [...acc, component];
-      }
-      if (elemento?.typeSection === "section7") {
-        const component = (<>
-          <HeaderComponets
-            alignment="center"
-            src="/images/fondo1.png"
-            classNameText={"program-title fuenteTitulo colorVerde p-10 m-10 font-responsive"}
-            classNameSection={"centerElement"}
-          >
-            {elemento.title}
-
-          </HeaderComponets>
-          <BasicSection
-            classNameTitle={""}
-            classNameWrapper={"setionStyleTwo"}
-            title={""}
-            alignItems={"center"}
-            justifyContent={"center"}
-            width={`${screenSize <= 1024 ? "100%" : "40%"}`}
-            classNameContent={
-              "fuentesParrafo align-vertical-center-horizontal-start px-10 mx-10"
+            {elemento.Titulo}
+          </HeaderComponets>)
+          return [...acc, component];
+        }
+        if (elemento?.typeSlider === "slider_img_destacada") {
+          const imgSlider = elemento?.imagenes?.data.map(img => {
+            return {
+              url: `${img?.attributes?.url}`
             }
-          >
-            <ReactMarkdown className="py-10">{elemento?.content}</ReactMarkdown>
-          </BasicSection>
-          <div className="container-sant ">
-
-          <div className="icons-container sm:py-10 sm:my-10">
-            {elemento.imagenWithContentBasic.map((element, index) => {
-              return (
-                <div className="icon-flex-2" key={index}>
-                  <div className="icons__imagen">
-                    {element.img?.data[0]?.attributes?.url && (
-                      <img
-                        src={element.img.data[0].attributes.url}
-                        alt="imagen santuario"
-                      />
-                    )}
-                  </div>
-                  <div className="icons_text">
-                    <ReactMarkdown className="fuentesParrafo p-5">
-                      {element.content}
-                    </ReactMarkdown>
-                  </div>
-                </div>)
-            })}
+          })
+  
+          const component = (<section className="container-section lg:p-10 lg:m-5"><SlidetWithContent images={imgSlider} content={elemento.Content} title={elemento.title} /></section>)
+          return [...acc, component];
+        }
+        if (elemento?.typeSection === "section3") {
+  
+          const component = (<TwoColumnGrid backgroundImage={elemento.background?.data?.attributes.url}>
+            <HeaderComponets
+              alignment="center"
+              src="/images/fondo1.png"
+              classNameText={"font-responsive colorSecondary chelseaFont lg:px-10 mx-10"}
+              classNameSection={"centerElement"}
+            >
+              {elemento.title}
+            </HeaderComponets>
+            <BasicSection
+              classNameTitle={""}
+              classNameWrapper={"setionStyleTwo"}
+              title={""}
+              alignItems={"center"}
+              justifyContent={"center"}
+              width={`${screenSize <= 1024 ? "100%" : "75%"}`}
+              classNameContent={`${screenSize <= 1024 ? "align-vertical-center-horizontal-center" : "align-vertical-center-horizontal-start"} fuentesParrafo  p-5 lg:p-10 lg:m-10`}
+  
+            >
+              <ReactMarkdown className="py-10">{elemento.content}</ReactMarkdown>
+              <ButtonView
+                blank={true}
+                className={" backgroundSecondary m-0 manropeFont p-5"}
+                link={`${lang}/${elemento?.btn?.url}`}
+              >
+                {elemento?.btn?.label}
+              </ButtonView>
+            </BasicSection>
+          </TwoColumnGrid>
+          )
+          return [...acc, component];
+        }
+        if (elemento?.typeSection === "section7") {
+          const component = (<>
+            <HeaderComponets
+              alignment="center"
+              src="/images/fondo1.png"
+              classNameText={"program-title fuenteTitulo colorVerde p-10 m-10 font-responsive"}
+              classNameSection={"centerElement"}
+            >
+              {elemento.title}
+  
+            </HeaderComponets>
+            <BasicSection
+              classNameTitle={""}
+              classNameWrapper={"setionStyleTwo"}
+              title={""}
+              alignItems={"center"}
+              justifyContent={"center"}
+              width={`${screenSize <= 1024 ? "100%" : "40%"}`}
+              classNameContent={
+                "fuentesParrafo align-vertical-center-horizontal-start px-10 mx-10"
+              }
+            >
+              <ReactMarkdown className="py-10">{elemento?.content}</ReactMarkdown>
+            </BasicSection>
+            <div className="container-sant ">
+  
+            <div className="icons-container sm:py-10 sm:my-10">
+              {elemento.imagenWithContentBasic.map((element, index) => {
+                return (
+                  <div className="icon-flex-2" key={index}>
+                    <div className="icons__imagen">
+                      {element.img?.data[0]?.attributes?.url && (
+                        <img
+                          src={element.img.data[0].attributes.url}
+                          alt="imagen santuario"
+                        />
+                      )}
+                    </div>
+                    <div className="icons_text">
+                      <ReactMarkdown className="fuentesParrafo p-5">
+                        {element.content}
+                      </ReactMarkdown>
+                    </div>
+                  </div>)
+              })}
+            </div>
           </div>
-        </div>
-          </>)
-        return [...acc, component];
-      }
-      return acc;
-    }, []);
-    return <div>{renderedComponents}</div>;
-  };
+            </>)
+          return [...acc, component];
+        }
+        return acc;
+      }, []);
+      setDynamicComponents(renderedComponents)
+    };
+    ComponentDynamicsRenderer(data)
+  }, [data, lang])
+  
   return (
-    <Main titlePage={"Santuario"}>
+    <Main titlePage={title}>
       <section>
         <MapWithBackground backgroundImage={"/images/mapa1.jpeg"}>
           {modeloList
@@ -196,7 +204,7 @@ const SantuarioPage = ({ data }) => {
             </p>
           }
         />
-        {ComponentDynamicsRenderer(data)}
+        {dynamicComponents}
       </div>
     </Main>
   );

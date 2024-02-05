@@ -26,9 +26,7 @@ const ProgramaPage = ({ data, material }) => {
   const materialSection = data.componentDynamics.find(elemento => elemento.typeSection == "section5" )
   
   useLayoutEffect(() => {
-
     const ComponentDynamicsRenderer = ({ componentDynamics }) => {
-
       const renderedComponents = componentDynamics.reduce((acc, elemento,  ) => {
         if (elemento?.typeSection === "section2") {
           const imgSlider = elemento?.imagenWithContentBasic?.map((item, index) => {
@@ -105,11 +103,9 @@ const ProgramaPage = ({ data, material }) => {
         return acc;
       }, []);
       setDynamicComponents(renderedComponents)
-      
     };
    
 
-    // material educativo 
     const fetchMaterialEducativo = (material) => {
       const materialData = material?.map((elemento, index) => {
            
