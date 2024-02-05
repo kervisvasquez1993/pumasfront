@@ -4,6 +4,7 @@ import Main from "../../../Layout/Main/Main";
 import BasicSection from "../../../components/Section/Basic/BasicSection";
 import {
   getAllDonations,
+  getDonationInfo,
   getFooter,
   getTypeDonations,
   getWhatsapp,
@@ -17,17 +18,25 @@ import SliderTwo from "../../../components/UI/Slider/SliderTwo";
 import useScreenSize from "../../../hooks/useScreenSize";
 import useMenu from "../../../hooks/useMenu";
 import { obtenerFrase } from "../../../lang/traducciones";
+import ReactMarkdown from "react-markdown";
 
-const Donations = ({ typeDonationSchemes, result, whatsapp, footer }) => {
+const Donations = ({
+  typeDonationSchemes,
+  result,
+  whatsapp,
+  footer,
+  donationInfo,
+}) => {
+  console.log(donationInfo[0].attributes, "donationInfo");
   const [isInitialRender, setisInitialRender] = useState(true);
   const { screenSize } = useScreenSize();
   const [filter, setFilter] = useState("");
   const { query } = useRouter();
   const { loadedFooter, loadedWhatsapp } = useMenu();
-  const { lang } = query
+  const { lang } = query;
   useEffect(() => {
-    loadedFooter(footer)
-  loadedWhatsapp(whatsapp)
+    loadedFooter(footer);
+    loadedWhatsapp(whatsapp);
   }, [lang]);
   const donations = obtenerFrase(query.lang, "patrocinadores");
   useEffect(() => {
@@ -47,6 +56,17 @@ const Donations = ({ typeDonationSchemes, result, whatsapp, footer }) => {
   };
   return (
     <Main titlePage={"Donación"}>
+      <div className="container-program">
+        <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
+          {donationInfo[0]?.attributes?.title}
+        </h3>
+        <div className="grid-2 px-5">
+          <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2">
+            <ReactMarkdown>{donationInfo[0]?.attributes?.description}</ReactMarkdown>
+          </div>
+        </div>
+      </div>
+
       <div className="container">
         <TwoColumnGrid>
           <BasicSection
@@ -84,18 +104,26 @@ export async function getStaticProps(context) {
   const lang = params.lang;
   const parametros = query?.params;
   let isLoading = true;
-  const [donationsResponse, typeDonationsResponse, whatsappResponse,footerResponse] =
-    await Promise.all([
-      getAllDonations(lang),
-      getTypeDonations(lang),
-      getWhatsapp(lang),
-      getFooter(lang)
-    ]);
+  const [
+    donationsResponse,
+    typeDonationsResponse,
+    whatsappResponse,
+    footerResponse,
+    donationInfoResponse,
+  ] = await Promise.all([
+    getAllDonations(lang),
+    getTypeDonations(lang),
+    getWhatsapp(lang),
+    getFooter(lang),
+    getDonationInfo(lang),
+  ]);
 
   const donations = donationsResponse.data.data;
   const typeDonations = typeDonationsResponse.data.data;
   const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
-  const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo
+  const donationInfo = donationInfoResponse?.data?.data;
+  const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo;
+
   const result = donations.map((element) => ({
     id: element.id,
     monto: element.attributes.monto,
@@ -127,7 +155,8 @@ export async function getStaticProps(context) {
       result,
       isLoading,
       whatsapp,
-      footer
+      footer,
+      donationInfo,
     },
   };
 }

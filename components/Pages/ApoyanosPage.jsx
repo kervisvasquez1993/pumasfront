@@ -19,7 +19,6 @@ const ApoyanosPage = ({ data }) => {
   const section4 = componentDynamics.find(element => element.typeSection == "section4")
   const imagenes = section4?.imagenWithContentBasic.map(elemento => {
     return elemento.img?.data[0]?.attributes.url
-
   })
   const elementDonar = secction2?.imagenWithContentBasic?.map((element, index) => {
     return (<section key={index}>

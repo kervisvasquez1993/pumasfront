@@ -145,6 +145,16 @@ export const getTypeDonations = (lang) => {
 
   return ApiBackend("api/tipo-de-donacions?populate=*&locale=" + lang, config);
 };
+export const getDonationInfo = (lang) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+    },
+  };
+
+  return ApiBackend("api/donation-infos?&locale=" + lang, config);
+};
 
 export const getPageWithComponents = async (language, id) => {
   const query = `
