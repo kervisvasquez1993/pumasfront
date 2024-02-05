@@ -41,9 +41,16 @@ const HomePage = ({ data }) => {
     }
   }, []);
   const { componentDynamics, banner } = data
-  const [primerElement, segundoElemento, tercerElemento, cuartoElemento, quintoElemento, sextoElemento, septiomoElemento, octavoElemento] = componentDynamics
-  
-  const horarios = octavoElemento?.imagenWithContentBasic?.map((element, index) => {
+  const section1 = componentDynamics.find(element => element.typeSection == "section1")
+  const section2 = componentDynamics.find(element => element.typeSection == "section2")
+  const section3= componentDynamics.find(element => element.typeSection == "section3")
+  const section4= componentDynamics.find(element => element.typeSection == "section4")
+  const blogs= componentDynamics.find(element => element.blogs != undefined)
+  const titles = componentDynamics.filter(element => element.nameComponent == "titleBasic")
+  console.log(blogs, "blogs")
+  console.log(componentDynamics, "componentDynamics")
+  // console.log(quintoElemento, "quintoElemento")
+  const horarios = section4?.imagenWithContentBasic?.map((element, index) => {
     return (<section className="py-5" key={index}>
       <h4 className="chelseaFont colorSecondary font-size-24">{element?.label}</h4>
       <div>
@@ -64,16 +71,16 @@ const HomePage = ({ data }) => {
           alignment={`${screenSize <= 900 ? "center" : "start"}`}
           width={`${screenSize <= 900 ? "100%" : "70%"}`}
         >
-          {primerElement?.Titulo}
+          {titles[0]?.Titulo}
         </HeaderComponets>
         <TwoColumnGrid>
           <CardBasic
             showMask={true}
             maskSrc={"/images/mask.png"}
-            iconSrc={segundoElemento?.imgModelBasic?.data?.attributes?.url}
-            imgSrc={segundoElemento?.imgBasicContent?.data?.attributes?.url}
-            title={segundoElemento?.title}
-            subtitle={segundoElemento?.subTitle}
+            iconSrc={section1?.imgModelBasic?.data?.attributes?.url}
+            imgSrc={section1?.imgBasicContent?.data?.attributes?.url}
+            title={section1?.title}
+            subtitle={section1?.subTitle}
           />
         
           <BasicSection
@@ -90,12 +97,12 @@ const HomePage = ({ data }) => {
           // styleContent={{height: "100%"}}
           >
 
-            <ReactMarkdown className="py-5">{segundoElemento?.content}</ReactMarkdown>
+            <ReactMarkdown className="py-5">{section1?.content}</ReactMarkdown>
             <ButtonView
               className={" backgroundPrimary m-0 manropeFont p-5"}
-              link={lang + "/" + segundoElemento?.btn.url}
+              link={lang + "/" + section1?.btn.url}
             >
-              {segundoElemento?.btn.label}
+              {section1?.btn.label}
             </ButtonView>
           </BasicSection>
         </TwoColumnGrid>
@@ -105,7 +112,7 @@ const HomePage = ({ data }) => {
           alignment="end"
           width="100%"
         >
-          {tercerElemento?.title}
+          {section2?.title}
         </HeaderComponets>
         <TwoColumnGrid backgroundImage="/images/mask-background.png">
           <BasicSection
@@ -124,16 +131,16 @@ const HomePage = ({ data }) => {
             styleContent={{ height: "100%" }}
           >
 
-            <ReactMarkdown className="sm:m-lg:py-10 md:py-55 m-responsive highlight">{tercerElemento?.content}</ReactMarkdown>
+            <ReactMarkdown className="sm:m-lg:py-10 md:py-55 m-responsive highlight">{section2?.content}</ReactMarkdown>
             <ButtonView
               className={" backgroundGris m-0 mt-5 manropeFont py-10"}
-              link={lang + "/" + tercerElemento?.btn.url}
+              link={lang + "/" + section2?.btn.url}
             >
-              {tercerElemento?.btn.label}
+              {section2?.btn.label}
             </ButtonView>
           </BasicSection>
 
-          <CardBasic imgSrc={tercerElemento?.imgBasicContent?.data?.attributes.url} />
+          <CardBasic imgSrc={section2?.imgBasicContent?.data?.attributes.url} />
         </TwoColumnGrid>
 
 
@@ -142,16 +149,16 @@ const HomePage = ({ data }) => {
           alignment={`${screenSize <= 1200 ? "center" : "start"}`}
           width={`${screenSize <= 1200 ? "100%" : "40%"}`}
         >
-          {cuartoElemento?.Titulo}
+          {titles[1]?.Titulo}
         </HeaderComponets>
         <TwoColumnGrid>
           <CardBasic
             showMask={true}
             maskSrc={"/images/mask.png"}
-            iconSrc={quintoElemento?.imgModelBasic?.data?.attributes?.url}
-            imgSrc={quintoElemento?.imgBasicContent.data.attributes.url}
-            title={quintoElemento?.title}
-            subtitle={quintoElemento?.subTitle}
+            iconSrc={section3?.imgModelBasic?.data?.attributes?.url}
+            imgSrc={section3?.imgBasicContent.data.attributes.url}
+            title={section3?.title}
+            subtitle={section3?.subTitle}
           />
     
           <BasicSection
@@ -168,15 +175,15 @@ const HomePage = ({ data }) => {
           // styleContent={{height: "100%"}}
           >
             <span id="material"></span>
-            <ReactMarkdown className="py-5">{quintoElemento?.content}</ReactMarkdown>
+            <ReactMarkdown className="py-5">{section3?.content}</ReactMarkdown>
             
             <Link
               className={" buttonGreen m-0 manropeFont p-5 btnPrimary py-2"}
-              href={quintoElemento?.btn.fileLabel.data.attributes.url}
+              href={section3?.btn?.fileLabel?.data?.attributes?.url || ""}
               target="_blank"
               
             >
-              {quintoElemento?.btn.label}
+              {section3?.btn.label}
             </Link>
             
           </BasicSection>
@@ -186,11 +193,11 @@ const HomePage = ({ data }) => {
           alignment={`${screenSize <= 1200 ? "center" : "start"}`}
           width={`${screenSize <= 1200 ? "100%" : "70%"}`}
         >
-          {sextoElemento?.Titulo}
+          {titles[2]?.Titulo}
         </HeaderComponets>
 
 
-        <Slider data={septiomoElemento?.blogs?.data} />
+        <Slider data={blogs?.blogs?.data} />
 
 
         <TwoColumnGrid>
