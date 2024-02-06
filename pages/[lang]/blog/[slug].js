@@ -87,7 +87,7 @@ const BlogInfo = ({ blog, whatsapp, footer }) => {
         >
           {/* <SliderSingle slidesData={blog?.attributes?.imgBlog?.data} /> */}
           
-          <div style={{ maxWidth: "600px", margin: "0 20px ", padding : "0 10px" }}>
+          <div className="containerSlider">
             
             <Slider {...settings}>
               {blog?.attributes?.imgBlog?.data.map((slider) => {
