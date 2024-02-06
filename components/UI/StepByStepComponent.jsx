@@ -398,3 +398,4 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
 };
 
 export default StepByStepComponent;
+// ..
