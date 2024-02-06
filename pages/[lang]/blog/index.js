@@ -16,6 +16,8 @@ const index = ({ blogsPage, blogPageData, whatsapp, footer }) => {
   const router = useRouter();
   const { lang } = router.query;
   const blogs = blogsPage?.data;
+
+  console.log(blogs, "blogs")
   const { loadedFooter, loadedWhatsapp } = useMenu();
   useEffect(() => {
     loadedFooter(footer)

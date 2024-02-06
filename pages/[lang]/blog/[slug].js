@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { getBlog, getFooter, getWhatsapp, langAll } from "../../../apis/ApiBackend";
+import {
+  getBlog,
+  getFooter,
+  getWhatsapp,
+  langAll,
+} from "../../../apis/ApiBackend";
 import { useRouter } from "next/router";
 import Main from "../../../Layout/Main/Main";
 import HeaderComponents from "../../../components/UI/HeaderComponents/HeaderComponets";
@@ -10,16 +15,28 @@ import BasicSection from "../../../components/Section/Basic/BasicSection";
 import SliderSingle from "../../../components/UI/Slider/SliderSingle";
 import { versionInfo } from "graphql";
 import useMenu from "../../../hooks/useMenu";
+import Slider from "react-slick";
+import Image from "next/image";
+// Import css files
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const BlogInfo = ({ blog, whatsapp, footer  }) => {
+const BlogInfo = ({ blog, whatsapp, footer }) => {
   const { screenSize } = useScreenSize();
   const { loadedFooter, loadedWhatsapp } = useMenu();
   const router = useRouter();
-  const { lang } = router.query
+  const { lang } = router.query;
   useEffect(() => {
-    loadedFooter(footer)
-  loadedWhatsapp(whatsapp)
+    loadedFooter(footer);
+    loadedWhatsapp(whatsapp);
   }, [lang]);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   return (
     <Main titlePage={blog?.attributes?.TitleBlog}>
@@ -31,21 +48,41 @@ const BlogInfo = ({ blog, whatsapp, footer  }) => {
       </HeaderComponents>
 
       <section className="container-section py-10 my-5">
-        <section className={`${blog?.attributes?.imgBlog?.data ? "flex-2" : ""}`}>
-          <SliderSingle slidesData={blog?.attributes?.imgBlog?.data} />
+        <section
+          className={`${blog?.attributes?.imgBlog?.data ? "flex-2" : ""}`}
+        >
+          {/* <SliderSingle slidesData={blog?.attributes?.imgBlog?.data} /> */}
+          
+          <div style={{ maxWidth: "600px", margin: "0 10px ", padding : "0 10px" }}>
+            
+            <Slider {...settings}>
+              {blog?.attributes?.imgBlog?.data.map((slider) => {
+                console.log(slider);
+                return (
+                  <div>
+                    <Image
+                      src={slider.attributes.url}
+                      width={800}
+                      height={500}
+                      alt="Picture of the author"
+                    />
+                  </div>
+                );
+              })}
+            </Slider>
+          </div>
           <section>
             <BasicSection
               classNameTitle={""}
               classNameWrapper={"setionStyleTwo px-10"}
               title={""}
               alignItems={"center"}
-              justifyContent={"center"}
               width={`${screenSize <= 1024 ? "100%" : "100%"}`}
               classNameContent={`${
                 screenSize <= 1024
                   ? "align-vertical-center-horizontal-center"
                   : "align-vertical-center-horizontal-start"
-              } fuentesParrafo  p-10 m-10`}
+              } fuentesParrafo `}
             >
               <ReactMarkdown className="contentBlog">
                 {blog?.attributes?.ContentBlog}
