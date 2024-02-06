@@ -1102,4 +1102,8 @@ button.slick-arrow.slick-prev{
     margin: 0;
     padding: 0;
   }
+
+  .contentBlog{
+    width: 80vw;
+  }
 }
