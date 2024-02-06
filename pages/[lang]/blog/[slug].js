@@ -21,31 +21,7 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-const CustomPrevArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      // style={{ ...style, color: 'white', backgroundColor: '#E86641', borderRadius: '50%', margin: "0", padding: "0", display:"flex", justifyContent: "center", alignItems: "center" }}
-      onClick={onClick}
-    >
-      <FontAwesomeIcon  className="custom-arrow" icon={faChevronLeft} />
-    </div>
-  );
-};
 
-const CustomNextArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      // style={{ ...style, color: 'blue', backgroundColor: '#E86641', borderRadius: '50%',  }}
-      onClick={onClick}
-    >
-      <FontAwesomeIcon icon={faChevronRight} />
-    </div>
-  );
-};
 
 
 
@@ -65,8 +41,7 @@ const BlogInfo = ({ blog, whatsapp, footer }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    prevArrow: <CustomPrevArrow />,
-    nextArrow: <CustomNextArrow />
+
 
 
 
