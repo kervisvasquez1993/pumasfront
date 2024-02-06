@@ -18,9 +18,6 @@ import useMenu from "../../../hooks/useMenu";
 import Slider from "react-slick";
 import Image from "next/image";
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-
-
-// Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -29,10 +26,10 @@ const CustomPrevArrow = (props) => {
   return (
     <div
       className={className}
-      style={{ ...style, color: 'white', backgroundColor: '#E86641', borderRadius: '50%', margin: "0", padding: "0", display:"flex", justifyContent: "center", alignItems: "center" }}
+      // style={{ ...style, color: 'white', backgroundColor: '#E86641', borderRadius: '50%', margin: "0", padding: "0", display:"flex", justifyContent: "center", alignItems: "center" }}
       onClick={onClick}
     >
-      <FontAwesomeIcon icon={faChevronLeft} />
+      <FontAwesomeIcon  className="custom-arrow" icon={faChevronLeft} />
     </div>
   );
 };
@@ -42,7 +39,7 @@ const CustomNextArrow = (props) => {
   return (
     <div
       className={className}
-      style={{ ...style, color: 'blue', backgroundColor: '#E86641', borderRadius: '50%',  }}
+      // style={{ ...style, color: 'blue', backgroundColor: '#E86641', borderRadius: '50%',  }}
       onClick={onClick}
     >
       <FontAwesomeIcon icon={faChevronRight} />
@@ -99,8 +96,8 @@ const BlogInfo = ({ blog, whatsapp, footer }) => {
                   <div>
                     <Image
                       src={slider.attributes.url}
-                      width={800}
-                      height={500}
+                      width={450}
+                      height={450}
                       alt="Picture of the author"
                     />
                   </div>

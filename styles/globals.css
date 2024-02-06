@@ -1085,6 +1085,6 @@ button.slick-arrow.slick-prev{
 /* Opcional: Cambiar el tamaño de las flechas */
 .slick-prev:before,
 .slick-next:before {
-  font-size: 24px; /* Cambia el tamaño de las flechas aquí */
-  color: #000;
+  font-size: 24px; 
+  color: #E86641 !important;
 }
