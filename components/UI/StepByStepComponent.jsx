@@ -17,6 +17,8 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
   const paso1 = obtenerFrase(lang, "paso1");
   const paso2 = obtenerFrase(lang, "paso2");
   const paso3 = obtenerFrase(lang, "paso3");
+  const seleccionar = obtenerFrase(lang, "seleccionar");
+
   const type_donations = obtenerFrase(lang, "tipo_donations");
   const select_donaciones = obtenerFrase(lang, "select_donaciones");
   const confirmar = obtenerFrase(lang, "confirmar");
@@ -246,7 +248,7 @@ const StepByStepComponent = ({ typeDonations, filtro }) => {
                       className="backgroundPrimary text-center fontMenu btnPrimaryMenu font-bold py-2 mt-10 rounded w-100"
                       onClick={() => handleCardSelect(elemento.slug)}
                     >
-                      Seleccionar
+                      {seleccionar}
                     </button>
                   </div>
                 );

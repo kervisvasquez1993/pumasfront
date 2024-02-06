@@ -2,8 +2,13 @@ import React, { useState } from 'react'
 import useScreenSize from '../../../hooks/useScreenSize';
 import style from "./style.module.css";
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { obtenerFrase } from '../../../lang/traducciones';
 
 const CardComponentHover = ({ imageUrl, title, description, url }) => {
+    const router = useRouter();
+    const { lang } = router.query
+    const vermas = obtenerFrase(lang, "verMas");
     const { screenSize } = useScreenSize()
     const [isHovered, setIsHovered] = useState(false);
     const handleMouseEnter = () => {
@@ -28,7 +33,7 @@ const CardComponentHover = ({ imageUrl, title, description, url }) => {
                 <p className={style.cardDescription}>{description}</p>
             </div>
             {isHovered && (
-                <Link  className="download-button" href={url} >Ver Mas</Link>
+                <Link className="download-button" href={url} >{vermas}</Link>
             )}
         </div>
     );

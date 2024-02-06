@@ -24,7 +24,10 @@ export const traducciones = {
     contactarForm : "Contactar",
     conoceMas : "Conoce Más",
     descargar : "Descargar",
-    ver : "Ver"
+    ver : "Ver",
+    ReservaTuRecorrido: "Reserva tu recorrido",
+    verMas: "Ver Más",
+    seleccionar: "Seleccionar"
   },
   en: {
     paso1: "Step 1",
@@ -51,7 +54,10 @@ export const traducciones = {
     contactarForm : "Contact",
     conoceMas : "LEARN MORE",
     descargar : "Download",
-    ver : "Show"
+    ver : "Show",
+    ReservaTuRecorrido: "Book your tour",
+    verMas: "See More",
+    seleccionar: "Select"
   },
 };
 

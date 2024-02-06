@@ -20,7 +20,7 @@ const SlidetWithContent = ({ images, title, content }) => {
                     classNameTitle={"program-title fuenteTitulo colorPrimary"}
                     classNameWrapper={"setionStyleOne"}
                     title={title} // Usa el título pasado como prop
-                    classNameContent={"fuentesParrafo p-5 sm:py-10 saltoLinea2"}
+                    classNameContent={"fuentesParrafo p-5 sm:py-10 saltoLinea2 highlight"}
                 >
                     <ReactMarkdown>{content}</ReactMarkdown>
 

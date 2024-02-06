@@ -933,7 +933,7 @@ footer {
     margin-bottom: 1em;
 }
 
-.fuentesParrafo ul li strong {
+.fuentesParrafo p strong {
     font-family: sans-serif;
     font-weight: bold;
 }

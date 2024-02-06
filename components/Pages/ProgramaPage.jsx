@@ -22,6 +22,7 @@ const ProgramaPage = ({ data, material }) => {
   const [isHovered, setIsHovered] = useState(false);
   const descarga = obtenerFrase(lang,"descargar")
   const ver = obtenerFrase(lang , "ver")
+  const reserva = obtenerFrase(lang, "ReservaTuRecorrido");
   const { title, componentDynamics } = data;
   const materialSection = data.componentDynamics.find(elemento => elemento.typeSection == "section5" )
   
@@ -86,7 +87,7 @@ const ProgramaPage = ({ data, material }) => {
                   link={`${lang}/${elemento?.btn?.url}`}
                 >
                   {/* TODO */}
-                  Reserva tu recorrido
+                 {reserva}
                 </ButtonView>
               </div>
             </div>

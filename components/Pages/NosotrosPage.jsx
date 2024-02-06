@@ -198,9 +198,7 @@ const NosotrosPage = ({ data }) => {
               <Section
                 positionTitle={"start"}
                 contentClassName="contentSectionEnd px-10 px-10"
-                titleClassName={
-                  "program-title fuenteTitulo colorVerde py-10 my-10"
-                }
+                
                 title=""
                 imageSrc={`${elemento?.imagenWithContentBasic[1]?.img?.data[0]?.attributes?.url}`}
                 content={
@@ -231,6 +229,8 @@ const NosotrosPage = ({ data }) => {
               alignment={`${screenSize <= 1024 ? "center" : "start"}`}
             >
               Reconocimiento
+              
+              {/*TODO: remplazar esto  */}
             </HeaderComponets>
             <SliderGeneral slides={sliderReconocimiento} themeColor="#96C473" />
           </section>)
