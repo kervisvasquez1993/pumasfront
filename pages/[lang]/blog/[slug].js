@@ -17,9 +17,41 @@ import { versionInfo } from "graphql";
 import useMenu from "../../../hooks/useMenu";
 import Slider from "react-slick";
 import Image from "next/image";
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
+
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+const CustomPrevArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, color: 'white', backgroundColor: '#E86641', borderRadius: '50%', margin: "0", padding: "0", display:"flex", justifyContent: "center", alignItems: "center" }}
+      onClick={onClick}
+    >
+      <FontAwesomeIcon icon={faChevronLeft} />
+    </div>
+  );
+};
+
+const CustomNextArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, color: 'blue', backgroundColor: '#E86641', borderRadius: '50%',  }}
+      onClick={onClick}
+    >
+      <FontAwesomeIcon icon={faChevronRight} />
+    </div>
+  );
+};
+
+
+
 
 const BlogInfo = ({ blog, whatsapp, footer }) => {
   const { screenSize } = useScreenSize();
@@ -36,6 +68,11 @@ const BlogInfo = ({ blog, whatsapp, footer }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />
+
+
+
   };
 
   return (
@@ -53,7 +90,7 @@ const BlogInfo = ({ blog, whatsapp, footer }) => {
         >
           {/* <SliderSingle slidesData={blog?.attributes?.imgBlog?.data} /> */}
           
-          <div style={{ maxWidth: "600px", margin: "0 10px ", padding : "0 10px" }}>
+          <div style={{ maxWidth: "600px", margin: "0 20px ", padding : "0 10px" }}>
             
             <Slider {...settings}>
               {blog?.attributes?.imgBlog?.data.map((slider) => {
@@ -109,6 +146,7 @@ export const getStaticProps = async ({ params }) => {
   const blogAll = blogAllResponse.data.data;
 
   const blog = blogAll.find((e) => e.attributes.slug == slug);
+  console.log(blogAll)
   return {
     props: {
       blog,

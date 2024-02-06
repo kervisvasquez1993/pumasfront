@@ -1068,3 +1068,23 @@ ul.thumbs li {
   
 
 }
+
+
+button.slick-arrow.slick-prev{
+  background: #000;
+  color: #0DAEA5 !important;
+}
+
+/* styles.css */
+/* Cambiar el color de las flechas */
+.slick-prev,
+.slick-next {
+  color: red; /* Cambia el color de las flechas aquí */
+}
+
+/* Opcional: Cambiar el tamaño de las flechas */
+.slick-prev:before,
+.slick-next:before {
+  font-size: 24px; /* Cambia el tamaño de las flechas aquí */
+  color: #000;
+}
