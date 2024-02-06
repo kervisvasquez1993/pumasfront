@@ -17,10 +17,9 @@ import { versionInfo } from "graphql";
 import useMenu from "../../../hooks/useMenu";
 import Slider from "react-slick";
 import Image from "next/image";
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 
 
