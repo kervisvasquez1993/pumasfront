@@ -19,6 +19,7 @@ import useScreenSize from "../../../hooks/useScreenSize";
 import useMenu from "../../../hooks/useMenu";
 import { obtenerFrase } from "../../../lang/traducciones";
 import ReactMarkdown from "react-markdown";
+import FormDonations from "../../../components/Section/FormDonations";
 
 const Donations = ({
   typeDonationSchemes,
@@ -62,7 +63,9 @@ const Donations = ({
         </h3>
         <div className="grid-2 px-5">
           <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2">
-            <ReactMarkdown>{donationInfo[0]?.attributes?.description}</ReactMarkdown>
+            <ReactMarkdown>
+              {donationInfo[0]?.attributes?.description}
+            </ReactMarkdown>
           </div>
         </div>
       </div>
@@ -79,10 +82,11 @@ const Donations = ({
           </BasicSection>
         </TwoColumnGrid>
         <div>
-          <StepByStepComponent
+          {/* <StepByStepComponent
             typeDonations={typeDonationSchemes}
             filtro={filter}
-          />
+          /> */}
+          <FormDonations typeDonations={typeDonationSchemes} filtro={filter} />
         </div>
         <HeaderComponents
           src="/images/fondo1.png"
