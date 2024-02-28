@@ -28,7 +28,7 @@ const Donations = ({
   footer,
   donationInfo,
 }) => {
-  console.log(donationInfo[0].attributes, "donationInfo");
+  // console.log(donationInfo[0].attributes, "donationInfo");
   const [isInitialRender, setisInitialRender] = useState(true);
   const { screenSize } = useScreenSize();
   const [filter, setFilter] = useState("");
@@ -86,7 +86,7 @@ const Donations = ({
             typeDonations={typeDonationSchemes}
             filtro={filter}
           /> */}
-          <FormDonations typeDonations={typeDonationSchemes} filtro={filter} />
+          <FormDonations typeDonations={typeDonationSchemes} result={result} />
         </div>
         <HeaderComponents
           src="/images/fondo1.png"
@@ -137,7 +137,7 @@ export async function getStaticProps(context) {
     modelos: element.attributes.modelos,
     tipo_de_donacions: element.attributes.tipo_de_donacions,
   }));
-
+  // console.log(result, "result")
   const typeDonationSchemes = typeDonations.map((element) => {
     return {
       id: element.id,
@@ -152,7 +152,7 @@ export async function getStaticProps(context) {
   });
 
   isLoading = false;
-
+  // console.log(result, "result");
   return {
     props: {
       typeDonationSchemes,
