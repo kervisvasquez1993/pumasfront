@@ -179,7 +179,7 @@ a {
   font-weight: 700;
   border-radius: 2px;
   line-height: normal;
-  
+
 }
 
 .fuentesParrafo>*,
@@ -1028,7 +1028,8 @@ ul.thumbs li {
 
 /* Estilo para el container principal */
 .whatsapp-container {
-  position: relative; /* Importante para que el botón esté posicionado con respecto a este container */
+  position: relative;
+  /* Importante para que el botón esté posicionado con respecto a este container */
 }
 
 /* Estilo para el botón de WhatsApp */
@@ -1038,34 +1039,38 @@ ul.thumbs li {
   align-items: flex-end;
   font-weight: bold;
   font-size: 20px;
-  position: fixed; /* Fijar el botón en la ventana del navegador */
-  bottom: 30px; /* Distancia desde la parte inferior */
-  right: 0px; /* Distancia desde la parte derecha */
-  z-index: 1000; /* Asegurar que el botón esté por encima del contenido */
+  position: fixed;
+  /* Fijar el botón en la ventana del navegador */
+  bottom: 30px;
+  /* Distancia desde la parte inferior */
+  right: 0px;
+  /* Distancia desde la parte derecha */
+  z-index: 1000;
+  /* Asegurar que el botón esté por encima del contenido */
 }
 
 .whatsapp-button svg {
   color: #E86641;
-  margin: 0 20px ;
+  margin: 0 20px;
   font-size: 80px;
 }
 
 
-.codeLang{
+.codeLang {
   cursor: pointer;
 }
 
 /* Estilos para elementos del menú activos */
 .active-menu {
   opacity: 1;
-  
- 
+
+
 }
 
 /* Estilos para elementos del menú desactivados */
 .desactivated-menu {
   opacity: 0.6;
-  
+
 
 }
 
@@ -1075,13 +1080,14 @@ ul.thumbs li {
 /* Cambiar el color de las flechas */
 .slick-prev,
 .slick-next {
-  color: red; /* Cambia el color de las flechas aquí */
+  color: red;
+  /* Cambia el color de las flechas aquí */
 }
 
 /* Opcional: Cambiar el tamaño de las flechas */
 .slick-prev:before,
 .slick-next:before {
-  font-size: 24px; 
+  font-size: 24px;
   color: #E86641 !important;
 }
 
@@ -1099,7 +1105,16 @@ ul.thumbs li {
     padding: 0;
   }
 
-  .contentBlog{
+  .contentBlog {
     width: 80vw;
   }
+}
+
+.styleForm {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.styleForm .resumunForm , .styleForm .formInputs {
+  width: 45%;
 }
