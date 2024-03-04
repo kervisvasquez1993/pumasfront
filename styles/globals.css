@@ -1118,3 +1118,18 @@ ul.thumbs li {
 .styleForm .resumunForm , .styleForm .formInputs {
   width: 45%;
 }
+
+.imagenResumen{
+  width: 200px;
+  height: 200px;
+}
+
+.center{
+  margin: 0 auto !important;
+}
+
+.flex-title{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

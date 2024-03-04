@@ -6,6 +6,7 @@ import {
   getAllDonations,
   getDonationInfo,
   getFooter,
+  getModelGQ,
   getTypeDonations,
   getWhatsapp,
   langAll,
@@ -27,8 +28,8 @@ const Donations = ({
   whatsapp,
   footer,
   donationInfo,
+  modelsGQ
 }) => {
-  // console.log(donationInfo[0].attributes, "donationInfo");
   const [isInitialRender, setisInitialRender] = useState(true);
   const { screenSize } = useScreenSize();
   const [filter, setFilter] = useState("");
@@ -58,7 +59,11 @@ const Donations = ({
   return (
     <Main titlePage={"Donación"}>
       <div className="container-program">
-        <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
+        
+      </div>
+
+      <div className="container">
+      <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
           {donationInfo[0]?.attributes?.title}
         </h3>
         <div className="grid-2 px-5">
@@ -68,9 +73,6 @@ const Donations = ({
             </ReactMarkdown>
           </div>
         </div>
-      </div>
-
-      <div className="container">
         <TwoColumnGrid>
           <BasicSection
             classNameTitle={""}
@@ -86,7 +88,7 @@ const Donations = ({
             typeDonations={typeDonationSchemes}
             filtro={filter}
           /> */}
-          <FormDonations typeDonations={typeDonationSchemes} result={result} />
+          <FormDonations typeDonations={typeDonationSchemes} result={result} modelos={modelsGQ} />
         </div>
         <HeaderComponents
           src="/images/fondo1.png"
@@ -114,12 +116,14 @@ export async function getStaticProps(context) {
     whatsappResponse,
     footerResponse,
     donationInfoResponse,
+    modelsGQResponse,
   ] = await Promise.all([
     getAllDonations(lang),
     getTypeDonations(lang),
     getWhatsapp(lang),
     getFooter(lang),
     getDonationInfo(lang),
+    getModelGQ(lang)
   ]);
 
   const donations = donationsResponse.data.data;
@@ -127,7 +131,8 @@ export async function getStaticProps(context) {
   const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
   const donationInfo = donationInfoResponse?.data?.data;
   const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo;
-
+  const modelsGQ = modelsGQResponse?.data?.modelos;
+  // console.log(modelsGQ, "modelsGQ")
   const result = donations.map((element) => ({
     id: element.id,
     monto: element.attributes.monto,
@@ -159,6 +164,7 @@ export async function getStaticProps(context) {
       result,
       isLoading,
       whatsapp,
+      modelsGQ,
       footer,
       donationInfo,
     },

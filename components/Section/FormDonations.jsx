@@ -1,14 +1,16 @@
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import ReactMarkdown from "react-markdown";
 
-const FormDonations = ({ typeDonations, result }) => {
+const FormDonations = ({ typeDonations, result, modelos }) => {
   const [dateDonations, setDateDonations] = useState(null);
   const [dateDonationsInfo, setDateDonationsInfo] = useState(null);
   const [typeSponsorship, setTypeSponsorship] = useState(1);
   const [filterForTypeDonation, setFilterForTypeDonation] = useState(null); // Definición del estado
   const [monto, setMonto] = useState(null);
   const [especies, setEspecies] = useState(null);
+  const [especieSeleccionada, setEspecieSeleccionada] = useState(null);
   const {
     handleSubmit,
     formState: { errors },
@@ -33,6 +35,8 @@ const FormDonations = ({ typeDonations, result }) => {
         element.tipo_de_donacions.data[0].attributes.titulo === selectedDonation
     );
     setFilterForTypeDonation(filterElements);
+    setEspecieSeleccionada(null);
+    // console.log()
     setEspecies(null);
   }, [watch("donations"), result, typeDonations]);
 
@@ -40,6 +44,15 @@ const FormDonations = ({ typeDonations, result }) => {
     setMonto(newValue.monto * typeSponsorship);
     setDateDonationsInfo(newValue);
     setEspecies(newValue?.modelos?.data);
+    setEspecieSeleccionada(null)
+  };
+  const handleRadioChangeEspecies = (newValue) => {
+    // console.log(newValue);
+    // console.log(modelos.data.id.sort((a, b) => b.id - a.id), "modelos")
+    // console.log(modelos.data, "modelos")
+    const findModelo = modelos.data.find((modelo) => modelo.id == newValue.id);
+    // console.log(findModelo);
+    setEspecieSeleccionada(findModelo?.attributes);
   };
 
   const handleSponsorshipChange = (event) => {
@@ -131,7 +144,7 @@ const FormDonations = ({ typeDonations, result }) => {
 
         <div className="mb-4">
           <label htmlFor="donations" className="block font-semibold mb-1">
-            Tipo de Donacion :
+            Categoria de Patrocinio:
           </label>
           <select
             id="requiereGuia"
@@ -149,10 +162,10 @@ const FormDonations = ({ typeDonations, result }) => {
             ))}
           </select>
         </div>
-      
+
         <div className="mb-4">
           <label htmlFor="typeSponsorship" className="block font-semibold mb-1">
-            Tipo de Donacion :
+            Tipo de patrocinio :
           </label>
           <select
             id="requiereGuia"
@@ -164,9 +177,7 @@ const FormDonations = ({ typeDonations, result }) => {
             }`}
           >
             <option value="monthlySponsorship">Patrocinio Mensual</option>
-            <option value="semiAnnualSponsorship">
-            Patrocinio Semestral
-            </option>
+            <option value="semiAnnualSponsorship">Patrocinio Semestral</option>
             <option value="annualSponsorship">Patrocinio Anual</option>
           </select>
         </div>
@@ -176,11 +187,20 @@ const FormDonations = ({ typeDonations, result }) => {
           watch("donations") === "ESPECIE" ||
           watch("donations") === "HÁBITAT") && (
           <>
+            <label
+              htmlFor="typeSponsorship"
+              className="block font-semibold mb-1"
+            >
+              Tipo de Donacion
+            </label>
             {filterForTypeDonation?.map((element) => (
               <>
-                <div class="inline-flex items-center" key={element.donacion}>
+                <div
+                  className="inline-flex items-center"
+                  key={element.donacion}
+                >
                   <label
-                    class="relative flex items-center p-3 rounded-full cursor-pointer"
+                    className="relative flex items-center p-3 rounded-full cursor-pointer"
                     htmlFor={element.donacion}
                   >
                     <input
@@ -190,17 +210,17 @@ const FormDonations = ({ typeDonations, result }) => {
                           message: "Donation is required",
                         },
                       })}
-                      class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                      className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
                       type="radio"
                       name="color"
                       value={JSON.stringify(element)}
                       id={element.donacion}
                       onChange={() => handleRadioChange(element)}
                     />
-                    <span class="absolute text-gray-900 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                    <span className="absolute text-gray-900 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        class="h-3.5 w-3.5"
+                        className="h-3.5 w-3.5"
                         viewBox="0 0 16 16"
                         fill="currentColor"
                       >
@@ -214,7 +234,7 @@ const FormDonations = ({ typeDonations, result }) => {
                     </span>
                   </label>
                   <label
-                    class="mt-px font-light text-gray-700 cursor-pointer select-none"
+                    className="mt-px font-light text-gray-700 cursor-pointer select-none"
                     htmlFor="html"
                   >
                     {element.donacion} ({element.monto}$)
@@ -227,9 +247,9 @@ const FormDonations = ({ typeDonations, result }) => {
 
         {especies?.map((especie) => (
           <>
-            <div key={especie.id} class="inline-flex items-center">
+            <div key={especie.id} className="inline-flex items-center">
               <label
-                class="relative flex items-center p-3 rounded-full cursor-pointer"
+                className="relative flex items-center p-3 rounded-full cursor-pointer"
                 htmlFor={especie?.attributes?.nombre}
               >
                 <input
@@ -239,13 +259,14 @@ const FormDonations = ({ typeDonations, result }) => {
                   type="radio"
                   name="especie"
                   value={JSON.stringify(especie)}
-                  class="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                  onChange={() => handleRadioChangeEspecies(especie)}
+                  className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
                   id={especie?.attributes?.nombre}
                 />
-                <span class="absolute text-gray-900 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                <span className="absolute text-gray-900 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="h-3.5 w-3.5"
+                    className="h-3.5 w-3.5"
                     viewBox="0 0 16 16"
                     fill="currentColor"
                   >
@@ -254,15 +275,15 @@ const FormDonations = ({ typeDonations, result }) => {
                 </span>
               </label>
               <label
-                class="mt-px font-light text-gray-700 cursor-pointer select-none"
+                className="mt-px font-light text-gray-700 cursor-pointer select-none"
                 htmlFor="html"
               >
-                {especie?.attributes.especie} ({especie?.attributes.nombre})
+                {especie?.attributes?.especie} ({especie?.attributes?.nombre})
               </label>
             </div>
           </>
         ))}
-        {dateDonationsInfo && <p>{monto} $</p>}
+        {/* {} */}
         <button
           type="submit"
           style={{
@@ -279,17 +300,78 @@ const FormDonations = ({ typeDonations, result }) => {
         </button>
       </div>
       <div className="resumunForm">
-        <h2>Resumen</h2>
-        <h2 className="colorPrimary fuenteTitulo ">
-        {dateDonations?.titulo}
+        <figure className="lg:p-1 p-1 m-10 imagenResumen center">
+          {dateDonations?.imagen?.data?.attributes?.url ? (
+            <Image
+              src={dateDonations?.imagen?.data?.attributes?.url}
+              width={1000}
+              height={1000}
+            />
+          ) : (
+            ""
+          )}
+        </figure>
+        <h2 className="colorPrimary fuenteTitulo text-center ">
+          {dateDonations?.titulo}
         </h2>
+
         <div className="inline">
-                      <span className="fontBold">Beneficios </span> :
-                      <ReactMarkdown className="fuentesParrafo">
-                      {dateDonations?.beneficio}
-                      </ReactMarkdown>
-                    </div>
-        
+          <ReactMarkdown className="fuentesParrafo text-center">
+            {dateDonations?.beneficio}
+          </ReactMarkdown>
+        </div>
+        <h2 className="fuenteTitulo text-center my-5">
+          Donacion : {dateDonationsInfo?.donacion}
+        </h2>
+
+        {especieSeleccionada && (
+          <>
+            <h2 className="colorPrimary fuenteTitulo text-center ">
+              Detalle de Especie
+            </h2>
+            <figure className="lg:p-1 p-1 center">
+              {especieSeleccionada?.imagenes.data[0].attributes.url ? (
+                <Image
+                  src={especieSeleccionada?.imagenes.data[0].attributes.url}
+                  width={1000}
+                  height={1000}
+                />
+              ) : (
+                ""
+              )}
+            </figure>
+            <div className="flex-title my-5">
+              <h2 className="fuenteTitulo text-center ">
+                Nombre : {especieSeleccionada?.nombre}
+              </h2>
+              <h2 className="fuenteTitulo text-center ">
+                Especie : {especieSeleccionada?.especie}
+              </h2>
+            </div>
+
+            <h2 className="fuentesParrafo text-center">
+              Descripcion : {especieSeleccionada?.descripcion}
+            </h2>
+            {/* {console.log(
+              especieSeleccionada?.imagenes.data[0].attributes.url,
+              "descripcion"
+            )} */}
+          </>
+        )}
+        {dateDonationsInfo && (
+          <h2 className="fuenteTitulo text-center ">Monto : {monto}$</h2>
+        )}
+
+        {/* <figure className="lg:p-1 p-1 m-10 imagenResumen center">
+          {dateDonationsInfo?.imgSrc?.data?.attributes?.url ? (
+            <Image
+              src={dateDonationsInfo?.imgSrc?.data?.attributes?.url}
+              width={1000}
+              height={1000}
+            />
+          ) : 
+            ""}
+        </figure> */}
       </div>
     </form>
   );
