@@ -7,12 +7,14 @@ import { obtenerFrase } from '../../lang/traducciones'
 
 const FormDonations = ({ typeDonations, result, modelos }) => {
   const [dateDonations, setDateDonations] = useState(null)
+  const [typeDonation, setTypeDonation] = useState(null)
   const [dateDonationsInfo, setDateDonationsInfo] = useState(null)
   const [typeSponsorship, setTypeSponsorship] = useState(1)
   const [filterForTypeDonation, setFilterForTypeDonation] = useState(null) // Definición del estado
   const [monto, setMonto] = useState(null)
   const [especies, setEspecies] = useState(null)
   const [especieSeleccionada, setEspecieSeleccionada] = useState(null)
+  const [especieSeleccionadaName, setEspecieSeleccionadaName] = useState(null)
   const {
     handleSubmit,
     formState: { errors },
@@ -33,7 +35,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
         (typeDonation) => typeDonation.titulo === selectedDonation
       )
     )
-
+    
     const filterElements = result.filter(
       (element) =>
         element.tipo_de_donacions.data[0].attributes.titulo === selectedDonation
@@ -47,15 +49,13 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
   const handleRadioChange = (newValue) => {
     setMonto(newValue.monto * typeSponsorship)
     setDateDonationsInfo(newValue)
+    setTypeDonation(newValue.donacion)
     setEspecies(newValue?.modelos?.data)
     setEspecieSeleccionada(null)
   }
   const handleRadioChangeEspecies = (newValue) => {
-    // console.log(newValue);
-    // console.log(modelos.data.id.sort((a, b) => b.id - a.id), "modelos")
-    // console.log(modelos.data, "modelos")
     const findModelo = modelos.data.find((modelo) => modelo.id == newValue.id)
-    // console.log(findModelo);
+    setEspecieSeleccionadaName(findModelo?.attributes.nombre)
     setEspecieSeleccionada(findModelo?.attributes)
   }
 
@@ -81,32 +81,26 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
   }
 
   const onSubmit = handleSubmit(async (value) => {
-    console.log(value.donations)
     const newElement = {
       type: 'Donación',
       nombre: value.name,
       correo: value.email,
       monto: monto,
-      donacion: value.donations,
+      donacion: typeDonation,
+      typeSponsorship : value.typeSponsorship,
+      nombreEspecie : (especieSeleccionadaName)? especieSeleccionadaName :"no Asignado"
     }
     try {
-      const response = await fetch('/api/send', {
-        method: 'POST',
+      const res = await fetch("/api/send", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(newElement),
-      })
-      /* const info = await response.json() */
-      console.log(response, 'responses')
-      if (response.status === 201) {
-        const data = response.data
-        // toast.success("Reservation successfully");
-        reset()
-        // router.push("/");
-      } else {
-        console.error('Error al enviar el formulario')
-      }
+      });
+
+      const data = await res.json();
+      console.log(data, "data")
     } catch (error) {
       console.log(error, 'error')
     }
