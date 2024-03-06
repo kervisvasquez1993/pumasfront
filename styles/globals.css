@@ -17,7 +17,6 @@ select {
 
 .headerSectionMap {
   min-height: 80vh !important;
-
 }
 
 .flex-column {
@@ -76,19 +75,13 @@ select {
 }
 
 .mask-background {
-
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
-
-
-
-
-
 .colorGrey {
-  color: #BFBFBF;
+  color: #bfbfbf;
 }
 
 .chelseaFontTitle {
@@ -116,23 +109,23 @@ a {
 }
 
 .colorPrimary {
-  color: #E86641;
+  color: #e86641;
 }
 
 .colorSecondary {
-  color: #50B496;
+  color: #50b496;
 }
 
 .colorBeiga {
-  color: #FFFDF6;
+  color: #fffdf6;
 }
 
 .colorGris {
-  color: #BFBFBF;
+  color: #bfbfbf;
 }
 
 .fontMenu {
-  color: #FFF;
+  color: #fff;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -140,7 +133,7 @@ a {
 }
 
 .backgroundPrimary {
-  background-color: #E86641 !important;
+  background-color: #e86641 !important;
   margin: 0 15px;
 }
 
@@ -148,7 +141,7 @@ a {
   width: 260px;
   height: 45px;
   text-align: center;
-  color: #FFFDF5;
+  color: #fffdf5;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -173,16 +166,15 @@ a {
   width: 170px;
   height: 45px;
   text-align: center;
-  color: #FFFDF5;
+  color: #fffdf5;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
   border-radius: 2px;
   line-height: normal;
-
 }
 
-.fuentesParrafo>*,
+.fuentesParrafo > *,
 .fuentesParrafo {
   font-size: 18px;
   font-family: 'Manrope', sans-serif;
@@ -204,23 +196,23 @@ a {
 }
 
 .backgroundSecondary {
-  background-color: #50B496;
+  background-color: #50b496;
 }
 
 .backgroundVerde {
-  background-color: #96C473;
+  background-color: #96c473;
 }
 
 .colorVerde {
-  color: #96C473;
+  color: #96c473;
 }
 
 .backgroundBeiga {
-  background-color: #FFFDF6;
+  background-color: #fffdf6;
 }
 
 .backgroundGris {
-  background-color: #BFBFBF;
+  background-color: #bfbfbf;
 }
 
 .backgroundBlack {
@@ -242,23 +234,23 @@ a {
   /* max-width: 1512; */
 }
 
-.swiper-wrapper>* {
+.swiper-wrapper > * {
   background-color: #fffdf6 !important;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #96C473 !important;
+  color: #96c473 !important;
   font-size: 70px !important;
   font-weight: bold;
 }
 
 .swiper-button-prev {
-  color: #96C473 !important;
+  color: #96c473 !important;
 }
 
 .swiper-pagination-bullet-active {
-  color: #96C473 !important;
+  color: #96c473 !important;
 }
 
 .swiper-button-next,
@@ -277,7 +269,6 @@ a {
 
 .maxWidthBody {
   max-width: 100vw;
-
 }
 
 @media screen and (min-width: 1440px) {
@@ -285,13 +276,8 @@ a {
     /* display: flex;
     flex-direction: column; */
     min-height: 80vh;
-
-
-
   }
-
 }
-
 
 .swiper {
   max-width: 100%;
@@ -423,19 +409,15 @@ a {
 }
 
 @media screen and (min-width: 481px) and (max-width: 992px) {
-
   .thumbs li {
     width: 100px !important;
   }
-
 }
 
 @media screen and (min-width: 0) and (max-width: 769px) {
-
   .carousel-root {
     max-width: 100% !important;
   }
-
 }
 
 .santurarioSwipper .swiper-wrapper {
@@ -445,7 +427,6 @@ a {
 .section {
   padding: 200px;
 }
-
 
 @media (max-width: 992px) {
   .section {
@@ -495,7 +476,7 @@ video {
   justify-content: space-between;
 }
 
-.containerDonations>* {
+.containerDonations > * {
   flex: 1 0 20%;
   max-width: 20%;
   box-sizing: border-box;
@@ -505,21 +486,21 @@ video {
 }
 
 @media (max-width: 1200px) {
-  .containerDonations>* {
+  .containerDonations > * {
     flex-basis: 33.33%;
     max-width: 33.33%;
   }
 }
 
 @media (max-width: 992px) {
-  .containerDonations>* {
+  .containerDonations > * {
     flex-basis: 50%;
     max-width: 50%;
   }
 }
 
 @media (max-width: 768px) {
-  .containerDonations>* {
+  .containerDonations > * {
     flex-basis: 100%;
     max-width: 100%;
   }
@@ -543,7 +524,7 @@ video {
   border: 3px solid #333;
 }
 
-@media(max-width:768px) {
+@media (max-width: 768px) {
   .fontSize36 {
     font-size: 25px;
   }
@@ -561,7 +542,7 @@ video {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0DAEA5;
+  background-color: #0daea5;
   border-radius: 50%;
   font-size: 36px;
   color: white;
@@ -573,7 +554,7 @@ video {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #50B496;
+  background-color: #50b496;
   border-radius: 50%;
   font-size: 36px;
   color: white;
@@ -586,7 +567,7 @@ video {
 }
 
 .selectedItem {
-  border: 5px solid #E86641;
+  border: 5px solid #e86641;
 }
 
 ul.thumbs li {
@@ -613,7 +594,6 @@ ul.thumbs li {
 .flex-vision {
   display: flex;
   flex-wrap: wrap;
-
 }
 
 .w-50 {
@@ -646,7 +626,6 @@ ul.thumbs li {
 
 .wrapperLogo {
   position: relative;
-
 }
 
 .menu-custom {
@@ -663,9 +642,6 @@ ul.thumbs li {
   justify-content: space-around;
   align-items: center;
 }
-
-
-
 
 .wrapperElementoSlider {
   width: 50vw;
@@ -714,8 +690,6 @@ ul.thumbs li {
   }
 }
 
-
-
 .column-reverse {
   flex-direction: column-reverse;
 }
@@ -737,40 +711,47 @@ ul.thumbs li {
   --c: linear-gradient(#000 0 0);
   --r1: radial-gradient(farthest-side at bottom, #000 93%, #0000);
   --r2: radial-gradient(farthest-side at top, #000 93%, #0000);
-  background:
-    var(--c), var(--r1), var(--r2),
-    var(--c), var(--r1), var(--r2),
+  background: var(--c), var(--r1), var(--r2), var(--c), var(--r1), var(--r2),
     var(--c), var(--r1), var(--r2);
   background-repeat: no-repeat;
   animation: l2 1s infinite alternate;
 }
 
 @keyframes l2 {
-
   0%,
   25% {
-    background-size: 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
-    background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+    background-size: 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0,
+      8px 4px, 8px 4px;
+    background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%,
+      50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px),
+      100% calc(50% + 2px);
   }
 
   50% {
-    background-size: 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
-    background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+    background-size: 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0,
+      8px 4px, 8px 4px;
+    background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%,
+      50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px),
+      100% calc(50% + 2px);
   }
 
   75% {
-    background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
-    background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+    background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px,
+      8px 0, 8px 4px, 8px 4px;
+    background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%,
+      50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(50% - 2px),
+      100% calc(50% + 2px);
   }
 
   95%,
   100% {
-    background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px;
-    background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(0% - 2px), 100% calc(100% + 2px);
+    background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px,
+      8px 100%, 8px 4px, 8px 4px;
+    background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%,
+      50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(0% - 2px),
+      100% calc(100% + 2px);
   }
 }
-
-
 
 .menuContainer {
   display: flex;
@@ -808,9 +789,7 @@ ul.thumbs li {
 
 @media (max-width: 1024px) {
   .headerLogo {
-
     width: 50%;
-
   }
 }
 
@@ -826,8 +805,6 @@ ul.thumbs li {
   font-weight: bold;
   text-transform: uppercase;
 }
-
-
 
 .header-apoyanos img {
   width: 50px;
@@ -860,10 +837,6 @@ ul.thumbs li {
   width: 100%;
   height: 100%;
 }
-
-
-
-
 
 /* Estilo del contenedor de la imagen */
 .materials__imagen {
@@ -901,7 +874,7 @@ ul.thumbs li {
 }
 
 .materials__imagen:hover:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -967,7 +940,7 @@ ul.thumbs li {
 
 /* Estilo del fondo cuando el cursor está sobre la imagen */
 .materials__imagen:hover::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -996,7 +969,7 @@ ul.thumbs li {
   left: 50%;
   font-size: 16px;
   transform: translate(-50%, -50%);
-  background-color: #97C472;
+  background-color: #97c472;
   color: #fff;
   padding: 10px 40px;
   border: none;
@@ -1050,11 +1023,10 @@ ul.thumbs li {
 }
 
 .whatsapp-button svg {
-  color: #E86641;
+  color: #e86641;
   margin: 0 20px;
   font-size: 80px;
 }
-
 
 .codeLang {
   cursor: pointer;
@@ -1063,18 +1035,12 @@ ul.thumbs li {
 /* Estilos para elementos del menú activos */
 .active-menu {
   opacity: 1;
-
-
 }
 
 /* Estilos para elementos del menú desactivados */
 .desactivated-menu {
   opacity: 0.6;
-
-
 }
-
-
 
 /* styles.css */
 /* Cambiar el color de las flechas */
@@ -1088,7 +1054,7 @@ ul.thumbs li {
 .slick-prev:before,
 .slick-next:before {
   font-size: 24px;
-  color: #E86641 !important;
+  color: #e86641 !important;
 }
 
 .containerSlider {
@@ -1112,23 +1078,30 @@ ul.thumbs li {
 
 .styleForm {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
   flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
 }
-.styleForm .resumunForm , .styleForm .formInputs {
-  width: 45%;
+.styleForm .resumunForm,
+.styleForm .formInputs {
+  width: 100%;
 }
 
-.imagenResumen{
+.imagenResumen {
   width: 200px;
   height: 200px;
 }
 
-.center{
+.center {
   margin: 0 auto !important;
 }
 
-.flex-title{
+.flex-title {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
