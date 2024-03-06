@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
 import ReactMarkdown from 'react-markdown'
@@ -27,6 +27,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
   } = useForm()
   const router = useRouter()
   const { lang } = router.query
+  const formRef = useRef(null)
 
   useEffect(() => {
     const selectedDonation = watch('donations')
@@ -35,7 +36,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
         (typeDonation) => typeDonation.titulo === selectedDonation
       )
     )
-    
+
     const filterElements = result.filter(
       (element) =>
         element.tipo_de_donacions.data[0].attributes.titulo === selectedDonation
@@ -87,27 +88,37 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
       correo: value.email,
       monto: monto,
       donacion: typeDonation,
-      typeSponsorship : value.typeSponsorship,
-      nombreEspecie : (especieSeleccionadaName)? especieSeleccionadaName :"no Asignado"
+      typeSponsorship: value.typeSponsorship,
+      nombreEspecie: especieSeleccionadaName
+        ? especieSeleccionadaName
+        : 'no Asignado',
     }
     try {
-      const res = await fetch("/api/send", {
-        method: "POST",
+      const res = await fetch('/api/send', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(newElement),
-      });
+      })
 
-      const data = await res.json();
-      console.log(data, "data")
+      const data = await res.json()
+      console.log(data, 'data')
+
+      // Reset the form after successful submission
+      formRef.current.reset()
+      setEspecies(null)
+      setDateDonations(null)
+      setDateDonationsInfo(null)
+      setEspecieSeleccionada(null)
+      setFilterForTypeDonation(null)
     } catch (error) {
       console.log(error, 'error')
     }
   })
 
   return (
-    <form onSubmit={onSubmit} className='styleForm'>
+    <form onSubmit={onSubmit} className='styleForm' ref={formRef}>
       <div className='formInputs'>
         <div className='mb-4'>
           <label htmlFor='name' className='block font-semibold mb-1'>
@@ -200,53 +211,43 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               Tipo de Donacion
             </label>
             {filterForTypeDonation?.map((element) => (
-              <>
-                <div
-                  className='inline-flex items-center'
-                  key={element.donacion}
+              <div className='inline-flex items-center' key={element.donacion}>
+                <label
+                  className='relative flex items-center p-3 rounded-full cursor-pointer'
+                  htmlFor={element.donacion}
                 >
-                  <label
-                    className='relative flex items-center p-3 rounded-full cursor-pointer'
-                    htmlFor={element.donacion}
-                  >
-                    <input
-                      {...register('donation', {
-                        required: {
-                          value: true,
-                          message: 'Donation is required',
-                        },
-                      })}
-                      className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
-                      type='radio'
-                      name='color'
-                      value={JSON.stringify(element)}
-                      id={element.donacion}
-                      onChange={() => handleRadioChange(element)}
-                    />
-                    <span className='absolute text-gray-900 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100'>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        className='h-3.5 w-3.5'
-                        viewBox='0 0 16 16'
-                        fill='currentColor'
-                      >
-                        <circle
-                          data-name='ellipse'
-                          cx='8'
-                          cy='8'
-                          r='8'
-                        ></circle>
-                      </svg>
-                    </span>
-                  </label>
-                  <label
-                    className='mt-px font-light text-gray-700 cursor-pointer select-none'
-                    htmlFor='html'
-                  >
-                    {element.donacion} ({element.monto}$)
-                  </label>
-                </div>
-              </>
+                  <input
+                    {...register('donation', {
+                      required: {
+                        value: true,
+                        message: 'Donation is required',
+                      },
+                    })}
+                    className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                    type='radio'
+                    name='color'
+                    value={JSON.stringify(element)}
+                    id={element.donacion}
+                    onChange={() => handleRadioChange(element)}
+                  />
+                  <span className='absolute text-gray-900 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      className='h-3.5 w-3.5'
+                      viewBox='0 0 16 16'
+                      fill='currentColor'
+                    >
+                      <circle data-name='ellipse' cx='8' cy='8' r='8'></circle>
+                    </svg>
+                  </span>
+                </label>
+                <label
+                  className='mt-px font-light text-gray-700 cursor-pointer select-none'
+                  htmlFor='html'
+                >
+                  {element.donacion} ({element.monto}$)
+                </label>
+              </div>
             ))}
           </>
         )}
