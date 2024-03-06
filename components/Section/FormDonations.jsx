@@ -338,9 +338,11 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
             {dateDonations?.beneficio}
           </ReactMarkdown>
         </div>
-        <h2 className='fuenteTitulo text-center my-5'>
-          Donacion : {dateDonationsInfo?.donacion}
-        </h2>
+        {dateDonationsInfo?.donacion && (
+          <h2 className='fuenteTitulo text-center my-5'>
+            Donacion : {dateDonationsInfo?.donacion}
+          </h2>
+        )}
 
         {especieSeleccionada && (
           <>
