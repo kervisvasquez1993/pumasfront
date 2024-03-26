@@ -1,24 +1,24 @@
-import React, { createContext, useEffect, useState } from "react";
-import { ApiBackend } from "../apis/ApiBackend";
+import React, { createContext, useEffect, useState } from 'react'
+import { ApiBackend } from '../apis/ApiBackend'
 
-const ModeloContext = createContext();
+const ModeloContext = createContext()
 
 export const ModeloProvider = ({ children }) => {
-  const [modelInfo, setModelInfo] = useState(null);
+  const [modelInfo, setModelInfo] = useState(null)
   const hearlessChangInfo = (data) => {
-    setModelInfo(data);
-  };
+    setModelInfo(data)
+  }
   const modeloList = modelInfo?.data.map((item) => {
-    
-    const srcModeloUrl = item?.attributes?.srcModelo?.data[0]?.attributes?.url || null;
-    const models3d = item.attributes.model3D?.data?.attributes?.url || null;
+    const srcModeloUrl =
+      item?.attributes?.srcModelo?.data[0]?.attributes?.url || null
+    const models3d = item.attributes.model3D?.data?.attributes?.url || null
 
     const imagenes = item.attributes?.imagenes?.data?.map((imagen) => {
       return {
         id: imagen.id,
         url: imagen.attributes.url,
-      };
-    });
+      }
+    })
 
     return {
       id: item.id,
@@ -36,9 +36,9 @@ export const ModeloProvider = ({ children }) => {
       modelX: item.attributes.modelX,
       modelY: item.attributes.modelY,
       modelZ: item.attributes.modelZ,
-      modelIntensity: item.attributes.modelIntensity
-    };
-  });
+      modelIntensity: item.attributes.modelIntensity,
+    }
+  })
 
   return (
     <ModeloContext.Provider
@@ -46,7 +46,7 @@ export const ModeloProvider = ({ children }) => {
     >
       {children}
     </ModeloContext.Provider>
-  );
-};
+  )
+}
 
-export default ModeloContext;
+export default ModeloContext

@@ -29,6 +29,7 @@ export const traducciones = {
     verMas: 'Ver Más',
     seleccionar: 'Seleccionar',
     inputNombre: 'Nombre',
+    illustration3d: 'ILUSTRACION MAPA 3D',
   },
   en: {
     paso1: 'Step 1',
@@ -60,6 +61,7 @@ export const traducciones = {
     verMas: 'See More',
     seleccionar: 'Select',
     inputNombre: 'Name',
+    illustration3d: '3D MAP ILLUSTRATION',
   },
 }
 
