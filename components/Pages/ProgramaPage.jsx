@@ -16,27 +16,27 @@ import { useLayoutEffect } from "react";
 
 const ProgramaPage = ({ data, material }) => {
   const router = useRouter();
-  const {  lang } = router.query
+  const { lang } = router.query
   const [dynamicComponents, setDynamicComponents] = useState([]);
   const [materialEducativo, setMaterialEducativo] = useState([]);
   const [isHovered, setIsHovered] = useState(false);
-  const descarga = obtenerFrase(lang,"descargar")
-  const ver = obtenerFrase(lang , "ver")
+  const descarga = obtenerFrase(lang, "descargar")
+  const ver = obtenerFrase(lang, "ver")
   const reserva = obtenerFrase(lang, "ReservaTuRecorrido");
   const { title, componentDynamics } = data;
-  const materialSection = data.componentDynamics.find(elemento => elemento.typeSection == "section5" )
-  
+  const materialSection = data.componentDynamics.find(elemento => elemento.typeSection == "section5")
+
   useLayoutEffect(() => {
     const ComponentDynamicsRenderer = ({ componentDynamics }) => {
-      const renderedComponents = componentDynamics.reduce((acc, elemento,  ) => {
+      const renderedComponents = componentDynamics.reduce((acc, elemento,) => {
         if (elemento?.typeSection === "section2") {
           const imgSlider = elemento?.imagenWithContentBasic?.map((item, index) => {
-  
+
             return {
               url: `${item?.img?.data[0]?.attributes.url}`
             }
           })
-  
+
           const component = (<div className="container-program">
             <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
               {elemento?.title}
@@ -45,7 +45,7 @@ const ProgramaPage = ({ data, material }) => {
               <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2">
                 <ReactMarkdown>{elemento?.content}</ReactMarkdown>
               </div>
-  
+
               <SliderThree>
                 {imgSlider?.map((image, index) => (
                   <div key={index}>
@@ -53,22 +53,25 @@ const ProgramaPage = ({ data, material }) => {
                   </div>
                 ))}
               </SliderThree>
-  
-  
+
+
             </div>
           </div>)
           return [...acc, component];
         }
-  
+
         if (elemento?.typeSection === "section8") {
-  
-  
+
+
           const contentEducation = elemento.imagenWithContentBasic.map((element, index) => {
             return (
               <div className="icon-flex-2" key={index}>
-                <div className="icons__imagen2">
+                <div
+                  className={element?.img?.data[0]?.attributes?.url?.endsWith('.svg') ? 'icons__imagen145' : 'icons__imagen2'}
+                >
                   <img src={element?.img?.data[0]?.attributes?.url} alt="imagen santuario" />
                 </div>
+
                 <div className="icons_text">
                   <ReactMarkdown className="fuentesParrafo">{element.content}</ReactMarkdown>
                 </div>
@@ -87,7 +90,7 @@ const ProgramaPage = ({ data, material }) => {
                   link={`${lang}/${elemento?.btn?.url}`}
                 >
                   {/* TODO */}
-                 {reserva}
+                  {reserva}
                 </ButtonView>
               </div>
             </div>
@@ -97,23 +100,23 @@ const ProgramaPage = ({ data, material }) => {
           </div>)
           return [...acc, component];
         }
-  
 
-  
-  
+
+
+
         return acc;
       }, []);
       setDynamicComponents(renderedComponents)
     };
-   
+
 
     const fetchMaterialEducativo = (material) => {
       const materialData = material?.map((elemento, index) => {
-           
+
         const handleMouseEnter = () => {
           setIsHovered(true);
         };
-    
+
         const handleMouseLeave = () => {
           setIsHovered(false);
         };
@@ -129,9 +132,9 @@ const ProgramaPage = ({ data, material }) => {
                 src={elemento?.imgFile?.url}
                 alt="imagen santuario"
               />
-             
-                <Link className="download-button" href={(elemento?.file?.url)? elemento?.file?.url : `${elemento?.urlExterna}`} target="_blank">{(elemento?.file?.url)? descarga : ver}</Link>
-            
+
+              <Link className="download-button" href={(elemento?.file?.url) ? elemento?.file?.url : `${elemento?.urlExterna}`} target="_blank">{(elemento?.file?.url) ? descarga : ver}</Link>
+
             </div>
             <div className="wrapperTitleCard">
               <h2 className="materials_text2 manropeFont colorSecondary font-bold">
@@ -142,30 +145,30 @@ const ProgramaPage = ({ data, material }) => {
       })
 
       setMaterialEducativo(materialData)
-    
+
     }
 
     fetchMaterialEducativo(material)
     ComponentDynamicsRenderer(data)
 
   }, [lang, data, material])
-  
 
- 
+
+
 
   return (
     <Main titlePage={title}>
       <div className="container">
         {dynamicComponents}
         <div className="container-materials-edu">
-            <h3 className="materials-edu-title fuenteTitulo colorSecondary p-10">{materialSection.title}</h3>
-            <div className="materials-edu_text fuentesParrafo px-10">
-              <ReactMarkdown>{materialSection.content}</ReactMarkdown>
-            </div>
-            <div className="dowloads-container my-5">
-              {materialEducativo}
-            </div>
+          <h3 className="materials-edu-title fuenteTitulo colorSecondary p-10">{materialSection.title}</h3>
+          <div className="materials-edu_text fuentesParrafo px-10">
+            <ReactMarkdown>{materialSection.content}</ReactMarkdown>
           </div>
+          <div className="dowloads-container my-5">
+            {materialEducativo}
+          </div>
+        </div>
       </div>
     </Main>
 
