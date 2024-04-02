@@ -239,7 +239,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                     }, {})
                 ).map(([monto, items], index) => (
                   <div key={index} className="monto-group">
-                    <h2 className="monto-title text-5xl font-bold colorPrimary fuenteTitulo text-center px-10">{monto}$</h2>
+                    <h2 className="monto-title text-3xl font-bold colorPrimary fuenteTitulo text-center px-10">{monto}$</h2>
                     <div className="items-container">
                       {items.map((element, index) => (
                         <div key={index} className="item">
