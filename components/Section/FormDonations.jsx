@@ -255,7 +255,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                 ))}
               </section>
             )}
-            {filterForTypeDonation?.map((element) => (
+            {watch("donations") !== "HUELLA" && filterForTypeDonation?.map((element) => (
               <div className="inline-flex items-center" key={element.donacion}>
                 <label
                   className="relative flex items-center p-3 rounded-full cursor-pointer"
