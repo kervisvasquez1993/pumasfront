@@ -14,7 +14,7 @@ const ItemDonations = ({ data, selected, onClick, className = "" }) => {
       >
         <img src={imgSrc?.data?.attributes?.url} data-tooltip-id="my-tooltip"
           data-tooltip-content={donacion} />
-        <Tooltip id="my-tooltip" />
+        {/* <Tooltip id="my-tooltip" /> */}
       </div>
     );
   }
@@ -28,7 +28,7 @@ const ItemDonations = ({ data, selected, onClick, className = "" }) => {
       data-tooltip-content={donacion}
     >
       <p>{monto}$</p>
-      <Tooltip id="my-tooltip" />
+      {/* <Tooltip id="my-tooltip" /> */}
 
 
     </div>
