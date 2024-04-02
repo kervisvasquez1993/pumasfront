@@ -455,6 +455,8 @@ img {
 
 .icons__imagen145{
     width: 145px;
+    position: relative;
+    top: 5px;
 }
 .backgroundProgrmar {
     background-image: url("/images/mask-proggrama.png");
