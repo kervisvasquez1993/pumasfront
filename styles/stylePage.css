@@ -276,7 +276,7 @@ img {
 .program-title,
 .materials-edu-title {
     font-size: 3rem;
-    width: 100%;
+    width: 95%;
 }
 
 .about-program_text {
@@ -958,3 +958,31 @@ footer {
     font-weight: bold;
     font-family: sans-serif;
 }
+
+
+
+.monto-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+  
+  @media (min-width: 640px) {
+    .monto-group {
+      flex-direction: row;
+    }
+  }
+  .monto-title {
+    margin-bottom: 0.5rem;
+  }
+  
+  .items-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .item {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+  }

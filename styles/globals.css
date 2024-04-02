@@ -549,14 +549,14 @@ video {
 }
 
 .itemDonationSrc {
-  width: 120px;
-  height: 120px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #50b496;
   border-radius: 50%;
-  font-size: 36px;
+  font-size: 20px;
   color: white;
   margin: 15px;
 }
@@ -1078,8 +1078,8 @@ ul.thumbs li {
 
 .styleForm {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
   flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
@@ -1087,9 +1087,35 @@ ul.thumbs li {
   padding-right: 2rem;
   width: 100%;
 }
+
+@media (min-width: 768px) {
+  .styleForm {
+    flex-direction: row;
+  }
+}
 .styleForm .resumunForm,
 .styleForm .formInputs {
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  .styleForm .resumunForm,
+  .styleForm .formInputs {
+    width: 50%;
+  }
+}
+
+.submit-button-container {
+  order: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .submit-button-container {
+    order: 0;
+  }
 }
 
 .imagenResumen {
