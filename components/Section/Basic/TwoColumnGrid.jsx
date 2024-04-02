@@ -24,7 +24,8 @@ const TwoColumnGrid = ({
       className='container-section mask-background '
       style={containerStyle}
     >
-      <section className={`${one ? 'grid-1' : 'grid-2'} column-reverse py-5`}>
+      {/* <section className={`${one ? 'grid-1' : 'grid-2'} column-reverse py-5`}> */}
+      <section className={`${one ? 'grid-1' : 'grid-2'} column-reverse `}>
         {children}
       </section>
     </section>

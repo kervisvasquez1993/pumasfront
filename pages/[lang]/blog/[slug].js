@@ -92,7 +92,7 @@ const BlogInfo = ({ blog, whatsapp, footer }) => {
                   : "align-vertical-center-horizontal-start"
               } fuentesParrafo `}
             >
-              <ReactMarkdown className="contentBlog">
+              <ReactMarkdown className="contentBlog saltoLinea2">
                 {blog?.attributes?.ContentBlog}
               </ReactMarkdown>
             </BasicSection>

@@ -43,7 +43,7 @@ const ProgramaPage = ({ data, material }) => {
             </h3>
             <div className="grid-2 px-5">
               <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2">
-                <ReactMarkdown>{elemento?.content}</ReactMarkdown>
+                <ReactMarkdown className="button">{elemento?.content}</ReactMarkdown>
               </div>
 
               <SliderThree>
@@ -66,16 +66,18 @@ const ProgramaPage = ({ data, material }) => {
           const contentEducation = elemento.imagenWithContentBasic.map((element, index) => {
             return (
               <div className="icon-flex-2" key={index}>
+              {element?.img?.data[0]?.attributes?.url && (
                 <div
-                  className={element?.img?.data[0]?.attributes?.url?.endsWith('.svg') ? 'icons__imagen145' : 'icons__imagen2'}
+                  className={element.img.data[0].attributes.url.endsWith('.svg') ? 'icons__imagen145' : 'icons__imagen2'}
                 >
-                  <img src={element?.img?.data[0]?.attributes?.url} alt="imagen santuario" />
+                  <img src={element.img.data[0].attributes.url} alt="imagen santuario" />
                 </div>
-
-                <div className="icons_text">
-                  <ReactMarkdown className="fuentesParrafo">{element.content}</ReactMarkdown>
-                </div>
-              </div>)
+              )}
+              <div className="icons_text">
+                <ReactMarkdown className="fuentesParrafo">{element.content}</ReactMarkdown>
+              </div>
+            </div>
+              )
           });
           const component = (<div className="container-edu backgroundProgrmar p-10 my-10">
             <div className="grid-2 px-8">

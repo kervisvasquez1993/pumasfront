@@ -68,7 +68,7 @@ const Donations = ({
         </h3>
         <div className='grid-2 px-5'>
           <div className='about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2'>
-            <ReactMarkdown>
+            <ReactMarkdown className='saltoLinea2'>
               {donationInfo[0]?.attributes?.description}
             </ReactMarkdown>
           </div>
