@@ -83,7 +83,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
     const names = selectedElements.map((item) => item.donacion);
     setSelectedNames(names);
   }, [selectedElements]);
-
+ 
   const handleRadioChange = (newValue) => {
     setMonto(newValue.monto * typeSponsorship);
     setDateDonationsInfo(newValue);
@@ -125,6 +125,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
       correo: value.email,
       monto: monto,
       donacion: 3,
+      donacionesHuella : selectedElements?.map(elemento => elemento?.donacion),
       typeSponsorship: value.typeSponsorship,
       nombreEspecie: especieSeleccionadaName
         ? especieSeleccionadaName
@@ -216,8 +217,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
             ))}
           </select>
         </div>
-
-        <div className="mb-4">
+        {watch("donations") !== "HUELLA" && (<div className="mb-4">
           <label htmlFor="typeSponsorship" className="block font-semibold mb-1">
             Tipo de patrocinio :
           </label>
@@ -234,7 +234,8 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
             <option value="semiAnnualSponsorship">Patrocinio Semestral</option>
             <option value="annualSponsorship">Patrocinio Anual</option>
           </select>
-        </div>
+        </div>) }
+        
 
         {(watch("donations") === "HUELLA" ||
           watch("donations") === "ECOSISTEMA" ||
