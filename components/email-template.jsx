@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EmailTemplate = ({ nombre, correo, monto, donacion, typeSponsorship, nombreEspecie }) => {
+const EmailTemplate = ({ nombre, correo, monto, donacion, typeSponsorship, nombreEspecie, donacionesHuella }) => {
     return (
         <div>
             <h3>Validar donación, estos son los datos de la donación.</h3>
@@ -11,6 +11,7 @@ const EmailTemplate = ({ nombre, correo, monto, donacion, typeSponsorship, nombr
             <p>Monto: {monto}$</p>
             {/* <p>Donación: {donacion.join(', ')}</p> */}
             <p>Donación: {donacion}</p>
+            <p>Donaciones de huella: {donacionesHuella.join(', ')}</p>
         </div>
     );
 }

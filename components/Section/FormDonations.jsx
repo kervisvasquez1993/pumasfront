@@ -86,8 +86,10 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
  
   const handleRadioChange = (newValue) => {
     setMonto(newValue.monto * typeSponsorship);
+    
     setDateDonationsInfo(newValue);
     setTypeDonation(newValue.donacion);
+    console.log(typeDonation, 'typeDonation')
     setEspecies(newValue?.modelos?.data);
     setEspecieSeleccionada(null);
   };
@@ -124,7 +126,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
       nombre: value.name,
       correo: value.email,
       monto: monto,
-      donacion: 3,
+      donacion: typeDonation,
       donacionesHuella : selectedElements?.map(elemento => elemento?.donacion),
       typeSponsorship: value.typeSponsorship,
       nombreEspecie: especieSeleccionadaName
@@ -141,8 +143,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
       });
 
       const data = await res.json();
-      console.log(data, "data");
-
+      console.log(data, "data")
       // Reset the form after successful submission
       formRef.current.reset();
       setEspecies(null);
@@ -150,6 +151,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
       setDateDonationsInfo(null);
       setEspecieSeleccionada(null);
       setFilterForTypeDonation(null);
+      setSelectedElements([])
     } catch (error) {
       console.log(error, "error");
     }
@@ -250,35 +252,35 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
             </label>
             {watch("donations") === "HUELLA" && (
               <section className="flex flex-wrap">
-                {Object.entries(
-                  filterForTypeDonation
-                    ?.sort((a, b) => Number(b.monto) - Number(a.monto))
-                    ?.reduce((acc, curr) => {
-                      if (!acc[curr.monto]) {
-                        acc[curr.monto] = [];
-                      }
-                      acc[curr.monto].push(curr);
-                      return acc;
-                    }, {})
-                ).map(([monto, items], index) => (
-                  <div key={index} className="monto-group">
-                    <h2 className="monto-title text-3xl font-bold colorPrimary fuenteTitulo text-center px-10">
-                      {monto}$
-                    </h2>
-                    <div className="items-container">
-                      {items.map((element, index) => (
-                        <div key={index} className="item">
-                          <ItemDonations
-                            data={element}
-                            selected={selectedItems.includes(element.id)}
-                            onClick={() => handleItemToggle(element.id)}
-                          />
-                        </div>
-                      ))}
-                    </div>
+              {filterForTypeDonation && Object.entries(
+                filterForTypeDonation
+                  .sort((a, b) => Number(b.monto) - Number(a.monto))
+                  .reduce((acc, curr) => {
+                    if (!acc[curr.monto]) {
+                      acc[curr.monto] = [];
+                    }
+                    acc[curr.monto].push(curr);
+                    return acc;
+                  }, {})
+              ).map(([monto, items], index) => (
+                <div key={index} className="monto-group">
+                  <h2 className="monto-title text-3xl font-bold colorPrimary fuenteTitulo text-center px-10">
+                    {monto}$
+                  </h2>
+                  <div className="items-container">
+                    {items.map((element, index) => (
+                      <div key={index} className="item">
+                        <ItemDonations
+                          data={element}
+                          selected={selectedItems.includes(element.id)}
+                          onClick={() => handleItemToggle(element.id)}
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </section>
+                </div>
+              ))}
+            </section>
             )}
             {watch("donations") !== "HUELLA" &&
               filterForTypeDonation?.map((element) => (

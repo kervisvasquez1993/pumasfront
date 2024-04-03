@@ -47,6 +47,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           donacion :  req.body.donacion,
           typeSponsorship :  req.body.typeSponsorship,
           nombreEspecie :  req.body.nombreEspecie,
+          donacionesHuella : req.body.donacionesHuella,
         }),
       });
       res.status(200).json({ mensaje: "Mensaje Enviado", data });
