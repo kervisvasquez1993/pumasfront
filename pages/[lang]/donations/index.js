@@ -89,6 +89,7 @@ const Donations = ({
             typeDonations={typeDonationSchemes}
             filtro={filter}
           /> */}
+          {console.log(typeDonationSchemes, "typeDonationSchemes")}
           <FormDonations
             typeDonations={typeDonationSchemes}
             result={result}

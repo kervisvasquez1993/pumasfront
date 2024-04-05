@@ -52,7 +52,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
 
     setEspecies(null);
     setMonto(null);
-    setSelectedNames([])
+    setSelectedNames([]);
     setDateDonationsInfo(null);
     setSelectedItems([]);
   }, [watch("donations"), result, typeDonations]);
@@ -83,7 +83,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
     const names = selectedElements.map((item) => item.donacion);
     setSelectedNames(names);
   }, [selectedElements]);
- 
+
   const handleRadioChange = (newValue) => {
     setMonto(newValue.monto * typeSponsorship);
     setDateDonationsInfo(newValue);
@@ -125,7 +125,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
       correo: value.email,
       monto: monto,
       donacion: 3,
-      donacionesHuella : selectedElements?.map(elemento => elemento?.donacion),
+      donacionesHuella: selectedElements?.map((elemento) => elemento?.donacion),
       typeSponsorship: value.typeSponsorship,
       nombreEspecie: especieSeleccionadaName
         ? especieSeleccionadaName
@@ -217,30 +217,40 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
             ))}
           </select>
         </div>
-        {watch("donations") !== "HUELLA" && (<div className="mb-4">
-          <label htmlFor="typeSponsorship" className="block font-semibold mb-1">
-            Tipo de patrocinio :
-          </label>
-          <select
-            id="requiereGuia"
-            name="requiereGuia"
-            {...register("typeSponsorship")}
-            onChange={handleSponsorshipChange}
-            className={`w-full border p-2 rounded ${
-              errors.requiereGuia ? "border-red-500" : ""
-            }`}
-          >
-            <option value="monthlySponsorship">Patrocinio Mensual</option>
-            <option value="semiAnnualSponsorship">Patrocinio Semestral</option>
-            <option value="annualSponsorship">Patrocinio Anual</option>
-          </select>
-        </div>) }
-        
+        {watch("donations") !== "HUELLA" && (
+          <div className="mb-4">
+            <label
+              htmlFor="typeSponsorship"
+              className="block font-semibold mb-1"
+            >
+              Tipo de patrocinio :
+            </label>
+            <select
+              id="requiereGuia"
+              name="requiereGuia"
+              {...register("typeSponsorship")}
+              onChange={handleSponsorshipChange}
+              className={`w-full border p-2 rounded ${
+                errors.requiereGuia ? "border-red-500" : ""
+              }`}
+            >
+              <option value="monthlySponsorship">Patrocinio Mensual</option>
+              <option value="semiAnnualSponsorship">
+                Patrocinio Semestral
+              </option>
+              <option value="annualSponsorship">Patrocinio Anual</option>
+            </select>
+          </div>
+        )}
 
         {(watch("donations") === "HUELLA" ||
           watch("donations") === "ECOSISTEMA" ||
           watch("donations") === "ESPECIE" ||
-          watch("donations") === "HÁBITAT") && (
+          watch("donations") === "HÁBITAT" ||
+          watch("donations") === "FOOTPRINT" ||
+          watch("donations") === "ECOSYSTEM" ||
+          watch("donations") === "SPECIE" ||
+          watch("donations") === "HABITAT") && (
           <>
             <label
               htmlFor="typeSponsorship"
@@ -248,39 +258,40 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
             >
               Tipo de Donacion
             </label>
-            {watch("donations") === "HUELLA" && (
+            {watch("donations") === "HUELLA" ||
+            watch("donations") === "FOOTPRINT" ? (
               <section className="flex flex-wrap">
-                {Object.entries(
-                  filterForTypeDonation
-                    ?.sort((a, b) => Number(b.monto) - Number(a.monto))
-                    ?.reduce((acc, curr) => {
-                      if (!acc[curr.monto]) {
-                        acc[curr.monto] = [];
-                      }
-                      acc[curr.monto].push(curr);
-                      return acc;
-                    }, {})
-                ).map(([monto, items], index) => (
-                  <div key={index} className="monto-group">
-                    <h2 className="monto-title text-3xl font-bold colorPrimary fuenteTitulo text-center px-10">
-                      {monto}$
-                    </h2>
-                    <div className="items-container">
-                      {items.map((element, index) => (
-                        <div key={index} className="item">
-                          <ItemDonations
-                            data={element}
-                            selected={selectedItems.includes(element.id)}
-                            onClick={() => handleItemToggle(element.id)}
-                          />
-                        </div>
-                      ))}
+                {filterForTypeDonation &&
+                  Object.entries(
+                    filterForTypeDonation
+                      .sort((a, b) => Number(b.monto) - Number(a.monto))
+                      .reduce((acc, curr) => {
+                        if (!acc[curr.monto]) {
+                          acc[curr.monto] = [];
+                        }
+                        acc[curr.monto].push(curr);
+                        return acc;
+                      }, {})
+                  ).map(([monto, items], index) => (
+                    <div key={index} className="monto-group">
+                      <h2 className="monto-title text-3xl font-bold colorPrimary fuenteTitulo text-center px-10">
+                        {monto}$
+                      </h2>
+                      <div className="items-container">
+                        {items.map((element, index) => (
+                          <div key={index} className="item">
+                            <ItemDonations
+                              data={element}
+                              selected={selectedItems.includes(element.id)}
+                              onClick={() => handleItemToggle(element.id)}
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
               </section>
-            )}
-            {watch("donations") !== "HUELLA" &&
+            ) : (
               filterForTypeDonation?.map((element) => (
                 <div
                   className="inline-flex items-center"
@@ -327,7 +338,8 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                     {element.donacion} ({element.monto}$)
                   </label>
                 </div>
-              ))}
+              ))
+            )}
           </>
         )}
 
@@ -446,11 +458,9 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
             )} */}
           </>
         )}
-        {monto  && (
+        {monto && (
           <h2 className="fuenteTitulo text-center ">Monto : {monto}$</h2>
         )}
-
-        
 
         {/* <figure className="lg:p-1 p-1 m-10 imagenResumen center">
           {dateDonationsInfo?.imgSrc?.data?.attributes?.url ? (
