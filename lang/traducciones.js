@@ -30,6 +30,18 @@ export const traducciones = {
     seleccionar: 'Seleccionar',
     inputNombre: 'Nombre',
     illustration3d: 'ILUSTRACION MAPA 3D',
+    categoriaPatrocinadores: 'Categoría de Patrocinadores',
+    tipoPatrocinadores: 'Tipo de Patrocinadores',
+    patrocinioMensual: 'Patrocinio Mensual',
+    patrocinioSemestral: 'Patrocinio Semestral',
+    patrocinioAnual: 'Patrocinio Anual',
+    donacion: 'Donación',
+    monto : 'Monto',
+    tipoDeDonacion : 'Tipo de donación',
+    Especies : 'Especies',
+    detallesDeESpecie : 'Detalles de la Especie',
+    successMensaje: 'Tu mensaje ha sido enviado exitosamente',
+
   },
   en: {
     paso1: 'Step 1',
@@ -62,6 +74,18 @@ export const traducciones = {
     seleccionar: 'Select',
     inputNombre: 'Name',
     illustration3d: '3D MAP ILLUSTRATION',
+    categoriaPatrocinadores: 'Sponsorship Category',
+    tipoPatrocinadores: 'Type of Sponsors',
+    patrocinioMensual : 'Monthly Sponsorship',
+    patrocinioSemestral : 'Semestral Sponsorship',
+    patrocinioAnual : 'Annual Sponsorship',
+    donacion : 'Donation',
+    monto : 'Amount',
+    tipoDeDonacion : 'Type Donation',
+    Especies : 'Species',
+    detallesDeESpecie : 'Details of the Species',
+    successMensaje: 'Your message has been sent successfully', 
+    
   },
 }
 
