@@ -259,7 +259,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               Tipo de Donacion
             </label>
             {watch("donations") === "HUELLA" ||
-            watch("donations") === "FOOTPRINT" ? (
+             watch("donations") === "FOOTPRINT" ? (
               <section className="flex flex-wrap">
                 {filterForTypeDonation &&
                   Object.entries(
