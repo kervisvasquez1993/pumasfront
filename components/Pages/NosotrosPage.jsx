@@ -210,6 +210,7 @@ const NosotrosPage = ({ data }) => {
           return [...acc, component];
         }
         if (elemento.typeSection === "section9") {
+          {console.log()}
           const sliderReconocimiento = elemento?.imagenWithContentBasic?.map(element => {
             return (<Section
               positionTitle={"start"}
@@ -228,9 +229,7 @@ const NosotrosPage = ({ data }) => {
               classNameText={"colorVerde chelseaFont pt-10 mt-10 font-responsive"}
               alignment={`${screenSize <= 1024 ? "center" : "start"}`}
             >
-              Reconocimiento
-              
-              {/*TODO: remplazar esto  */}
+              {elemento.title}
             </HeaderComponets>
             <SliderGeneral slides={sliderReconocimiento} themeColor="#96C473" />
           </section>)
