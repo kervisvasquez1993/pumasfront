@@ -27,7 +27,7 @@ const SantuarioPage = ({ data }) => {
   const { componentDynamics, title } = data;
   const { modeloList } = useModelo();
   const { screenSize } = useScreenSize()
-
+  console.log(modeloList, 'modeloList')
   if (!data) {
     return <Loader />;
   }

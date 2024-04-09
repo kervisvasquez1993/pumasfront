@@ -28,15 +28,17 @@ function MyApp({ Component, pageProps }) {
     <ScreenSizeProvider>
       <LocaleProvider>
         <MenuProvider>
-          <PagesProvider>
-            <ModeloProvider>
+          <ModeloProvider>
+            <PagesProvider>
+
               <PatrocindadoresProvider>
                 <DonationsProvider>
                   <Component {...pageProps} />
                 </DonationsProvider>
               </PatrocindadoresProvider>
-            </ModeloProvider>
-          </PagesProvider>
+
+            </PagesProvider>
+          </ModeloProvider>
         </MenuProvider>
       </LocaleProvider>
     </ScreenSizeProvider>

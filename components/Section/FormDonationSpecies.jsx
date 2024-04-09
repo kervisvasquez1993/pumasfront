@@ -8,16 +8,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-toastify/dist/ReactToastify.css";
 
-const FormDonationSpecies = ({ filterSpecie, infoSlug, typeDonations }) => {
-    
-   
-    const dataInfo = typeDonations?.find(donation => donation.titulo == infoSlug[0]?.tipo_de_donacions?.data[0]?.attributes.titulo )
-    
-   
-   console.log(dataInfo, "dataInfo")
-   console.log(infoSlug, "infoSlug")
-   console.log(typeDonations, "typeDonations")
-   console.log(filterSpecie, "filterSpecie")
+const FormDonationSpecies = ({ filterSpecie, typeDonations }) => {
+
+    const dataInfo = typeDonations?.find(donation => donation.titulo == 'ESPECIE' || donation.titulo == 'SPECIES')
+
     const [dateDonations, setDateDonations] = useState(null);
     const [typeDonation, setTypeDonation] = useState(null);
     const [dateDonationsInfo, setDateDonationsInfo] = useState(null);
@@ -52,14 +46,12 @@ const FormDonationSpecies = ({ filterSpecie, infoSlug, typeDonations }) => {
             type: "Donación",
             nombre: value.name,
             correo: value.email,
-            monto: monto,
-            categoriaPatrocinio: value.donations,
-            donacion: typeDonation,
-            donacionesHuella: selectedElements?.map(elemento => elemento?.donacion),
-            typeSponsorship: value.typeSponsorship,
-            nombreEspecie: especieSeleccionadaName
-                ? especieSeleccionadaName
-                : "no Asignado",
+            monto: value.monto,
+            categoriaPatrocinio: 'value',
+            donacion: 'typeDonation',
+            donacionesHuella: 'dateDonations',
+            typeSponsorship: 'typeSponsorship',
+            nombreEspecie: filterSpecie.titulo
         };
         try {
             const res = await fetch("/api/send", {
@@ -151,7 +143,7 @@ const FormDonationSpecies = ({ filterSpecie, infoSlug, typeDonations }) => {
                         <input
                             type="number"
                             id="monto"
-                            name="Monto"
+                            name="monto"
                             placeholder="20$"
                             className={`w-full p-2 rounded ${errors.monto ? 'border-red-500' : 'border-gray-300'}`}
                             {...register("monto", {
@@ -178,11 +170,11 @@ const FormDonationSpecies = ({ filterSpecie, infoSlug, typeDonations }) => {
                         )}
                     </figure>
                     <h2 className="colorPrimary fuenteTitulo text-center ">
-                        {infoSlug[0]?.tipo_de_donacions?.data[0]?.attributes?.titulo}
+                        {dataInfo?.titulo}
                     </h2>
                     <div className="inline">
                         <ReactMarkdown className="fuentesParrafo text-center px-10">
-                            {infoSlug[0]?.tipo_de_donacions?.data[0]?.attributes?.Beneficio}
+                            {dataInfo?.beneficio}
                         </ReactMarkdown>
                     </div>
 
@@ -191,9 +183,9 @@ const FormDonationSpecies = ({ filterSpecie, infoSlug, typeDonations }) => {
                             {obtenerFrase(lang, "detallesDeESpecie")}
                         </h2>
                         <figure className="lg:p-1 p-1 center">
-                            {filterSpecie[0]?.attributes?.imagenes?.data[0]?.attributes?.url ? (
+                            {filterSpecie[0]?.imagenes[0]?.url ? (
                                 <Image
-                                    src={filterSpecie[0]?.attributes?.imagenes.data[0].attributes.url}
+                                    src={filterSpecie[0]?.imagenes[0].url}
                                     width={1000}
                                     height={1000}
                                 />
@@ -203,15 +195,15 @@ const FormDonationSpecies = ({ filterSpecie, infoSlug, typeDonations }) => {
                         </figure>
                         <div className="flex-title my-5">
                             <h2 className="fuenteTitulo text-center ">
-                                Nombre : {filterSpecie[0]?.attributes.nombre}
+                                Nombre : {filterSpecie[0]?.nombre}
                             </h2>
                             <h2 className="fuenteTitulo text-center ">
-                                Especie : {filterSpecie[0]?.attributes?.especie}
+                                Especie : {filterSpecie[0]?.especie}
                             </h2>
                         </div>
 
                         <h2 className="fuentesParrafo text-center">
-                            Descripcion : {filterSpecie[0]?.attributes?.descripcion}
+                            Descripcion : {filterSpecie[0]?.descripcion}
                         </h2>
 
                     </>

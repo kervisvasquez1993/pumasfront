@@ -47,7 +47,7 @@ const MapWithBackground = ({ backgroundImage, children }) => {
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             const { x, y } = child.props
-            console.log(child.props)
+            
             return (
               <CanvasElement key={child.key} x={x} y={y} className='test'>
                 {child}
