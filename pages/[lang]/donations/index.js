@@ -10,6 +10,7 @@ import {
   getTypeDonations,
   getWhatsapp,
   langAll,
+  getMenus
 } from '../../../apis/ApiBackend'
 import useDonations from '../../../hooks/useDonations'
 import TwoColumnGrid from '../../../components/Section/Basic/TwoColumnGrid'
@@ -24,6 +25,7 @@ import FormDonations from '../../../components/Section/FormDonations'
 import { data } from 'autoprefixer'
 import FormDonationSpecies from '../../../components/Section/FormDonationSpecies'
 import useModelo from '../../../hooks/useModelo'
+import useStore from '../../../store/store-menu'
 
 const Donations = ({
   typeDonationSchemes,
@@ -32,18 +34,21 @@ const Donations = ({
   footer,
   donationInfo,
   modelsGQ,
+  menus
 }) => {
   const { screenSize } = useScreenSize()
   const [filter, setFilter] = useState(null)
   const [filterForSlug, setFilterForSlug] = useState(null)
   const { query } = useRouter()
-  const { loadedFooter, loadedWhatsapp } = useMenu()
   const { lang, params } = query
+  const { loadedFooter, loadedWhatsapp, updateMenuLoader } = useMenu()
+  const donations = obtenerFrase(query.lang, 'patrocinadores')
   useEffect(() => {
     loadedFooter(footer)
     loadedWhatsapp(whatsapp)
+    updateMenuLoader(menus, lang)
   }, [lang])
-  const donations = obtenerFrase(query.lang, 'patrocinadores')
+
   useEffect(() => {
     const models = filterBySlugModelo(modeloList, query.params)
     const resultForSlug = filterBySlug(result, query.params)
@@ -103,7 +108,8 @@ const Donations = ({
   })
 
 
-  console.log(filter, 'filter')
+  const { loading, menuData, setMenuData } = useStore();
+
 
 
   return (
@@ -177,6 +183,7 @@ export async function getStaticProps(context) {
     footerResponse,
     donationInfoResponse,
     modelsGQResponse,
+    menusResponse,
   ] = await Promise.all([
     getAllDonations(lang),
     getTypeDonations(lang),
@@ -184,6 +191,7 @@ export async function getStaticProps(context) {
     getFooter(lang),
     getDonationInfo(lang),
     getModelGQ(lang),
+    getMenus(lang),
   ])
 
   const donations = donationsResponse.data.data
@@ -192,7 +200,7 @@ export async function getStaticProps(context) {
   const donationInfo = donationInfoResponse?.data?.data
   const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo
   const modelsGQ = modelsGQResponse?.data?.modelos
-  // console.log(modelsGQ, "modelsGQ")
+  const menus = menusResponse.data.data
   const result = donations.map((element) => ({
     id: element.id,
     monto: element.attributes.monto,
@@ -228,6 +236,7 @@ export async function getStaticProps(context) {
       modelsGQ,
       footer,
       donationInfo,
+      menus
     },
   }
 }

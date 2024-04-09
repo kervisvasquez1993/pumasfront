@@ -35,7 +35,8 @@
     "snarkdown": "^2.0.0",
     "sweetalert2": "^11.7.10",
     "swiper": "^9.4.1",
-    "three": "^0.155.0"
+    "three": "^0.155.0",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/node": "20.7.1",
