@@ -21,6 +21,8 @@ import useMenu from '../../../hooks/useMenu'
 import { obtenerFrase } from '../../../lang/traducciones'
 import ReactMarkdown from 'react-markdown'
 import FormDonations from '../../../components/Section/FormDonations'
+import { data } from 'autoprefixer'
+import FormDonationSpecies from '../../../components/Section/FormDonationSpecies'
 
 const Donations = ({
   typeDonationSchemes,
@@ -30,21 +32,24 @@ const Donations = ({
   donationInfo,
   modelsGQ,
 }) => {
-  const [isInitialRender, setisInitialRender] = useState(true)
   const { screenSize } = useScreenSize()
-  const [filter, setFilter] = useState('')
+  const [filter, setFilter] = useState(null)
+  const [filterForSlug, setFilterForSlug] = useState(null)
   const { query } = useRouter()
   const { loadedFooter, loadedWhatsapp } = useMenu()
-  const { lang } = query
+  const { lang, params } = query
   useEffect(() => {
     loadedFooter(footer)
     loadedWhatsapp(whatsapp)
   }, [lang])
   const donations = obtenerFrase(query.lang, 'patrocinadores')
   useEffect(() => {
-    const data = filterBySlug(result, query.params)
-    setFilter(data)
+    const models = filterBySlugModelo(modelsGQ, query.params)
+    const resultForSlug = filterBySlug(result, query.params)
+    setFilter(models)
+    setFilterForSlug(resultForSlug)
   }, [query.params])
+
 
   const filterBySlug = (arr, slug) => {
     return arr?.filter((item) => {
@@ -56,11 +61,18 @@ const Donations = ({
       )
     })
   }
+
+  const filterBySlugModelo = (arr, slug) => {
+    return arr?.data?.filter((item) => {
+      return item.attributes.slug === slug;
+    })
+  }
+  console.log(filter, 'filter')
+  console.log(filterForSlug, 'filterForSlug')
+
   return (
     <Main titlePage={'Donación'}>
-      {/* <div className="container-program">
-        
-      </div> */}
+
 
       <div className='container'>
         <h3 className='program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5'>
@@ -89,11 +101,19 @@ const Donations = ({
             typeDonations={typeDonationSchemes}
             filtro={filter}
           /> */}
-          <FormDonations
-            typeDonations={typeDonationSchemes}
-            result={result}
-            modelos={modelsGQ}
-          />
+          {filter && filterForSlug && filter.length > 0 && filterForSlug.length > 0 ? (
+            <FormDonationSpecies
+              filterSpecie={filter}
+              infoSlug={filterForSlug}
+              typeDonations={typeDonationSchemes}
+            />
+          ) : (
+            <FormDonations
+              typeDonations={typeDonationSchemes}
+              result={result}
+              modelos={modelsGQ}
+            />
+          )}
         </div>
         <HeaderComponents
           src='/images/fondo1.png'
@@ -146,6 +166,7 @@ export async function getStaticProps(context) {
     imgSrc: element.attributes.imgSrc,
     modelos: element.attributes.modelos,
     tipo_de_donacions: element.attributes.tipo_de_donacions,
+    // imagenes : element?.attributes?.imagenes
   }))
   // console.log(result, "result")
   const typeDonationSchemes = typeDonations.map((element) => {

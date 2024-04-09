@@ -481,10 +481,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               <h2 className="fuentesParrafo text-center">
                 Descripcion : {especieSeleccionada?.descripcion}
               </h2>
-              {/* {console.log(
-              especieSeleccionada?.imagenes.data[0].attributes.url,
-              "descripcion"
-            )} */}
+              
             </>
           )}
           {(monto) ? (
