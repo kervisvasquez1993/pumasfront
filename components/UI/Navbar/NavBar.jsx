@@ -6,6 +6,7 @@ import ItemMenu from "../../../views/ItemMenu";
 import useLocale from "../../../hooks/useLocales";
 import { convertirHora } from "../../../helpers/apiBackend";
 import useMenu from "../../../hooks/useMenu";
+import { obtenerFrase } from "../../../lang/traducciones";
 
 const Navbar = ({ items }) => {
   const { langAllContext, horario } = useLocale();
@@ -102,7 +103,7 @@ const Navbar = ({ items }) => {
           <img src="/images/LogoBlanco.png" alt="Logo" />
         </Link>
         <div className="horario">
-          <span>Mañana</span> : <span>{horaApertura}</span>
+          <span>{obtenerFrase(lang,'manana')}</span> : <span>{horaApertura}</span>
         </div>
         <div className="idomas">{lenguaje}</div>
       </div>

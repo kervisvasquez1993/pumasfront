@@ -41,6 +41,7 @@ export const traducciones = {
     Especies : 'Especies',
     detallesDeESpecie : 'Detalles de la Especie',
     successMensaje: 'Tu mensaje ha sido enviado exitosamente',
+    manana : 'Mañana',
 
   },
   en: {
@@ -85,6 +86,7 @@ export const traducciones = {
     Especies : 'Species',
     detallesDeESpecie : 'Details of the Species',
     successMensaje: 'Your message has been sent successfully', 
+    manana : 'Tomorrow',
     
   },
 }
