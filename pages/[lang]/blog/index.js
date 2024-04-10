@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import {
   getBlog,
   getFooter,
+  getMenus,
   getPageWithComponents,
   getWhatsapp,
   langAll,
@@ -12,16 +13,16 @@ import Main from "../../../Layout/Main/Main";
 import ReactMarkdown from "react-markdown";
 import useMenu from "../../../hooks/useMenu";
 
-const index = ({ blogsPage, blogPageData, whatsapp, footer }) => {
+const index = ({ blogsPage, blogPageData, whatsapp, footer, menus }) => {
   const router = useRouter();
   const { lang } = router.query;
   const blogs = blogsPage?.data;
-
-  console.log(blogs, "blogs")
-  const { loadedFooter, loadedWhatsapp } = useMenu();
+  const { loadedFooter, loadedWhatsapp, updateMenuLoader } = useMenu();
+  
   useEffect(() => {
     loadedFooter(footer)
   loadedWhatsapp(whatsapp)
+  updateMenuLoader(menus, lang)
   }, [lang]);
   const sectionBlogs = blogs?.map((blog, index) => {
     const { TitleBlog, ContentBlog, imgBlog, slug } = blog?.attributes;
@@ -88,18 +89,21 @@ export const getStaticProps = async ({ params }) => {
   } else if (lang == "en") {
     idOfBlog = 14;
   }
-  const [blogPage, blog, whatsappResponse, footerResponse] = await Promise.all([
+  const [blogPage, blog, whatsappResponse, footerResponse, menusResponse] = await Promise.all([
     getPageWithComponents(lang, idOfBlog),
     getBlog(lang),
     getWhatsapp(lang),
     getFooter(lang),
+    getMenus(lang),
+    
   ]);
   const blogPageData = blogPage?.data?.page?.data;
   const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
   const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo;
+  const menus = menusResponse.data.data
   const blogsPage = blog.data;
   return {
-    props: { blogsPage, blogPageData, footer, whatsapp },
+    props: { blogsPage, blogPageData, footer, whatsapp, menus },
   };
 };
 

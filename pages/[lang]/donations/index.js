@@ -108,8 +108,6 @@ const Donations = ({
   })
 
 
-  const { loading, menuData, setMenuData } = useStore();
-
 
 
   return (
