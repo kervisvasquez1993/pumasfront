@@ -145,7 +145,7 @@ const SantuarioPage = ({ data }) => {
                       )}
                     </div>
                     <div className="icons_text">
-                      <ReactMarkdown className="fuentesParrafo p-5">
+                      <ReactMarkdown className="fuentesParrafo icon-w">
                         {element.content}
                       </ReactMarkdown>
                     </div>
