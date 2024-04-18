@@ -15,7 +15,11 @@ export default function Modal({ showModal, setShowModal, data }) {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
+  const handleBackgroundClick = (event) => {
+    if (event.target === event.currentTarget) {
+      handleCloseModal();
+    }
+  }
   const router = useRouter();
   const { slug, lang } = router.query
   const { screenSize } = useScreenSize()
@@ -23,7 +27,7 @@ export default function Modal({ showModal, setShowModal, data }) {
     <>
       {showModal && (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div onClick={handleBackgroundClick}  className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
           <section className="container-section mask-background ">
           <section className="modelShowItem  py-5">
               <section className="wrapperModel ">
@@ -39,7 +43,7 @@ export default function Modal({ showModal, setShowModal, data }) {
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
                 <button
                   type="button"
-                  className="btnClose color-white box-content  rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none absolute  right-4"
+                  className={`btnClose color-white box-content  rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none absolute  right-4`}
                   data-te-modal-dismiss={true}
                   aria-label="Close"
                   onClick={handleCloseModal}

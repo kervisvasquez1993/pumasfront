@@ -27,7 +27,7 @@ const SantuarioPage = ({ data }) => {
   const { componentDynamics, title } = data;
   const { modeloList } = useModelo();
   const { screenSize } = useScreenSize()
-
+  console.log(modeloList, 'modeloList')
   if (!data) {
     return <Loader />;
   }
@@ -145,7 +145,7 @@ const SantuarioPage = ({ data }) => {
                       )}
                     </div>
                     <div className="icons_text">
-                      <ReactMarkdown className="fuentesParrafo p-5">
+                      <ReactMarkdown className="fuentesParrafo icon-w">
                         {element.content}
                       </ReactMarkdown>
                     </div>

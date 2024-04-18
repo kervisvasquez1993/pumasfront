@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import {
   getBlog,
   getFooter,
+  getMenus,
   getWhatsapp,
   langAll,
 } from "../../../apis/ApiBackend";
@@ -25,14 +26,17 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 
-const BlogInfo = ({ blog, whatsapp, footer }) => {
+const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
   const { screenSize } = useScreenSize();
-  const { loadedFooter, loadedWhatsapp } = useMenu();
+
   const router = useRouter();
   const { lang } = router.query;
+  const { loadedFooter, loadedWhatsapp, updateMenuLoader } = useMenu();
+
   useEffect(() => {
-    loadedFooter(footer);
-    loadedWhatsapp(whatsapp);
+    loadedFooter(footer)
+    loadedWhatsapp(whatsapp)
+    updateMenuLoader(menus, lang)
   }, [lang]);
   const settings = {
     dots: true,
@@ -60,12 +64,12 @@ const BlogInfo = ({ blog, whatsapp, footer }) => {
           className={`${blog?.attributes?.imgBlog?.data ? "flex-2" : ""}`}
         >
           {/* <SliderSingle slidesData={blog?.attributes?.imgBlog?.data} /> */}
-          
+
           <div className="containerSlider">
-            
+
             <Slider {...settings}>
               {blog?.attributes?.imgBlog?.data.map((slider) => {
-                console.log(slider);
+              
                 return (
                   <div>
                     <Image
@@ -86,11 +90,10 @@ const BlogInfo = ({ blog, whatsapp, footer }) => {
               title={""}
               alignItems={"center"}
               width={`${screenSize <= 1024 ? "100%" : "100%"}`}
-              classNameContent={`${
-                screenSize <= 1024
+              classNameContent={`${screenSize <= 1024
                   ? "align-vertical-center-horizontal-center"
                   : "align-vertical-center-horizontal-start"
-              } fuentesParrafo `}
+                } fuentesParrafo `}
             >
               <ReactMarkdown className="contentBlog saltoLinea2">
                 {blog?.attributes?.ContentBlog}
@@ -108,21 +111,21 @@ export default BlogInfo;
 export const getStaticProps = async ({ params }) => {
   const { lang, slug } = params;
 
-  const [blogAllResponse, whatsappResponse, footerResponse] = await Promise.all(
-    [getBlog(lang), getWhatsapp(lang), getFooter(lang)]
+  const [blogAllResponse, whatsappResponse, footerResponse, menusResponse] = await Promise.all(
+    [getBlog(lang), getWhatsapp(lang), getFooter(lang), getMenus(lang)]
   );
   const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
   const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo;
 
   const blogAll = blogAllResponse.data.data;
+  const menus = menusResponse.data.data
 
   const blog = blogAll.find((e) => e.attributes.slug == slug);
-  console.log(blogAll)
   return {
     props: {
       blog,
       whatsapp,
-      footer,
+      menus
     },
   };
 };

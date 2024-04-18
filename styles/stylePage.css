@@ -448,7 +448,9 @@ img {
 .icons__imagen {
     width: 5rem;
 }
-
+.icon-w{
+    width: 200px;
+}
 .icons__imagen2 {
     width: 250px;
 }

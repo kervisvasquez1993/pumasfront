@@ -43,7 +43,6 @@ const Page = ({
     loadedWhatsapp(whatsapp)
     updateMenuLoader(menus, lang)
   }, [lang])
-  // console.log(materialEductivoSort, 'materialEductivoSort')
   useEffect(() => {
     updateData(page)
 

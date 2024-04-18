@@ -43,10 +43,8 @@ export const MenuProvider = ({ children }) => {
     (async () => {
       try {
         getLangContext();
-        // setMenuData(pruebaMenu);
         setLoading(false);
       } catch (error) {
-        //console.log(error);
         setLoading(false);
       }
     })();

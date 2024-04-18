@@ -261,7 +261,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
             >
               <option value="monthlySponsorship"> {obtenerFrase(lang, "patrocinioMensual")}  </option>
               <option value="semiAnnualSponsorship">{obtenerFrase(lang, "patrocinioSemestral")}  </option>
-              <option value="annualSponsorship"> {obtenerFrase(lang, "patrocinioAnual")}</option>
+              <option value="annualSponsorship"> {obtenerFrase(lang, "patrocinioSemestral")}</option>
             </select>
           </div>)}
 
@@ -481,10 +481,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               <h2 className="fuentesParrafo text-center">
                 Descripcion : {especieSeleccionada?.descripcion}
               </h2>
-              {/* {console.log(
-              especieSeleccionada?.imagenes.data[0].attributes.url,
-              "descripcion"
-            )} */}
+              
             </>
           )}
           {(monto) ? (

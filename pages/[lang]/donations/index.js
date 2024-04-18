@@ -10,6 +10,7 @@ import {
   getTypeDonations,
   getWhatsapp,
   langAll,
+  getMenus
 } from '../../../apis/ApiBackend'
 import useDonations from '../../../hooks/useDonations'
 import TwoColumnGrid from '../../../components/Section/Basic/TwoColumnGrid'
@@ -21,6 +22,10 @@ import useMenu from '../../../hooks/useMenu'
 import { obtenerFrase } from '../../../lang/traducciones'
 import ReactMarkdown from 'react-markdown'
 import FormDonations from '../../../components/Section/FormDonations'
+import { data } from 'autoprefixer'
+import FormDonationSpecies from '../../../components/Section/FormDonationSpecies'
+import useModelo from '../../../hooks/useModelo'
+import useStore from '../../../store/store-menu'
 
 const Donations = ({
   typeDonationSchemes,
@@ -29,22 +34,28 @@ const Donations = ({
   footer,
   donationInfo,
   modelsGQ,
+  menus
 }) => {
-  const [isInitialRender, setisInitialRender] = useState(true)
   const { screenSize } = useScreenSize()
-  const [filter, setFilter] = useState('')
+  const [filter, setFilter] = useState(null)
+  const [filterForSlug, setFilterForSlug] = useState(null)
   const { query } = useRouter()
-  const { loadedFooter, loadedWhatsapp } = useMenu()
-  const { lang } = query
+  const { lang, params } = query
+  const { loadedFooter, loadedWhatsapp, updateMenuLoader } = useMenu()
+  const donations = obtenerFrase(query.lang, 'patrocinadores')
   useEffect(() => {
     loadedFooter(footer)
     loadedWhatsapp(whatsapp)
+    updateMenuLoader(menus, lang)
   }, [lang])
-  const donations = obtenerFrase(query.lang, 'patrocinadores')
+
   useEffect(() => {
-    const data = filterBySlug(result, query.params)
-    setFilter(data)
+    const models = filterBySlugModelo(modeloList, query.params)
+    const resultForSlug = filterBySlug(result, query.params)
+    setFilter(models)
+    setFilterForSlug(resultForSlug)
   }, [query.params])
+
 
   const filterBySlug = (arr, slug) => {
     return arr?.filter((item) => {
@@ -56,11 +67,52 @@ const Donations = ({
       )
     })
   }
+
+
+  const filterBySlugModelo = (arr, slug) => {
+    return arr?.filter((item) => {
+      return item?.slug == slug;
+    });
+  };
+
+  const modeloList = modelsGQ?.data.map((item) => {
+    const srcModeloUrl =
+      item?.attributes?.srcModelo?.data[0]?.attributes?.url || null
+    const models3d = item.attributes.model3D?.data?.attributes?.url || null
+
+    const imagenes = item.attributes?.imagenes?.data?.map((imagen) => {
+      return {
+        id: imagen.id,
+        url: imagen.attributes.url,
+      }
+    })
+
+    return {
+      id: item.id,
+      nombre: item.attributes.nombre,
+      ubicacionX: item.attributes.ubicacionX,
+      ubicacionY: item.attributes.ubicacionY,
+      descripcion: item.attributes.descripcion,
+      slug: item.attributes.slug,
+      especie: item.attributes.especie,
+      nombreCientifico: item.attributes.nombreCientifico,
+      srcModelo: srcModeloUrl,
+      imagenes: imagenes,
+      modelo3d: models3d,
+      componente: item.attributes.Componente,
+      modelX: item.attributes.modelX,
+      modelY: item.attributes.modelY,
+      modelZ: item.attributes.modelZ,
+      modelIntensity: item.attributes.modelIntensity,
+    }
+  })
+
+
+
+
   return (
     <Main titlePage={'Donación'}>
-      {/* <div className="container-program">
-        
-      </div> */}
+
 
       <div className='container'>
         <h3 className='program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5'>
@@ -89,12 +141,18 @@ const Donations = ({
             typeDonations={typeDonationSchemes}
             filtro={filter}
           /> */}
-          {console.log(typeDonationSchemes, "typeDonationSchemes")}
-          <FormDonations
-            typeDonations={typeDonationSchemes}
-            result={result}
-            modelos={modelsGQ}
-          />
+          {filter && filter.length > 0 ? (
+            <FormDonationSpecies
+              filterSpecie={filter}
+              typeDonations={typeDonationSchemes}
+            />
+          ) : (
+            <FormDonations
+              typeDonations={typeDonationSchemes}
+              result={result}
+              modelos={modelsGQ}
+            />
+          )}
         </div>
         <HeaderComponents
           src='/images/fondo1.png'
@@ -123,6 +181,7 @@ export async function getStaticProps(context) {
     footerResponse,
     donationInfoResponse,
     modelsGQResponse,
+    menusResponse,
   ] = await Promise.all([
     getAllDonations(lang),
     getTypeDonations(lang),
@@ -130,6 +189,7 @@ export async function getStaticProps(context) {
     getFooter(lang),
     getDonationInfo(lang),
     getModelGQ(lang),
+    getMenus(lang),
   ])
 
   const donations = donationsResponse.data.data
@@ -138,7 +198,7 @@ export async function getStaticProps(context) {
   const donationInfo = donationInfoResponse?.data?.data
   const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo
   const modelsGQ = modelsGQResponse?.data?.modelos
-  // console.log(modelsGQ, "modelsGQ")
+  const menus = menusResponse.data.data
   const result = donations.map((element) => ({
     id: element.id,
     monto: element.attributes.monto,
@@ -147,6 +207,7 @@ export async function getStaticProps(context) {
     imgSrc: element.attributes.imgSrc,
     modelos: element.attributes.modelos,
     tipo_de_donacions: element.attributes.tipo_de_donacions,
+    // imagenes : element?.attributes?.imagenes
   }))
   // console.log(result, "result")
   const typeDonationSchemes = typeDonations.map((element) => {
@@ -173,6 +234,7 @@ export async function getStaticProps(context) {
       modelsGQ,
       footer,
       donationInfo,
+      menus
     },
   }
 }
