@@ -153,7 +153,7 @@ export const getDonationInfo = (lang) => {
     },
   };
 
-  return ApiBackend("api/donation-infos?&locale=" + lang, config);
+  return ApiBackend(`api/donation-infos?populate=*&locale=${lang}`, config);
 };
 
 export const getPageWithComponents = async (language, id) => {

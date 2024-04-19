@@ -48,7 +48,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
 
     const filterElements = result.filter(
       (element) =>
-        element.tipo_de_donacions.data[0].attributes.titulo === selectedDonation
+        element?.tipo_de_donacions?.data[0]?.attributes?.titulo === selectedDonation
     );
     console.log(filterForTypeDonation, 'filterForTypeDonation')
     setFilterForTypeDonation(filterElements);
@@ -261,7 +261,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
             >
               <option value="monthlySponsorship"> {obtenerFrase(lang, "patrocinioMensual")}  </option>
               <option value="semiAnnualSponsorship">{obtenerFrase(lang, "patrocinioSemestral")}  </option>
-              <option value="annualSponsorship"> {obtenerFrase(lang, "patrocinioSemestral")}</option>
+              <option value="annualSponsorship"> {obtenerFrase(lang, "patrocinioAnual")}</option>
             </select>
           </div>)}
 
@@ -459,9 +459,9 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                 {obtenerFrase(lang, "detallesDeESpecie")}
               </h2>
               <figure className="lg:p-1 p-1 center">
-                {especieSeleccionada?.imagenes.data[0].attributes.url ? (
+                {especieSeleccionada?.imagenes?.data[0]?.attributes.url ? (
                   <Image
-                    src={especieSeleccionada?.imagenes.data[0].attributes.url}
+                    src={especieSeleccionada?.imagenes?.data[0]?.attributes.url}
                     width={1000}
                     height={1000}
                   />

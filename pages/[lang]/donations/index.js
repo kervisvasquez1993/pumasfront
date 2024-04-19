@@ -26,6 +26,7 @@ import { data } from 'autoprefixer'
 import FormDonationSpecies from '../../../components/Section/FormDonationSpecies'
 import useModelo from '../../../hooks/useModelo'
 import useStore from '../../../store/store-menu'
+import Image from 'next/image'
 
 const Donations = ({
   typeDonationSchemes,
@@ -108,7 +109,7 @@ const Donations = ({
   })
 
 
-
+  console.log()
 
   return (
     <Main titlePage={'Donación'}>
@@ -124,7 +125,7 @@ const Donations = ({
               {donationInfo[0]?.attributes?.description}
             </ReactMarkdown>
           </div>
-          <img src='/images/pumas.jpg' alt='Pumas' className='w-full' />
+          <Image width={500}  height={500} src={donationInfo[0]?.attributes?.img?.data?.attributes?.url} alt='Pumas' className='w-full' />
         </div>
         <TwoColumnGrid>
           <BasicSection
@@ -224,7 +225,6 @@ export async function getStaticProps(context) {
   })
 
   isLoading = false
-  // console.log(result, "result");
   return {
     props: {
       typeDonationSchemes,
