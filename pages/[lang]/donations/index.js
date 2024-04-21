@@ -200,6 +200,7 @@ export async function getStaticProps(context) {
   const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo
   const modelsGQ = modelsGQResponse?.data?.modelos
   const menus = menusResponse.data.data
+  console.log(donations, "donations")
   const result = donations.map((element) => ({
     id: element.id,
     monto: element.attributes.monto,
@@ -208,6 +209,9 @@ export async function getStaticProps(context) {
     imgSrc: element.attributes.imgSrc,
     modelos: element.attributes.modelos,
     tipo_de_donacions: element.attributes.tipo_de_donacions,
+    monto_semestral : element.attributes.monto_semestral,
+    monto_anual : element.attributes.monto_anual,
+    precios : element.attributes.precios
     // imagenes : element?.attributes?.imagenes
   }))
   // console.log(result, "result")

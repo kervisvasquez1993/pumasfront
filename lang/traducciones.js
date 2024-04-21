@@ -31,7 +31,7 @@ export const traducciones = {
     inputNombre: 'Nombre',
     illustration3d: 'ILUSTRACION MAPA 3D',
     categoriaPatrocinadores: 'Categoría de Patrocinadores',
-    tipoPatrocinadores: 'Tipo de Patrocinadores',
+    tipoPatrocinadores: 'Tiempo de patrocinio',
     patrocinioMensual: 'Patrocinio Mensual',
     patrocinioSemestral: 'Patrocinio Semestral',
     patrocinioAnual: 'Patrocinio Anual',

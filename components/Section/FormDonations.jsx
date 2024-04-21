@@ -22,8 +22,11 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
   const [especieSeleccionadaName, setEspecieSeleccionadaName] = useState(null);
   const [selectedElements, setSelectedElements] = useState([]);
   const [selectedNames, setSelectedNames] = useState([]);
+  const [preciosHabitad, setPreciosHabitad] = useState([]);
+  const [preciosHabitadSeleccionada, setPreciosHabitadSeleccionada]  = useState("");
   const [loadingForm, setLoadingForm] = useState(false);
-
+  const [sponsorship, seSponsorship] = useState("");
+  // console.log(result,"result")
   const {
     handleSubmit,
     formState: { errors },
@@ -48,9 +51,11 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
 
     const filterElements = result.filter(
       (element) =>
-        element?.tipo_de_donacions?.data[0]?.attributes?.titulo === selectedDonation
+        element?.tipo_de_donacions?.data[0]?.attributes?.titulo ===
+        selectedDonation
     );
-    console.log(filterForTypeDonation, 'filterForTypeDonation')
+    
+
     setFilterForTypeDonation(filterElements);
     setEspecieSeleccionada(null);
 
@@ -59,7 +64,14 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
     setSelectedNames([]);
     setDateDonationsInfo(null);
     setSelectedItems([]);
+    setPreciosHabitadSeleccionada("")
+    setPreciosHabitad([])
   }, [watch("donations"), result, typeDonations]);
+
+
+  const handleSelectionPrecioChange = (event) => {
+    setPreciosHabitadSeleccionada(event.target.value);
+  };
 
   const handleItemToggle = (itemId) => {
     let newSelectedItems;
@@ -77,7 +89,6 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
   };
 
   useEffect(() => {
-
     const totalMonto = selectedElements.reduce(
       (total, item) => total + Number(item.monto),
       0
@@ -89,37 +100,28 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
   }, [selectedElements]);
 
   const handleRadioChange = (newValue) => {
-    setMonto(newValue.monto * typeSponsorship);
+    setMonto(getDonationAmount(newValue, sponsorship))
+    console.log(newValue);
+    setPreciosHabitadSeleccionada("")
+    setPreciosHabitad([])
+    setPreciosHabitad(newValue?.precios);
     setDateDonationsInfo(newValue);
     setTypeDonation(newValue.donacion);
     setEspecies(newValue?.modelos?.data);
     setEspecieSeleccionada(null);
   };
   const handleRadioChangeEspecies = (newValue) => {
+    setPreciosHabitadSeleccionada("")
     const findModelo = modelos.data.find((modelo) => modelo.id == newValue.id);
+    console.log(findModelo, "findModelo");
     setEspecieSeleccionadaName(findModelo?.attributes.nombre);
+    
+
     setEspecieSeleccionada(findModelo?.attributes);
   };
 
   const handleSponsorshipChange = (event) => {
-    const selectedValue = event.target.value;
-    setTypeSponsorship(
-      selectedValue === "monthlySponsorship"
-        ? 1
-        : selectedValue === "semiAnnualSponsorship"
-          ? 6
-          : 12
-    );
-    if (dateDonationsInfo) {
-      setMonto(
-        dateDonationsInfo.monto *
-        (selectedValue === "monthlySponsorship"
-          ? 1
-          : selectedValue === "semiAnnualSponsorship"
-            ? 6
-            : 12)
-      );
-    }
+    seSponsorship(event.target.value);
   };
 
   const onSubmit = handleSubmit(async (value) => {
@@ -131,7 +133,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
       monto: monto,
       categoriaPatrocinio: value.donations,
       donacion: typeDonation,
-      donacionesHuella: selectedElements?.map(elemento => elemento?.donacion),
+      donacionesHuella: selectedElements?.map((elemento) => elemento?.donacion),
       typeSponsorship: value.typeSponsorship,
       nombreEspecie: especieSeleccionadaName
         ? especieSeleccionadaName
@@ -155,7 +157,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
       setDateDonationsInfo(null);
       setEspecieSeleccionada(null);
       setFilterForTypeDonation(null);
-      setSelectedElements([])
+      setSelectedElements([]);
       setLoadingForm(false);
       toast.success(obtenerFrase(lang, "successMensaje"));
     } catch (error) {
@@ -163,6 +165,19 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
       setLoadingForm(false);
     }
   });
+  const getDonationAmount = (element, sponsorshipType) => {
+    switch (sponsorshipType) {
+      case "monthlySponsorship":
+        return element.monto;
+      case "semiAnnualSponsorship":
+        return element.monto_semestral;
+      case "annualSponsorship":
+        return element.monto_anual;
+      default:
+        return element.monto;
+    }
+  };
+  
 
   return (
     <>
@@ -191,7 +206,9 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               id="name"
               name="name"
               placeholder={obtenerFrase(lang, "inputNombre").toLowerCase()}
-              className={`w-full p-2 rounded ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full p-2 rounded ${
+                errors.name ? "border-red-500" : "border-gray-300"
+              }`}
               {...register("name", {
                 required: {
                   value: true,
@@ -199,7 +216,9 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                 },
               })}
             />
-            {errors.name && <div className="text-red-500">{errors.name.message}</div>}
+            {errors.name && (
+              <div className="text-red-500">{errors.name.message}</div>
+            )}
           </div>
           <div className="mb-4">
             <label htmlFor="email" className="block font-semibold mb-1">
@@ -210,7 +229,9 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               id="email"
               name="email"
               placeholder="example@example.com"
-              className={`w-full p-2 rounded ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full p-2 rounded ${
+                errors.email ? "border-red-500" : "border-gray-300"
+              }`}
               {...register("email", {
                 required: {
                   value: true,
@@ -218,8 +239,9 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                 },
               })}
             />
-            {errors.email && <div className="text-red-500">{errors.email.message}</div>}
-
+            {errors.email && (
+              <div className="text-red-500">{errors.email.message}</div>
+            )}
           </div>
 
           <div className="mb-4">
@@ -234,9 +256,13 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                   value: true,
                   message: "El campo de categoría de patrocinio es requerido",
                 },
-                validate: value => value !== '' || "El campo de categoría de patrocinio es requerido"
+                validate: (value) =>
+                  value !== "" ||
+                  "El campo de categoría de patrocinio es requerido",
               })}
-              className={`w-full p-2 rounded ${errors.donations ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full p-2 rounded ${
+                errors.donations ? "border-red-500" : "border-gray-300"
+              }`}
             >
               <option value="">Selecccione una opcion</option>
               {typeDonations.map((nameDonation) => (
@@ -245,26 +271,41 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                 </option>
               ))}
             </select>
-            {errors.donations && <div className="text-red-500">{errors.donations.message}</div>}
+            {errors.donations && (
+              <div className="text-red-500">{errors.donations.message}</div>
+            )}
           </div>
-          {(watch("donations") != "HUELLA" || watch("donations") != "FOOTPRINT") && (<div className="mb-4">
-            <label htmlFor="typeSponsorship" className="block font-semibold mb-1">
-              {obtenerFrase(lang, "tipoPatrocinadores")}:
-            </label>
-            <select
-              id="requiereGuia"
-              name="requiereGuia"
-              {...register("typeSponsorship")}
-              onChange={handleSponsorshipChange}
-              className={`w-full border p-2 rounded ${errors.requiereGuia ? "border-red-500" : ""
+          {(watch("donations") != "HUELLA" ||
+            watch("donations") != "FOOTPRINT") && (
+            <div className="mb-4">
+              <label
+                htmlFor="typeSponsorship"
+                className="block font-semibold mb-1"
+              >
+                {obtenerFrase(lang, "tipoPatrocinadores")}:
+              </label>
+              <select
+                id="requiereGuia"
+                name="requiereGuia"
+                {...register("typeSponsorship")}
+                onChange={handleSponsorshipChange}
+                className={`w-full border p-2 rounded ${
+                  errors.requiereGuia ? "border-red-500" : ""
                 }`}
-            >
-              <option value="monthlySponsorship"> {obtenerFrase(lang, "patrocinioMensual")}  </option>
-              <option value="semiAnnualSponsorship">{obtenerFrase(lang, "patrocinioSemestral")}  </option>
-              <option value="annualSponsorship"> {obtenerFrase(lang, "patrocinioAnual")}</option>
-            </select>
-          </div>)}
-
+              >
+                <option value="monthlySponsorship">
+                  {obtenerFrase(lang, "patrocinioMensual")}
+                </option>
+                <option value="semiAnnualSponsorship">
+                  {obtenerFrase(lang, "patrocinioSemestral")}
+                </option>
+                <option value="annualSponsorship">
+                  {" "}
+                  {obtenerFrase(lang, "patrocinioAnual")}
+                </option>
+              </select>
+            </div>
+          )}
 
           {(watch("donations") === "HUELLA" ||
             watch("donations") === "ECOSISTEMA" ||
@@ -274,107 +315,160 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
             watch("donations") === "ECOSYSTEM" ||
             watch("donations") === "SPECIES" ||
             watch("donations") === "HABITAT") && (
-              <>
-                <label
-                  htmlFor="typeSponsorship"
-                  className="block font-semibold mb-1"
-                >
-                  {
-                    obtenerFrase(lang, 'tipoDeDonacion')
-                  }
-
-                </label>
-                {watch("donations") === "HUELLA" ||
-                  watch("donations") === "FOOTPRINT" ? (
-                  <section className="flex flex-wrap">
-                    {filterForTypeDonation &&
-                      Object.entries(
-                        filterForTypeDonation
-                          .sort((a, b) => Number(b.monto) - Number(a.monto))
-                          .reduce((acc, curr) => {
-                            if (!acc[curr.monto]) {
-                              acc[curr.monto] = [];
-                            }
-                            acc[curr.monto].push(curr);
-                            return acc;
-                          }, {})
-                      ).map(([monto, items], index) => (
-                        <div key={index} className="monto-group">
-                          <h2 className="monto-title text-3xl font-bold colorPrimary fuenteTitulo text-center px-10">
-                            {monto}$
-                          </h2>
-                          <div className="items-container">
-                            {items.map((element, index) => (
-                              <div key={index} className="item">
-                                <ItemDonations
-                                  data={element}
-                                  selected={selectedItems.includes(element.id)}
-                                  onClick={() => handleItemToggle(element.id)}
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                  </section>
-                ) : (
-                  filterForTypeDonation?.map((element) => (
-
-                    <div
-                      className="inline-flex items-center"
-                      key={element.donacion}
-                    >
-
-                      <label
-                        className="relative flex items-center p-3 rounded-full cursor-pointer"
-                        htmlFor={element.donacion}
-                      >
-                        <input
-                          {...register("donation", {
-                            required: {
-                              value: true,
-                              message: "Donation is required",
-                            },
-                          })}
-                          className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
-                          type="radio"
-                          name="color"
-                          value={JSON.stringify(element)}
-                          id={element.donacion}
-                          onChange={() => handleRadioChange(element)}
-                        />
-                        <span className="absolute text-gray-900 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-3.5 w-3.5"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                          >
-                            <circle
-                              data-name="ellipse"
-                              cx="8"
-                              cy="8"
-                              r="8"
-                            ></circle>
-                          </svg>
-                        </span>
-                      </label>
-                      <label
-                        className="mt-px font-light text-gray-700 cursor-pointer select-none"
-                        htmlFor="html"
-                      >
-                        {element.donacion} ({element.monto}$)
-                      </label>
-                    </div>
-                  ))
+            <>
+              <label
+                htmlFor="typeSponsorship"
+                className="block font-semibold mb-1"
+              >
+                {obtenerFrase(lang, "tipoDeDonacion")}
+                {console.log(
+                  filterForTypeDonation,
+                  "filterForTypeDonation desde "
                 )}
-              </>
-            )}
+              </label>
+              {watch("donations") === "HUELLA" ||
+               watch("donations") === "FOOTPRINT" ? (
+                <section className="flex flex-wrap">
+                  {filterForTypeDonation &&
+                    Object.entries(
+                      filterForTypeDonation
+                        .sort((a, b) => Number(b.monto) - Number(a.monto))
+                        .reduce((acc, curr) => {
+                          if (!acc[curr.monto]) {
+                            acc[curr.monto] = [];
+                          }
+                          acc[curr.monto].push(curr);
+                          return acc;
+                        }, {})
+                    ).map(([monto, items], index) => (
+                      <div key={index} className="monto-group">
+                        <h2 className="monto-title text-3xl font-bold colorPrimary fuenteTitulo text-center px-10">
+                          {monto}$
+                        </h2>
+                        <div className="items-container">
+                          {items.map((element, index) => (
+                            <div key={index} className="item">
+                              <ItemDonations
+                                data={element}
+                                selected={selectedItems.includes(element.id)}
+                                onClick={() => handleItemToggle(element.id)}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                </section>
+              ) : (
+                ""
+              )}
+
+              {watch("donations") === "ESPECIE" &&
+                filterForTypeDonation?.map((element) => (
+                  <div
+                    className="inline-flex items-center"
+                    key={element.donacion}
+                  >
+                    <label
+                      className="relative flex items-center p-3 rounded-full cursor-pointer"
+                      htmlFor={element.donacion}
+                    >
+                      <input
+                        {...register("donation", {
+                          required: {
+                            value: true,
+                            message: "Donation is required",
+                          },
+                        })}
+                        className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                        type="radio"
+                        name="color"
+                        value={JSON.stringify(element)}
+                        id={element.donacion}
+                        onChange={() => handleRadioChange(element)}
+                      />
+                      <span className="absolute text-gray-900 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-3.5 w-3.5"
+                          viewBox="0 0 16 16"
+                          fill="currentColor"
+                        >
+                          <circle
+                            data-name="ellipse"
+                            cx="8"
+                            cy="8"
+                            r="8"
+                          ></circle>
+                        </svg>
+                      </span>
+                    </label>
+                    <label
+                      className="mt-px font-light text-gray-700 cursor-pointer select-none"
+                      htmlFor="html"
+                    >
+                      {element.donacion} ({getDonationAmount(element, sponsorship)}$)
+                    </label>
+                  </div>
+                ))}
+
+              {watch("donations") === "HÁBITAT" &&
+                filterForTypeDonation?.map((element) => (
+                  <div
+                    className="inline-flex items-center"
+                    key={element.donacion}
+                  >
+                    <label
+                      className="relative flex items-center p-3 rounded-full cursor-pointer"
+                      htmlFor={element.donacion}
+                    >
+                      <input
+                        {...register("donation", {
+                          required: {
+                            value: true,
+                            message: "Donation is required",
+                          },
+                        })}
+                        className="before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-full border border-blue-gray-200 text-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                        type="radio"
+                        name="color"
+                        value={JSON.stringify(element)}
+                        id={element.donacion}
+                        onChange={() => handleRadioChange(element)}
+                      />
+                      <span className="absolute text-gray-900 transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-3.5 w-3.5"
+                          viewBox="0 0 16 16"
+                          fill="currentColor"
+                        >
+                          <circle
+                            data-name="ellipse"
+                            cx="8"
+                            cy="8"
+                            r="8"
+                          ></circle>
+                        </svg>
+                      </span>
+                    </label>
+                    <label
+                      className="mt-px font-light text-gray-700 cursor-pointer select-none"
+                      htmlFor="html"
+                    >
+                      {element.donacion} 
+                    </label>
+                  </div>
+                ))}
+            </>
+          )}
 
           {especies && (
-            <label htmlFor="typeSponsorship" className="block font-semibold mb-1">
+            <label
+              htmlFor="typeSponsorship"
+              className="block font-semibold mb-1"
+            >
               {obtenerFrase(lang, "Especies")}
-
             </label>
           )}
           {especies?.map((especie) => (
@@ -386,7 +480,10 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                 >
                   <input
                     {...register("especie", {
-                      required: { value: true, message: "Donation is required" },
+                      required: {
+                        value: true,
+                        message: "Donation is required",
+                      },
                     })}
                     type="radio"
                     name="especie"
@@ -410,11 +507,39 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                   className="mt-px font-light text-gray-700 cursor-pointer select-none"
                   htmlFor="html"
                 >
-                  {especie?.attributes?.especie} ({especie?.attributes?.nombre})
+                  {especie?.attributes?.nombre}
+                  {console.log(especie)}
                 </label>
               </div>
             </>
           ))}
+          {preciosHabitad.length > 0 && (
+            <>   
+              <label
+                htmlFor="typeSponsorship"
+                className="block font-semibold mb-1"
+              >
+                Tipo de donacion
+              </label>
+         
+            <select
+              id="requiereGuia"
+              name="requiereGuia"
+              {...register("typeSponsorship")}
+              onChange={handleSelectionPrecioChange}
+              value={preciosHabitadSeleccionada}
+              className={`w-full border p-2 rounded ${
+                errors.requiereGuia ? "border-red-500" : ""
+              }`}
+            >
+              {preciosHabitad.map((option) => (
+                <option key={option.id} value={option.monto}>
+                  {option.label} - {option.monto}
+                </option>
+              ))}
+            </select>
+            </>
+          )}
         </div>
         <div className="resumunForm">
           <figure className="lg:p-1 p-1 m-10 imagenResumen center">
@@ -464,6 +589,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                     src={especieSeleccionada?.imagenes?.data[0]?.attributes.url}
                     width={1000}
                     height={1000}
+                    alt="imagen de especie"
                   />
                 ) : (
                   ""
@@ -481,14 +607,15 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               <h2 className="fuentesParrafo text-center">
                 Descripcion : {especieSeleccionada?.descripcion}
               </h2>
-              
             </>
           )}
-          {(monto) ? (
-            <h2 className="fuenteTitulo text-center ">{obtenerFrase(lang, "monto")} : {monto}$</h2>
-          ) : ""}
-
-
+          {monto ? (
+            <h2 className="fuenteTitulo text-center ">
+              {obtenerFrase(lang, "monto")} : {monto}$
+            </h2>
+          ) : (
+            ""
+          )}
 
           {/* <figure className="lg:p-1 p-1 m-10 imagenResumen center">
           {dateDonationsInfo?.imgSrc?.data?.attributes?.url ? (
@@ -515,14 +642,12 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
             }}
             className="block w-full md:w-auto"
           >
-
-            {loadingForm ? "Loading" : obtenerFrase(lang, 'enviarMensaje')}
+            {loadingForm ? "Loading" : obtenerFrase(lang, "enviarMensaje")}
           </button>
         </div>
       </form>
     </>
   );
 };
-
 
 export default FormDonations;
