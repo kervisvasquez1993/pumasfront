@@ -45,9 +45,6 @@ const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
 
-
-
-
   };
 
   return (
