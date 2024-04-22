@@ -34,8 +34,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.body.type === "Donación") {
     try {
-    
-
       const data = await resend.emails.send({
         from: "Acme <onboarding@resend.dev>",
         to: ["kervisvasquez24@gmail.com"],
@@ -48,12 +46,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           typeSponsorship :  req.body.typeSponsorship,
           nombreEspecie :  req.body.nombreEspecie,
           donacionesHuella : req.body.donacionesHuella,
+          tiempo_de_donacion: req.body.tiempo_de_donacion,
+          categoriaPatrocinio: req.body.categoriaPatrocinio,
         }),
       });
       res.status(200).json({ mensaje: "Mensaje Enviado", data });
     } catch (error) {
       console.log(error, "Error sending");
-      // En caso de error, responde con un estado 400 y los detalles del error
+     
       res.status(403).json({ mensaje: "Error al enviar el correo", error });
       console.error("Error al enviar el correo:", error);
     }
