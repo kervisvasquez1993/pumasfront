@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const containerStyle = {
   width: "100%", // El contenedor ocupa el ancho completo del padre
-  maxWidth: "600px", // Cambia este valor según tus preferencias
+  // maxWidth: "600px", // Cambia este valor según tus preferencias
   margin: "0 auto", // Centra el contenedor horizontalmente
   heigth: "auto",
 };

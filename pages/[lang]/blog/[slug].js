@@ -22,12 +22,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
   const { screenSize } = useScreenSize();
-  console.log(footer, "footer")
+  console.log(footer, "footer");
   const router = useRouter();
   const { lang } = router.query;
   const { loadedFooter, loadedWhatsapp, updateMenuLoader } = useMenu();
   useEffect(() => {
-    loadedFooter(footer)
+    loadedFooter(footer);
     // loadedWhatsapp(whatsapp)
     // updateMenuLoader(menus, lang)
   }, [lang]);
@@ -37,13 +37,12 @@ const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-
   };
 
   return (
     <Main titlePage={blog?.attributes?.TitleBlog}>
       <HeaderComponents
-        classNameText={"colorPrimary chelseaFont pt-10 mt-10 px-10 mx-10 "}
+        classNameText={"colorPrimary chelseaFont pt-10 mt-10 lg:px-10 lg:mx-10 "}
         alignment={`${screenSize <= 1024 ? "center" : "start"}`}
       >
         {blog?.attributes?.TitleBlog}
@@ -53,25 +52,25 @@ const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
         <section
           className={`${blog?.attributes?.imgBlog?.data ? "flex-2" : ""}`}
         >
-          {/* <SliderSingle slidesData={blog?.attributes?.imgBlog?.data} /> */}
+          
 
           <div className="containerSlider">
-
             <Slider {...settings}>
               {blog?.attributes?.imgBlog?.data.map((slider) => {
-              
                 return (
-                  <div>
+                  <div className="w-64 h-100">
                     <Image
                       src={slider.attributes.url}
                       width={450}
                       height={450}
                       alt="Picture of the author"
+                      className="w-full h-auto"
                     />
                   </div>
                 );
               })}
             </Slider>
+           
           </div>
           <section>
             <BasicSection
@@ -80,10 +79,11 @@ const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
               title={""}
               alignItems={"center"}
               width={`${screenSize <= 1024 ? "100%" : "100%"}`}
-              classNameContent={`${screenSize <= 1024
+              classNameContent={`${
+                screenSize <= 1024
                   ? "align-vertical-center-horizontal-center"
                   : "align-vertical-center-horizontal-start"
-                } fuentesParrafo `}
+              } fuentesParrafo `}
             >
               <ReactMarkdown className="contentBlog saltoLinea2">
                 {blog?.attributes?.ContentBlog}
@@ -101,14 +101,18 @@ export default BlogInfo;
 export const getStaticProps = async ({ params }) => {
   const { lang, slug } = params;
 
-  const [blogAllResponse, whatsappResponse, footerResponse, menusResponse] = await Promise.all(
-    [getBlog(lang), getWhatsapp(lang), getFooter(lang), getMenus(lang)]
-  );
+  const [blogAllResponse, whatsappResponse, footerResponse, menusResponse] =
+    await Promise.all([
+      getBlog(lang),
+      getWhatsapp(lang),
+      getFooter(lang),
+      getMenus(lang),
+    ]);
   const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
   const footer = footerResponse?.data?.data[0]?.attributes?.footerInfo;
 
   const blogAll = blogAllResponse.data.data;
-  const menus = menusResponse.data.data
+  const menus = menusResponse.data.data;
 
   const blog = blogAll.find((e) => e.attributes.slug == slug);
   return {
@@ -116,7 +120,7 @@ export const getStaticProps = async ({ params }) => {
       blog,
       whatsapp,
       menus,
-      footer
+      footer,
     },
   };
 };
