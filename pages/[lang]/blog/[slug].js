@@ -20,23 +20,16 @@ import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-
-
-
-
-
 const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
   const { screenSize } = useScreenSize();
-
+  console.log(footer, "footer")
   const router = useRouter();
   const { lang } = router.query;
   const { loadedFooter, loadedWhatsapp, updateMenuLoader } = useMenu();
-
   useEffect(() => {
     loadedFooter(footer)
-    loadedWhatsapp(whatsapp)
-    updateMenuLoader(menus, lang)
+    // loadedWhatsapp(whatsapp)
+    // updateMenuLoader(menus, lang)
   }, [lang]);
   const settings = {
     dots: true,
@@ -122,7 +115,8 @@ export const getStaticProps = async ({ params }) => {
     props: {
       blog,
       whatsapp,
-      menus
+      menus,
+      footer
     },
   };
 };
