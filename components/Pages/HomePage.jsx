@@ -200,14 +200,17 @@ const HomePage = ({ data }) => {
           >
             <span id="material"></span>
             <ReactMarkdown className="py-5">{section3?.content}</ReactMarkdown>
-
-            <Link
-              className={" buttonGreen m-0 manropeFont p-5 btnPrimary py-2"}
-              href={section3?.btn?.fileLabel?.data?.attributes?.url || ""}
-              target="_blank"
-            >
-              {section3?.btn.label}
-            </Link>
+            {
+              section3?.btn?.fileLabel?.data?.attributes?.url && ( <Link
+                className={" buttonGreen m-0 manropeFont p-5 btnPrimary py-2"}
+                href={section3?.btn?.fileLabel?.data?.attributes?.url || ""}
+                target="_blank"
+              >
+                {section3?.btn.label}
+              </Link>)
+              
+            }
+           
           </BasicSection>
         </TwoColumnGrid>
         </section>
