@@ -107,6 +107,7 @@ const ApoyanosPage = ({ data }) => {
                       className={" backgroundVerde m-2 manropeFont p-5 btnPrimary py-2 "}
                       href={element?.url}
                       target="_blank"
+                      key={index}
                     >
                       {element?.label}
                     </Link>

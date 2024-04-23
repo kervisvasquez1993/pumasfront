@@ -109,7 +109,7 @@ const Donations = ({
   })
 
 
-  console.log()
+  console.log(donationInfo[0]?.attributes.donaciones, "donationInfo")
 
   return (
     <Main titlePage={'Donación'}>
@@ -146,6 +146,7 @@ const Donations = ({
             <FormDonationSpecies
               filterSpecie={filter}
               typeDonations={typeDonationSchemes}
+              donaciones={donationInfo[0]?.attributes?.donaciones}
             />
           ) : (
             <FormDonations

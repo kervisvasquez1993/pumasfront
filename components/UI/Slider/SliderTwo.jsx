@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation } from 'swiper';
+import SwiperCore, { Navigation } from "swiper";
 import "swiper/css";
+import "swiper/css/pagination";
 import "swiper/css/navigation";
 import style from "./style.module.css";
 import ImgComponent from "../ImgComponent/ImgComponents";
@@ -14,15 +15,18 @@ const SliderTwo = () => {
   const backgroundColor = "#fffdf6";
   const [swiper, setSwiper] = useState(null);
   const [slidesPerView, setSlidesPerView] = useState(5); // Valor predeterminado para pantallas mayores a 1200px
-  const { patrocinadores, loading } = usePatocinadores()
-  if (loading) <Loader />
+  const { patrocinadores, loading } = usePatocinadores();
+  if (loading) <Loader />;
   const dataPatrocidores = patrocinadores?.map((patrocindador, index) => {
-
-    return (<SwiperSlide key={index}>
-      {/* <ImgComponent imageUrl={patrocindador?.attributes?.logo?.data?.attributes?.formats?.small?.url} /> */}
-      <ImgComponent imageUrl={patrocindador?.attributes?.logo?.data?.attributes?.url} />
-    </SwiperSlide>)
-  })
+    return (
+      <SwiperSlide key={index}>
+        {/* <ImgComponent imageUrl={patrocindador?.attributes?.logo?.data?.attributes?.formats?.small?.url} /> */}
+        <ImgComponent
+          imageUrl={patrocindador?.attributes?.logo?.data?.attributes?.url}
+        />
+      </SwiperSlide>
+    );
+  });
   const handlePrev = () => {
     if (swiper) {
       swiper.slidePrev();
@@ -58,15 +62,25 @@ const SliderTwo = () => {
   }, []);
 
   return (
-    <div className="swiper-container py-10 my-10 center" style={{ background: backgroundColor }}>
+    <div
+      className="swiper-container py-10 my-10 center"
+      style={{ background: backgroundColor }}
+    >
       <div className="swiper-navigation">
-        <button className="swiper-button-prev" onClick={handlePrev}></button>
-        <button className="swiper-button-next" onClick={handleNext}></button>
+        <button
+          className="swiper-button-prev hidden md:block"
+          onClick={handlePrev}
+        ></button>
+        <button
+          className="swiper-button-next hidden md:block"
+          onClick={handleNext}
+        ></button>
       </div>
 
       <Swiper
         spaceBetween={50}
         slidesPerView={slidesPerView}
+        lazy={true}
         navigation={{
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
