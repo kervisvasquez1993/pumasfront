@@ -210,7 +210,7 @@ const NosotrosPage = ({ data }) => {
           return [...acc, component];
         }
         if (elemento.typeSection === "section9") {
-          {console.log()}
+          // {console.log()}
           const sliderReconocimiento = elemento?.imagenWithContentBasic?.map(element => {
             return (<Section
               positionTitle={"start"}
