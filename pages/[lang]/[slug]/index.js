@@ -45,7 +45,7 @@ const Page = ({
   }, [lang])
   useEffect(() => {
     updateData(page)
-
+    console.log(modelsGQ, "modelsGQ")
     modelsGQ && hearlessChangInfo(modelsGQ)
   }, [page])
   if (router.isFallback) {

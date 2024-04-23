@@ -27,7 +27,8 @@ const SantuarioPage = ({ data }) => {
   const { componentDynamics, title } = data;
   const { modeloList } = useModelo();
   const { screenSize } = useScreenSize()
-  console.log(modeloList, 'modeloList')
+  // console.log(modeloList)
+  // console.log(modeloList?.find(el => el.nombre == "EVA"), 'eva')
   if (!data) {
     return <Loader />;
   }
@@ -168,7 +169,7 @@ const SantuarioPage = ({ data }) => {
       <section>
         <MapWithBackground backgroundImage={"/images/mapa1.jpeg"}>
           {modeloList
-            ?.slice() // Hacemos una copia del array para no modificar el original
+            ?.slice() 
             .sort((a, b) => a.id - b.id)
             .map((models) => {
               const { ubicacionX, ubicacionY, srcModelo, id } = models;
