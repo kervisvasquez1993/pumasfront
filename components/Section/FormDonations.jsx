@@ -19,10 +19,10 @@ const donationTypes = [
   "SPECIES",
   "HABITAT",
 ];
-
 const especiesTypes = ["ESPECIE", "SPECIES"];
-
 const huellaTypes = ["HUELLA", "FOOTPRINT"];
+const habitatTypes = ["HÁBITAT", "HABITAT"];
+const ecosistemaTypes = ["ECOSISTEMA", "ECOSYSTEM"];
 
 const FormDonations = ({ typeDonations, result, modelos }) => {
   const [dateDonations, setDateDonations] = useState(null);
@@ -408,10 +408,10 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                 htmlFor="typeSponsorship"
                 className="block font-semibold mb-1"
               >
-                {(watch("donations") == "ESPECIE" || watch("donations") == "SPECIES") &&
+                { especiesTypes.includes(watch("donations")) &&
                   obtenerFrase(lang, "tipoDeDonacion")}
-                {(watch("donations") == "HÁBITAT" || watch("donations") == "HABITAT" ) && obtenerFrase(lang, "habitad_sponsor")}
-                {(watch("donations") == "ECOSISTEMA" || watch("donations") == "ECOSYSTEM") &&
+                { habitatTypes.includes(watch("donations")) && obtenerFrase(lang, "habitad_sponsor")}
+                { ecosistemaTypes.includes(watch("donations")) &&
                   obtenerFrase(lang, "ecosistema_sponsor") }
               </label>
               {huellaTypes.includes(watch("donations")) ? (
@@ -490,7 +490,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                       className="mt-px font-light text-gray-700 cursor-pointer select-none"
                       htmlFor="html"
                     >
-                      {element.donacion}
+                      {element.donacion} {" "}
 
                       {element.monto !== null &&
                         element.monto_anual !== null &&
@@ -508,11 +508,9 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               htmlFor="typeSponsorship"
               className="block font-semibold mb-1"
             >
-              {(watch("donations") == "ESPECIE" ||
-                watch("donations") == "SPECIES") &&
+              {especiesTypes.includes(watch("donations"))  &&
                 obtenerFrase(lang, "Especies")}
-              {(watch("donations") == "HÁBITAT" ||
-                watch("donations") == "HABITAT") &&
+              {habitatTypes.includes(watch("donations")) &&
                 obtenerFrase(lang, "habitat_name")}
             </label>
           )}
@@ -563,7 +561,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                 htmlFor="typeSponsorship"
                 className="block font-semibold mb-1"
               >
-                Tipo de donacion
+                {obtenerFrase(lang, "type_donation")}
               </label>
 
               <select
@@ -576,7 +574,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                   errors.requiereGuia ? "border-red-500" : ""
                 }`}
               >
-                <option value="">Seleccione una opcion</option>
+                <option value="">{obtenerFrase(lang, "seleccionar_option")}</option>
                 {statePrecio.map((option) => (
                   <option key={option.id} value={option.monto}>
                     {option.label} - {option.monto}
@@ -635,7 +633,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
           )}
 
           {dateDonationsInfo?.descripcion && (
-            <h2 className="fuenteTitulo text-center my-5">Descripción</h2>
+            <h2 className="fuenteTitulo text-center my-5">{obtenerFrase(lang, "descripcionForm")}</h2>
           )}
           <div className="inline">
             <ReactMarkdown className="fuentesParrafo text-center px-10">
@@ -646,7 +644,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
           {preciosHabitadSeleccionada && (
             <div className="inline">
               <h2 className="fuenteTitulo text-center my-5">
-                Monto : {preciosHabitadSeleccionada}
+                {obtenerFrase(lang, "monto")} : {preciosHabitadSeleccionada}
               </h2>
               {preciosHabitadSeleccionada === "A elegir" && (
                 <h2 className="fuenteTitulo text-center my-5">
@@ -686,26 +684,26 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                 )}
               </figure>
 
-              {watch("donations") == "ESPECIE" && (
+              {especiesTypes.includes(watch("donations"))  && (
                 <>
                   <div className="flex-title my-5">
                     <h2 className="fuenteTitulo text-center ">
-                      Nombre : {especieSeleccionada?.nombre}
+                      {obtenerFrase(lang, "nombre")} : {especieSeleccionada?.nombre}
                     </h2>
                     <h2 className="fuenteTitulo text-center ">
-                      Especie : {especieSeleccionada?.especie}
+                      {obtenerFrase(lang, "especie")} : {especieSeleccionada?.especie}
                     </h2>
                   </div>
                 </>
               )}
-              {watch("donations") == "HÁBITAT" && (
+              {habitatTypes.includes(watch("donations"))  && (
                 <h2 className="fuentesParrafo text-center">
-                  Nombre : {especieSeleccionada?.nombre}
+                   {obtenerFrase(lang, "nombre")} : {especieSeleccionada?.nombre}
                 </h2>
               )}
               {especieSeleccionada?.descripcion && (
                 <h2 className="fuentesParrafo text-center">
-                  Descripcion : {especieSeleccionada?.descripcion}
+                  {obtenerFrase(lang, "descripcionForm")} : {especieSeleccionada?.descripcion}
                 </h2>
               )}
             </>
