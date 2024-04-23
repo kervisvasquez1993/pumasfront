@@ -42,6 +42,10 @@ export const traducciones = {
     detallesDeESpecie : 'Detalles de la Especie',
     successMensaje: 'Tu mensaje ha sido enviado exitosamente',
     manana : 'Mañana',
+    seleccionar_option : "Seleccione una opción",
+    habitat_name : "Nombre del hábitat",
+    habitad_sponsor : "Hábitat a patrocinar",
+    ecosistema_sponsor : "Ecosistema a patrocinar"
 
   },
   en: {
@@ -82,11 +86,15 @@ export const traducciones = {
     patrocinioAnual : 'Annual Sponsorship',
     donacion : 'Donation',
     monto : 'Amount',
-    tipoDeDonacion : 'Type Donation',
+    tipoDeDonacion : 'Species to sponsor',
     Especies : 'Species',
     detallesDeESpecie : 'Details of the Species',
     successMensaje: 'Your message has been sent successfully', 
     manana : 'Tomorrow',
+    seleccionar_option : "Select an option",
+    habitat_name : "Habitat name",
+    habitad_sponsor : "Habitat to sponsor",
+    ecosistema_sponsor : "Ecological system to sponsor"
     
   },
 }

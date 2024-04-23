@@ -203,7 +203,7 @@ const FormDonationSpecies = ({ filterSpecie, typeDonations }) => {
                         </div>
 
                         <h2 className="fuentesParrafo text-center">
-                            Descripcion : {filterSpecie[0]?.descripcion}
+                            Descripción : {filterSpecie[0]?.descripcion}
                         </h2>
 
                     </>

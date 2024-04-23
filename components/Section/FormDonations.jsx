@@ -20,6 +20,8 @@ const donationTypes = [
   "HABITAT",
 ];
 
+const especiesTypes = ["ESPECIE", "SPECIES"];
+
 const huellaTypes = ["HUELLA", "FOOTPRINT"];
 
 const FormDonations = ({ typeDonations, result, modelos }) => {
@@ -53,7 +55,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
   const router = useRouter();
   const { lang } = router.query;
   const formRef = useRef(null);
-
+  // console.log(dateDonationsInfo, "dateDonationsInfo");
   useEffect(() => {
     const selectedDonation = watch("donations");
     setDateDonations(
@@ -98,6 +100,16 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
   };
 
   useEffect(() => {
+    if (sponsorship === "monthlySponsorship") {
+      setMonto(dateDonationsInfo?.monto);
+    } else if (sponsorship === "semiAnnualSponsorship") {
+      setMonto(dateDonationsInfo?.monto_semestral);
+    } else if (sponsorship === "annualSponsorship") {
+      setMonto(dateDonationsInfo?.monto_anual);
+    }
+  }, [sponsorship]);
+
+  useEffect(() => {
     const totalMonto = selectedElements.reduce(
       (total, item) => total + Number(item.monto),
       0
@@ -110,6 +122,8 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
   const handleRadioChange = (newValue) => {
     if (
       newValue.tipo_de_donacions.data[0].attributes.titulo == "HÁBITAT" ||
+      newValue.tipo_de_donacions.data[0].attributes.titulo == "HABITAT" ||
+      newValue.tipo_de_donacions.data[0].attributes.titulo == "ECOSYSTEM" ||
       newValue.tipo_de_donacions.data[0].attributes.titulo == "ECOSISTEMA"
     ) {
       if (newValue.precios) {
@@ -142,7 +156,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
   const onSubmit = handleSubmit(async (value) => {
     setLoadingForm(true);
     let newElement;
-    if (value.donations === "ESPECIE") {
+    if (value.donations === "ESPECIE" || value.donations === "SPECIES") {
       newElement = {
         type: "Donación",
         nombre: value.name,
@@ -156,7 +170,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
           ? especieSeleccionadaName
           : "no Asignado",
       };
-    } else if (value.donations === "HÁBITAT") {
+    } else if (value.donations === "HÁBITAT" || value.donations === "HABITAT") {
       newElement = {
         type: "Donación",
         nombre: value.name,
@@ -172,7 +186,10 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
           ? especieSeleccionadaName
           : "no Asignado",
       };
-    } else if (value.donations === "ECOSISTEMA") {
+    } else if (
+      value.donations === "ECOSISTEMA" ||
+      value.donations === "ECOSYSTEM"
+    ) {
       newElement = {
         type: "Donación",
         nombre: value.name,
@@ -207,7 +224,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
       };
     }
 
-    console.log(newElement, "newElement");
+    // console.log(newElement, "newElement");
     // return;
     try {
       const res = await fetch("/api/send", {
@@ -255,7 +272,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
         return element.monto;
     }
   };
-
+  const donacionAElegir = watch("donacion_a_elegir");
   return (
     <>
       <div>
@@ -341,7 +358,9 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                 errors.donations ? "border-red-500" : "border-gray-300"
               }`}
             >
-              <option value="">Selecccione una opcion</option>
+              <option value="">
+                {obtenerFrase(lang, "seleccionar_option")}
+              </option>
               {typeDonations.map((nameDonation) => (
                 <option key={nameDonation.titulo} value={nameDonation.titulo}>
                   {nameDonation.titulo}
@@ -352,7 +371,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               <div className="text-red-500">{errors.donations.message}</div>
             )}
           </div>
-          {!huellaTypes.includes(watch("donations")) && (
+          {especiesTypes.includes(watch("donations")) && (
             <div className="mb-4">
               <label
                 htmlFor="typeSponsorship"
@@ -389,7 +408,11 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                 htmlFor="typeSponsorship"
                 className="block font-semibold mb-1"
               >
-                {obtenerFrase(lang, "tipoDeDonacion")}
+                {(watch("donations") == "ESPECIE" || watch("donations") == "SPECIES") &&
+                  obtenerFrase(lang, "tipoDeDonacion")}
+                {(watch("donations") == "HÁBITAT" || watch("donations") == "HABITAT" ) && obtenerFrase(lang, "habitad_sponsor")}
+                {(watch("donations") == "ECOSISTEMA" || watch("donations") == "ECOSYSTEM") &&
+                  obtenerFrase(lang, "ecosistema_sponsor") }
               </label>
               {huellaTypes.includes(watch("donations")) ? (
                 <section className="flex flex-wrap">
@@ -485,7 +508,12 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               htmlFor="typeSponsorship"
               className="block font-semibold mb-1"
             >
-              {obtenerFrase(lang, "Especies")}
+              {(watch("donations") == "ESPECIE" ||
+                watch("donations") == "SPECIES") &&
+                obtenerFrase(lang, "Especies")}
+              {(watch("donations") == "HÁBITAT" ||
+                watch("donations") == "HABITAT") &&
+                obtenerFrase(lang, "habitat_name")}
             </label>
           )}
           {especies?.map((especie) => (
@@ -599,10 +627,33 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               {dateDonations?.beneficio}
             </ReactMarkdown>
           </div>
+
           {dateDonationsInfo?.donacion && (
             <h2 className="fuenteTitulo text-center my-5">
               {obtenerFrase(lang, "donacion")} : {dateDonationsInfo?.donacion}
             </h2>
+          )}
+
+          {dateDonationsInfo?.descripcion && (
+            <h2 className="fuenteTitulo text-center my-5">Descripción</h2>
+          )}
+          <div className="inline">
+            <ReactMarkdown className="fuentesParrafo text-center px-10">
+              {dateDonationsInfo?.descripcion}
+            </ReactMarkdown>
+          </div>
+
+          {preciosHabitadSeleccionada && (
+            <div className="inline">
+              <h2 className="fuenteTitulo text-center my-5">
+                Monto : {preciosHabitadSeleccionada}
+              </h2>
+              {preciosHabitadSeleccionada === "A elegir" && (
+                <h2 className="fuenteTitulo text-center my-5">
+                  {donacionAElegir}$
+                </h2>
+              )}
+            </div>
           )}
 
           {selectedNames &&
@@ -636,24 +687,27 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               </figure>
 
               {watch("donations") == "ESPECIE" && (
-                <div className="flex-title my-5">
-                  <h2 className="fuenteTitulo text-center ">
-                    Nombre : {especieSeleccionada?.nombre}
-                  </h2>
-                  <h2 className="fuenteTitulo text-center ">
-                    Especie : {especieSeleccionada?.especie}
-                  </h2>
-                </div>
+                <>
+                  <div className="flex-title my-5">
+                    <h2 className="fuenteTitulo text-center ">
+                      Nombre : {especieSeleccionada?.nombre}
+                    </h2>
+                    <h2 className="fuenteTitulo text-center ">
+                      Especie : {especieSeleccionada?.especie}
+                    </h2>
+                  </div>
+                </>
               )}
               {watch("donations") == "HÁBITAT" && (
                 <h2 className="fuentesParrafo text-center">
                   Nombre : {especieSeleccionada?.nombre}
                 </h2>
               )}
-
-              <h2 className="fuentesParrafo text-center">
-                Descripcion : {especieSeleccionada?.descripcion}
-              </h2>
+              {especieSeleccionada?.descripcion && (
+                <h2 className="fuentesParrafo text-center">
+                  Descripcion : {especieSeleccionada?.descripcion}
+                </h2>
+              )}
             </>
           )}
           {monto ? (
