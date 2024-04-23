@@ -258,4 +258,3 @@ const HomePage = ({ data }) => {
 };
 
 export default HomePage;
-// test
