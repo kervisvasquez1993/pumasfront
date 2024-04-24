@@ -47,7 +47,12 @@ export const traducciones = {
     habitad_sponsor : "Hábitat a patrocinar",
     ecosistema_sponsor : "Ecosistema a patrocinar",
     type_donation : "Tipo de donación",
-    especie : "Especie"
+    especie : "Especie",
+    si : "Si",
+    no : "No",
+    procedencia : "Procedencia",
+    Nacional : "National",
+    Extranjero: "Extranjero"
 
   },
   en: {
@@ -71,7 +76,7 @@ export const traducciones = {
     cantidadAdultosForm: 'Number of Adults',
     cantidadNinosForm: 'Number of Ninos',
     descripcionForm: 'Description',
-    requiereGuiaForm: 'Require Guia',
+    requiereGuiaForm: 'Required guide',
     contactarForm: 'Contact',
     conoceMas: 'LEARN MORE',
     descargar: 'Download',
@@ -98,7 +103,13 @@ export const traducciones = {
     habitat_name : "Habitat name",
     habitad_sponsor : "Habitat to sponsor",
     ecosistema_sponsor : "Ecological system to sponsor",
-    type_donation : "Type of donation"
+    type_donation : "Type of donation",
+    si : "Yes",
+    no: "No",
+    procedencia : "Origin",
+    Nacional : "National  ",
+    Extranjero: "Foreign"
+
     
   },
 }

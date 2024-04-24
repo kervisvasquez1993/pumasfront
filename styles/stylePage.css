@@ -278,7 +278,13 @@ img {
     font-size: 3rem;
     width: 95%;
 }
-
+@media (max-width: 640px) {
+    .program-title,
+    .materials-edu-title {
+        font-size: 1rem;
+        text-align: center;
+    }
+}
 .about-program_text {
     margin: 0 2rem;
 }

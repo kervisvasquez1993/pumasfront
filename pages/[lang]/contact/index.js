@@ -343,16 +343,16 @@ const Contact = ({ whatsapp, footer }) => {
               }`}
             >
               <option value="NO" className="w-full border p-2 rounded ">
-                NO
+                No{" "}
               </option>
               <option value="SI" className="w-full border p-2 rounded ">
-                SI
+                {obtenerFrase(query.lang, "si")}
               </option>
             </select>
           </div>
           <div className="mb-4">
             <label htmlFor="requiereGuia" className="block font-semibold mb-1">
-              Procedencia:
+              {obtenerFrase(query.lang, "procedencia")}
             </label>
             <select
               id="Nacional"
@@ -364,10 +364,10 @@ const Contact = ({ whatsapp, footer }) => {
               }`}
             >
               <option value="Nacional" className="w-full border p-2 rounded ">
-                Nacional
+                {obtenerFrase(query.lang, "Nacional")}
               </option>
               <option value="Extrangero" className="w-full border p-2 rounded ">
-                Extranjero
+                {obtenerFrase(query.lang, "Extranjero")}
               </option>
             </select>
           </div>

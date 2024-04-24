@@ -14,7 +14,7 @@ const containerStyle = {
 
 export default function SliderSingle({ slidesData = [] }) {
   return (
-    <section className="p-10 m-10 wrapperElementoSlider">
+    <section className="py-10 my-10 wrapperElementoSlider">
       <div style={containerStyle}>
         <Swiper
           slidesPerView={1}

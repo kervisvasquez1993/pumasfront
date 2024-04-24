@@ -28,6 +28,11 @@ const ProgramaPage = ({ data, material }) => {
   const ver = obtenerFrase(lang, "ver");
   const reserva = obtenerFrase(lang, "ReservaTuRecorrido");
   const { title, componentDynamics } = data;
+  console.log(componentDynamics, "componentDynamics");
+  const titulo = data?.componentDynamics?.find(
+    (titulo) => titulo.nameComponent === "titleBasic"
+  );
+  console.log(titulo);
   const materialSection = data.componentDynamics.find(
     (elemento) => elemento.typeSection == "section5"
   );
@@ -109,7 +114,7 @@ const ProgramaPage = ({ data, material }) => {
 
           const component = (
             <div className="container-edu backgroundProgrmar p-10 my-10">
-              <div className="grid-2 px-8">
+              <div className="grid-2 px-8 flex items-center">
                 <div>
                   <h3 className="edu-title fuenteTitulo titleGreen">
                     {elemento.title}
@@ -130,6 +135,9 @@ const ProgramaPage = ({ data, material }) => {
                     <SliderSingle slidesData={sliderNew?.imagenes?.data} />
                   </div>
                 </div>
+              </div>
+              <div className="p-10 m-5">
+                <h6 className="text-3xl">{titulo?.Titulo}</h6>
               </div>
               <div className="edu-icons-container py-10 my-10">
                 {contentEducation}
