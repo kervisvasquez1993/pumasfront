@@ -647,7 +647,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               />
             </figure>
           )}
-          {console.log(dateDonationsInfo, "dateDonationsInfo")}
+          {/* {console.log(dateDonationsInfo, "dateDonationsInfo")} */}
           {dateDonationsInfo?.descripcion && (
             <h2 className="fuenteTitulo text-center my-5">
               {obtenerFrase(lang, "descripcionForm")}
@@ -689,7 +689,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                   {obtenerFrase(lang, "detallesDeESpecie")}
                 </h2>
               )}
-
+              {console.log(especieSeleccionada)}
               <figure className="lg:p-1 p-1 center">
                 {especieSeleccionada?.imagenes?.data[0]?.attributes.url ? (
                   <Image
