@@ -143,7 +143,7 @@ export const getTypeDonations = (lang) => {
     },
   };
 
-  return ApiBackend("api/tipo-de-donacions?populate=*&locale=" + lang, config);
+  return ApiBackend("api/tipo-de-donacions?populate=*&sort=rang:asc&locale=" + lang, config);
 };
 export const getDonationInfo = (lang) => {
   const config = {
