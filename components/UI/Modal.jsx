@@ -9,9 +9,11 @@ import { Puma } from "../Models/Puma";
 import SelectedModels from "../Models/SelectedModels";
 import { useRouter } from "next/router";
 import useScreenSize from "../../hooks/useScreenSize";
+import { obtenerFrase } from "../../lang/traducciones";
 
 
 export default function Modal({ showModal, setShowModal, data }) {
+  
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -63,7 +65,7 @@ export default function Modal({ showModal, setShowModal, data }) {
                     />
                   </svg>
                 </button>
-                <div className="conte border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <div className="conte border-0 rounded-md shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                   <NavigationSlider slides={data?.imagenes} />
                   <div className=" relative p-6 flex-auto">
                     <div className="conte1 headeModal">
@@ -82,7 +84,7 @@ export default function Modal({ showModal, setShowModal, data }) {
                         link={`${lang}/donations?params=` + data?.slug}
                         blank={true}
                       >
-                        Apoyar Animal
+                        {obtenerFrase(lang, "ApoyarAnimal")}
                       </ButtonView>
                     </div>
                     <ReactMarkdown>{data?.descripcion}</ReactMarkdown>

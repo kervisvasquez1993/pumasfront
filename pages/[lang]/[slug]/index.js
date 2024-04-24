@@ -27,7 +27,7 @@ import useMenu from '../../../hooks/useMenu'
 const Page = ({
   page,
   blogsPage,
-  modelsGQ,
+  // modelsGQ,
   footer,
   materialEductivoSort,
   whatsapp,
@@ -45,8 +45,8 @@ const Page = ({
   }, [lang])
   useEffect(() => {
     updateData(page)
-    console.log(modelsGQ, "modelsGQ")
-    modelsGQ && hearlessChangInfo(modelsGQ)
+    // console.log(modelsGQ, "modelsGQ")
+    // modelsGQ && hearlessChangInfo(modelsGQ)
   }, [page])
   if (router.isFallback) {
     return <Loader />
@@ -103,14 +103,14 @@ export const getStaticProps = async ({ params }) => {
     const [
       pagesResponse,
       footerResponse,
-      modelsGQResponse,
+      // modelsGQResponse,
       materialEductaivo,
       whatsappResponse,
       menusResponse,
     ] = await Promise.all([
       getPagesGQ(lang),
       getFooter(lang),
-      getModelGQ(lang),
+      // getModelGQ(lang),
       getMaterialEducativo(lang),
       getWhatsapp(lang),
       getMenus(lang),
@@ -123,7 +123,7 @@ export const getStaticProps = async ({ params }) => {
     const whatsapp = whatsappResponse?.data?.data[0]?.attributes
     const pages = pagesResponse?.data?.pages
     const dataPages = pages?.data
-    const modelsGQ = modelsGQResponse?.data?.modelos
+    // const modelsGQ = modelsGQResponse?.data?.modelos
     materialEducativodataResponse.forEach((item) => {
       const { title, description, subTitle } = item.attributes
       const imgFile = {
@@ -172,7 +172,7 @@ export const getStaticProps = async ({ params }) => {
     return {
       props: {
         page: { ...page },
-        modelsGQ,
+        // modelsGQ,
         footer,
         whatsapp,
         materialEductivoSort,

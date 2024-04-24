@@ -5,10 +5,12 @@ const ModeloContext = createContext()
 
 export const ModeloProvider = ({ children }) => {
   const [modelInfo, setModelInfo] = useState(null)
+
+    
   const hearlessChangInfo = (data) => {
     setModelInfo(data)
   }
-  const modeloList = modelInfo?.data.map((item) => {
+  const modeloList = modelInfo?.data?.map((item) => {
     const srcModeloUrl =
       item?.attributes?.srcModelo?.data[0]?.attributes?.url || null
     const models3d = item.attributes.model3D?.data?.attributes?.url || null

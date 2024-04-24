@@ -12,7 +12,7 @@ export default function NavigationSlider({ slides }) {
         const { url } = slide;
         return (
           <SwiperSlide key={index}>
-            <img src={url} alt={url} />
+            <img src={url} alt={url} loading="lazy" className="conte border-0 rounded-md shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"/>
           </SwiperSlide>
         );
       })}
