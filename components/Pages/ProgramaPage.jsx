@@ -28,11 +28,11 @@ const ProgramaPage = ({ data, material }) => {
   const ver = obtenerFrase(lang, "ver");
   const reserva = obtenerFrase(lang, "ReservaTuRecorrido");
   const { title, componentDynamics } = data;
-  console.log(componentDynamics, "componentDynamics");
+  // console.log(componentDynamics, "componentDynamics");
   const titulo = data?.componentDynamics?.find(
     (titulo) => titulo.nameComponent === "titleBasic"
   );
-  console.log(titulo);
+  // console.log(titulo);
   const materialSection = data.componentDynamics.find(
     (elemento) => elemento.typeSection == "section5"
   );
@@ -170,17 +170,19 @@ const ProgramaPage = ({ data, material }) => {
           >
             <div className="materials__imagen">
               <img src={elemento?.imgFile?.url} alt="imagen santuario" />
-
+              {console.log(elemento, "elemento?.file")}
               <Link
                 className="download-button"
                 href={
-                  elemento?.file?.url
+                  elemento?.file?.url?.startsWith("http")
                     ? elemento?.file?.url
-                    : `${elemento?.urlExterna}`
+                    : elemento?.urlExterna?.startsWith("http")
+                    ? elemento?.urlExterna
+                    : `https://${elemento?.file?.url || elemento?.urlExterna}`
                 }
                 target="_blank"
               >
-                {elemento?.file?.url ? descarga : ver}
+                {elemento?.file?.url || elemento?.urlExterna ? descarga : ver}
               </Link>
             </div>
             <div className="wrapperTitleCard">
