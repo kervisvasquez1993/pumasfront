@@ -29,34 +29,46 @@ const SantuarioPage = ({ data }) => {
   const { modeloList, hearlessChangInfo } = useModelo();
   const [isLoading, setIsLoading] = useState(false);
   const { screenSize } = useScreenSize();
-  const storeData = (lang, data) => {
-    if (lang) {
-      localStorage.setItem(`modelData_${lang}`, JSON.stringify(data));
-    }
-  };
   
-  const retrieveData = (lang) => {
-    if (lang) {
-      const storedData = localStorage.getItem(`modelData_${lang}`);
-      return storedData ? JSON.parse(storedData) : null;
+  const currentVersion = 1; 
+
+const storeData = (lang, data) => {
+  if (lang) {
+    const dataToStore = {
+      data,
+      timestamp: new Date().getTime(),
+      version: currentVersion,
+    };
+    localStorage.setItem(`modelData_${lang}`, JSON.stringify(dataToStore));
+  }
+};
+
+const retrieveData = (lang) => {
+  if (lang) {
+    const storedData = localStorage.getItem(`modelData_${lang}`);
+    if (storedData) {
+      const { data, timestamp, version } = JSON.parse(storedData);
+      const tenMinutes = 10 * 60 * 1000; 
+      if (new Date().getTime() - timestamp < tenMinutes && version === currentVersion) {
+        return data;
+      }
     }
-    return null;
-  };
+  }
+  return null;
+};
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-
       let data = retrieveData(lang);
       if (!data) {
         const response = await getModelGQ(lang);
         data = response?.data?.modelos;
         storeData(lang, data);
       }
-
       hearlessChangInfo(data);
       setIsLoading(false);
     };
-
+  
     fetchData();
   }, [lang]);
 
