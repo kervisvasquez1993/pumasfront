@@ -594,7 +594,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                     type="number"
                     id="name"
                     name="name"
-                    placeholder={"Monto a seleccionar en dolares"}
+                    placeholder={"0.00$"}
                     className={`w-full p-2 rounded ${
                       errors.name ? "border-red-500" : "border-gray-300"
                     }`}
