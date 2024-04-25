@@ -110,7 +110,7 @@ export const traducciones = {
     procedencia : "Origin",
     Nacional : "National  ",
     Extranjero: "Foreign",
-    ApoyarAnimal : "Support Animal"
+    ApoyarAnimal : "Support Animal",
 
     
   },
