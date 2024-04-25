@@ -69,6 +69,19 @@ export const getAllModels = (lang) => {
   return ApiBackend("api/modelos?populate=*&locale=" + lang, config);
 };
 
+
+export const getlangEnpoint = () => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}`,
+    },
+  };
+  return ApiBackend("/api/i18n/locales", config);
+};
+
+
+
 export const langAll = async () => {
   const query = `query {
     i18NLocales {
@@ -90,7 +103,7 @@ export const langAll = async () => {
   };
 
   try {
-    const response = await ApiBackend.post("api/graphql", { query }, config);
+    const response = await ApiBackend.post("/graphql", { query }, config);
     return response.data.data.i18NLocales.data;
   } catch (error) {
     console.error("Error fetching data models:", error);
@@ -286,7 +299,7 @@ export const getPageWithComponents = async (language, id) => {
   };
 
   try {
-    const response = await ApiBackend.post("api/graphql", { query }, config);
+    const response = await ApiBackend.post("/graphql", { query }, config);
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -333,7 +346,7 @@ export const matalEducativo = async (lang) => {
   };
 
   try {
-    const response = await ApiBackend.post("api/graphql", { query }, config);
+    const response = await ApiBackend.post("/graphql", { query }, config);
     return response.data;
   } catch (error) {
     console.error("Error fetching data models:", error);
@@ -390,7 +403,7 @@ export const getModelGQ = async (lang) => {
   };
 
   try {
-    const response = await ApiBackend.post("api/graphql", { query }, config);
+    const response = await ApiBackend.post("/graphql", { query }, config);
     return response.data;
   } catch (error) {
     console.error("Error fetching data models:", error);
@@ -593,7 +606,7 @@ export const getPagesGQ = async (language) => {
   };
 
   try {
-    const response = await ApiBackend.post("api/graphql", { query }, config);
+    const response = await ApiBackend.post("/graphql", { query }, config);
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
