@@ -117,16 +117,20 @@ const FormDonationSpecies = ({ filterSpecie, typeDonations, donaciones }) => {
             </figure>
             <div className="flex-title my-5">
               <h2 className="fuenteTitulo text-center ">
-                Nombre : {filterSpecie[0]?.nombre}
+                {obtenerFrase(lang, "nombre")} : {filterSpecie[0]?.nombre}
               </h2>
               <h2 className="fuenteTitulo text-center ">
-                Especie : {filterSpecie[0]?.especie}
+                {obtenerFrase(lang, "especie")} : {filterSpecie[0]?.especie}
               </h2>
             </div>
 
             <h2 className="fuentesParrafo text-center">
-              Descripción : {filterSpecie[0]?.descripcion}
+              {obtenerFrase(lang, "descripcionForm")} :{" "}
+              {filterSpecie[0]?.descripcion}
             </h2>
+            <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10">
+              {obtenerFrase(lang, "ApoyarAnimal")}
+            </h3>
             <div className="py-4 mx-10 block">
               {donaciones?.map((eleme, index) => {
                 return (
@@ -167,7 +171,6 @@ const FormDonationSpecies = ({ filterSpecie, typeDonations, donaciones }) => {
             </ReactMarkdown>
           </div>
         </div>
-        
       </form>
     </>
   );

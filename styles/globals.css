@@ -139,7 +139,7 @@ a {
 
 .btnPrimary {
   width: 260px;
-  height: 45px;
+  min-height: 45px;
   text-align: center;
   color: #fffdf5;
   font-size: 18px;
