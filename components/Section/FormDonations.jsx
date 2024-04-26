@@ -713,6 +713,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
                     <h2 className="fuenteTitulo text-center ">
                       {obtenerFrase(lang, "especie")} :{" "}
                       {especieSeleccionada?.especie?.toUpperCase()}
+                      {/* test */}
                     </h2>
                   </div>
                 </>
