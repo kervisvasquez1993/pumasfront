@@ -30,7 +30,7 @@ const SantuarioPage = ({ data }) => {
   const [isLoading, setIsLoading] = useState(false);
   const { screenSize } = useScreenSize();
 
-  const currentVersion = 1;
+  const currentVersion = 2;
 
   const storeData = (lang, data) => {
     if (lang) {
@@ -48,7 +48,7 @@ const SantuarioPage = ({ data }) => {
       const storedData = localStorage.getItem(`modelData_${lang}`);
       if (storedData) {
         const { data, timestamp, version } = JSON.parse(storedData);
-        const tenMinutes = 10 * 60 * 1000;
+        const tenMinutes = 8 * 60 * 60 * 1000;
         if (new Date().getTime() - timestamp < tenMinutes && version === currentVersion) {
           return data;
         }
