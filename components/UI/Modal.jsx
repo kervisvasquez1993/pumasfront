@@ -65,7 +65,7 @@ export default function Modal({ showModal, setShowModal, data }) {
                       />
                     </svg>
                   </button>
-                  <div className="conte border-0 rounded-md shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none h-[500px] w-[600px] overflow-y-auto flex-col">
+                  <div className="conte border-0 rounded-md shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none h-[600px] w-[400px] overflow-y-auto flex-col">
                     <div className="flex-grow overflow-y-auto">
                       <NavigationSlider slides={data?.imagenes} />
                     </div>

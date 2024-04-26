@@ -8,7 +8,7 @@ const BannerComponents = ({ data }) => {
   const router = useRouter();
   const { lang } = router.query
   const { content, btn, backgroundImage, tituloBanner } = data[0]
-  const backgroundImageUrl = "/images/pumas.jpg";
+  const backgroundImageUrl = "/images/pumas.jpeg";
   const buttons = btn?.map((element, index) => {
     return (<ButtonView className={`${element?.backgroundButton}  manropeFont`} link={lang + "/" + element?.url} key={index}>
       {element?.label}
