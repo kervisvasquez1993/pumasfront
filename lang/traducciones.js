@@ -53,7 +53,8 @@ export const traducciones = {
     procedencia : "Procedencia",
     Nacional : "National",
     Extranjero: "Extranjero",
-    ApoyarAnimal : " Apoyar Animal"
+    ApoyarAnimal : " Apoyar Animal",
+    verModelo : "Ver Modelo",
 
   },
   en: {
@@ -111,7 +112,7 @@ export const traducciones = {
     Nacional : "National  ",
     Extranjero: "Foreign",
     ApoyarAnimal : "Support Animal",
-
+    verModelo : "Show Model"
     
   },
 }

@@ -172,8 +172,19 @@ img {
         margin: 0;
     }
 }
-
+.blockMobile {
+    display: none;
+}
+.blockDestok{
+    display: inline;
+}
 @media(max-width: 768px) {
+    .blockMobile{
+        display: block !important;
+    }
+    .blockDestok{
+        display: none !important;
+    }
     .icons-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -201,9 +212,19 @@ img {
         flex-wrap: wrap-reverse;
     }
 
-    .wrapperModel {
-        display: none;
-    }
+  
+        .wrapperModel {
+          display: none;
+        }
+      
+        .wrapperModel.show {
+          display: block; 
+        }
+      
+        .modelShowItem.hide {
+          display: none;
+        }
+      
 
     .santurarioSwipper .swiper-wrapper {
         height: 200px !important;
