@@ -29,33 +29,33 @@ const SantuarioPage = ({ data }) => {
   const { modeloList, hearlessChangInfo } = useModelo();
   const [isLoading, setIsLoading] = useState(false);
   const { screenSize } = useScreenSize();
-  
-  const currentVersion = 1; 
 
-const storeData = (lang, data) => {
-  if (lang) {
-    const dataToStore = {
-      data,
-      timestamp: new Date().getTime(),
-      version: currentVersion,
-    };
-    localStorage.setItem(`modelData_${lang}`, JSON.stringify(dataToStore));
-  }
-};
+  const currentVersion = 1;
 
-const retrieveData = (lang) => {
-  if (lang) {
-    const storedData = localStorage.getItem(`modelData_${lang}`);
-    if (storedData) {
-      const { data, timestamp, version } = JSON.parse(storedData);
-      const tenMinutes = 10 * 60 * 1000; 
-      if (new Date().getTime() - timestamp < tenMinutes && version === currentVersion) {
-        return data;
+  const storeData = (lang, data) => {
+    if (lang) {
+      const dataToStore = {
+        data,
+        timestamp: new Date().getTime(),
+        version: currentVersion,
+      };
+      localStorage.setItem(`modelData_${lang}`, JSON.stringify(dataToStore));
+    }
+  };
+
+  const retrieveData = (lang) => {
+    if (lang) {
+      const storedData = localStorage.getItem(`modelData_${lang}`);
+      if (storedData) {
+        const { data, timestamp, version } = JSON.parse(storedData);
+        const tenMinutes = 10 * 60 * 1000;
+        if (new Date().getTime() - timestamp < tenMinutes && version === currentVersion) {
+          return data;
+        }
       }
     }
-  }
-  return null;
-};
+    return null;
+  };
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
@@ -68,7 +68,7 @@ const retrieveData = (lang) => {
       hearlessChangInfo(data);
       setIsLoading(false);
     };
-  
+
     fetchData();
   }, [lang]);
 
@@ -149,11 +149,10 @@ const retrieveData = (lang) => {
                   alignItems={"center"}
                   justifyContent={"center"}
                   width={`${screenSize <= 1024 ? "100%" : "75%"}`}
-                  classNameContent={`${
-                    screenSize <= 1024
+                  classNameContent={`${screenSize <= 1024
                       ? "align-vertical-center-horizontal-center"
                       : "align-vertical-center-horizontal-start"
-                  } fuentesParrafo  p-5 lg:p-10 lg:m-10`}
+                    } fuentesParrafo  p-5 lg:p-10 lg:m-10`}
                 >
                   <ReactMarkdown className="py-10">
                     {elemento.content}
@@ -272,7 +271,7 @@ const retrieveData = (lang) => {
         </MapWithBackground>
       </section>
 
-      <div className="container">
+      <div className="container max-h-90vh overflow-y-auto">
         <Modal
           showModal={openModal}
           setShowModal={setOpenModal}

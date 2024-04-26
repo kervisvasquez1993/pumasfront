@@ -29,9 +29,8 @@ export default function NavigationSlider({ slides }) {
               alt={url}
               loading="lazy"
               onLoad={() => setIsLoaded(true)}
-              className={`conte border-0 rounded-md shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none ${
-                isLoaded ? "" : "hidden"
-              }`}
+              className={`conte border-0 rounded-md shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none h-[500px] w-[500px] object-contain ${isLoaded ? "" : "hidden"
+                }`}
             />
           </SwiperSlide>
         );
