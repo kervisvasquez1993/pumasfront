@@ -76,7 +76,7 @@ export const traducciones = {
     fechaForm: 'Booking date',
     horaForm: 'Time',
     cantidadAdultosForm: 'Number of Adults',
-    cantidadNinosForm: 'Number of Ninos',
+    cantidadNinosForm: 'Number of Children',
     descripcionForm: 'Description',
     requiereGuiaForm: 'Required guide',
     contactarForm: 'Contact',
