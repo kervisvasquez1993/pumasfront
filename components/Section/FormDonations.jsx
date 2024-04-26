@@ -634,7 +634,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
 
           {dateDonationsInfo?.donacion && (
             <h2 className="fuenteTitulo text-center my-5">
-              {obtenerFrase(lang, "donacion")} : {dateDonationsInfo?.donacion}
+              {obtenerFrase(lang, "donacion")} : {dateDonationsInfo?.donacion?.toUpperCase()}
             </h2>
           )}
           {dateDonationsInfo?.imgSrc?.data?.attributes?.url && (
