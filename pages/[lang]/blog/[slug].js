@@ -20,6 +20,7 @@ import Slider from "react-slick";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useFetch } from "../../../hooks/useFetch";
 const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
   const { screenSize } = useScreenSize();
   console.log(footer, "footer");
@@ -38,7 +39,8 @@ const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-
+  // const {data, isLoading} = useFetch(`/api/blogs?populate=*&locale=${lang}`, {}, process.env.NEXT_PUBLIC_TOKEN)
+  // console.log(data, "data");
   return (
     <Main titlePage={blog?.attributes?.TitleBlog}>
       <HeaderComponents
