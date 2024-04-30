@@ -55,6 +55,8 @@ export const traducciones = {
     Extranjero: "Extranjero",
     ApoyarAnimal : " Apoyar Animal",
     verModelo : "Ver Modelo",
+    open: "ABIERTO HASTA LAS 4PM",
+    close : "CERRADO, ABRE 8AM"
 
   },
   en: {
@@ -112,7 +114,9 @@ export const traducciones = {
     Nacional : "National  ",
     Extranjero: "Foreign",
     ApoyarAnimal : "Support Animal",
-    verModelo : "Show Model"
+    verModelo : "Show Model",
+    open: "OPEN UNTIL 4PM",
+    close : "CLOSED, OPENS 8AM"
     
   },
 }

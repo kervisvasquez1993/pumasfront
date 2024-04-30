@@ -44,6 +44,17 @@ const Navbar = ({ items }) => {
       setCierre(horario[0].attributes.cierre);
     }
   }, [langAllContext, horario]);
+  function verificarHorario() {
+    const fechaActual = new Date();
+    const horaActual = fechaActual.getHours();
+  
+    if (horaActual >= 8 && horaActual < 16) {
+      return (<span>{obtenerFrase(lang,'open')}</span>);
+    } else {
+      return (<span>{obtenerFrase(lang,'close')}</span>);
+    }
+  }
+  
   const horaCierre = convertirHora(cierre);
   const horaApertura = convertirHora(apertura);
   if (lang === "es") {
@@ -103,7 +114,8 @@ const Navbar = ({ items }) => {
           <img src="/images/LogoBlanco.png" alt="Logo" />
         </Link>
         <div className="horario">
-          <span>{obtenerFrase(lang,'manana')}</span> : <span>{horaApertura}</span>
+          {/* <span>{obtenerFrase(lang,'manana')}</span> : <span>{horaApertura}</span> */}
+          <span>{verificarHorario()}</span>
         </div>
         <div className="idomas">{lenguaje}</div>
       </div>
