@@ -1,20 +1,20 @@
 import React from 'react'
 import CanvasElement from './CanvasElement'
-
+import useScreenSize from '../../hooks/useScreenSize'
 const MapWithBackground = ({ backgroundImage, children }) => {
+  const { screenSize } = useScreenSize()
   const mapStyle = {
     position: 'relative',
     maxWidth: '100vw',
-    height: '95vh',
-    overflow: 'auto', // Habilita el desplazamiento
+    height: screenSize <= 768 ? '70vh' : '75vh',
+    overflowX: 'auto', // Habilita el desplazamiento
   }
 
   const backgroundContainerStyle = {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
+    top: '50%', // Centrado vertical
+    left: '50%', // Centrado horizontal
+    transform: 'translate(-50%, -50%)', // Ajuste para centrar perfectamente
     width: '100%',
     height: '100%',
   }
