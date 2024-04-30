@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Head from 'next/head'
 import Main from "../../Layout/Main/Main";
 import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
 import SliderTwo from "../UI/Slider/SliderTwo";
@@ -55,9 +56,7 @@ const HomePage = ({ data }) => {
   const titles = componentDynamics.filter(
     (element) => element.nameComponent == "titleBasic"
   );
-  console.log(blogs, "blogs");
-  console.log(componentDynamics, "componentDynamics");
-  // console.log(quintoElemento, "quintoElemento")
+
   const horarios = section4?.imagenWithContentBasic?.map((element, index) => {
     return (
       <section className="py-5" key={index}>
@@ -74,11 +73,21 @@ const HomePage = ({ data }) => {
   });
   const { screenSize } = useScreenSize();
   return (
-    <Main titlePage={"Inicio"}>
+    <Main titlePage={"Home"}>
+      <Head>
+        <title> {section2?.title}</title>
+        <meta name="description" content={titles[0]?.Titulo} />
+        <meta name="keywords" content={section1?.content} />
+        {/* <meta name="author" content="Tu Nombre" /> */}
+        <meta property="og:title" content={titles[0]?.Titulo} />
+        <meta property="og:description" content="Descripción de tu página" />
+        <meta property="og:url" content="https://www.laspumascr.org" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}
       <BannerComponents data={banner} />
 
-      <div className=" container">
+      <div className="container">
         <HeaderComponets
           classNameText={"mt-10 p-5 colorPrimary chelseaFont font-responsive"}
           alignment={`${screenSize <= 900 ? "center" : "start"}`}
