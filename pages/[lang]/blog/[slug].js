@@ -21,6 +21,7 @@ import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useFetch } from "../../../hooks/useFetch";
+import Head from "next/head";
 const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
   const { screenSize } = useScreenSize();
   console.log(footer, "footer");
@@ -43,6 +44,16 @@ const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
   // console.log(data, "data");
   return (
     <Main titlePage={blog?.attributes?.TitleBlog}>
+      <Head>
+        <title> {data?.meta?.title}</title>
+        <meta name="description" content={data?.meta?.description} />
+        <meta name="keywords" content={data?.meta?.keywords} />
+        <meta name="author" content={data?.meta?.authors} />
+        <meta property="og:title" content={data?.meta?.ogTitle} />
+        <meta property="og:description" content={data?.meta?.ogDescription} />
+        <meta property="og:url" content={data?.meta?.ogUrl} />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <HeaderComponents
         classNameText={"colorPrimary chelseaFont pt-10 mt-10 lg:px-10 lg:mx-10 "}
         alignment={`${screenSize <= 1024 ? "center" : "start"}`}

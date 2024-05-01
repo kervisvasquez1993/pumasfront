@@ -72,16 +72,17 @@ const HomePage = ({ data }) => {
     );
   });
   const { screenSize } = useScreenSize();
+
   return (
-    <Main titlePage={"Home"}>
+    <Main titlePage={data?.meta?.title}>
       <Head>
-        <title> {section2?.title}</title>
-        <meta name="description" content={titles[0]?.Titulo} />
-        <meta name="keywords" content={section1?.content} />
-        {/* <meta name="author" content="Tu Nombre" /> */}
-        <meta property="og:title" content={titles[0]?.Titulo} />
-        <meta property="og:description" content="Descripción de tu página" />
-        <meta property="og:url" content="https://www.laspumascr.org" />
+        <title> {data?.meta?.title}</title>
+        <meta name="description" content={data?.meta?.description} />
+        <meta name="keywords" content={data?.meta?.keywords} />
+        <meta name="author" content={data?.meta?.authors} />
+        <meta property="og:title" content={data?.meta?.ogTitle} />
+        <meta property="og:description" content={data?.meta?.ogDescription} />
+        <meta property="og:url" content={data?.meta?.ogUrl} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}

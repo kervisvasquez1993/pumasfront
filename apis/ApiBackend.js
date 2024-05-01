@@ -420,6 +420,25 @@ export const getPagesGQ = async (language) => {
         attributes{
           title
           slug
+          meta{
+            id
+            title
+            description
+            keywords
+            author
+            ogTitle
+            ogUrl
+            ogDescription
+            ogImage{
+              data{
+                attributes{
+                  name
+                  url
+                }
+              }
+            }
+            ogUrl
+          }
           banner{
             ...on ComponentUiBanner{
               content

@@ -155,6 +155,7 @@ export const getStaticProps = async ({ params }) => {
         locales: lang,
         banner: page?.attributes?.banner,
         contentType: 'component',
+        meta : page?.attributes?.meta
       }
     })
 
@@ -172,7 +173,6 @@ export const getStaticProps = async ({ params }) => {
     return {
       props: {
         page: { ...page },
-        // modelsGQ,
         footer,
         whatsapp,
         materialEductivoSort,

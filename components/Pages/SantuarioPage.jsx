@@ -19,6 +19,7 @@ import SlidetWithContent from "../Section/Slider/SliderWithContent";
 import useScreenSize from "../../hooks/useScreenSize";
 import Loader from "../UI/Loader";
 import { getModelGQ } from "../../apis/ApiBackend";
+import Head from "next/head";
 
 const SantuarioPage = ({ data }) => {
   const router = useRouter();
@@ -49,7 +50,10 @@ const SantuarioPage = ({ data }) => {
       if (storedData) {
         const { data, timestamp, version } = JSON.parse(storedData);
         const tenMinutes = 8 * 60 * 60 * 1000;
-        if (new Date().getTime() - timestamp < tenMinutes && version === currentVersion) {
+        if (
+          new Date().getTime() - timestamp < tenMinutes &&
+          version === currentVersion
+        ) {
           return data;
         }
       }
@@ -149,10 +153,11 @@ const SantuarioPage = ({ data }) => {
                   alignItems={"center"}
                   justifyContent={"center"}
                   width={`${screenSize <= 1024 ? "100%" : "75%"}`}
-                  classNameContent={`${screenSize <= 1024
+                  classNameContent={`${
+                    screenSize <= 1024
                       ? "align-vertical-center-horizontal-center"
                       : "align-vertical-center-horizontal-start"
-                    } fuentesParrafo  p-5 lg:p-10 lg:m-10`}
+                  } fuentesParrafo  p-5 lg:p-10 lg:m-10`}
                 >
                   <ReactMarkdown className="py-10">
                     {elemento.content}
@@ -235,6 +240,16 @@ const SantuarioPage = ({ data }) => {
   // console.log(modeloList, "modeloList");
   return (
     <Main titlePage={title}>
+      <Head>
+        <title> {data?.meta?.title}</title>
+        <meta name="description" content={data?.meta?.description} />
+        <meta name="keywords" content={data?.meta?.keywords} />
+        <meta name="author" content={data?.meta?.authors} />
+        <meta property="og:title" content={data?.meta?.ogTitle} />
+        <meta property="og:description" content={data?.meta?.ogDescription} />
+        <meta property="og:url" content={data?.meta?.ogUrl} />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <section>
         <MapWithBackground backgroundImage={"/images/mapa1.jpeg"}>
           {isLoading ? (
