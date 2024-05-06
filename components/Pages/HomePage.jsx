@@ -74,18 +74,8 @@ const HomePage = ({ data }) => {
   const { screenSize } = useScreenSize();
   console.log(data)
   return (
-    <Main titlePage={data?.meta?.title}>
-      <Head>
-        <title> {data?.meta?.title}</title>
-        <meta name="description" content={data?.meta?.description} />
-        <meta name="keywords" content={data?.meta?.keywords} />
-        <meta name="author" content={data?.meta?.authors} />
-        <meta property="og:title" content={data?.meta?.ogTitle} />
-        <meta property="og:description" content={data?.meta?.ogDescription} />
-        <meta property="og:image" content={data?.meta?.ogImage?.data?.attributes?.url} />
-        <meta property="og:url" content={data?.meta?.ogUrl} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    <Main titlePage={data?.meta?.title} data={data}>
+     
       {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}
       <BannerComponents data={banner} />
 

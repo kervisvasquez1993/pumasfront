@@ -33,18 +33,7 @@ const ApoyanosPage = ({ data }) => {
     </section>)
   })
   return (
-    <Main titlePage={data.title}>
-      <Head>
-        <title> {data?.meta?.title}</title>
-        <meta name="description" content={data?.meta?.description} />
-        <meta name="keywords" content={data?.meta?.keywords} />
-        <meta name="author" content={data?.meta?.authors} />
-        <meta property="og:title" content={data?.meta?.ogTitle} />
-        <meta property="og:description" content={data?.meta?.ogDescription} />
-        <meta property="og:image" content={data?.meta?.ogImage?.data?.attributes?.url} />
-        <meta property="og:url" content={data?.meta?.ogUrl} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    <Main titlePage={data.title} data={data}>
       <div className="container">
         <section className="container-section py-10 my-5">
           <section className={`${screenSize >= 1024 ? "grid-2" : ""}`}>

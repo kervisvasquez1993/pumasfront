@@ -7,7 +7,7 @@ import useMenu from "../../hooks/useMenu";
 import { useRouter } from "next/router";
 import useLocale from "../../hooks/useLocales";
 
-const Main = ({ children, titlePage }) => {
+const Main = ({ children, titlePage, data }) => {
   const { menuData, loading, footerData } = useMenu();
   const { langAllContext } = useLocale();
   const { query } = useRouter();
@@ -16,26 +16,22 @@ const Main = ({ children, titlePage }) => {
   const [isHeaderSticky, setIsHeaderSticky] = useState(false);
   useEffect(() => {
     if (!loading && menuData && lang) {
-      const currentLanguageMenu = menuData
+      const currentLanguageMenu = menuData;
       setStateMenu(currentLanguageMenu || null);
       localStorage.setItem("menuData", JSON.stringify(menuData));
     }
   }, [lang, loading, menuData]);
 
-
   useEffect(() => {
     const storedMenuData = localStorage.getItem("menuData");
     if (!menuData && storedMenuData) {
-      setStateMenu(
-        JSON.parse(storedMenuData) ||
-        null
-      );
+      setStateMenu(JSON.parse(storedMenuData) || null);
     }
   }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      const threshold = 100; 
+      const threshold = 100;
       if (window.scrollY >= threshold) {
         setIsHeaderSticky(true);
       } else {
@@ -51,26 +47,45 @@ const Main = ({ children, titlePage }) => {
     };
   }, []);
 
-  const headerClassName = `${style.headerMenu} ${isHeaderSticky ? "stickyHeader" : ""
-    }`;
-  const shouldApplyHeaderStyle = (slug !== "home" && slug !== "inicio");
+  const headerClassName = `${style.headerMenu} ${
+    isHeaderSticky ? "stickyHeader" : ""
+  }`;
+  const shouldApplyHeaderStyle = slug !== "home" && slug !== "inicio";
 
-  const headerClassNameInicio = `${isHeaderSticky ? style.headerMenu + " stickyHeader" : ""
-    }`;
-
+  const headerClassNameInicio = `${
+    isHeaderSticky ? style.headerMenu + " stickyHeader" : ""
+  }`;
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>{`Pumas - ${titlePage}`}</title>
         <meta name="description" content="Descripción de tu página" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head> */}
+      <Head>
+        <title> {data?.meta?.title}</title>
+        <meta name="description" content={data?.meta?.description} />
+        <meta name="keywords" content={data?.meta?.keywords} />
+        <meta name="author" content={data?.meta?.authors} />
+        <meta property="og:title" content={data?.meta?.ogTitle} />
+        <meta property="og:description" content={data?.meta?.ogDescription} />
+        <meta
+          property="og:image"
+          content={data?.meta?.ogImage?.data?.attributes?.url}
+        />
+        <meta property="og:url" content={data?.meta?.ogUrl} />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <header className={`${shouldApplyHeaderStyle ? headerClassName : headerClassNameInicio} `}>
+      <header
+        className={`${
+          shouldApplyHeaderStyle ? headerClassName : headerClassNameInicio
+        } `}
+      >
         <Navbar items={stateMenu} />
       </header>
       <main className="maxWidthBody">{children}</main>
-      <Footer items={footerData}/>
+      <Footer items={footerData} />
     </>
   );
 };
