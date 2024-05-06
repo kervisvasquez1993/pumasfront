@@ -14,6 +14,8 @@ const Main = ({ children, titlePage, data }) => {
   const { lang, slug } = query;
   const [stateMenu, setStateMenu] = useState(null);
   const [isHeaderSticky, setIsHeaderSticky] = useState(false);
+  const [meta, setMeta] = useState({});
+
   useEffect(() => {
     if (!loading && menuData && lang) {
       const currentLanguageMenu = menuData;
@@ -47,6 +49,12 @@ const Main = ({ children, titlePage, data }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (data?.meta) {
+      setMeta(data.meta);
+    }
+  }, [data]);
+
   const headerClassName = `${style.headerMenu} ${
     isHeaderSticky ? "stickyHeader" : ""
   }`;
@@ -58,23 +66,18 @@ const Main = ({ children, titlePage, data }) => {
 
   return (
     <>
-      {/* <Head>
-        <title>{`Pumas - ${titlePage}`}</title>
-        <meta name="description" content="Descripción de tu página" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head> */}
       <Head>
-        <title> {data?.meta?.title}</title>
-        <meta name="description" content={data?.meta?.description} />
-        <meta name="keywords" content={data?.meta?.keywords} />
-        <meta name="author" content={data?.meta?.authors} />
-        <meta property="og:title" content={data?.meta?.ogTitle} />
-        <meta property="og:description" content={data?.meta?.ogDescription} />
+        <title> {meta?.title}</title>
+        <meta name="description" content={meta?.description} />
+        <meta name="keywords" content={meta?.keywords} />
+        <meta name="author" content={meta?.authors} />
+        <meta property="og:title" content={meta?.ogTitle} />
+        <meta property="og:description" content={meta?.ogDescription} />
         <meta
           property="og:image"
-          content={data?.meta?.ogImage?.data?.attributes?.url}
+          content={meta?.ogImage?.data?.attributes?.url}
         />
-        <meta property="og:url" content={data?.meta?.ogUrl} />
+        <meta property="og:url" content={meta?.ogUrl} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <header
