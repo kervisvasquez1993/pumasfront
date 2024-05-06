@@ -174,4 +174,3 @@ const ApoyanosPage = ({ data }) => {
 
 export default ApoyanosPage;
 
-// test
