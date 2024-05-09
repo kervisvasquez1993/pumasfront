@@ -68,17 +68,32 @@ const Main = ({ children, titlePage, data }) => {
   return (
     <>
       <Head>
-        <title> {meta?.title}</title>
-        <meta name="description" content={meta?.description} />
-        <meta name="keywords" content={meta?.keywords} />
-        <meta name="author" content={meta?.authors} />
-        <meta property="og:title" content={meta?.ogTitle} />
-        <meta property="og:description" content={meta?.ogDescription} />
+        <title>{meta?.title || "Título por defecto"}</title>
+        <meta
+          name="description"
+          content={meta?.description || "Descripción por defecto"}
+        />
+        <meta
+          name="keywords"
+          content={meta?.keywords || "Palabras clave por defecto"}
+        />
+        <meta name="author" content={meta?.authors || "Autor por defecto"} />
+        <meta
+          property="og:title"
+          content={meta?.ogTitle || "Título OG por defecto"}
+        />
+        <meta
+          property="og:description"
+          content={meta?.ogDescription || "Descripción OG por defecto"}
+        />
         <meta
           property="og:image"
-          content={meta?.ogImage?.data?.attributes?.url}
+          content={
+            meta?.ogImage?.data?.attributes?.url ||
+            "URL de imagen OG por defecto"
+          }
         />
-        <meta property="og:url" content={meta?.ogUrl} />
+        <meta property="og:url" content={meta?.ogUrl || "URL OG por defecto"} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <header
