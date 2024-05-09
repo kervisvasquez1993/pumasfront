@@ -69,23 +69,35 @@ const Main = ({ children, titlePage, data }) => {
     <>
       <Head>
         <title>{meta?.title || "Título por defecto"}</title>
+      </Head>
+      <Head>
         <meta
           name="description"
           content={meta?.description || "Descripción por defecto"}
         />
+      </Head>
+      <Head>
         <meta
           name="keywords"
           content={meta?.keywords || "Palabras clave por defecto"}
         />
+      </Head>
+      <Head>
         <meta name="author" content={meta?.authors || "Autor por defecto"} />
+      </Head>
+      <Head>
         <meta
           property="og:title"
           content={meta?.ogTitle || "Título OG por defecto"}
         />
+      </Head>
+      <Head>
         <meta
           property="og:description"
           content={meta?.ogDescription || "Descripción OG por defecto"}
         />
+      </Head>
+      <Head>
         <meta
           property="og:image"
           content={
@@ -93,9 +105,14 @@ const Main = ({ children, titlePage, data }) => {
             "URL de imagen OG por defecto"
           }
         />
+      </Head>
+      <Head>
         <meta property="og:url" content={meta?.ogUrl || "URL OG por defecto"} />
+      </Head>
+      <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+
       <header
         className={`${
           shouldApplyHeaderStyle ? headerClassName : headerClassNameInicio
