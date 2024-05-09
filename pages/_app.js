@@ -13,10 +13,16 @@ import { PagesProvider } from "../context/PagesProvider";
 import { ScreenSizeProvider } from "../context/ScreenSizeProvider";
 import { LocaleProvider } from "../context/LocalesProvider";
 import { PatrocindadoresProvider } from "../context/PatrocinadoresProvider";
+const defaultMetadata = {
+  title: "Título por defecto",
+  description: "Descripción por defecto",
+};
 
 function MyApp({ Component, pageProps }) {
   const [initialRenderComplete, setInitialRenderComplete] = useState(false);
 
+  
+  const metadata = { ...defaultMetadata, ...pageProps.metadata };
 
   useEffect(() => {
     setInitialRenderComplete(true);
@@ -33,7 +39,7 @@ function MyApp({ Component, pageProps }) {
 
               <PatrocindadoresProvider>
                 <DonationsProvider>
-                  <Component {...pageProps} />
+                  <Component {...pageProps} metadata={metadata} />
                 </DonationsProvider>
               </PatrocindadoresProvider>
 
