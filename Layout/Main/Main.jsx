@@ -5,6 +5,7 @@ import Navbar from "../../components/UI/Navbar/NavBar";
 import style from "./style.module.css";
 import useMenu from "../../hooks/useMenu";
 import { useRouter } from "next/router";
+import { Analytics } from "@vercel/analytics/react";
 import useLocale from "../../hooks/useLocales";
 
 const Main = ({ children, titlePage, data }) => {
@@ -88,6 +89,7 @@ const Main = ({ children, titlePage, data }) => {
         <Navbar items={stateMenu} />
       </header>
       <main className="maxWidthBody">{children}</main>
+      <Analytics />
       <Footer items={footerData} />
     </>
   );
