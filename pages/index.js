@@ -3,10 +3,38 @@ import { useRouter } from 'next/router';
 import { getMenus, langAll } from '../apis/ApiBackend';
 import Loader from '../components/UI/Loader';
 
-const Home = ({ result, code }) => {
+const Home = () => {
   const [slug, setSlug] = useState("");
   const [lang, setLang] = useState("");
+  const [result, setResult] = useState([]);
+  const [code, setCode] = useState([]);
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchLangAndMenus = async () => {
+      const languages = await langAll();
+      const code = languages.map(element => element.attributes.code);
+      setCode(code);
+
+      const result = [];
+      for (const language of languages) {
+        const menusResponse = await getMenus(language.attributes.code);
+        const menus = menusResponse.data.data;
+        menus.forEach((element) => {
+          result.push({
+            params: {
+              lang: element.attributes.locale,
+              slug: element.attributes.slug,
+              name: element.attributes.nombre,
+            },
+          });
+        });
+      }
+      setResult(result);
+    };
+
+    fetchLangAndMenus();
+  }, []);
 
   useEffect(() => {
     const userLang = navigator.language || navigator.userLanguage;
@@ -29,7 +57,6 @@ const Home = ({ result, code }) => {
     setLang(languageName);
 
     const urlRedirect = `/${languageName}/${defaultSlug}`;
-    //console.log(urlRedirect, "Redirecting to");
     router.push(urlRedirect);
 
   }, []);
@@ -38,30 +65,3 @@ const Home = ({ result, code }) => {
 };
 
 export default Home;
-export const getStaticProps = async () => {
-  const lang = await langAll();
-
-  const languages = lang;
-
-  const result = [];
-  const code = languages.map(element => {
-    return element.attributes.code
-  })
-  for (const language of languages) {
-    const menusResponse = await getMenus(language.attributes.code);
-    const menus = menusResponse.data.data;
-    menus.forEach((element) => {
-      result.push({
-        params: {
-          lang: element.attributes.locale,
-          slug: element.attributes.slug,
-          name: element.attributes.nombre,
-        },
-      });
-    });
-  }
-
-  return { props: { result, code } };
-};
-
-
