@@ -43,17 +43,8 @@ const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
   // const {data, isLoading} = useFetch(`/api/blogs?populate=*&locale=${lang}`, {}, process.env.NEXT_PUBLIC_TOKEN)
   // console.log(data, "data");
   return (
-    <Main titlePage={blog?.attributes?.TitleBlog}>
-      <Head>
-        <title> {data?.meta?.title}</title>
-        <meta name="description" content={data?.meta?.description} />
-        <meta name="keywords" content={data?.meta?.keywords} />
-        <meta name="author" content={data?.meta?.authors} />
-        <meta property="og:title" content={data?.meta?.ogTitle} />
-        <meta property="og:description" content={data?.meta?.ogDescription} />
-        <meta property="og:url" content={data?.meta?.ogUrl} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    <Main>
+     
       <HeaderComponents
         classNameText={"colorPrimary chelseaFont pt-10 mt-10 lg:px-10 lg:mx-10 "}
         alignment={`${screenSize <= 1024 ? "center" : "start"}`}

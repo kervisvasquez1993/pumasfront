@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { Analytics } from "@vercel/analytics/react";
 import useLocale from "../../hooks/useLocales";
 
-const Main = ({ children, titlePage, data }) => {
+const Main = ({ children, data }) => {
   const { menuData, loading, footerData } = useMenu();
   const { langAllContext } = useLocale();
   const { query } = useRouter();
