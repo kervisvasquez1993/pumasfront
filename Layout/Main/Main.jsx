@@ -72,21 +72,21 @@ const Main = ({ children, data }) => {
         />
         <meta name="author" content={data?.authors || "Autor por defecto"} />
         <meta
-          property="og:title"
+          name="og:title"
           content={data?.meta?.ogTitle || "Título OG por defecto"}
         />
         <meta
-          property="og:description"
+          name="og:description"
           content={data?.meta?.ogDescription || "Descripción OG por defecto"}
         />
         <meta
-          property="og:image"
+          name="og:image"
           content={
             data?.meta?.ogImage?.data?.attributes?.url ||
             "URL de imagen OG por defecto"
           }
         />
-        <meta property="og:url" content={data?.meta?.ogUrl || "URL OG por defecto"} />
+        <meta name="og:url" content={data?.meta?.ogUrl || "URL OG por defecto"} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
