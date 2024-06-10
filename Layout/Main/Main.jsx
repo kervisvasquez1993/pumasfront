@@ -67,28 +67,28 @@ const Main = ({ children, data }) => {
   return (
     <>
       <Head>
-        <title>{data?.title || "Título por defecto"}</title>
+        <title>{data?.meta?.title || "Título por defecto"}</title>
         <meta
           name="description"
-          content={data?.description || "Descripción por defecto"}
+          content={data?.meta?.description || "Descripción por defecto"}
         />
         <meta
           name="keywords"
-          content={data?.keywords || "Palabras clave por defecto"}
+          content={data?.meta?.keywords || "Palabras clave por defecto"}
         />
         <meta name="author" content={data?.authors || "Autor por defecto"} />
         <meta
           property="og:title"
-          content={data?.ogTitle || "Título OG por defecto"}
+          content={data?.meta?.ogTitle || "Título OG por defecto"}
         />
         <meta
           property="og:description"
-          content={data?.ogDescription || "Descripción OG por defecto"}
+          content={data?.meta?.ogDescription || "Descripción OG por defecto"}
         />
         <meta
           property="og:image"
           content={
-            data?.ogImage?.data?.attributes?.url ||
+            data?.meta?.ogImage?.data?.attributes?.url ||
             "URL de imagen OG por defecto"
           }
         />
