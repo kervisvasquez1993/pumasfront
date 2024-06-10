@@ -112,7 +112,7 @@ const Contact = ({ whatsapp, footer }) => {
       }
     }
   };
-  // const notify = () => toast("Wow so easy!");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (Object.keys(errors).length > 0) {
