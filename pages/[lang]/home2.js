@@ -92,10 +92,6 @@ const Page = ({ page, footer, whatsapp, menus }) => {
       <Head>
         <title>{"Título por defecto"}</title>
         <meta
-          name="description"
-          content={"Descripción por defecto"}
-        />
-        <meta
           name="keywords"
           content={"Palabras clave por defecto"}
         />
@@ -103,12 +99,12 @@ const Page = ({ page, footer, whatsapp, menus }) => {
         <meta name="og:title" content={"home"} />
         <meta name="og:description" content={"desciption"} />
         <meta
-          property="og:image"
+          name="og:image"
           content={"URL de imagen OG por defecto"
           }
         />
         <meta
-          property="og:url"
+          name="og:url"
           content={"URL OG por defecto"}
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
