@@ -87,111 +87,58 @@ const Page = ({ page, footer, whatsapp, menus }) => {
   const { screenSize } = useScreenSize();
 
   return (
-    <Main titlePage={page?.meta?.title} data={page}>
-      {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}
-      <BannerComponents data={banner} />
-      <div className="container">
-        {/* <HeaderComponents
+    <>
+      <Head>
+        <title>{page?.meta?.title || "Título por defecto"}</title>
+        <meta
+          name="description"
+          content={page?.meta?.description || "Descripción por defecto"}
+        />
+        <meta
+          name="keywords"
+          content={page?.meta?.keywords || "Palabras clave por defecto"}
+        />
+        <meta name="author" content={page?.authors || "Autor por defecto"} />
+        <meta
+          property="og:title"
+          content={page?.meta?.ogTitle || "Título OG por defecto"}
+        />
+        <meta
+          property="og:description"
+          content={page?.meta?.ogDescription || "Descripción OG por defecto"}
+        />
+        <meta
+          property="og:image"
+          content={
+            page?.meta?.ogImage?.data?.attributes?.url ||
+            "URL de imagen OG por defecto"
+          }
+        />
+        <meta
+          property="og:url"
+          content={page?.meta?.ogUrl || "URL OG por defecto"}
+        />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Main titlePage={page?.meta?.title} data={page}>
+        {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}
+        <BannerComponents data={banner} />
+        <div className="container">
+          {/* <HeaderComponents
         classNameText={"mt-10 p-5 colorPrimary chelseaFont font-responsive"}
         alignment={`${screenSize <= 900 ? "center" : "start"}`}
         width={`${screenSize <= 900 ? "100%" : "70%"}`}
       >
         {titles[0]?.Titulo}
       </HeaderComponets> */}
-        <TwoColumnGrid>
-          <CardBasic
-            showMask={true}
-            maskSrc={"/images/mask.png"}
-            iconSrc={section1?.imgModelBasic?.data?.attributes?.url}
-            imgSrc={section1?.imgBasicContent?.data?.attributes?.url}
-            title={section1?.title}
-            subtitle={section1?.subTitle}
-          />
-
-          <BasicSection
-            classNameTitle={""}
-            classNameWrapper={"setionStyle"}
-            title={""}
-            classNameContent={` fuentesParrafo  ${
-              screenSize <= 1200
-                ? "align-vertical-center-horizontal-center"
-                : "align-vertical-center-horizontal-start "
-            } p-5 lg:p-10`}
-            width={`${screenSize <= 1200 ? "100%" : "70%"}`}
-            alignItems={"center"}
-            justifyContent={"center"}
-            styleWrapper={{ height: "100%" }}
-            // styleContent={{height: "100%"}}
-          >
-            <ReactMarkdown className="py-5">{section1?.content}</ReactMarkdown>
-            <ButtonView
-              className={" backgroundPrimary m-0 manropeFont p-5"}
-              link={lang + "/" + section1?.btn.url}
-            >
-              {section1?.btn.label}
-            </ButtonView>
-          </BasicSection>
-        </TwoColumnGrid>
-
-        <HeaderComponents
-          classNameText={
-            " lg:py-10 py-5 colorSecondary chelseaFont font-responsive"
-          }
-          alignment="end"
-          width="100%"
-        >
-          {section2?.title}
-        </HeaderComponents>
-        <TwoColumnGrid backgroundImage="/images/mask-background.png">
-          <BasicSection
-            classNameTitle={""}
-            classNameWrapper={"setionStyle "}
-            title={""}
-            classNameContent={` fuentesParrafo  ${
-              screenSize <= 1200
-                ? "align-vertical-center-horizontal-center"
-                : "align-vertical-center-horizontal-start "
-            } lg:p-10 lg:m-10 md:p-5 md:m-5 sm:p-5 sm:m-5`}
-            width={"100%"}
-            widthContent="100%"
-            alignItems={"center"}
-            alignment={`${screenSize <= 1200 ? "center" : "end"}`}
-            styleWrapper={{ height: "100%" }}
-            styleContent={{ height: "100%" }}
-          >
-            <ReactMarkdown className="sm:m-lg:py-5 md:py-5 m-responsive highlight">
-              {section2?.content}
-            </ReactMarkdown>
-            <ButtonView
-              className={" backgroundGris m-0 mt-5 manropeFont py-10"}
-              link={lang + "/" + section2?.btn.url}
-            >
-              {section2?.btn.label}
-            </ButtonView>
-          </BasicSection>
-
-          <Link href={`/${lang + "/" + section2?.btn.url}`}>
-            <CardBasic
-              imgSrc={section2?.imgBasicContent?.data?.attributes.url}
-            />
-          </Link>
-        </TwoColumnGrid>
-
-        <section className="py-20">
-          <HeaderComponents
-            classNameText={"px-10  titleGreen chelseaFont font-responsive"}
-            alignment={`${screenSize <= 1200 ? "center" : "start"}`}
-            width={`${screenSize <= 1200 ? "100%" : "60%"}`}
-          >
-            {titles[1]?.Titulo}
-          </HeaderComponents>
           <TwoColumnGrid>
             <CardBasic
+              showMask={true}
               maskSrc={"/images/mask.png"}
-              iconSrc={section3?.imgModelBasic?.data?.attributes?.url}
-              imgSrc={section3?.imgBasicContent.data.attributes.url}
-              title={section3?.title}
-              subtitle={section3?.subTitle}
+              iconSrc={section1?.imgModelBasic?.data?.attributes?.url}
+              imgSrc={section1?.imgBasicContent?.data?.attributes?.url}
+              title={section1?.title}
+              subtitle={section1?.subTitle}
             />
 
             <BasicSection
@@ -202,69 +149,160 @@ const Page = ({ page, footer, whatsapp, menus }) => {
                 screenSize <= 1200
                   ? "align-vertical-center-horizontal-center"
                   : "align-vertical-center-horizontal-start "
-              } p-5 sm:p-5 sm:m-5`}
+              } p-5 lg:p-10`}
               width={`${screenSize <= 1200 ? "100%" : "70%"}`}
               alignItems={"center"}
               justifyContent={"center"}
               styleWrapper={{ height: "100%" }}
               // styleContent={{height: "100%"}}
             >
-              <span id="material"></span>
               <ReactMarkdown className="py-5">
-                {section3?.content}
+                {section1?.content}
               </ReactMarkdown>
-              {section3?.btn?.fileLabel?.data?.attributes?.url && (
-                <Link
-                  className={" buttonGreen m-0 manropeFont p-5 btnPrimary py-2"}
-                  href={section3?.btn?.fileLabel?.data?.attributes?.url || ""}
-                  target="_blank"
-                >
-                  {section3?.btn.label}
-                </Link>
-              )}
+              <ButtonView
+                className={" backgroundPrimary m-0 manropeFont p-5"}
+                link={lang + "/" + section1?.btn.url}
+              >
+                {section1?.btn.label}
+              </ButtonView>
             </BasicSection>
           </TwoColumnGrid>
-        </section>
-        <HeaderComponents
-          classNameText={"py-10 colorPrimary chelseaFont font-responsive"}
-          alignment={`${screenSize <= 1200 ? "center" : "start"}`}
-          width={`${screenSize <= 1200 ? "100%" : "70%"}`}
-        >
-          {titles[2]?.Titulo}
-        </HeaderComponents>
 
-        <Slider data={blogs?.blogs?.data} />
-
-        <TwoColumnGrid>
-          <Map />
-          <BasicSection
-            classNameTitle={""}
-            classNameWrapper={"setionStyle"}
-            title={""}
-            classNameContent={` fuentesParrafo  ${
-              screenSize <= 1200
-                ? "align-vertical-center-horizontal-center"
-                : "align-vertical-center-horizontal-start "
-            }`}
-            width={`${screenSize <= 1200 ? "100%" : "70%"}`}
-            alignItems={"center"}
-            justifyContent={"center"}
-            styleWrapper={{ height: "100%" }}
+          <HeaderComponents
+            classNameText={
+              " lg:py-10 py-5 colorSecondary chelseaFont font-responsive"
+            }
+            alignment="end"
+            width="100%"
           >
-            {horarios}
-          </BasicSection>
-        </TwoColumnGrid>
+            {section2?.title}
+          </HeaderComponents>
+          <TwoColumnGrid backgroundImage="/images/mask-background.png">
+            <BasicSection
+              classNameTitle={""}
+              classNameWrapper={"setionStyle "}
+              title={""}
+              classNameContent={` fuentesParrafo  ${
+                screenSize <= 1200
+                  ? "align-vertical-center-horizontal-center"
+                  : "align-vertical-center-horizontal-start "
+              } lg:p-10 lg:m-10 md:p-5 md:m-5 sm:p-5 sm:m-5`}
+              width={"100%"}
+              widthContent="100%"
+              alignItems={"center"}
+              alignment={`${screenSize <= 1200 ? "center" : "end"}`}
+              styleWrapper={{ height: "100%" }}
+              styleContent={{ height: "100%" }}
+            >
+              <ReactMarkdown className="sm:m-lg:py-5 md:py-5 m-responsive highlight">
+                {section2?.content}
+              </ReactMarkdown>
+              <ButtonView
+                className={" backgroundGris m-0 mt-5 manropeFont py-10"}
+                link={lang + "/" + section2?.btn.url}
+              >
+                {section2?.btn.label}
+              </ButtonView>
+            </BasicSection>
 
-        <HeaderComponents
-          src="/images/fondo1.png"
-          classNameText={"py-5 colorVerde chelseaFont font-responsive"}
-          alignment={`${screenSize <= 1200 ? "center" : "start"}`}
-        >
-          {patrocinadores}
-        </HeaderComponents>
-        <SliderTwo />
-      </div>
-    </Main>
+            <Link href={`/${lang + "/" + section2?.btn.url}`}>
+              <CardBasic
+                imgSrc={section2?.imgBasicContent?.data?.attributes.url}
+              />
+            </Link>
+          </TwoColumnGrid>
+
+          <section className="py-20">
+            <HeaderComponents
+              classNameText={"px-10  titleGreen chelseaFont font-responsive"}
+              alignment={`${screenSize <= 1200 ? "center" : "start"}`}
+              width={`${screenSize <= 1200 ? "100%" : "60%"}`}
+            >
+              {titles[1]?.Titulo}
+            </HeaderComponents>
+            <TwoColumnGrid>
+              <CardBasic
+                maskSrc={"/images/mask.png"}
+                iconSrc={section3?.imgModelBasic?.data?.attributes?.url}
+                imgSrc={section3?.imgBasicContent.data.attributes.url}
+                title={section3?.title}
+                subtitle={section3?.subTitle}
+              />
+
+              <BasicSection
+                classNameTitle={""}
+                classNameWrapper={"setionStyle"}
+                title={""}
+                classNameContent={` fuentesParrafo  ${
+                  screenSize <= 1200
+                    ? "align-vertical-center-horizontal-center"
+                    : "align-vertical-center-horizontal-start "
+                } p-5 sm:p-5 sm:m-5`}
+                width={`${screenSize <= 1200 ? "100%" : "70%"}`}
+                alignItems={"center"}
+                justifyContent={"center"}
+                styleWrapper={{ height: "100%" }}
+                // styleContent={{height: "100%"}}
+              >
+                <span id="material"></span>
+                <ReactMarkdown className="py-5">
+                  {section3?.content}
+                </ReactMarkdown>
+                {section3?.btn?.fileLabel?.data?.attributes?.url && (
+                  <Link
+                    className={
+                      " buttonGreen m-0 manropeFont p-5 btnPrimary py-2"
+                    }
+                    href={section3?.btn?.fileLabel?.data?.attributes?.url || ""}
+                    target="_blank"
+                  >
+                    {section3?.btn.label}
+                  </Link>
+                )}
+              </BasicSection>
+            </TwoColumnGrid>
+          </section>
+          <HeaderComponents
+            classNameText={"py-10 colorPrimary chelseaFont font-responsive"}
+            alignment={`${screenSize <= 1200 ? "center" : "start"}`}
+            width={`${screenSize <= 1200 ? "100%" : "70%"}`}
+          >
+            {titles[2]?.Titulo}
+          </HeaderComponents>
+
+          <Slider data={blogs?.blogs?.data} />
+
+          <TwoColumnGrid>
+            <Map />
+            <BasicSection
+              classNameTitle={""}
+              classNameWrapper={"setionStyle"}
+              title={""}
+              classNameContent={` fuentesParrafo  ${
+                screenSize <= 1200
+                  ? "align-vertical-center-horizontal-center"
+                  : "align-vertical-center-horizontal-start "
+              }`}
+              width={`${screenSize <= 1200 ? "100%" : "70%"}`}
+              alignItems={"center"}
+              justifyContent={"center"}
+              styleWrapper={{ height: "100%" }}
+            >
+              {horarios}
+            </BasicSection>
+          </TwoColumnGrid>
+
+          <HeaderComponents
+            src="/images/fondo1.png"
+            classNameText={"py-5 colorVerde chelseaFont font-responsive"}
+            alignment={`${screenSize <= 1200 ? "center" : "start"}`}
+          >
+            {patrocinadores}
+          </HeaderComponents>
+          <SliderTwo />
+        </div>
+      </Main>
+    </>
   );
 };
 

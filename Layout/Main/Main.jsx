@@ -60,35 +60,7 @@ const Main = ({ children, data }) => {
 
   return (
     <>
-      <Head>
-        <title>{data?.meta?.title || "Título por defecto"}</title>
-        <meta
-          name="description"
-          content={data?.meta?.description || "Descripción por defecto"}
-        />
-        <meta
-          name="keywords"
-          content={data?.meta?.keywords || "Palabras clave por defecto"}
-        />
-        <meta name="author" content={data?.authors || "Autor por defecto"} />
-        <meta
-          property="og:title"
-          content={data?.meta?.ogTitle || "Título OG por defecto"}
-        />
-        <meta
-          property="og:description"
-          content={data?.meta?.ogDescription || "Descripción OG por defecto"}
-        />
-        <meta
-          property="og:image"
-          content={
-            data?.meta?.ogImage?.data?.attributes?.url ||
-            "URL de imagen OG por defecto"
-          }
-        />
-        <meta property="og:url" content={data?.meta?.ogUrl || "URL OG por defecto"} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    
 
       <header
         className={`${
