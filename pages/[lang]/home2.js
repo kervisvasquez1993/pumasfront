@@ -32,6 +32,7 @@ import Map from "../../components/UI/Map";
 import Head from "next/head";
 
 const Page = ({ page, footer, whatsapp, menus, meta }) => {
+  console.log(meta, "meta");
   const router = useRouter();
   const { updateData } = usePages();
   const { lang } = router.query;
@@ -317,15 +318,11 @@ export const getStaticProps = async ({ params }) => {
     const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
     const pages = pagesResponse?.data?.pages;
     const updatePage = transformPages(pages?.data, lang);
-
     // Determina el slug basado en el idioma
     const homeSlug = lang === "es" ? "inicio" : "home";
-
     const page = updatePage.find((page) => page.slug === homeSlug);
-
-    console.log(page, "page home");
+    // console.log(page, "page home");
     if (!page) return { notFound: true };
-
     // Agrega los metadatos aquí
     const meta = {
       title: "Título por defecto",
@@ -336,7 +333,7 @@ export const getStaticProps = async ({ params }) => {
       ogImage: "URL de imagen OG por defecto",
       ogUrl: "URL OG por defecto",
     };
-
+    console.log(meta, "meta");
     return {
       props: {
         page: { ...page },
