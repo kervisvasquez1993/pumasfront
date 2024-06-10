@@ -1,15 +1,10 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import {
-  getAllModels,
-  getBlog,
   getMenus,
-  getModelGQ,
-  getPageWithComponents,
   getPagesGQ,
   langAll,
   getFooter,
-  getMaterialEducativo,
   getWhatsapp,
 } from "../../apis/ApiBackend";
 import usePages from "../../hooks/usePages";
