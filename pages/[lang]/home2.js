@@ -29,6 +29,7 @@ import Slider from "../../components/UI/Slider/SliderComponts";
 import { obtenerFrase } from "../../lang/traducciones";
 import SliderTwo from "../../components/UI/Slider/SliderTwo";
 import Map from "../../components/UI/Map";
+import Head from "next/head";
 
 const Page = ({ page, footer, whatsapp, menus }) => {
   const router = useRouter();
