@@ -89,34 +89,32 @@ const Page = ({ page, footer, whatsapp, menus }) => {
   return (
     <>
       <Head>
-        <title>{page?.meta?.title || "Título por defecto"}</title>
+        <title>{"Título por defecto"}</title>
         <meta
           name="description"
-          content={page?.meta?.description || "Descripción por defecto"}
+          content={"Descripción por defecto"}
         />
         <meta
           name="keywords"
-          content={page?.meta?.keywords || "Palabras clave por defecto"}
+          content={"Palabras clave por defecto"}
         />
-        <meta name="author" content={page?.authors || "Autor por defecto"} />
+        <meta name="author" content={"Autor por defecto"} />
         <meta
           property="og:title"
-          content={page?.meta?.ogTitle || "Título OG por defecto"}
+          content={"Título OG por defecto"}
         />
         <meta
           property="og:description"
-          content={page?.meta?.ogDescription || "Descripción OG por defecto"}
+          content={"Descripción OG por defecto"}
         />
         <meta
           property="og:image"
-          content={
-            page?.meta?.ogImage?.data?.attributes?.url ||
-            "URL de imagen OG por defecto"
+          content={"URL de imagen OG por defecto"
           }
         />
         <meta
           property="og:url"
-          content={page?.meta?.ogUrl || "URL OG por defecto"}
+          content={"URL OG por defecto"}
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
