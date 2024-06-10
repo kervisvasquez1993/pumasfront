@@ -10,7 +10,6 @@ import useLocale from "../../hooks/useLocales";
 
 const Main = ({ children, data }) => {
   const { menuData, loading, footerData } = useMenu();
-  const { langAllContext } = useLocale();
   const { query } = useRouter();
   const { lang, slug } = query;
   const [stateMenu, setStateMenu] = useState(null);
@@ -68,48 +67,32 @@ const Main = ({ children, data }) => {
   return (
     <>
       <Head>
-        <title>{meta?.title || "Título por defecto"}</title>
-      </Head>
-      <Head>
+        <title>{data?.title || "Título por defecto"}</title>
         <meta
           name="description"
-          content={meta?.description || "Descripción por defecto"}
+          content={data?.description || "Descripción por defecto"}
         />
-      </Head>
-      <Head>
         <meta
           name="keywords"
-          content={meta?.keywords || "Palabras clave por defecto"}
+          content={data?.keywords || "Palabras clave por defecto"}
         />
-      </Head>
-      <Head>
-        <meta name="author" content={meta?.authors || "Autor por defecto"} />
-      </Head>
-      <Head>
+        <meta name="author" content={data?.authors || "Autor por defecto"} />
         <meta
           property="og:title"
-          content={meta?.ogTitle || "Título OG por defecto"}
+          content={data?.ogTitle || "Título OG por defecto"}
         />
-      </Head>
-      <Head>
         <meta
           property="og:description"
-          content={meta?.ogDescription || "Descripción OG por defecto"}
+          content={data?.ogDescription || "Descripción OG por defecto"}
         />
-      </Head>
-      <Head>
         <meta
           property="og:image"
           content={
-            meta?.ogImage?.data?.attributes?.url ||
+            data?.ogImage?.data?.attributes?.url ||
             "URL de imagen OG por defecto"
           }
         />
-      </Head>
-      <Head>
         <meta property="og:url" content={meta?.ogUrl || "URL OG por defecto"} />
-      </Head>
-      <Head>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
