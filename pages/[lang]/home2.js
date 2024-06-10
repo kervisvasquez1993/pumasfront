@@ -31,7 +31,7 @@ import SliderTwo from "../../components/UI/Slider/SliderTwo";
 import Map from "../../components/UI/Map";
 import Head from "next/head";
 
-const Page = ({ page, footer, whatsapp, menus }) => {
+const Page = ({ page, footer, whatsapp, menus, meta }) => {
   const router = useRouter();
   const { updateData } = usePages();
   const { lang } = router.query;
@@ -90,23 +90,13 @@ const Page = ({ page, footer, whatsapp, menus }) => {
   return (
     <>
       <Head>
-        <title>{"Título por defecto"}</title>
-        <meta
-          name="keywords"
-          content={"Palabras clave por defecto"}
-        />
-        <meta name="author" content={"Autor por defecto"} />
-        <meta name="og:title" content={"home"} />
-        <meta name="og:description" content={"desciption"} />
-        <meta
-          name="og:image"
-          content={"URL de imagen OG por defecto"
-          }
-        />
-        <meta
-          name="og:url"
-          content={"URL OG por defecto"}
-        />
+        <title>{meta.title}</title>
+        <meta name="keywords" content={meta.keywords} />
+        <meta name="author" content={meta.author} />
+        <meta name="og:title" content={meta.ogTitle} />
+        <meta name="og:description" content={meta.ogDescription} />
+        <meta name="og:image" content={meta.ogImage} />
+        <meta name="og:url" content={meta.ogUrl} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Main titlePage={page?.meta?.title} data={page}>
@@ -335,12 +325,25 @@ export const getStaticProps = async ({ params }) => {
 
     console.log(page, "page home");
     if (!page) return { notFound: true };
+
+    // Agrega los metadatos aquí
+    const meta = {
+      title: "Título por defecto",
+      keywords: "Palabras clave por defecto",
+      author: "Autor por defecto",
+      ogTitle: "home",
+      ogDescription: "description",
+      ogImage: "URL de imagen OG por defecto",
+      ogUrl: "URL OG por defecto",
+    };
+
     return {
       props: {
         page: { ...page },
         footer,
         whatsapp,
         menus,
+        meta, // Pasa los metadatos a las props
       },
       revalidate: 10,
     };
@@ -380,5 +383,4 @@ export const getStaticPaths = async () => {
     fallback: true,
   };
 };
-
 export default Page;
