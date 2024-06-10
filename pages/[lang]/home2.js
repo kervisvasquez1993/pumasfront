@@ -100,14 +100,8 @@ const Page = ({ page, footer, whatsapp, menus }) => {
           content={"Palabras clave por defecto"}
         />
         <meta name="author" content={"Autor por defecto"} />
-        <meta
-          property="og:title"
-          content={"Título OG por defecto"}
-        />
-        <meta
-          property="og:description"
-          content={"Descripción OG por defecto"}
-        />
+        <meta name="og:title" content={"home"} />
+        <meta name="og:description" content={"desciption"} />
         <meta
           property="og:image"
           content={"URL de imagen OG por defecto"
