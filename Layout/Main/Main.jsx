@@ -14,7 +14,7 @@ const Main = ({ children, data }) => {
   const { lang, slug } = query;
   const [stateMenu, setStateMenu] = useState(null);
   const [isHeaderSticky, setIsHeaderSticky] = useState(false);
-  const [meta, setMeta] = useState({});
+  // const [meta, setMeta] = useState({});
 
   useEffect(() => {
     if (!loading && menuData && lang) {
@@ -48,12 +48,6 @@ const Main = ({ children, data }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  useEffect(() => {
-    if (data?.meta) {
-      setMeta(data.meta);
-    }
-  }, [data]);
 
   const headerClassName = `${style.headerMenu} ${
     isHeaderSticky ? "stickyHeader" : ""
@@ -92,7 +86,7 @@ const Main = ({ children, data }) => {
             "URL de imagen OG por defecto"
           }
         />
-        <meta property="og:url" content={meta?.ogUrl || "URL OG por defecto"} />
+        <meta property="og:url" content={data?.meta?.ogUrl || "URL OG por defecto"} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
