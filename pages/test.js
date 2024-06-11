@@ -16,12 +16,10 @@ export async function getStaticProps() {
 
 const Test = ({ meta }) => {
   return (
-    <div>
-      
       <MainLayout  title="hola mundo" pageDescription="descriptions">
         <h2>test</h2>
       </MainLayout>
-    </div>
+  
   );
 };
 
