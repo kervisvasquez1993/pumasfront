@@ -60,7 +60,7 @@ const Main = ({ children, data }) => {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>{data?.meta?.title || "Título por defecto"}</title>
         <meta
           name="description"
@@ -88,7 +88,7 @@ const Main = ({ children, data }) => {
         />
         <meta name="og:url" content={data?.meta?.ogUrl || "URL OG por defecto"} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+      </Head> */}
 
       <header
         className={`${
