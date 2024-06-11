@@ -18,8 +18,8 @@ const Page = ({ page, footer, whatsapp, menus, meta }) => {
   const router = useRouter();
   
 
-
-  console.log(page, "page");
+  console.log(meta, "meta");
+  // console.log(page, "page");
   if (router.isFallback) {
     return <Loader />;
   }
