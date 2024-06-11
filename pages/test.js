@@ -1,5 +1,7 @@
 import Head from "next/head";
 import React from "react";
+import Main from "../Layout/Main/Main";
+import { MainLayout } from "../Layout/Main/MainLayout";
 
 export async function getStaticProps() {
   const meta = {
@@ -17,17 +19,10 @@ export async function getStaticProps() {
 const Test = ({ meta }) => {
   return (
     <div>
-      <Head>
-        <title>{meta.title}</title>
-        <meta name="keywords" content={meta.keywords} />
-        <meta name="author" content={meta.author} />
-        <meta name="og:title" content={meta.ogTitle} />
-        <meta name="og:description" content={meta.ogDescription} />
-        <meta name="og:image" content={meta.ogImage} />
-        <meta name="og:url" content={meta.ogUrl} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <h2>tests</h2>
+      
+      <MainLayout  title="hola mundo" pageDescription="descriptions">
+        <h2>test</h2>
+      </MainLayout>
     </div>
   );
 };
