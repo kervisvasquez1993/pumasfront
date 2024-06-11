@@ -112,7 +112,7 @@ const Donations = ({
   // console.log(donationInfo[0]?.attributes.donaciones, "donationInfo")
 
   return (
-    <Main titlePage={'Donación'}>
+    <Main titlePage={'Donación'} data={""}>
 
 
       <div className='container'>
