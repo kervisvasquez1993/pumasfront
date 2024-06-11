@@ -313,10 +313,8 @@ export const getStaticProps = async ({ params }) => {
     const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
     const pages = pagesResponse?.data?.pages;
     const updatePage = transformPages(pages?.data, lang);
-    // Determina el slug basado en el idioma
     const homeSlug = lang === "es" ? "inicio" : "home";
     const page = updatePage.find((page) => page.slug === homeSlug);
-    // console.log(page, "page home");
     if (!page) return { notFound: true };
     // Agrega los metadatos aquí
     const meta = {

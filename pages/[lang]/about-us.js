@@ -29,13 +29,15 @@ import Slider from "../../components/UI/Slider/SliderComponts";
 import { obtenerFrase } from "../../lang/traducciones";
 import SliderTwo from "../../components/UI/Slider/SliderTwo";
 import Map from "../../components/UI/Map";
+import Head from "next/head";
 
-const Page = ({ page, footer, whatsapp, menus }) => {
+const Page = ({ page, footer, whatsapp, menus, meta }) => {
   const router = useRouter();
   const { updateData } = usePages();
   const { lang } = router.query;
   const patrocinadores = obtenerFrase(lang, "patrocinadores");
   const { loadedFooter, loadedWhatsapp, updateMenuLoader } = useMenu();
+  console.log(meta, "meta");
   useEffect(() => {
     loadedFooter(footer);
     loadedWhatsapp(whatsapp);
@@ -45,7 +47,7 @@ const Page = ({ page, footer, whatsapp, menus }) => {
     updateData(page);
   }, [page]);
 
-  console.log(page,"page")
+  console.log(page, "page");
   if (router.isFallback) {
     return <Loader />;
   }
@@ -54,8 +56,21 @@ const Page = ({ page, footer, whatsapp, menus }) => {
     return <div>Página no encontrada</div>;
   }
 
-  
-  return "hola"
+  return (
+    <>
+      <Head>
+        <title>{meta.title}</title>
+        <meta name="keywords" content={meta.keywords} />
+        <meta name="author" content={meta.author} />
+        <meta name="og:title" content={meta.ogTitle} />
+        <meta name="og:description" content={meta.ogDescription} />
+        <meta name="og:image" content={meta.ogImage} />
+        <meta name="og:url" content={meta.ogUrl} />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <h2>hola</h2>
+    </>
+  );
 };
 
 const transformPages = (dataPages, lang) => {
@@ -90,20 +105,25 @@ export const getStaticProps = async ({ params }) => {
     const whatsapp = whatsappResponse?.data?.data[0]?.attributes;
     const pages = pagesResponse?.data?.pages;
     const updatePage = transformPages(pages?.data, lang);
-      console.log(updatePage, "updatePage")
-    // Determina el slug basado en el idioma
     const homeSlug = lang === "es" ? "nosotros" : "history";
-
     const page = updatePage.find((page) => page.slug === homeSlug);
-
-    console.log(page, "page home");
     if (!page) return { notFound: true };
+    const meta = {
+      title: page?.meta?.title,
+      keywords: page?.meta?.keywords,
+      author: page?.meta?.author,
+      ogTitle: page?.meta?.title,
+      ogDescription: page?.meta?.description,
+      ogImage: page?.meta?.ogImage?.data?.attributes?.url,
+      ogUrl: page?.meta?.ogUrl,
+    };
     return {
       props: {
         page: { ...page },
         footer,
         whatsapp,
         menus,
+        meta,
       },
       revalidate: 10,
     };
@@ -122,9 +142,7 @@ export const getStaticPaths = async () => {
   for (const language of languages) {
     const menusResponse = await getMenus(language.attributes.code);
     const pages = await getPagesGQ(language.attributes.code);
-
     const menus = menusResponse.data.data;
-
     menus.forEach((element) => {
       if (element.attributes.slug === "blog") {
         return;
