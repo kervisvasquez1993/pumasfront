@@ -320,22 +320,21 @@ export const getStaticProps = async ({ params }) => {
     if (!page) return { notFound: true };
     // Agrega los metadatos aquí
     const meta = {
-      title: "Título por defecto",
-      keywords: "Palabras clave por defecto",
-      author: "Autor por defecto",
-      ogTitle: "home",
-      ogDescription: "description",
-      ogImage: "URL de imagen OG por defecto",
-      ogUrl: "URL OG por defecto",
+      title: page?.meta?.title,
+      keywords: page?.meta?.keywords,
+      author: page?.meta?.author,
+      ogTitle: page?.meta?.title,
+      ogDescription: page?.meta?.description,
+      ogImage: page?.meta?.ogImage?.data?.attributes?.url,
+      ogUrl: page?.meta?.ogUrl,
     };
-    console.log(meta, "meta");
     return {
       props: {
         page: { ...page },
         footer,
         whatsapp,
         menus,
-        meta, // Pasa los metadatos a las props
+        meta,
       },
       revalidate: 10,
     };
