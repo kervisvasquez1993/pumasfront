@@ -318,10 +318,10 @@ export const getStaticProps = async ({ params }) => {
     if (!page) return { notFound: true };
     // Agrega los metadatos aquí
     const meta = {
-      title: page?.meta?.title,
+      title: page?.meta?.ogTitle,
       keywords: page?.meta?.keywords,
       author: page?.meta?.author,
-      ogTitle: page?.meta?.title,
+      ogTitle: page?.meta?.ogTitle,
       ogDescription: page?.meta?.description,
       ogImage: page?.meta?.ogImage?.data?.attributes?.url,
       ogUrl: page?.meta?.ogUrl,

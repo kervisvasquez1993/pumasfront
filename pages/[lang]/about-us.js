@@ -108,11 +108,12 @@ export const getStaticProps = async ({ params }) => {
     const homeSlug = lang === "es" ? "nosotros" : "history";
     const page = updatePage.find((page) => page.slug === homeSlug);
     if (!page) return { notFound: true };
+    console.log(page.meta)
     const meta = {
-      title: page?.meta?.title,
+      title: page?.meta?.ogTitle,
       keywords: page?.meta?.keywords,
       author: page?.meta?.author,
-      ogTitle: page?.meta?.title,
+      ogTitle: page?.meta?.ogTitle,
       ogDescription: page?.meta?.description,
       ogImage: page?.meta?.ogImage?.data?.attributes?.url,
       ogUrl: page?.meta?.ogUrl,
