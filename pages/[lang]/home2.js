@@ -318,13 +318,13 @@ export const getStaticProps = async ({ params }) => {
     if (!page) return { notFound: true };
     // Agrega los metadatos aquí
     const meta = {
-      title: page?.meta?.ogTitle,
-      keywords: page?.meta?.keywords,
-      author: page?.meta?.author,
-      ogTitle: page?.meta?.ogTitle,
-      ogDescription: page?.meta?.description,
-      ogImage: page?.meta?.ogImage?.data?.attributes?.url,
-      ogUrl: page?.meta?.ogUrl,
+      title: page?.meta?.ogTitle || 'Título por defecto',
+      keywords: page?.meta?.keywords || '',
+      author: page?.meta?.author || '',
+      ogTitle: page?.meta?.ogTitle || 'Título por defecto',
+      ogDescription: page?.meta?.description || '',
+      ogImage: page?.meta?.ogImage?.data?.attributes?.url || '',
+      ogUrl: page?.meta?.ogUrl || '',
     };
     return {
       props: {
