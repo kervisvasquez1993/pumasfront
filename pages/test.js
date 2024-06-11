@@ -14,7 +14,7 @@ export async function getStaticProps() {
   return { props: { meta } };
 }
 
-const Test = ({ metadata }) => {
+const Test = ({ meta }) => {
   return (
     <div>
       <Head>
@@ -27,7 +27,7 @@ const Test = ({ metadata }) => {
         <meta name="og:url" content={meta.ogUrl} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <h2>hola desde about us</h2>
+      <h2>tests</h2>
     </div>
   );
 };
