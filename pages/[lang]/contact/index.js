@@ -181,7 +181,7 @@ const Contact = ({ whatsapp, footer }) => {
   };
 
   return (
-    <Main titlePage={"Contacto"}>
+    <Main titlePage={"Contacto"} data={""}>
       <div className="container">
         <div>
           <ToastContainer
