@@ -68,7 +68,7 @@ const Page = ({ page, footer, whatsapp, menus, meta }) => {
         <meta name="og:url" content={meta.ogUrl} />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <h2>hola</h2>
+      <h2>hola desde about us</h2>
     </>
   );
 };
