@@ -1,6 +1,4 @@
-import Head from "next/head";
 import React from "react";
-import Main from "../Layout/Main/Main";
 import { MainLayout } from "../Layout/Main/MainLayout";
 
 export async function getStaticProps() {
