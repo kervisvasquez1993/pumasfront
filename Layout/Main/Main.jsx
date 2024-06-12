@@ -62,10 +62,7 @@ const Main = ({ children, data }) => {
     <>
       <Head>
         <title>{data?.meta?.title || "Título por defecto"}</title>
-        <meta
-          name="description"
-          content={data?.meta?.description || "Descripción por defecto"}
-        />
+
         <meta
           name="keywords"
           content={data?.meta?.keywords || "Palabras clave por defecto"}

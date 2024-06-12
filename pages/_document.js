@@ -4,7 +4,10 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <meta name="author" content={"kervis vasquez"} />
+      <meta
+          name="og:title"
+          content={"Título OG por defecto"}
+        />
       <body>
         <Main />
         <NextScript />
