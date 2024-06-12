@@ -85,16 +85,6 @@ const Page = ({ page, footer, whatsapp, menus, meta }) => {
 
   return (
     <>
-      {/* <Head>
-        <title>{meta.title}</title>
-        <meta name="keywords" content={meta.keywords} />
-        <meta name="author" content={meta.author} />
-        <meta name="og:title" content={meta.ogTitle} />
-        <meta name="og:description" content={meta.ogDescription} />
-        <meta name="og:image" content={meta.ogImage} />
-        <meta name="og:url" content={meta.ogUrl} />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head> */}
       <Main titlePage={page?.meta?.title} data={page}>
         {/* TODO:PASAR POR PROPS LOS PARAMETROS DEL BANNER */}
         <BannerComponents data={banner} />
