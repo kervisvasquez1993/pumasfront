@@ -14,28 +14,10 @@ import { ScreenSizeProvider } from "../context/ScreenSizeProvider";
 import { LocaleProvider } from "../context/LocalesProvider";
 import { PatrocindadoresProvider } from "../context/PatrocinadoresProvider";
 import Head from "next/head";
-const defaultMetadata = {
-  title: "Título por defecto",
-  description: "Descripción por defecto",
-};
 
 function MyApp({ Component, pageProps }) {
-  const [initialRenderComplete, setInitialRenderComplete] = useState(false);
-
-  // const metadata = { ...defaultMetadata, ...pageProps.metadata };
-
-  useEffect(() => {
-    setInitialRenderComplete(true);
-  }, []);
-
-  if (!initialRenderComplete) return <></>;
-
   return (
     <>
-      <Head>
-        <title>{"test"}</title>
-        <meta name="description" content={"test"} />
-      </Head>
       <ScreenSizeProvider>
         <LocaleProvider>
           <MenuProvider>
