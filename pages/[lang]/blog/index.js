@@ -45,30 +45,30 @@ const index = ({ blogsPage, blogPageData, whatsapp, footer, menus }) => {
     );
   });
 
-  const ComponentDynamicsRenderer = ({ DynamicComponent = [] }) => { // Solución 1: Valor predeterminado
+  const ComponentDynamicsRenderer = ({ DynamicComponent = [] }) => {
+    // Solución 1: Valor predeterminado
     // Solución 2: Verificación antes de usar reduce
-    const renderedComponents = Array.isArray(DynamicComponent) ? DynamicComponent.reduce(
-      (acc, elemento, index) => {
-        if (elemento?.typeSection === "section2") {
-          const component = (
-            <div className="container-program">
-              <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
-                {elemento?.title}
-              </h3>
-              <div className="grid-2 px-5">
-                <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2">
-                  <ReactMarkdown>{elemento?.content}</ReactMarkdown>
+    const renderedComponents = Array.isArray(DynamicComponent)
+      ? DynamicComponent.reduce((acc, elemento, index) => {
+          if (elemento?.typeSection === "section2") {
+            const component = (
+              <div className="container-program">
+                <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
+                  {elemento?.title}
+                </h3>
+                <div className="grid-2 px-5">
+                  <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2">
+                    <ReactMarkdown>{elemento?.content}</ReactMarkdown>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-          return [...acc, component];
-        }
-        return acc;
-      },
-      []
-    ) : []; // Retorna un array vacío si DynamicComponent no es un array
-  
+            );
+            return [...acc, component];
+          }
+          return acc;
+        }, [])
+      : []; // Retorna un array vacío si DynamicComponent no es un array
+
     return <div>{renderedComponents}</div>;
   };
   return (

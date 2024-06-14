@@ -60,7 +60,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
   useEffect(() => {
     const selectedDonation = watch("donations");
     setDateDonations(
-      typeDonations.find(
+      typeDonations?.find(
         (typeDonation) => typeDonation.titulo === selectedDonation
       )
     );
@@ -364,7 +364,7 @@ const FormDonations = ({ typeDonations, result, modelos }) => {
               <option value="">
                 {obtenerFrase(lang, "seleccionar_option")}
               </option>
-              {typeDonations.map((nameDonation) => (
+              {typeDonations?.map((nameDonation) => (
                 <option key={nameDonation.titulo} value={nameDonation.titulo}>
                   {nameDonation.titulo}
                 </option>
