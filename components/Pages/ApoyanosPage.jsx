@@ -9,10 +9,13 @@ import ReactMarkdown from "react-markdown";
 import useScreenSize from "../../hooks/useScreenSize";
 import Link from "next/link";
 import Head from "next/head";
+import useScreenSizeStore from "../../store/screenSizeStore";
 const ApoyanosPage = ({ data }) => {
   const router = useRouter();
   const { slug, lang } = router.query
-  const { screenSize } = useScreenSize()
+  // const { screenSize } = useScreenSize()
+  const screenSize = useScreenSizeStore((state) => state.screenSize);
+
   const { componentDynamics } = data;
   const secction1 = componentDynamics.find(element => element.typeSection == "section1")
   const secction2 = componentDynamics.find(element => element.typeSection == "section2")

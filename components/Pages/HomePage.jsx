@@ -19,15 +19,17 @@ import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
 import { obtenerFrase } from "../../lang/traducciones";
 import Link from "next/link";
+import useScreenSizeStore from "../../store/screenSizeStore";
 
 const HomePage = ({ data }) => {
   //console.log(data, "data")
   const router = useRouter();
   const { lang } = router.query;
+  const screenSize = useScreenSizeStore((state) => state.screenSize);
   const patrocinadores = obtenerFrase(lang, "patrocinadores");
   useEffect(() => {
     const targetId = window.location.hash.substring(1);
-    console.log(targetId);
+    // console.log(targetId);
     if (targetId) {
       // Encuentra el elemento con el ID deseado
       const targetElement = document.getElementById(targetId);
@@ -70,8 +72,7 @@ const HomePage = ({ data }) => {
       </section>
     );
   });
-  const { screenSize } = useScreenSize();
-  console.log(data)
+  // console.log(data)
   return (
     <Main titlePage={data?.meta?.title} data={data}>
      

@@ -22,9 +22,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useFetch } from "../../../hooks/useFetch";
 import Head from "next/head";
+import useScreenSizeStore from "../../../store/screenSizeStore";
 const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
-  const { screenSize } = useScreenSize();
-  console.log(footer, "footer");
+  const screenSize = useScreenSizeStore((state) => state.screenSize);
   const router = useRouter();
   const { lang } = router.query;
   const { loadedFooter, loadedWhatsapp, updateMenuLoader } = useMenu();

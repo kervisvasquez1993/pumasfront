@@ -13,26 +13,23 @@ import { PagesProvider } from "../context/PagesProvider";
 import { ScreenSizeProvider } from "../context/ScreenSizeProvider";
 import { LocaleProvider } from "../context/LocalesProvider";
 import { PatrocindadoresProvider } from "../context/PatrocinadoresProvider";
-import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <ScreenSizeProvider>
-        <LocaleProvider>
-          <MenuProvider>
-            <ModeloProvider>
-              <PagesProvider>
-                <PatrocindadoresProvider>
-                  <DonationsProvider>
-                    <Component {...pageProps} />
-                  </DonationsProvider>
-                </PatrocindadoresProvider>
-              </PagesProvider>
-            </ModeloProvider>
-          </MenuProvider>
-        </LocaleProvider>
-      </ScreenSizeProvider>
+      <LocaleProvider>
+        <MenuProvider>
+          <ModeloProvider>
+            <PagesProvider>
+              <PatrocindadoresProvider>
+                <DonationsProvider>
+                  <Component {...pageProps} />
+                </DonationsProvider>
+              </PatrocindadoresProvider>
+            </PagesProvider>
+          </ModeloProvider>
+        </MenuProvider>
+      </LocaleProvider>
     </>
   );
 }

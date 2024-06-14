@@ -52,7 +52,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       });
       res.status(200).json({ mensaje: "Mensaje Enviado", data });
     } catch (error) {
-      console.log(error, "Error sending");
+      // console.log(error, "Error sending");
      
       res.status(403).json({ mensaje: "Error al enviar el correo", error });
       console.error("Error al enviar el correo:", error);

@@ -22,6 +22,7 @@ import Head from "next/head";
 const ProgramaPage = ({ data, material }) => {
   const router = useRouter();
   const { lang } = router.query;
+  
   const [dynamicComponents, setDynamicComponents] = useState([]);
   const [materialEducativo, setMaterialEducativo] = useState([]);
   const [isHovered, setIsHovered] = useState(false);

@@ -12,28 +12,23 @@ import MapWithBackground from "../UI/MapWithBackground";
 import useModelo from "../../hooks/useModelo";
 import CanvasElement from "../UI/CanvasElement";
 import Modal from "../UI/Modal";
-
-import usePages from "../../hooks/usePages";
+// import usePages from "../../hooks/usePages";
 import SlidetWithContent from "../Section/Slider/SliderWithContent";
-
-import useScreenSize from "../../hooks/useScreenSize";
 import Loader from "../UI/Loader";
 import { getModelGQ } from "../../apis/ApiBackend";
 import Head from "next/head";
+import useScreenSizeStore from "../../store/screenSizeStore";
 
 const SantuarioPage = ({ data }) => {
   const router = useRouter();
   const { slug, lang } = router.query;
   const [dynamicComponents, setDynamicComponents] = useState([]);
   const { componentDynamics, title } = data;
-
   const { modeloList, hearlessChangInfo } = useModelo();
   const [isLoading, setIsLoading] = useState(false);
-  const { screenSize } = useScreenSize();
-
+  const screenSize = useScreenSizeStore((state) => state.screenSize);
   const currentVersion = 2;
-
-  const storeData = (lang, data) => {
+  const storeData = (lang, data) => { 
     if (lang) {
       const dataToStore = {
         data,

@@ -17,13 +17,17 @@ import Loader from "../UI/Loader";
 import { useRouter } from "next/router";
 import { obtenerFrase } from "../../lang/traducciones";
 import Head from "next/head";
+import useScreenSizeStore from "../../store/screenSizeStore";
 
 const CentroDeRescate = ({ data }) => {
   const router = useRouter();
   const [dynamicComponents, setDynamicComponents] = useState([]);
+  
   const { slug, lang } = router.query
   const { componentDynamics,title } = data;
-  const { screenSize } = useScreenSize()
+  // const { screenSize } = useScreenSize()
+  const screenSize = useScreenSizeStore((state) => state.screenSize);
+
   const conoceMas = obtenerFrase(lang, "conoceMas");
   if (!componentDynamics) {
     return <Loader />;

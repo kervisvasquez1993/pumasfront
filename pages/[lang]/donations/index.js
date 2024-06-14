@@ -27,6 +27,7 @@ import FormDonationSpecies from '../../../components/Section/FormDonationSpecies
 import useModelo from '../../../hooks/useModelo'
 import useStore from '../../../store/store-menu'
 import Image from 'next/image'
+import useScreenSizeStore from '../../../store/screenSizeStore'
 
 const Donations = ({
   typeDonationSchemes,
@@ -37,7 +38,9 @@ const Donations = ({
   modelsGQ,
   menus
 }) => {
-  const { screenSize } = useScreenSize()
+  // const { screenSize } = useScreenSize()
+  const screenSize = useScreenSizeStore((state) => state.screenSize);
+
   const [filter, setFilter] = useState(null)
   const [filterForSlug, setFilterForSlug] = useState(null)
   const { query } = useRouter()

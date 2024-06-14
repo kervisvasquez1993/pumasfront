@@ -12,7 +12,7 @@ import Loader from "../../components/UI/Loader";
 import useMenu from "../../hooks/useMenu";
 import Main from "../../Layout/Main/Main";
 import ReactMarkdown from "react-markdown";
-import useScreenSize from "../../hooks/useScreenSize";
+
 import BannerComponents from "../../components/UI/Banner/BannerComponents";
 import HeaderComponents from "../../components/UI/HeaderComponents/HeaderComponets";
 import TwoColumnGrid from "../../components/Section/Basic/TwoColumnGrid";
@@ -25,10 +25,12 @@ import { obtenerFrase } from "../../lang/traducciones";
 import SliderTwo from "../../components/UI/Slider/SliderTwo";
 import Map from "../../components/UI/Map";
 import Head from "next/head";
+import useScreenSizeStore from "../../store/screenSizeStore";
 
 const Page = ({ page, footer, whatsapp, menus, meta }) => {
-  console.log(meta, "meta");
+  // console.log(meta, "meta");
   const router = useRouter();
+  
   const { updateData } = usePages();
   const { lang } = router.query;
   const patrocinadores = obtenerFrase(lang, "patrocinadores");
@@ -81,7 +83,9 @@ const Page = ({ page, footer, whatsapp, menus, meta }) => {
       </section>
     );
   });
-  const { screenSize } = useScreenSize();
+
+  const screenSize = useScreenSizeStore((state) => state.screenSize);
+
 
   return (
     <>

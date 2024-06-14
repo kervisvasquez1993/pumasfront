@@ -4,12 +4,14 @@ import style from "./style.module.css";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { obtenerFrase } from '../../../lang/traducciones';
+import useScreenSizeStore from '../../../store/screenSizeStore';
 
 const CardComponentHover = ({ imageUrl, title, description, url }) => {
     const router = useRouter();
     const { lang } = router.query
     const vermas = obtenerFrase(lang, "verMas");
-    const { screenSize } = useScreenSize()
+    const screenSize = useScreenSizeStore((state) => state.screenSize);
+
     const [isHovered, setIsHovered] = useState(false);
     const handleMouseEnter = () => {
 

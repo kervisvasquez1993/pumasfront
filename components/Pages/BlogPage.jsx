@@ -7,9 +7,11 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import CardComponentHover from "../UI/Card/CardComponentHover";
 import Head from "next/head";
+import useScreenSizeStore from "../../store/screenSizeStore";
 
 const BlogPage = ({ data, blogData }) => {
   const router = useRouter();
+  // const screenSize = useScreenSizeStore((state) => state.screenSize);
   const { lang } = router.query
   const { componentDynamics } = data;
   const [firtElement] = componentDynamics

@@ -18,7 +18,7 @@ const Page = ({ page, footer, whatsapp, menus, meta }) => {
   const router = useRouter();
   
 
-  console.log(meta, "meta");
+  // console.log(meta, "meta");
   // console.log(page, "page");
   if (router.isFallback) {
     return <Loader />;
@@ -77,7 +77,7 @@ export const getStaticProps = async ({ params }) => {
     const homeSlug = lang === "es" ? "nosotros" : "history";
     const page = updatePage.find((page) => page.slug === homeSlug);
     if (!page) return { notFound: true };
-    console.log(page.meta)
+    // console.log(page.meta)
     const meta = {
       title: page?.meta?.ogTitle || 'Título por defecto',
       keywords: page?.meta?.keywords || '',

@@ -13,7 +13,7 @@ const FormDonationSpecies = ({ filterSpecie, typeDonations, donaciones }) => {
   const dataInfo = typeDonations?.find(
     (donation) => donation.titulo == "ESPECIE" || donation.titulo == "SPECIES"
   );
-  console.log(donaciones, "dataInfo");
+  // console.log(donaciones, "dataInfo");
   const [dateDonations, setDateDonations] = useState(null);
   const [typeDonation, setTypeDonation] = useState(null);
   const [dateDonationsInfo, setDateDonationsInfo] = useState(null);

@@ -1,8 +1,9 @@
 import React from 'react'
 import CanvasElement from './CanvasElement'
-import useScreenSize from '../../hooks/useScreenSize'
+// import useScreenSize from '../../hooks/useScreenSize'
+import useScreenSizeStore from '../../store/screenSizeStore';
 const MapWithBackground = ({ backgroundImage, children }) => {
-  const { screenSize } = useScreenSize()
+  const screenSize = useScreenSizeStore((state) => state.screenSize);
   const mapStyle = {
     position: 'relative',
     maxWidth: '100vw',

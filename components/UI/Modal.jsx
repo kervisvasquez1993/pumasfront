@@ -30,7 +30,7 @@ export default function Modal({ showModal, setShowModal, data }) {
   };
   const router = useRouter();
   const { slug, lang } = router.query;
-  const { screenSize } = useScreenSize();
+  
   return (
     <>
       {showModal && (

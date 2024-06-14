@@ -13,13 +13,15 @@ import SliderGeneral from "../UI/Slider/SliderGeneral";
 import ReactMarkdown from "react-markdown";
 import useScreenSize from "../../hooks/useScreenSize";
 import Head from "next/head";
+import useScreenSizeStore from "../../store/screenSizeStore";
 const NosotrosPage = ({ data }) => {
 
   const router = useRouter();
   const { slug, lang } = router.query
   const [dynamicComponents, setDynamicComponents] = useState([]);
   const { componentDynamics,title } = data;
-  const { screenSize } = useScreenSize()
+  const screenSize = useScreenSizeStore((state) => state.screenSize);
+
 
   if (!componentDynamics) {
     return <Loader />;

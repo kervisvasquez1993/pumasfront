@@ -23,6 +23,7 @@ import useModelo from '../../../hooks/useModelo'
 import usePages from '../../../hooks/usePages'
 import Loader from '../../../components/UI/Loader'
 import useMenu from '../../../hooks/useMenu'
+import useScreenSizeStore from '../../../store/screenSizeStore'
 
 const componentMap = {
   inicio: HomePage,
@@ -47,6 +48,7 @@ const Page = ({
   whatsapp,
   menus,
 }) => {
+  const screenSize = useScreenSizeStore((state) => state.screenSize);
   const router = useRouter()
   const { hearlessChangInfo } = useModelo()
   const { updateData } = usePages()
@@ -124,7 +126,6 @@ const transformPages = (dataPages, lang) => {
 export const getStaticProps = async ({ params }) => {
   try {
     const { lang, slug } = params
-
     const [
       pagesResponse,
       footerResponse,

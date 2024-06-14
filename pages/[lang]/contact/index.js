@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import useMenu from "../../../hooks/useMenu";
 import { useRouter } from "next/router";
 import { obtenerFrase } from "../../../lang/traducciones";
+import useScreenSizeStore from "../../../store/screenSizeStore";
 
 const Contact = ({ whatsapp, footer }) => {
   //console.log(whatsapp)
@@ -30,7 +31,9 @@ const Contact = ({ whatsapp, footer }) => {
   const requiereGuiaForm = obtenerFrase(query.lang, "requiereGuiaForm");
   const contactarForm = obtenerFrase(query.lang, "contactarForm");
   const sent = obtenerFrase(query.lang, "enviarMensaje");
-  const { screenSize } = useScreenSize();
+  // const { screenSize } = useScreenSize();
+  const screenSize = useScreenSizeStore((state) => state.screenSize);
+
   const [formData, setFormData] = useState({
     nombre: "",
     correo: "",
