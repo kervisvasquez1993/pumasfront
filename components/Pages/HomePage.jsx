@@ -3,7 +3,6 @@ import Head from 'next/head'
 import Main from "../../Layout/Main/Main";
 import HeaderComponets from "../UI/HeaderComponents/HeaderComponets";
 import SliderTwo from "../UI/Slider/SliderTwo";
-import MapSection from "../Section/Map/MapSection";
 import Slider from "../UI/Slider/SliderComponts";
 import BannerComponents from "../UI/Banner/BannerComponents";
 import GeneralComponents from "../UI/GeneralComponet/GeneralComponents";

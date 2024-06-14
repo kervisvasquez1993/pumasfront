@@ -19,16 +19,16 @@ const defaultMetadata = {
 };
 
 function MyApp({ Component, pageProps }) {
-  const [initialRenderComplete, setInitialRenderComplete] = useState(false);
+  // const [initialRenderComplete, setInitialRenderComplete] = useState(false);
 
   
-  const metadata = { ...defaultMetadata, ...pageProps.metadata };
+  // const metadata = { ...defaultMetadata, ...pageProps.metadata };
 
-  useEffect(() => {
-    setInitialRenderComplete(true);
-  }, []);
+  // useEffect(() => {
+  //   setInitialRenderComplete(true);
+  // }, []);
 
-  if (!initialRenderComplete) return <></>;
+  // if (!initialRenderComplete) return <></>;
 
   return (
     <ScreenSizeProvider>
@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }) {
 
               <PatrocindadoresProvider>
                 <DonationsProvider>
-                  <Component {...pageProps} metadata={metadata} />
+                  <Component {...pageProps}  />
                 </DonationsProvider>
               </PatrocindadoresProvider>
 
