@@ -12,16 +12,14 @@ import CardComponentHover from "../../../components/UI/Card/CardComponentHover";
 import Main from "../../../Layout/Main/Main";
 import ReactMarkdown from "react-markdown";
 import useMenu from "../../../hooks/useMenu";
-import useScreenSizeStore from "../../../store/screenSizeStore";
+// import useScreenSizeStore from "../../../store/screenSizeStore";
 
 const index = ({ blogsPage, blogPageData, whatsapp, footer, menus }) => {
   // const screenSize = useScreenSizeStore((state) => state.screenSize);
   const router = useRouter();
   const { lang } = router.query;
   const blogs = blogsPage?.data;
-  console.log("blogPageData", blogPageData);
   const { loadedFooter, loadedWhatsapp, updateMenuLoader } = useMenu();
-
   useEffect(() => {
     loadedFooter(footer);
     loadedWhatsapp(whatsapp);
@@ -73,7 +71,7 @@ const index = ({ blogsPage, blogPageData, whatsapp, footer, menus }) => {
     return <div>{renderedComponents}</div>;
   };
   return (
-    <Main titlePage={"Blog"} data={blogPageData.attributes}>
+    <Main titlePage={"Blog"} data={blogPageData?.attributes}>
       <div className="container">
         {ComponentDynamicsRenderer(blogPageData?.attributes ?? {})}
         <div className="blog">{sectionBlogs}</div>
