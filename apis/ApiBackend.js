@@ -69,7 +69,6 @@ export const getAllModels = (lang) => {
   return ApiBackend("api/modelos?populate=*&locale=" + lang, config);
 };
 
-
 export const getlangEnpoint = () => {
   const config = {
     headers: {
@@ -79,8 +78,6 @@ export const getlangEnpoint = () => {
   };
   return ApiBackend("/api/i18n/locales", config);
 };
-
-
 
 export const langAll = async () => {
   const query = `query {
@@ -156,7 +153,10 @@ export const getTypeDonations = (lang) => {
     },
   };
 
-  return ApiBackend("api/tipo-de-donacions?populate=*&sort=rang:asc&locale=" + lang, config);
+  return ApiBackend(
+    "api/tipo-de-donacions?populate=*&sort=rang:asc&locale=" + lang,
+    config
+  );
 };
 export const getDonationInfo = (lang) => {
   const config = {
@@ -178,6 +178,25 @@ export const getPageWithComponents = async (language, id) => {
           attributes {
             title
             slug
+             meta{
+            id
+            title
+            description
+            keywords
+            author
+            ogTitle
+            ogUrl
+            ogDescription
+            ogImage{
+              data{
+                attributes{
+                  name
+                  url
+                }
+              }
+            }
+            ogUrl
+          }
             DynamicComponent {
               ... on ComponentUiHeaderTitle {
                 id

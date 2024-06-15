@@ -19,6 +19,7 @@ const index = ({ blogsPage, blogPageData, whatsapp, footer, menus }) => {
   const router = useRouter();
   const { lang } = router.query;
   const blogs = blogsPage?.data;
+  console.log("blogPageData", blogPageData);
   const { loadedFooter, loadedWhatsapp, updateMenuLoader } = useMenu();
 
   useEffect(() => {
@@ -72,7 +73,7 @@ const index = ({ blogsPage, blogPageData, whatsapp, footer, menus }) => {
     return <div>{renderedComponents}</div>;
   };
   return (
-    <Main titlePage={"Blog"} data={""}>
+    <Main titlePage={"Blog"} data={blogPageData.attributes}>
       <div className="container">
         {ComponentDynamicsRenderer(blogPageData?.attributes ?? {})}
         <div className="blog">{sectionBlogs}</div>

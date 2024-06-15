@@ -9,6 +9,7 @@ import { Analytics } from "@vercel/analytics/react";
 import useLocale from "../../hooks/useLocales";
 
 const Main = ({ children, data }) => {
+  console.log(data);
   const { menuData, loading, footerData } = useMenu();
   const { query } = useRouter();
   const { lang, slug } = query;
