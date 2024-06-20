@@ -2,8 +2,13 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getMenus, langAll } from '../apis/ApiBackend';
 import Loader from '../components/UI/Loader';
+import Head from 'next/head';
 
 const Home = () => {
+  <Head>
+    <title>Rescate, Rehabilitación y Conservación de Fauna Silvestre: Apoyo a Las Pumas</title>
+    <meta name="description" content="Rescate, Rehabilitación y Conservación de Fauna Silvestre: Apoyo a Las Pumas" />
+  </Head>
   const [slug, setSlug] = useState("");
   const [lang, setLang] = useState("");
   const [result, setResult] = useState([]);
