@@ -39,7 +39,7 @@ const Donations = ({
   menus,
 }) => {
   const screenSize = useScreenSizeStore((state) => state.screenSize);
-
+  console.log(donationInfo, "donationInfo")
   const [filter, setFilter] = useState(null);
   const [filterForSlug, setFilterForSlug] = useState(null);
   const { query } = useRouter();
@@ -105,21 +105,21 @@ const Donations = ({
     };
   });
   return (
-    <Main titlePage={"Donación"} data={""}  titleMeta={donationInfo[0]?.attributes?.title} descriptionMeta={donationInfo[0]?.attributes?.description}>
+    <Main titlePage={"Donación"} data={""}  titleMeta={donationInfo?.attributes?.title} descriptionMeta={donationInfo?.attributes?.description}>
       <div className="container">
         <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
-          {donationInfo[0]?.attributes?.title}
+          {donationInfo?.attributes?.title}
         </h3>
         <div className="grid-2 px-5">
           <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2">
             <ReactMarkdown className="saltoLinea2">
-              {donationInfo[0]?.attributes?.description}
+              {donationInfo?.attributes?.description}
             </ReactMarkdown>
           </div>
           <Image
             width={500}
             height={500}
-            src={donationInfo[0]?.attributes?.img?.data?.attributes?.url}
+            src={donationInfo?.attributes?.img?.data?.attributes?.url}
             alt="Pumas"
             className="w-full"
           />
@@ -139,7 +139,7 @@ const Donations = ({
             <FormDonationSpecies
               filterSpecie={filter}
               typeDonations={typeDonationSchemes}
-              donaciones={donationInfo[0]?.attributes?.donaciones}
+              donaciones={donationInfo?.attributes?.donaciones}
             />
           ) : (
             <FormDonations
