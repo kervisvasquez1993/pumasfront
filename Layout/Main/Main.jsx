@@ -8,15 +8,12 @@ import { useRouter } from "next/router";
 import { Analytics } from "@vercel/analytics/react";
 import useLocale from "../../hooks/useLocales";
 
-const Main = ({ children, data }) => {
-  console.log(data);
+const Main = ({ children, data, titleMeta = "" , descriptionMeta = "" }) => {
   const { menuData, loading, footerData } = useMenu();
   const { query } = useRouter();
   const { lang, slug } = query;
   const [stateMenu, setStateMenu] = useState(null);
   const [isHeaderSticky, setIsHeaderSticky] = useState(false);
-  // const [meta, setMeta] = useState({});
-
   useEffect(() => {
     if (!loading && menuData && lang) {
       const currentLanguageMenu = menuData;
@@ -24,14 +21,12 @@ const Main = ({ children, data }) => {
       localStorage.setItem("menuData", JSON.stringify(menuData));
     }
   }, [lang, loading, menuData]);
-
   useEffect(() => {
     const storedMenuData = localStorage.getItem("menuData");
     if (!menuData && storedMenuData) {
       setStateMenu(JSON.parse(storedMenuData) || null);
     }
   }, []);
-
   useEffect(() => {
     const handleScroll = () => {
       const threshold = 100;
@@ -41,41 +36,35 @@ const Main = ({ children, data }) => {
         setIsHeaderSticky(false);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
   const headerClassName = `${style.headerMenu} ${
     isHeaderSticky ? "stickyHeader" : ""
   }`;
   const shouldApplyHeaderStyle = slug !== "home" && slug !== "inicio";
-
   const headerClassNameInicio = `${
     isHeaderSticky ? style.headerMenu + " stickyHeader" : ""
   }`;
-
   return (
     <>
       <Head>
-        <title>{data?.meta?.title || "Título por defecto"}</title>
-
+        <title>{data?.meta?.title || titleMeta}</title>
         <meta
           name="keywords"
-          content={data?.meta?.keywords || "Palabras clave por defecto"}
+          content={data?.meta?.keywords || "Pumas, Centro de rescate"}
         />
         <meta name="author" content={data?.authors || "Autor por defecto"} />
         <meta
           name="og:title"
-          content={data?.meta?.ogTitle || "Título OG por defecto"}
+          content={data?.meta?.ogTitle || titleMeta}
         />
         <meta
           name="og:description"
-          content={data?.meta?.ogDescription || "Descripción OG por defecto"}
+          content={data?.meta?.ogDescription || descriptionMeta}
         />
         <meta
           name="og:image"

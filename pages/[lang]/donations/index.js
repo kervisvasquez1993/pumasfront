@@ -78,7 +78,6 @@ const Donations = ({
     const srcModeloUrl =
       item?.attributes?.srcModelo?.data[0]?.attributes?.url || null;
     const models3d = item.attributes.model3D?.data?.attributes?.url || null;
-
     const imagenes = item.attributes?.imagenes?.data?.map((imagen) => {
       return {
         id: imagen.id,
@@ -106,12 +105,12 @@ const Donations = ({
     };
   });
   return (
-    <Main titlePage={"Donación"} data={""}>
+    <Main titlePage={"Donación"} data={""}  titleMeta={donationInfo[0]?.attributes?.title} descriptionMeta={donationInfo[0]?.attributes?.description}>
       <div className="container">
-        {/* <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
+        <h3 className="program-title fuenteTitulo colorPrimary sm:mx-10 sm:px-10 p-5">
           {donationInfo[0]?.attributes?.title}
-        </h3> */}
-        {/* <div className="grid-2 px-5">
+        </h3>
+        <div className="grid-2 px-5">
           <div className="about-program_text fuentesParrafo lg:px-10 sm:py-5 saltoLinea2">
             <ReactMarkdown className="saltoLinea2">
               {donationInfo[0]?.attributes?.description}
@@ -124,8 +123,8 @@ const Donations = ({
             alt="Pumas"
             className="w-full"
           />
-        </div> */}
-        {/* <TwoColumnGrid>
+        </div>
+        <TwoColumnGrid>
           <BasicSection
             classNameTitle={""}
             classNameWrapper={"setionStyleTwo"}
@@ -134,7 +133,7 @@ const Donations = ({
           >
             <p className="py-5"></p>
           </BasicSection>
-        </TwoColumnGrid> */}
+        </TwoColumnGrid>
         <div>
           {filter && filter.length > 0 ? (
             <FormDonationSpecies
@@ -142,14 +141,12 @@ const Donations = ({
               typeDonations={typeDonationSchemes}
               donaciones={donationInfo[0]?.attributes?.donaciones}
             />
-            
           ) : (
             <FormDonations
               typeDonations={typeDonationSchemes}
               result={result}
               modelos={modelsGQ}
             />
-            
           )}
         </div>
         <HeaderComponents
