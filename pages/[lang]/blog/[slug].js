@@ -23,6 +23,7 @@ import { useFetch } from "../../../hooks/useFetch";
 import Head from "next/head";
 import useScreenSizeStore from "../../../store/screenSizeStore";
 const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
+  console.log(blog, "blog");
   const screenSize = useScreenSizeStore((state) => state.screenSize);
   const router = useRouter();
   const { lang } = router.query;
@@ -42,21 +43,25 @@ const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
   // const {data, isLoading} = useFetch(`/api/blogs?populate=*&locale=${lang}`, {}, process.env.NEXT_PUBLIC_TOKEN)
   // console.log(data, "data");
   return (
-    <Main titlePage={blog?.attributes?.TitleBlog} titleMeta={blog?.attributes?.TitleBlog} descriptionMeta={blog?.attributes?.ContentBlog} >
-     
+    <Main
+      titlePage={blog?.attributes?.TitleBlog}
+      data={blog?.attributes}
+      titleMeta={blog?.attributes?.TitleBlog}
+      descriptionMeta={blog?.attributes?.ContentBlog}
+    >
+      {" "}
       <HeaderComponents
-        classNameText={"colorPrimary chelseaFont pt-10 mt-10 lg:px-10 lg:mx-10 "}
+        classNameText={
+          "colorPrimary chelseaFont pt-10 mt-10 lg:px-10 lg:mx-10 "
+        }
         alignment={`${screenSize <= 1024 ? "center" : "start"}`}
       >
         {blog?.attributes?.TitleBlog}
       </HeaderComponents>
-
       <section className="container-section py-10 my-5">
         <section
           className={`${blog?.attributes?.imgBlog?.data ? "flex-2" : ""}`}
         >
-          
-
           <div className="containerSlider">
             <Slider {...settings}>
               {blog?.attributes?.imgBlog?.data.map((slider) => {
@@ -73,7 +78,6 @@ const BlogInfo = ({ blog, whatsapp, footer, menus }) => {
                 );
               })}
             </Slider>
-           
           </div>
           <section>
             <BasicSection
