@@ -36,7 +36,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const data = await resend.emails.send({
         from: "Acme <onboarding@resend.dev>",
-        to: ["laspumascr@gmail.com"],
+        to: [process.env.NEXT_PUBLIC_RESEND_EMAIL],
         subject: req.body.type,
         react: EmailTemplate({
           nombre: req.body.nombre,
